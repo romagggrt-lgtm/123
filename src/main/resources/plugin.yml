@@ -1,0 +1,14 @@
+name: shah
+version: 1.0.0
+main: dev.shah.ShahPlugin
+api-version: '1.21.11'
+author: shah contributors
+description: Server-side flying models and ray-traced projectiles
+softdepend: [WorldGuard, Essentials]
+commands:
+  shahed:
+    description: Give a Shahed item
+    usage: /shahed give <player> <shahed|Shahed_3k> [amount]
+permissions:
+  shah.give:
+    default: op

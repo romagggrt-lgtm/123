@@ -1,0 +1,47 @@
+shahed:
+  natural-spawn:
+    enabled: true
+    worlds: [world]
+    interval-minutes: 30
+    chance: 0.5
+    max-active: 2
+    min-height-above-ground: 35
+    max-height-above-ground: 55
+    min-distance-from-player: 60
+    max-distance-from-player: 100
+  flight:
+    speed: 0.4
+    smooth-movement: true
+    avoid-obstacles: true
+    lifetime-seconds: 180
+  sound:
+    enabled: true
+    volume: 0.25
+    max-distance: 45
+  explosion:
+    power: 4.0
+    break-blocks: true
+    damage-entities: true
+  takeoff:
+    duration-seconds: 4
+    smooth-animation: true
+shahed-3000:
+  charge-time-ticks: 25
+  projectile-speed: 2.0
+  max-distance: 150
+  cooldown-seconds: 3
+  unlimited-ammo: true
+  explosion:
+    power: 6.0
+    break-blocks: true
+    damage-entities: true
+permissions:
+  give-op-only: true
+  console-give: true
+resource-pack:
+  enabled: true
+  prompt-on-join: true
+  # Use server.properties to distribute the pack. Never put credentials here.
+limits:
+  max-total: 128
+  despawn-player-distance: 192
