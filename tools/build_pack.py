@@ -65,7 +65,7 @@ audio=PACK/'assets/shah/sounds/engine.ogg'; audio.parent.mkdir(parents=True,exis
 subprocess.run(['ffmpeg','-v','error','-y','-i',str(wav),'-fflags','+bitexact','-flags:a','+bitexact','-c:a','libvorbis','-q:a','4',str(audio)],check=True)
 write(Path('assets/shah/sounds.json'),{'engine_'+str(i):{'sounds':[{'name':'shah:engine','stream':False,'attenuation_distance':45}]} for i in range(1024)})
 (PACK/'LICENSE.txt').write_text('Original procedural model, texture and engine audio: CC0-1.0.\nNo third-party Minecraft mod assets are included.\n',encoding='utf-8')
-dest=ROOT/'dist/Z_Server_Pack_1.02.zip'; dest.parent.mkdir(exist_ok=True)
+dest=ROOT/'dist/Z_Server_Pack_1.03.zip'; dest.parent.mkdir(exist_ok=True)
 with zipfile.ZipFile(dest,'w',zipfile.ZIP_DEFLATED) as z:
     for path in sorted(PACK.rglob('*')):
         if path.is_file():
@@ -74,5 +74,5 @@ with zipfile.ZipFile(dest,'w',zipfile.ZIP_DEFLATED) as z:
             z.writestr(info,path.read_bytes())
 print(dest)
 digest=hashlib.sha1(dest.read_bytes()).hexdigest()
-(dest.parent/'Z_Server_Pack_1.02.zip.sha1').write_text(digest+'\n')
+(dest.parent/'Z_Server_Pack_1.03.zip.sha1').write_text(digest+'\n')
 print('SHA-1:',digest)

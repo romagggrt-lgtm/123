@@ -28,9 +28,11 @@ import java.util.HexFormat;
 
 /** All entity operations run on the server thread; no NMS, chunk tickets or asynchronous world access. */
 public final class ShahPlugin extends JavaPlugin implements Listener, CommandExecutor, TabCompleter {
-    private static final String DEFAULT_PACK_URL = "https://github.com/romagggrt-lgtm/123/raw/refs/heads/main/dist/Z_Server_Pack_1.02.zip";
+    private static final String DEFAULT_PACK_URL = "https://github.com/romagggrt-lgtm/123/raw/refs/heads/main/dist/Z_Server_Pack_1.03.zip";
     private static final String DEFAULT_PACK_SHA1 = "ac9f321a4647e1519b1a67f5aa253105f69ba284";
     private NamespacedKey itemKey, entityKey;
+    private final NamespacedKey legacyItemKey = new NamespacedKey("shah", "item");
+    private final NamespacedKey legacyEntityKey = new NamespacedKey("shah", "managed");
     private final Map<UUID, Flight> flights = new LinkedHashMap<>();
     private final Map<UUID, Flight> hitboxes = new HashMap<>();
     private final Map<UUID, Long> cooldowns = new HashMap<>();
@@ -64,7 +66,10 @@ public final class ShahPlugin extends JavaPlugin implements Listener, CommandExe
     private boolean yes(String key) { return getConfig().getBoolean(key, true); }
     private long interval() { return (long) (number("shahed.natural-spawn.interval-minutes",30,0.05,1440)*1200); }
     private String type(ItemStack item) {
-        return item == null || !item.hasItemMeta() ? "" : Objects.toString(item.getItemMeta().getPersistentDataContainer().get(itemKey, PersistentDataType.STRING), "");
+        if (item == null || !item.hasItemMeta()) return "";
+        var data=item.getItemMeta().getPersistentDataContainer();
+        String current=data.get(itemKey, PersistentDataType.STRING);
+        return current != null ? current : Objects.toString(data.get(legacyItemKey, PersistentDataType.STRING), "");
     }
     private boolean launcher(ItemStack item) { return type(item).equals("Shahed_3k"); }
     @SuppressWarnings("UnstableApiUsage")
@@ -73,6 +78,8 @@ public final class ShahPlugin extends JavaPlugin implements Listener, CommandExe
         item.editMeta(meta -> {
             meta.displayName(Component.text(id.equals("shahed") ? "Shahed" : "Шахед 3000"));
             meta.getPersistentDataContainer().set(itemKey, PersistentDataType.STRING, id);
+            // Keep the pre-1.0.2 key so items issued before the plugin was renamed remain usable.
+            meta.getPersistentDataContainer().set(legacyItemKey, PersistentDataType.STRING, id);
             meta.setItemModel(new NamespacedKey("shah", id.equals("shahed") ? "egg" : "shahed"));
             meta.lore(List.of(Component.text(id.equals("shahed") ? "ПКМ по блоку — взлёт" : "Удерживайте ПКМ, затем отпустите")));
         });
@@ -212,7 +219,11 @@ public final class ShahPlugin extends JavaPlugin implements Listener, CommandExe
         }
     }
     private boolean capacity() { return flights.size() < number("limits.max-total",128,1,1024); }
-    private void mark(Entity e) { e.getPersistentDataContainer().set(entityKey,PersistentDataType.BYTE,(byte)1); e.setPersistent(false); e.setGravity(false); }
+    private void mark(Entity e) {
+        e.getPersistentDataContainer().set(entityKey,PersistentDataType.BYTE,(byte)1);
+        e.getPersistentDataContainer().set(legacyEntityKey,PersistentDataType.BYTE,(byte)1);
+        e.setPersistent(false); e.setGravity(false);
+    }
     private Flight spawn(Location p, boolean natural, UUID shooter, Vector direction) {
         ItemDisplay visual=p.getWorld().spawn(p,ItemDisplay.class,e->{
             mark(e); e.setItemStack(item("Shahed_3k",1)); e.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.NONE);
@@ -230,7 +241,11 @@ public final class ShahPlugin extends JavaPlugin implements Listener, CommandExe
         flights.put(f.id,f); if(body!=null) hitboxes.put(body.getUniqueId(),f);
         return f;
     }
-    private void cleanupOrphan(Entity e) { if(e.getPersistentDataContainer().has(entityKey,PersistentDataType.BYTE)) e.remove(); }
+    private boolean managed(Entity e) {
+        return e.getPersistentDataContainer().has(entityKey,PersistentDataType.BYTE)
+            || e.getPersistentDataContainer().has(legacyEntityKey,PersistentDataType.BYTE);
+    }
+    private void cleanupOrphan(Entity e) { if(managed(e)) e.remove(); }
     @EventHandler public void load(ChunkLoadEvent e) { for(Entity entity:e.getChunk().getEntities()) cleanupOrphan(entity); }
     @EventHandler(ignoreCancelled=true) public void unload(ChunkUnloadEvent e) {
         for(Flight f:List.copyOf(flights.values())) if(f.pos.getWorld()==e.getWorld() && (f.pos.getBlockX()>>4)==e.getChunk().getX() && (f.pos.getBlockZ()>>4)==e.getChunk().getZ()) remove(f);
@@ -251,7 +266,7 @@ public final class ShahPlugin extends JavaPlugin implements Listener, CommandExe
         Player player=attacker instanceof Player p ? p : attacker instanceof Projectile pr && pr.getShooter() instanceof Player p ? p : null;
         if(player!=null) detonate(f,player);
     }
-    @EventHandler(ignoreCancelled=true) public void split(SlimeSplitEvent e) { if(e.getEntity().getPersistentDataContainer().has(entityKey,PersistentDataType.BYTE)) e.setCancelled(true); }
+    @EventHandler(ignoreCancelled=true) public void split(SlimeSplitEvent e) { if(managed(e.getEntity())) e.setCancelled(true); }
     @EventHandler(ignoreCancelled=true) public void prime(ExplosionPrimeEvent e) { if(hitboxes.containsKey(e.getEntity().getUniqueId())) e.setCancelled(true); }
     private void remove(Flight f) {
         if(f.dead) return; f.dead=true;
