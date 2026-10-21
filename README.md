@@ -1,7 +1,7 @@
 # shah — Paper 1.21.11 / Java 21
 
 **Статус: собранная реализация для дальнейшей игровой проверки, не проверенный production-релиз.**
-`dist/Shahed_1.02.jar` — настоящий скомпилированный плагин версии 1.0.2. `dist/Shahed-ResourcePack.zip` — устанавливаемый ресурс-пак формата 75.
+`dist/Shahed_1.02.jar` — настоящий скомпилированный плагин версии 1.0.2. `dist/Z_Server_Pack_1.02.zip` — устанавливаемый ресурс-пак формата 75.
 Три указанных в ТЗ JAR-файла в среду не поступили. Их ресурсы не использованы, лицензии не проверены.
 В пак включена **собственная временная объёмная модель**, а не конвертация Skyfront. Для выбора и адаптации исходной модели нужны файлы и разрешающая лицензия.
 
@@ -17,22 +17,22 @@
 В текущей конфигурации уже указан проверенный прямой URL GitHub Raw. Важно: используйте именно `raw.githubusercontent.com`, без `?download=1`. Ссылка GitHub вида `/blob/` или `/raw/?download=1` отдаёт HTML-страницу, а клиент Minecraft принимает её как маленький файл (например, 383 Б) и зацикливает загрузку.
 
 ```properties
-resource-pack=https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Shahed-ResourcePack.zip
+resource-pack=https://github.com/romagggrt-lgtm/123/raw/refs/heads/main/dist/Z_Server_Pack_1.02.zip
 resource-pack-sha1=ac9f321a4647e1519b1a67f5aa253105f69ba284
 require-resource-pack=false
 resource-pack-prompt={"text":"Модели и звук плагина shah"}
 ```
 
-После изменений перезапустите сервер. При замене ZIP обновите SHA-1 из `dist/Shahed-ResourcePack.zip.sha1`. Можно поставить `require-resource-pack=true`, чтобы игроки не входили без ресурсов.
+После изменений перезапустите сервер. При замене ZIP обновите SHA-1 из `dist/Z_Server_Pack_1.02.zip.sha1`. Можно поставить `require-resource-pack=true`, чтобы игроки не входили без ресурсов.
 Плагин не размещает ZIP в интернете и не меняет `server.properties` автоматически. Если другой плагин управляет серверными паками, подключите этот пак через него. Предупреждение в action bar показывает, что сервер ещё не получил статус успешной загрузки пака; оно не может проверить содержимое чужого пака.
 
 Перед запуском сервера проверьте ссылку с любой машины:
 
 ```sh
-curl -fL -o /tmp/Shahed-ResourcePack.zip \
-  https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Shahed-ResourcePack.zip
-file /tmp/Shahed-ResourcePack.zip
-sha1sum /tmp/Shahed-ResourcePack.zip
+curl -fL -o /tmp/Z_Server_Pack_1.02.zip \
+  https://github.com/romagggrt-lgtm/123/raw/refs/heads/main/dist/Z_Server_Pack_1.02.zip
+file /tmp/Z_Server_Pack_1.02.zip
+sha1sum /tmp/Z_Server_Pack_1.02.zip
 ```
 
 `file` должен показать ZIP, размер должен быть около 9.7 KB, а SHA-1 — `ac9f321a4647e1519b1a67f5aa253105f69ba284`. Если сервер уже запущен со старым URL или старым хешем, удалите сохранённый ресурс-пак в `.minecraft/server-resource-packs` и подключитесь заново.
@@ -81,7 +81,7 @@ python3 tools/build_pack.py
 python3 tools/check_pack.py
 ```
 
-JAR: `target/Shahed_1.02.jar`. Ресурс-пак: `dist/Shahed-ResourcePack.zip`.
+JAR: `target/Shahed_1.02.jar`. Ресурс-пак: `dist/Z_Server_Pack_1.02.zip`.
 В этой облачной среде воспроизводимый полный цикл: `bash tools/bootstrap-env.sh`, затем `bash tools/build.sh`. Скрипт поддерживает HTTPS-прокси и системное хранилище доверенных сертификатов, не отключает TLS и удаляет временные настройки прокси после сборки. На другой машине можно задать `SHAH_MAVEN_CACHE`.
 
 Сборка Maven сама по себе **не запускает** `FlightMathChecks`: они запускаются отдельно `check_math.sh` и включены в `build.sh`. Отчёт с границами проверки: `TESTING.md`.

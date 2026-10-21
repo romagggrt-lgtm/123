@@ -2,7 +2,7 @@
 """Structural asset checks only: no claim about rendering in a Minecraft client."""
 from pathlib import Path
 import json, zipfile, struct
-p=Path(__file__).resolve().parents[1]/'dist/Shahed-ResourcePack.zip'
+p=Path(__file__).resolve().parents[1]/'dist/Z_Server_Pack_1.02.zip'
 checks=0
 with zipfile.ZipFile(p) as z:
     assert z.testzip() is None; checks+=1
