@@ -28,6 +28,8 @@ import java.util.HexFormat;
 
 /** All entity operations run on the server thread; no NMS, chunk tickets or asynchronous world access. */
 public final class ShahPlugin extends JavaPlugin implements Listener, CommandExecutor, TabCompleter {
+    private static final String DEFAULT_PACK_URL = "https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Shahed-ResourcePack.zip";
+    private static final String DEFAULT_PACK_SHA1 = "4cbfd9594d57f6a8d4b1db657a9d2cd75420dfb3";
     private NamespacedKey itemKey, entityKey;
     private final Map<UUID, Flight> flights = new LinkedHashMap<>();
     private final Map<UUID, Flight> hitboxes = new HashMap<>();
@@ -169,8 +171,10 @@ public final class ShahPlugin extends JavaPlugin implements Listener, CommandExe
     }
     private void sendResourcePack(Player player) {
         if (!yes("resource-pack.enabled")) return;
-        String url=getConfig().getString("resource-pack.url", "").trim();
-        String sha1=getConfig().getString("resource-pack.sha1", "").trim();
+        // Existing installations keep their old config.yml, so defaults must also
+        // be supplied in code; saveDefaultConfig() never overwrites that file.
+        String url=getConfig().getString("resource-pack.url", DEFAULT_PACK_URL).trim();
+        String sha1=getConfig().getString("resource-pack.sha1", DEFAULT_PACK_SHA1).trim();
         if (url.isEmpty()) return;
         try {
             byte[] hash=sha1.isEmpty() ? null : HexFormat.of().parseHex(sha1);
