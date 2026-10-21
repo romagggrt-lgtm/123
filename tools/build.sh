@@ -26,4 +26,4 @@ if [[ -f /etc/ssl/certs/java/cacerts ]]; then export MAVEN_OPTS="${MAVEN_OPTS:-}
 bash tools/check_math.sh
 python3 tools/build_pack.py
 python3 tools/check_pack.py
-cp target/Shahed.jar dist/Shahed.jar
+cp target/Shahed_1.02.jar dist/Shahed_1.02.jar

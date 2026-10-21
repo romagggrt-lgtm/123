@@ -1,5 +1,5 @@
 name: shah
-version: 1.0.0
+version: 1.0.2
 main: dev.shah.ShahPlugin
 api-version: '1.21.11'
 author: shah contributors
