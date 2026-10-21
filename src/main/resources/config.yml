@@ -41,6 +41,10 @@ permissions:
 resource-pack:
   enabled: true
   prompt-on-join: true
+  # Must return the ZIP itself with HTTP 200 and Content-Type application/zip.
+  # Do not append ?download=1 to the GitHub URL: that endpoint returns an HTML page.
+  url: "https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Shahed-ResourcePack.zip"
+  sha1: "4cbfd9594d57f6a8d4b1db657a9d2cd75420dfb3"
   # Use server.properties to distribute the pack. Never put credentials here.
 limits:
   max-total: 128

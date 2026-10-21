@@ -24,6 +24,7 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
 import java.util.*;
+import java.util.HexFormat;
 
 /** All entity operations run on the server thread; no NMS, chunk tickets or asynchronous world access. */
 public final class ShahPlugin extends JavaPlugin implements Listener, CommandExecutor, TabCompleter {
@@ -160,7 +161,24 @@ public final class ShahPlugin extends JavaPlugin implements Listener, CommandExe
     @EventHandler public void death(PlayerDeathEvent e) { using.remove(e.getEntity().getUniqueId()); }
     @EventHandler public void pack(PlayerResourcePackStatusEvent e) { packStatus.put(e.getPlayer().getUniqueId(),e.getStatus().name()); }
     @EventHandler public void join(PlayerJoinEvent e) {
-        if (yes("resource-pack.prompt-on-join")) Bukkit.getScheduler().runTaskLater(this, () -> { if(e.getPlayer().isOnline()) warnPack(e.getPlayer()); },100);
+        if (yes("resource-pack.prompt-on-join")) Bukkit.getScheduler().runTaskLater(this, () -> {
+            if (!e.getPlayer().isOnline()) return;
+            sendResourcePack(e.getPlayer());
+            warnPack(e.getPlayer());
+        },100);
+    }
+    private void sendResourcePack(Player player) {
+        if (!yes("resource-pack.enabled")) return;
+        String url=getConfig().getString("resource-pack.url", "").trim();
+        String sha1=getConfig().getString("resource-pack.sha1", "").trim();
+        if (url.isEmpty()) return;
+        try {
+            byte[] hash=sha1.isEmpty() ? null : HexFormat.of().parseHex(sha1);
+            if (hash!=null && hash.length!=20) throw new IllegalArgumentException("resource-pack.sha1 must be 40 hex characters");
+            player.setResourcePack(url, hash, Component.text("Для моделей shah примите ресурс-пак."));
+        } catch (IllegalArgumentException ex) {
+            getLogger().warning("Invalid resource-pack.sha1: "+ex.getMessage());
+        }
     }
     private void warnPack(Player p) {
         if (yes("resource-pack.enabled") && !"SUCCESSFULLY_LOADED".equals(packStatus.get(p.getUniqueId())))
@@ -194,7 +212,9 @@ public final class ShahPlugin extends JavaPlugin implements Listener, CommandExe
     private Flight spawn(Location p, boolean natural, UUID shooter, Vector direction) {
         ItemDisplay visual=p.getWorld().spawn(p,ItemDisplay.class,e->{
             mark(e); e.setItemStack(item("Shahed_3k",1)); e.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.NONE);
-            e.setTransformation(new Transformation(new Vector3f(),new Quaternionf(),new Vector3f(2.2f),new Quaternionf()));
+            // Vanilla item-model coordinates face -Z; our generated aircraft nose faces +Z.
+            // Rotate the display so its nose follows the flight vector instead of flying backwards.
+            e.setTransformation(new Transformation(new Vector3f(),new Quaternionf().rotateY((float)Math.PI),new Vector3f(2.2f),new Quaternionf()));
             e.setTeleportDuration(1); e.setInterpolationDuration(1); e.setViewRange(2); e.setDisplayWidth(5); e.setDisplayHeight(2);
         });
         Slime body=null;

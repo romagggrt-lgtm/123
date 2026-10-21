@@ -14,17 +14,28 @@
 
 ### Ресурс-пак через server.properties
 
-Разместите ZIP на доступном игрокам HTTPS-хостинге с прямой ссылкой на ZIP, без страниц скачивания и авторизации:
+В текущей конфигурации уже указан проверенный прямой URL GitHub Raw. Важно: используйте именно `raw.githubusercontent.com`, без `?download=1`. Ссылка GitHub вида `/blob/` или `/raw/?download=1` отдаёт HTML-страницу, а клиент Minecraft принимает её как маленький файл (например, 383 Б) и зацикливает загрузку.
 
 ```properties
-resource-pack=https://YOUR-HOST.example/Shahed-ResourcePack.zip
+resource-pack=https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Shahed-ResourcePack.zip
 resource-pack-sha1=4cbfd9594d57f6a8d4b1db657a9d2cd75420dfb3
 require-resource-pack=false
 resource-pack-prompt={"text":"Модели и звук плагина shah"}
 ```
 
-Замените URL своим. После изменений перезапустите сервер. При замене ZIP обновите SHA-1 из `dist/Shahed-ResourcePack.zip.sha1`. Можно поставить `require-resource-pack=true`, чтобы игроки не входили без ресурсов.
+После изменений перезапустите сервер. При замене ZIP обновите SHA-1 из `dist/Shahed-ResourcePack.zip.sha1`. Можно поставить `require-resource-pack=true`, чтобы игроки не входили без ресурсов.
 Плагин не размещает ZIP в интернете и не меняет `server.properties` автоматически. Если другой плагин управляет серверными паками, подключите этот пак через него. Предупреждение в action bar показывает, что сервер ещё не получил статус успешной загрузки пака; оно не может проверить содержимое чужого пака.
+
+Перед запуском сервера проверьте ссылку с любой машины:
+
+```sh
+curl -fL -o /tmp/Shahed-ResourcePack.zip \
+  https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Shahed-ResourcePack.zip
+file /tmp/Shahed-ResourcePack.zip
+sha1sum /tmp/Shahed-ResourcePack.zip
+```
+
+`file` должен показать ZIP, размер должен быть около 9.6 KB, а SHA-1 — `4cbfd9594d57f6a8d4b1db657a9d2cd75420dfb3`. Если сервер уже запущен со старым URL или старым хешем, удалите сохранённый ресурс-пак в `.minecraft/server-resource-packs` и подключитесь заново.
 
 ## Команды и использование
 
