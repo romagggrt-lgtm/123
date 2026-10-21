@@ -31,7 +31,7 @@ box([7.7,3,-12],[8.3,14,-11.3])
 box([2,8.2,-12],[14,8.8,-11.3])
 write(Path('assets/shah/models/item/shahed.json'), {
     'credit':'Original procedural fallback by shah project. No assets from the requested mods are used.',
-    'textures':{'body':'shah:entity/shahed','particle':'shah:entity/shahed'}, 'elements':elements,
+    'textures':{'body':'shah:item/shahed','particle':'shah:item/shahed'}, 'elements':elements,
     'display':{
         'firstperson_righthand':{'rotation':[0,160,0],'translation':[1,-1,-3],'scale':[.22,.22,.22]},
         'firstperson_lefthand':{'rotation':[0,200,0],'translation':[1,-1,-3],'scale':[.22,.22,.22]},
@@ -44,7 +44,12 @@ write(Path('assets/shah/models/item/shahed.json'), {
 p=PACK/'assets/shah/textures/entity/shahed.png'; p.parent.mkdir(parents=True,exist_ok=True)
 raw=b''.join(b'\0'+b''.join(bytes((136+(x+y)%4*4,133+(x+y)%4*4,117+(x+y)%4*4,255)) for x in range(16)) for y in range(16))
 def chunk(tag,data): return struct.pack('>I',len(data))+tag+data+struct.pack('>I',zlib.crc32(tag+data)&0xffffffff)
-p.write_bytes(b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',struct.pack('>IIBBBBB',16,16,8,6,0,0,0))+chunk(b'IDAT',zlib.compress(raw))+chunk(b'IEND',b''))
+png_bytes=b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',struct.pack('>IIBBBBB',16,16,8,6,0,0,0))+chunk(b'IDAT',zlib.compress(raw))+chunk(b'IEND',b'')
+p.write_bytes(png_bytes)
+# Keep an item-path copy as well. Item models conventionally use textures/item;
+# the entity-path copy is retained for compatibility with older clients/tools.
+item_texture=PACK/'assets/shah/textures/item/shahed.png'; item_texture.parent.mkdir(parents=True,exist_ok=True)
+item_texture.write_bytes(png_bytes)
 # Authored periodic low-frequency engine sample; no recordings or mod sounds.
 wav=ROOT/'target/engine.wav'; rate=44100
 with wave.open(str(wav),'wb') as f:

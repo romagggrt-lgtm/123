@@ -29,7 +29,7 @@ import java.util.HexFormat;
 /** All entity operations run on the server thread; no NMS, chunk tickets or asynchronous world access. */
 public final class ShahPlugin extends JavaPlugin implements Listener, CommandExecutor, TabCompleter {
     private static final String DEFAULT_PACK_URL = "https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Shahed-ResourcePack.zip";
-    private static final String DEFAULT_PACK_SHA1 = "4cbfd9594d57f6a8d4b1db657a9d2cd75420dfb3";
+    private static final String DEFAULT_PACK_SHA1 = "ac9f321a4647e1519b1a67f5aa253105f69ba284";
     private NamespacedKey itemKey, entityKey;
     private final Map<UUID, Flight> flights = new LinkedHashMap<>();
     private final Map<UUID, Flight> hitboxes = new HashMap<>();

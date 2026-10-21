@@ -18,7 +18,7 @@
 
 ```properties
 resource-pack=https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Shahed-ResourcePack.zip
-resource-pack-sha1=4cbfd9594d57f6a8d4b1db657a9d2cd75420dfb3
+resource-pack-sha1=ac9f321a4647e1519b1a67f5aa253105f69ba284
 require-resource-pack=false
 resource-pack-prompt={"text":"Модели и звук плагина shah"}
 ```
@@ -35,7 +35,7 @@ file /tmp/Shahed-ResourcePack.zip
 sha1sum /tmp/Shahed-ResourcePack.zip
 ```
 
-`file` должен показать ZIP, размер должен быть около 9.6 KB, а SHA-1 — `4cbfd9594d57f6a8d4b1db657a9d2cd75420dfb3`. Если сервер уже запущен со старым URL или старым хешем, удалите сохранённый ресурс-пак в `.minecraft/server-resource-packs` и подключитесь заново.
+`file` должен показать ZIP, размер должен быть около 9.7 KB, а SHA-1 — `ac9f321a4647e1519b1a67f5aa253105f69ba284`. Если сервер уже запущен со старым URL или старым хешем, удалите сохранённый ресурс-пак в `.minecraft/server-resource-packs` и подключитесь заново.
 
 ## Команды и использование
 
