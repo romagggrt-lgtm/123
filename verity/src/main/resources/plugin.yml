@@ -1,5 +1,5 @@
 name: Z_Verity
-version: 1.0.0
+version: 1.0.1
 main: dev.zverity.ZVerityPlugin
 api-version: '1.21.11'
 author: shah contributors

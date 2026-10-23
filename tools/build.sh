@@ -28,5 +28,5 @@ bash tools/check_math.sh
 python3 tools/build_pack.py
 python3 tools/check_pack.py
 cp target/Shahed_1.03.jar dist/Shahed_1.03.jar
-cp verity/target/Z_Verity_1.0.0.jar dist/Z_Verity_1.0.0.jar
-sha256sum dist/Shahed_1.03.jar dist/Z_Verity_1.0.0.jar dist/Z_Server_Pack_1.04.zip > dist/SHA256SUMS
+cp verity/target/Z_Verity_1.0.1.jar dist/Z_Verity_1.0.1.jar
+sha256sum dist/Shahed_1.03.jar dist/Z_Verity_1.0.1.jar dist/Z_Server_Pack_1.04.zip > dist/SHA256SUMS
