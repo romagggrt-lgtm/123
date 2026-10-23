@@ -1,0 +1,12 @@
+resource-pack:
+  enabled: true
+  prompt-on-join: true
+  url: "https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Z_Server_Pack_1.04.zip"
+  sha1: "d1dcc588b613e75d843746746f71a55f48dedca7"
+verity:
+  follow-distance: 1.7
+  follow-height: 1.1
+  follow-speed: 0.18
+  sound-volume: 0.8
+  interaction-range: 5.0
+  drop-inventory-on-kill: true

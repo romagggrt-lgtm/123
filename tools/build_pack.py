@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """Build an original fallback model/audio. Does not extract or use third-party mod assets."""
 from pathlib import Path
+import shutil
 import json, math, struct, wave, zlib, subprocess, zipfile, hashlib
 ROOT=Path(__file__).resolve().parents[1]
 PACK=ROOT/'target/resource-pack'
+if PACK.exists():
+    shutil.rmtree(PACK)
 
 def write(path, data):
     p=PACK/path; p.parent.mkdir(parents=True,exist_ok=True)
@@ -64,8 +67,71 @@ with wave.open(str(wav),'wb') as f:
 audio=PACK/'assets/shah/sounds/engine.ogg'; audio.parent.mkdir(parents=True,exist_ok=True)
 subprocess.run(['ffmpeg','-v','error','-y','-i',str(wav),'-fflags','+bitexact','-flags:a','+bitexact','-c:a','libvorbis','-q:a','4',str(audio)],check=True)
 write(Path('assets/shah/sounds.json'),{'engine_'+str(i):{'sounds':[{'name':'shah:engine','stream':False,'attenuation_distance':45}]} for i in range(1024)})
-(PACK/'LICENSE.txt').write_text('Original procedural model, texture and engine audio: CC0-1.0.\nNo third-party Minecraft mod assets are included.\n',encoding='utf-8')
-dest=ROOT/'dist/Z_Server_Pack_1.03.zip'; dest.parent.mkdir(exist_ok=True)
+(PACK/'assets/z_verity').mkdir(parents=True,exist_ok=True)
+write(Path('assets/z_verity/items/verity_egg.json'), {'model': {'type':'minecraft:model', 'model':'z_verity:item/verity_egg'}})
+# ItemDisplay uses the 1.21 item-model component.  Every model identifier
+# passed to ItemMeta#setItemModel therefore needs an item definition under
+# assets/<namespace>/items/, which then points at the traditional model JSON.
+write(Path('assets/z_verity/items/verity_box.json'), {
+    'model': {'type':'minecraft:model', 'model':'z_verity:item/verity_box'}
+})
+write(Path('assets/z_verity/items/verity_sphere.json'), {
+    'model': {'type':'minecraft:model', 'model':'z_verity:item/verity_sphere'}
+})
+
+# Verity is an original server-side approximation of the yellow sphere shown in
+# the reference image. It is deliberately a plain resource-pack model: no
+# Forge/GeckoLib client code is required.
+verity_faces={'north':{'texture':'#face'},'south':{'texture':'#yellow'},'east':{'texture':'#yellow'},'west':{'texture':'#yellow'},'up':{'texture':'#yellow'},'down':{'texture':'#yellow'}}
+sphere_elements=[]
+for y0,y1,r in ((2,4,3),(4,6,5),(6,10,7),(10,12,5),(12,14,3)):
+    sphere_elements.append({'from':[8-r,y0,8-r],'to':[8+r,y1,8+r],'faces':verity_faces})
+write(Path('assets/z_verity/models/item/verity_sphere.json'), {
+    'credit':'Original procedural Verity sphere for Z_Verity.',
+    'textures':{'yellow':'z_verity:item/verity_yellow','face':'z_verity:item/verity_face'},
+    'elements':sphere_elements,
+    'display':{'gui':{'rotation':[20,135,0],'scale':[.7,.7,.7]},'ground':{'scale':[.7,.7,.7]},'fixed':{'scale':[.8,.8,.8]}}
+})
+write(Path('assets/z_verity/models/item/verity_egg.json'), {'parent':'z_verity:item/verity_sphere'})
+write(Path('assets/z_verity/models/item/verity_box.json'), {
+    'credit':'Original procedural Verity box for Z_Verity.',
+    'textures':{'crate':'z_verity:block/verity_box'},
+    'elements':[{'from':[1,1,1],'to':[15,15,15],'faces':{f:{'texture':'#crate'} for f in ('north','south','east','west','up','down')}}]
+})
+
+def png_rgba(path, width, height, pixel):
+    rows=[]
+    for y in range(height):
+        rows.append(b'\0'+b''.join(bytes(pixel(x,y)) for x in range(width)))
+    data=b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',struct.pack('>IIBBBBB',width,height,8,6,0,0,0))+chunk(b'IDAT',zlib.compress(b''.join(rows)))+chunk(b'IEND',b'')
+    path.parent.mkdir(parents=True,exist_ok=True); path.write_bytes(data)
+
+png_rgba(PACK/'assets/z_verity/textures/item/verity_yellow.png',16,16,
+    lambda x,y:(255,210+min(35,int(y*2)),20,255))
+def face_pixel(x,y):
+    # Yellow sphere face: two dark oval eyes and a simple dark smile.
+    eye=(x-9)**2/5+(y-10)**2/18<1 or (x-22)**2/5+(y-10)**2/18<1
+    smile=(y>=20 and y<=23 and 8<=x<=23 and abs(y-(24-((x-15.5)**2)/45))<1.2)
+    return (35,20,8,255) if eye or smile else (255,220,25,255)
+png_rgba(PACK/'assets/z_verity/textures/item/verity_face.png',32,32,face_pixel)
+def box_pixel(x,y):
+    line=x in (0,1,14,15) or y in (0,1,14,15) or abs(x-y)<=1 or abs(x-(15-y))<=1
+    return (83,48,20,255) if line else (164,104,39,255)
+png_rgba(PACK/'assets/z_verity/textures/block/verity_box.png',16,16,box_pixel)
+
+verity_mp3=ROOT/'assets-src/1023.MP3'
+verity_ogg=PACK/'assets/z_verity/sounds/verity.ogg'
+verity_ogg.parent.mkdir(parents=True,exist_ok=True)
+subprocess.run(['ffmpeg','-v','error','-y','-i',str(verity_mp3),'-fflags','+bitexact','-flags:a','+bitexact','-c:a','libvorbis','-q:a','5',str(verity_ogg)],check=True)
+write(Path('assets/z_verity/sounds.json'), {'verity':{'sounds':[{'name':'z_verity:verity','stream':False,'attenuation_distance':32}]}})
+(PACK/'LICENSE.txt').write_text(
+    'Shahed fallback model, texture and engine audio: original work, CC0-1.0.\n'
+    'Verity sound: converted from the user-provided 1023.MP3 at the user request;\n'
+    'the uploader retains any rights to that recording. Remove this asset if you\n'
+    'do not have permission to redistribute it.\n'
+    'No Forge code or third-party mod model assets are included.\n',
+    encoding='utf-8')
+dest=ROOT/'dist/Z_Server_Pack_1.04.zip'; dest.parent.mkdir(exist_ok=True)
 with zipfile.ZipFile(dest,'w',zipfile.ZIP_DEFLATED) as z:
     for path in sorted(PACK.rglob('*')):
         if path.is_file():
@@ -74,5 +140,5 @@ with zipfile.ZipFile(dest,'w',zipfile.ZIP_DEFLATED) as z:
             z.writestr(info,path.read_bytes())
 print(dest)
 digest=hashlib.sha1(dest.read_bytes()).hexdigest()
-(dest.parent/'Z_Server_Pack_1.03.zip.sha1').write_text(digest+'\n')
+(dest.parent/'Z_Server_Pack_1.04.zip.sha1').write_text(digest+'\n')
 print('SHA-1:',digest)

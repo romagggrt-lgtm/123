@@ -28,8 +28,8 @@ import java.util.HexFormat;
 
 /** All entity operations run on the server thread; no NMS, chunk tickets or asynchronous world access. */
 public final class ShahPlugin extends JavaPlugin implements Listener, CommandExecutor, TabCompleter {
-    private static final String DEFAULT_PACK_URL = "https://github.com/romagggrt-lgtm/123/raw/refs/heads/main/dist/Z_Server_Pack_1.03.zip";
-    private static final String DEFAULT_PACK_SHA1 = "ac9f321a4647e1519b1a67f5aa253105f69ba284";
+    private static final String DEFAULT_PACK_URL = "https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Z_Server_Pack_1.04.zip";
+    private static final String DEFAULT_PACK_SHA1 = "d1dcc588b613e75d843746746f71a55f48dedca7";
     private NamespacedKey itemKey, entityKey;
     private final NamespacedKey legacyItemKey = new NamespacedKey("shah", "item");
     private final NamespacedKey legacyEntityKey = new NamespacedKey("shah", "managed");

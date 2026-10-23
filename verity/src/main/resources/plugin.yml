@@ -1,0 +1,13 @@
+name: Z_Verity
+version: 1.0.0
+main: dev.zverity.ZVerityPlugin
+api-version: '1.21.11'
+author: shah contributors
+description: Verity box and yellow sphere companion
+commands:
+  zverity:
+    description: Give the Verity egg
+    usage: /zverity give <player> [amount]
+permissions:
+  zverity.give:
+    default: op

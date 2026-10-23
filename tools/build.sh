@@ -23,7 +23,10 @@ with open(sys.argv[1],'wb') as f: f.write(E.tostring(root))
 PY
 if [[ -f /etc/ssl/certs/java/cacerts ]]; then export MAVEN_OPTS="${MAVEN_OPTS:-} -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts"; fi
 "$maven" -B -s "$settings" -Dmaven.repo.local="${SHAH_MAVEN_CACHE:-/workspace/.m2/repository}" package
+"$maven" -B -s "$settings" -Dmaven.repo.local="${SHAH_MAVEN_CACHE:-/workspace/.m2/repository}" -f verity/pom.xml package
 bash tools/check_math.sh
 python3 tools/build_pack.py
 python3 tools/check_pack.py
 cp target/Shahed_1.03.jar dist/Shahed_1.03.jar
+cp verity/target/Z_Verity_1.0.0.jar dist/Z_Verity_1.0.0.jar
+sha256sum dist/Shahed_1.03.jar dist/Z_Verity_1.0.0.jar dist/Z_Server_Pack_1.04.zip > dist/SHA256SUMS

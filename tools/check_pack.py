@@ -2,7 +2,7 @@
 """Structural asset checks only: no claim about rendering in a Minecraft client."""
 from pathlib import Path
 import json, zipfile, struct
-p=Path(__file__).resolve().parents[1]/'dist/Z_Server_Pack_1.03.zip'
+p=Path(__file__).resolve().parents[1]/'dist/Z_Server_Pack_1.04.zip'
 checks=0
 with zipfile.ZipFile(p) as z:
     assert z.testzip() is None; checks+=1
@@ -17,6 +17,15 @@ with zipfile.ZipFile(p) as z:
         assert j['model']['type']=='minecraft:model'
         ns,model=j['model']['model'].split(':')
         if ns!='minecraft': assert f'assets/{ns}/models/{model}.json' in names
+    checks+=1
+    for item in ('verity_egg','verity_box','verity_sphere'):
+        definition=json.loads(z.read(f'assets/z_verity/items/{item}.json'))
+        assert definition['model']['type']=='minecraft:model'
+        ns,model=definition['model']['model'].split(':')
+        assert f'assets/{ns}/models/{model}.json' in names
+    checks+=1
+    for model_name in ('verity_egg','verity_box','verity_sphere'):
+        assert f'assets/z_verity/models/item/{model_name}.json' in names
     checks+=1
     model=json.loads(z.read('assets/shah/models/item/shahed.json'))
     assert len(model['elements'])>10
