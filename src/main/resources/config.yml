@@ -43,8 +43,8 @@ resource-pack:
   prompt-on-join: true
   # Must return the ZIP itself with HTTP 200 and Content-Type application/zip.
   # Do not append ?download=1 to the GitHub URL: that endpoint returns an HTML page.
-  url: "https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Z_Server_Pack_1.04.zip"
-  sha1: "d1dcc588b613e75d843746746f71a55f48dedca7"
+  url: "https://github.com/romagggrt-lgtm/123/raw/refs/heads/main/dist/Z_Server_Pack_1.03.zip"
+  sha1: "ac9f321a4647e1519b1a67f5aa253105f69ba284"
   # Use server.properties to distribute the pack. Never put credentials here.
 limits:
   max-total: 128
