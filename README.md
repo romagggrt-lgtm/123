@@ -1,15 +1,19 @@
-# shah — Paper 1.21.11 / Java 21
+# Shahed и Z_Verity — Paper 1.21.11 / Java 21
+
+Текущий отдельный выпуск **Z_Verity 1.0.2**: [установка и использование](verity/README.md), [результаты тестов](verity/TESTING.md).
+Для его сборки используйте `bash tools/build_verity.sh`: скрипт не пересобирает Shahed.
+[Предпросмотр круглой модели](dist/Verity-preview_1.0.2.png) получен из JSON и PNG, а не из Minecraft-клиента.
 
 **Статус: собранная реализация для дальнейшей игровой проверки, не проверенный production-релиз.**
-`dist/Shahed_1.03.jar` — прежний плагин Shahed без изменений. `dist/Z_Verity_1.0.1.jar` — отдельный плагин Z_Verity. `dist/Z_Server_Pack_1.04.zip` — общий ресурс-пак формата 75: текстуры Shahed сохранены, добавлены только ресурсы Verity.
+`dist/Shahed_1.03.jar` — прежний плагин Shahed без изменений. `dist/Z_Verity_1.0.2.jar` — отдельный плагин Z_Verity. `dist/Z_Server_Pack_1.05.zip` — общий ресурс-пак формата 75: текстуры Shahed сохранены, добавлены только ресурсы Verity.
 Три указанных в ТЗ JAR-файла в среду не поступили. Их ресурсы не использованы, лицензии не проверены.
 В пак включена **собственная временная объёмная модель**, а не конвертация Skyfront. Для выбора и адаптации исходной модели нужны файлы и разрешающая лицензия.
 
 ## Установка
 
 1. Используйте Paper **1.21.11**, Java **21**. Сначала сделайте копию тестового мира: взрывы по умолчанию разрушают блоки.
-2. Остановите сервер и скопируйте `dist/Z_Verity_1.0.1.jar` в `plugins/`, удалив старый `Z_Verity_1.0.0.jar`, затем запустите сервер. Уже установленный Shahed не заменяйте: этот релиз его код и JAR не меняет. Не используйте `/reload`.
-3. Параметры появятся в `plugins/Shahed/config.yml`. Меняйте их при остановленном сервере и перезапускайте сервер.
+2. Остановите сервер и скопируйте `dist/Z_Verity_1.0.2.jar` в `plugins/`, удалив прежние JAR Z_Verity, затем запустите сервер. Уже установленный Shahed не заменяйте: этот релиз его код и JAR не меняет. Не используйте `/reload`.
+3. Параметры Verity находятся в `plugins/Z_Verity/config.yml`. Подробности обновления: `verity/README.md`.
 4. Подключите ресурс-пак, примите его в клиенте Minecraft 1.21.11. Forge, Fabric, GeckoLib и клиентские моды не требуются.
 
 ### Ресурс-пак через server.properties
@@ -17,25 +21,25 @@
 В текущей конфигурации уже указан прямой URL GitHub Raw. Важно: используйте именно `raw.githubusercontent.com`, без `?download=1`. Ссылка GitHub вида `/blob/` или `/raw/?download=1` отдаёт HTML-страницу, а клиент Minecraft принимает её как маленький файл (например, 383 Б) и зацикливает загрузку.
 
 ```properties
-resource-pack=https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Z_Server_Pack_1.04.zip
-resource-pack-sha1=6e32b7a30c97cb95eb503be2d973652203b3d718
+resource-pack=https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Z_Server_Pack_1.05.zip
+resource-pack-sha1=5c01b018a2cd391de078a216be19b1db06479bfd
 require-resource-pack=false
 resource-pack-prompt={"text":"Модели и звук плагина shah"}
 ```
 
-После изменений перезапустите сервер. При замене ZIP обновите SHA-1 из `dist/Z_Server_Pack_1.04.zip.sha1`. Можно поставить `require-resource-pack=true`, чтобы игроки не входили без ресурсов.
+После изменений перезапустите сервер. При замене ZIP обновите SHA-1 из `dist/Z_Server_Pack_1.05.zip.sha1`. Можно поставить `require-resource-pack=true`, чтобы игроки не входили без ресурсов.
 Плагин не размещает ZIP в интернете и не меняет `server.properties` автоматически. Если другой плагин управляет серверными паками, подключите этот пак через него. Предупреждение в action bar показывает, что сервер ещё не получил статус успешной загрузки пака; оно не может проверить содержимое чужого пака.
 
 Перед запуском сервера проверьте ссылку с любой машины:
 
 ```sh
-curl -fL -o /tmp/Z_Server_Pack_1.04.zip \
-  https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Z_Server_Pack_1.04.zip
-file /tmp/Z_Server_Pack_1.04.zip
-sha1sum /tmp/Z_Server_Pack_1.04.zip
+curl -fL -o /tmp/Z_Server_Pack_1.05.zip \
+  https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Z_Server_Pack_1.05.zip
+file /tmp/Z_Server_Pack_1.05.zip
+sha1sum /tmp/Z_Server_Pack_1.05.zip
 ```
 
-`file` должен показать ZIP, размер должен быть около 38 KB, а SHA-1 — `6e32b7a30c97cb95eb503be2d973652203b3d718`. Если сервер уже запущен со старым URL или старым хешем, удалите сохранённый ресурс-пак в `.minecraft/server-resource-packs` и подключитесь заново.
+`file` должен показать ZIP, размер должен быть около 365 KB, а SHA-1 — `5c01b018a2cd391de078a216be19b1db06479bfd`. Если сервер уже запущен со старым URL или старым хешем, удалите сохранённый ресурс-пак в `.minecraft/server-resource-packs` и подключитесь заново.
 
 ## Команды и использование
 
@@ -53,7 +57,7 @@ sha1sum /tmp/Z_Server_Pack_1.04.zip
 
 ### Z_Verity
 
-Скопируйте `dist/Z_Verity_1.0.1.jar` в `plugins/` рядом с Shahed и перезапустите сервер. Выдача доступна оператору или консоли:
+Скопируйте `dist/Z_Verity_1.0.2.jar` в `plugins/` рядом с Shahed и перезапустите сервер. Выдача доступна оператору или консоли:
 
 ```text
 /give Steve verity
@@ -87,15 +91,12 @@ sha1sum /tmp/Z_Server_Pack_1.04.zip
 На обычной машине нужны JDK 21, Maven 3.9+, Python 3 и FFmpeg с Vorbis:
 
 ```sh
-mvn package
-bash tools/check_math.sh
-python3 tools/build_pack.py
-python3 tools/check_pack.py
+bash tools/build_verity.sh
 ```
 
-JAR: `target/Shahed_1.03.jar`, `verity/target/Z_Verity_1.0.1.jar`. Ресурс-пак: `dist/Z_Server_Pack_1.04.zip`.
+JAR: `target/Shahed_1.03.jar`, `verity/target/Z_Verity_1.0.2.jar`. Ресурс-пак: `dist/Z_Server_Pack_1.05.zip`.
 В этой облачной среде воспроизводимый полный цикл: `bash tools/bootstrap-env.sh`, затем `bash tools/build.sh`. Скрипт поддерживает HTTPS-прокси и системное хранилище доверенных сертификатов, не отключает TLS и удаляет временные настройки прокси после сборки. На другой машине можно задать `SHAH_MAVEN_CACHE`.
 
-Сборка Maven сама по себе **не запускает** `FlightMathChecks`: они запускаются отдельно `check_math.sh` и включены в `build.sh`. Отчёт с границами проверки: `TESTING.md`.
+Проверки прежнего Shahed запускаются отдельно через `bash tools/check_math.sh`. Текущий `build.sh` собирает только Verity. Отчёт Verity: `verity/TESTING.md`; прежний отчёт Shahed: `TESTING.md`.
 
 Для следующего этапа нужны доступ к официальной загрузке Paper, тестовый клиент и три исходных JAR для лицензионной проверки. Вращение пропеллера пока не реализовано. Субъективные требования к плавности, видимости, положению в руке и громкости ещё не подтверждены.

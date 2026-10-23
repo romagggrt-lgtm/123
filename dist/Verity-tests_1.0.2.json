@@ -1,0 +1,55 @@
+{
+  "framework": "JUnit 6 + MockBukkit 4.110.0; Paper API 1.21.11, Java 21",
+  "real_paper_server_tested": false,
+  "minecraft_client_tested": false,
+  "suites": [
+    {
+      "suite": "dev.zverity.LogicTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        "followerMovesTowardTranslationWithoutOvershoot",
+        "boxOpensBeforeGreetingAndKilling",
+        "removedThingCannotBeReactivated",
+        "followerStopsAtDistanceWithoutOrbiting",
+        "unopenedBoxCanBeBrokenOnce",
+        "duplicatePacketsCannotKillAfterGreeting",
+        "faceTurnsOnShortestArcAndAlwaysUpright",
+        "zeroOrInvalidDistanceNeverProducesNaN"
+      ]
+    },
+    {
+      "suite": "dev.zverity.PluginTest",
+      "tests": 22,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        "normalGiveIsNeverIntercepted",
+        "soundIsEmittedOnceWhenBoxOpens",
+        "worldUnloadRemovesBoxPair",
+        "activeLimitDoesNotConsumeAnotherEgg",
+        "placingInUnloadedChunkDoesNotLoadItOrConsumeEgg",
+        "openingAndDuplicateClickDoNotKill",
+        "spawnHasExactlyOneVisualAndOneCenteredHitbox",
+        "playerWithoutPermissionCannotGiveEgg",
+        "wallCannotBeCrossedByFollowing",
+        "clearRemovesBothEntities",
+        "disableRemovesEveryManagedEntity",
+        "stationaryPlayerTurningDoesNotMoveCompanionAroundThem",
+        "followsActualPlayerMovementAndStops",
+        "staleDisplaysAreCleanedWithoutRemovingActivePair",
+        "quitRemovesCompanionPair",
+        "offhandClickDoesNotAdvanceSphereState",
+        "attackCanBreakBoxAndReturnOneEgg",
+        "recordedInteractionAttackIsProcessedOnlyOnce",
+        "missingVisualAlsoRemovesHitboxOnNextTick",
+        "fatalClickDropsStorageArmorAndOffhandExactlyOnceEvenWithKeepInventory",
+        "eggOnlySpawnsInFreeSpaceAndDoesNotConsumeWhenBlocked",
+        "subsequentClickKillsOnceAndRemovesBothEntities"
+      ]
+    }
+  ]
+}

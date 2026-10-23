@@ -1,12 +1,15 @@
 resource-pack:
   enabled: true
   prompt-on-join: true
-  url: "https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Z_Server_Pack_1.04.zip"
-  sha1: "6e32b7a30c97cb95eb503be2d973652203b3d718"
+  url: "https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Z_Server_Pack_1.05.zip"
+  sha1: "5c01b018a2cd391de078a216be19b1db06479bfd"
 verity:
   follow-distance: 1.7
-  follow-height: 1.1
+  # Sphere center above the supporting block; player view never changes its destination.
+  follow-height: 0.5
   follow-speed: 0.18
   sound-volume: 0.8
   interaction-range: 5.0
   drop-inventory-on-kill: true
+  max-active: 64
+  lifetime-seconds: 900

@@ -2,7 +2,7 @@
 """Structural asset checks only: no claim about rendering in a Minecraft client."""
 from pathlib import Path
 import json, zipfile, struct
-p=Path(__file__).resolve().parents[1]/'dist/Z_Server_Pack_1.04.zip'
+p=Path(__file__).resolve().parents[1]/'dist/Z_Server_Pack_1.05.zip'
 checks=0
 with zipfile.ZipFile(p) as z:
     assert z.testzip() is None; checks+=1
@@ -50,4 +50,25 @@ with zipfile.ZipFile(p) as z:
             ns,path=resource['name'].split(':'); assert f'assets/{ns}/sounds/{path}.ogg' in names
     assert z.read('assets/shah/sounds/engine.ogg').startswith(b'OggS'); checks+=1
     assert not any(n.startswith('assets/minecraft/') for n in names); checks+=1
+    # Prevent regressions to the five-layer square model.
+    sphere=json.loads(z.read('assets/z_verity/models/item/verity_sphere.json'))
+    assert len(sphere['elements'])==3456
+    for element in sphere['elements']:
+        assert set(element['faces'])=={'south'}
+        assert set(element['rotation'])=={'origin','x','y','z'}
+        assert all(-16 <= v <= 32 for v in element['from']+element['to'])
+    checks+=1
+    with zipfile.ZipFile(p.parent/'Z_Server_Pack_1.03.zip') as base:
+        for name in base.namelist():
+            if name.startswith('assets/shah/'): assert z.read(name)==base.read(name), name
+    checks+=1
+    import hashlib,re
+    digest=hashlib.sha1(p.read_bytes()).hexdigest()
+    root=p.parents[1]
+    config=(root/'verity/src/main/resources/config.yml').read_text()
+    source=(root/'verity/src/main/java/dev/zverity/ZVerityPlugin.java').read_text()
+    assert f'sha1: "{digest}"' in config
+    assert f'PACK_SHA1 = "{digest}"' in source
+    assert digest==(p.parent/'Z_Server_Pack_1.05.zip.sha1').read_text().strip()
+    checks+=1
 print(f'{checks} pack structure checks passed. Client rendering and audible quality remain untested.')
