@@ -18,7 +18,7 @@
 
 ```properties
 resource-pack=https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Z_Server_Pack_1.04.zip
-resource-pack-sha1=d1dcc588b613e75d843746746f71a55f48dedca7
+resource-pack-sha1=6e32b7a30c97cb95eb503be2d973652203b3d718
 require-resource-pack=false
 resource-pack-prompt={"text":"Модели и звук плагина shah"}
 ```
@@ -35,7 +35,7 @@ file /tmp/Z_Server_Pack_1.04.zip
 sha1sum /tmp/Z_Server_Pack_1.04.zip
 ```
 
-`file` должен показать ZIP, размер должен быть около 38 KB, а SHA-1 — `d1dcc588b613e75d843746746f71a55f48dedca7`. Если сервер уже запущен со старым URL или старым хешем, удалите сохранённый ресурс-пак в `.minecraft/server-resource-packs` и подключитесь заново.
+`file` должен показать ZIP, размер должен быть около 38 KB, а SHA-1 — `6e32b7a30c97cb95eb503be2d973652203b3d718`. Если сервер уже запущен со старым URL или старым хешем, удалите сохранённый ресурс-пак в `.minecraft/server-resource-packs` и подключитесь заново.
 
 ## Команды и использование
 

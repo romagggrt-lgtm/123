@@ -1,6 +1,5 @@
 package dev.zverity;
 
-import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -13,6 +12,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Interaction;
 import org.bukkit.entity.ItemDisplay;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -43,33 +43,33 @@ import org.joml.Vector3f;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 import java.util.UUID;
 
-/** Server-side Verity box/sphere companion. It uses ItemDisplay only; no Forge entity is required. */
+/** Server-side Verity box/sphere companion. The visual is an ItemDisplay with a small Interaction hitbox. */
 public final class ZVerityPlugin extends JavaPlugin implements Listener, CommandExecutor {
     private enum Kind { BOX, SPHERE }
 
     private final Map<UUID, Thing> things = new HashMap<>();
-    private final Set<UUID> packLoaded = new HashSet<>();
+    private final Map<UUID, Thing> hitboxes = new HashMap<>();
     private org.bukkit.NamespacedKey itemKey;
     private org.bukkit.NamespacedKey thingKey;
     private long tick;
 
     private final class Thing {
         final ItemDisplay display;
+        final Interaction hitbox;
         final Kind kind;
         int stage;
         Player target;
         int age;
 
-        Thing(ItemDisplay display, Kind kind) {
+        Thing(ItemDisplay display, Interaction hitbox, Kind kind) {
             this.display = display;
+            this.hitbox = hitbox;
             this.kind = kind;
         }
     }
@@ -89,6 +89,7 @@ public final class ZVerityPlugin extends JavaPlugin implements Listener, Command
     @Override public void onDisable() {
         for (Thing thing : List.copyOf(things.values())) remove(thing);
         things.clear();
+        hitboxes.clear();
     }
 
     private String itemType(ItemStack stack) {
@@ -190,13 +191,13 @@ public final class ZVerityPlugin extends JavaPlugin implements Listener, Command
 
     @EventHandler(ignoreCancelled = true)
     public void interactEntity(PlayerInteractEntityEvent event) {
-        Thing thing = things.get(event.getRightClicked().getUniqueId());
+        Thing thing = find(event.getRightClicked());
         if (thing == null || event.getHand() != EquipmentSlot.HAND) return;
         event.setCancelled(true);
         if (thing.kind == Kind.BOX) {
             Location location = thing.display.getLocation();
             remove(thing);
-            Thing sphere = spawn(location.clone().add(0, .65, 0), Kind.SPHERE);
+            spawn(location.clone().add(0, .65, 0), Kind.SPHERE);
             location.getWorld().playSound(location, "z_verity:verity", SoundCategory.HOSTILE,
                 (float) number("verity.sound-volume", .8, 0, 4), 1f);
             return;
@@ -206,7 +207,7 @@ public final class ZVerityPlugin extends JavaPlugin implements Listener, Command
 
     @EventHandler(ignoreCancelled = true)
     public void damage(EntityDamageEvent event) {
-        Thing thing = things.get(event.getEntity().getUniqueId());
+        Thing thing = find(event.getEntity());
         if (thing == null) return;
         event.setCancelled(true);
         if (event instanceof EntityDamageByEntityEvent by && by.getDamager() instanceof Player player && thing.kind == Kind.SPHERE) {
@@ -261,8 +262,22 @@ public final class ZVerityPlugin extends JavaPlugin implements Listener, Command
             entity.setInterpolationDuration(1);
             entity.getPersistentDataContainer().set(thingKey, PersistentDataType.STRING, kind.name());
         });
-        Thing thing = new Thing(display, kind);
+        Interaction hitbox = location.getWorld().spawn(location, Interaction.class, entity -> {
+            entity.setPersistent(false);
+            // Damage is cancelled in the listener, but the event must still be
+            // emitted so a left-click can activate/kill Verity.
+            entity.setInvulnerable(false);
+            entity.setSilent(true);
+            entity.setResponsive(true);
+            float width = kind == Kind.BOX ? 1.25f : 1.65f;
+            float height = kind == Kind.BOX ? 1.25f : 1.65f;
+            entity.setInteractionWidth(width);
+            entity.setInteractionHeight(height);
+            entity.getPersistentDataContainer().set(thingKey, PersistentDataType.STRING, kind.name());
+        });
+        Thing thing = new Thing(display, hitbox, kind);
         things.put(display.getUniqueId(), thing);
+        hitboxes.put(hitbox.getUniqueId(), thing);
         return thing;
     }
 
@@ -282,7 +297,7 @@ public final class ZVerityPlugin extends JavaPlugin implements Listener, Command
     private void tick() {
         tick++;
         for (Thing thing : List.copyOf(things.values())) {
-            if (!thing.display.isValid()) { things.remove(thing.display.getUniqueId()); continue; }
+            if (!thing.display.isValid() || !thing.hitbox.isValid()) { remove(thing); continue; }
             if (thing.kind != Kind.SPHERE || thing.stage == 0 || thing.target == null || !thing.target.isOnline()) continue;
             Location target = thing.target.getLocation().clone();
             Vector behind = target.getDirection().setY(0).normalize().multiply(-number("verity.follow-distance", 1.7, .2, 8));
@@ -296,6 +311,7 @@ public final class ZVerityPlugin extends JavaPlugin implements Listener, Command
             thing.display.setTransformation(new Transformation(new Vector3f(), new Quaternionf().rotateZ((float) (thing.age * .12)), new Vector3f(1.35f), new Quaternionf()));
             thing.display.setTeleportDuration(1);
             thing.display.teleport(next);
+            thing.hitbox.teleport(next);
             if (tick % 38 == 0) current.getWorld().playSound(current, "z_verity:verity", SoundCategory.HOSTILE,
                 (float) number("verity.sound-volume", .8, 0, 4), 1f);
         }
@@ -310,6 +326,11 @@ public final class ZVerityPlugin extends JavaPlugin implements Listener, Command
         if (entity.getPersistentDataContainer().has(thingKey, PersistentDataType.STRING)) entity.remove();
     }
 
+    private Thing find(Entity entity) {
+        Thing thing = things.get(entity.getUniqueId());
+        return thing == null ? hitboxes.get(entity.getUniqueId()) : thing;
+    }
+
     @EventHandler public void chunkLoad(ChunkLoadEvent event) {
         for (Entity entity : event.getChunk().getEntities()) cleanup(entity);
     }
@@ -320,7 +341,9 @@ public final class ZVerityPlugin extends JavaPlugin implements Listener, Command
 
     private void remove(Thing thing) {
         things.remove(thing.display.getUniqueId());
+        hitboxes.remove(thing.hitbox.getUniqueId());
         if (thing.display.isValid()) thing.display.remove();
+        if (thing.hitbox.isValid()) thing.hitbox.remove();
     }
 
     @EventHandler public void quit(PlayerQuitEvent event) { }
@@ -328,7 +351,9 @@ public final class ZVerityPlugin extends JavaPlugin implements Listener, Command
     @EventHandler public void join(PlayerJoinEvent event) {
         if (!getConfig().getBoolean("resource-pack.enabled", true)) return;
         if (!getConfig().getBoolean("resource-pack.prompt-on-join", true)) return;
-        Bukkit.getScheduler().runTaskLater(this, () -> sendPack(event.getPlayer()), 60L);
+        // Shahed's legacy plugin may submit its old pack at 60 ticks. Send the
+        // additive pack later so Verity's namespace is the final active pack.
+        Bukkit.getScheduler().runTaskLater(this, () -> sendPack(event.getPlayer()), 120L);
     }
 
     private void sendPack(Player player) {

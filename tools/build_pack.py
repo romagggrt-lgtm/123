@@ -95,7 +95,7 @@ write(Path('assets/z_verity/models/item/verity_sphere.json'), {
 write(Path('assets/z_verity/models/item/verity_egg.json'), {'parent':'z_verity:item/verity_sphere'})
 write(Path('assets/z_verity/models/item/verity_box.json'), {
     'credit':'Original procedural Verity box for Z_Verity.',
-    'textures':{'crate':'z_verity:block/verity_box'},
+    'textures':{'crate':'z_verity:item/verity_box'},
     'elements':[{'from':[1,1,1],'to':[15,15,15],'faces':{f:{'texture':'#crate'} for f in ('north','south','east','west','up','down')}}]
 })
 
@@ -118,6 +118,7 @@ def box_pixel(x,y):
     line=x in (0,1,14,15) or y in (0,1,14,15) or abs(x-y)<=1 or abs(x-(15-y))<=1
     return (83,48,20,255) if line else (164,104,39,255)
 png_rgba(PACK/'assets/z_verity/textures/block/verity_box.png',16,16,box_pixel)
+png_rgba(PACK/'assets/z_verity/textures/item/verity_box.png',16,16,box_pixel)
 
 verity_mp3=ROOT/'assets-src/1023.MP3'
 verity_ogg=PACK/'assets/z_verity/sounds/verity.ogg'

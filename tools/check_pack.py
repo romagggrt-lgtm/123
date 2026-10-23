@@ -27,6 +27,11 @@ with zipfile.ZipFile(p) as z:
     for model_name in ('verity_egg','verity_box','verity_sphere'):
         assert f'assets/z_verity/models/item/{model_name}.json' in names
     checks+=1
+    for model_name in ('verity_box','verity_sphere'):
+        model=json.loads(z.read(f'assets/z_verity/models/item/{model_name}.json'))
+        for tex in model['textures'].values():
+            ns,path=tex.split(':'); assert f'assets/{ns}/textures/{path}.png' in names
+    checks+=1
     model=json.loads(z.read('assets/shah/models/item/shahed.json'))
     assert len(model['elements'])>10
     for cube in model['elements']:
