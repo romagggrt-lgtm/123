@@ -51,6 +51,8 @@ import java.util.UUID;
 
 /** Server-side Verity box/sphere companion. The visual is an ItemDisplay with a small Interaction hitbox. */
 public final class ZVerityPlugin extends JavaPlugin implements Listener, CommandExecutor {
+    private static final String PACK_URL = "https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Z_Server_Pack_1.04.zip";
+    private static final String PACK_SHA1 = "6e32b7a30c97cb95eb503be2d973652203b3d718";
     private enum Kind { BOX, SPHERE }
 
     private final Map<UUID, Thing> things = new HashMap<>();
@@ -76,6 +78,7 @@ public final class ZVerityPlugin extends JavaPlugin implements Listener, Command
 
     @Override public void onEnable() {
         saveDefaultConfig();
+        migrateOldPackConfig();
         itemKey = new org.bukkit.NamespacedKey(this, "item");
         thingKey = new org.bukkit.NamespacedKey(this, "thing");
         Bukkit.getPluginManager().registerEvents(this, this);
@@ -84,6 +87,19 @@ public final class ZVerityPlugin extends JavaPlugin implements Listener, Command
             for (Entity entity : world.getEntities()) cleanup(entity);
         }
         Bukkit.getScheduler().runTaskTimer(this, this::tick, 1L, 1L);
+    }
+
+    private void migrateOldPackConfig() {
+        String url = getConfig().getString("resource-pack.url", "").trim();
+        String sha1 = getConfig().getString("resource-pack.sha1", "").trim();
+        boolean oldDefault = url.contains("Z_Server_Pack_1.03.zip")
+            || sha1.equalsIgnoreCase("70f65bb88e409bdb9f59b29b55ef144b8b99506c")
+            || sha1.equalsIgnoreCase("d1dcc588b613e75d843746746f71a55f48dedca7");
+        if (!oldDefault) return;
+        getConfig().set("resource-pack.url", PACK_URL);
+        getConfig().set("resource-pack.sha1", PACK_SHA1);
+        saveConfig();
+        getLogger().info("Обновлена ссылка на общий ресурс-пак Z_Server_Pack_1.04.");
     }
 
     @Override public void onDisable() {
@@ -357,8 +373,8 @@ public final class ZVerityPlugin extends JavaPlugin implements Listener, Command
     }
 
     private void sendPack(Player player) {
-        String url = getConfig().getString("resource-pack.url", "").trim();
-        String sha1 = getConfig().getString("resource-pack.sha1", "").trim();
+        String url = getConfig().getString("resource-pack.url", PACK_URL).trim();
+        String sha1 = getConfig().getString("resource-pack.sha1", PACK_SHA1).trim();
         if (url.isEmpty()) return;
         try {
             byte[] hash = sha1.isEmpty() ? null : java.util.HexFormat.of().parseHex(sha1);
