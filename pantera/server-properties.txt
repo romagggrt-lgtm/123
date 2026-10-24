@@ -1,5 +1,5 @@
-resource-pack=https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Z_Server_Pack_1.05_Pantera.zip
-resource-pack-sha1=f381376af6385d37893ca03f7149305ac2362ceb
+resource-pack=https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Z_Server_Pack_1.05_Pantera_1.0.1.zip
+resource-pack-sha1=f6da8605877157b6cffea185eb08d1363dd435ae
 resource-pack-id=17e36816-ac9c-57bc-8a02-d7a0221a689e
 require-resource-pack=true
 resource-pack-prompt={"text":"Z_Server_Pack: Pantera, Shahed, Verity, Golda"}

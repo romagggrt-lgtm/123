@@ -6,6 +6,7 @@ is added to the exact pre-SmpLore 1.05 + Gold pack. Units: 16 per block, -Z fron
 """
 from pathlib import Path
 import base64, hashlib, io, json, math, shutil, uuid, zipfile
+import xml.etree.ElementTree as E
 import numpy as np
 from PIL import Image, ImageDraw
 from merge_smplore_pack import read_pack, check_references
@@ -13,7 +14,8 @@ from merge_smplore_pack import read_pack, check_references
 ROOT = Path(__file__).resolve().parents[1]
 MODULE = ROOT / 'pantera'
 BASE = ROOT / 'dist/Z_Server_Pack_1.05_Gold.zip'
-OUT = ROOT / 'dist/Z_Server_Pack_1.05_Pantera.zip'
+VERSION=E.parse(MODULE/'pom.xml').getroot().find('{http://maven.apache.org/POM/4.0.0}version').text
+OUT = ROOT / f'dist/Z_Server_Pack_1.05_Pantera_{VERSION}.zip'
 SIZE, TILE = 512, 64
 FACES = ('north', 'south', 'east', 'west', 'up', 'down')
 
@@ -136,7 +138,9 @@ def main():
     def write(name, obj): files[name] = (json.dumps(obj, ensure_ascii=False, indent=2)+'\n').encode()
     atlas = texture(); raw = encoded(atlas)
     (MODULE/'model/pantera.png').write_bytes(raw)
-    files['assets/z_pantera/textures/entity/pantera.png'] = raw
+    # ItemDisplay models are baked against minecraft:items, whose directory source is item/.
+    # entity/ PNGs exist on disk but are NOT automatically stitched into that atlas.
+    files['assets/z_pantera/textures/item/pantera.png'] = raw
     pivots, cubes = geometry()
     for bone, pivot in pivots.items():
         elements = []
@@ -146,8 +150,8 @@ def main():
                              'to': (np.array(c['end'])-pivot+8).tolist(),
                              'faces': {face: {'texture': '#pantera', 'uv': [v*16/SIZE for v in uv(tile)]}
                                        for face, tile in c['tiles'].items()}})
-        model = {'credit': 'Original Z_Pantera 1.0.0 cuboid model, CC0-1.0',
-                 'ambientocclusion': False, 'textures': {'pantera': 'z_pantera:entity/pantera', 'particle':'z_pantera:entity/pantera'}, 'elements': elements}
+        model = {'credit': f'Original Z_Pantera {VERSION} cuboid model, CC0-1.0',
+                 'ambientocclusion': False, 'textures': {'pantera': 'z_pantera:item/pantera', 'particle':'z_pantera:item/pantera'}, 'elements': elements}
         write(f'assets/z_pantera/models/item/{bone}.json', model)
         if bone == 'head':
             blink = json.loads(json.dumps(model))
@@ -169,9 +173,9 @@ def main():
         write(f'assets/z_pantera/items/{item}.json', {'model': {'type':'minecraft:model','model':f'z_pantera:item/{item}'}})
     files['assets/z_pantera/sounds/pantera.ogg'] = (MODULE/'assets-src/pantera.ogg').read_bytes()
     write('assets/z_pantera/sounds.json', {'pantera': {'sounds':[{'name':'z_pantera:pantera','stream':False,'attenuation_distance':24}]}})
-    files['assets/z_pantera/LICENSE.txt'] = b'Original panther geometry, fur atlas, egg icon and animations: CC0-1.0.\n1024.MP3 supplied by the server owner; original sound converted to mono Vorbis for positional audio. No additional rights claimed for the supplied recording.\n'
+    files['assets/z_pantera/LICENSE.txt'] = b'Original panther geometry, fur atlas, egg icon and animations: CC0-1.0.\n1024.MP3 supplied by the server owner; original sound converted to mono Vorbis, compressed and boosted for positional audio. No additional rights claimed for the supplied recording.\n'
     write('pack.mcmeta', {'pack': {'min_format':[75,0], 'max_format':[75,0],
-                                 'description':'Z_Server_Pack 1.05 + Gold + Pantera | Shahed + Verity | 1.21.11'}})
+                                 'description':f'Z_Server_Pack 1.05 + Gold + Pantera {VERSION} | Shahed + Verity | 1.21.11'}})
     # Editable Blockbench free-model project, including real grouped cubes and UVs.
     elements = [{'name':c['name'],'type':'cube','uuid':c['uuid'],'from':c['start'],'to':c['end'],
                  'origin':pivots[c['bone']], 'rotation':[0,0,0], 'rescale':False, 'autouv':0,
@@ -194,6 +198,8 @@ def main():
     for name,data in base.items():
         if name!='pack.mcmeta': assert files[name]==data, name
     counts = check_references(files)
+    from check_pantera_pack import validate
+    atlas_check=validate(files)
     with zipfile.ZipFile(OUT, 'w', zipfile.ZIP_DEFLATED) as archive:
         for name,data in sorted(files.items()):
             info=zipfile.ZipInfo(name,date_time=(2026,1,1,0,0,0)); info.compress_type=zipfile.ZIP_DEFLATED
@@ -206,6 +212,7 @@ def main():
     report={'pack':OUT.name,'sha1':sha1,'size':OUT.stat().st_size,'base':BASE.name,
             'base_sha256':hashlib.sha256(BASE.read_bytes()).hexdigest(),'base_files_preserved':len(base)-1,
             'smplore_assets':0,'bones':len(pivots),'cubes':len(cubes),'validated':counts,
+            'item_atlas':atlas_check,
             'sound_original_sha256':hashlib.sha256((MODULE/'assets-src/1024.MP3').read_bytes()).hexdigest(),
             'sound_ogg_sha256':hashlib.sha256((MODULE/'assets-src/pantera.ogg').read_bytes()).hexdigest(),
             'minecraft_client_tested':False}

@@ -7,7 +7,9 @@ if [[ -d /workspace/tools/jdk-21.0.12.1 ]]; then
 fi
 pantera_maven=$(command -v mvn || true)
 if [[ -z "$pantera_maven" ]]; then pantera_maven=/workspace/tools/apache-maven-3.9.11/bin/mvn; fi
+python3 tools/prepare_pantera_audio.py
 python3 tools/build_pantera_pack.py
+python3 tools/test_pantera_pack.py
 pantera_maven_args=()
 if [[ "${ZPANTERA_OFFLINE:-0}" == 1 ]]; then pantera_maven_args+=(-o); fi
 if [[ -n "${ZPANTERA_MAVEN_CACHE:-}" ]]; then pantera_maven_args+=("-Dmaven.repo.local=$ZPANTERA_MAVEN_CACHE"); fi

@@ -8,6 +8,7 @@ from pathlib import Path
 import io,json,math,zipfile
 import numpy as np
 from PIL import Image,ImageDraw,ImageFont
+from build_pantera_pack import OUT,VERSION
 
 ROOT=Path(__file__).resolve().parents[1]
 def translate(v):
@@ -61,7 +62,7 @@ def render(mesh,texture,yaw=40,pitch=17,width=720,height=420):
         if norm<1e-9 or np.dot(normal,eye)<=0:continue
         normal/=norm
         light=.72+.28*max(0,float(np.dot(normal,np.array([-.35,.85,-.4]))))
-        p=(points-[0,11,6])@camera.T
+        p=(points-[0,11,9])@camera.T
         p[:,0]=width/2+p[:,0]*scale;p[:,1]=height*.53-p[:,1]*scale
         for ids in ((0,1,2),(0,2,3)):
             tri,tuv=p[list(ids)],uv[list(ids)]
@@ -85,9 +86,9 @@ def render(mesh,texture,yaw=40,pitch=17,width=720,height=420):
     return Image.fromarray(bg)
 def main():
     pivots=json.loads((ROOT/'pantera/model/geometry.json').read_text())['pivots']
-    with zipfile.ZipFile(ROOT/'dist/Z_Server_Pack_1.05_Pantera.zip') as z:
+    with zipfile.ZipFile(OUT) as z:
         models={b:json.loads(z.read(f'assets/z_pantera/models/item/{b}.json')) for b in pivots}
-        texture=np.array(Image.open(io.BytesIO(z.read('assets/z_pantera/textures/entity/pantera.png'))))
+        texture=np.array(Image.open(io.BytesIO(z.read('assets/z_pantera/textures/item/pantera.png'))))
     sheet=Image.new('RGB',(1440,928),'#242b38');draw=ImageDraw.Draw(sheet)
     font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',18)
     for i,(label,yaw,pitch,phase,motion,run) in enumerate([
@@ -96,14 +97,14 @@ def main():
         x,y=i%2*720,i//2*450+28
         sheet.paste(render(quads(models,pose(pivots,phase,.2,motion,run)),texture,yaw,pitch),(x,y))
         draw.text((x+16,y-24),label,fill='#dfc9e7',font=font)
-    draw.text((16,908),'Z_Pantera 1.0.0 | actual exported geometry + UV atlas | offline preview, not a game screenshot',font=font,fill='#dfc9e7')
-    sheet.save(ROOT/'dist/Z_Pantera-preview_1.0.0.png')
+    draw.text((16,908),f'Z_Pantera {VERSION} | actual exported geometry + UV atlas | offline preview, not a game screenshot',font=font,fill='#dfc9e7')
+    sheet.save(ROOT/f'dist/Z_Pantera-preview_{VERSION}.png')
     frames=[]
     for i in range(24):
         t=i/24*.8
         frame=render(quads(models,pose(pivots,2*math.pi*i/24,t,1,0)),texture,42,16,width=600,height=360)
         ImageDraw.Draw(frame).text((12,12),'Z_Pantera / walk / offline model preview',font=font,fill='#343047')
         frames.append(frame)
-    frames[0].save(ROOT/'dist/Z_Pantera-walk_1.0.0.gif',save_all=True,append_images=frames[1:],duration=33,loop=0)
-    print(ROOT/'dist/Z_Pantera-preview_1.0.0.png')
+    frames[0].save(ROOT/f'dist/Z_Pantera-walk_{VERSION}.gif',save_all=True,append_images=frames[1:],duration=33,loop=0)
+    print(ROOT/f'dist/Z_Pantera-preview_{VERSION}.png')
 if __name__=='__main__':main()

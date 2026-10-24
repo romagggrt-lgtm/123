@@ -1,0 +1,22 @@
+{
+  "original_sha256": "41c9f2a5abad44f2828c975e2425c0795ee02ab4ecb3d8ccd9f9f327b1948d26",
+  "ogg_sha256": "3232b0c8d13a6b279041b27664aa896bd56a33cc6675f20098ab638a3cdb3631",
+  "input": {
+    "rms_dbfs": -16.310409545898438,
+    "peak_dbfs": -1.6916452646255493
+  },
+  "output": {
+    "rms_dbfs": -10.44249439239502,
+    "peak_dbfs": -0.9954989552497864
+  },
+  "gain_db": 5.867915153503418,
+  "decoded_frames": 84096,
+  "sample_rate": 44100,
+  "duration_seconds": 1.906938775510204,
+  "output_channels": 1,
+  "correlation_with_original": 0.9528042671182833,
+  "clipped_samples": 0,
+  "filter": "aformat=channel_layouts=mono,acompressor=threshold=0.28:ratio=2.5:attack=5:release=60:makeup=3,alimiter=limit=0.75:level=false:latency=true,volume=1.16",
+  "trimmed": false,
+  "speed_or_pitch_changed": false
+}

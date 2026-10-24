@@ -23,6 +23,7 @@ final class PanteraRuntime {
     boolean moving, blink;
     long lastInteraction=Long.MIN_VALUE, nextTeleport, nextHeart;
     int stuck;
+    int lastBlockLight=-1,lastSkyLight=-1;
 
     PanteraRuntime(ZPanteraPlugin plugin,PanteraState state,Location at) {
         this.state=state; yaw=at.getYaw(); last=at.clone(); progress=at.clone();
@@ -77,11 +78,25 @@ final class PanteraRuntime {
         label.text(Component.text(p.settings.name(),p.settings.nameColor()));
     }
     void snapshot() { if(base.isValid()&&!base.isDead()) { state.position(base.getLocation());state.health=base.getHealth(); } }
+    void updateLighting(ZPanteraPlugin p) {
+        int minimum=p.settings.minimumBlockLight();
+        if(minimum==0) {
+            if(lastBlockLight!=-2)parts.values().forEach(part->part.setBrightness(null));
+            lastBlockLight=-2;return;
+        }
+        var block=base.getLocation().getBlock();
+        int blockLight=Math.max(minimum,block.getLightFromBlocks()),skyLight=block.getLightFromSky();
+        if(blockLight==lastBlockLight&&skyLight==lastSkyLight)return;
+        var light=new Display.Brightness(blockLight,skyLight);
+        parts.values().forEach(part->part.setBrightness(light));
+        lastBlockLight=blockLight;lastSkyLight=skyLight;
+    }
     void remove(ZPanteraPlugin p) { for(Entity e:entities) { p.unindex(e);e.remove(); } entities.clear(); }
     void frame(ZPanteraPlugin p,long tick) {
         // Potion/effect updates can recalculate a living entity's invisibility flag.
         // The navigator must stay hidden independently of such vanilla updates.
         if(!base.isInvisible())base.setInvisible(true);
+        if(tick%10==0)updateLighting(p);
         Location at=base.getLocation(); double dx=at.getX()-last.getX(), dz=at.getZ()-last.getZ();
         double distance=Math.sqrt(dx*dx+dz*dz);
         // Teleports do not make the legs spin. Movement is measured, not inferred from owner yaw.

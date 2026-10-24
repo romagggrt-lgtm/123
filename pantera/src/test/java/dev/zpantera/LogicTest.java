@@ -63,6 +63,13 @@ class LogicTest {
         var c=new YamlConfiguration();c.set("effects.sound-cooldown-seconds",.1);c.set("effects.burst-hearts",500000);c.set("pantera.max-count",99999);c.set("pantera.health",Double.NaN);
         Settings s=Settings.read(c);assertEquals(2000,s.cooldownMillis());assertEquals(64,s.burstHearts());assertEquals(128,s.maxCount());assertEquals(30,s.health());
     }
+    @Test void oldConfigurationGetsAudibleCategoryAndMinimumLightingWithoutReset(){
+        var old=new YamlConfiguration();old.set("effects.sound-volume",.8);old.set("pantera.health",37);
+        var s=Settings.read(old);assertEquals(SoundCategory.MASTER,s.soundCategory());assertEquals(8,s.minimumBlockLight());
+        assertEquals(.8,s.volume(),.0001);assertEquals(37,s.health());
+        old.set("effects.sound-category","unknown");old.set("model.minimum-block-light",99);s=Settings.read(old);
+        assertEquals(SoundCategory.MASTER,s.soundCategory());assertEquals(15,s.minimumBlockLight());
+    }
     Rig rig()throws Exception{return new Rig(getClass().getResourceAsStream("/rig.json"));}
     @Test void allAnimationTransformsRemainFiniteAndContinuous() throws Exception {
         Rig rig=rig();Map<String,Matrix4f> previous=null;

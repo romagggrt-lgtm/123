@@ -1,0 +1,14 @@
+{
+  "tests": 5,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "test_cases": [
+    "__main__.PanteraPackTest.test_every_panther_part_uses_a_stitched_item_sprite",
+    "__main__.PanteraPackTest.test_fix_preserves_old_server_assets_and_does_not_replace_global_atlases",
+    "__main__.PanteraPackTest.test_louder_audio_preserves_duration_and_does_not_clip_after_vorbis_decode",
+    "__main__.PanteraPackTest.test_old_entity_folder_bug_is_detected_even_though_png_exists",
+    "__main__.PanteraPackTest.test_open_eyes_reference_green_pixels_in_the_actual_atlas"
+  ],
+  "successful": true
+}

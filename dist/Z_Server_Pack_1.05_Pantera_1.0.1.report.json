@@ -1,0 +1,37 @@
+{
+  "pack": "Z_Server_Pack_1.05_Pantera_1.0.1.zip",
+  "sha1": "f6da8605877157b6cffea185eb08d1363dd435ae",
+  "size": 1210131,
+  "base": "Z_Server_Pack_1.05_Gold.zip",
+  "base_sha256": "579479aa623335b5a1e28a2709ba24b7270c8dfecd4eef4e08bfa7a57612498a",
+  "base_files_preserved": 27,
+  "smplore_assets": 0,
+  "bones": 9,
+  "cubes": 34,
+  "validated": {
+    "json": 39,
+    "models": 17,
+    "textures": 10,
+    "sounds": 3,
+    "items": 18
+  },
+  "item_atlas": {
+    "models_checked": 11,
+    "custom_sprites": [
+      "z_pantera:item/pantera",
+      "z_pantera:item/spawn_egg"
+    ],
+    "item_atlas": "pantera/verification/vanilla-1.21.11-items-atlas.json",
+    "all_model_textures_stitched": true,
+    "references": {
+      "json": 39,
+      "models": 17,
+      "textures": 10,
+      "sounds": 3,
+      "items": 18
+    }
+  },
+  "sound_original_sha256": "41c9f2a5abad44f2828c975e2425c0795ee02ab4ecb3d8ccd9f9f327b1948d26",
+  "sound_ogg_sha256": "3232b0c8d13a6b279041b27664aa896bd56a33cc6675f20098ab638a3cdb3631",
+  "minecraft_client_tested": false
+}

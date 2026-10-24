@@ -13,6 +13,9 @@ pantera:
   name-visible: true
   name: '❤ Kazan Pantera ❤'
   name-color: '#E9A9E9'
+model:
+  # Мягкая минимальная подсветка шерсти ночью. 0 — только естественный свет.
+  minimum-block-light: 8
 follow:
   stop-distance: 2.3
   start-distance: 3.0
@@ -22,6 +25,9 @@ follow:
   # Если путь не помогает, попытаться безопасно переместить рядом через 8 секунд.
   stuck-seconds: 8
 effects:
+  # MASTER использует общую громкость, а не ползунок мирных существ.
+  # По желанию можно выбрать NEUTRAL. Сам OGG в версии 1.0.1 усилен примерно на 6 дБ.
+  sound-category: MASTER
   sound-volume: 1.0
   sound-radius: 24
   # Минимум 2 секунды: оригинальный звук длится 1.907 с.

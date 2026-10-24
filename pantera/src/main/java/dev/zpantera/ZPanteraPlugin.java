@@ -56,7 +56,7 @@ public class ZPanteraPlugin extends JavaPlugin implements Listener, CommandExecu
         startupUntil=clock.getAsLong()+settings.startupGraceMillis();
         for(PanteraState state:new ArrayList<>(states.values())) reconcile(state);
         task=Bukkit.getScheduler().runTaskTimer(this,this::pulse,2,2);
-        getLogger().info("Z_Pantera 1.0.0 enabled. Uses the single shared resource pack from server.properties; sends no packs.");
+        getLogger().info("Z_Pantera "+getPluginMeta().getVersion()+" enabled. Uses the single shared resource pack from server.properties; sends no packs.");
     }
     @Override public void onDisable() {
         closing=true;if(task!=null)task.cancel();
@@ -145,7 +145,7 @@ public class ZPanteraPlugin extends JavaPlugin implements Listener, CommandExecu
         for(Player p:at.getWorld().getPlayers()) {
             double d=p.getLocation().distanceSquared(at);if(d>radius*radius)continue;
             if(burst&&d<=settings.soundRadius()*settings.soundRadius())
-                p.playSound(at,"z_pantera:pantera",SoundCategory.NEUTRAL,settings.volume(),1f);
+                p.playSound(at,"z_pantera:pantera",settings.soundCategory(),settings.volume(),1f);
             if(d<=settings.heartRadius()*settings.heartRadius()) {
                 int n=burst?settings.burstHearts():settings.idleHearts();
                 p.spawnParticle(Particle.HEART,at.clone().add(0,.85,0),n/2,.55,.25,.6,0);
@@ -350,7 +350,7 @@ public class ZPanteraPlugin extends JavaPlugin implements Listener, CommandExecu
                 reloadConfig();settings=Settings.read(getConfig());
                 for(PanteraRuntime r:active.values()) {
                     r.base.getAttribute(Attribute.MAX_HEALTH).setBaseValue(settings.health());
-                    r.base.setHealth(Math.min(r.base.getHealth(),settings.health()));r.base.setInvulnerable(settings.invulnerable());r.updateLabel(this);
+                    r.base.setHealth(Math.min(r.base.getHealth(),settings.health()));r.base.setInvulnerable(settings.invulnerable());r.updateLabel(this);r.updateLighting(this);
                 }
                 save();message(sender,"Настройки Z_Pantera обновлены.");
             }

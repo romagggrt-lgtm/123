@@ -69,9 +69,9 @@ class PluginTest {
         @Override public BlockMock getBlockAt(Location p){return getBlockAt(p.getBlockX(),p.getBlockY(),p.getBlockZ());}
     }
     static class TestPlayer extends PlayerMock {
-        int particles,sounds,packs; Location soundOrigin;String soundKey;
+        int particles,sounds,packs; Location soundOrigin;String soundKey;SoundCategory soundCategory;
         TestPlayer(ServerMock s,String name){super(s,name);}
-        @Override public void playSound(Location p,String key,SoundCategory category,float volume,float pitch){sounds++;soundOrigin=p.clone();soundKey=key;}
+        @Override public void playSound(Location p,String key,SoundCategory category,float volume,float pitch){sounds++;soundOrigin=p.clone();soundKey=key;soundCategory=category;}
         @Override public void spawnParticle(Particle p,Location at,int count,double x,double y,double z,double extra){assertEquals(Particle.HEART,p);particles+=count;}
         @Override public void addResourcePack(UUID id,String url,byte[] hash,String prompt,boolean required){packs++;}
     }
@@ -115,6 +115,7 @@ class PluginTest {
         PanteraRuntime r=place(2,0);click(r);
         assertEquals(player.getUniqueId(),r.state.owner);assertEquals(now.get()+300000,r.state.expiresAt);
         assertEquals(1,player.sounds);assertEquals("z_pantera:pantera",player.soundKey);assertEquals(r.base.getLocation(),player.soundOrigin);
+        assertEquals(SoundCategory.MASTER,player.soundCategory);
         assertEquals(28,player.particles);
     }
     @Test void leftClickCannotDamageAndHasSameTamingMechanic(){
@@ -279,5 +280,25 @@ class PluginTest {
         PanteraRuntime r=place(2,0);click(r);Location original=r.base.getLocation();Ground danger=new Ground("danger");server.addWorld(danger);floor(danger);
         for(int x=-8;x<=14;x++)for(int z=-8;z<=14;z++)danger.getBlockAt(x,64,z).setType(Material.LAVA);
         player.teleport(new Location(danger,0,65,0));ticks(100);assertEquals(original,r.base.getLocation());
+    }
+    @Test void modelKeepsDetailsInDarknessAndRetainsBrighterEnvironmentLight(){
+        world.getBlockAt(2,65,0).setLightFromSky((byte)0);
+        PanteraRuntime r=place(2,0);
+        for(ItemDisplay part:r.parts.values()){assertEquals(8,part.getBrightness().getBlockLight());assertEquals(0,part.getBrightness().getSkyLight());}
+        var block=world.getBlockAt(r.base.getLocation());block.setLightFromBlocks((byte)13);block.setLightFromSky((byte)15);ticks(10);
+        for(ItemDisplay part:r.parts.values()){assertEquals(13,part.getBrightness().getBlockLight());assertEquals(15,part.getBrightness().getSkyLight());}
+    }
+    @Test void lightingReloadCanRestoreNaturalLightWithoutRespawningPet(){
+        PanteraRuntime r=place(2,0);UUID id=r.state.id;
+        plugin.getConfig().set("model.minimum-block-light",0);plugin.saveConfig();command("reload");
+        for(ItemDisplay part:r.parts.values())assertNull(part.getBrightness());
+        plugin.getConfig().set("model.minimum-block-light",12);plugin.saveConfig();command("reload");
+        for(ItemDisplay part:r.parts.values())assertEquals(12,part.getBrightness().getBlockLight());
+        assertSame(r,plugin.active.get(id));assertEquals(9,r.parts.size());
+    }
+    @Test void soundCategoryCanBeChangedWithoutDeletingSettingsOrPets(){
+        PanteraRuntime r=place(2,0);click(r);assertEquals(SoundCategory.MASTER,player.soundCategory);
+        plugin.getConfig().set("effects.sound-category","neutral");plugin.saveConfig();command("reload");now.addAndGet(2000);click(r);
+        assertEquals(SoundCategory.NEUTRAL,player.soundCategory);assertEquals(2,player.sounds);
     }
 }
