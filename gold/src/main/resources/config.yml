@@ -1,0 +1,54 @@
+# Paper 1.21.11, Java 21. Все расстояния — в блоках, длительности — в тиках.
+golda:
+  rise-duration-ticks: 50
+  height-above-ground: 2.3
+  hover-amplitude: 0.055
+  hover-period-ticks: 90
+  disappear-duration-ticks: 16
+  interaction-range: 5.0
+  click-cooldown-ticks: 6
+  max-active: 128
+  remove-radius: 16
+  save-interval-ticks: 200
+  # Значения фиксируются отдельно у каждой новой Golda.
+  reward-per-click: 5
+  reward-clicks: 3
+
+resource-pack:
+  enabled: true
+  # Этот ZIP построен из 1.05: Shahed + Verity + Z_Gold, без SmpLore.
+  url: 'https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Z_Server_Pack_1.05_Gold.zip'
+  # bundled = SHA-1 готового пака из этой поставки. При своей ссылке укажите её SHA-1.
+  sha1: bundled
+  required: true
+  delay-ticks: 40
+  prompt: 'Для моделей сервера нужен Z_Server_Pack. Разрешите загрузку ресурсов.'
+
+# Сообщения поддерживают MiniMessage. Имена игроков подставляются как обычный текст.
+messages:
+  no-permission: '<red>Недостаточно прав.'
+  usage: '<gold>/zgold give <игрок> [количество] | reload | remove | removeall'
+  player-only: '<red>Эта команда выполняется игроком.'
+  player-not-found: '<red>Игрок должен быть на сервере. Укажите точный ник.'
+  amount: '<red>Количество яиц: от 1 до 2304.'
+  given: '<gold>Выдано яиц Golda: <amount>. Игрок: <player>.'
+  egg-name: '<gold>Яйцо Golda'
+  egg-lore: '<gray>ПКМ по блоку — призвать Golda'
+  blocked: '<red>Нужно свободное место над твёрдой поверхностью.'
+  limit: '<red>Достигнут лимит Golda. Администратор может удалить старые.'
+  rising: '<yellow>Golda поднимается. Подождите немного.'
+  reward: '<gold>Golda выдала <amount> слитков. Всего: <total>/<maximum>.'
+  question: '<yellow>Golda: Про голду шутишь?'
+  answer-yes: 'Да'
+  answer-no: 'Нет'
+  answer-hover: '<gray>Ответить Golda'
+  waiting-other: '<gray>Golda ожидает ответ другого игрока.'
+  invalid-answer: '<red>Этот ответ уже использован или предназначен другому игроку.'
+  death: '<player> шутит про голду'
+  death-cancelled: '<yellow>Другой плагин отменил смерть. Нажмите на Golda, чтобы повторить диалог.'
+  restored: '<gold>Инвентарь и опыт сохранены после встречи с Golda.'
+  removed: '<gold>Удалено Golda: <amount>.'
+  none-nearby: '<yellow>Поблизости нет Golda.'
+  reloaded: '<green>Настройки Z_Gold перезагружены.'
+  error: '<red>Действие не выполнено. Сообщите администратору: подробности в журнале Z_Gold.'
+  pack-warning: '<yellow>Без Z_Server_Pack модель Golda не отображается. Включите ресурсы сервера.'

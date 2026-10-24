@@ -1,0 +1,21 @@
+{
+  "pack": "Z_Server_Pack_1.05_Gold.zip",
+  "base": "Z_Server_Pack_1.05.zip",
+  "base_sha256": "6081a10b0ac7654b470c912e7d2fb464237f1af1e5f8f6e149ecfe8180ce8f40",
+  "base_files_preserved": 19,
+  "shahed_verity_assets_unchanged": true,
+  "smplore_assets": 0,
+  "gold_bar_count": 1,
+  "gold_bar_faces": 14,
+  "closed_surface_edges": true,
+  "validated": {
+    "json": 16,
+    "models": 6,
+    "textures": 8,
+    "sounds": 2,
+    "items": 7
+  },
+  "sha1": "ddfef4b8a51436ef085704b2e45407a06f1d4b7f",
+  "size": 1173661,
+  "minecraft_client_tested": false
+}
