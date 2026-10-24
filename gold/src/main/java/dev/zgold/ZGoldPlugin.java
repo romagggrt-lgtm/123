@@ -37,6 +37,7 @@ public class ZGoldPlugin extends JavaPlugin implements Listener, TabExecutor {
     private final Map<UUID, UUID> entityOwners = new HashMap<>();
     private final Map<ChunkKey, Set<UUID>> chunks = new HashMap<>();
     private final Map<UUID, InventorySnapshot> deaths = new HashMap<>();
+    private final Map<UUID, UUID> packAttempts = new HashMap<>();
     private final Set<UUID> killing = new HashSet<>(), warned = new HashSet<>(), packed = new HashSet<>();
     private NamespacedKey itemKey, entityKey;
     private GoldStore store;
@@ -64,7 +65,11 @@ public class ZGoldPlugin extends JavaPlugin implements Listener, TabExecutor {
             for (Golda g : goldas.values()) activate(g);
             Bukkit.getScheduler().runTaskTimer(this, this::step, 1, 1);
             for (Player p : Bukkit.getOnlinePlayers()) { recover(p); schedulePack(p); }
-            getLogger().info("Z_Gold 1.0.0: loaded " + goldas.size() + " Golda. Resource pack: 1.05 + Gold, no SmpLore.");
+            getLogger().info("Z_Gold " + getPluginMeta().getVersion() + ": loaded " + goldas.size() + " Golda. Resource pack: 1.05 + Gold, no SmpLore.");
+            if (serverPack() != null) {
+                getLogger().info("Resource pack is managed by server.properties; Z_Gold will not send an additional pack.");
+                checkOtherPackSenders();
+            }
         } catch (Exception ex) {
             getLogger().log(Level.SEVERE, "Cannot enable Z_Gold. Original state has not been overwritten.", ex);
             Bukkit.getPluginManager().disablePlugin(this);
@@ -263,7 +268,8 @@ public class ZGoldPlugin extends JavaPlugin implements Listener, TabExecutor {
             g.clicks = old; g.respondent = oldRespondent; g.token = oldToken; commit(); tell(p, "error"); return;
         }
         item.setPickupDelay(10);
-        tell(p, "reward", "amount", "" + g.batch, "total", "" + (g.clicks * g.batch), "maximum", "" + (g.limit * g.batch));
+        // Rewards are intentionally silent. Even a legacy messages.reward entry
+        // from 1.0.0 must not reveal the counter or maximum to the player.
         if (g.waiting()) question(p, g);
     }
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
@@ -355,19 +361,45 @@ public class ZGoldPlugin extends JavaPlugin implements Listener, TabExecutor {
     }
     @EventHandler public void quit(PlayerQuitEvent e) {
         warned.remove(e.getPlayer().getUniqueId()); packed.remove(e.getPlayer().getUniqueId());
+        packAttempts.remove(e.getPlayer().getUniqueId());
+    }
+    private org.bukkit.packs.ResourcePack serverPack() {
+        org.bukkit.packs.ResourcePack pack = getServer().getServerResourcePack();
+        return pack == null || pack.getUrl().isBlank() ? null : pack;
+    }
+    private void checkOtherPackSenders() {
+        // Read-only diagnostics: never edit another plugin's config or JAR.
+        for (String name : List.of("Shahed", "Z_Verity")) {
+            var plugin = getServer().getPluginManager().getPlugin(name);
+            if (plugin instanceof JavaPlugin other && other.isEnabled()
+                && other.getConfig().getBoolean("resource-pack.enabled", true)
+                && other.getConfig().getBoolean("resource-pack.prompt-on-join", true)) {
+                getLogger().warning("Duplicate resource-pack sender: " + name
+                    + ". Set resource-pack.enabled and resource-pack.prompt-on-join to false in "
+                    + other.getDataFolder() + "/config.yml, then restart the server. Keep the common pack in server.properties.");
+            }
+        }
     }
     private void schedulePack(Player p) {
+        // server.properties is the single owner whenever it defines a pack.
+        if (!settings.packEnabled() || serverPack() != null || settings.packUrl().isEmpty()) return;
+        UUID id = p.getUniqueId(), attempt = UUID.randomUUID();
+        if (packAttempts.putIfAbsent(id, attempt) != null) return;
         Bukkit.getScheduler().runTaskLater(this, () -> {
-            if (!p.isOnline()) return;
-            if (settings.packEnabled() && !settings.packUrl().isEmpty()) {
-                byte[] hash = settings.packHash().isEmpty() ? null : HexFormat.of().parseHex(settings.packHash());
-                // addResourcePack appends to the stack, preserving packs sent by other plugins.
-                p.addResourcePack(PACK_ID, settings.packUrl(), hash, settings.packPrompt(), settings.packRequired());
-            } else if (settings.packEnabled()) warnPack(p);
+            // A delayed task from an earlier login may not send to a new session.
+            if (!attempt.equals(packAttempts.get(id)) || !p.isOnline()) return;
+            // Recheck at send time, too: settings can change while the task waits.
+            if (!settings.packEnabled() || serverPack() != null || settings.packUrl().isEmpty()) {
+                packAttempts.remove(id, attempt); return;
+            }
+            byte[] hash = settings.packHash().isEmpty() ? null : HexFormat.of().parseHex(settings.packHash());
+            // Exactly one attempt per session; statuses never start download loops.
+            p.addResourcePack(PACK_ID, settings.packUrl(), hash, settings.packPrompt(), settings.packRequired());
         }, Math.clamp(settings.packDelay(), 1, 1200));
     }
     @EventHandler public void packStatus(PlayerResourcePackStatusEvent e) {
-        if (!e.getID().equals(PACK_ID)) return;
+        var server = serverPack();
+        if (!e.getID().equals(PACK_ID) && (server == null || !e.getID().equals(server.getId()))) return;
         if (e.getStatus() == PlayerResourcePackStatusEvent.Status.SUCCESSFULLY_LOADED) packed.add(e.getPlayer().getUniqueId());
         else if (Set.of(PlayerResourcePackStatusEvent.Status.DECLINED, PlayerResourcePackStatusEvent.Status.FAILED_DOWNLOAD,
             PlayerResourcePackStatusEvent.Status.FAILED_RELOAD, PlayerResourcePackStatusEvent.Status.INVALID_URL).contains(e.getStatus())) {

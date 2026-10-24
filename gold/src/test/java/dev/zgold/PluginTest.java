@@ -5,6 +5,7 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.*;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.*;
@@ -41,13 +42,27 @@ class PluginTest {
     WorldMock world;
     ZGoldPlugin plugin;
     PlayerMock player;
+    static class PackServer extends ServerMock {
+        org.bukkit.packs.ResourcePack pack;
+        @Override public org.bukkit.packs.ResourcePack getServerResourcePack() { return pack; }
+    }
+    record ServerPack(UUID id, String url) implements org.bukkit.packs.ResourcePack {
+        public UUID getId() { return id; }
+        public String getUrl() { return url; }
+        public String getHash() { return "ddfef4b8a51436ef085704b2e45407a06f1d4b7f"; }
+        public String getPrompt() { return "Server pack"; }
+        public boolean isRequired() { return true; }
+    }
     static class SavedPlayer extends PlayerMock {
         boolean saved;
+        int packRequests;
         SavedPlayer(ServerMock server, String name) { super(server, name); }
         @Override public void saveData() { saved = true; }
+        // Capture the API boundary, without pretending to download or render a pack.
+        @Override public void addResourcePack(UUID id, String url, byte[] hash, String prompt, boolean required) { packRequests++; }
     }
     @BeforeEach void setup() {
-        server = MockBukkit.mock(); world = new CollisionWorld(); server.addWorld(world);
+        server = MockBukkit.mock(new PackServer()); world = new CollisionWorld(); server.addWorld(world);
         for (int x = -1; x <= 1; x++) for (int z = -1; z <= 1; z++) world.loadChunk(x, z);
         for (int x = -5; x <= 12; x++) for (int z = -5; z <= 12; z++) world.getBlockAt(x, 64, z).setType(Material.STONE);
         plugin = MockBukkit.load(ZGoldPlugin.class);
@@ -265,5 +280,59 @@ class PluginTest {
         server.getPluginManager().callEvent(new ChunkUnloadEvent(world.getChunkAt(0, 0), true));
         server.getPluginManager().callEvent(new ChunkLoadEvent(world.getChunkAt(0, 0), false)); ticks(2);
         assertTrue(world.getEntities().stream().noneMatch(e -> e instanceof ItemDisplay || e instanceof Interaction));
+    }
+    private void enablePluginPack() {
+        plugin.getConfig().set("resource-pack.enabled", true); plugin.saveConfig(); command("reload");
+    }
+    private void joinAgain() { plugin.join(new PlayerJoinEvent(player, Component.empty())); }
+    private List<String> messages(PlayerMock p) {
+        List<String> text = new ArrayList<>(); Component c;
+        while ((c = p.nextComponentMessage()) != null) text.add(PlainTextComponentSerializer.plainText().serialize(c));
+        return text;
+    }
+    @Test void rewardsAreSilentEvenWithLegacyCounterMessageConfigured() {
+        plugin.getConfig().set("messages.reward", "Golda выдала <amount> слитков. Всего: <total>/<maximum>.");
+        plugin.saveConfig(); command("reload"); place(2, 0); ticks(52); messages(player);
+        click(); assertEquals(5, gold()); assertTrue(messages(player).isEmpty());
+        ticks(7); click(); assertEquals(10, gold()); assertTrue(messages(player).isEmpty());
+        ticks(7); click(); assertEquals(15, gold());
+        List<String> text = messages(player); assertEquals(List.of("Golda: Про голду шутишь?", "[Да] [Нет]"), text);
+    }
+    @Test void serverPropertiesPackPreventsAnyAdditionalGoldRequest() {
+        enablePluginPack(); ((PackServer)server).pack = new ServerPack(UUID.randomUUID(), "https://example.org/common.zip");
+        joinAgain(); joinAgain(); ticks(200); assertEquals(0, ((SavedPlayer)player).packRequests);
+    }
+    @Test void duplicateJoinCallbacksSendOnlyOnePackWithoutServerProperties() {
+        enablePluginPack(); joinAgain(); joinAgain(); ticks(200); assertEquals(1, ((SavedPlayer)player).packRequests);
+        joinAgain(); ticks(200); assertEquals(1, ((SavedPlayer)player).packRequests);
+    }
+    @Test void packOwnerIsRecheckedBeforeDelayedRequestExecutes() {
+        enablePluginPack(); joinAgain(); ticks(10);
+        ((PackServer)server).pack = new ServerPack(UUID.randomUUID(), "https://example.org/common.zip");
+        ticks(100); assertEquals(0, ((SavedPlayer)player).packRequests);
+    }
+    @Test void failedPackStatusNeverCreatesAnAutomaticReloadLoop() {
+        enablePluginPack(); joinAgain(); ticks(45); assertEquals(1, ((SavedPlayer)player).packRequests);
+        UUID pack = UUID.nameUUIDFromBytes("z_gold:pack:1.05_Gold".getBytes(java.nio.charset.StandardCharsets.UTF_8));
+        plugin.packStatus(new PlayerResourcePackStatusEvent(player, pack, PlayerResourcePackStatusEvent.Status.FAILED_DOWNLOAD));
+        joinAgain(); ticks(300); assertEquals(1, ((SavedPlayer)player).packRequests);
+    }
+    @Test void reconnectInvalidatesThePreviousDelayedPackTask() {
+        enablePluginPack(); joinAgain(); ticks(10); plugin.quit(new PlayerQuitEvent(player, Component.empty())); joinAgain();
+        ticks(30); assertEquals(0, ((SavedPlayer)player).packRequests);
+        ticks(10); assertEquals(1, ((SavedPlayer)player).packRequests);
+    }
+    @Test void successfulServerPackIsRecognizedWithoutGoldWarning() {
+        enablePluginPack(); ServerPack pack = new ServerPack(UUID.randomUUID(), "https://example.org/common.zip");
+        ((PackServer)server).pack = pack;
+        plugin.packStatus(new PlayerResourcePackStatusEvent(player, pack.id(), PlayerResourcePackStatusEvent.Status.SUCCESSFULLY_LOADED));
+        messages(player); place(2, 0);
+        assertTrue(messages(player).stream().noneMatch(m -> m.contains("Без Z_Server_Pack")));
+        ticks(100); assertEquals(0, ((SavedPlayer)player).packRequests);
+    }
+    @Test void disablingPackBeforeDelayedRequestStopsIt() {
+        enablePluginPack(); joinAgain(); ticks(10);
+        plugin.getConfig().set("resource-pack.enabled", false); plugin.saveConfig(); command("reload");
+        ticks(100); assertEquals(0, ((SavedPlayer)player).packRequests);
     }
 }

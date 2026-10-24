@@ -16,6 +16,8 @@ golda:
 
 resource-pack:
   enabled: true
+  # Если ресурс-пак задан в server.properties, Z_Gold его повторно не отправляет.
+  # При раздаче через server.properties отключите раздачу в Shahed и Z_Verity.
   # Этот ZIP построен из 1.05: Shahed + Verity + Z_Gold, без SmpLore.
   url: 'https://raw.githubusercontent.com/romagggrt-lgtm/123/main/dist/Z_Server_Pack_1.05_Gold.zip'
   # bundled = SHA-1 готового пака из этой поставки. При своей ссылке укажите её SHA-1.
@@ -37,7 +39,6 @@ messages:
   blocked: '<red>Нужно свободное место над твёрдой поверхностью.'
   limit: '<red>Достигнут лимит Golda. Администратор может удалить старые.'
   rising: '<yellow>Golda поднимается. Подождите немного.'
-  reward: '<gold>Golda выдала <amount> слитков. Всего: <total>/<maximum>.'
   question: '<yellow>Golda: Про голду шутишь?'
   answer-yes: 'Да'
   answer-no: 'Нет'
