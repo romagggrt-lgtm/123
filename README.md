@@ -1,5 +1,10 @@
 # Shahed и Z_Verity — Paper 1.21.11 / Java 21
 
+**Общий ресурс-пак обновлён до 1.06:** добавлены ресурсы SmpLore из предоставленного
+архива, все ресурсы Shahed и Verity сохранены. [Скачать ZIP](dist/Z_Server_Pack_1.06.zip),
+[подключение и SHA-1](dist/Z_Server_Pack_1.06.README.md).
+JAR плагинов для этого обновления заменять не нужно.
+
 Текущий отдельный выпуск **Z_Verity 1.0.2**: [установка и использование](verity/README.md), [результаты тестов](verity/TESTING.md).
 Для его сборки используйте `bash tools/build_verity.sh`: скрипт не пересобирает Shahed.
 [Предпросмотр круглой модели](dist/Verity-preview_1.0.2.png) получен из JSON и PNG, а не из Minecraft-клиента.

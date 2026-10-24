@@ -1,0 +1,23 @@
+{
+  "pack": "Z_Server_Pack_1.06.zip",
+  "minecraft_version": "1.21.11",
+  "sources": {
+    "Z_Server_Pack_1.05.zip": "6081a10b0ac7654b470c912e7d2fb464237f1af1e5f8f6e149ecfe8180ce8f40",
+    "SmpLore-Paper-1.4.0-beta.3.3-resources.zip": "be102515d7a10a875f8b38f186281f53f019f6014c2640c8eec619acdb84ea7a"
+  },
+  "files": 87,
+  "unchanged_existing_files": 19,
+  "copied_smplore_files": 66,
+  "conflicting_asset_paths": [],
+  "validated": {
+    "json": 43,
+    "models": 18,
+    "textures": 27,
+    "sounds": 11,
+    "items": 15
+  },
+  "sha1": "7321c8b144409861e82bc6dc206b9720c025ac81",
+  "sha256": "d14d3b51a69ffc4e7eb50e2ec791bf2f7978b373450b196015d33f8a1899b0c7",
+  "minecraft_client_tested": false,
+  "plugin_jars_modified": false
+}
