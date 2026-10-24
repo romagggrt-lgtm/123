@@ -15,7 +15,9 @@ ROOT = Path(__file__).resolve().parents[1]
 MODULE = ROOT / 'pantera'
 BASE = ROOT / 'dist/Z_Server_Pack_1.05_Gold.zip'
 VERSION=E.parse(MODULE/'pom.xml').getroot().find('{http://maven.apache.org/POM/4.0.0}version').text
-OUT = ROOT / f'dist/Z_Server_Pack_1.05_Pantera_{VERSION}.zip'
+# 1.0.2 fixes server-side bone matrices only. Keep the working 1.0.1 RP byte-identical.
+RESOURCE_VERSION='1.0.1'
+OUT = ROOT / f'dist/Z_Server_Pack_1.05_Pantera_{RESOURCE_VERSION}.zip'
 SIZE, TILE = 512, 64
 FACES = ('north', 'south', 'east', 'west', 'up', 'down')
 
@@ -150,7 +152,7 @@ def main():
                              'to': (np.array(c['end'])-pivot+8).tolist(),
                              'faces': {face: {'texture': '#pantera', 'uv': [v*16/SIZE for v in uv(tile)]}
                                        for face, tile in c['tiles'].items()}})
-        model = {'credit': f'Original Z_Pantera {VERSION} cuboid model, CC0-1.0',
+        model = {'credit': f'Original Z_Pantera {RESOURCE_VERSION} cuboid model, CC0-1.0',
                  'ambientocclusion': False, 'textures': {'pantera': 'z_pantera:item/pantera', 'particle':'z_pantera:item/pantera'}, 'elements': elements}
         write(f'assets/z_pantera/models/item/{bone}.json', model)
         if bone == 'head':
@@ -175,7 +177,7 @@ def main():
     write('assets/z_pantera/sounds.json', {'pantera': {'sounds':[{'name':'z_pantera:pantera','stream':False,'attenuation_distance':24}]}})
     files['assets/z_pantera/LICENSE.txt'] = b'Original panther geometry, fur atlas, egg icon and animations: CC0-1.0.\n1024.MP3 supplied by the server owner; original sound converted to mono Vorbis, compressed and boosted for positional audio. No additional rights claimed for the supplied recording.\n'
     write('pack.mcmeta', {'pack': {'min_format':[75,0], 'max_format':[75,0],
-                                 'description':f'Z_Server_Pack 1.05 + Gold + Pantera {VERSION} | Shahed + Verity | 1.21.11'}})
+                                 'description':f'Z_Server_Pack 1.05 + Gold + Pantera {RESOURCE_VERSION} | Shahed + Verity | 1.21.11'}})
     # Editable Blockbench free-model project, including real grouped cubes and UVs.
     elements = [{'name':c['name'],'type':'cube','uuid':c['uuid'],'from':c['start'],'to':c['end'],
                  'origin':pivots[c['bone']], 'rotation':[0,0,0], 'rescale':False, 'autouv':0,

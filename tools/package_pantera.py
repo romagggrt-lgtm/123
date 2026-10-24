@@ -4,7 +4,7 @@ from pathlib import Path
 import hashlib,json,shutil,subprocess,uuid,xml.etree.ElementTree as E,zipfile
 import numpy as np
 from merge_smplore_pack import read_pack,check_references
-from build_pantera_pack import VERSION,OUT
+from build_pantera_pack import VERSION,RESOURCE_VERSION,OUT
 from check_pantera_pack import validate
 from prepare_pantera_audio import report as audio_report
 
@@ -35,7 +35,7 @@ def sound_report():
 def main():
     suites=[E.parse(p).getroot() for p in (MODULE/'target/surefire-reports').glob('TEST-*.xml')]
     totals={key:sum(int(s.get(key,0)) for s in suites) for key in ('tests','failures','errors','skipped')}
-    assert totals['tests']>=54 and not any(totals[k] for k in ('failures','errors','skipped')),totals
+    assert totals['tests']>=62 and not any(totals[k] for k in ('failures','errors','skipped')),totals
     pack_tests=json.loads((DIST/f'Z_Pantera-pack-tests_{VERSION}.json').read_text())
     assert pack_tests['tests']>=5 and pack_tests['successful'] and not pack_tests['skipped']
     jar=MODULE/'target/Z_Pantera.jar'
@@ -57,16 +57,18 @@ def main():
     (DIST/f'Z_Pantera-server-properties_{VERSION}.txt').write_text(properties)
     report={'plugin':'Z_Pantera','version':VERSION,'java':'21','paper_api':'1.21.11-R0.1-SNAPSHOT','junit':totals,
             'test_cases':[t.get('name') for s in suites for t in s.findall('testcase')],
-            'pack':PACK,'sha1':sha1,'pack_references':check_references(merged),'atlas_validation':validate(merged),
+            'pack':PACK,'resource_pack_version':RESOURCE_VERSION,'sha1':sha1,'pack_references':check_references(merged),'atlas_validation':validate(merged),
             'pack_regression_tests':pack_tests,'old_pack_files_preserved':len(old)-1,
             'old_plugins_modified':False,'smplore_assets':0,'sound':sound_report(),
-            'model':{'bbmodel':'pantera/model/Pantera.bbmodel','cuboids':34,'animated_bones':9,'animations':4},
+            'model':{'bbmodel':'pantera/model/Pantera.bbmodel','cuboids':34,'animated_bones':9,'animations':4,
+                     'vanilla_item_display_rotation_compensated':True,'head_pitch_sign_corrected':True,
+                     'aim_from_head_hinge':True,'owner_directions_tested':8,'idle_turn_uses_no_navigation':True},
             'minecraft_client_tested':False,'paper_runtime_tested':False,
             'paper_runtime_unavailable':'Official server binary download blocked by network proxy: CONNECT tunnel failed, response 403'}
     dump(DIST/f'Z_Pantera-tests_{VERSION}.json',report)
     shutil.copyfile(jar,DIST/'Z_Pantera.jar');shutil.copyfile(jar,DIST/f'Z_Pantera_{VERSION}.jar')
     for doc in ('README','TESTING'):shutil.copyfile(MODULE/f'{doc}.md',DIST/f'Z_Pantera_{VERSION}.{doc}.md')
-    shutil.copyfile(MODULE/'UPDATE-1.0.1.md',DIST/f'Z_Pantera_{VERSION}.UPDATE.md')
+    shutil.copyfile(MODULE/f'UPDATE-{VERSION}.md',DIST/f'Z_Pantera_{VERSION}.UPDATE.md')
     # Include everything needed to build the standalone Maven module and reproduce the combined RP.
     source={p.relative_to(ROOT).as_posix():p for p in MODULE.rglob('*') if p.is_file() and 'target' not in p.relative_to(MODULE).parts}
     for name in ('build_pantera_pack.py','preview_pantera.py','package_pantera.py','build_pantera.sh','merge_smplore_pack.py',
@@ -78,7 +80,7 @@ def main():
     archive(DIST/f'Z_Pantera-Source_{VERSION}.zip',source)
     install={f'plugins/Z_Pantera_{VERSION}.jar':DIST/f'Z_Pantera_{VERSION}.jar',
              PACK:DIST/PACK,'server-properties.txt':MODULE/'server-properties.txt',
-             'README.md':MODULE/'README.md','TESTING.md':MODULE/'TESTING.md','UPDATE-1.0.1.md':MODULE/'UPDATE-1.0.1.md',
+             'README.md':MODULE/'README.md','TESTING.md':MODULE/'TESTING.md',f'UPDATE-{VERSION}.md':MODULE/f'UPDATE-{VERSION}.md',
              f'Z_Pantera-Source_{VERSION}.zip':DIST/f'Z_Pantera-Source_{VERSION}.zip',
              f'Z_Pantera-tests_{VERSION}.json':DIST/f'Z_Pantera-tests_{VERSION}.json',
              f'Z_Pantera-preview_{VERSION}.png':DIST/f'Z_Pantera-preview_{VERSION}.png',

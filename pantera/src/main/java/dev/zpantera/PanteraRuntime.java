@@ -103,26 +103,32 @@ final class PanteraRuntime {
         double targetMotion=distance>.008&&distance<3?Math.min(1,distance/.11):0;
         motion+=(targetMotion-motion)*.30;
         double targetRun=distance>.35&&distance<3?1:0; run+=(targetRun-run)*.2;
-        if(distance>.008&&distance<3) yaw=Rig.approachAngle(yaw,(float)Math.toDegrees(Math.atan2(-dx,dz)),18);
+        boolean translating=distance>.008&&distance<3;
+        if(translating)yaw=Rig.approachAngle(yaw,Rig.heading(dx,dz),18);
+        phase+=.1*(2*Math.PI/(.8-.32*run))*motion;
         Player owner=state.owner==null?null:Bukkit.getPlayer(state.owner);
         float wantedHead=0,wantedPitch=0;
         if(owner!=null&&owner.getWorld()==at.getWorld()) {
             double ox=owner.getX()-at.getX(),oz=owner.getZ()-at.getZ();
-            float absolute=(float)Math.toDegrees(Math.atan2(-ox,oz));
-            float delta=Rig.approachAngle(yaw,absolute,50)-yaw;
-            wantedHead=Math.max(-50,Math.min(50,delta));
-            wantedPitch=(float)-Math.toDegrees(Math.atan2(owner.getEyeLocation().getY()-(at.getY()+1.1),Math.max(.2,Math.hypot(ox,oz))));
-            wantedPitch=Math.max(-18,Math.min(18,wantedPitch));
+            Vector3f target=new Vector3f((float)ox,(float)(owner.getEyeLocation().getY()-at.getY()),(float)oz);
+            Rig.HeadAim aim=p.rig.headAim(yaw,phase,motion,run,target);
+            // A neck cannot turn through 180 degrees. Turn the body IN PLACE when the
+            // owner is behind it, without issuing a path or depending on the owner's yaw.
+            if(!translating&&Math.hypot(ox,oz)>.75&&Math.abs(aim.yaw())>35) {
+                yaw=Rig.approachAngle(yaw,Rig.heading(ox,oz),8);
+                aim=p.rig.headAim(yaw,phase,motion,run,target);
+            }
+            wantedHead=Math.max(-50,Math.min(50,aim.yaw()));
+            wantedPitch=Math.max(-18,Math.min(18,aim.pitch()));
         } else wantedHead=(float)Math.sin(tick*.025)*7;
         headYaw=Rig.approachAngle(headYaw,wantedHead,5);headPitch=Rig.approachAngle(headPitch,wantedPitch,3);
-        phase+=.1*(2*Math.PI/(.8-.32*run))*motion;
         var pose=p.rig.pose(yaw,headYaw,headPitch,phase,tick/20.0,motion,run);
         boolean closed=(tick+Math.floorMod(state.id.hashCode(),97))%97<4;
         if(closed!=blink) { parts.get("head").setItemStack(p.model(closed?"head_blink":"head")); blink=closed; }
         Location root=flat(at);
         for(var entry:parts.entrySet()) {
             entry.getValue().teleport(root);entry.getValue().setInterpolationDelay(0);
-            entry.getValue().setTransformationMatrix(pose.get(entry.getKey()));
+            entry.getValue().setTransformationMatrix(Rig.itemDisplayTransform(pose.get(entry.getKey())));
         }
         bodyHit.teleport(root);
         // Hitbox follows the real rotated head rather than staying at the origin.

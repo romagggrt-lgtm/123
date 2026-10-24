@@ -21,9 +21,17 @@ import org.mockbukkit.mockbukkit.entity.WolfMock;
 import java.util.function.Consumer;
 import org.mockbukkit.mockbukkit.world.*;
 import io.papermc.paper.event.player.PrePlayerAttackEntityEvent;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PluginTest {
+    static class CapturedDisplay extends org.mockbukkit.mockbukkit.entity.ItemDisplayMock {
+        Matrix4f sent;
+        CapturedDisplay(ServerMock server){super(server,UUID.randomUUID());}
+        @Override public void setTransformationMatrix(Matrix4f matrix){sent=new Matrix4f(matrix);super.setTransformationMatrix(matrix);}
+        Matrix4f visibleMatrix(){return RenderingTest.clientMatrix(sent);}
+    }
     static class TestServer extends ServerMock {
         boolean stopping;
         @Override public boolean isStopping(){return stopping;}
@@ -33,6 +41,10 @@ class PluginTest {
         final Map<Coordinate,BlockMock> blocks=new HashMap<>();
         Ground(String name) {super(new WorldCreator(name));}
         @Override public <T extends Entity> T spawn(Location p,Class<T> type,Consumer<? super T> consumer,CreatureSpawnEvent.SpawnReason reason,boolean randomize,boolean event) {
+            if(type==ItemDisplay.class){
+                var display=new CapturedDisplay(MockBukkit.getMock());display.setLocation(p);
+                if(consumer!=null)consumer.accept(type.cast(display));MockBukkit.getMock().registerEntity(display);return type.cast(display);
+            }
             if(type==TextDisplay.class){
                 var label=new org.mockbukkit.mockbukkit.entity.TextDisplayMock(MockBukkit.getMock(),UUID.randomUUID()){
                     Display.Billboard billboard;
@@ -300,5 +312,42 @@ class PluginTest {
         PanteraRuntime r=place(2,0);click(r);assertEquals(SoundCategory.MASTER,player.soundCategory);
         plugin.getConfig().set("effects.sound-category","neutral");plugin.saveConfig();command("reload");now.addAndGet(2000);click(r);
         assertEquals(SoundCategory.NEUTRAL,player.soundCategory);assertEquals(2,player.sounds);
+    }
+    @Test void visibleHeadLooksAtOwnerAllAroundWhileBodyStaysInPlace(){
+        PanteraRuntime r=place(2,0);click(r);Location origin=r.base.getLocation();
+        for(int i=0;i<8;i++) {
+            double angle=i*Math.PI/4;
+            player.teleport(origin.clone().add(2*Math.sin(angle),0,2*Math.cos(angle)));ticks(90);
+            Matrix4f rendered=((CapturedDisplay)r.parts.get("head")).visibleMatrix();
+            Vector3f eye=rendered.transformPosition(new Vector3f(0,.03125f,-.46875f));
+            Location actualEye=origin.clone().add(eye.x,eye.y,eye.z);
+            Vector3f wanted=new Vector3f((float)(player.getX()-actualEye.getX()),
+                (float)(player.getEyeLocation().getY()-actualEye.getY()),(float)(player.getZ()-actualEye.getZ())).normalize();
+            Vector3f forward=rendered.transformDirection(new Vector3f(0,0,-1)).normalize();
+            assertTrue(forward.dot(wanted)>.995,"Head points away from owner at direction "+i);
+            assertEquals(origin,r.base.getLocation());
+            assertTrue(Math.abs(r.headYaw)<=50);assertTrue(Math.abs(r.headPitch)<=18);
+            Vector3f center=rendered.transformPosition(new Vector3f(0,-.05f,-.28f));
+            assertTrue(origin.clone().add(center.x,center.y,center.z).distance(r.headHit.getLocation().add(0,.30,0))<1e-5);
+        }
+        assertEquals(0,nav.moves,"Turning in place must not issue follow paths");
+    }
+    @Test void renderedBodyFollowsActualMovementInsteadOfWalkingBackward(){
+        PanteraRuntime r=place(2,0);click(r);long frame=100;
+        for(double[] direction:new double[][]{{0,1},{1,0},{0,-1},{-1,0}}) {
+            for(int step=0;step<20;step++) {
+                Location next=r.base.getLocation().add(direction[0]*.1,0,direction[1]*.1);
+                assertTrue(r.base.teleport(next));player.teleport(next.clone().add(direction[0]*2,0,direction[1]*2));
+                r.frame(plugin,frame);frame+=2;
+            }
+            Vector3f front=((CapturedDisplay)r.parts.get("body")).visibleMatrix().transformDirection(new Vector3f(0,0,-1)).normalize();
+            assertTrue(front.dot(new Vector3f((float)direction[0],0,(float)direction[1]))>.999);
+        }
+    }
+    @Test void ownerCameraRotationDoesNotTurnOrMoveAnAlreadyAimedPet(){
+        PanteraRuntime r=place(2,0);click(r);Location origin=r.base.getLocation();
+        player.teleport(origin.clone().add(0,0,2));ticks(90);float body=r.yaw,head=r.headYaw;
+        int paths=nav.moves;player.setRotation(135,70);ticks(90);
+        assertEquals(body,r.yaw,1e-5);assertEquals(head,r.headYaw,1e-5);assertEquals(origin,r.base.getLocation());assertEquals(paths,nav.moves);
     }
 }
