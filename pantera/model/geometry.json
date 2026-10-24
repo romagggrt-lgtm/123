@@ -1,0 +1,833 @@
+{
+  "pivots": {
+    "body": [
+      0,
+      0,
+      0
+    ],
+    "head": [
+      0,
+      17,
+      -7
+    ],
+    "front_left": [
+      4.5,
+      11,
+      -7
+    ],
+    "front_right": [
+      -4.5,
+      11,
+      -7
+    ],
+    "rear_left": [
+      4.5,
+      11,
+      8
+    ],
+    "rear_right": [
+      -4.5,
+      11,
+      8
+    ],
+    "tail_1": [
+      0,
+      13,
+      11
+    ],
+    "tail_2": [
+      0,
+      13,
+      20
+    ],
+    "tail_3": [
+      0,
+      13,
+      28
+    ]
+  },
+  "cubes": [
+    {
+      "name": "Torso",
+      "bone": "body",
+      "start": [
+        -6.4,
+        9,
+        -8
+      ],
+      "end": [
+        6.4,
+        17.2,
+        11.8
+      ],
+      "tiles": {
+        "north": 0,
+        "south": 0,
+        "east": 0,
+        "west": 0,
+        "up": 0,
+        "down": 0
+      },
+      "uuid": "72a9c9fc-745d-5b90-8e21-06575d89b559"
+    },
+    {
+      "name": "Shoulders",
+      "bone": "body",
+      "start": [
+        -6,
+        10.5,
+        -9
+      ],
+      "end": [
+        6,
+        18,
+        -1
+      ],
+      "tiles": {
+        "north": 1,
+        "south": 1,
+        "east": 1,
+        "west": 1,
+        "up": 1,
+        "down": 1
+      },
+      "uuid": "e0082c2b-20d0-5f5f-8f1e-9fbd38851876"
+    },
+    {
+      "name": "Haunches",
+      "bone": "body",
+      "start": [
+        -6,
+        9.5,
+        4
+      ],
+      "end": [
+        6,
+        17,
+        12
+      ],
+      "tiles": {
+        "north": 0,
+        "south": 0,
+        "east": 0,
+        "west": 0,
+        "up": 0,
+        "down": 0
+      },
+      "uuid": "036cce07-0175-5c24-9d7e-b718d5979998"
+    },
+    {
+      "name": "Belly",
+      "bone": "body",
+      "start": [
+        -4.8,
+        8,
+        -5
+      ],
+      "end": [
+        4.8,
+        11,
+        8
+      ],
+      "tiles": {
+        "north": 2,
+        "south": 2,
+        "east": 2,
+        "west": 2,
+        "up": 2,
+        "down": 2
+      },
+      "uuid": "44ae7056-ce96-57af-a1f8-007fa0876b85"
+    },
+    {
+      "name": "Neck",
+      "bone": "head",
+      "start": [
+        -4.6,
+        12.5,
+        -9.5
+      ],
+      "end": [
+        4.6,
+        18.5,
+        -3.5
+      ],
+      "tiles": {
+        "north": 1,
+        "south": 1,
+        "east": 1,
+        "west": 1,
+        "up": 1,
+        "down": 1
+      },
+      "uuid": "7cb84483-a596-5b15-91fc-247f02ec7acd"
+    },
+    {
+      "name": "Collar",
+      "bone": "head",
+      "start": [
+        -5.5,
+        13.2,
+        -14.65
+      ],
+      "end": [
+        5.5,
+        13.85,
+        -5.8
+      ],
+      "tiles": {
+        "north": 8,
+        "south": 8,
+        "east": 8,
+        "west": 8,
+        "up": 8,
+        "down": 8
+      },
+      "uuid": "d0323b10-d19c-534b-b5f5-42a26cb6d100"
+    },
+    {
+      "name": "Charm",
+      "bone": "head",
+      "start": [
+        -0.65,
+        11.9,
+        -14.8
+      ],
+      "end": [
+        0.65,
+        13.25,
+        -14.4
+      ],
+      "tiles": {
+        "north": 9,
+        "south": 9,
+        "east": 9,
+        "west": 9,
+        "up": 9,
+        "down": 9
+      },
+      "uuid": "21e3ce61-5c22-5b82-bda9-7e8407478cf1"
+    },
+    {
+      "name": "Head",
+      "bone": "head",
+      "start": [
+        -5.3,
+        13.5,
+        -14.5
+      ],
+      "end": [
+        5.3,
+        20.3,
+        -6
+      ],
+      "tiles": {
+        "north": 16,
+        "south": 1,
+        "east": 1,
+        "west": 1,
+        "up": 1,
+        "down": 1
+      },
+      "uuid": "8030c707-2e13-5009-9a6d-451751eb4d8b"
+    },
+    {
+      "name": "Muzzle",
+      "bone": "head",
+      "start": [
+        -3.9,
+        13,
+        -17
+      ],
+      "end": [
+        3.9,
+        16.4,
+        -13.8
+      ],
+      "tiles": {
+        "north": 4,
+        "south": 4,
+        "east": 4,
+        "west": 4,
+        "up": 4,
+        "down": 4
+      },
+      "uuid": "a30fbf74-53d3-52b1-8e66-c3a194fa78cb"
+    },
+    {
+      "name": "Chin",
+      "bone": "head",
+      "start": [
+        -3.3,
+        12.7,
+        -16.5
+      ],
+      "end": [
+        3.3,
+        13.6,
+        -13.6
+      ],
+      "tiles": {
+        "north": 2,
+        "south": 2,
+        "east": 2,
+        "west": 2,
+        "up": 2,
+        "down": 2
+      },
+      "uuid": "eb0b00c8-e841-57e8-a88e-45cd067b2b84"
+    },
+    {
+      "name": "Nose",
+      "bone": "head",
+      "start": [
+        -1.65,
+        15.1,
+        -17.3
+      ],
+      "end": [
+        1.65,
+        16.5,
+        -16.8
+      ],
+      "tiles": {
+        "north": 5,
+        "south": 5,
+        "east": 5,
+        "west": 5,
+        "up": 5,
+        "down": 5
+      },
+      "uuid": "4e3b113d-6df1-561e-8813-eeacb441921b"
+    },
+    {
+      "name": "Mouth",
+      "bone": "head",
+      "start": [
+        -2.2,
+        13.65,
+        -17.04
+      ],
+      "end": [
+        2.2,
+        13.85,
+        -17.01
+      ],
+      "tiles": {
+        "north": 5,
+        "south": 5,
+        "east": 5,
+        "west": 5,
+        "up": 5,
+        "down": 5
+      },
+      "uuid": "4b9bcb9a-1aa1-55d4-8c42-c42f6c0342c1"
+    },
+    {
+      "name": "Ear_L",
+      "bone": "head",
+      "start": [
+        2.55,
+        19.3,
+        -10.5
+      ],
+      "end": [
+        5.25,
+        22.2,
+        -7.8
+      ],
+      "tiles": {
+        "north": 2,
+        "south": 2,
+        "east": 2,
+        "west": 2,
+        "up": 2,
+        "down": 2
+      },
+      "uuid": "027582a4-7b13-5b65-87e4-75e4aab9977d"
+    },
+    {
+      "name": "Ear_inner_L",
+      "bone": "head",
+      "start": [
+        3.0999999999999996,
+        20,
+        -10.56
+      ],
+      "end": [
+        4.7,
+        21.7,
+        -10.51
+      ],
+      "tiles": {
+        "north": 6,
+        "south": 6,
+        "east": 6,
+        "west": 6,
+        "up": 6,
+        "down": 6
+      },
+      "uuid": "54564a0d-271d-5720-b2f3-3ecd1ba81b52"
+    },
+    {
+      "name": "Ear_R",
+      "bone": "head",
+      "start": [
+        -5.25,
+        19.3,
+        -10.5
+      ],
+      "end": [
+        -2.55,
+        22.2,
+        -7.8
+      ],
+      "tiles": {
+        "north": 2,
+        "south": 2,
+        "east": 2,
+        "west": 2,
+        "up": 2,
+        "down": 2
+      },
+      "uuid": "577be03c-cfb3-5d0f-970e-6f0dd6d62708"
+    },
+    {
+      "name": "Ear_inner_R",
+      "bone": "head",
+      "start": [
+        -4.7,
+        20,
+        -10.56
+      ],
+      "end": [
+        -3.0999999999999996,
+        21.7,
+        -10.51
+      ],
+      "tiles": {
+        "north": 6,
+        "south": 6,
+        "east": 6,
+        "west": 6,
+        "up": 6,
+        "down": 6
+      },
+      "uuid": "5285ae57-cdca-53d2-a5af-9ae90b20ba13"
+    },
+    {
+      "name": "Bow_left",
+      "bone": "head",
+      "start": [
+        3.7,
+        20.1,
+        -11
+      ],
+      "end": [
+        5.5,
+        21.5,
+        -10.4
+      ],
+      "tiles": {
+        "north": 7,
+        "south": 7,
+        "east": 7,
+        "west": 7,
+        "up": 7,
+        "down": 7
+      },
+      "uuid": "d00fc568-f364-5c88-a4ae-3e49eefd5bac"
+    },
+    {
+      "name": "Bow_right",
+      "bone": "head",
+      "start": [
+        5.8,
+        20.1,
+        -11
+      ],
+      "end": [
+        7.2,
+        21.5,
+        -10.4
+      ],
+      "tiles": {
+        "north": 7,
+        "south": 7,
+        "east": 7,
+        "west": 7,
+        "up": 7,
+        "down": 7
+      },
+      "uuid": "251b8f74-1819-5814-92b7-23cc8bcf6bae"
+    },
+    {
+      "name": "Bow_knot",
+      "bone": "head",
+      "start": [
+        5.2,
+        20.35,
+        -11.25
+      ],
+      "end": [
+        6.15,
+        21.25,
+        -10.3
+      ],
+      "tiles": {
+        "north": 8,
+        "south": 8,
+        "east": 8,
+        "west": 8,
+        "up": 8,
+        "down": 8
+      },
+      "uuid": "133c4e73-8322-566d-86ae-cc3ef3c57f3b"
+    },
+    {
+      "name": "front_left_upper",
+      "bone": "front_left",
+      "start": [
+        2.65,
+        5.4,
+        -8.9
+      ],
+      "end": [
+        6.35,
+        12.8,
+        -4.7
+      ],
+      "tiles": {
+        "north": 0,
+        "south": 0,
+        "east": 0,
+        "west": 0,
+        "up": 0,
+        "down": 0
+      },
+      "uuid": "4ae9d201-2a1c-5d69-b1e8-bf7db27f48ed"
+    },
+    {
+      "name": "front_left_shin",
+      "bone": "front_left",
+      "start": [
+        3.1,
+        1.4,
+        -8.5
+      ],
+      "end": [
+        5.9,
+        7,
+        -5.55
+      ],
+      "tiles": {
+        "north": 2,
+        "south": 2,
+        "east": 2,
+        "west": 2,
+        "up": 2,
+        "down": 2
+      },
+      "uuid": "befbaf36-852e-5d5a-bd66-416076c52937"
+    },
+    {
+      "name": "front_left_paw",
+      "bone": "front_left",
+      "start": [
+        2.7,
+        0,
+        -10
+      ],
+      "end": [
+        6.3,
+        2,
+        -5.2
+      ],
+      "tiles": {
+        "north": 2,
+        "south": 2,
+        "east": 2,
+        "west": 2,
+        "up": 2,
+        "down": 2
+      },
+      "uuid": "27d90666-3300-5696-afef-ecf559f7377c"
+    },
+    {
+      "name": "front_right_upper",
+      "bone": "front_right",
+      "start": [
+        -6.35,
+        5.4,
+        -8.9
+      ],
+      "end": [
+        -2.65,
+        12.8,
+        -4.7
+      ],
+      "tiles": {
+        "north": 0,
+        "south": 0,
+        "east": 0,
+        "west": 0,
+        "up": 0,
+        "down": 0
+      },
+      "uuid": "f5fce5b0-4169-5aa6-9586-e87eb10df8c5"
+    },
+    {
+      "name": "front_right_shin",
+      "bone": "front_right",
+      "start": [
+        -5.9,
+        1.4,
+        -8.5
+      ],
+      "end": [
+        -3.1,
+        7,
+        -5.55
+      ],
+      "tiles": {
+        "north": 2,
+        "south": 2,
+        "east": 2,
+        "west": 2,
+        "up": 2,
+        "down": 2
+      },
+      "uuid": "4c41e1ae-1cde-5460-b5cf-339269d4f23f"
+    },
+    {
+      "name": "front_right_paw",
+      "bone": "front_right",
+      "start": [
+        -6.3,
+        0,
+        -10
+      ],
+      "end": [
+        -2.7,
+        2,
+        -5.2
+      ],
+      "tiles": {
+        "north": 2,
+        "south": 2,
+        "east": 2,
+        "west": 2,
+        "up": 2,
+        "down": 2
+      },
+      "uuid": "ca534018-d38a-5505-ac86-2aef98b4484b"
+    },
+    {
+      "name": "rear_left_upper",
+      "bone": "rear_left",
+      "start": [
+        2.65,
+        5.4,
+        6.1
+      ],
+      "end": [
+        6.35,
+        12.8,
+        10.3
+      ],
+      "tiles": {
+        "north": 0,
+        "south": 0,
+        "east": 0,
+        "west": 0,
+        "up": 0,
+        "down": 0
+      },
+      "uuid": "4c511979-c141-5ec3-ab90-41d41f59a65f"
+    },
+    {
+      "name": "rear_left_shin",
+      "bone": "rear_left",
+      "start": [
+        3.1,
+        1.4,
+        7.5
+      ],
+      "end": [
+        5.9,
+        7,
+        10.45
+      ],
+      "tiles": {
+        "north": 2,
+        "south": 2,
+        "east": 2,
+        "west": 2,
+        "up": 2,
+        "down": 2
+      },
+      "uuid": "9f7ff528-46a5-5130-8175-ad2ae056f1b6"
+    },
+    {
+      "name": "rear_left_paw",
+      "bone": "rear_left",
+      "start": [
+        2.7,
+        0,
+        5
+      ],
+      "end": [
+        6.3,
+        2,
+        9.8
+      ],
+      "tiles": {
+        "north": 2,
+        "south": 2,
+        "east": 2,
+        "west": 2,
+        "up": 2,
+        "down": 2
+      },
+      "uuid": "3d201804-8052-54d8-b55b-7fa238b506f1"
+    },
+    {
+      "name": "rear_right_upper",
+      "bone": "rear_right",
+      "start": [
+        -6.35,
+        5.4,
+        6.1
+      ],
+      "end": [
+        -2.65,
+        12.8,
+        10.3
+      ],
+      "tiles": {
+        "north": 0,
+        "south": 0,
+        "east": 0,
+        "west": 0,
+        "up": 0,
+        "down": 0
+      },
+      "uuid": "2dc9f21c-bf3a-5656-b5c7-3a9203556757"
+    },
+    {
+      "name": "rear_right_shin",
+      "bone": "rear_right",
+      "start": [
+        -5.9,
+        1.4,
+        7.5
+      ],
+      "end": [
+        -3.1,
+        7,
+        10.45
+      ],
+      "tiles": {
+        "north": 2,
+        "south": 2,
+        "east": 2,
+        "west": 2,
+        "up": 2,
+        "down": 2
+      },
+      "uuid": "a2989e54-ffa5-51ef-867f-f052591e4362"
+    },
+    {
+      "name": "rear_right_paw",
+      "bone": "rear_right",
+      "start": [
+        -6.3,
+        0,
+        5
+      ],
+      "end": [
+        -2.7,
+        2,
+        9.8
+      ],
+      "tiles": {
+        "north": 2,
+        "south": 2,
+        "east": 2,
+        "west": 2,
+        "up": 2,
+        "down": 2
+      },
+      "uuid": "3be0b805-80e4-572a-826b-d61741be2045"
+    },
+    {
+      "name": "Tail_base",
+      "bone": "tail_1",
+      "start": [
+        -1.25,
+        11.8,
+        10.5
+      ],
+      "end": [
+        1.25,
+        14.2,
+        20.5
+      ],
+      "tiles": {
+        "north": 3,
+        "south": 3,
+        "east": 3,
+        "west": 3,
+        "up": 3,
+        "down": 3
+      },
+      "uuid": "79d0e0ec-4a95-53e1-8774-a5f3e40a5f43"
+    },
+    {
+      "name": "Tail_middle",
+      "bone": "tail_2",
+      "start": [
+        -1.05,
+        11.95,
+        19.5
+      ],
+      "end": [
+        1.05,
+        14.05,
+        28.5
+      ],
+      "tiles": {
+        "north": 3,
+        "south": 3,
+        "east": 3,
+        "west": 3,
+        "up": 3,
+        "down": 3
+      },
+      "uuid": "89453834-52ca-553a-9e57-b45f72fd4258"
+    },
+    {
+      "name": "Tail_tip",
+      "bone": "tail_3",
+      "start": [
+        -0.85,
+        12.1,
+        27.5
+      ],
+      "end": [
+        0.85,
+        13.9,
+        36
+      ],
+      "tiles": {
+        "north": 2,
+        "south": 2,
+        "east": 2,
+        "west": 2,
+        "up": 2,
+        "down": 2
+      },
+      "uuid": "72eabe21-534d-528b-9cc0-61c82c4d9ba6"
+    }
+  ]
+}

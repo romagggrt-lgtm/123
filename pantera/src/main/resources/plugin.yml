@@ -1,0 +1,19 @@
+name: Z_Pantera
+version: '1.0.0'
+main: dev.zpantera.ZPanteraPlugin
+api-version: '1.21.11'
+description: Animated black panther companion for the shared Z_Server_Pack.
+author: Z_Server
+commands:
+  zpantera:
+    description: Управление пантерами
+    usage: /zpantera <give|spawn|remove|removeall|reload>
+permissions:
+  zpantera.admin:
+    description: Управление плагином
+    default: op
+    children:
+      zpantera.use: true
+  zpantera.use:
+    description: Призыв и приручение пантеры
+    default: true

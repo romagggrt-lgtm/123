@@ -1,0 +1,32 @@
+# Единственный общий РП подключается через server.properties.
+# Этот плагин НЕ отправляет ресурс-паки и не запускает повторные загрузки.
+pantera:
+  health: 30.0
+  invulnerable: false
+  # Обычный внешний урон умножается на это число. ЛКМ игрока всегда безопасен.
+  damage-multiplier: 0.25
+  lifetime-seconds: 300
+  max-count: 32
+  # При обычном выходе хозяина питомец удаляется сразу. После остановки сервера
+  # сохранённый питомец ждёт входа хозяина до минуты, не продлевая свои 5 минут.
+  startup-owner-grace-seconds: 60
+  name-visible: true
+  name: '❤ Kazan Pantera ❤'
+  name-color: '#E9A9E9'
+follow:
+  stop-distance: 2.3
+  start-distance: 3.0
+  walk-speed: 1.0
+  run-speed: 1.55
+  teleport-distance: 24.0
+  # Если путь не помогает, попытаться безопасно переместить рядом через 8 секунд.
+  stuck-seconds: 8
+effects:
+  sound-volume: 1.0
+  sound-radius: 24
+  # Минимум 2 секунды: оригинальный звук длится 1.907 с.
+  sound-cooldown-seconds: 2.0
+  heart-radius: 24
+  heart-interval-ticks: 50
+  burst-hearts: 28
+  idle-hearts: 5
