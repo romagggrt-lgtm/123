@@ -1,0 +1,50 @@
+{
+  "plugin": "SimpleClans",
+  "version": "2.19.2-05e7abc-locale-fix.1",
+  "java": 21,
+  "paper_api": "1.21.11",
+  "original_sha256": "6a9d79bb69419b2164a15919e28d1f770faf0e07d56191f02a03600c879907c6",
+  "patched_sha256": "ad7cc4f918599476ba0afaf74e2e595990c7d65506dd9f613ea73a34ffb0bcbe",
+  "junit": {
+    "tests": 11,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "test_cases": [
+    "originalJoinAndQuitListenerWorksWithPatchedMethod",
+    "patchedMethodContainsNoReflectionOrNmsCalls",
+    "languageTagsSupportScriptsAndRegionalVariants",
+    "disconnectedPlayerIsIgnored",
+    "patchedActualManagerDetectsRussianThroughPublicApi",
+    "changesNotifyOnceAndRepeatedReadsDoNotNotify",
+    "unexpectedInputIsRejectedBeforeProducingOutput",
+    "missingOrInvalidClientLocaleKeepsLastValidLanguage",
+    "unchangedClientLanguageDoesNotOverwriteManualLanguage",
+    "originalJarReproducesExactLocaleFieldFailure",
+    "allOtherExistingJarEntriesStayByteIdentical"
+  ],
+  "original_locale_exception_reproduced": true,
+  "unchanged_existing_jar_entries": 891,
+  "changed_existing_jar_entries": [
+    "net/sacredlabyrinth/phaed/simpleclans/acf/BukkitCommandManager.class",
+    "plugin.yml"
+  ],
+  "changed_existing_methods": [
+    [
+      "readPlayerLocale",
+      "(Lorg/bukkit/entity/Player;)V"
+    ]
+  ],
+  "all_other_methods_and_fields_identical": true,
+  "added_entries": [
+    "META-INF/server-fixes/ACF-MIT.txt",
+    "META-INF/server-fixes/NOTICE.txt",
+    "META-INF/server-fixes/SimpleClans-GPL-3.0.txt",
+    "net/sacredlabyrinth/phaed/simpleclans/acf/ClientLocale.class"
+  ],
+  "resource_pack_changed": false,
+  "other_plugins_changed": false,
+  "paper_runtime_tested": false,
+  "user_log_included": false
+}

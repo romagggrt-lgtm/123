@@ -1,0 +1,16 @@
+SimpleClans 2.19.2-05e7abc-locale-fix.1
+Modified 2026-10-25 for Paper 1.21.11 / Java 21.
+Unofficial compatibility patch, not an upstream SimpleClans release.
+
+Original SimpleClans authors: Phaed and RoinujNosde.
+Source: https://github.com/RoinujNosde/SimpleClans/tree/05e7abc
+SimpleClans license: GNU GPL version 3 (included).
+Embedded ACF: Daniel Ennis and Contributors, MIT license (included).
+Source for this patch: simpleclans-fix/ in
+https://github.com/romagggrt-lgtm/123
+
+Changed: ACF BukkitCommandManager.readPlayerLocale(Player) now delegates
+client language detection to ClientLocale using Bukkit Player.getLocale().
+Original clan logic, database code, commands and permissions are preserved.
+The original project and its dependencies retain their respective licenses.
+The new patch source is provided under GPL-3.0-or-later.

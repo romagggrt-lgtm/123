@@ -17,3 +17,16 @@ original notices under assets/smplore/licenses are preserved. No plugin JAR
 or executable codec library from that distribution is included or modified.
 These third-party resources retain their original ownership and notices;
 they are not relicensed as the project's original procedural artwork.
+
+## SimpleClans compatibility fix (25 October 2026)
+
+The user supplied SimpleClans 2.19.2-05e7abc to fix its ACF locale reflection
+failure on Paper 1.21.11. The patched standalone JAR preserves upstream clan
+logic and resources. SimpleClans (Phaed and RoinujNosde) remains GPL-3.0;
+embedded ACF (Daniel Ennis and Contributors) remains MIT. Their license texts
+and a modification notice are included in the patched JAR. New patch sources
+under `simpleclans-fix/` are GPL-3.0-or-later, as specified by that directory's
+LICENSE; the repository's root MIT license does not relicense this plugin.
+The full upstream source archive for commit 05e7abc is retained in
+`simpleclans-fix/upstream/` and included with the patch's source archive.
+No SimpleClans code or assets are merged into the server resource pack.
