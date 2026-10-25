@@ -1,0 +1,27 @@
+{
+  "plugin": "InventoryCache",
+  "version": "1.0.1",
+  "java": 21,
+  "paper_api": "1.21.11-R0.1-SNAPSHOT",
+  "junit": {
+    "tests": 10,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "test_cases": [
+    "pathTraversalAndInvalidNamesAreRejected",
+    "asynchronousSaveAndLoadPreserveItemsAndCreateBackup",
+    "savedSchemaOneFilesStayCompatibleAndTamperingIsRejected",
+    "helpTopicRemainsOpOnly",
+    "nonOpCommandListAcceptsArrayListAndRemovesOnlyOwnCommands",
+    "publishedOneZeroZeroClassReproducesTheExactLinkageError",
+    "sourceDataArraysAreDefensivelyCopied",
+    "opCommandListIsPreserved",
+    "nonOpCannotSaveOrLoadEvenWhenCommandIsTypedDirectly",
+    "formatRoundTripsAllInventorySectionsMetadataAndSelectedSlot"
+  ],
+  "original_linkage_error_reproduced": true,
+  "new_descriptor": "()Ljava/util/Collection;",
+  "paper_runtime_tested": false
+}

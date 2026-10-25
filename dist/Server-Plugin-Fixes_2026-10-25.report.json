@@ -1,0 +1,92 @@
+{
+  "release": "Server-Plugin-Fixes_2026-10-25",
+  "minecraft": "1.21.11",
+  "java": 21,
+  "Z_Gold_1.0.2": {
+    "junit": {
+      "tests": 48,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "test_cases": [
+      "cannotRewardDuringAppearance",
+      "riseIsMonotonicAndMeetsHoverWithoutJump",
+      "onlyThreeClaimsAndPersonalSingleUseAnswer",
+      "hoverStaysInNarrowBand",
+      "disablingPackBeforeDelayedRequestStopsIt",
+      "copiedOrForgedAnswerCannotKillAnotherPlayer",
+      "slowRewardSaveDoesNotFreezeTicksOrDuplicateGold",
+      "unloadedChunkReturnsOnePairAndKeepsRewards",
+      "quittingDuringDeferredDeathCancelsItAndClearsJournal",
+      "permissionsAndRenamingCannotBypassCustomEgg",
+      "binaryJournalRoundTripsEverySlotMetadataCursorAndXp",
+      "unrelatedDeathDoesNotReceiveKeepInventory",
+      "duplicateAtInteractAndOffhandOnlyAwardOneBatch",
+      "packOwnerIsRecheckedBeforeDelayedRequestExecutes",
+      "reconnectInvalidatesThePreviousDelayedPackTask",
+      "removeInvalidatesOldAnswerAndDeletesBothEntities",
+      "exactlyOneModelOneHitboxAndNoVanillaMob",
+      "consumedAnswerIsRemovedEvenIfChunkUnloadsDuringFade",
+      "successfulServerPackIsRecognizedWithoutGoldWarning",
+      "pendingDialogueSurvivesRestartAndHasSamePersonalToken",
+      "failedPackStatusNeverCreatesAnAutomaticReloadLoop",
+      "bothAnswersKillWithNoDropsAndKeepEverySlotAndXp",
+      "failedRewardWriteDoesNotIssueGoldAndBlocksFurtherEconomyActions",
+      "legacyJournalWithoutRecoveryIdRemainsReadable",
+      "cancelledDeathDoesNotConsumeDialogueOrBroadcastFalseDeath",
+      "stoppingDuringDeferredDeathCancelsEffectAndSavesRollback",
+      "restartKeepsCounterAndCreatesNoDuplicateVisuals",
+      "savedRecoveryReceiptPreventsReplayingAnOlderInventory",
+      "yesAnswerAlsoKillsAndFades",
+      "emptyChunksAndIdleTicksDoNotScheduleAnyDiskWrites",
+      "deniedUseDoesNotConsumeEggOrSpawnVisual",
+      "staleInventoryCancelsDeferredDeathWithoutOverwritingNewItems",
+      "independentGoldasHaveIndependentCounters",
+      "duplicateJoinCallbacksSendOnlyOnePackWithoutServerProperties",
+      "rewardsAreSilentEvenWithLegacyCounterMessageConfigured",
+      "riseReachesConfiguredHeightAndNeverFalls",
+      "blockedPlaceKeepsEggAndSpawnsNothing",
+      "twoPlayersShareFifteenTotalAndOnlyThirdClickerGetsQuestion",
+      "malformedSaveIsNotOverwritten",
+      "threeClicksDropExactlyFifteenAndThenStop",
+      "serverPropertiesPackPreventsAnyAdditionalGoldRequest",
+      "deathJournalSurvivesDisableAndRecoversAfterRespawn",
+      "survivalConsumesAndCreativeKeepsEgg",
+      "queuedSnapshotIsIsolatedFromLaterCallerMutation",
+      "shutdownWaitHasABoundedDeadline",
+      "slowDiskNeverRunsOnTheSubmittingOrCallbackThread",
+      "checkpointsCoalesceButCriticalCommitsKeepTheirOrder",
+      "failureStopsLaterWritesAndDoesNotRunSuccessEffects"
+    ]
+  },
+  "InventoryCache_1.0.1": {
+    "junit": {
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "test_cases": [
+      "pathTraversalAndInvalidNamesAreRejected",
+      "asynchronousSaveAndLoadPreserveItemsAndCreateBackup",
+      "savedSchemaOneFilesStayCompatibleAndTamperingIsRejected",
+      "helpTopicRemainsOpOnly",
+      "nonOpCommandListAcceptsArrayListAndRemovesOnlyOwnCommands",
+      "publishedOneZeroZeroClassReproducesTheExactLinkageError",
+      "sourceDataArraysAreDefensivelyCopied",
+      "opCommandListIsPreserved",
+      "nonOpCannotSaveOrLoadEvenWhenCommandIsTypedDirectly",
+      "formatRoundTripsAllInventorySectionsMetadataAndSelectedSlot"
+    ]
+  },
+  "evidence_counts": {
+    "inventorycache_command_event_errors": 26,
+    "gold_watchdog_reports": 8
+  },
+  "inventorycache_getCommands_descriptor": "()Ljava/util/Collection;",
+  "resource_pack_changed": false,
+  "other_plugin_jars_changed": false,
+  "paper_runtime_tested": false,
+  "user_log_included": false
+}

@@ -19,18 +19,20 @@ def main():
     version = E.parse(ROOT / 'gold/pom.xml').getroot().find('{http://maven.apache.org/POM/4.0.0}version').text
     suites = [E.parse(p).getroot() for p in (ROOT / 'gold/target/surefire-reports').glob('TEST-*.xml')]
     totals = {key: sum(int(s.get(key, 0)) for s in suites) for key in ('tests', 'failures', 'errors', 'skipped')}
-    assert totals['tests'] >= 35 and not any(totals[key] for key in ('failures', 'errors', 'skipped')), totals
+    assert totals['tests'] >= 48 and not any(totals[key] for key in ('failures', 'errors', 'skipped')), totals
     report = {'plugin': 'Z_Gold', 'version': version, 'java': '21', 'paper_api': '1.21.11-R0.1-SNAPSHOT',
               'junit': totals, 'test_cases': [t.get('name') for s in suites for t in s.findall('testcase')],
               'minecraft_client_tested': False, 'paper_runtime_tested': False,
               'paper_runtime_unavailable': 'Official server binary host blocked by network proxy: 403 Forbidden',
-              'resource_pack_report': 'Z_Server_Pack_1.05_Gold.report.json'}
+              'resource_pack_report': 'Z_Server_Pack_1.05_Gold.report.json',
+              'state_io_thread': 'Z_Gold-Storage', 'empty_chunk_unload_writes': 0,
+              'rewards_wait_for_durable_write': True, 'journal_recovery_is_idempotent': True}
     (DIST / f'Z_Gold-tests_{version}.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     shutil.copyfile(ROOT / 'gold/target/Z_Gold.jar', DIST / 'Z_Gold.jar')
     shutil.copyfile(ROOT / 'gold/target/Z_Gold.jar', DIST / f'Z_Gold_{version}.jar')
     shutil.copyfile(ROOT / 'gold/README.md', DIST / f'Z_Gold_{version}.README.md')
     shutil.copyfile(ROOT / 'gold/TESTING.md', DIST / f'Z_Gold_{version}.TESTING.md')
-    shutil.copyfile(ROOT / 'gold/UPDATE-1.0.1.md', DIST / f'Z_Gold_{version}.UPDATE.md')
+    shutil.copyfile(ROOT / f'gold/UPDATE-{version}.md', DIST / f'Z_Gold_{version}.UPDATE.md')
     source = {}
     for path in (ROOT / 'gold').rglob('*'):
         if path.is_file() and 'target' not in path.relative_to(ROOT / 'gold').parts:
@@ -41,8 +43,9 @@ def main():
         source['dist/' + name] = DIST / name
     source['LICENSE'] = ROOT / 'LICENSE'
     archive(DIST / f'Z_Gold-Source_{version}.zip', source)
-    install_names = ['Z_Gold.jar', 'Z_Server_Pack_1.05_Gold.zip', f'Z_Gold_{version}.README.md', f'Z_Gold_{version}.TESTING.md',
-                     f'Z_Gold_{version}.UPDATE.md', f'Z_Gold-tests_{version}.json', 'Z_Server_Pack_1.05_Gold.zip.sha1', 'Z_Gold-preview_1.0.0.png']
+    # This release changes Java code only. Do not offer an older Gold-only RP as an installation update.
+    install_names = [f'Z_Gold_{version}.jar', f'Z_Gold_{version}.README.md', f'Z_Gold_{version}.TESTING.md',
+                     f'Z_Gold_{version}.UPDATE.md', f'Z_Gold-tests_{version}.json',f'Z_Gold-Source_{version}.zip']
     archive(DIST / f'Z_Gold_{version}-install.zip', {name: DIST / name for name in install_names})
     names = ['Z_Gold.jar', f'Z_Gold_{version}.jar', 'Z_Server_Pack_1.05_Gold.zip', f'Z_Gold-Source_{version}.zip', f'Z_Gold_{version}-install.zip']
     (DIST / 'Z_Gold-SHA256SUMS').write_text(''.join(hashlib.sha256((DIST / name).read_bytes()).hexdigest() + '  ' + name + '\n' for name in names))

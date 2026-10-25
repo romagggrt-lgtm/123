@@ -45,6 +45,9 @@ final class GoldStore {
     }
 
     void save(Map<UUID, Golda> goldas, Map<UUID, InventorySnapshot> deaths) throws IOException {
+        write(encode(goldas,deaths));
+    }
+    byte[] encode(Map<UUID, Golda> goldas, Map<UUID, InventorySnapshot> deaths) {
         YamlConfiguration out = new YamlConfiguration(); out.set("schema", 1);
         for (Golda g : goldas.values()) {
             ConfigurationSection s = out.createSection("goldas." + g.id);
@@ -55,10 +58,13 @@ final class GoldStore {
             if (g.token != null) s.set("token", g.token.toString());
         }
         deaths.forEach((id, snapshot) -> snapshot.write(out.createSection("deaths." + id)));
+        return out.saveToString().getBytes(StandardCharsets.UTF_8);
+    }
+    void write(byte[] data) throws IOException {
         Files.createDirectories(file.getParent());
         Path temp = Files.createTempFile(file.getParent(), "golda-", ".tmp");
         try {
-            Files.writeString(temp, out.saveToString(), StandardCharsets.UTF_8);
+            Files.write(temp, data);
             try (var channel = java.nio.channels.FileChannel.open(temp, StandardOpenOption.WRITE)) { channel.force(true); }
             try { Files.move(temp, file, StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING); }
             catch (AtomicMoveNotSupportedException ex) { Files.move(temp, file, StandardCopyOption.REPLACE_EXISTING); }

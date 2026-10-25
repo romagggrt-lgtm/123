@@ -71,20 +71,34 @@ class PluginTest {
         player.setOp(true); player.teleport(new Location(world, 0, 65, 0));
     }
     @AfterEach void cleanup() { MockBukkit.unmock(); }
-    private void command(String args) { assertTrue(server.dispatchCommand(server.getConsoleSender(), "zgold " + args)); }
+    private void settle() {
+        long deadline=System.nanoTime()+java.util.concurrent.TimeUnit.SECONDS.toNanos(5);
+        do {
+            plugin.pollStorage();if(plugin.writer.idle())return;
+            try {Thread.sleep(1);}catch(InterruptedException e){Thread.currentThread().interrupt();throw new AssertionError(e);}
+        }while(System.nanoTime()<deadline);
+        fail("Storage worker did not settle");
+    }
+    private boolean dispatch(org.bukkit.command.CommandSender sender,String command) {
+        boolean handled=server.dispatchCommand(sender,command);settle();return handled;
+    }
+    private void command(String args) { assertTrue(dispatch(server.getConsoleSender(), "zgold " + args));settle(); }
     private ItemStack give(int count) { command("give GoldTester " + count); return player.getInventory().getItemInMainHand(); }
     private void place(int x, int z) {
         var egg = give(1);
         server.getPluginManager().callEvent(new PlayerInteractEvent(player, Action.RIGHT_CLICK_BLOCK, egg,
             world.getBlockAt(x, 64, z), BlockFace.UP, EquipmentSlot.HAND));
+        settle();
     }
     private Interaction hitbox() { return world.getEntities().stream().filter(Interaction.class::isInstance).map(Interaction.class::cast).findFirst().orElseThrow(); }
     private ItemDisplay display() { return world.getEntities().stream().filter(ItemDisplay.class::isInstance).map(ItemDisplay.class::cast).findFirst().orElseThrow(); }
-    private void click() { server.getPluginManager().callEvent(new PlayerInteractEntityEvent(player, hitbox(), EquipmentSlot.HAND)); }
-    private void ticks(int n) { server.getScheduler().performTicks(n); }
-    private int gold() { return world.getEntities().stream().filter(Item.class::isInstance).map(Item.class::cast)
+    private void clickRaw(){server.getPluginManager().callEvent(new PlayerInteractEntityEvent(player,hitbox(),EquipmentSlot.HAND));}
+    private void click() {clickRaw();settle();}
+    private void ticks(int n) { server.getScheduler().performTicks(n);settle(); }
+    private int gold() {settle();return world.getEntities().stream().filter(Item.class::isInstance).map(Item.class::cast)
         .filter(i -> i.getItemStack().getType() == Material.GOLD_INGOT).mapToInt(i -> i.getItemStack().getAmount()).sum(); }
     private String answerCommand() {
+        settle();
         Component c;
         while ((c = player.nextComponentMessage()) != null) {
             String command = findCommand(c); if (command != null) return command;
@@ -132,8 +146,8 @@ class PluginTest {
     }
     @Test void copiedOrForgedAnswerCannotKillAnotherPlayer() {
         finishRewards(); String answer = answerCommand(); PlayerMock stranger = server.addPlayer("Stranger");
-        assertTrue(server.dispatchCommand(stranger, answer)); assertEquals(20, stranger.getHealth());
-        assertTrue(server.dispatchCommand(player, "zgold answer " + UUID.randomUUID() + " " + UUID.randomUUID() + " yes"));
+        assertTrue(dispatch(stranger, answer)); assertEquals(20, stranger.getHealth());
+        assertTrue(dispatch(player, "zgold answer " + UUID.randomUUID() + " " + UUID.randomUUID() + " yes"));
         assertEquals(20, player.getHealth());
     }
     @Test void bothAnswersKillWithNoDropsAndKeepEverySlotAndXp() {
@@ -148,8 +162,8 @@ class PluginTest {
             PlayerDeathEvent death = (PlayerDeathEvent) event; drops.addAll(death.getDrops()); deaths.incrementAndGet();
             assertTrue(death.getKeepInventory()); assertTrue(death.getKeepLevel()); assertEquals(0, death.getDroppedExp()); assertNull(death.deathMessage());
         }, plugin);
-        assertTrue(server.dispatchCommand(player, answer)); assertEquals(0, player.getHealth()); assertEquals(1, deaths.get()); assertTrue(drops.isEmpty());
-        assertTrue(server.dispatchCommand(player, answer)); assertEquals(1, deaths.get());
+        assertTrue(dispatch(player, answer)); assertEquals(0, player.getHealth()); assertEquals(1, deaths.get()); assertTrue(drops.isEmpty());
+        assertTrue(dispatch(player, answer)); assertEquals(1, deaths.get());
         player.respawn(); ticks(2);
         assertEquals(19, player.getInventory().getItem(0).getAmount()); assertEquals(Material.DIAMOND_HELMET, player.getInventory().getHelmet().getType());
         assertEquals(Material.SHIELD, player.getInventory().getItemInOffHand().getType()); assertEquals(7, player.getItemOnCursor().getAmount());
@@ -157,7 +171,7 @@ class PluginTest {
         ticks(20); assertTrue(world.getEntities().stream().noneMatch(e -> e instanceof ItemDisplay || e instanceof Interaction));
     }
     @Test void yesAnswerAlsoKillsAndFades() {
-        finishRewards(); String answer = answerCommand(); assertTrue(server.dispatchCommand(player, answer));
+        finishRewards(); String answer = answerCommand(); assertTrue(dispatch(player, answer));
         assertEquals(0, player.getHealth()); ticks(20);
         assertTrue(world.getEntities().stream().noneMatch(e -> e instanceof ItemDisplay || e instanceof Interaction));
     }
@@ -173,14 +187,14 @@ class PluginTest {
         finishRewards(); String answer = answerCommand();
         server.getPluginManager().registerEvent(PlayerDeathEvent.class, new Listener(){}, EventPriority.HIGHEST,
             (l, e) -> ((PlayerDeathEvent)e).setCancelled(true), plugin);
-        assertTrue(server.dispatchCommand(player, answer));
+        assertTrue(dispatch(player, answer));
         assertTrue(player.getHealth() > 0); ticks(20); assertEquals(1, world.getEntities().stream().filter(ItemDisplay.class::isInstance).count());
         click(); assertNotEquals(answer, answerCommand());
     }
     @Test void permissionsAndRenamingCannotBypassCustomEgg() {
         player.setOp(false); command("give GoldTester"); place(2, 0); // zgold.use is public by default.
         assertEquals(1, world.getEntities().stream().filter(ItemDisplay.class::isInstance).count());
-        assertTrue(server.dispatchCommand(player, "zgold removeall")); assertEquals(1, world.getEntities().stream().filter(ItemDisplay.class::isInstance).count());
+        assertTrue(dispatch(player, "zgold removeall")); assertEquals(1, world.getEntities().stream().filter(ItemDisplay.class::isInstance).count());
         command("removeall"); ItemStack fake = new ItemStack(Material.EGG); fake.editMeta(m -> m.displayName(Component.text("Яйцо Golda")));
         server.getPluginManager().callEvent(new PlayerInteractEvent(player, Action.RIGHT_CLICK_BLOCK, fake, world.getBlockAt(2, 64, 0), BlockFace.UP, EquipmentSlot.HAND));
         assertTrue(world.getEntities().stream().noneMatch(ItemDisplay.class::isInstance));
@@ -200,12 +214,12 @@ class PluginTest {
         assertEquals(10, gold()); assertEquals(2, world.getEntities().stream().filter(ItemDisplay.class::isInstance).count());
     }
     @Test void removeInvalidatesOldAnswerAndDeletesBothEntities() {
-        finishRewards(); String answer = answerCommand(); command("removeall"); assertTrue(server.dispatchCommand(player, answer));
+        finishRewards(); String answer = answerCommand(); command("removeall"); assertTrue(dispatch(player, answer));
         assertEquals(20, player.getHealth()); assertTrue(world.getEntities().stream().noneMatch(e -> e instanceof ItemDisplay || e instanceof Interaction));
     }
     @Test void deathJournalSurvivesDisableAndRecoversAfterRespawn() throws Exception {
         finishRewards(); String answer = answerCommand(); player.getInventory().setItem(0, new ItemStack(Material.NETHERITE_SWORD));
-        assertTrue(server.dispatchCommand(player, answer));
+        assertTrue(dispatch(player, answer));
         Map<UUID, Golda> goldas = new HashMap<>(); Map<UUID, InventorySnapshot> pending = new HashMap<>();
         new GoldStore(plugin.getDataFolder().toPath().resolve("golda-state.yml")).load(goldas, pending);
         assertTrue(pending.get(player.getUniqueId()).confirmed); assertTrue(goldas.isEmpty());
@@ -256,7 +270,7 @@ class PluginTest {
         finishRewards(); String answer = answerCommand();
         plugin.onDisable(); HandlerList.unregisterAll((org.bukkit.plugin.Plugin)plugin); server.getScheduler().cancelTasks(plugin); plugin.onEnable();
         assertEquals(1, world.getEntities().stream().filter(ItemDisplay.class::isInstance).count());
-        assertTrue(server.dispatchCommand(player, answer)); assertEquals(0, player.getHealth());
+        assertTrue(dispatch(player, answer)); assertEquals(0, player.getHealth());
         assertEquals(15, gold());
     }
     @Test void deniedUseDoesNotConsumeEggOrSpawnVisual() {
@@ -272,11 +286,11 @@ class PluginTest {
         assertEquals(15, gold());
         Component c; String answer = null;
         while ((c = other.nextComponentMessage()) != null) { String found = findCommand(c); if (found != null) { answer = found; break; } }
-        assertNotNull(answer); assertTrue(server.dispatchCommand(player, answer)); assertEquals(20, player.getHealth());
-        assertTrue(server.dispatchCommand(other, answer)); assertEquals(0, other.getHealth());
+        assertNotNull(answer); assertTrue(dispatch(player, answer)); assertEquals(20, player.getHealth());
+        assertTrue(dispatch(other, answer)); assertEquals(0, other.getHealth());
     }
     @Test void consumedAnswerIsRemovedEvenIfChunkUnloadsDuringFade() {
-        finishRewards(); assertTrue(server.dispatchCommand(player, answerCommand()));
+        finishRewards(); assertTrue(dispatch(player, answerCommand()));
         server.getPluginManager().callEvent(new ChunkUnloadEvent(world.getChunkAt(0, 0), true));
         server.getPluginManager().callEvent(new ChunkLoadEvent(world.getChunkAt(0, 0), false)); ticks(2);
         assertTrue(world.getEntities().stream().noneMatch(e -> e instanceof ItemDisplay || e instanceof Interaction));
@@ -334,5 +348,89 @@ class PluginTest {
         enablePluginPack(); joinAgain(); ticks(10);
         plugin.getConfig().set("resource-pack.enabled", false); plugin.saveConfig(); command("reload");
         ticks(100); assertEquals(0, ((SavedPlayer)player).packRequests);
+    }
+    @Test void emptyChunksAndIdleTicksDoNotScheduleAnyDiskWrites(){
+        long before=plugin.writer.submitted();
+        for(int n=0;n<100;n++)server.getPluginManager().callEvent(new ChunkUnloadEvent(world.getChunkAt(10+n,10),true));
+        ticks(1000);assertEquals(before,plugin.writer.submitted());
+    }
+    static final class DiskGate implements AutoCloseable {
+        final java.util.concurrent.CountDownLatch entered=new java.util.concurrent.CountDownLatch(1),release=new java.util.concurrent.CountDownLatch(1);
+        @Override public void close(){release.countDown();}
+    }
+    private DiskGate blockDisk()throws Exception{
+        settle();Path file=plugin.getDataFolder().toPath().resolve("golda-state.yml");
+        assertTrue(plugin.writer.finish(Files.readAllBytes(file),java.time.Duration.ofSeconds(1)));
+        DiskGate gate=new DiskGate();GoldStore actual=new GoldStore(file);
+        plugin.writer=new GoldWriter(data->{gate.entered.countDown();try{gate.release.await();}catch(InterruptedException e){throw new java.io.IOException(e);}actual.write(data);});
+        return gate;
+    }
+    private int goldNow(){return world.getEntities().stream().filter(Item.class::isInstance).map(Item.class::cast)
+        .filter(i->i.getItemStack().getType()==Material.GOLD_INGOT).mapToInt(i->i.getItemStack().getAmount()).sum();}
+    @Test void slowRewardSaveDoesNotFreezeTicksOrDuplicateGold()throws Exception{
+        place(2,0);ticks(52);
+        try(DiskGate gate=blockDisk()){
+            clickRaw();assertTrue(gate.entered.await(1,java.util.concurrent.TimeUnit.SECONDS));assertEquals(0,goldNow());
+            AtomicInteger otherTask=new AtomicInteger();server.getScheduler().runTaskTimer(plugin,otherTask::incrementAndGet,1,1);
+            server.getScheduler().performTicks(100);assertEquals(100,otherTask.get());clickRaw();assertEquals(0,goldNow());
+            gate.close();settle();assertEquals(5,goldNow());
+        }
+    }
+    @Test void staleInventoryCancelsDeferredDeathWithoutOverwritingNewItems()throws Exception{
+        finishRewards();String answer=answerCommand();player.getInventory().setItem(0,new ItemStack(Material.DIAMOND,4));
+        try(DiskGate gate=blockDisk()){
+            assertTrue(server.dispatchCommand(player,answer));assertTrue(gate.entered.await(1,java.util.concurrent.TimeUnit.SECONDS));assertEquals(20,player.getHealth());
+            var drop=new PlayerDropItemEvent(player,world.dropItem(player.getLocation(),new ItemStack(Material.DIAMOND)));
+            server.getPluginManager().callEvent(drop);assertTrue(drop.isCancelled());
+            // External plugins may bypass inventory events. Revalidation must retain their newer data.
+            player.getInventory().setItem(0,new ItemStack(Material.DIAMOND,9));
+            gate.close();settle();assertEquals(20,player.getHealth());assertEquals(9,player.getInventory().getItem(0).getAmount());
+            Map<UUID,InventorySnapshot> journal=new HashMap<>();new GoldStore(plugin.getDataFolder().toPath().resolve("golda-state.yml")).load(new HashMap<>(),journal);
+            assertTrue(journal.isEmpty());
+        }
+    }
+    @Test void failedRewardWriteDoesNotIssueGoldAndBlocksFurtherEconomyActions()throws Exception{
+        place(2,0);ticks(52);settle();Path file=plugin.getDataFolder().toPath().resolve("golda-state.yml");
+        assertTrue(plugin.writer.finish(Files.readAllBytes(file),java.time.Duration.ofSeconds(1)));byte[] previous=Files.readAllBytes(file);
+        plugin.writer=new GoldWriter(data->{throw new java.io.IOException("simulated disk error");});clickRaw();settle();
+        assertEquals(0,goldNow());clickRaw();settle();assertEquals(0,goldNow());assertArrayEquals(previous,Files.readAllBytes(file));
+    }
+    @Test void quittingDuringDeferredDeathCancelsItAndClearsJournal()throws Exception{
+        finishRewards();String answer=answerCommand();
+        try(DiskGate gate=blockDisk()){
+            assertTrue(server.dispatchCommand(player,answer));assertTrue(gate.entered.await(1,java.util.concurrent.TimeUnit.SECONDS));
+            plugin.quit(new PlayerQuitEvent(player,Component.empty()));gate.close();settle();assertEquals(20,player.getHealth());
+            Map<UUID,InventorySnapshot> journal=new HashMap<>();new GoldStore(plugin.getDataFolder().toPath().resolve("golda-state.yml")).load(new HashMap<>(),journal);assertTrue(journal.isEmpty());
+        }
+    }
+    @Test void savedRecoveryReceiptPreventsReplayingAnOlderInventory()throws Exception{
+        player.getInventory().setItem(0,new ItemStack(Material.DIAMOND,4));InventorySnapshot snapshot=new InventorySnapshot(player);snapshot.confirmed=true;
+        Path file=plugin.getDataFolder().toPath().resolve("golda-state.yml");
+        plugin.onDisable();HandlerList.unregisterAll((org.bukkit.plugin.Plugin)plugin);server.getScheduler().cancelTasks(plugin);
+        new GoldStore(file).save(Map.of(),Map.of(player.getUniqueId(),snapshot));plugin.onEnable();settle();assertTrue(((SavedPlayer)player).saved);
+        player.getInventory().setItem(0,new ItemStack(Material.DIAMOND,9));
+        plugin.onDisable();HandlerList.unregisterAll((org.bukkit.plugin.Plugin)plugin);server.getScheduler().cancelTasks(plugin);
+        // Simulate a committed recovery whose subsequent journal deletion was lost.
+        new GoldStore(file).save(Map.of(),Map.of(player.getUniqueId(),snapshot));plugin.onEnable();settle();
+        assertEquals(9,player.getInventory().getItem(0).getAmount());
+    }
+    @Test void legacyJournalWithoutRecoveryIdRemainsReadable()throws Exception{
+        player.getInventory().setItem(0,new ItemStack(Material.EMERALD,11));InventorySnapshot snapshot=new InventorySnapshot(player);
+        Path file=Files.createTempFile("legacy-gold-journal",".yml");GoldStore store=new GoldStore(file);store.save(Map.of(),Map.of(player.getUniqueId(),snapshot));
+        var yaml=org.bukkit.configuration.file.YamlConfiguration.loadConfiguration(file.toFile());yaml.set("deaths."+player.getUniqueId()+".recovery-id",null);yaml.save(file.toFile());
+        Map<UUID,InventorySnapshot> first=new HashMap<>(),second=new HashMap<>();store.load(new HashMap<>(),first);store.load(new HashMap<>(),second);
+        assertEquals(first.get(player.getUniqueId()).recoveryId,second.get(player.getUniqueId()).recoveryId);
+        player.getInventory().clear();first.get(player.getUniqueId()).restore(player);assertEquals(11,player.getInventory().getItem(0).getAmount());Files.delete(file);
+    }
+    @Test void stoppingDuringDeferredDeathCancelsEffectAndSavesRollback()throws Exception{
+        finishRewards();String answer=answerCommand();
+        try(DiskGate gate=blockDisk()){
+            assertTrue(server.dispatchCommand(player,answer));assertTrue(gate.entered.await(1,java.util.concurrent.TimeUnit.SECONDS));
+            Thread release=new Thread(()->{try{Thread.sleep(20);}catch(InterruptedException e){Thread.currentThread().interrupt();}gate.close();});release.start();
+            plugin.onDisable();release.join();HandlerList.unregisterAll((org.bukkit.plugin.Plugin)plugin);server.getScheduler().cancelTasks(plugin);
+            plugin.onEnable();settle();assertEquals(20,player.getHealth());
+            Map<UUID,InventorySnapshot> journal=new HashMap<>();new GoldStore(plugin.getDataFolder().toPath().resolve("golda-state.yml")).load(new HashMap<>(),journal);assertTrue(journal.isEmpty());
+            assertEquals(1,world.getEntities().stream().filter(ItemDisplay.class::isInstance).count());
+        }
     }
 }

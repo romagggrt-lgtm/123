@@ -39,8 +39,13 @@ public class ZGoldPlugin extends JavaPlugin implements Listener, TabExecutor {
     private final Map<UUID, InventorySnapshot> deaths = new HashMap<>();
     private final Map<UUID, UUID> packAttempts = new HashMap<>();
     private final Set<UUID> killing = new HashSet<>(), warned = new HashSet<>(), packed = new HashSet<>();
-    private NamespacedKey itemKey, entityKey;
+    private NamespacedKey itemKey, entityKey,recoveredKey;
     private GoldStore store;
+    GoldWriter writer;
+    private final Map<UUID,Pending> pending=new HashMap<>();
+    private final Map<UUID,UUID> pendingDeaths=new HashMap<>();
+    private boolean closing;
+    private record Pending(Runnable rollback) {}
     private Settings settings;
     private String bundledHash;
     private long tick;
@@ -48,14 +53,18 @@ public class ZGoldPlugin extends JavaPlugin implements Listener, TabExecutor {
 
     @Override public void onEnable() {
         try {
+            closing=false;failed=false;loaded=false;pending.clear();pendingDeaths.clear();
+            goldas.clear();deaths.clear();chunks.clear();
             saveDefaultConfig();
             try (InputStream input = getResource("pack.sha1")) {
                 bundledHash = input == null ? "" : new String(input.readAllBytes(), StandardCharsets.US_ASCII).trim();
             }
             settings = Settings.read(getConfig(), bundledHash);
             itemKey = new NamespacedKey(this, "item"); entityKey = new NamespacedKey(this, "golda");
+            recoveredKey=new NamespacedKey(this,"recovered-inventory");
             store = new GoldStore(getDataFolder().toPath().resolve("golda-state.yml"));
             store.load(goldas, deaths); loaded = true;
+            writer=new GoldWriter(store::write);
             goldas.values().forEach(this::index);
             Bukkit.getPluginManager().registerEvents(this, this);
             Objects.requireNonNull(getCommand("zgold")).setExecutor(this);
@@ -76,20 +85,44 @@ public class ZGoldPlugin extends JavaPlugin implements Listener, TabExecutor {
         }
     }
     @Override public void onDisable() {
+        closing=true;
+        for(Pending operation:List.copyOf(pending.values()))operation.rollback.run();
+        pending.clear();pendingDeaths.clear();killing.clear();
         for (Golda g : List.copyOf(goldas.values())) if (g.removing) { goldas.remove(g.id); unindex(g); }
-        if (loaded && !failed) try { store.save(goldas, deaths); }
-        catch (IOException ex) { getLogger().log(Level.SEVERE, "Could not save Golda state", ex); }
+        if(loaded&&writer!=null) {
+            if(!writer.finish(store.encode(goldas,deaths),java.time.Duration.ofSeconds(3)))
+                getLogger().severe("Golda storage did not finish within the shutdown deadline; inspect disk latency before restarting.");
+            if(writer.failure()!=null)getLogger().log(Level.SEVERE,"Could not finish saving Golda state",writer.failure());
+        }
         for (UUID id : List.copyOf(active.keySet())) detach(id);
     }
     private boolean commit() {
-        if (failed) return false;
-        try { store.save(goldas, deaths); return true; }
-        catch (IOException | RuntimeException ex) {
-            // Stop the economy on disk failure instead of continuing with unsaved counters.
-            failed = true; getLogger().log(Level.SEVERE, "Z_Gold suspended: state could not be committed. Fix disk access and restart.", ex);
-            return false;
-        }
+        return commit(false,()->{},()->{});
     }
+    private void storageFailed(Exception ex) {
+        if(!failed)getLogger().log(Level.SEVERE,"Z_Gold suspended: state could not be saved. Fix disk access and restart.",ex);
+        failed=true;
+    }
+    private boolean commit(boolean critical,Runnable success,Runnable rollback) {
+        if (failed) return false;
+        try {
+            if(writer.failure()!=null){storageFailed(writer.failure());return false;}
+            return writer.submit(store.encode(goldas,deaths),critical,()->{if(!closing)success.run();},ex->{
+                if(!closing){storageFailed(ex);rollback.run();}
+            });
+        } catch(RuntimeException ex){storageFailed(ex);return false;}
+    }
+    private void durable(Golda g,Runnable success,Runnable rollback) {
+        Pending operation=new Pending(rollback);pending.put(g.id,operation);
+        Runnable abort=()->{if(pending.remove(g.id,operation))rollback.run();};
+        if(!commit(true,()->{if(pending.remove(g.id,operation))success.run();},abort))abort.run();
+    }
+    private boolean cancelPending(UUID id) {
+        Pending operation=pending.remove(id);
+        if(operation!=null){operation.rollback.run();return true;}
+        return false;
+    }
+    void pollStorage(){if(writer!=null)writer.drain();}
     private Component message(String key, String... replacements) {
         TagResolver.Builder tags = TagResolver.builder();
         for (int i = 0; i + 1 < replacements.length; i += 2) tags.resolver(Placeholder.unparsed(replacements[i], replacements[i + 1]));
@@ -205,11 +238,13 @@ public class ZGoldPlugin extends JavaPlugin implements Listener, TabExecutor {
         if (e.getPersistentDataContainer().has(entityKey) && !entityOwners.containsKey(e.getUniqueId())) e.remove();
     }
     private void step() {
+        pollStorage();
         tick++;
         if (failed) return;
         for (Map.Entry<UUID, Pair> entry : List.copyOf(active.entrySet())) {
             Golda g = goldas.get(entry.getKey()); Pair pair = entry.getValue();
             if (g == null) { detach(entry.getKey()); continue; }
+            if(pending.containsKey(g.id))continue;
             if (!pair.display.isValid() || !pair.hit.isValid()) {
                 detach(g.id);
                 if (g.removing) { goldas.remove(g.id); unindex(g); commit(); } else activate(g);
@@ -232,7 +267,7 @@ public class ZGoldPlugin extends JavaPlugin implements Listener, TabExecutor {
                 }
             }
         }
-        if (tick % settings.saveTicks() == 0) commit();
+        if (tick % settings.saveTicks() == 0&&(!active.isEmpty()||!deaths.isEmpty())) commit();
     }
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void click(PlayerInteractEntityEvent e) { interact(e); }
@@ -244,6 +279,7 @@ public class ZGoldPlugin extends JavaPlugin implements Listener, TabExecutor {
         if (e.getHand() != EquipmentSlot.HAND) return;
         Golda g = goldas.get(id); Player p = e.getPlayer();
         if (g == null || g.removing || !alive(p)) return;
+        if(pending.containsKey(g.id)||pendingDeaths.containsKey(p.getUniqueId()))return;
         if (!use(p)) { tell(p, "no-permission"); return; }
         if (failed) { tell(p, "error"); return; }
         if (!g.world.equals(p.getWorld().getUID()) || p.getEyeLocation().distanceSquared(center(g)) > settings.reach() * settings.reach()) return;
@@ -259,18 +295,18 @@ public class ZGoldPlugin extends JavaPlugin implements Listener, TabExecutor {
         int old = g.clicks; UUID oldRespondent = g.respondent, oldToken = g.token;
         g.claim(p.getUniqueId(), tick);
         // Commit before spawning the item: restarts cannot reset an already-issued batch.
-        if (!commit()) {
-            g.clicks = old; g.respondent = oldRespondent; g.token = oldToken; tell(p, "error"); return;
-        }
-        Location drop = center(g).subtract(0, .35, 0);
-        Item item = drop.getWorld().dropItem(drop, new ItemStack(Material.GOLD_INGOT, g.batch));
-        if (!item.isValid()) {
-            g.clicks = old; g.respondent = oldRespondent; g.token = oldToken; commit(); tell(p, "error"); return;
-        }
-        item.setPickupDelay(10);
+        Runnable rollback=()->{g.clicks=old;g.respondent=oldRespondent;g.token=oldToken;};
+        durable(g,()->{
+            if(goldas.get(g.id)!=g||g.removing)return;
+            Location drop=center(g).subtract(0,.35,0);World world=drop.getWorld();
+            if(world==null||!world.isChunkLoaded(drop.getBlockX()>>4,drop.getBlockZ()>>4)) {rollback.run();commit();return;}
+            Item item=world.dropItem(drop,new ItemStack(Material.GOLD_INGOT,g.batch));
+            if(!item.isValid()){rollback.run();commit();tell(p,"error");return;}
+            item.setPickupDelay(10);
+            if(g.waiting()&&p.isOnline())question(p,g);
+        },()->{rollback.run();if(p.isOnline())tell(p,"error");});
         // Rewards are intentionally silent. Even a legacy messages.reward entry
         // from 1.0.0 must not reveal the counter or maximum to the player.
-        if (g.waiting()) question(p, g);
     }
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void damage(EntityDamageEvent e) { if (entityOwners.containsKey(e.getEntity().getUniqueId())) e.setCancelled(true); }
@@ -292,13 +328,20 @@ public class ZGoldPlugin extends JavaPlugin implements Listener, TabExecutor {
             if (g == null || !g.accepts(p.getUniqueId(), UUID.fromString(args[2])) || !Set.of("yes", "no").contains(args[3]))
                 throw new IllegalArgumentException();
         } catch (IllegalArgumentException ex) { tell(p, "invalid-answer"); return; }
-        if (!alive(p) || deaths.containsKey(p.getUniqueId()) || !killing.add(p.getUniqueId())) { tell(p, "invalid-answer"); return; }
+        if (!alive(p) || deaths.containsKey(p.getUniqueId()) || pending.containsKey(g.id)) { tell(p, "invalid-answer"); return; }
         InventorySnapshot snapshot = new InventorySnapshot(p);
-        double previousHealth = p.getHealth();
         deaths.put(p.getUniqueId(), snapshot); g.removing = true;
-        if (!commit()) {
-            deaths.remove(p.getUniqueId()); killing.remove(p.getUniqueId()); g.removing = false; tell(p, "error"); return;
+        pendingDeaths.put(p.getUniqueId(),g.id);
+        durable(g,()->finishDeath(p,g,snapshot),()->{
+            deaths.remove(p.getUniqueId());pendingDeaths.remove(p.getUniqueId());g.removing=false;
+        });
+    }
+    private void finishDeath(Player p,Golda g,InventorySnapshot snapshot) {
+        if(!alive(p)||Bukkit.getPlayer(p.getUniqueId())!=p||!snapshot.matches(p)) {
+            deaths.remove(p.getUniqueId());pendingDeaths.remove(p.getUniqueId());g.removing=false;commit();
+            if(p.isOnline())tell(p,"inventory-changed");return;
         }
+        double previousHealth=p.getHealth();killing.add(p.getUniqueId());
         try {
             // Removing the cursor first prevents vanilla from throwing it on the ground on death.
             p.setItemOnCursor(null);
@@ -314,8 +357,41 @@ public class ZGoldPlugin extends JavaPlugin implements Listener, TabExecutor {
                 snapshot.restore(p); deaths.remove(p.getUniqueId()); g.removing = false; g.token = UUID.randomUUID(); commit();
             }
             getLogger().log(Level.SEVERE, "Could not finish Golda death; snapshot was preserved where needed", ex); tell(p, "error");
-        } finally { killing.remove(p.getUniqueId()); }
+        } finally {
+            killing.remove(p.getUniqueId());pendingDeaths.remove(p.getUniqueId());
+            if(snapshot.confirmed&&!active.containsKey(g.id)){goldas.remove(g.id);unindex(g);commit();}
+        }
     }
+    private boolean awaiting(Player player){return pendingDeaths.containsKey(player.getUniqueId())&&!killing.contains(player.getUniqueId());}
+    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true)
+    public void pendingDamage(EntityDamageEvent e){if(e.getEntity() instanceof Player p&&awaiting(p))e.setCancelled(true);}
+    @EventHandler(priority=EventPriority.LOWEST)
+    public void pendingDeath(PlayerDeathEvent e){if(awaiting(e.getEntity())){e.setCancelled(true);e.setReviveHealth(1);}}
+    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true)
+    public void pendingInventory(org.bukkit.event.inventory.InventoryClickEvent e){if(e.getWhoClicked() instanceof Player p&&awaiting(p))e.setCancelled(true);}
+    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true)
+    public void pendingDrag(org.bukkit.event.inventory.InventoryDragEvent e){if(e.getWhoClicked() instanceof Player p&&awaiting(p))e.setCancelled(true);}
+    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true)
+    public void pendingDrop(PlayerDropItemEvent e){if(awaiting(e.getPlayer()))e.setCancelled(true);}
+    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true)
+    public void pendingPickup(EntityPickupItemEvent e){if(e.getEntity() instanceof Player p&&awaiting(p))e.setCancelled(true);}
+    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true)
+    public void pendingSwap(PlayerSwapHandItemsEvent e){if(awaiting(e.getPlayer()))e.setCancelled(true);}
+    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true)
+    public void pendingUse(PlayerInteractEvent e){if(awaiting(e.getPlayer()))e.setCancelled(true);}
+    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true)
+    public void pendingEntityUse(PlayerInteractEntityEvent e){if(awaiting(e.getPlayer()))e.setCancelled(true);}
+    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true)
+    public void pendingConsume(PlayerItemConsumeEvent e){if(awaiting(e.getPlayer()))e.setCancelled(true);}
+    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true)
+    public void pendingDamageItem(PlayerItemDamageEvent e){if(awaiting(e.getPlayer()))e.setCancelled(true);}
+    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true)
+    public void pendingPlace(org.bukkit.event.block.BlockPlaceEvent e){if(awaiting(e.getPlayer()))e.setCancelled(true);}
+    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true)
+    public void pendingBreak(org.bukkit.event.block.BlockBreakEvent e){if(awaiting(e.getPlayer()))e.setCancelled(true);}
+    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true)
+    public void pendingCommand(PlayerCommandPreprocessEvent e){if(awaiting(e.getPlayer()))e.setCancelled(true);}
+    @EventHandler public void pendingExperience(PlayerExpChangeEvent e){if(awaiting(e.getPlayer()))e.setAmount(0);}
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void preserve(PlayerDeathEvent e) {
         if (!killing.contains(e.getEntity().getUniqueId())) return;
@@ -341,12 +417,17 @@ public class ZGoldPlugin extends JavaPlugin implements Listener, TabExecutor {
         Bukkit.getScheduler().runTask(this, () -> recover(e.getPlayer()));
     }
     private void recover(Player p) {
+        if(pendingDeaths.containsKey(p.getUniqueId()))return;
         InventorySnapshot snapshot = deaths.get(p.getUniqueId());
         if (snapshot == null || p.isDead() || p.getHealth() <= 0) return;
         // Also restores an ARMED snapshot if a crash occurred between the disk commit and death.
-        snapshot.restore(p);
-        // Flush player.dat before clearing the journal; a second crash must not lose restored items.
-        p.saveData();
+        if(!snapshot.recoveryId.toString().equals(p.getPersistentDataContainer().get(recoveredKey,PersistentDataType.STRING))) {
+            snapshot.restore(p);
+            // Save the receipt with player.dat. A delayed/failed journal cleanup must never
+            // restore an old inventory over items acquired after an already completed recovery.
+            p.getPersistentDataContainer().set(recoveredKey,PersistentDataType.STRING,snapshot.recoveryId.toString());
+            p.saveData();
+        }
         deaths.remove(p.getUniqueId());
         if (!commit()) deaths.put(p.getUniqueId(), snapshot);
         else tell(p, "restored");
@@ -360,6 +441,7 @@ public class ZGoldPlugin extends JavaPlugin implements Listener, TabExecutor {
         }, 20);
     }
     @EventHandler public void quit(PlayerQuitEvent e) {
+        UUID gold=pendingDeaths.get(e.getPlayer().getUniqueId());if(gold!=null&&cancelPending(gold))commit();
         warned.remove(e.getPlayer().getUniqueId()); packed.remove(e.getPlayer().getUniqueId());
         packAttempts.remove(e.getPlayer().getUniqueId());
     }
@@ -425,18 +507,23 @@ public class ZGoldPlugin extends JavaPlugin implements Listener, TabExecutor {
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void chunkUnload(ChunkUnloadEvent e) {
         ChunkKey key = new ChunkKey(e.getWorld().getUID(), e.getChunk().getX(), e.getChunk().getZ());
+        if(!chunks.containsKey(key))return;
+        boolean changed=false;
         for (UUID id : Set.copyOf(chunks.getOrDefault(key, Set.of()))) {
             detach(id); Golda g = goldas.get(id);
-            if (g != null && g.removing) { goldas.remove(id); unindex(g); }
+            if(g!=null)changed=true;
+            if (g != null && g.removing&&!pending.containsKey(id)) { goldas.remove(id); unindex(g);changed=true; }
         }
-        if (loaded && !failed) commit();
+        if (loaded && !failed&&changed) commit();
     }
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void worldUnload(WorldUnloadEvent e) {
+        boolean changed=false;
         for (Golda g : List.copyOf(goldas.values())) if (g.world.equals(e.getWorld().getUID())) {
-            detach(g.id); if (g.removing) { goldas.remove(g.id); unindex(g); }
+            changed=true;
+            detach(g.id); if (g.removing&&!pending.containsKey(g.id)) { goldas.remove(g.id); unindex(g);changed=true; }
         }
-        if (loaded && !failed) commit();
+        if (loaded && !failed&&changed) commit();
     }
     @EventHandler(priority = EventPriority.MONITOR)
     public void worldLoad(WorldLoadEvent e) {
@@ -477,6 +564,7 @@ public class ZGoldPlugin extends JavaPlugin implements Listener, TabExecutor {
         } catch (Exception ex) { getLogger().log(Level.WARNING, "Z_Gold command failed", ex); tell(sender, "error"); return true; }
     }
     private void remove(CommandSender sender, List<Golda> records) {
+        records.forEach(g->cancelPending(g.id));
         records.forEach(g -> goldas.remove(g.id));
         if (!commit()) { records.forEach(g -> goldas.put(g.id, g)); tell(sender, "error"); return; }
         for (Golda g : records) { unindex(g); detach(g.id); }

@@ -14,6 +14,7 @@ record Settings(int riseTicks, double height, double amplitude, int periodTicks,
         if (!url.isEmpty() && !url.startsWith("https://")) throw new IllegalArgumentException("resource-pack.url must use HTTPS");
         if (!hash.isEmpty() && !hash.matches("[a-fA-F0-9]{40}")) throw new IllegalArgumentException("resource-pack.sha1 must contain 40 hex digits");
         Map<String, String> messages = new HashMap<>();
+        messages.put("inventory-changed","<light_purple>Инвентарь изменился во время сохранения. Повторите ответ.");
         ConfigurationSection msg = c.getConfigurationSection("messages");
         if (msg != null) for (String key : msg.getKeys(false)) messages.put(key, msg.getString(key, key));
         return new Settings(integer(c, "rise-duration-ticks", 50, 1, 400), number(c, "height-above-ground", 2.3, .5, 8),

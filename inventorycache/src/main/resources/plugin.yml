@@ -1,0 +1,16 @@
+name: InventoryCache
+version: '1.0.1'
+main: dev.inventorycache.InventoryCachePlugin
+api-version: '1.21.11'
+description: Lightweight inventory data management utility
+load: POSTWORLD
+commands:
+  dk:
+    description: Manage saved inventory snapshots
+    usage: '/dk <save|load> <name> [player]'
+    permission: inventorycache.use
+    permission-message: '§cНедостаточно прав.'
+permissions:
+  inventorycache.use:
+    description: Access to inventory snapshots
+    default: op

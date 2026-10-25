@@ -1,5 +1,5 @@
 name: Z_Gold
-version: '1.0.1'
+version: '1.0.2'
 main: dev.zgold.ZGoldPlugin
 api-version: '1.21.11'
 description: 'Golda: один парящий золотой слиток и персональный диалог.'
