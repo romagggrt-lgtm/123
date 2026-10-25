@@ -1,0 +1,38 @@
+[
+  {
+    "artifact": "javazoom:jlayer:1.0.1",
+    "source_url": "https://repo.maven.apache.org/maven2/javazoom/jlayer/1.0.1/jlayer-1.0.1-sources.jar",
+    "sha256": "ecde410fc8940ab5d8d5a1d5c585870a3a194f4001701e66a27b8dd8cb7b75ce",
+    "bytes": 135125
+  },
+  {
+    "artifact": "com.github.axet:jvorbis:1.3.6",
+    "source_url": "https://repo.maven.apache.org/maven2/com/github/axet/jvorbis/1.3.6/jvorbis-1.3.6-sources.jar",
+    "sha256": "9cd5e6676236c18c2110a24f53e9c3e8ef661f469375afc24e39013b0f9dfb35",
+    "bytes": 399781
+  },
+  {
+    "artifact": "com.github.axet:jogg:1.3.3",
+    "source_url": "https://repo.maven.apache.org/maven2/com/github/axet/jogg/1.3.3/jogg-1.3.3-sources.jar",
+    "sha256": "a7e71e1965aa1a0b9ca712ee6d8c81c3a488d5f457d2b78fecbd5c488d4319c2",
+    "bytes": 26108
+  },
+  {
+    "artifact": "com.googlecode.soundlibs:vorbisspi:1.0.3.3",
+    "source_url": "https://repo.maven.apache.org/maven2/com/googlecode/soundlibs/vorbisspi/1.0.3.3/vorbisspi-1.0.3.3-sources.jar",
+    "sha256": "bb31109bd8953a286f2ba18b36085f247f520e0392b532d36b840622ac9c757b",
+    "bytes": 17165
+  },
+  {
+    "artifact": "com.googlecode.soundlibs:jorbis:0.0.17.4",
+    "source_url": "https://repo.maven.apache.org/maven2/com/googlecode/soundlibs/jorbis/0.0.17.4/jorbis-0.0.17.4-sources.jar",
+    "sha256": "bdfc2237ac3fe7f24207569170b4733eb3bf12b31294d6950d2c3b155a8bc1e5",
+    "bytes": 89283
+  },
+  {
+    "artifact": "com.googlecode.soundlibs:tritonus-share:0.3.7.4",
+    "source_url": "https://repo.maven.apache.org/maven2/com/googlecode/soundlibs/tritonus-share/0.3.7.4/tritonus-share-0.3.7.4-sources.jar",
+    "sha256": "54ddf95a25cb4555365501b5994a8a548cecf758dcced80d07a4f4c68d79cda9",
+    "bytes": 136120
+  }
+]

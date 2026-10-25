@@ -1,0 +1,209 @@
+{
+  "DimensionVoid": {
+    "source": "src/main/java/ru/smplore/fabric/minimal/DimensionVoid.java",
+    "sha256": "8b542138023a0f78a39e5acd92a9d70f73f298d6d248ea7c12e24bf81f1e5d58",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "VoidForecast": {
+    "source": "fabric/src/main/java/ru/smplore/fabric/minimal/VoidForecast.java",
+    "sha256": "caebaf18ac72eec1fe53c1ae9b0df818f33b5bb12fe58f7308668278a21dd951",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "AlarmSettings": {
+    "source": "fabric/src/main/java/ru/smplore/fabric/minimal/AlarmSettings.java",
+    "sha256": "31bab3e0ca9f2467b724330dccf03fdb3fa0591a2c2e1de7dc9a0fc52d19d9b4",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "RestrictionSettings": {
+    "source": "fabric/src/main/java/ru/smplore/fabric/minimal/RestrictionSettings.java",
+    "sha256": "009c959fe25288e0433445d20112013b33c308f80cd450f77b6ca700ec0a7cf3",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "DeviceFuel": {
+    "source": "fabric/src/main/java/ru/smplore/fabric/minimal/DeviceFuel.java",
+    "sha256": "6d08f0b96ef14c20068a7672ec8be1b9a1185ba5c4f1e97d5c1d3d55865148eb",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "FlightFailures": {
+    "source": "fabric/src/main/java/ru/smplore/fabric/minimal/FlightFailures.java",
+    "sha256": "8e0f76425f07dbabab1df9157fa42cd878f20ea20689224dce33856ec6545352",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "DomeBoundary": {
+    "source": "fabric/src/main/java/ru/smplore/fabric/minimal/DomeBoundary.java",
+    "sha256": "893e35f8b76f1a181628b889552f42d2a53b3b68be2d793c8fe0be8b7667aa31",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "Domes": {
+    "source": "src/main/java/ru/smplore/shared/Domes.java",
+    "sha256": "7bac6c7616416e7e1c7c667b0dd46c2889d618b8471425aa8a8873b3444ca0d8",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "DomeAnimation": {
+    "source": "src/main/java/ru/smplore/shared/DomeAnimation.java",
+    "sha256": "5bf27afc8ae285e1bb59b9d24bee688f9cde344cf2c26e8704c8d79e6f82104e",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "SphereMesh": {
+    "source": "fabric/src/main/java/ru/smplore/fabric/minimal/SphereMesh.java",
+    "sha256": "80db4d357bb41e1a821802e7d750b4bd92da7f3600f179785050787513299fc1",
+    "changes": [
+      "package relocation to dev.zlor.rules",
+      "Replace Fabric DeviceRuntime.RADIUS with the approved constant 50"
+    ]
+  },
+  "HexDomeMesh": {
+    "source": "fabric/src/main/java/ru/smplore/fabric/minimal/HexDomeMesh.java",
+    "sha256": "18bed2f233ae501b2cc2a267c23970a29695117d1aeb78c213a98cf6111fba84",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "SphereUnion": {
+    "source": "fabric/src/main/java/ru/smplore/fabric/minimal/SphereUnion.java",
+    "sha256": "44cd4d35b47c2b6ffd4e85f0e4b95e4eb37de498ff6845149e1d740525c4937a",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "BeamPattern": {
+    "source": "src/main/java/ru/smplore/fabric/minimal/BeamPattern.java",
+    "sha256": "318ae34181ca2ada4545f2251d2811c5a5228a40dc7bb146b907a90c35eaa3d9",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "BeamArbiter": {
+    "source": "src/main/java/ru/smplore/fabric/minimal/BeamArbiter.java",
+    "sha256": "c3d72e73ab1844007f9f9e9aca4ec6d6957ff041c6a65fa49634093d9e622607",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "BeamFlow": {
+    "source": "fabric/src/main/java/ru/smplore/fabric/minimal/BeamFlow.java",
+    "sha256": "f6fa35d6c7726918c093576870aff302eb7e67737b70d96df3772d0321c402da",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "DragonRules": {
+    "source": "src/main/java/ru/smplore/fabric/minimal/DragonRules.java",
+    "sha256": "dfe7f0c0f5ccf516882b8532702240a7cc40add98a4d1fdf1bc8abb054d91898",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "AbsorberTiming": {
+    "source": "src/main/java/ru/smplore/shared/AbsorberTiming.java",
+    "sha256": "7c912affafa26c24d262effd930e31fba097b4f497b1e36f1877d15642d83f09",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "EndStructureHeights": {
+    "source": "src/main/java/ru/smplore/shared/EndStructureHeights.java",
+    "sha256": "3083ebb521836506034c6ea2af80c792ca8878a7c9dcbcc7d96e78ff81701d5f",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "RelaySignal": {
+    "source": "src/main/java/ru/smplore/fabric/minimal/RelaySignal.java",
+    "sha256": "e280f8ca69f28b999f8f0fa88f56c570f925f9cd60dc7ce63ef5499d5ec5a139",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "RelaySession": {
+    "source": "src/main/java/ru/smplore/fabric/minimal/RelaySession.java",
+    "sha256": "caa7968e0328ddb36482350d6bfa4493be47d3170f48ea04481f9eaa4c9146a9",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "KingRecovery": {
+    "source": "src/main/java/ru/smplore/shared/KingRecovery.java",
+    "sha256": "b3b667d8de1cf7d452628e775943a6dd5d1f07075592d0bc940b0729254e0c78",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "Encounters": {
+    "source": "src/main/java/ru/smplore/shared/Encounters.java",
+    "sha256": "eaa9b944c71db3b19663ecbbf42b230a52bef86d6c97f446f22171229a783587",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "OggClip": {
+    "source": "fabric/src/main/java/ru/smplore/fabric/minimal/OggClip.java",
+    "sha256": "a6a46352ff28d57dbe075b80a2d3038b2a921df348cb21261bdced8870734633",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "AudioLimits": {
+    "source": "fabric/src/main/java/ru/smplore/fabric/minimal/AudioLimits.java",
+    "sha256": "e20715bc3ea39e0b6704d77d16dd6ac6e83fd130ae94112c62f7d7ac0cf5176e",
+    "changes": [
+      "package relocation to dev.zlor.rules",
+      "Apply bounded config.yml limits as well as audio.properties"
+    ]
+  },
+  "AudioImporter": {
+    "source": "fabric/src/main/java/ru/smplore/fabric/minimal/AudioImporter.java",
+    "sha256": "937fb6eb29a883861a4e27e28215bdd8275668fd875d49d4f8ba90a4db4fcfda",
+    "changes": [
+      "package relocation to dev.zlor.rules",
+      "Full Ogg decoding before accepting an import",
+      "Downmix stereo imports to mono for spatial playback"
+    ]
+  },
+  "EndSettings": {
+    "source": "fabric/src/main/java/ru/smplore/fabric/minimal/EndSettings.java",
+    "sha256": "76f8b38ffdbb428c4badc2f05bcc2637e72b337cafe9b39d4097fe4252498a8c",
+    "changes": [
+      "package relocation to dev.zlor.rules"
+    ]
+  },
+  "DomeAnimationTest": {
+    "source": "src/test/java/ru/smplore/shared/DomeAnimationTest.java",
+    "sha256": "e1792a9d1e1602e924c0dd6034fc72610c7bda2585db435730a23e1fce425538",
+    "changes": [
+      "Adapt package/imports/assertions to JUnit 6; same reference scenarios"
+    ]
+  },
+  "EndStructureHeightsTest": {
+    "source": "src/test/java/ru/smplore/shared/EndStructureHeightsTest.java",
+    "sha256": "c6c7655c570c31946ef3490514e8a9e1ea9da9b226cc52e0755ebadc504c4ee0",
+    "changes": [
+      "Adapt package/imports/assertions to JUnit 6; same reference scenarios"
+    ]
+  },
+  "EncounterRulesTest": {
+    "source": "src/test/java/ru/smplore/shared/EncounterRulesTest.java",
+    "sha256": "584d936e0a55eaa1a433bdf5ec76427db868cd8a34cf7fb031195d8177edd31f",
+    "changes": [
+      "Adapt package/imports/assertions to JUnit 6; same reference scenarios"
+    ]
+  }
+}

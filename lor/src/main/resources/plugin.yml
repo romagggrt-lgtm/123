@@ -1,0 +1,19 @@
+name: Z_Lor
+version: '1.0.0'
+main: dev.zlor.ZLorPlugin
+api-version: '1.21.11'
+description: Сценарные системы Войда, устройства и драконий бой
+authors: [Z_Server]
+softdepend: [SmpLore, LuckPerms, WorldGuard, Essentials, TAB]
+commands:
+  lore:
+    description: Меню сценариста
+    aliases: [zlor, 'smplore:lore']
+    usage: /lore help
+  scen:
+    description: Управление собственными ролями сценаристов
+    usage: /scen [add|delete] <игрок>
+permissions:
+  zlor.admin:
+    description: Административная диагностика и выдача предметов; не заменяет роль scen
+    default: op

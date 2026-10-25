@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": ["L  ", "MCE", "MMA"],
+  "key": {
+    "L": "minecraft:lightning_rod",
+    "M": "minecraft:copper_block",
+    "C": "minecraft:compass",
+    "E": "minecraft:ender_eye",
+    "A": "minecraft:amethyst_shard"
+  },
+  "result": {"id": "smplore:voidometer", "count": 1}
+}

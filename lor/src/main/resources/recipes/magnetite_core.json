@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "III",
+    "LAL",
+    "LOL"
+  ],
+  "key": {
+    "I": "minecraft:iron_block",
+    "L": "minecraft:lodestone",
+    "A": "minecraft:respawn_anchor",
+    "O": "minecraft:crying_obsidian"
+  },
+  "result": {
+    "id": "smplore:magnetite_core",
+    "count": 1
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CNC",
+    "DVR",
+    "CHC"
+  ],
+  "key": {
+    "C": "minecraft:copper_block",
+    "N": "minecraft:note_block",
+    "D": "minecraft:daylight_detector",
+    "V": "smplore:voidometer",
+    "R": "minecraft:comparator",
+    "H": "minecraft:chiseled_copper"
+  },
+  "result": {
+    "id": "smplore:void_alarm",
+    "count": 1
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "GGG",
+    "LCL",
+    "OBO"
+  ],
+  "key": {
+    "G": "minecraft:tinted_glass",
+    "L": "minecraft:lodestone",
+    "C": "smplore:magnetite_core",
+    "O": "minecraft:obsidian",
+    "B": "minecraft:barrel"
+  },
+  "result": {
+    "id": "smplore:void_absorber",
+    "count": 1
+  }
+}

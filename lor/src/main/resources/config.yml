@@ -1,0 +1,46 @@
+# Общий пак подключается один раз через server.properties.
+# Этот плагин не отправляет отдельные паки при каждом входе.
+resource-pack:
+  enabled: false
+  url: ''
+  sha1: ''
+  required: false
+safety:
+  confirmation-height-delta: 32
+  max-height: {}
+  max-devices: 4096
+  max-dragons-per-world: 64
+  native-boundary-hook: true
+effects:
+  range: 96
+  interval-ticks: 5
+  particle-budget-per-player: 320
+  nearest-domes: 16
+  beams: true
+audio:
+  max-bytes: 20971520
+  max-seconds: 600
+  siren-voices: 32
+  # Импорт берёт файлы только из plugins/Z_Lor/audio-import/.
+  # Для доставки новых записей укажите общий пак как base-pack и публичный URL.
+  base-pack: ''
+  public-pack-url: ''
+  http-enabled: false
+  http-bind: '0.0.0.0'
+  http-port: 8124
+  http-path: '/zlor-pack.zip'
+dragons:
+  beam-warning-ticks: 30
+  beam-active-ticks: 60
+  beam-cooldown-ticks: 300
+  summon-ticks: 160
+  # Дополнительный Царь использует логические 1500 HP и ванильный облик.
+  king-enabled: true
+  # Наследование луча/иммунитета к стрелам/дыхания/отбрасывания не согласовано
+  # в переданном ТЗ. По умолчанию выключено, включается администратором отдельно.
+  king-enriched-abilities: false
+  # Неутверждённые параметры манёвра — настройки реализации, не исходный баланс.
+  king-dive-cooldown-ticks: 400
+  king-dive-speed: 1.2
+storage:
+  checkpoint-ticks: 200

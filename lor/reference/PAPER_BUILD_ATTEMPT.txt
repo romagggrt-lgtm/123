@@ -1,0 +1,14 @@
+Official Paper 1.21.11 build 132
+Repository: https://github.com/PaperMC/Paper
+Branch: ver/1.21.11
+Commit: c5eb0790f199da6c38d0a650e1e5cd5415b28185
+JDK: 21.0.12.1
+Command: ./gradlew --no-daemon --max-workers=2 applyPatches createMojmapBundlerJar -x test
+Gradle 9.2.0: downloaded and started
+paperweight-core 2.0.0-beta.19: configured
+Result: BUILD FAILED, downloadMcManifest
+Cause: HTTP 403 for https://piston-meta.mojang.com/mc/game/version_manifest_v2.json
+Official alternative launchermeta.mojang.com: proxy CONNECT 403
+Prebuilt Paper download: fill-data.papermc.io proxy CONNECT 403
+Legacy download API: HTTP 410
+No real Paper server or vanilla client was run. Live acceptance remains BLOCKED.

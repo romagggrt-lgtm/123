@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CNC",
+    "RJR",
+    "CBC"
+  ],
+  "key": {
+    "C": "minecraft:copper_block",
+    "N": "minecraft:note_block",
+    "R": "minecraft:comparator",
+    "J": "minecraft:jukebox",
+    "B": "minecraft:redstone_block"
+  },
+  "result": {
+    "id": "smplore:void_siren",
+    "count": 1
+  }
+}
