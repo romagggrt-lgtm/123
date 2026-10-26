@@ -67,6 +67,8 @@ public class ZLorPlugin extends JavaPlugin implements Listener,CommandExecutor,T
             items.registerRecipes();
             for(Listener listener:List.of(this,voids,devices,redstone,loot,restrictions,structures,dragons,visuals,menus))Bukkit.getPluginManager().registerEvents(listener,this);
             Objects.requireNonNull(getCommand("lore")).setExecutor(this);getCommand("lore").setTabCompleter(this);
+            // Register a namespace through CommandMap; colons are invalid YAML aliases.
+            getServer().getCommandMap().register("smplore",getCommand("lore"));
             Objects.requireNonNull(getCommand("scen")).setExecutor(this);getCommand("scen").setTabCompleter(this);
             for(World world:Bukkit.getWorlds()){nativeBoundary.attach(world);structures.recover(world);}
             dragons.restore();for(var device:devices.loaded())devices.refresh(device);

@@ -52,10 +52,10 @@ public final class NativeSmoke extends JavaPlugin implements Listener {
             if(stage==2&&age()>=5){
                 target.setHealth(20);target.setNoDamageTicks(0);observer.teleport(new Location(normal,100.5,71,.5));
                 normal.getChunkAt(6,0).load();normal.setChunkForceLoaded(6,0,true);
-                inside=normal.spawn(new Location(normal,.5,73,.5),Arrow.class);outside=normal.spawn(new Location(normal,100.5,73,.5),Arrow.class);next();return;
+                inside=normal.spawn(new Location(normal,8.5,73,8.5),Arrow.class);outside=normal.spawn(new Location(normal,100.5,73,.5),Arrow.class);next();return;
             }
             if(stage==3&&age()>=25){
-                check("absorber_blocks_native_player_void",target.getHealth()==20);check("shield_keeps_real_projectile",inside.isValid());check("unshielded_projectile_native_discard",!outside.isValid());normal.setChunkForceLoaded(6,0,false);
+                checks.put("shield_diagnostic",Map.of("health",target.getHealth(),"position",target.getLocation().toString(),"shield",p.protectedAt(target),"cause",String.valueOf(target.getLastDamageCause()==null?null:target.getLastDamageCause().getCause())));check("absorber_blocks_native_player_void",target.getHealth()==20);check("shield_keeps_real_projectile",inside.isValid());check("unshielded_projectile_native_discard",!outside.isValid());normal.setChunkForceLoaded(6,0,false);
                 p.store.change(s->s.dimensions.put(p.worldKey(normal),DimensionVoid.vanilla(normal.getMinHeight()-64,p.now())));observer.teleport(new Location(normal,1.5,71,.5));Bukkit.dispatchCommand(observer,"lore view all");next();return;
             }
             if(stage==4&&age()>=8){

@@ -8,7 +8,7 @@ softdepend: [SmpLore, LuckPerms, WorldGuard, Essentials, TAB]
 commands:
   lore:
     description: Меню сценариста
-    aliases: [zlor, 'smplore:lore']
+    aliases: [zlor]
     usage: /lore help
   scen:
     description: Управление собственными ролями сценаристов

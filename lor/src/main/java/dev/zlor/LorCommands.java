@@ -81,7 +81,7 @@ public final class LorCommands {
     }
     public void diagnostics(CommandSender sender){
         if(!p.roles.admin(sender)&&(!(sender instanceof Player player)||!p.roles.scen(player)))throw new IllegalArgumentException("Нет доступа");
-        sender.sendMessage("Z_Lor 1.0.0 · Paper 1.21.11 · Java "+Runtime.version().feature());sender.sendMessage("Хранилище: "+(p.store.healthy()?"готово":"остановлено")+", revision="+p.state().revision+", сохранений="+p.store.writes());
+        sender.sendMessage("Z_Lor "+p.getDescription().getVersion()+" · Paper 1.21.11 · Java "+Runtime.version().feature());sender.sendMessage("Хранилище: "+(p.store.healthy()?"готово":"остановлено")+", revision="+p.state().revision+", сохранений="+p.store.writes());
         for(World world:Bukkit.getWorlds())sender.sendMessage(p.worldKey(world)+": "+p.nativeBoundary.status(world));
         sender.sendMessage("Устройства: "+p.state().devices.size()+", загружено "+p.devices.loaded().size()+", tickets "+p.redstone.leasedChunks()+", native redstone "+p.redstone.nativeReaderAvailable());
         sender.sendMessage("Топливо: uptime, "+p.fuelNow()+" мс. Базовая граница Paper, per-entity shield hook. RP автоматически не переотправляется.");

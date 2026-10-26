@@ -8,6 +8,7 @@ ROOT=Path(__file__).resolve().parents[1]
 WORK=ROOT/'lor/target/native-server'
 REPORT=ROOT/'lor/live-qa'
 WORK.mkdir(parents=True,exist_ok=True);REPORT.mkdir(parents=True,exist_ok=True)
+(REPORT/'latest.json').unlink(missing_ok=True)
 def download(url,path):
     with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'ZLor-CI/1.0.1'}),timeout=60) as response:path.write_bytes(response.read())
 try:
