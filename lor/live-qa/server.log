@@ -1,124 +1,124 @@
 Downloading mojang_1.21.11.jar
 Applying patches
 Starting org.bukkit.craftbukkit.Main
-2026-10-26T16:53:10.353231575Z ServerMain WARN Advanced terminal features are not available in this environment
-[16:53:10 INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.12.1+1-LTS; Eclipse Adoptium Temurin-21.0.12.1+1) on Linux 6.17.0-1022-azure (amd64)
-[16:53:10 INFO]: [bootstrap] Loading Paper 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) for Minecraft 1.21.11
-[16:53:11 INFO]: [PluginInitializerManager] Initializing plugins...
-[16:53:11 INFO]: [ReobfServer] Remapping server...
-[16:53:16 INFO]: [ReobfServer] Done remapping server in 4647ms.
-[16:53:16 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Lor_QA.jar'...
-[16:53:16 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Lor.jar'...
-[16:53:16 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Lor_QA.jar' in 115ms.
-[16:53:17 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Lor.jar' in 1316ms.
-[16:53:17 INFO]: [PluginInitializerManager] Initialized 2 plugins
-[16:53:17 INFO]: [PluginInitializerManager] Bukkit plugins (2):
+2026-10-26T16:57:03.496335359Z ServerMain WARN Advanced terminal features are not available in this environment
+[16:57:03 INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.12.1+1-LTS; Eclipse Adoptium Temurin-21.0.12.1+1) on Linux 6.17.0-1022-azure (amd64)
+[16:57:03 INFO]: [bootstrap] Loading Paper 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) for Minecraft 1.21.11
+[16:57:04 INFO]: [PluginInitializerManager] Initializing plugins...
+[16:57:05 INFO]: [ReobfServer] Remapping server...
+[16:57:11 INFO]: [ReobfServer] Done remapping server in 6003ms.
+[16:57:11 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Lor_QA.jar'...
+[16:57:11 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Lor.jar'...
+[16:57:11 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Lor_QA.jar' in 153ms.
+[16:57:13 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Lor.jar' in 1644ms.
+[16:57:13 INFO]: [PluginInitializerManager] Initialized 2 plugins
+[16:57:13 INFO]: [PluginInitializerManager] Bukkit plugins (2):
  - Z_Lor (1.0.1), Z_Lor_QA (1.0.1)
-[16:53:21 WARN]: resource-pack-id missing, using default of 0ceb40db-c8f2-3106-aa71-bbeecd8e978f
-[16:53:21 INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
-[16:53:21 INFO]: Found new data pack file/bukkit, loading it automatically
-[16:53:21 INFO]: Found new data pack paper, loading it automatically
-[16:53:22 INFO]: No existing world data, creating new world
-[16:53:22 INFO]: Loaded 1470 recipes
-[16:53:22 INFO]: Loaded 1584 advancements
-[16:53:22 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
-[16:53:23 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 329.3ms
-[16:53:23 WARN]: resource-pack-id missing, using default of 0ceb40db-c8f2-3106-aa71-bbeecd8e978f
-[16:53:23 INFO]: Starting minecraft server version 1.21.11
-[16:53:23 INFO]: Loading properties
-[16:53:23 INFO]: This server is running Paper version 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) (Implementing API version 1.21.11-R0.1-SNAPSHOT)
-[16:53:23 INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
-[16:53:23 INFO]: Server Ping Player Sample Count: 12
-[16:53:23 INFO]: Using 4 threads for Netty based IO
-[16:53:24 INFO]: [MoonriseCommon] Paper is using 1 worker threads, 1 I/O threads
-[16:53:24 INFO]: Default game type: SURVIVAL
-[16:53:24 INFO]: Generating keypair
-[16:53:24 INFO]: Starting Minecraft server on 127.0.0.1:25585
-[16:53:24 INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
-[16:53:24 INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
-[16:53:24 INFO]: [Z_Lor] Loading server plugin Z_Lor v1.0.1
-[16:53:24 INFO]: [Z_Lor_QA] Loading server plugin Z_Lor_QA v1.0.1
-[16:53:24 WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[16:53:24 WARN]: The server will make no attempt to authenticate usernames. Beware.
-[16:53:24 WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[16:53:24 WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[16:53:24 INFO]: Preparing level "world"
-[16:53:24 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] NUMA enable flag is not set; however there is NUMA interaction support for this OS.
-[16:53:24 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] Detected 1 NUMA nodes.
-[16:53:24 INFO]: Selecting spawn point for world 'minecraft:overworld'...
-[16:53:25 INFO]: Selecting spawn point for world 'minecraft:the_nether'...
-[16:53:26 INFO]: Selecting spawn point for world 'minecraft:the_end'...
-[16:53:26 INFO]: Loading 0 persistent chunks for world 'minecraft:overworld'...
-[16:53:26 INFO]: Preparing spawn area: 100%
-[16:53:26 INFO]: Prepared spawn area in 1682 ms
-[16:53:26 INFO]: Loading 0 persistent chunks for world 'minecraft:the_nether'...
-[16:53:26 INFO]: Preparing spawn area: 100%
-[16:53:26 INFO]: Prepared spawn area in 1270 ms
-[16:53:26 INFO]: Loading 0 persistent chunks for world 'minecraft:the_end'...
-[16:53:26 INFO]: Preparing spawn area: 100%
-[16:53:26 INFO]: Prepared spawn area in 343 ms
-[16:53:26 INFO]: Done preparing level "world" (1.873s)
-[16:53:26 INFO]: [Z_Lor] Enabling Z_Lor v1.0.1
-[16:53:27 INFO]: [Z_Lor] Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:53:27 INFO]: [Z_Lor_QA] Enabling Z_Lor_QA v1.0.1
-[16:53:27 INFO]: [spark] Starting background profiler...
-[16:53:28 INFO]: Running delayed init tasks
-[16:53:28 INFO]: Done (19.252s)! For help, type "help"
-[16:53:28 INFO]: *************************************************************************************
-[16:53:28 INFO]: This is the first time you're starting this server.
-[16:53:28 INFO]: It's recommended you read our 'Getting Started' documentation for guidance.
-[16:53:28 INFO]: View this and more helpful information here: https://docs.papermc.io/paper/next-steps
-[16:53:28 INFO]: *************************************************************************************
-[16:53:28 WARN]: *************************************************************************************
-[16:53:28 WARN]: You are running the latest build for your Minecraft version (1.21.11)
-[16:53:28 WARN]: However, you are 6 release(s) behind the latest stable release (26.3)!
-[16:53:28 WARN]: It is recommended that you update as soon as possible
-[16:53:28 WARN]: https://papermc.io/downloads/paper
-[16:53:28 WARN]: *************************************************************************************
-[16:53:29 INFO]: UUID of player LorTarget is f5decbff-1563-3161-b25e-4c6c34a2bbcc
-[16:53:31 INFO]: LorTarget joined the game
-[16:53:31 INFO]: LorTarget[/127.0.0.1:52570] logged in with entity id 1 at ([world]-6.5, -60.0, -9.5)
-[16:53:41 INFO]: UUID of player LorObserver is 18491e9a-e5e3-3f60-a003-02d1c39cddbc
-[16:53:45 INFO]: LorObserver joined the game
-[16:53:45 INFO]: LorObserver[/127.0.0.1:59354] logged in with entity id 77 at ([world]-2.5, -60.0, -5.5)
-[16:53:59 INFO]: LorObserver has made the advancement [The End?]
-[16:53:59 INFO]: LorTarget has made the advancement [The End?]
-[16:54:02 INFO]: [Z_Lor] Восстановлено башенных кристаллов: 10 (minecraft:the_end)
-[16:54:26 INFO]: Stopping server
-[16:54:26 INFO]: [Z_Lor_QA] Disabling Z_Lor_QA v1.0.1
-[16:54:26 INFO]: [Z_Lor] Disabling Z_Lor v1.0.1
-[16:54:27 INFO]: Saving players
-[16:54:27 INFO]: LorTarget lost connection: Server closed
-[16:54:27 INFO]: LorTarget left the game
-[16:54:27 INFO]: LorObserver lost connection: Server closed
-[16:54:27 INFO]: LorObserver left the game
-[16:54:27 INFO]: Saving worlds
-[16:54:27 INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[16:54:27 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
-[16:54:27 INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
-[16:54:27 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
-[16:54:27 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world' in 0.04s
-[16:54:27 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world'
-[16:54:27 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world'
-[16:54:27 INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
-[16:54:27 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
-[16:54:27 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
-[16:54:27 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
-[16:54:27 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_nether' in 0.00s
-[16:54:27 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_nether'
-[16:54:27 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_nether'
-[16:54:27 INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
-[16:54:27 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
-[16:54:27 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
-[16:54:27 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
-[16:54:28 INFO]: [ChunkHolderManager] Saved 1716 block chunks, 429 entity chunks, 0 poi chunks in world 'world_the_end' in 1.05s
-[16:54:28 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_the_end'
-[16:54:28 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_the_end'
-[16:54:28 INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[16:54:28 INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[16:54:28 INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[16:54:28 INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[16:54:28 INFO]: Waiting for all RegionFile I/O tasks to complete...
-[16:54:28 INFO]: All RegionFile I/O tasks to complete
-[16:54:28 INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
-[16:54:28 INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...
+[16:57:17 WARN]: resource-pack-id missing, using default of 0ceb40db-c8f2-3106-aa71-bbeecd8e978f
+[16:57:18 INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[16:57:18 INFO]: Found new data pack file/bukkit, loading it automatically
+[16:57:18 INFO]: Found new data pack paper, loading it automatically
+[16:57:18 INFO]: No existing world data, creating new world
+[16:57:19 INFO]: Loaded 1470 recipes
+[16:57:19 INFO]: Loaded 1584 advancements
+[16:57:19 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
+[16:57:20 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 520.5ms
+[16:57:20 WARN]: resource-pack-id missing, using default of 0ceb40db-c8f2-3106-aa71-bbeecd8e978f
+[16:57:20 INFO]: Starting minecraft server version 1.21.11
+[16:57:20 INFO]: Loading properties
+[16:57:20 INFO]: This server is running Paper version 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) (Implementing API version 1.21.11-R0.1-SNAPSHOT)
+[16:57:20 INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[16:57:20 INFO]: Server Ping Player Sample Count: 12
+[16:57:20 INFO]: Using 4 threads for Netty based IO
+[16:57:21 INFO]: [MoonriseCommon] Paper is using 1 worker threads, 1 I/O threads
+[16:57:21 INFO]: Default game type: SURVIVAL
+[16:57:21 INFO]: Generating keypair
+[16:57:21 INFO]: Starting Minecraft server on 127.0.0.1:25585
+[16:57:21 INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
+[16:57:21 INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
+[16:57:22 INFO]: [Z_Lor] Loading server plugin Z_Lor v1.0.1
+[16:57:22 INFO]: [Z_Lor_QA] Loading server plugin Z_Lor_QA v1.0.1
+[16:57:22 WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[16:57:22 WARN]: The server will make no attempt to authenticate usernames. Beware.
+[16:57:22 WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[16:57:22 WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[16:57:22 INFO]: Preparing level "world"
+[16:57:22 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] NUMA enable flag is not set; however there is NUMA interaction support for this OS.
+[16:57:22 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] Detected 1 NUMA nodes.
+[16:57:22 INFO]: Selecting spawn point for world 'minecraft:overworld'...
+[16:57:22 INFO]: Selecting spawn point for world 'minecraft:the_nether'...
+[16:57:24 INFO]: Selecting spawn point for world 'minecraft:the_end'...
+[16:57:24 INFO]: Loading 0 persistent chunks for world 'minecraft:overworld'...
+[16:57:24 INFO]: Preparing spawn area: 100%
+[16:57:24 INFO]: Prepared spawn area in 2390 ms
+[16:57:24 INFO]: Loading 0 persistent chunks for world 'minecraft:the_nether'...
+[16:57:24 INFO]: Preparing spawn area: 100%
+[16:57:24 INFO]: Prepared spawn area in 1883 ms
+[16:57:24 INFO]: Loading 0 persistent chunks for world 'minecraft:the_end'...
+[16:57:24 INFO]: Preparing spawn area: 100%
+[16:57:24 INFO]: Prepared spawn area in 289 ms
+[16:57:24 INFO]: Done preparing level "world" (2.671s)
+[16:57:24 INFO]: [Z_Lor] Enabling Z_Lor v1.0.1
+[16:57:25 INFO]: [Z_Lor] Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[16:57:25 INFO]: [Z_Lor_QA] Enabling Z_Lor_QA v1.0.1
+[16:57:26 INFO]: [spark] Starting background profiler...
+[16:57:28 INFO]: Running delayed init tasks
+[16:57:28 INFO]: Done (25.630s)! For help, type "help"
+[16:57:28 INFO]: *************************************************************************************
+[16:57:28 INFO]: This is the first time you're starting this server.
+[16:57:28 INFO]: It's recommended you read our 'Getting Started' documentation for guidance.
+[16:57:28 INFO]: View this and more helpful information here: https://docs.papermc.io/paper/next-steps
+[16:57:28 INFO]: *************************************************************************************
+[16:57:28 WARN]: *************************************************************************************
+[16:57:28 WARN]: You are running the latest build for your Minecraft version (1.21.11)
+[16:57:28 WARN]: However, you are 6 release(s) behind the latest stable release (26.3)!
+[16:57:28 WARN]: It is recommended that you update as soon as possible
+[16:57:28 WARN]: https://papermc.io/downloads/paper
+[16:57:28 WARN]: *************************************************************************************
+[16:57:30 INFO]: UUID of player LorTarget is f5decbff-1563-3161-b25e-4c6c34a2bbcc
+[16:57:32 INFO]: LorTarget joined the game
+[16:57:32 INFO]: LorTarget[/127.0.0.1:58074] logged in with entity id 3 at ([world]-2.5, -60.0, 0.5)
+[16:57:46 INFO]: UUID of player LorObserver is 18491e9a-e5e3-3f60-a003-02d1c39cddbc
+[16:57:51 INFO]: LorObserver joined the game
+[16:57:51 INFO]: LorObserver[/127.0.0.1:51718] logged in with entity id 91 at ([world]1.5, -60.0, 4.5)
+[16:58:05 INFO]: LorObserver has made the advancement [The End?]
+[16:58:05 INFO]: LorTarget has made the advancement [The End?]
+[16:58:08 INFO]: [Z_Lor] Восстановлено башенных кристаллов: 10 (minecraft:the_end)
+[16:58:33 INFO]: Stopping server
+[16:58:33 INFO]: [Z_Lor_QA] Disabling Z_Lor_QA v1.0.1
+[16:58:33 INFO]: [Z_Lor] Disabling Z_Lor v1.0.1
+[16:58:33 INFO]: Saving players
+[16:58:33 INFO]: LorTarget lost connection: Server closed
+[16:58:33 INFO]: LorTarget left the game
+[16:58:33 INFO]: LorObserver lost connection: Server closed
+[16:58:33 INFO]: LorObserver left the game
+[16:58:33 INFO]: Saving worlds
+[16:58:33 INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[16:58:34 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[16:58:34 INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[16:58:34 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[16:58:34 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world' in 0.02s
+[16:58:34 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world'
+[16:58:34 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world'
+[16:58:34 INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
+[16:58:34 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
+[16:58:34 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
+[16:58:34 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
+[16:58:34 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_nether' in 0.00s
+[16:58:34 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_nether'
+[16:58:34 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_nether'
+[16:58:34 INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[16:58:34 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[16:58:34 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[16:58:34 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[16:58:35 INFO]: [ChunkHolderManager] Saved 1716 block chunks, 429 entity chunks, 0 poi chunks in world 'world_the_end' in 1.26s
+[16:58:35 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_the_end'
+[16:58:35 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_the_end'
+[16:58:35 INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[16:58:35 INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[16:58:35 INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[16:58:35 INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[16:58:35 INFO]: Waiting for all RegionFile I/O tasks to complete...
+[16:58:35 INFO]: All RegionFile I/O tasks to complete
+[16:58:35 INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
+[16:58:35 INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...
