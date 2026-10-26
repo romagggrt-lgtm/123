@@ -33,8 +33,8 @@ jobs:
         timeout-minutes: 4
         run: |
           set -o pipefail
-          timeout 90 sudo apt-get -o Acquire::Retries=0 -o Acquire::http::Timeout=15 -o DPkg::Lock::Timeout=30 install -y -qq --no-install-recommends xvfb libgl1-mesa-dri libglx-mesa0 scrot python3-tk 2>&1 | tee lor/live-qa/prepare.log
-          python3 -m pip install --break-system-packages --retries 1 --timeout 20 Pillow pyautogui nbtlib 2>&1 | tee -a lor/live-qa/prepare.log
+          command -v Xvfb
+          python3 -m pip install --break-system-packages --retries 1 --timeout 20 Pillow python-xlib nbtlib 2>&1 | tee lor/live-qa/prepare.log
           python3 tools/build_lor_pack.py
           python3 tools/test_lor_pack.py
       - name: Actual Paper with protocol and unmodified graphical client

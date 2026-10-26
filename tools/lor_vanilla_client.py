@@ -67,9 +67,18 @@ def launch():
     return subprocess.Popen(command,cwd=GAME,stdout=(REPORT/'vanilla-console.log').open('w'),stderr=subprocess.STDOUT)
 
 def capture_controller(stop):
-    import pyautogui
-    pyautogui.FAILSAFE=False
-    def capture(path):subprocess.run(['scrot','-o',str(path)],check=True,capture_output=True)
+    from PIL import Image
+    from Xlib import X,display
+    from Xlib.ext import xtest
+    connection=display.Display(os.environ['DISPLAY']);screen=connection.screen();root=screen.root
+    def capture(path):
+        width,height=screen.width_in_pixels,screen.height_in_pixels
+        pixels=root.get_image(0,0,width,height,X.ZPixmap,0xffffffff)
+        Image.frombytes('RGB',(width,height),pixels.data,'raw','BGRX').save(path)
+    def click(x,y):
+        xtest.fake_input(connection,X.MotionNotify,x=x,y=y)
+        xtest.fake_input(connection,X.ButtonPress,detail=1)
+        xtest.fake_input(connection,X.ButtonRelease,detail=1);connection.sync()
     seen=set();clicked=False;last=0
     while not stop.is_set():
         try:
@@ -79,7 +88,7 @@ def capture_controller(stop):
                 label=''
                 if stage==4 and age>150:label='dome-and-private-view'
                 if stage==5 and age>30 and not clicked:
-                    capture(REPORT/'fuel-before.png');pyautogui.click(496,342);time.sleep(.4);pyautogui.click(496,280);clicked=True;label='fuel-after'
+                    capture(REPORT/'fuel-before.png');click(496,342);time.sleep(.4);click(496,280);clicked=True;label='fuel-after'
                 if stage in (9,10):
                     if 10<elapsed<28:label='beam-warning'
                     elif 65<elapsed<150:label='beam-active'
