@@ -57,7 +57,7 @@ def prepare():
                 if name.endswith('.so'):(natives/Path(name).name).write_bytes(zip.read(name))
     import nbtlib
     nbtlib.File({'servers':nbtlib.List[nbtlib.Compound]([nbtlib.Compound({'name':nbtlib.String('Disposable Z_Lor QA'),'ip':nbtlib.String('127.0.0.1:25585'),'acceptTextures':nbtlib.Byte(1)})])}).save(GAME/'servers.dat')
-    (GAME/'options.txt').write_text('onboardAccessibility:false\nstartedCleanly:true\nlang:en_us\nguiScale:2\nrenderDistance:6\nsimulationDistance:5\nmaxFps:30\nfullscreen:false\nenableVsync:false\nparticles:0\nshowSubtitles:false\n')
+    (GAME/'options.txt').write_text('onboardAccessibility:false\nstartedCleanly:true\nlang:en_us\nguiScale:2\nrenderDistance:6\nsimulationDistance:5\nmaxFps:30\nfullscreen:false\nenableVsync:false\nparticles:0\nshowSubtitles:false\ntutorialStep:none\n')
     digest=bytearray(hashlib.md5(b'OfflinePlayer:LorObserver').digest());digest[6]=(digest[6]&15)|48;digest[8]=(digest[8]&63)|128
     command=['java','-Xms512M','-Xmx2G','-Djava.library.path='+str(natives),'-Dorg.lwjgl.librarypath='+str(natives),'-cp',os.pathsep.join(map(str,classpath)),metadata['mainClass'],'--username','LorObserver','--version','1.21.11','--gameDir',str(GAME),'--assetsDir',str(GAME/'assets'),'--assetIndex',str(index['id']),'--uuid',uuid.UUID(bytes=bytes(digest)).hex,'--accessToken','0','--userType','msa','--versionType','release','--width','1280','--height','720','--quickPlayMultiplayer','127.0.0.1:25585']
     (GAME/'command.json').write_text(json.dumps(command));return command
@@ -77,10 +77,10 @@ def capture_controller(stop):
             if path.exists():
                 data=json.loads(path.read_text());stage=data['stage'];age=data['age'];elapsed=data.get('beam_age',-1)
                 label=''
-                if stage==4 and age>50:label='dome-and-private-view'
+                if stage==4 and age>150:label='dome-and-private-view'
                 if stage==5 and age>30 and not clicked:
                     capture(REPORT/'fuel-before.png');pyautogui.click(496,342);time.sleep(.4);pyautogui.click(496,280);clicked=True;label='fuel-after'
-                if stage==9:
+                if stage in (9,10):
                     if 10<elapsed<28:label='beam-warning'
                     elif 65<elapsed<150:label='beam-active'
                     elif 245<elapsed<280:label='beam-fade'

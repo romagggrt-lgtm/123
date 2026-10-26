@@ -30,7 +30,7 @@ def geodesic():
     return vertices,cells
 
 def quad(texture):
-    return {'ambientocclusion':False,'textures':{'surface':texture,'particle':texture},'elements':[{'from':[0,0,8],'to':[16,16,8],'shade':False,'faces':{'north':{'uv':[16,0,0,16],'texture':'#surface','tintindex':0},'south':{'uv':[0,0,16,16],'texture':'#surface','tintindex':0}}}], 'display':{'fixed':{'rotation':[0,0,0],'translation':[0,0,0],'scale':[1,1,1]}}}
+    return {'ambientocclusion':False,'textures':{'surface':texture,'particle':texture},'elements':[{'from':[0,0,8],'to':[16,16,8],'shade':False,'light_emission':15,'faces':{'north':{'uv':[16,0,0,16],'texture':'#surface','tintindex':0},'south':{'uv':[0,0,16,16],'texture':'#surface','tintindex':0}}}], 'display':{'fixed':{'rotation':[0,0,0],'translation':[0,0,0],'scale':[1,1,1]}}}
 
 def generate(added):
     vertices,cells=geodesic();assert len(cells)==642
@@ -82,7 +82,7 @@ def beam_texture(rgb,alpha_level):
             flow=(y-frame*2)%size;streak=math.exp(-((flow-6)/2.2)**2)
             for x in range(size):
                 edge=math.exp(-((min(x,size-1-x))/2.3)**2);pulse=.5+.5*math.sin((x*2+y-frame*2)*math.pi/16)
-                alpha=int((13+70*edge+24*streak+6*pulse)*alpha_level)
-                bright=.72+.28*streak
+                alpha=int(min(235,28+145*edge+52*streak+10*pulse)*alpha_level)
+                bright=.88+.12*streak
                 image.putpixel((x,frame*size+y),tuple(int(min(255,c*bright+28*streak)) for c in rgb)+(alpha,))
     return png(image)

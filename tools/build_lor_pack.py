@@ -42,7 +42,7 @@ def cylinder(texture):
             x=0 if base==90 else 16
             geometry={'from':[x,0,8-width],'to':[x,16,8+width],'faces':{'east':{'uv':[0,0,16,16],'texture':'#surface'},'west':{'uv':[0,0,16,16],'texture':'#surface'}}}
         if rotation:geometry['rotation']={'origin':[8,8,8],'axis':'y','angle':rotation,'rescale':False}
-        geometry['shade']=False;elements.append(geometry)
+        geometry['shade']=False;geometry['light_emission']=15;elements.append(geometry)
     return {'ambientocclusion':False,'textures':{'surface':texture,'particle':texture},'elements':elements,
             'display':{'fixed':{'rotation':[0,0,0],'translation':[0,0,0],'scale':[1,1,1]}}}
 
@@ -83,7 +83,7 @@ def main():
             path='world_'+kind+suffix
             added['assets/z_lor/models/block/'+path+'.json']=encoded({'parent':source,'display':{'fixed':{'rotation':[0,0,0],'translation':[0,0,0],'scale':[1,1,1]}}})
             added['assets/z_lor/items/'+path+'.json']=encoded(item('z_lor:block/'+path))
-    for size,color in [('large',(128,75,170)),('medium',(177,124,213)),('small',(223,199,240))]:
+    for size,color in [('large',(205,130,255)),('medium',(230,170,255)),('small',(248,218,255))]:
         name='beam_'+size
         entries=[]
         for level in range(1,9):

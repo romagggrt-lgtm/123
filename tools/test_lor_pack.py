@@ -2,7 +2,8 @@
 """Regressions for the two broken vanilla sprites and the shared server pack."""
 from pathlib import Path
 from zipfile import ZipFile
-import io,json,math,unittest
+import io,json,math,unittest,hashlib
+from datetime import datetime,timezone
 from PIL import Image
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -57,4 +58,9 @@ class PackRegressions(unittest.TestCase):
                 self.assertEqual((32,512),image.size);peaks.append(image.getchannel('A').getextrema()[1])
                 self.assertEqual(2,self.value(name+'.mcmeta')['animation']['frametime'])
             self.assertEqual(peaks,sorted(set(peaks)))
-if __name__=='__main__':unittest.main(verbosity=2)
+if __name__=='__main__':
+    suite=unittest.defaultTestLoader.loadTestsFromTestCase(PackRegressions)
+    result=unittest.TextTestRunner(verbosity=2).run(suite)
+    report={'status':'PASS' if result.wasSuccessful() else 'FAIL','tests':result.testsRun,'failures':len(result.failures),'errors':len(result.errors),'skipped':len(result.skipped),'pack_sha1':hashlib.sha1((ROOT/'dist/Z_Server_Pack_1.08.zip').read_bytes()).hexdigest(),'cases':unittest.defaultTestLoader.getTestCaseNames(PackRegressions),'generated_at_utc':datetime.now(timezone.utc).isoformat()}
+    target=ROOT/'lor/target/pack-regressions.json';target.parent.mkdir(parents=True,exist_ok=True);target.write_text(json.dumps(report,indent=2)+'\n')
+    raise SystemExit(0 if result.wasSuccessful() else 1)
