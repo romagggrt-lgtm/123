@@ -3,6 +3,7 @@
   "modified_client": false,
   "captures": [
     "beam-active",
+    "beam-fade",
     "beam-warning",
     "dome-and-private-view",
     "fuel-after"
