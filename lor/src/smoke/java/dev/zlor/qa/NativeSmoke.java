@@ -19,7 +19,7 @@ import org.bukkit.util.Vector;
 /** Ephemeral CI server only; this JAR is never included in the user installer. */
 public final class NativeSmoke extends JavaPlugin implements Listener {
     private ZLorPlugin p;private Player observer,target;private World normal,end;
-    private int tick,stage,entered;private State.Device absorber;private Arrow inside,outside;
+    private int tick,stage,entered;private State.Device absorber;private Arrow inside,outside;private ItemDisplay floatingUi;
     private Dragons.Body dragon;private Location previous;private List<Location> towers;
     private long beamStart;private int pulses;private double totalDamage;private boolean recording,finished;
     private final Map<String,Object> checks=new LinkedHashMap<>();private final List<Long> pulseTicks=new ArrayList<>();
@@ -55,10 +55,10 @@ public final class NativeSmoke extends JavaPlugin implements Listener {
             if(stage==2&&age()>=5){
                 target.setHealth(20);target.setNoDamageTicks(0);observer.teleport(new Location(normal,100.5,71,.5));
                 normal.getChunkAt(6,0).load();normal.setChunkForceLoaded(6,0,true);
-                inside=normal.spawn(new Location(normal,8.5,73,8.5),Arrow.class);outside=normal.spawn(new Location(normal,100.5,73,.5),Arrow.class);next();return;
+                inside=normal.spawn(new Location(normal,8.5,73,8.5),Arrow.class);outside=normal.spawn(new Location(normal,100.5,73,.5),Arrow.class);floatingUi=normal.spawn(new Location(normal,100.5,73,2.5),ItemDisplay.class,e->e.setPersistent(false));next();return;
             }
             if(stage==3&&age()>=25){
-                checks.put("shield_diagnostic",Map.of("health",target.getHealth(),"position",target.getLocation().toString(),"shield",p.protectedAt(target),"cause",String.valueOf(target.getLastDamageCause()==null?null:target.getLastDamageCause().getCause())));check("absorber_blocks_native_player_void",target.getHealth()==20);check("shield_keeps_real_projectile",inside.isValid());check("unshielded_projectile_native_discard",!outside.isValid());normal.setChunkForceLoaded(6,0,false);
+                checks.put("shield_diagnostic",Map.of("health",target.getHealth(),"position",target.getLocation().toString(),"shield",p.protectedAt(target),"cause",String.valueOf(target.getLastDamageCause()==null?null:target.getLastDamageCause().getCause())));check("absorber_blocks_native_player_void",target.getHealth()==20);check("shield_keeps_real_projectile",inside.isValid());check("unshielded_projectile_native_discard",!outside.isValid());check("render_only_display_survives_raised_void",floatingUi.isValid());floatingUi.remove();normal.setChunkForceLoaded(6,0,false);
                 p.store.change(s->s.dimensions.put(p.worldKey(normal),DimensionVoid.vanilla(normal.getMinHeight()-64,p.now())));if(visual)face(observer,new Location(normal,85.5,85,.5),new Location(normal,1.5,70.5,1.5));else observer.teleport(new Location(normal,1.5,71,.5));if(visual){normal.getBlockAt(79,82,0).setType(Material.STONE);normal.getBlockAt(79,83,0).setType(Material.COPPER_BLOCK);normal.getBlockAt(78,83,0).setType(Material.STONE);normal.getBlockAt(78,84,0).setType(Material.REDSTONE_TORCH);}
                 Bukkit.dispatchCommand(observer,"lore view all");next();return;
             }

@@ -97,6 +97,8 @@ public class ZLorPlugin extends JavaPlugin implements Listener,CommandExecutor,T
         store.change(s->{s.fuelClock=fuelNow();dragons.capture(s);});
     }
     public boolean protectedAt(Entity entity){
+        // Render-only entities must survive a rising Void alongside blocks/UI.
+        if(entity instanceof Display)return true;
         if(entity instanceof Player player&&state().immune.contains(player.getUniqueId()))return true;
         return loot.protectsItem(entity)||devices.protectedAt(entity.getLocation())||(entity instanceof Player&&structures.protects(entity.getLocation()));
     }

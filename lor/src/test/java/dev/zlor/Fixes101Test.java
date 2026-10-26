@@ -71,4 +71,8 @@ class Fixes101Test {
         var data=StateStore.JSON.fromJson(java.nio.file.Files.readString(java.nio.file.Path.of("reference/dome-geometry.json")),com.google.gson.JsonObject.class).getAsJsonArray("centres");
         assertEquals(DomeDisplays.CELLS.size(),data.size());for(int i=0;i<data.size();i++)for(int axis=0;axis<3;axis++)assertEquals(data.get(i).getAsJsonArray().get(axis).getAsDouble(),DomeDisplays.CELLS.get(i)[axis],1e-12,"cell "+i+" axis "+axis);
     }
+    @Test void risingVoidPreservesRenderEntitiesOutsideAbsorberProtection(){
+        var display=world.spawn(new Location(world,100,0,100),ItemDisplay.class);assertTrue(p.protectedAt(display));
+        var arrow=world.spawn(new Location(world,100,0,100),Arrow.class);assertFalse(p.protectedAt(arrow));
+    }
 }
