@@ -63,6 +63,14 @@ def main():
     for name in ['copper_block','redstone_torch']:
         aliases['minecraft:block/'+name]='z_lor:item/trim/'+name
         added['assets/z_lor/textures/item/trim/'+name+'.png']=(ROOT/'lor/assets-src/vanilla-1.21.11'/str(name+'.png')).read_bytes()
+    # In 1.21.11 a baked item layer may use only one atlas. Lit device
+    # models mix their block sides with bottle/item decorations: give every
+    # custom block sprite an item-atlas alias, preserving the original PNG.
+    for path,data in list(added.items()):
+        if path.startswith('assets/smplore/textures/block/') and path.endswith('.png'):
+            stem=path.removeprefix('assets/smplore/textures/block/').removesuffix('.png')
+            aliases['smplore:block/'+stem]='z_lor:item/device/'+stem
+            added['assets/z_lor/textures/item/device/'+stem+'.png']=data
     for name,data in list(added.items()):
         if '/models/' in name and name.endswith('.json'):
             model=json.loads(data)

@@ -37,6 +37,7 @@ jobs:
         env:
           ZLOR_VISUAL: '1'
           LIBGL_ALWAYS_SOFTWARE: '1'
+          ALSOFT_DRIVERS: 'null'
         run: xvfb-run -a -s '-screen 0 1280x720x24' python3 tools/lor_live_smoke.py
       - name: Preserve failures as reviewable evidence
         if: always()

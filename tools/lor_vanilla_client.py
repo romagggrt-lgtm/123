@@ -57,7 +57,7 @@ def prepare():
                 if name.endswith('.so'):(natives/Path(name).name).write_bytes(zip.read(name))
     import nbtlib
     nbtlib.File({'servers':nbtlib.List[nbtlib.Compound]([nbtlib.Compound({'name':nbtlib.String('Disposable Z_Lor QA'),'ip':nbtlib.String('127.0.0.1:25585'),'acceptTextures':nbtlib.Byte(1)})])}).save(GAME/'servers.dat')
-    (GAME/'options.txt').write_text('onboardAccessibility:false\nstartedCleanly:true\nlang:en_us\nguiScale:2\nrenderDistance:6\nsimulationDistance:4\nmaxFps:30\nfullscreen:false\nenableVsync:false\nparticles:0\nshowSubtitles:false\n')
+    (GAME/'options.txt').write_text('onboardAccessibility:false\nstartedCleanly:true\nlang:en_us\nguiScale:2\nrenderDistance:6\nsimulationDistance:5\nmaxFps:30\nfullscreen:false\nenableVsync:false\nparticles:0\nshowSubtitles:false\n')
     digest=bytearray(hashlib.md5(b'OfflinePlayer:LorObserver').digest());digest[6]=(digest[6]&15)|48;digest[8]=(digest[8]&63)|128
     command=['java','-Xms512M','-Xmx2G','-Djava.library.path='+str(natives),'-Dorg.lwjgl.librarypath='+str(natives),'-cp',os.pathsep.join(map(str,classpath)),metadata['mainClass'],'--username','LorObserver','--version','1.21.11','--gameDir',str(GAME),'--assetsDir',str(GAME/'assets'),'--assetIndex',str(index['id']),'--uuid',uuid.UUID(bytes=bytes(digest)).hex,'--accessToken','0','--userType','msa','--versionType','release','--width','1280','--height','720','--quickPlayMultiplayer','127.0.0.1:25585']
     (GAME/'command.json').write_text(json.dumps(command));return command
@@ -69,6 +69,7 @@ def launch():
 def capture_controller(stop):
     import pyautogui
     pyautogui.FAILSAFE=False
+    def capture(path):subprocess.run(['scrot','-o',str(path)],check=True,capture_output=True)
     seen=set();clicked=False;last=0
     while not stop.is_set():
         try:
@@ -78,15 +79,15 @@ def capture_controller(stop):
                 label=''
                 if stage==4 and age>50:label='dome-and-private-view'
                 if stage==5 and age>30 and not clicked:
-                    pyautogui.screenshot().save(REPORT/'fuel-before.png');pyautogui.click(496,342);time.sleep(.4);pyautogui.click(496,280);clicked=True;label='fuel-after'
+                    capture(REPORT/'fuel-before.png');pyautogui.click(496,342);time.sleep(.4);pyautogui.click(496,280);clicked=True;label='fuel-after'
                 if stage==9:
                     if 10<elapsed<28:label='beam-warning'
                     elif 65<elapsed<150:label='beam-active'
                     elif 245<elapsed<280:label='beam-fade'
                 if label and label not in seen:
-                    pyautogui.screenshot().save(REPORT/(label+'.png'));seen.add(label)
+                    capture(REPORT/(label+'.png'));seen.add(label)
             if time.monotonic()-last>10:
-                pyautogui.screenshot().save(REPORT/'latest-frame.png');last=time.monotonic()
+                capture(REPORT/'latest-frame.png');last=time.monotonic()
         except Exception as error:print('capture:',error,flush=True)
         stop.wait(.1)
     (REPORT/'client-captures.json').write_text(json.dumps({'vanilla_version':'1.21.11','modified_client':False,'captures':sorted(seen),'gui_clicks_sent':clicked},indent=2))
