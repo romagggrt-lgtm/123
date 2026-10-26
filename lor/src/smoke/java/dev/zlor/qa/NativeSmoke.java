@@ -59,9 +59,11 @@ public final class NativeSmoke extends JavaPlugin implements Listener {
             }
             if(stage==3&&age()>=25){
                 checks.put("shield_diagnostic",Map.of("health",target.getHealth(),"position",target.getLocation().toString(),"shield",p.protectedAt(target),"cause",String.valueOf(target.getLastDamageCause()==null?null:target.getLastDamageCause().getCause())));check("absorber_blocks_native_player_void",target.getHealth()==20);check("shield_keeps_real_projectile",inside.isValid());check("unshielded_projectile_native_discard",!outside.isValid());normal.setChunkForceLoaded(6,0,false);
-                p.store.change(s->s.dimensions.put(p.worldKey(normal),DimensionVoid.vanilla(normal.getMinHeight()-64,p.now())));if(visual)face(observer,new Location(normal,85.5,85,.5),new Location(normal,1.5,70.5,1.5));else observer.teleport(new Location(normal,1.5,71,.5));Bukkit.dispatchCommand(observer,"lore view all");next();return;
+                p.store.change(s->s.dimensions.put(p.worldKey(normal),DimensionVoid.vanilla(normal.getMinHeight()-64,p.now())));if(visual)face(observer,new Location(normal,85.5,85,.5),new Location(normal,1.5,70.5,1.5));else observer.teleport(new Location(normal,1.5,71,.5));if(visual){normal.getBlockAt(79,82,0).setType(Material.STONE);normal.getBlockAt(79,83,0).setType(Material.COPPER_BLOCK);normal.getBlockAt(78,83,0).setType(Material.STONE);normal.getBlockAt(78,84,0).setType(Material.REDSTONE_TORCH);}
+                Bukkit.dispatchCommand(observer,"lore view all");next();return;
             }
-            if(stage==4&&age()>=(visual?100:8)){
+            if(visual&&stage==4&&age()%10==0){var camera=observer.getLocation();camera.setYaw(90);camera.setPitch(12);observer.teleport(camera);}
+            if(stage==4&&age()>=(visual?180:8)){
                 var hud=normal.getEntities().stream().filter(e->e instanceof TextDisplay).map(e->(TextDisplay)e).findFirst().orElseThrow();check("hud_readable_scale",hud.getTransformation().getScale().x>=.2);check("hud_private",observer.canSee(hud)&&!target.canSee(hud));
                 check("sphere_world_mesh",normal.getEntities().stream().filter(e->e instanceof ItemDisplay).map(e->(ItemDisplay)e).anyMatch(e->new NamespacedKey("z_lor","dome_purple").equals(e.getItemStack().getItemMeta().getItemModel())&&e.getItemStack().getItemMeta().getCustomModelDataComponent().getFlags().size()==642&&e.getDisplayWidth()>100));
                 Bukkit.dispatchCommand(observer,"lore view off");observer.teleport(new Location(normal,1.5,71,.5));observer.getInventory().clear();var fuel=p.items.make("liquid_void");fuel.setAmount(4);observer.getInventory().setItem(9,fuel);
@@ -88,8 +90,10 @@ public final class NativeSmoke extends JavaPlugin implements Listener {
                 var origin=p.structures.origin(end);for(int x=-2;x<=2;x++)for(int z=-2;z<=2;z++)end.getBlockAt(origin.getBlockX()+x,89,origin.getBlockZ()+z).setType(Material.OBSIDIAN);
                 target.getInventory().clear();target.setGameMode(GameMode.SURVIVAL);target.teleport(new Location(end,origin.getX(),90,origin.getZ()));target.setHealth(20);target.setNoDamageTicks(0);end.setDifficulty(Difficulty.HARD);
                 if(visual)face(observer,new Location(end,origin.getX()+80,115,origin.getZ()+10),new Location(end,origin.getX(),90,origin.getZ()));
+                if(visual)Bukkit.dispatchCommand(observer,"lore view dragons");
                 check("manual_beam_started",p.dragons.startBeam(dragon));beamStart=p.tick;recording=true;next();return;
             }
+            if(visual&&(stage==9||stage==10)&&age()%10==0){var camera=observer.getLocation();camera.setYaw(90);camera.setPitch(28);observer.teleport(camera);}
             if(stage==9){
                 long elapsed=p.tick-beamStart;if(elapsed==29)check("warning_does_not_damage",pulses==0);
                 if(elapsed>=240){check("ten_one_second_damage_pulses",pulses==10&&pulseTicks.size()==10&&pulseTicks.get(9)-pulseTicks.get(0)==180);check("ownerless_magic_not_difficulty_scaled",Math.abs(totalDamage-20)<.001);check("one_erosion_credit_per_attack",p.state().beamHits.getOrDefault(target.getUniqueId(),0)==1&&target.getAttribute(Attribute.MAX_HEALTH).getValue()==19);next();}return;
