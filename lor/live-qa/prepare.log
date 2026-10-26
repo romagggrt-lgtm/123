@@ -9,11 +9,11 @@ Requirement already satisfied: six>=1.10.0 in /usr/lib/python3/dist-packages (fr
 Collecting numpy (from nbtlib)
   Downloading numpy-2.5.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
 Downloading pillow-13.0.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (7.1 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.1/7.1 MB 39.5 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.1/7.1 MB 43.6 MB/s eta 0:00:00
 Downloading python_xlib-0.33-py2.py3-none-any.whl (182 kB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 182.2/182.2 kB 57.6 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 182.2/182.2 kB 80.0 MB/s eta 0:00:00
 Downloading nbtlib-2.0.4-py3-none-any.whl (28 kB)
 Downloading numpy-2.5.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 77.8 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 93.6 MB/s eta 0:00:00
 Installing collected packages: python-xlib, Pillow, numpy, nbtlib
 Successfully installed Pillow-13.0.0 nbtlib-2.0.4 numpy-2.5.4 python-xlib-0.33

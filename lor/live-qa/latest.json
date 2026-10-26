@@ -11,9 +11,9 @@
     "real_native_void_damage": "PASS",
     "shield_diagnostic": {
       "health": 20.0,
-      "cause": "VOID",
+      "position": "Location{world=CraftWorld{name=world},x=0.5,y=71.0,z=0.5,pitch=0.0,yaw=0.0}",
       "shield": true,
-      "position": "Location{world=CraftWorld{name=world},x=0.5,y=71.0,z=0.5,pitch=0.0,yaw=0.0}"
+      "cause": "VOID"
     },
     "absorber_blocks_native_player_void": "PASS",
     "shield_keeps_real_projectile": "PASS",
@@ -21,6 +21,7 @@
     "hud_readable_scale": "PASS",
     "hud_private": "PASS",
     "sphere_world_mesh": "PASS",
+    "whole_sphere_inside_culling_bounds": "PASS",
     "protocol_pickup_then_fuel_place": "PASS",
     "protocol_cursor_not_duplicated": "PASS",
     "all_tower_crystals_restored": "PASS",
@@ -31,6 +32,8 @@
     "dragon_flies_after_command_spawn": "PASS",
     "manual_beam_started": "PASS",
     "warning_does_not_damage": "PASS",
+    "all_151_column_models_present": "PASS",
+    "whole_columns_inside_culling_bounds": "PASS",
     "ten_one_second_damage_pulses": "PASS",
     "ownerless_magic_not_difficulty_scaled": "PASS",
     "one_erosion_credit_per_attack": "PASS",
@@ -51,7 +54,7 @@
   ],
   "damage": 20.0,
   "client_rendered": false,
-  "source_commit": "1dfe4608b54c4ec5cbc8ce24aa31e4fa077bdbd2",
+  "source_commit": "e4edce88c635945697ea67cffe148cc0b4c3723f",
   "server_sha256": "5ffef465eeeb5f2a3c23a24419d97c51afd7dbb4923ff42df9a3f58bba1ccfba",
   "server_build": 132,
   "vanilla_client_launched": true,
