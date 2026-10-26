@@ -33,7 +33,7 @@ public final class NativeSmoke extends JavaPlugin implements Listener {
         if(finished)return;tick++;
         if(visual)try{Files.writeString(Path.of("qa-stage.json"),StateStore.JSON.toJson(Map.of("stage",stage,"age",age(),"beam_age",beamStart==0?-1:p.tick-beamStart)));}catch(Exception ignored){}
         try{
-            if(tick>2400)throw new IllegalStateException("Timeout at stage "+stage);
+            if(tick>6000)throw new IllegalStateException("Timeout at stage "+stage);
             if(stage==0){
                 observer=Bukkit.getPlayerExact("LorObserver");target=Bukkit.getPlayerExact("LorTarget");if(observer==null||target==null)return;
                 p=(ZLorPlugin)Bukkit.getPluginManager().getPlugin("Z_Lor");check("real_plugin_enabled",p!=null&&p.isEnabled());

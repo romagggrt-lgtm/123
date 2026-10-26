@@ -55,8 +55,11 @@ class PackRegressions(unittest.TestCase):
             peaks=[]
             for level in range(1,9):
                 name=f'assets/z_lor/textures/item/beam_{size}_{level}.png';image=Image.open(io.BytesIO(self.pack[name])).convert('RGBA')
-                self.assertEqual((32,512),image.size);peaks.append(image.getchannel('A').getextrema()[1])
-                self.assertEqual(2,self.value(name+'.mcmeta')['animation']['frametime'])
+                self.assertEqual((32,32),image.size);peaks.append(image.getchannel('A').getextrema()[1])
+                self.assertNotIn(name+'.mcmeta',self.pack)
+                frames=model['entries'][level-1]['model'];self.assertEqual(1,frames['index']);self.assertEqual(list(range(8)),[entry['threshold'] for entry in frames['entries']])
+                for entry in frames['entries']:
+                    resource='assets/z_lor/models/'+entry['model']['model'].replace('z_lor:','')+'.json';self.assertIn(resource,self.pack)
             self.assertEqual(peaks,sorted(set(peaks)))
 if __name__=='__main__':
     suite=unittest.defaultTestLoader.loadTestsFromTestCase(PackRegressions)

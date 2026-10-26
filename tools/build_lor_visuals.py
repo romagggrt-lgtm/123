@@ -74,15 +74,15 @@ def generate(added):
     added['assets/z_lor/items/beam_warning.json']=encode({'model':{'type':'minecraft:model','model':'z_lor:item/beam_warning','tints':[{'type':'minecraft:constant','value':0xFFFFFF}]}})
     return {'cells':len(cells),'pentagons':12,'hexagons':630,'centres':vertices,'opening_seconds':3,'dissolve_seconds':30}
 
-def beam_texture(rgb,alpha_level):
-    # 16 looping flow frames; no shader replacement or vanilla atlas edits.
-    size=32;frames=16;image=Image.new('RGBA',(size,size*frames))
-    for frame in range(frames):
-        for y in range(size):
-            flow=(y-frame*2)%size;streak=math.exp(-((flow-6)/2.2)**2)
-            for x in range(size):
-                edge=math.exp(-((min(x,size-1-x))/2.3)**2);pulse=.5+.5*math.sin((x*2+y-frame*2)*math.pi/16)
-                alpha=int(min(235,28+145*edge+52*streak+10*pulse)*alpha_level)
-                bright=.88+.12*streak
-                image.putpixel((x,frame*size+y),tuple(int(min(255,c*bright+28*streak)) for c in rgb)+(alpha,))
+def beam_texture(rgb,alpha_level,frame=0):
+    # Static item-atlas sprites; the server selects eight flow frames. This
+    # avoids animated block-sprite sampling in the 1.21.11 item render layer.
+    size=32;image=Image.new('RGBA',(size,size))
+    for y in range(size):
+        flow=(y-frame*4)%size;streak=math.exp(-((flow-6)/2.2)**2)
+        for x in range(size):
+            edge=math.exp(-((min(x,size-1-x))/2.3)**2);pulse=.5+.5*math.sin((x*2+y-frame*4)*math.pi/16)
+            alpha=int(min(235,28+145*edge+52*streak+10*pulse)*alpha_level)
+            bright=.88+.12*streak
+            image.putpixel((x,y),tuple(int(min(255,c*bright+28*streak)) for c in rgb)+(alpha,))
     return png(image)

@@ -120,7 +120,7 @@ public class Visuals implements Listener,AutoCloseable {
                 int ground=display.getPersistentDataContainer().get(new NamespacedKey("z_lor","beam_ground"),org.bukkit.persistence.PersistentDataType.INTEGER);
                 Location target=new Location(beam.world,beam.origin.getX()+column.x(),warning?ground+.035:beam.world.getMinHeight()+height/2,beam.origin.getZ()+column.z());
                 String model=warning?"beam_warning":column.radius()==5?"beam_large":column.radius()==3?"beam_medium":"beam_small";
-                var item=new ItemStack(Material.PAPER);item.editMeta(meta->{meta.setItemModel(new NamespacedKey("z_lor",model));var data=meta.getCustomModelDataComponent();data.setFloats(List.of((float)opacity));meta.setCustomModelDataComponent(data);});
+                var item=new ItemStack(Material.PAPER);item.editMeta(meta->{meta.setItemModel(new NamespacedKey("z_lor",model));var data=meta.getCustomModelDataComponent();data.setFloats(List.of((float)opacity,(float)((p.tick/4)%8)));meta.setCustomModelDataComponent(data);});
                 if(!item.equals(display.getItemStack()))display.setItemStack(item);
                 float diameter=(float)(column.radius()*2*(warning?1:.8+.2*opacity));
                 var transform=new Transformation(new Vector3f(),warning?new Quaternionf().rotateX((float)-Math.PI/2):new Quaternionf(),warning?new Vector3f(diameter,diameter,1):new Vector3f(diameter,(float)Math.max(.001,height),diameter),new Quaternionf());

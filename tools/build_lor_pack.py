@@ -43,7 +43,7 @@ def cylinder(texture):
             geometry={'from':[x,0,8-width],'to':[x,16,8+width],'faces':{'east':{'uv':[0,0,16,16],'texture':'#surface'},'west':{'uv':[0,0,16,16],'texture':'#surface'}}}
         if rotation:geometry['rotation']={'origin':[8,8,8],'axis':'y','angle':rotation,'rescale':False}
         geometry['shade']=False;geometry['light_emission']=15;elements.append(geometry)
-    return {'ambientocclusion':False,'textures':{'surface':texture,'particle':texture},'elements':elements,
+    return {'ambientocclusion':False,'gui_light':'front','textures':{'surface':texture,'particle':texture},'elements':elements,
             'display':{'fixed':{'rotation':[0,0,0],'translation':[0,0,0],'scale':[1,1,1]}}}
 
 def main():
@@ -87,11 +87,14 @@ def main():
         name='beam_'+size
         entries=[]
         for level in range(1,9):
-            variant=name+'_'+str(level);texture='z_lor:item/'+variant
-            added['assets/z_lor/textures/item/'+variant+'.png']=beam_texture(color,level/8)
-            added['assets/z_lor/textures/item/'+variant+'.png.mcmeta']=encoded({'animation':{'frametime':2,'interpolate':True}})
-            added['assets/z_lor/models/block/'+variant+'.json']=encoded(cylinder(texture))
-            entries.append({'threshold':(level-.5)/8,'model':{'type':'minecraft:model','model':'z_lor:block/'+variant}})
+            frames=[]
+            for frame in range(8):
+                variant=name+'_'+str(level)+(('_f'+str(frame)) if frame else '');texture='z_lor:item/'+variant
+                added['assets/z_lor/textures/item/'+variant+'.png']=beam_texture(color,level/8,frame)
+                added['assets/z_lor/models/item/'+variant+'.json']=encoded(cylinder(texture))
+                frames.append({'threshold':frame,'model':{'type':'minecraft:model','model':'z_lor:item/'+variant}})
+            flow={'type':'minecraft:range_dispatch','property':'minecraft:custom_model_data','index':1,'fallback':frames[0]['model'],'entries':frames}
+            entries.append({'threshold':(level-.5)/8,'model':flow})
         added['assets/z_lor/items/'+name+'.json']=encoded({'model':{'type':'minecraft:range_dispatch','property':'minecraft:custom_model_data','index':0,'fallback':{'type':'minecraft:empty'},'entries':entries}})
     geometry=generate(added)
     (ROOT/'lor/reference/dome-geometry.json').write_text(json.dumps(geometry,separators=(',',':'))+'\n')
