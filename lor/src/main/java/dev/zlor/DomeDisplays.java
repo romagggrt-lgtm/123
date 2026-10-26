@@ -45,7 +45,7 @@ public final class DomeDisplays implements AutoCloseable {
             }
             String color=dome.radius()==50?"purple":dome.color().equals(Color.YELLOW)?"yellow":"green";
             float opening=(float)Math.clamp(dome.age()/3000d,0,1),fade=dome.reserves()?1:(float)Math.clamp(dome.remaining()/30000d,0,1);
-            var item=new ItemStack(Material.PURPLE_STAINED_GLASS);item.editMeta(meta->{
+            var item=new ItemStack(Material.PAPER);item.editMeta(meta->{
                 meta.setItemModel(new NamespacedKey("z_lor","dome_"+color));var data=meta.getCustomModelDataComponent();
                 data.setFloats(List.of(opening,fade));data.setFlags(frame.mask);meta.setCustomModelDataComponent(data);
             });

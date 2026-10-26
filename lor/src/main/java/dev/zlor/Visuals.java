@@ -68,7 +68,7 @@ public class Visuals implements Listener,AutoCloseable {
         double y=p.voids.height(player.getWorld());double x=Math.floor(player.getX()/16)*16+8,z=Math.floor(player.getZ()/16)*16+8;
         ItemDisplay display=boundaries.get(player.getUniqueId());Location at=new Location(player.getWorld(),x,y+.015,z);
         if(display==null||!display.isValid()){
-            var item=new ItemStack(Material.PURPLE_STAINED_GLASS);item.editMeta(meta->meta.setItemModel(new NamespacedKey("z_lor","void_grid")));
+            var item=new ItemStack(Material.PAPER);item.editMeta(meta->meta.setItemModel(new NamespacedKey("z_lor","void_grid")));
             display=player.getWorld().spawn(at,ItemDisplay.class,e->{e.setItemStack(item);e.setPersistent(false);e.setGravity(false);e.setInvulnerable(true);e.setVisibleByDefault(false);e.setBrightness(new Display.Brightness(15,15));e.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.FIXED);e.setViewRange(4);e.setDisplayWidth(96);e.setDisplayHeight(1);e.setTeleportDuration(4);e.setTransformation(new Transformation(new Vector3f(),new Quaternionf().rotateX((float)-Math.PI/2),new Vector3f(96,96,1),new Quaternionf()));});
             boundaries.put(player.getUniqueId(),display);player.showEntity(p,display);
         }else if(display.getLocation().distanceSquared(at)>.00001)display.teleport(at);
@@ -120,7 +120,7 @@ public class Visuals implements Listener,AutoCloseable {
                 int ground=display.getPersistentDataContainer().get(new NamespacedKey("z_lor","beam_ground"),org.bukkit.persistence.PersistentDataType.INTEGER);
                 Location target=new Location(beam.world,beam.origin.getX()+column.x(),warning?ground+.035:beam.world.getMinHeight()+height/2,beam.origin.getZ()+column.z());
                 String model=warning?"beam_warning":column.radius()==5?"beam_large":column.radius()==3?"beam_medium":"beam_small";
-                var item=new ItemStack(Material.PURPLE_STAINED_GLASS);item.editMeta(meta->{meta.setItemModel(new NamespacedKey("z_lor",model));var data=meta.getCustomModelDataComponent();data.setFloats(List.of((float)opacity));meta.setCustomModelDataComponent(data);});
+                var item=new ItemStack(Material.PAPER);item.editMeta(meta->{meta.setItemModel(new NamespacedKey("z_lor",model));var data=meta.getCustomModelDataComponent();data.setFloats(List.of((float)opacity));meta.setCustomModelDataComponent(data);});
                 if(!item.equals(display.getItemStack()))display.setItemStack(item);
                 float diameter=(float)(column.radius()*2*(warning?1:.8+.2*opacity));
                 var transform=new Transformation(new Vector3f(),warning?new Quaternionf().rotateX((float)-Math.PI/2):new Quaternionf(),warning?new Vector3f(diameter,diameter,1):new Vector3f(diameter,(float)Math.max(.001,height),diameter),new Quaternionf());

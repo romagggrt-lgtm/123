@@ -32,7 +32,7 @@ try:
         for path in classes.rglob('*.class'):zip.write(path,str(path.relative_to(classes)))
         zip.writestr('plugin.yml',"name: Z_Lor_QA\nversion: 1.0.1\nmain: dev.zlor.qa.NativeSmoke\napi-version: '1.21.11'\ndepend: [Z_Lor]\n")
     (WORK/'eula.txt').write_text('eula=true\n')
-    (WORK/'server.properties').write_text('server-ip=127.0.0.1\nserver-port=25585\nonline-mode=false\nview-distance=4\nsimulation-distance=4\nspawn-protection=0\nmax-players=3\nlevel-type=minecraft:flat\ngenerator-settings={"layers":[{"block":"minecraft:bedrock","height":1},{"block":"minecraft:dirt","height":2},{"block":"minecraft:grass_block","height":1}],"biome":"minecraft:plains"}\ngenerate-structures=false\n')
+    (WORK/'server.properties').write_text('server-ip=127.0.0.1\nserver-port=25585\nonline-mode=false\nview-distance=6\nsimulation-distance=4\nspawn-protection=0\nmax-players=3\nlevel-type=minecraft:flat\ngenerator-settings={"layers":[{"block":"minecraft:bedrock","height":1},{"block":"minecraft:dirt","height":2},{"block":"minecraft:grass_block","height":1}],"biome":"minecraft:plains"}\ngenerate-structures=false\n')
     if visual:
         pack=ROOT/'dist/Z_Server_Pack_1.08.zip'
         with (WORK/'server.properties').open('a') as properties:properties.write('resource-pack=http://127.0.0.1:25586/'+pack.name+'\nresource-pack-sha1='+hashlib.sha1(pack.read_bytes()).hexdigest()+'\nrequire-resource-pack=true\n')
