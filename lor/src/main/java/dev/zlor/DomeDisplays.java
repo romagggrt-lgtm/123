@@ -36,11 +36,11 @@ public final class DomeDisplays implements AutoCloseable {
             long union=all.stream().filter(other->other.radius()==50&&other.center().getWorld().equals(dome.center().getWorld())).mapToLong(other->other.id().getMostSignificantBits()^other.id().getLeastSignificantBits()).reduce(0,(a,b)->a^b);
             if(frame.mask==null||frame.union!=union){frame.mask=mask(dome,all);frame.union=union;}
             if(frame.display==null||!frame.display.isValid()){
-                frame.display=dome.center().getWorld().spawn(dome.center().clone().subtract(0,dome.radius(),0),ItemDisplay.class,e->{
+                frame.display=dome.center().getWorld().spawn(dome.center(),ItemDisplay.class,e->{
                     e.setPersistent(false);e.setInvulnerable(true);e.setGravity(false);e.setSilent(true);e.setBrightness(new Display.Brightness(15,15));
-                    e.setViewRange(4);e.setDisplayWidth((float)(dome.radius()*2.1));e.setDisplayHeight((float)(dome.radius()*2.1));
+                    e.setViewRange(4);e.setDisplayWidth((float)(dome.radius()*2.1));e.setDisplayHeight(0);
                     e.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.FIXED);e.setInterpolationDuration(4);e.setInterpolationDelay(0);
-                    e.setTransformation(new Transformation(new Vector3f(0,(float)dome.radius(),0),new Quaternionf(),new Vector3f((float)dome.radius()),new Quaternionf()));
+                    e.setTransformation(new Transformation(new Vector3f(),new Quaternionf(),new Vector3f((float)dome.radius()),new Quaternionf()));
                 });frame.last=null;
             }
             String color=dome.radius()==50?"purple":dome.color().equals(Color.YELLOW)?"yellow":"green";

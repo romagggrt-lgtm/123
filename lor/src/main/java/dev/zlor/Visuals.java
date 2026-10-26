@@ -109,7 +109,7 @@ public class Visuals implements Listener,AutoCloseable {
                 double x=beam.origin.getX()+column.x(),z=beam.origin.getZ()+column.z();if(!beam.world.isChunkLoaded(((int)Math.floor(x))>>4,((int)Math.floor(z))>>4))continue;
                 int ground=beam.world.getHighestBlockYAt((int)Math.floor(x),(int)Math.floor(z))+1;
                 var display=beam.world.spawn(new Location(beam.world,x,ground+.035,z),ItemDisplay.class,e->{
-                    e.setPersistent(false);e.setGravity(false);e.setInvulnerable(true);e.setVisibleByDefault(false);e.setBrightness(new Display.Brightness(15,15));e.setViewRange(4);e.setDisplayWidth((float)(column.radius()*2.2));e.setDisplayHeight(beam.world.getMaxHeight()-beam.world.getMinHeight());e.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.FIXED);e.setInterpolationDelay(0);e.setInterpolationDuration(4);e.setTeleportDuration(4);
+                    e.setPersistent(false);e.setGravity(false);e.setInvulnerable(true);e.setVisibleByDefault(false);e.setBrightness(new Display.Brightness(15,15));e.setViewRange(4);e.setDisplayWidth((float)(column.radius()*2.2));e.setDisplayHeight(0);e.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.FIXED);e.setInterpolationDelay(0);e.setInterpolationDuration(4);e.setTeleportDuration(4);
                     e.getPersistentDataContainer().set(new NamespacedKey("z_lor","beam_column"),org.bukkit.persistence.PersistentDataType.INTEGER,BeamPattern.COLUMNS.indexOf(column));
                     e.getPersistentDataContainer().set(new NamespacedKey("z_lor","beam_ground"),org.bukkit.persistence.PersistentDataType.INTEGER,ground);
                 });group.add(display);
@@ -118,7 +118,7 @@ public class Visuals implements Listener,AutoCloseable {
                 if(!display.isValid())continue;int index=display.getPersistentDataContainer().get(new NamespacedKey("z_lor","beam_column"),org.bukkit.persistence.PersistentDataType.INTEGER);var column=BeamPattern.COLUMNS.get(index);
                 double height=(beam.world.getMaxHeight()-beam.world.getMinHeight())*opacity;
                 int ground=display.getPersistentDataContainer().get(new NamespacedKey("z_lor","beam_ground"),org.bukkit.persistence.PersistentDataType.INTEGER);
-                Location target=new Location(beam.world,beam.origin.getX()+column.x(),warning?ground+.035:beam.world.getMinHeight(),beam.origin.getZ()+column.z());
+                Location target=new Location(beam.world,beam.origin.getX()+column.x(),warning?ground+.035:beam.world.getMinHeight()+height/2,beam.origin.getZ()+column.z());
                 String model=warning?"beam_warning":column.radius()==5?"beam_large":column.radius()==3?"beam_medium":"beam_small";
                 var item=new ItemStack(Material.PAPER);item.editMeta(meta->{meta.setItemModel(new NamespacedKey("z_lor",model));var data=meta.getCustomModelDataComponent();data.setFloats(List.of((float)opacity,(float)((p.tick/4)%8)));meta.setCustomModelDataComponent(data);});
                 if(!item.equals(display.getItemStack()))display.setItemStack(item);
@@ -128,7 +128,7 @@ public class Visuals implements Listener,AutoCloseable {
                 var edge=Color.fromRGB(column.edge());double glow=Math.sqrt(Math.clamp(opacity,0,1));
                 display.setGlowColorOverride(Color.fromRGB((int)(edge.getRed()*glow),(int)(edge.getGreen()*glow),(int)(edge.getBlue()*glow)));
                 float diameter=(float)(column.radius()*2*(warning?1:.8+.2*opacity));
-                var transform=new Transformation(warning?new Vector3f():new Vector3f(0,(float)(height/2),0),warning?new Quaternionf().rotateX((float)-Math.PI/2):new Quaternionf(),warning?new Vector3f(diameter,diameter,1):new Vector3f(diameter,(float)Math.max(.001,height),diameter),new Quaternionf());
+                var transform=new Transformation(new Vector3f(),warning?new Quaternionf().rotateX((float)-Math.PI/2):new Quaternionf(),warning?new Vector3f(diameter,diameter,1):new Vector3f(diameter,(float)Math.max(.001,height),diameter),new Quaternionf());
                 if(!display.getTransformation().equals(transform))display.setTransformation(transform);
                 if(display.getLocation().distanceSquared(target)>.00001)display.teleport(target);
                 for(Player player:beam.world.getPlayers()){
