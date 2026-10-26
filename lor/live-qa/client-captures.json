@@ -1,0 +1,12 @@
+{
+  "vanilla_version": "1.21.11",
+  "modified_client": false,
+  "captures": [
+    "beam-active",
+    "beam-fade",
+    "beam-warning",
+    "dome-and-private-view",
+    "fuel-after"
+  ],
+  "gui_clicks_sent": true
+}
