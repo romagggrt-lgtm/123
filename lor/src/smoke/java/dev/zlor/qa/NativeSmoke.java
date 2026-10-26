@@ -27,8 +27,11 @@ public final class NativeSmoke extends JavaPlugin implements Listener {
     private void check(String name,boolean ok){if(!ok)throw new IllegalStateException(name);checks.put(name,"PASS");}
     private void next(){stage++;entered=tick;}
     private int age(){return tick-entered;}
+    private final boolean visual="1".equals(System.getenv("ZLOR_VISUAL"));
+    private void face(Player player,Location at,Location center){at.setDirection(center.toVector().subtract(at.toVector()));player.teleport(at);if(visual){player.setAllowFlight(true);player.setFlying(true);}}
     private void run(){
         if(finished)return;tick++;
+        if(visual)try{Files.writeString(Path.of("qa-stage.json"),StateStore.JSON.toJson(Map.of("stage",stage,"age",age(),"beam_age",beamStart==0?-1:p.tick-beamStart)));}catch(Exception ignored){}
         try{
             if(tick>2400)throw new IllegalStateException("Timeout at stage "+stage);
             if(stage==0){
@@ -56,16 +59,16 @@ public final class NativeSmoke extends JavaPlugin implements Listener {
             }
             if(stage==3&&age()>=25){
                 checks.put("shield_diagnostic",Map.of("health",target.getHealth(),"position",target.getLocation().toString(),"shield",p.protectedAt(target),"cause",String.valueOf(target.getLastDamageCause()==null?null:target.getLastDamageCause().getCause())));check("absorber_blocks_native_player_void",target.getHealth()==20);check("shield_keeps_real_projectile",inside.isValid());check("unshielded_projectile_native_discard",!outside.isValid());normal.setChunkForceLoaded(6,0,false);
-                p.store.change(s->s.dimensions.put(p.worldKey(normal),DimensionVoid.vanilla(normal.getMinHeight()-64,p.now())));observer.teleport(new Location(normal,1.5,71,.5));Bukkit.dispatchCommand(observer,"lore view all");next();return;
+                p.store.change(s->s.dimensions.put(p.worldKey(normal),DimensionVoid.vanilla(normal.getMinHeight()-64,p.now())));if(visual)face(observer,new Location(normal,85.5,85,.5),new Location(normal,1.5,70.5,1.5));else observer.teleport(new Location(normal,1.5,71,.5));Bukkit.dispatchCommand(observer,"lore view all");next();return;
             }
-            if(stage==4&&age()>=8){
+            if(stage==4&&age()>=(visual?100:8)){
                 var hud=normal.getEntities().stream().filter(e->e instanceof TextDisplay).map(e->(TextDisplay)e).findFirst().orElseThrow();check("hud_readable_scale",hud.getTransformation().getScale().x>=.2);check("hud_private",observer.canSee(hud)&&!target.canSee(hud));
                 check("sphere_world_mesh",normal.getEntities().stream().filter(e->e instanceof ItemDisplay).map(e->(ItemDisplay)e).anyMatch(e->new NamespacedKey("z_lor","dome_purple").equals(e.getItemStack().getItemMeta().getItemModel())&&e.getItemStack().getItemMeta().getCustomModelDataComponent().getFlags().size()==642&&e.getDisplayWidth()>100));
-                Bukkit.dispatchCommand(observer,"lore view off");observer.getInventory().clear();var fuel=p.items.make("liquid_void");fuel.setAmount(4);observer.getInventory().setItem(9,fuel);
+                Bukkit.dispatchCommand(observer,"lore view off");observer.teleport(new Location(normal,1.5,71,.5));observer.getInventory().clear();var fuel=p.items.make("liquid_void");fuel.setAmount(4);observer.getInventory().setItem(9,fuel);
                 Bukkit.getPluginManager().callEvent(new PlayerInteractEvent(observer,Action.RIGHT_CLICK_BLOCK,null,p.devices.block(absorber),org.bukkit.block.BlockFace.UP,EquipmentSlot.HAND));next();return;
             }
             if(stage==5){
-                if(p.state().devices.get(absorber.id).reserves()!=4){if(age()>180)throw new IllegalStateException("Real protocol GUI transfer timed out");return;}
+                if(p.state().devices.get(absorber.id).reserves()!=4){if(age()>(visual?400:180))throw new IllegalStateException("Real protocol GUI transfer timed out");return;}
                 check("protocol_pickup_then_fuel_place",observer.getInventory().getItem(9)==null||observer.getInventory().getItem(9).isEmpty());check("protocol_cursor_not_duplicated",observer.getItemOnCursor().isEmpty());observer.closeInventory();
                 target.setGameMode(GameMode.CREATIVE);observer.teleport(new Location(end,.5,90,.5));target.teleport(new Location(end,10.5,90,.5));p.dragons.stop(observer);next();return;
             }
@@ -84,6 +87,7 @@ public final class NativeSmoke extends JavaPlugin implements Listener {
                 check("dragon_flies_after_command_spawn",dragon.entity.getLocation().distanceSquared(previous)>.25);
                 var origin=p.structures.origin(end);for(int x=-2;x<=2;x++)for(int z=-2;z<=2;z++)end.getBlockAt(origin.getBlockX()+x,89,origin.getBlockZ()+z).setType(Material.OBSIDIAN);
                 target.getInventory().clear();target.setGameMode(GameMode.SURVIVAL);target.teleport(new Location(end,origin.getX(),90,origin.getZ()));target.setHealth(20);target.setNoDamageTicks(0);end.setDifficulty(Difficulty.HARD);
+                if(visual)face(observer,new Location(end,origin.getX()+80,115,origin.getZ()+10),new Location(end,origin.getX(),90,origin.getZ()));
                 check("manual_beam_started",p.dragons.startBeam(dragon));beamStart=p.tick;recording=true;next();return;
             }
             if(stage==9){

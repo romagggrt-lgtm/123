@@ -2,7 +2,7 @@ name: Z_Lor native Paper smoke
 on:
   push:
     branches: ['feature/z-lor-1.0.1-fixes']
-    paths: ['lor/src/**', 'lor/pom.xml', 'tools/lor_live_*', '.github/workflows/zlor-native-smoke.yml']
+    paths: ['lor/src/**', 'lor/pom.xml', 'tools/lor_live_*', 'tools/lor_vanilla_client.py', 'tools/build_lor*', '.github/workflows/zlor-native-smoke.yml']
   workflow_dispatch:
 permissions:
   contents: write
@@ -12,7 +12,7 @@ concurrency:
 jobs:
   paper:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -27,8 +27,17 @@ jobs:
         run: |
           mkdir -p lor/live-qa
           mvn -B -f lor/pom.xml verify 2>&1 | tee lor/live-qa/build.log
-      - name: Actual Paper and protocol inventory smoke
-        run: python3 tools/lor_live_smoke.py
+      - name: Prepare software OpenGL and original resource pack
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libgl1-mesa-dri libglx-mesa0 scrot python3-tk
+          python3 -m pip install --break-system-packages Pillow pyautogui nbtlib
+          python3 tools/build_lor_pack.py
+      - name: Actual Paper with protocol and unmodified graphical client
+        env:
+          ZLOR_VISUAL: '1'
+          LIBGL_ALWAYS_SOFTWARE: '1'
+        run: xvfb-run -a -s '-screen 0 1280x720x24' python3 tools/lor_live_smoke.py
       - name: Preserve failures as reviewable evidence
         if: always()
         run: |
