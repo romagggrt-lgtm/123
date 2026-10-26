@@ -30,10 +30,11 @@ jobs:
           python3 -c 'from pathlib import Path; [p.unlink() for p in Path("lor/live-qa").iterdir() if p.is_file()]'
           mvn -B -f lor/pom.xml verify 2>&1 | tee lor/live-qa/build.log
       - name: Prepare software OpenGL and original resource pack
+        timeout-minutes: 4
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq xvfb libgl1-mesa-dri libglx-mesa0 scrot python3-tk
-          python3 -m pip install --break-system-packages Pillow pyautogui nbtlib
+          set -o pipefail
+          timeout 90 sudo apt-get -o Acquire::Retries=0 -o Acquire::http::Timeout=15 -o DPkg::Lock::Timeout=30 install -y -qq --no-install-recommends xvfb libgl1-mesa-dri libglx-mesa0 scrot python3-tk 2>&1 | tee lor/live-qa/prepare.log
+          python3 -m pip install --break-system-packages --retries 1 --timeout 20 Pillow pyautogui nbtlib 2>&1 | tee -a lor/live-qa/prepare.log
           python3 tools/build_lor_pack.py
           python3 tools/test_lor_pack.py
       - name: Actual Paper with protocol and unmodified graphical client
