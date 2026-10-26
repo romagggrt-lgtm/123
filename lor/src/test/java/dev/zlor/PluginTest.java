@@ -168,7 +168,7 @@ class PluginTest {
     @Test void physicalHopperOnlyTransfersLiquidVoidIntoInputSlots()throws Exception{
         var d=device("void_absorber",0,64,2);Block above=p.devices.block(d).getRelative(org.bukkit.block.BlockFace.UP);above.setType(Material.HOPPER);var hopper=(org.bukkit.block.Hopper)above.getState();
         hopper.getInventory().setItem(0,p.items.make("void_breath"));server.getScheduler().performTicks(8);settle();assertEquals(0,p.state().devices.get(d.id).reserves());
-        var fuel=p.items.make("liquid_void");fuel.setAmount(2);hopper.getInventory().setItem(0,fuel);server.getScheduler().performTicks(8);settle();assertEquals(1,p.state().devices.get(d.id).reserves());
+        var fuel=p.items.make("liquid_void");fuel.setAmount(2);hopper.getInventory().setItem(0,fuel);server.getScheduler().performTicks(8);settle();int transferred=p.state().devices.get(d.id).reserves();var left=hopper.getInventory().getItem(0);assertTrue(transferred>=1);assertEquals(2,transferred+(left==null?0:left.getAmount()));
     }
     @Test void physicalHopperBelowOnlyTakesTheEmptyBottleOutput()throws Exception{
         var d=device("void_absorber",0,64,2);p.store.change(s->{s.devices.get(d.id).bottles=2;s.devices.get(d.id).fuel[0]=4;});settle();

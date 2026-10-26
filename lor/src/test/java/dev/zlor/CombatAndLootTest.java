@@ -26,10 +26,10 @@ class CombatAndLootTest {
     /** Records damage delivery because MockBukkit does not implement DamageSource.
      * Native MAGIC armour/invulnerability handling remains a live-server check. */
     static final class BeamPlayer extends PlayerMock {
-        DamageSource lastSource;
+        DamageSource lastSource;int damageCalls;
         boolean ignoreDamage;
         BeamPlayer(ServerMock server){super(server,"BeamTester");}
-        @Override public void damage(double amount,DamageSource source){lastSource=source;if(!ignoreDamage)setHealth(Math.max(0,getHealth()-amount));}
+        @Override public void damage(double amount,DamageSource source){lastSource=source;damageCalls++;if(!ignoreDamage)setHealth(Math.max(0,getHealth()-amount));}
     }
     ServerMock server;PluginTest.TestPlugin p;World world;PlayerMock player;
     @BeforeEach void setup()throws Exception{
@@ -77,6 +77,32 @@ class CombatAndLootTest {
         assertEquals(1,p.state().beamHits.get(player.getUniqueId()));assertEquals(19,player.getAttribute(Attribute.MAX_HEALTH).getValue());
         assertEquals(DamageType.MAGIC,receiver.lastSource.getDamageType());
         var second=new Dragons.Beam(source,new Location(world,.5,64,.5),p.tick);p.tick+=p.dragons.timeline().warning();method.invoke(p.dragons,second,source,player);settle();assertEquals(2,p.state().beamHits.get(player.getUniqueId()));assertEquals(18,player.getAttribute(Attribute.MAX_HEALTH).getValue());
+    }
+    private BeamPlayer receiver()throws Exception{
+        var receiver=new BeamPlayer(server);server.addPlayer(receiver);receiver.teleport(new Location(world,.5,65,.5));player=receiver;settle();return receiver;
+    }
+    private void pulse(Dragons.Beam beam,Dragons.Body source,Player receiver)throws Exception{
+        var method=Dragons.class.getDeclaredMethod("hit",Dragons.Beam.class,Dragons.Body.class,Player.class);method.setAccessible(true);method.invoke(p.dragons,beam,source,receiver);
+    }
+    @Test void warningFadeAndCreativePlayersNeverTakeBeamDamage()throws Exception{
+        var receiver=receiver();var source=dragon("enriched",500);var beam=new Dragons.Beam(source,new Location(world,.5,64,.5),p.tick);long start=p.tick;
+        pulse(beam,source,receiver);assertEquals(0,receiver.damageCalls);assertTrue(beam.counted.isEmpty());
+        p.tick=start+30;receiver.setGameMode(GameMode.CREATIVE);pulse(beam,source,receiver);assertEquals(0,receiver.damageCalls);
+        receiver.setGameMode(GameMode.SURVIVAL);p.tick=start+230;pulse(beam,source,receiver);assertEquals(0,receiver.damageCalls);assertFalse(p.state().beamHits.containsKey(receiver.getUniqueId()));
+    }
+    @Test void rejectedDamageDoesNotConsumeErosionCredit()throws Exception{
+        var receiver=receiver();receiver.ignoreDamage=true;var source=dragon("enriched",500);var beam=new Dragons.Beam(source,new Location(world,.5,64,.5),p.tick);p.tick+=30;
+        pulse(beam,source,receiver);settle();assertTrue(beam.counted.isEmpty());assertFalse(p.state().beamHits.containsKey(receiver.getUniqueId()));
+        receiver.ignoreDamage=false;pulse(beam,source,receiver);settle();assertEquals(1,p.state().beamHits.get(receiver.getUniqueId()));assertEquals(19,receiver.getAttribute(Attribute.MAX_HEALTH).getValue());
+    }
+    @Test void diskAcknowledgementCannotSwallowTheNextDamagePulse()throws Exception{
+        var receiver=receiver();var source=dragon("enriched",500);var beam=new Dragons.Beam(source,new Location(world,.5,64,.5),p.tick);p.tick+=30;
+        pulse(beam,source,receiver);assertTrue(beam.pending.contains(receiver.getUniqueId()));p.tick+=20;pulse(beam,source,receiver);
+        assertEquals(2,receiver.damageCalls);assertEquals(16,receiver.getHealth());assertNull(receiver.lastSource.getCausingEntity());assertNull(receiver.lastSource.getDirectEntity());settle();assertEquals(1,p.state().beamHits.get(receiver.getUniqueId()));
+    }
+    @Test void restoredDragonStartsInFlightWithFreshAttackCooldownAndVanillaPublicBar()throws Exception{
+        p.tick=10_000;var body=dragon("enriched",500);
+        assertEquals(EnderDragon.Phase.CIRCLING,body.entity.getPhase());assertTrue(p.tick-body.lastBeam<10);assertEquals("Эндер-дракон",body.bar.getTitle());assertNull(body.entity.customName());assertFalse(body.entity.isCustomNameVisible());
     }
     private PlayerDeathEvent nativeDeath(List<ItemStack> drops){
         player.setGameMode(GameMode.SURVIVAL);player.setLastDamageCause(new EntityDamageEvent(player,EntityDamageEvent.DamageCause.VOID,40));

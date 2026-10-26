@@ -25,6 +25,7 @@ jobs:
           node-version: '22'
       - name: Compile and run unit regressions
         run: |
+          set -o pipefail
           mkdir -p lor/live-qa
           mvn -B -f lor/pom.xml verify 2>&1 | tee lor/live-qa/build.log
       - name: Prepare software OpenGL and original resource pack
@@ -33,6 +34,7 @@ jobs:
           sudo apt-get install -y -qq xvfb libgl1-mesa-dri libglx-mesa0 scrot python3-tk
           python3 -m pip install --break-system-packages Pillow pyautogui nbtlib
           python3 tools/build_lor_pack.py
+          python3 tools/test_lor_pack.py
       - name: Actual Paper with protocol and unmodified graphical client
         env:
           ZLOR_VISUAL: '1'

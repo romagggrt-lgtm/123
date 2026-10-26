@@ -67,4 +67,8 @@ class Fixes101Test {
     @Test void ticketOwnersCannotReleaseEachOthersChunk(){
         var calls=new ArrayList<Boolean>();try(var leases=new ChunkLeases(p,(world,x,z,present)->calls.add(present))){Object a=new Object(),b=new Object();leases.acquire(a,world,0,0);leases.acquire(b,world,0,0);assertEquals(1,leases.size());leases.release(a);assertEquals(1,leases.size());assertEquals(List.of(true),calls);leases.release(b);assertEquals(0,leases.size());assertEquals(List.of(true,false),calls);}
     }
+    @Test void packCellIndicesMatchTheServersOverlapMask()throws Exception{
+        var data=StateStore.JSON.fromJson(java.nio.file.Files.readString(java.nio.file.Path.of("reference/dome-geometry.json")),com.google.gson.JsonObject.class).getAsJsonArray("centres");
+        assertEquals(DomeDisplays.CELLS.size(),data.size());for(int i=0;i<data.size();i++)for(int axis=0;axis<3;axis++)assertEquals(data.get(i).getAsJsonArray().get(axis).getAsDouble(),DomeDisplays.CELLS.get(i)[axis],1e-12,"cell "+i+" axis "+axis);
+    }
 }
