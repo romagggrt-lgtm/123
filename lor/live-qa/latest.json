@@ -1,5 +1,5 @@
 {
-  "status": "PASS",
+  "status": "FAIL",
   "plugin_version": "1.0.1",
   "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
   "checks": {
@@ -11,9 +11,9 @@
     "real_native_void_damage": "PASS",
     "shield_diagnostic": {
       "cause": "VOID",
-      "health": 20.0,
+      "shield": true,
       "position": "Location{world=CraftWorld{name=world},x=0.5,y=71.0,z=0.5,pitch=0.0,yaw=0.0}",
-      "shield": true
+      "health": 20.0
     },
     "absorber_blocks_native_player_void": "PASS",
     "shield_keeps_real_projectile": "PASS",
@@ -51,7 +51,8 @@
   ],
   "damage": 20.0,
   "client_rendered": false,
-  "source_commit": "6aa7f5e6521d9a69e7b1bc9c535abc6ca74c6238",
+  "source_commit": "0d80db8d791c565383e8b45a24c1a687eb7d19bc",
+  "failure": "java.lang.IllegalStateException: Timeout at stage 11",
   "server_sha256": "5ffef465eeeb5f2a3c23a24419d97c51afd7dbb4923ff42df9a3f58bba1ccfba",
   "server_build": 132,
   "vanilla_client_launched": true,
