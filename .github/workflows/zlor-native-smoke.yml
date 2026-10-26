@@ -27,6 +27,7 @@ jobs:
         run: |
           set -o pipefail
           mkdir -p lor/live-qa
+          python3 -c 'from pathlib import Path; [p.unlink() for p in Path("lor/live-qa").iterdir() if p.is_file()]'
           mvn -B -f lor/pom.xml verify 2>&1 | tee lor/live-qa/build.log
       - name: Prepare software OpenGL and original resource pack
         run: |

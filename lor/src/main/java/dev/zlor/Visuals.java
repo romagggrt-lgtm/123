@@ -16,7 +16,7 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
 /** Bounded vanilla presentation; the Fabric surface shader is not emulated. */
-public final class Visuals implements Listener,AutoCloseable {
+public class Visuals implements Listener,AutoCloseable {
     public record Dome(UUID id,Location center,double radius,Color color,long age,long remaining,boolean reserves){}
     private final ZLorPlugin p;
     private final Set<UUID> voidViews=new HashSet<>(),dragonViews=new HashSet<>();

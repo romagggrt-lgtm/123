@@ -20,6 +20,9 @@ class PluginTest {
     static final AtomicLong WALL=new AtomicLong(1_000_000),NANOS=new AtomicLong(1_000_000_000);
     public static class TestPlugin extends ZLorPlugin{
         @Override public void onEnable(){wall=WALL::get;nanos=NANOS::get;super.onEnable();}
+        /** MockBukkit cannot render private displays. Command/view state stays
+         * real; the native CI tests the actual render tick and packet visibility. */
+        @Override protected Visuals createVisuals(){return new Visuals(this){@Override public void tick(){}};}
         @Override protected NativeBoundary createNativeBoundary(){return new NativeBoundary(this){
             @Override public void attach(World world){}
             @Override public boolean ready(World world){return true;}

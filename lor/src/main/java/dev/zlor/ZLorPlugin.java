@@ -40,6 +40,7 @@ public class ZLorPlugin extends JavaPlugin implements Listener,CommandExecutor,T
     private long fuelBase,fuelStarted,lastWall;
     private boolean stopping;
     private final Map<UUID,PlayerResourcePackStatusEvent.Status> packStatuses=new HashMap<>();
+    protected Visuals createVisuals(){return new Visuals(this);}
     protected NativeBoundary createNativeBoundary(){return new NativeBoundary(this);}
     public long now(){return lastWall=Math.max(lastWall,wall.getAsLong());}
     public long fuelNow(){return fuelBase+Math.max(0,nanos.getAsLong()-fuelStarted)/1_000_000;}
@@ -62,7 +63,7 @@ public class ZLorPlugin extends JavaPlugin implements Listener,CommandExecutor,T
             roles=new Roles(this);items=new Items(this);confirmations=new Confirmations(this);voids=new Voids(this);
             tickets=new ChunkLeases(this);crystals=new CrystalRestorer(this);
             devices=new Devices(this);redstone=new Redstone(this);loot=new LootShields(this);restrictions=new Restrictions(this);
-            structures=new Structures(this);dragons=new Dragons(this);visuals=new Visuals(this);menus=new Menus(this);
+            structures=new Structures(this);dragons=new Dragons(this);visuals=createVisuals();menus=new Menus(this);
             audio=new Audio(this);nativeBoundary=createNativeBoundary();commands=new LorCommands(this);
             items.registerRecipes();
             for(Listener listener:List.of(this,voids,devices,redstone,loot,restrictions,structures,dragons,visuals,menus))Bukkit.getPluginManager().registerEvents(listener,this);

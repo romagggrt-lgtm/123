@@ -52,9 +52,9 @@ class StateStoreTest {
         }
     }
     @Test void oldStateWithoutCrystalJobFieldKeepsDevicesAndHealthLoss()throws Exception{
-        Path file=directory.resolve("state.json");var state=new State();var id=UUID.randomUUID();state.beamHits.put(id,3);state.immune.add(id);state.fuelClock=1234;
+        Path file=directory.resolve("state.json");var state=new State();var id=UUID.randomUUID();state.beamHits.put(id,3);state.immune.add(id);state.fuelClock=1234;var device=new State.Device("void_absorber",new State.Pos("minecraft:the_end",1,80,1),0);device.fuel[0]=4;device.fuelUntil=2000;state.devices.put(device.id,device);
         var old=StateStore.JSON.toJsonTree(state).getAsJsonObject();old.remove("crystalRepairs");String original=old.toString();Files.writeString(file,original);
         try(var store=new StateStore(file,e->fail(e))){assertTrue(store.state().crystalRepairs.isEmpty());assertEquals(3,store.state().beamHits.get(id));assertEquals(Set.of(id),store.state().immune);assertEquals(original,Files.readString(file));store.change(next->next.crystalRepairs.add("minecraft:the_end"));drain(store);}
-        try(var restarted=new StateStore(file,e->fail(e))){assertEquals(Set.of("minecraft:the_end"),restarted.state().crystalRepairs);assertEquals(3,restarted.state().beamHits.get(id));assertEquals(1234,restarted.state().fuelClock);}
+        try(var restarted=new StateStore(file,e->fail(e))){assertEquals(Set.of("minecraft:the_end"),restarted.state().crystalRepairs);assertEquals(3,restarted.state().beamHits.get(id));assertEquals(1234,restarted.state().fuelClock);assertEquals(4,restarted.state().devices.get(device.id).reserves());assertEquals(2000,restarted.state().devices.get(device.id).fuelUntil);}
     }
 }
