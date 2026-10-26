@@ -1,0 +1,7 @@
+LorTarget STATE login
+LorTarget STATE configuration
+LorTarget CONFIG_PACK_ACCEPTED 0ceb40db-c8f2-3106-aa71-bbeecd8e978f
+LorTarget STATE play
+LorTarget PLAY_SPAWN
+LorTarget PLAY_SPAWN
+LorTarget {"type":"string","value":"Server closed"}
