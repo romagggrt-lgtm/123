@@ -18,6 +18,7 @@ public final class Voids implements Listener {
     private final Map<UUID,Long> lastMeasure=new HashMap<>(),lastBottle=new HashMap<>();
     private final Set<String> clamping=new HashSet<>();
     public Voids(ZLorPlugin p){this.p=p;}
+    public boolean feedbackActive(UUID id){return p.tick-lastMeasure.getOrDefault(id,-1000L)<60;}
     public double nativeY(World world){return world.getMinHeight()-64d;}
     public double ceiling(World world){return Math.min(world.getMaxHeight(),p.getConfig().getDouble("safety.max-height."+p.worldKey(world).replace('.','_'),world.getMaxHeight()));}
     public DimensionVoid state(World world){return p.state().dimensions.getOrDefault(p.worldKey(world),DimensionVoid.vanilla(nativeY(world),p.now()));}

@@ -16,7 +16,10 @@ public final class HexDomeMesh {
     private static long edge(int a,int b){return (long)Math.min(a,b)<<32 | (Math.max(a,b)&0xffffffffL);}
     private static int midpoint(List<V> v,Map<Long,Integer> mids,int a,int b){return mids.computeIfAbsent(edge(a,b),k->{v.add(v.get(a).add(v.get(b)).unit());return v.size()-1;});}
     public static List<float[]> grid(double radius){return segments(radius).stream().map(Segment::quad).toList();}
-    public static List<Segment> segments(double radius){
+    private record Mesh(List<Segment> segments,List<double[]> centres){}
+    public static List<Segment> segments(double radius){return mesh(radius).segments;}
+    public static List<double[]> centres(){return mesh(1).centres;}
+    private static Mesh mesh(double radius){
         double t=(1+Math.sqrt(5))/2;
         var v=new ArrayList<V>();
         for(var p:new double[][]{{-1,t,0},{1,t,0},{-1,-t,0},{1,-t,0},{0,-1,t},{0,1,t},{0,-1,-t},{0,1,-t},{t,0,-1},{t,0,1},{-t,0,-1},{-t,0,1}})v.add(new V(p[0],p[1],p[2]).unit());
@@ -30,7 +33,7 @@ public final class HexDomeMesh {
             for(int i=0;i<3;i++){long key=edge(f[i],f[(i+1)%3]);var other=neighbours.remove(key);if(other==null)neighbours.put(key,centre);else{int first=(int)(key>>>32),second=(int)key;quads.add(new Segment(ribbon(other,centre,radius),first,second,(float)v.get(first).y,(float)v.get(second).y));}}
         }
         if(!neighbours.isEmpty())throw new IllegalStateException("Open dome grid");
-        return List.copyOf(quads);
+        return new Mesh(List.copyOf(quads),v.stream().map(p->new double[]{p.x,p.y,p.z}).toList());
     }
     private static float[] ribbon(V a,V b,double r){
         var tangent=b.sub(a);var normal=a.add(b).unit();var side=normal.cross(tangent).unit().mul(.055/r);

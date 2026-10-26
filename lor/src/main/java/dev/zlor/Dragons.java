@@ -22,12 +22,12 @@ public final class Dragons implements Listener,AutoCloseable {
     public static final class Body {
         public final UUID id;public final EnderDragon entity;public final String kind;
         public double health;public long quiet,nextRepair=1200,sitting,lastBeam,lastDive;public final BossBar bar;
-        Body(State.Dragon data,EnderDragon entity){id=data.id;this.entity=entity;kind=data.kind;health=data.health;quiet=data.kingQuietTicks;nextRepair=data.kingNextRepair;bar=Bukkit.createBossBar(name(kind),BarColor.PURPLE,BarStyle.SOLID);}
+        Body(State.Dragon data,EnderDragon entity){id=data.id;this.entity=entity;kind=data.kind;health=data.health;quiet=data.kingQuietTicks;nextRepair=data.kingNextRepair;bar=Bukkit.createBossBar("Эндер-дракон",BarColor.PINK,BarStyle.SOLID);}
         public double max(){return kind.equals("void_king")?1500:kind.equals("enriched")?500:200;}
     }
     public static final class Beam {
         public final UUID id=UUID.randomUUID(),owner;public final World world;public final Location origin,anchor;
-        public final long started;public final Set<UUID> counted=new HashSet<>(),pending=new HashSet<>();
+        public final long started;public final Set<UUID> counted=new HashSet<>(),pending=new HashSet<>();public final Map<UUID,Integer> ordinals=new HashMap<>();
         Beam(Body body,Location origin,long tick){owner=body.id;world=body.entity.getWorld();this.origin=origin.clone();anchor=body.entity.getLocation();started=tick;}
     }
     private final ZLorPlugin p;
@@ -87,7 +87,7 @@ public final class Dragons implements Listener,AutoCloseable {
         p.change(player,"Призыв: "+name(kind),s->{
             long count=s.dragons.values().stream().filter(d->key.equals(d.world)&&(d.status.equals("ACTIVE")||d.status.equals("SUMMONING"))).count();
             if(count>=p.getConfig().getInt("safety.max-dragons-per-world",64))throw new IllegalArgumentException("Достигнут лимит драконов арены");
-            s.dragons.put(data.id,data);
+            s.dragons.put(data.id,data);s.crystalRepairs.add(key);
         },s->{summoning.put(data.id,p.tick+data.summonRemaining);p.structures.hidePortal(world,true);player.sendMessage("Призыв начат: "+name(kind));});
     }
     private State.Dragon planned(World world,String kind,int index){
@@ -106,7 +106,7 @@ public final class Dragons implements Listener,AutoCloseable {
             var arena=s.arenas.computeIfAbsent(key,k->new State.Arena());if(arena.waveActive())throw new IllegalArgumentException("Волна уже запущена");
             arena.run=run;arena.wave=number;arena.phase="SPAWNING";arena.members.clear();arena.dead.clear();arena.previousStar=arena.star;arena.waveStarApplied=number>=5;
             if(arena.waveStarApplied)arena.star=true;arena.leader=null;
-            for(var d:participants){arena.members.add(d.id);s.dragons.put(d.id,d);}
+            for(var d:participants){arena.members.add(d.id);s.dragons.put(d.id,d);}s.crystalRepairs.add(key);
         },s->{stopped.remove(key);participants.forEach(d->summoning.put(d.id,p.tick+d.summonRemaining));p.structures.hidePortal(world,true);player.sendMessage("Волна "+number+": "+composition[0]+" обычных, "+composition[1]+" обогащённых");});
     }
     private void trySpawn(State.Dragon data){
@@ -123,7 +123,7 @@ public final class Dragons implements Listener,AutoCloseable {
             var dragon=world.spawn(new Location(world,data.x,data.y,data.z),EnderDragon.class,e->{
                 try{NativeSupport.identity(e,data.id);NativeSupport.detach(e);}catch(ReflectiveOperationException error){if(e.getClass().getName().contains("craftbukkit"))throw new IllegalStateException("Нативная идентичность дракона не подготовлена",error);}
                 e.getPersistentDataContainer().set(kindKey,PersistentDataType.STRING,data.kind);e.getPersistentDataContainer().set(ownedKey,PersistentDataType.STRING,data.id.toString());
-                e.customName(Component.text(name(data.kind)));e.setPersistent(true);e.setRemoveWhenFarAway(false);
+                e.customName(null);e.setPersistent(true);e.setRemoveWhenFarAway(false);e.setPhase(EnderDragon.Phase.CIRCLING);
             });
             created=dragon;
             if(!dragon.getUniqueId().equals(data.id))throw new IllegalStateException("UUID дракона не совпал с журналом призыва");
@@ -142,16 +142,17 @@ public final class Dragons implements Listener,AutoCloseable {
             max.setBaseValue(data.kind.equals("void_king")?1024:data.maxHealth());
             var scale=dragon.getAttribute(Attribute.SCALE);if(scale==null){dragon.registerAttribute(Attribute.SCALE);scale=dragon.getAttribute(Attribute.SCALE);}if(scale!=null)scale.setBaseValue(data.kind.equals("void_king")?2.3:data.kind.equals("enriched")?1.15:1);
             dragon.setHealth(Math.min(max.getValue(),data.kind.equals("void_king")?data.health/1500*max.getValue():Math.max(.01,data.health)));
-            dragon.customName(Component.text(name(data.kind)));dragon.setPodium(p.structures.origin(dragon.getWorld()));
+            dragon.customName(null);dragon.setCustomNameVisible(false);dragon.setPodium(p.structures.origin(dragon.getWorld()));
+            if(dragon.getPhase()==EnderDragon.Phase.HOVER)dragon.setPhase(EnderDragon.Phase.CIRCLING);
             dragon.getPersistentDataContainer().set(kindKey,PersistentDataType.STRING,data.kind);dragon.getPersistentDataContainer().set(ownedKey,PersistentDataType.STRING,data.id.toString());
             if(dragon.getBossBar()!=null)dragon.getBossBar().setVisible(false);
-            bodies.put(data.id,new Body(data,dragon));
+            var body=new Body(data,dragon);body.lastBeam=p.tick;body.lastDive=p.tick;bodies.put(data.id,body);
         }catch(Exception error){failed.add(data.id);p.getLogger().log(java.util.logging.Level.SEVERE,"Дракон не подготовлен: "+data.id,error);}
     }
     private void adopt(EnderDragon dragon){
         if(p.state().dragons.containsKey(dragon.getUniqueId())){reconcile(dragon);return;}
         var data=new State.Dragon();data.id=dragon.getUniqueId();data.kind="default";data.health=dragon.getHealth();data.status="ACTIVE";data.world=p.worldKey(dragon.getWorld());data.x=dragon.getX();data.y=dragon.getY();data.z=dragon.getZ();
-        p.store.change(s->s.dragons.put(data.id,data),s->{attach(data,dragon);p.structures.hidePortal(dragon.getWorld(),true);},e->p.getLogger().warning("Нативный дракон не добавлен в журнал: "+e));
+        p.store.change(s->{s.dragons.put(data.id,data);s.crystalRepairs.add(data.world);},s->{attach(data,dragon);p.structures.hidePortal(dragon.getWorld(),true);},e->p.getLogger().warning("Нативный дракон не добавлен в журнал: "+e));
     }
     @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true)
     public void spawn(CreatureSpawnEvent event){
@@ -233,7 +234,7 @@ public final class Dragons implements Listener,AutoCloseable {
         var beam=new Beam(body,p.structures.origin(body.entity.getWorld()),p.tick);beams.put(key,beam);body.lastBeam=p.tick;
         body.entity.setPhase(EnderDragon.Phase.HOVER);return true;
     }
-    public void stopBeam(World world){var beam=beams.remove(p.worldKey(world));if(beam==null)return;p.visuals.stopBeam(beam.id);Body body=bodies.get(beam.owner);if(body!=null&&body.entity.isValid()&&!body.entity.isDead())body.entity.setPhase(EnderDragon.Phase.CIRCLING);}
+    public void stopBeam(World world){var beam=beams.remove(p.worldKey(world));if(beam==null)return;p.visuals.stopBeam(beam.id);Body body=bodies.get(beam.owner);if(body!=null&&body.entity.isValid()&&!body.entity.isDead()){body.lastBeam=p.tick;body.entity.setPhase(EnderDragon.Phase.CIRCLING);}}
     public void stopAttacks(World world){
         stopBeam(world);
         for(Body body:bodies.values())if(body.entity.getWorld().equals(world)&&body.entity.isValid()&&!body.entity.isDead()){
@@ -241,13 +242,14 @@ public final class Dragons implements Listener,AutoCloseable {
             body.lastBeam=p.tick;body.lastDive=p.tick;
         }
     }
+    public BeamTimeline timeline(){return new BeamTimeline(Math.clamp(p.getConfig().getInt("dragons.beam-warning-ticks",30),1,1200),Math.clamp(p.getConfig().getInt("dragons.beam-active-ticks",200),20,1200),Math.clamp(p.getConfig().getInt("dragons.beam-fade-ticks",60),1,200));}
     private void beamsTick(){
-        int warning=p.getConfig().getInt("dragons.beam-warning-ticks",30),active=p.getConfig().getInt("dragons.beam-active-ticks",60);
+        var timeline=timeline();
         for(var beam:new ArrayList<>(beams.values())){
             Body body=bodies.get(beam.owner);long elapsed=p.tick-beam.started;
-            if(body==null||!body.entity.isValid()||body.entity.isDead()||elapsed>=warning+active){stopBeam(beam.world);continue;}
-            body.entity.teleport(beam.anchor);body.entity.setVelocity(new Vector());
-            if(elapsed<warning||(elapsed-warning)%20!=0)continue;
+            if(body==null||!body.entity.isValid()||body.entity.isDead()||timeline.finished(elapsed)){stopBeam(beam.world);continue;}
+            if(body.entity.getLocation().distanceSquared(beam.anchor)>.01)body.entity.teleport(beam.anchor);body.entity.setVelocity(new Vector());
+            if(!timeline.pulse(elapsed))continue;
             for(Entity entity:beam.world.getNearbyEntities(beam.origin.clone().set(beam.origin.getX(),(beam.world.getMinHeight()+beam.world.getMaxHeight())/2d,beam.origin.getZ()),55,(beam.world.getMaxHeight()-beam.world.getMinHeight())/2d+32,55)){
                 var box=entity.getBoundingBox();if(!BeamPattern.hits(box.getMinX(),box.getMinZ(),box.getMaxX(),box.getMaxZ(),beam.origin.getX(),beam.origin.getZ()))continue;
                 if(entity instanceof Player player&&player.getGameMode()!=GameMode.CREATIVE&&player.getGameMode()!=GameMode.SPECTATOR&&!player.isDead())hit(beam,body,player);
@@ -256,14 +258,18 @@ public final class Dragons implements Listener,AutoCloseable {
         }
     }
     private void hit(Beam beam,Body source,Player player){
-        UUID id=player.getUniqueId();if(beam.pending.contains(id))return;
-        if(beam.counted.contains(id)){damagePlayer(player,source,p.state().beamHits.getOrDefault(id,0));return;}
-        beam.pending.add(id);
-        p.store.change(s->s.beamHits.put(id,DragonRules.hits(s.beamHits.getOrDefault(id,0))),s->{beam.pending.remove(id);beam.counted.add(id);if(player.isOnline()&&!player.isDead()&&player.getWorld().equals(beam.world)){applyMaxLoss(player);damagePlayer(player,source,s.beamHits.getOrDefault(id,0));}},e->beam.pending.remove(id));
-    }
-    private void damagePlayer(Player player,Body source,int hit){
-        double amount=DragonRules.damage((float)player.getHealth(),hit,4);if(amount<=0)return;
-        player.damage(amount,DamageSource.builder(DamageType.MAGIC).withCausingEntity(source.entity).withDirectEntity(source.entity).build());
+        if(!timeline().firing(p.tick-beam.started)||player.isDead()||player.getGameMode()==GameMode.CREATIVE||player.getGameMode()==GameMode.SPECTATOR)return;
+        UUID id=player.getUniqueId();boolean first=!beam.ordinals.containsKey(id);
+        int count=first?DragonRules.hits(p.state().beamHits.getOrDefault(id,0)):beam.ordinals.get(id);
+        double amount=DragonRules.damage((float)player.getHealth(),count,4);
+        double health=player.getHealth(),absorption=player.getAbsorptionAmount();
+        // Ownerless MAGIC: a living dragon cause would add difficulty scaling.
+        // Deliver each pulse immediately; disk acknowledgement must not swallow it.
+        if(amount>0)player.damage(amount,DamageSource.builder(DamageType.MAGIC).build());
+        boolean accepted=amount<=0||player.getHealth()<health||player.getAbsorptionAmount()<absorption;
+        if(!first||!accepted)return;
+        beam.ordinals.put(id,count);beam.counted.add(id);beam.pending.add(id);
+        p.store.change(s->s.beamHits.put(id,Math.max(count,s.beamHits.getOrDefault(id,0))),s->{beam.pending.remove(id);if(player.isOnline())applyMaxLoss(player);},error->{beam.pending.remove(id);p.getLogger().warning("Попадание луча не сохранено: "+error);});
     }
     public void applyMaxLoss(Player player){
         var attribute=player.getAttribute(Attribute.MAX_HEALTH);if(attribute==null)return;
@@ -293,16 +299,7 @@ public final class Dragons implements Listener,AutoCloseable {
         body.entity.setVelocity(direction.normalize().multiply(p.getConfig().getDouble("dragons.king-dive-speed",1.2)));body.lastDive=p.tick;
     }
     private void repair(Body body){
-        try{
-            World world=body.entity.getWorld();for(Location location:NativeSupport.towers(world)){
-                int x=location.getBlockX()>>4,z=location.getBlockZ()>>4;
-                if(!world.isChunkLoaded(x,z)){world.getChunkAtAsync(x,z,true);return;}
-                if(!NativeSupport.entityTicking(world,x,z))return;
-                if(world.getNearbyEntities(location,1.25,2,1.25,e->e instanceof EnderCrystal).size()>0)continue;
-                if(location.clone().subtract(0,1,0).getBlock().getType()!=Material.BEDROCK||!location.getBlock().getType().isAir())continue;
-                world.spawn(location.add(.5,0,.5),EnderCrystal.class,e->e.setShowingBottom(false));return;
-            }
-        }catch(ReflectiveOperationException error){if(failed.add(body.id))p.getLogger().warning("Восстановление кристаллов недоступно: "+error);}
+        int result=p.crystals.one(body.entity.getWorld());body.nextRepair=body.quiet+(result<0?20:600);
     }
     public void tick(){
         for(var data:p.state().dragons.values())if(data.status.equals("SUMMONING")&&!failed.contains(data.id)){
@@ -312,7 +309,7 @@ public final class Dragons implements Listener,AutoCloseable {
             if(!body.entity.isValid()||body.entity.isDead()){body.bar.removeAll();bodies.remove(body.id);continue;}
             body.quiet++;
             if(body.kind.equals("void_king")){
-                if(body.quiet>=body.nextRepair){repair(body);body.nextRepair=body.quiet+600;}
+                if(body.quiet>=body.nextRepair)repair(body);
                 if(p.tick-body.lastDive>=p.getConfig().getInt("dragons.king-dive-cooldown-ticks",400)&&!beams.containsKey(p.worldKey(body.entity.getWorld()))){
                     Player target=body.entity.getWorld().getPlayers().stream().filter(player->player.getGameMode()==GameMode.SURVIVAL&&!player.isDead()).min(Comparator.comparingDouble(player->player.getLocation().distanceSquared(body.entity.getLocation()))).orElse(null);if(target!=null)dive(body,target);
                 }
@@ -320,10 +317,10 @@ public final class Dragons implements Listener,AutoCloseable {
             if(enrichedAbilities(body)){
                 var phase=body.entity.getPhase();boolean sitting=phase==EnderDragon.Phase.BREATH_ATTACK||phase==EnderDragon.Phase.ROAR_BEFORE_ATTACK||phase==EnderDragon.Phase.SEARCH_FOR_BREATH_ATTACK_TARGET;
                 body.sitting=sitting?body.sitting+1:0;if(body.sitting>160){body.entity.setPhase(EnderDragon.Phase.LEAVE_PORTAL);body.sitting=0;}
-                if(p.tick-body.lastBeam>=p.getConfig().getInt("dragons.beam-cooldown-ticks",300)&&!body.entity.getWorld().getPlayers().isEmpty())startBeam(body);
+                if(p.tick-body.lastBeam>=p.getConfig().getInt("dragons.beam-cooldown-ticks",300)&&body.entity.getWorld().getPlayers().stream().anyMatch(player->!player.isDead()&&player.getGameMode()!=GameMode.CREATIVE&&player.getGameMode()!=GameMode.SPECTATOR&&Math.hypot(player.getX()-p.structures.origin(player.getWorld()).getX(),player.getZ()-p.structures.origin(player.getWorld()).getZ())<=55))startBeam(body);
             }
             if(p.tick%10==0){
-                double health=health(body);body.bar.setProgress(Math.clamp(health/body.max(),0,1));body.bar.setTitle((body.id.equals(leader(body.entity.getWorld()))?"★ ":"")+name(body.kind)+" · "+VoidForecast.input(health/2)+"/"+VoidForecast.input(body.max()/2)+" ❤");
+                double health=health(body);body.bar.setProgress(Math.clamp(health/body.max(),0,1));body.bar.setTitle("Эндер-дракон");
                 var visible=new HashSet<UUID>();for(Player player:body.entity.getWorld().getPlayers())if(player.getLocation().distanceSquared(body.entity.getLocation())<=256*256){body.bar.addPlayer(player);visible.add(player.getUniqueId());}
                 for(Player player:List.copyOf(body.bar.getPlayers()))if(!visible.contains(player.getUniqueId()))body.bar.removePlayer(player);
             }
@@ -343,7 +340,7 @@ public final class Dragons implements Listener,AutoCloseable {
             }
             if(!all||crystals.size()!=8)continue;
             String key=p.worldKey(world);upgrading.add(key);var data=planned(world,"enriched",0);crystals.forEach(e->data.ritualCrystals.add(e.getUniqueId()));
-            p.store.change(s->s.dragons.put(data.id,data),s->{
+            p.store.change(s->{s.dragons.put(data.id,data);s.crystalRepairs.add(key);},s->{
                 try{NativeSupport.stopNativeFight(world);}catch(ReflectiveOperationException error){failed.add(data.id);p.getLogger().severe("Нативный ритуал не остановлен: "+error);return;}
                 crystals.forEach(Entity::remove);summoning.put(data.id,p.tick+data.summonRemaining);upgrading.remove(key);p.structures.hidePortal(world,true);
             },e->upgrading.remove(key));
@@ -383,7 +380,7 @@ public final class Dragons implements Listener,AutoCloseable {
     }}
     public void stop(Player player){
         World world=player.getWorld();String key=p.worldKey(world);var ids=p.state().dragons.values().stream().filter(d->d.world.equals(key)&&!d.status.equals("DEAD")).map(d->d.id).toList();
-        p.change(player,"Остановлен драконий бой",s->{for(UUID id:ids){var data=s.dragons.get(id);if(data!=null)data.status="STOPPED";}var arena=s.arenas.get(key);if(arena!=null){arena.phase="STOPPED";arena.leader=null;if(arena.waveStarApplied){arena.star=arena.previousStar;arena.waveStarApplied=false;}}},s->{
+        p.change(player,"Остановлен драконий бой",s->{for(UUID id:ids){var data=s.dragons.get(id);if(data!=null)data.status="STOPPED";}var arena=s.arenas.get(key);s.crystalRepairs.remove(key);if(arena!=null){arena.phase="STOPPED";arena.leader=null;if(arena.waveStarApplied){arena.star=arena.previousStar;arena.waveStarApplied=false;}}},s->{
             stopped.add(key);stopBeam(world);for(UUID id:ids){summoning.remove(id);processing.remove(id);var body=bodies.remove(id);if(body!=null){body.bar.removeAll();body.entity.remove();}else{var entity=Bukkit.getEntity(id);if(entity!=null)entity.remove();}}
             try{NativeSupport.stopNativeFight(world);}catch(ReflectiveOperationException error){p.getLogger().warning("Не сброшен нативный ритуал: "+error);}
             upgrading.remove(key);p.structures.hidePortal(world,false);player.sendMessage("Бой остановлен без победы, дропа и яйца");
@@ -399,7 +396,7 @@ public final class Dragons implements Listener,AutoCloseable {
     public void moved(World world,Location origin){for(Body body:bodies.values())if(body.entity.getWorld().equals(world))body.entity.setPodium(origin);}
     public void status(Player player){
         var arena=p.state().arenas.get(p.worldKey(player.getWorld()));player.sendMessage("Драконы · ★ "+(arena!=null&&arena.star?"включена":"выключена")+(arena==null?"":" · волна "+arena.wave+": "+arena.phase));
-        for(Body body:bodies.values())if(body.entity.getWorld().equals(player.getWorld()))player.sendMessage(name(body.kind)+" · "+VoidForecast.input(health(body)/2)+"/"+VoidForecast.input(body.max()/2)+" ❤ · "+phase(body)+" · "+body.id);
+        for(Body body:bodies.values())if(body.entity.getWorld().equals(player.getWorld()))player.sendMessage(name(body.kind)+" · "+VoidForecast.input(health(body))+"/"+VoidForecast.input(body.max())+" HP · "+phase(body)+" · "+body.id);
     }
     @Override public void close(){stopping=true;for(var beam:new ArrayList<>(beams.values()))stopBeam(beam.world);bodies.values().forEach(body->body.bar.removeAll());bodies.clear();}
 }

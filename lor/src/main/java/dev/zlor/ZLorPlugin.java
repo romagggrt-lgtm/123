@@ -33,6 +33,8 @@ public class ZLorPlugin extends JavaPlugin implements Listener,CommandExecutor,T
     public Menus menus;
     public Audio audio;
     public LorCommands commands;
+    public ChunkLeases tickets;
+    public CrystalRestorer crystals;
     public long tick;
     protected LongSupplier wall=System::currentTimeMillis,nanos=System::nanoTime;
     private long fuelBase,fuelStarted,lastWall;
@@ -48,6 +50,7 @@ public class ZLorPlugin extends JavaPlugin implements Listener,CommandExecutor,T
 
     @Override public void onEnable(){
         saveDefaultConfig();
+        if(migrate(getConfig()))saveConfig();
         var legacy=Bukkit.getPluginManager().getPlugin("SmpLore");
         if(legacy!=null&&legacy.isEnabled()){getLogger().severe("Уберите старый SmpLore.jar перед запуском Z_Lor: два контроллера нельзя запускать вместе");Bukkit.getPluginManager().disablePlugin(this);return;}
         try{
@@ -57,6 +60,7 @@ public class ZLorPlugin extends JavaPlugin implements Listener,CommandExecutor,T
                 for(var d:s.devices.values())if(d.linkPending){if(d.peer!=null){var peer=s.devices.get(d.peer);if(peer!=null){peer.peer=null;peer.linkPending=false;}}d.peer=null;d.linkPending=false;}
             });
             roles=new Roles(this);items=new Items(this);confirmations=new Confirmations(this);voids=new Voids(this);
+            tickets=new ChunkLeases(this);crystals=new CrystalRestorer(this);
             devices=new Devices(this);redstone=new Redstone(this);loot=new LootShields(this);restrictions=new Restrictions(this);
             structures=new Structures(this);dragons=new Dragons(this);visuals=new Visuals(this);menus=new Menus(this);
             audio=new Audio(this);nativeBoundary=createNativeBoundary();commands=new LorCommands(this);
@@ -68,16 +72,22 @@ public class ZLorPlugin extends JavaPlugin implements Listener,CommandExecutor,T
             dragons.restore();for(var device:devices.loaded())devices.refresh(device);
             for(Player player:Bukkit.getOnlinePlayers())joined(player);
             Bukkit.getScheduler().runTaskTimer(this,this::runTick,1,1);
-            getLogger().info("Z_Lor 1.0.0: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.");
+            getLogger().info("Z_Lor "+getDescription().getVersion()+": Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.");
         }catch(Exception error){getLogger().log(Level.SEVERE,"Z_Lor не запущен; данные не сброшены",error);Bukkit.getPluginManager().disablePlugin(this);}
     }
     private void runTick(){
         if(stopping)return;
         try{
             tick++;store.pulse();audio.beginTick();voids.tick();devices.tick();redstone.tick();restrictions.tick();
-            loot.tick();structures.tick();dragons.tick();visuals.tick();audio.tick();confirmations.expire();
+            loot.tick();structures.tick();crystals.tick();dragons.tick();visuals.tick();audio.tick();confirmations.expire();
             if(tick%Math.max(20,getConfig().getInt("storage.checkpoint-ticks",200))==0&&store.idle())checkpoint();
         }catch(Exception error){getLogger().log(Level.SEVERE,"Z_Lor остановлен после ошибки игрового цикла; данные сохранены",error);Bukkit.getPluginManager().disablePlugin(this);}
+    }
+    public static boolean migrate(org.bukkit.configuration.file.FileConfiguration config){
+        if(config.contains("config-version",true)&&config.getInt("config-version")>=2)return false;
+        if(!config.contains("dragons.beam-active-ticks",true)||config.getInt("dragons.beam-active-ticks")==60)config.set("dragons.beam-active-ticks",200);
+        if(!config.contains("dragons.beam-fade-ticks",true))config.set("dragons.beam-fade-ticks",60);
+        config.set("config-version",2);return true;
     }
     public void checkpoint(){
         if(store==null||!store.healthy())return;
@@ -120,6 +130,7 @@ public class ZLorPlugin extends JavaPlugin implements Listener,CommandExecutor,T
     @EventHandler public void join(PlayerJoinEvent event){joined(event.getPlayer());}
     @EventHandler public void quit(PlayerQuitEvent event){clearPersonal(event.getPlayer());packStatuses.remove(event.getPlayer().getUniqueId());}
     @EventHandler public void death(PlayerDeathEvent event){clearPersonal(event.getEntity());}
+    @EventHandler public void respawn(PlayerRespawnEvent event){Bukkit.getScheduler().runTask(this,()->{if(event.getPlayer().isOnline())dragons.applyMaxLoss(event.getPlayer());});}
     @EventHandler public void worldChange(PlayerChangedWorldEvent event){clearPersonal(event.getPlayer());}
     @EventHandler public void pack(PlayerResourcePackStatusEvent event){packStatuses.put(event.getPlayer().getUniqueId(),event.getStatus());}
     @EventHandler public void commands(PlayerCommandSendEvent event){
@@ -144,7 +155,7 @@ public class ZLorPlugin extends JavaPlugin implements Listener,CommandExecutor,T
             }});store.suppressEffects();
         }
         if(nativeBoundary!=null)nativeBoundary.close();if(audio!=null)audio.close();if(visuals!=null)visuals.close();if(menus!=null)menus.close();
-        if(redstone!=null)redstone.close();if(devices!=null)devices.close();if(loot!=null)loot.close();if(dragons!=null)dragons.close();if(items!=null)items.unregisterRecipes();
+        if(crystals!=null)crystals.close();if(redstone!=null)redstone.close();if(tickets!=null)tickets.close();if(devices!=null)devices.close();if(loot!=null)loot.close();if(dragons!=null)dragons.close();if(items!=null)items.unregisterRecipes();
         if(store!=null&&!store.finish(Duration.ofSeconds(3)))getLogger().severe("Хранилище не завершило запись за 3 секунды или сообщило об ошибке; сохраните state.json и .bak");
     }
 }

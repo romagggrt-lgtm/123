@@ -21,6 +21,8 @@ public final class State {
     public Map<String, Structures> structures = new LinkedHashMap<>();
     public Map<UUID, Integer> beamHits = new HashMap<>();
     public Map<String, Audio> audio = new LinkedHashMap<>();
+    /** Optional in schema 1: pending entity-only tower repair, survives restart. */
+    public Set<String> crystalRepairs = new HashSet<>();
 
     public record Role(String lastName, long since) {}
     public record Audit(String source, String detail, String dimension, long at) {}
@@ -82,7 +84,7 @@ public final class State {
         if (schema != 1 || revision < 0 || fuelClock < 0 || dimensions == null || devices == null ||
                 roles == null || immune == null || names == null || actions == null ||
                 dragons == null || arenas == null || structures == null || beamHits == null ||
-                restrictions == null || audio == null || dimensionRevisions == null) {
+                restrictions == null || audio == null || dimensionRevisions == null || crystalRepairs == null) {
             throw new IllegalArgumentException("Неполные или неподдерживаемые данные Z_Lor");
         }
         if (devices.size()>4096 || dragons.size()>4096) throw new IllegalArgumentException("Превышен лимит записей");

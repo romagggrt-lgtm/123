@@ -69,12 +69,12 @@ public final class Redstone implements Listener,AutoCloseable {
             var b=p.state().devices.get(a.peer);if(b==null||b.linkPending||!Objects.equals(b.peer,a.id)||!a.pos.world().equals(b.pos.world()))continue;seen.add(b.id);
             direction(a,b,wanted);direction(b,a,wanted);
         }
-        for(var region:new HashSet<>(leases))if(!wanted.contains(region)){World world=p.world(region.world);if(world!=null)world.removePluginChunkTicket(region.x,region.z,p);leases.remove(region);}
+        for(var region:new HashSet<>(leases))if(!wanted.contains(region)){World world=p.world(region.world);if(world!=null)p.tickets.release(this,world,region.x,region.z);leases.remove(region);}
         for(var region:wanted)if(!leases.contains(region)&&loading.add(region)){
             World world=p.world(region.world);if(world==null){loading.remove(region);continue;}
             world.getChunkAtAsync(region.x,region.z,true).whenComplete((chunk,error)->{if(closed||!p.isEnabled())return;p.getServer().getScheduler().runTask(p,()->{
                 loading.remove(region);if(error!=null||!p.isEnabled()||sessions.isEmpty())return;
-                world.addPluginChunkTicket(region.x,region.z,p);leases.add(region);
+                p.tickets.acquire(this,world,region.x,region.z);leases.add(region);
             });});
         }
     }
@@ -93,7 +93,7 @@ public final class Redstone implements Listener,AutoCloseable {
     public int leasedChunks(){return leases.size();}
     public boolean nativeReaderAvailable(){return !warned;}
     @Override public void close(){
-        closed=true;sessions.clear();for(var region:leases){World world=p.world(region.world);if(world!=null)world.removePluginChunkTicket(region.x,region.z,p);}leases.clear();inputs.clear();
+        closed=true;sessions.clear();for(var region:leases){World world=p.world(region.world);if(world!=null)p.tickets.release(this,world,region.x,region.z);}leases.clear();inputs.clear();
         for(var d:p.devices.loaded())if(d.kind.equals("magnetite_core"))p.devices.output(d,0);
     }
 }

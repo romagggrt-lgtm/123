@@ -1,5 +1,6 @@
 # Общий пак подключается один раз через server.properties.
 # Этот плагин не отправляет отдельные паки при каждом входе.
+config-version: 2
 resource-pack:
   enabled: false
   url: ''
@@ -12,8 +13,10 @@ safety:
   max-dragons-per-world: 64
   native-boundary-hook: true
 effects:
+  dome-mesh: true
+  max-mesh-domes: 32
   range: 96
-  interval-ticks: 5
+  interval-ticks: 4
   particle-budget-per-player: 320
   nearest-domes: 16
   beams: true
@@ -31,7 +34,8 @@ audio:
   http-path: '/zlor-pack.zip'
 dragons:
   beam-warning-ticks: 30
-  beam-active-ticks: 60
+  beam-active-ticks: 200
+  beam-fade-ticks: 60
   beam-cooldown-ticks: 300
   summon-ticks: 160
   # Дополнительный Царь использует логические 1500 HP и ванильный облик.

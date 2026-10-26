@@ -1,0 +1,12 @@
+[
+  {
+    "file": "copper_block.png",
+    "source": "https://raw.githubusercontent.com/misode/mcmeta/1.21.11-assets/assets/minecraft/textures/block/copper_block.png",
+    "sha256": "1b0aaab59d19b4f909a9ac1208b02363bd2796637b10641a8b7cb0ed587c2aa7"
+  },
+  {
+    "file": "redstone_torch.png",
+    "source": "https://raw.githubusercontent.com/misode/mcmeta/1.21.11-assets/assets/minecraft/textures/block/redstone_torch.png",
+    "sha256": "160caba109123055dc002a7471439cb32502cbcb07074524be564782586872a6"
+  }
+]

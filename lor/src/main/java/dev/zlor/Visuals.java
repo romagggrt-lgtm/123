@@ -17,56 +17,61 @@ import org.joml.Vector3f;
 
 /** Bounded vanilla presentation; the Fabric surface shader is not emulated. */
 public final class Visuals implements Listener,AutoCloseable {
-    private record Dome(UUID id,Location center,double radius,Color color,long age,long remaining,boolean reserves){}
+    public record Dome(UUID id,Location center,double radius,Color color,long age,long remaining,boolean reserves){}
     private final ZLorPlugin p;
     private final Set<UUID> voidViews=new HashSet<>(),dragonViews=new HashSet<>();
     private final Map<UUID,TextDisplay> hud=new HashMap<>();
     private final Map<UUID,List<ItemDisplay>> columns=new HashMap<>();
+    private final Map<UUID,ItemDisplay> boundaries=new HashMap<>();
+    private final DomeDisplays meshes;
     private final Map<UUID,Long> opened=new HashMap<>();
-    private static final List<HexDomeMesh.Segment> GRID=HexDomeMesh.segments(1);
-    public Visuals(ZLorPlugin p){this.p=p;}
-    public void toggleVoid(Player player){p.roles.require(player);if(!voidViews.add(player.getUniqueId()))voidViews.remove(player.getUniqueId());player.sendMessage("Личная граница: "+(voidViews.contains(player.getUniqueId())?"включена":"выключена"));}
+    public Visuals(ZLorPlugin p){this.p=p;meshes=new DomeDisplays(p);}
+    public int domeCount(){return meshes.size();}
+    public boolean viewingVoid(UUID id){return voidViews.contains(id);}
+    public boolean viewingDragons(UUID id){return dragonViews.contains(id);}
+    public void toggleVoid(Player player){p.roles.require(player);if(!voidViews.add(player.getUniqueId())){voidViews.remove(player.getUniqueId());removeBoundary(player.getUniqueId());}player.sendMessage("Личная граница: "+(voidViews.contains(player.getUniqueId())?"включена":"выключена"));}
     public void toggleDragons(Player player){p.roles.require(player);if(!dragonViews.add(player.getUniqueId())){dragonViews.remove(player.getUniqueId());removeHud(player.getUniqueId());}player.sendMessage("Личный HUD драконов: "+(dragonViews.contains(player.getUniqueId())?"включён":"выключен"));}
-    public void showAll(Player player){p.roles.require(player);boolean both=voidViews.contains(player.getUniqueId())&&dragonViews.contains(player.getUniqueId());if(both){voidViews.remove(player.getUniqueId());dragonViews.remove(player.getUniqueId());removeHud(player.getUniqueId());}else{voidViews.add(player.getUniqueId());dragonViews.add(player.getUniqueId());}player.sendMessage("Личные визуализации "+(both?"выключены":"включены"));}
+    public void showAll(Player player){p.roles.require(player);boolean both=voidViews.contains(player.getUniqueId())&&dragonViews.contains(player.getUniqueId());if(both)leave(player.getUniqueId());else{voidViews.add(player.getUniqueId());dragonViews.add(player.getUniqueId());}player.sendMessage("Личные визуализации "+(both?"выключены":"включены"));}
+    public void command(Player player,String[] args){
+        if(args.length==0||args.length==1&&args[0].equals("all")){showAll(player);return;}
+        if(args.length!=1)throw new IllegalArgumentException("/lore view [all|void|dragons|off]");
+        switch(args[0]){case "void"->toggleVoid(player);case "dragons"->toggleDragons(player);case "off"->{leave(player.getUniqueId());player.sendMessage("Личные визуализации выключены");}default->throw new IllegalArgumentException("/lore view [all|void|dragons|off]");}
+    }
     public void tick(){
-        int interval=Math.max(2,p.getConfig().getInt("effects.interval-ticks",5));
+        if(p.tick%2==0)for(Player player:Bukkit.getOnlinePlayers())if(p.roles.scen(player)){
+            if(dragonViews.contains(player.getUniqueId()))updateHud(player);
+            if((voidViews.contains(player.getUniqueId())||dragonViews.contains(player.getUniqueId()))&&!p.voids.feedbackActive(player.getUniqueId())){
+                String text=voidViews.contains(player.getUniqueId())?"Войд Y="+VoidForecast.number(p.voids.height(player.getWorld()))+" · "+VoidForecast.input(p.voids.state(player.getWorld()).perFourHours()/240)+" бл/мин":"Драконы: "+p.dragons.bodies().stream().filter(body->body.entity.getWorld().equals(player.getWorld())).count();
+                player.sendActionBar(Component.text(text,NamedTextColor.LIGHT_PURPLE));
+            }
+        }
+        int interval=Math.max(2,p.getConfig().getInt("effects.interval-ticks",4));
         if(p.tick%interval!=0)return;
         Map<World,List<Dome>> domes=new HashMap<>();
         for(var d:p.devices.loaded())if(d.active(p.fuelNow())){
             long start=opened.computeIfAbsent(d.id,id->p.now());var center=p.devices.center(d);domes.computeIfAbsent(center.getWorld(),k->new ArrayList<>()).add(new Dome(d.id,center,50,Color.fromRGB(159,132,240),p.now()-start,d.remaining(p.fuelNow()),d.reserves()>0));
         }
-        opened.keySet().removeIf(id->!p.state().devices.containsKey(id)||!p.state().devices.get(id).active(p.fuelNow()));
-        for(var zone:p.loot.zones())domes.computeIfAbsent(zone.center().getWorld(),k->new ArrayList<>()).add(new Dome(zone.id(),zone.center(),3,Color.YELLOW,Long.MAX_VALUE,zone.expires()-p.now(),true));
-        for(World world:Bukkit.getWorlds())if(world.getEnvironment()==World.Environment.THE_END){var s=p.structures.current(world);if(p.structures.entryReady(world,s)&&s.move==null)domes.computeIfAbsent(world,k->new ArrayList<>()).add(new Dome(UUID.nameUUIDFromBytes((p.worldKey(world)+"entry").getBytes(java.nio.charset.StandardCharsets.UTF_8)),new Location(world,s.entryX+.5,s.entryY+1,s.entryZ+.5),Math.sqrt(12.5)+1,Color.LIME,Long.MAX_VALUE,Long.MAX_VALUE,true));}
+        for(var zone:p.loot.zones()){long start=opened.computeIfAbsent(zone.id(),id->p.now());domes.computeIfAbsent(zone.center().getWorld(),k->new ArrayList<>()).add(new Dome(zone.id(),zone.center(),3,Color.YELLOW,p.now()-start,zone.expires()-p.now(),false));}
+        for(World world:Bukkit.getWorlds())if(world.getEnvironment()==World.Environment.THE_END){var s=p.structures.current(world);if(p.structures.entryReady(world,s)&&s.move==null){UUID id=UUID.nameUUIDFromBytes((p.worldKey(world)+"entry").getBytes(java.nio.charset.StandardCharsets.UTF_8));long start=opened.computeIfAbsent(id,key->p.now());domes.computeIfAbsent(world,k->new ArrayList<>()).add(new Dome(id,new Location(world,s.entryX+.5,s.entryY+1,s.entryZ+.5),Math.sqrt(12.5)+1,Color.LIME,p.now()-start,Long.MAX_VALUE,true));}}
+        var allDomes=domes.values().stream().flatMap(Collection::stream).toList();meshes.sync(allDomes);
+        var ids=new HashSet<UUID>();allDomes.forEach(d->ids.add(d.id));opened.keySet().retainAll(ids);
         int budget=Math.clamp(p.getConfig().getInt("effects.particle-budget-per-player",320),16,1024);
         double range=Math.clamp(p.getConfig().getDouble("effects.range",96),16,192);
         for(Player player:Bukkit.getOnlinePlayers()){
-            List<Dome> nearby=domes.getOrDefault(player.getWorld(),List.of()).stream().filter(d->d.center.distanceSquared(player.getLocation())<=Math.pow(d.radius+range,2)).sorted(Comparator.comparingDouble(d->Math.abs(Math.sqrt(d.center.distanceSquared(player.getLocation()))-d.radius))).limit(Math.clamp(p.getConfig().getInt("effects.nearest-domes",16),1,16)).toList();
-            if(!nearby.isEmpty())drawDomes(player,nearby,budget*4/10);
             if(voidViews.contains(player.getUniqueId())&&p.roles.scen(player))drawBoundary(player,budget/10);
-            if(dragonViews.contains(player.getUniqueId())&&p.roles.scen(player))updateHud(player);
             drawBeams(player,budget*4/10);
             drawSummon(player,budget/10);
         }
         if(p.getConfig().getBoolean("effects.beams",true))updateColumns();
     }
-    private void drawDomes(Player player,List<Dome> domes,int budget){
-        int each=Math.max(1,budget/domes.size());
-        for(Dome dome:domes){
-            int sent=0,start=(int)((p.tick/5*997+Integer.toUnsignedLong(dome.id.hashCode()))%GRID.size());
-            for(int step=0;step<GRID.size()&&sent<each;step++){
-                var segment=GRID.get((start+step*13)%GRID.size());float[] q=segment.quad();double x=(q[0]+q[6])/2d,y=(q[1]+q[7])/2d,z=(q[2]+q[8])/2d;
-                if(dome.radius==50&&!DomeAnimation.visible(segment.first(),segment.firstY(),dome.id.getMostSignificantBits(),dome.age,dome.remaining,!dome.reserves))continue;
-                Location point=dome.center.clone().add(x*dome.radius,y*dome.radius,z*dome.radius);
-                if(point.distanceSquared(player.getEyeLocation())>96*96)continue;
-                if(dome.radius==50&&domes.stream().anyMatch(other->other!=dome&&other.radius==50&&other.center.distanceSquared(point)<2499.9))continue;
-                player.spawnParticle(Particle.DUST,point,1,0,0,0,0,new Particle.DustOptions(dome.color,dome.radius==50?.7f:.5f));sent++;
-            }
-        }
-    }
     private void drawBoundary(Player player,int budget){
-        double y=p.voids.height(player.getWorld());int rootX=Math.floorDiv(player.getLocation().getBlockX(),4)*4,rootZ=Math.floorDiv(player.getLocation().getBlockZ(),4)*4;
-        for(int i=0;i<budget;i++){int x=i%8-4,z=i/8-3;player.spawnParticle(Particle.DUST,new Location(player.getWorld(),rootX+x*4,y,rootZ+z*4),1,0,0,0,0,new Particle.DustOptions(Color.fromRGB(112,67,145),.6f));}
+        double y=p.voids.height(player.getWorld());double x=Math.floor(player.getX()/16)*16+8,z=Math.floor(player.getZ()/16)*16+8;
+        ItemDisplay display=boundaries.get(player.getUniqueId());Location at=new Location(player.getWorld(),x,y+.015,z);
+        if(display==null||!display.isValid()){
+            var item=new ItemStack(Material.PURPLE_STAINED_GLASS);item.editMeta(meta->meta.setItemModel(new NamespacedKey("z_lor","void_grid")));
+            display=player.getWorld().spawn(at,ItemDisplay.class,e->{e.setItemStack(item);e.setPersistent(false);e.setGravity(false);e.setInvulnerable(true);e.setVisibleByDefault(false);e.setBrightness(new Display.Brightness(15,15));e.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.FIXED);e.setViewRange(4);e.setDisplayWidth(96);e.setDisplayHeight(1);e.setTeleportDuration(4);e.setTransformation(new Transformation(new Vector3f(),new Quaternionf().rotateX((float)-Math.PI/2),new Vector3f(96,96,1),new Quaternionf()));});
+            boundaries.put(player.getUniqueId(),display);player.showEntity(p,display);
+        }else if(display.getLocation().distanceSquared(at)>.00001)display.teleport(at);
     }
     private void drawSummon(Player player,int count){
         for(var d:p.state().dragons.values())if(d.world.equals(p.worldKey(player.getWorld()))&&d.status.equals("SUMMONING")&&!d.kind.equals("default")){
@@ -77,7 +82,8 @@ public final class Visuals implements Listener,AutoCloseable {
     }
     private void drawBeams(Player player,int budget){
         for(var beam:p.dragons.beams())if(beam.world.equals(player.getWorld())&&beam.origin.distanceSquared(player.getLocation())<192*192){
-            long elapsed=p.tick-beam.started;boolean warning=elapsed<p.getConfig().getInt("dragons.beam-warning-ticks",30);int per=Math.max(1,budget/BeamPattern.COLUMNS.size()),sent=0;
+            long elapsed=p.tick-beam.started;var timeline=p.dragons.timeline();boolean warning=elapsed<timeline.warning();int per=Math.max(1,budget/BeamPattern.COLUMNS.size()),sent=0;
+            if(!warning&&!timeline.firing(elapsed))continue;
             int offset=(int)(p.tick/5*17%BeamPattern.COLUMNS.size());
             for(int index=0;index<BeamPattern.COLUMNS.size();index++){
                 var column=BeamPattern.COLUMNS.get((index+offset)%BeamPattern.COLUMNS.size());
@@ -94,26 +100,36 @@ public final class Visuals implements Listener,AutoCloseable {
         }
     }
     private void updateColumns(){
-        var active=new HashSet<UUID>();
+        var active=new HashSet<UUID>();var timeline=p.dragons.timeline();
         for(var beam:p.dragons.beams()){
-            if(p.tick-beam.started<p.getConfig().getInt("dragons.beam-warning-ticks",30))continue;
-            active.add(beam.id);if(columns.containsKey(beam.id)){
-                for(var display:columns.get(beam.id))if(display.isValid())for(Player player:beam.world.getPlayers()){
+            long age=p.tick-beam.started;if(timeline.finished(age))continue;active.add(beam.id);
+            boolean warning=age<timeline.warning();double opacity=timeline.opacity(age);
+            var group=columns.computeIfAbsent(beam.id,key->new ArrayList<>());
+            if(group.isEmpty())for(var column:BeamPattern.COLUMNS){
+                double x=beam.origin.getX()+column.x(),z=beam.origin.getZ()+column.z();if(!beam.world.isChunkLoaded(((int)Math.floor(x))>>4,((int)Math.floor(z))>>4))continue;
+                int ground=beam.world.getHighestBlockYAt((int)Math.floor(x),(int)Math.floor(z))+1;
+                var display=beam.world.spawn(new Location(beam.world,x,ground+.035,z),ItemDisplay.class,e->{
+                    e.setPersistent(false);e.setGravity(false);e.setInvulnerable(true);e.setVisibleByDefault(false);e.setBrightness(new Display.Brightness(15,15));e.setViewRange(4);e.setDisplayWidth((float)(column.radius()*2.2));e.setDisplayHeight(beam.world.getMaxHeight()-beam.world.getMinHeight());e.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.FIXED);e.setInterpolationDelay(0);e.setInterpolationDuration(4);e.setTeleportDuration(4);
+                    e.getPersistentDataContainer().set(new NamespacedKey("z_lor","beam_column"),org.bukkit.persistence.PersistentDataType.INTEGER,BeamPattern.COLUMNS.indexOf(column));
+                    e.getPersistentDataContainer().set(new NamespacedKey("z_lor","beam_ground"),org.bukkit.persistence.PersistentDataType.INTEGER,ground);
+                });group.add(display);
+            }
+            for(var display:group){
+                if(!display.isValid())continue;int index=display.getPersistentDataContainer().get(new NamespacedKey("z_lor","beam_column"),org.bukkit.persistence.PersistentDataType.INTEGER);var column=BeamPattern.COLUMNS.get(index);
+                double height=(beam.world.getMaxHeight()-beam.world.getMinHeight())*opacity;
+                int ground=display.getPersistentDataContainer().get(new NamespacedKey("z_lor","beam_ground"),org.bukkit.persistence.PersistentDataType.INTEGER);
+                Location target=new Location(beam.world,beam.origin.getX()+column.x(),warning?ground+.035:beam.world.getMinHeight()+height/2,beam.origin.getZ()+column.z());
+                String model=warning?"beam_warning":column.radius()==5?"beam_large":column.radius()==3?"beam_medium":"beam_small";
+                var item=new ItemStack(Material.PURPLE_STAINED_GLASS);item.editMeta(meta->{meta.setItemModel(new NamespacedKey("z_lor",model));var data=meta.getCustomModelDataComponent();data.setFloats(List.of((float)opacity));meta.setCustomModelDataComponent(data);});
+                if(!item.equals(display.getItemStack()))display.setItemStack(item);
+                float diameter=(float)(column.radius()*2*(warning?1:.8+.2*opacity));
+                var transform=new Transformation(new Vector3f(),warning?new Quaternionf().rotateX((float)-Math.PI/2):new Quaternionf(),warning?new Vector3f(diameter,diameter,1):new Vector3f(diameter,(float)Math.max(.001,height),diameter),new Quaternionf());
+                if(!display.getTransformation().equals(transform))display.setTransformation(transform);
+                if(display.getLocation().distanceSquared(target)>.00001)display.teleport(target);
+                for(Player player:beam.world.getPlayers()){
                     boolean near=player.getLocation().distanceSquared(beam.origin)<192*192;if(near&&!player.canSee(display))player.showEntity(p,display);else if(!near&&player.canSee(display))player.hideEntity(p,display);
                 }
-                continue;
-            }var created=new ArrayList<ItemDisplay>();
-            for(var column:BeamPattern.COLUMNS){
-                int x=(int)Math.floor(beam.origin.getX()+column.x()),z=(int)Math.floor(beam.origin.getZ()+column.z());if(!beam.world.isChunkLoaded(x>>4,z>>4))continue;
-                var item=new ItemStack(org.bukkit.Material.PURPLE_STAINED_GLASS);String model=column.radius()==5?"beam_large":column.radius()==3?"beam_medium":"beam_small";item.editMeta(m->m.setItemModel(new NamespacedKey("z_lor",model)));
-                var display=beam.world.spawn(new Location(beam.world,beam.origin.getX()+column.x(),(beam.world.getMinHeight()+beam.world.getMaxHeight())/2d,beam.origin.getZ()+column.z()),ItemDisplay.class,e->{
-                    e.setItemStack(item);e.setPersistent(false);e.setGravity(false);e.setInvulnerable(true);e.setVisibleByDefault(false);e.setBrightness(new Display.Brightness(15,15));e.setViewRange(2);
-                    e.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.FIXED);
-                    e.setTransformation(new Transformation(new Vector3f(),new Quaternionf(),new Vector3f((float)(column.radius()*2),beam.world.getMaxHeight()-beam.world.getMinHeight(),(float)(column.radius()*2)),new Quaternionf()));
-                });
-                for(Player player:beam.world.getPlayers())if(player.getLocation().distanceSquared(beam.origin)<192*192)player.showEntity(p,display);created.add(display);
             }
-            columns.put(beam.id,created);
         }
         for(UUID id:new HashSet<>(columns.keySet()))if(!active.contains(id))stopBeam(id);
     }
@@ -127,9 +143,9 @@ public final class Visuals implements Listener,AutoCloseable {
                     .append(Component.text("\uE120").font(Key.key("z_lor:icons"))).append(Component.text(" · "+p.dragons.phase(body)+" · "+body.entity.getLocation().getBlockX()+" "+body.entity.getLocation().getBlockY()+" "+body.entity.getLocation().getBlockZ()));
         }
         if(list.isEmpty())text=Component.text("Драконы: нет активных");
-        TextDisplay display=hud.get(player.getUniqueId());Location location=player.getEyeLocation().add(player.getLocation().getDirection().multiply(2)).add(0,-.8,0);
+        TextDisplay display=hud.get(player.getUniqueId());Location location=player.getEyeLocation().add(player.getLocation().getDirection().multiply(3.2)).add(0,-.8,0);
         if(display==null||!display.isValid()){
-            display=player.getWorld().spawn(location,TextDisplay.class,e->{e.setPersistent(false);e.setVisibleByDefault(false);e.setBillboard(Display.Billboard.CENTER);e.setSeeThrough(true);e.setShadowed(true);e.setLineWidth(600);e.setViewRange(.2f);e.setTransformation(new Transformation(new Vector3f(),new Quaternionf(),new Vector3f(.012f),new Quaternionf()));e.setTeleportDuration(1);});hud.put(player.getUniqueId(),display);player.showEntity(p,display);
+            display=player.getWorld().spawn(location,TextDisplay.class,e->{e.setPersistent(false);e.setVisibleByDefault(false);e.setBillboard(Display.Billboard.CENTER);e.setSeeThrough(true);e.setShadowed(true);e.setBackgroundColor(Color.fromARGB(155,16,16,26));e.setBrightness(new Display.Brightness(15,15));e.setLineWidth(500);e.setViewRange(1);e.setTransformation(new Transformation(new Vector3f(),new Quaternionf(),new Vector3f(.35f),new Quaternionf()));e.setTeleportDuration(2);});hud.put(player.getUniqueId(),display);player.showEntity(p,display);
         }
         display.teleport(location);display.text(text);
     }
@@ -142,6 +158,7 @@ public final class Visuals implements Listener,AutoCloseable {
         event.setTo(to.clone().add(push.x(),push.y(),push.z()));player.setVelocity(player.getVelocity().add(new Vector(push.x(),push.y(),push.z())));
     }
     private void removeHud(UUID id){var display=hud.remove(id);if(display!=null)display.remove();}
-    public void leave(UUID id){voidViews.remove(id);dragonViews.remove(id);removeHud(id);}
-    @Override public void close(){for(UUID id:new HashSet<>(hud.keySet()))removeHud(id);for(UUID id:new HashSet<>(columns.keySet()))stopBeam(id);voidViews.clear();dragonViews.clear();}
+    private void removeBoundary(UUID id){var display=boundaries.remove(id);if(display!=null)display.remove();}
+    public void leave(UUID id){voidViews.remove(id);dragonViews.remove(id);removeHud(id);removeBoundary(id);}
+    @Override public void close(){meshes.close();for(UUID id:new HashSet<>(hud.keySet()))removeHud(id);for(UUID id:new HashSet<>(boundaries.keySet()))removeBoundary(id);for(UUID id:new HashSet<>(columns.keySet()))stopBeam(id);voidViews.clear();dragonViews.clear();}
 }

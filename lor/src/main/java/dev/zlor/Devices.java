@@ -245,9 +245,10 @@ public final class Devices implements Listener {
         final UUID id;final Inventory inventory;
         FuelMenu(UUID id){this.id=id;inventory=Bukkit.createInventory(this,9,Component.text("Поглотитель Войда · топливо / тара"));}
         public Inventory getInventory(){return inventory;}
+        void slot(int slot,ItemStack value){if(!Objects.equals(inventory.getItem(slot),value))inventory.setItem(slot,value);}
         void render(State.Device d){
-            for(int i=0;i<8;i++){ItemStack stack=d.fuel[i]==0?null:p.items.make("liquid_void");if(stack!=null)stack.setAmount(d.fuel[i]);inventory.setItem(i,stack);}
-            inventory.setItem(8,d.bottles==0?null:new ItemStack(Material.GLASS_BOTTLE,d.bottles));
+            for(int i=0;i<8;i++){ItemStack stack=d.fuel[i]==0?null:p.items.make("liquid_void");if(stack!=null)stack.setAmount(d.fuel[i]);slot(i,stack);}
+            slot(8,d.bottles==0?null:new ItemStack(Material.GLASS_BOTTLE,d.bottles));
         }
     }
     @EventHandler(priority=EventPriority.HIGHEST)
@@ -255,7 +256,17 @@ public final class Devices implements Listener {
         if(!(event.getWhoClicked() instanceof Player player))return;
         if(busyPlayers.contains(player.getUniqueId())){event.setCancelled(true);return;}
         if(!(event.getView().getTopInventory().getHolder() instanceof FuelMenu menu))return;
+        // Ordinary pickup/place in the player's inventory must remain native.
+        // Collect-to-cursor can cross the protected top inventory, so it stays guarded.
+        if(event.getRawSlot()>=9&&!event.isShiftClick()&&event.getAction()!=InventoryAction.COLLECT_TO_CURSOR)return;
         event.setCancelled(true);var d=p.state().devices.get(menu.id);if(d==null||busy.contains(menu.id)||!canUse(player,d))return;
+        if(event.getRawSlot()>=0&&event.getRawSlot()<9&&event.getClick()==ClickType.NUMBER_KEY){
+            int hotbar=event.getHotbarButton(),slot=event.getRawSlot();if(hotbar<0||hotbar>8)return;
+            ItemStack incoming=player.getInventory().getItem(hotbar);boolean empty=incoming==null||incoming.isEmpty();
+            if(!empty&&(slot==8||!p.items.is(incoming,"liquid_void")||incoming.getAmount()>16))return;
+            ItemStack outgoing=menu.inventory.getItem(slot);int amount=empty?0:incoming.getAmount();
+            fuelChange(player,d,x->{if(slot==8)x.bottles=amount;else x.fuel[slot]=amount;},()->player.getInventory().setItem(hotbar,outgoing==null?null:outgoing.clone()));return;
+        }
         if(event.getClick()!=ClickType.LEFT&&event.getClick()!=ClickType.RIGHT&&!event.isShiftClick())return;
         int slot=event.getRawSlot();if(slot<0)return;
         ItemStack cursor=player.getItemOnCursor().clone();
@@ -293,7 +304,23 @@ public final class Devices implements Listener {
         },e->{busy.remove(d.id);busyPlayers.remove(player.getUniqueId());p.error(player,e);});
     }
     @EventHandler(priority=EventPriority.HIGHEST)
-    public void drag(InventoryDragEvent event){if(event.getView().getTopInventory().getHolder() instanceof FuelMenu||busyPlayers.contains(event.getWhoClicked().getUniqueId()))event.setCancelled(true);}
+    public void drag(InventoryDragEvent event){
+        if(busyPlayers.contains(event.getWhoClicked().getUniqueId())){event.setCancelled(true);return;}
+        if(!(event.getView().getTopInventory().getHolder() instanceof FuelMenu menu)||event.getRawSlots().stream().allMatch(slot->slot>=9))return;
+        event.setCancelled(true);
+        if(!(event.getWhoClicked() instanceof Player player)||!p.items.is(event.getOldCursor(),"liquid_void")||event.getRawSlots().contains(8))return;
+        var oldCursor=event.getOldCursor().clone();var newCursor=event.getCursor()==null?new ItemStack(Material.AIR):event.getCursor().clone();
+        var replacements=new HashMap<Integer,ItemStack>();event.getNewItems().forEach((slot,item)->replacements.put(slot,item.clone()));
+        var initial=p.state().devices.get(menu.id);if(initial==null||busy.contains(menu.id))return;int[] before=initial.fuel.clone();
+        for(var entry:replacements.entrySet())if(!p.items.is(entry.getValue(),"liquid_void")||entry.getValue().getAmount()>16)return;
+        Bukkit.getScheduler().runTask(p,()->{
+            var d=p.state().devices.get(menu.id);
+            if(d==null||busyPlayer(player.getUniqueId())||busy.contains(d.id)||!canUse(player,d)||player.getOpenInventory().getTopInventory()!=menu.inventory||!Arrays.equals(before,d.fuel)||!Objects.equals(oldCursor,player.getItemOnCursor()))return;
+            fuelChange(player,d,x->{for(var entry:replacements.entrySet())if(entry.getKey()<8)x.fuel[entry.getKey()]=entry.getValue().getAmount();},()->{
+                replacements.forEach((raw,item)->{if(raw>=9){int local=player.getOpenInventory().convertSlot(raw);player.getInventory().setItem(local,item.clone());}});player.setItemOnCursor(newCursor);
+            });
+        });
+    }
     @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true)
     public void drop(PlayerDropItemEvent event){if(busyPlayers.contains(event.getPlayer().getUniqueId()))event.setCancelled(true);}
     @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true)

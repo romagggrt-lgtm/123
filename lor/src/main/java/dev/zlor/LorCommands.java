@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public final class LorCommands {
-    public static final List<String> BRANCHES=List.of("help","voidmeter","give","void","immune","unimmune","recipe","default","dragons","end","audio","status","diagnostics");
+    public static final List<String> BRANCHES=List.of("help","view","voidmeter","give","void","immune","unimmune","recipe","default","dragons","end","audio","status","diagnostics");
     private final ZLorPlugin p;
     public LorCommands(ZLorPlugin p){this.p=p;}
     public void execute(CommandSender sender,String[] args){
@@ -22,6 +22,7 @@ public final class LorCommands {
             case "help"->{exact(tail,0,"/lore help");help(player);}
             case "voidmeter"->{exact(tail,0,"/lore voidmeter");give(player,new String[]{player.getName(),"voidometer","1"});}
             case "void"->p.voids.command(player,tail);
+            case "view"->p.visuals.command(player,tail);
             case "immune","unimmune"->{
                 exact(tail,1,"/lore "+args[0]+" <ник|@s>");UUID id=tail[0].equals("@s")?player.getUniqueId():p.roles.known(tail[0]);if(id==null)throw new IllegalArgumentException("Игрок не известен серверу");
                 boolean immune=args[0].equals("immune");p.change(player,(immune?"Выдан":"Снят")+" иммунитет Войда: "+tail[0],s->{if(immune)s.immune.add(id);else s.immune.remove(id);},s->player.sendMessage("Иммунитет "+(immune?"выдан":"снят")));
@@ -73,7 +74,7 @@ public final class LorCommands {
         rows.add("Сбои элитр: "+restrictions.flight().enabled()+", фактический интервал "+(Double.isFinite(p.restrictions.interval(player))?VoidForecast.number(p.restrictions.interval(player)):"нет")+" с; полный запрет "+restrictions.flight().fullBlockEnabled()+" от Y "+VoidForecast.number(restrictions.flight().fullBlockY()));
         var pending=p.confirmations.get(player.getUniqueId());rows.add("Подтверждение: "+(pending==null?"нет":Math.max(0,(pending.expires()-p.now())/1000)+" с"));
         for(var d:p.devices.loaded())if(d.kind.equals("void_absorber"))rows.add("Поглотитель "+d.pos.x()+" "+d.pos.y()+" "+d.pos.z()+": "+d.remaining(p.fuelNow())/1000+" с, запас "+d.reserves());
-        for(var body:p.dragons.bodies())rows.add(Dragons.name(body.kind)+": "+VoidForecast.input(p.dragons.health(body)/2)+"/"+VoidForecast.input(body.max()/2)+" ❤, "+p.dragons.phase(body)+", "+body.entity.getLocation().getBlockX()+" "+body.entity.getLocation().getBlockY()+" "+body.entity.getLocation().getBlockZ());
+        for(var body:p.dragons.bodies())rows.add(Dragons.name(body.kind)+": "+VoidForecast.input(p.dragons.health(body))+"/"+VoidForecast.input(body.max())+" HP, "+p.dragons.phase(body)+", "+body.entity.getLocation().getBlockX()+" "+body.entity.getLocation().getBlockY()+" "+body.entity.getLocation().getBlockZ());
         var arena=p.state().arenas.get(p.worldKey(player.getWorld()));if(arena!=null)rows.add("Волна "+arena.wave+": "+arena.phase);
         rows.add("Импортированный звук: "+GateSounds.name(restrictions.gate().sound()));
         return rows;
@@ -99,6 +100,7 @@ public final class LorCommands {
             if(!allowed){if(p.roles.admin(sender)&&args.length==1)choices.addAll(List.of("give","diagnostics"));else if(p.roles.admin(sender)&&args.length==2&&args[0].equals("give"))Bukkit.getOnlinePlayers().forEach(player->choices.add(player.getName()));else if(p.roles.admin(sender)&&args.length==3&&args[0].equals("give"))choices.addAll(Items.ALL);}
             else if(args.length==1)choices.addAll(BRANCHES);
             else switch(args[0]){
+                case "view"->{if(args.length==2)choices.addAll(List.of("all","void","dragons","off"));}
                 case "give"->{if(args.length==2){choices.add("@s");Bukkit.getOnlinePlayers().forEach(player->choices.add(player.getName()));}else if(args.length==3)choices.addAll(Items.ALL);}
                 case "void"->{if(args.length==2)choices.addAll(List.of("height","speed","stop","view"));else if(args.length==3)choices.addAll(List.of("set","vector"));else if(args[1].equals("speed")&&args.length==4)choices.add("minute");}
                 case "dragons"->{if(args.length==2)choices.addAll(List.of("spawn","star","view","wave","attack"));else if(args.length==3)choices.addAll(switch(args[1]){case "spawn"->List.of("default","enriched","void_king","stop");case "star"->List.of("enable","disable","set");case "wave"->List.of("start","status","stop");case "attack"->List.of("beam","dive","stop");default->List.of();});else if(args.length==4&&args[1].equals("wave"))for(int n=1;n<=10;n++)choices.add(String.valueOf(n));else if(args.length==4)p.dragons.bodies().forEach(body->choices.add(body.id.toString()));}

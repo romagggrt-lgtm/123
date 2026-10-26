@@ -173,7 +173,8 @@ class PluginTest {
     @Test void physicalHopperBelowOnlyTakesTheEmptyBottleOutput()throws Exception{
         var d=device("void_absorber",0,64,2);p.store.change(s->{s.devices.get(d.id).bottles=2;s.devices.get(d.id).fuel[0]=4;});settle();
         Block below=p.devices.block(d).getRelative(org.bukkit.block.BlockFace.DOWN);below.setType(Material.HOPPER);var hopper=(org.bukkit.block.Hopper)below.getState();server.getScheduler().performTicks(8);settle();
-        assertEquals(4,p.state().devices.get(d.id).reserves());assertEquals(1,p.state().devices.get(d.id).bottles);assertTrue(Arrays.stream(hopper.getInventory().getContents()).anyMatch(item->item!=null&&item.getType()==Material.GLASS_BOTTLE));
+        int extracted=Arrays.stream(hopper.getInventory().getContents()).filter(Objects::nonNull).filter(item->item.getType()==Material.GLASS_BOTTLE).mapToInt(ItemStack::getAmount).sum();
+        assertEquals(4,p.state().devices.get(d.id).reserves());assertTrue(extracted>=1);assertEquals(2,p.state().devices.get(d.id).bottles+extracted);
     }
     @Test void dynamicAudioPackPreservesEveryBaseEntryAndVersionsItsDownload()throws Exception{
         var path=p.getDataFolder().toPath().resolve("base-test.zip");try(var zip=new java.util.zip.ZipOutputStream(java.nio.file.Files.newOutputStream(path))){for(String name:List.of("pack.mcmeta","assets/shahed/keep.bin","assets/z_pantera/keep.bin")){zip.putNextEntry(new java.util.zip.ZipEntry(name));zip.write((name.equals("pack.mcmeta")?"{\"pack\":{\"pack_format\":75,\"description\":\"test\"}}":name).getBytes());zip.closeEntry();}}
