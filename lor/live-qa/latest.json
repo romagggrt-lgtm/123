@@ -1,0 +1,20 @@
+{
+  "status": "FAIL",
+  "plugin_version": "1.0.1",
+  "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
+  "checks": {
+    "real_plugin_enabled": "PASS",
+    "native_boundary_minecraft:overworld": "PASS",
+    "native_boundary_minecraft:the_nether": "PASS",
+    "native_boundary_minecraft:the_end": "PASS",
+    "plugin_stays_enabled": "PASS",
+    "real_native_void_damage": "PASS"
+  },
+  "pulse_ticks": [],
+  "damage": 0.0,
+  "client_rendered": false,
+  "source_commit": "e1fa06462751bd07bd7e4bef8620be94f9a9578e",
+  "failure": "java.lang.IllegalStateException: absorber_blocks_native_player_void",
+  "server_sha256": "5ffef465eeeb5f2a3c23a24419d97c51afd7dbb4923ff42df9a3f58bba1ccfba",
+  "server_build": 132
+}
