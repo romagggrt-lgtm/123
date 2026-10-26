@@ -1,2 +1,58 @@
-Note: /home/runner/work/123/123/lor/src/smoke/java/dev/zlor/qa/NativeSmoke.java uses or overrides a deprecated API.
-Note: Recompile with -Xlint:deprecation for details.
+/home/runner/work/123/123/lor/src/smoke/java/dev/zlor/qa/NativeSmoke.java:21: error: cannot find symbol
+    private ZLorPlugin p;private Player observer,target;private World normal,end;
+            ^
+  symbol:   class ZLorPlugin
+  location: class NativeSmoke
+/home/runner/work/123/123/lor/src/smoke/java/dev/zlor/qa/NativeSmoke.java:22: error: package State does not exist
+    private int tick,stage,entered;private State.Device absorber;private Arrow inside,outside;
+                                                ^
+/home/runner/work/123/123/lor/src/smoke/java/dev/zlor/qa/NativeSmoke.java:23: error: package Dragons does not exist
+    private Dragons.Body dragon;private Location previous;private List<Location> towers;
+                   ^
+/home/runner/work/123/123/lor/src/smoke/java/dev/zlor/qa/NativeSmoke.java:3: error: package dev.zlor does not exist
+import dev.zlor.*;
+          ^
+/home/runner/work/123/123/lor/src/smoke/java/dev/zlor/qa/NativeSmoke.java:4: error: package dev.zlor.rules does not exist
+import dev.zlor.rules.*;
+               ^
+/home/runner/work/123/123/lor/src/smoke/java/dev/zlor/qa/NativeSmoke.java:34: error: package StateStore does not exist
+        if(visual)try{Files.writeString(Path.of("qa-stage.json"),StateStore.JSON.toJson(Map.of("stage",stage,"age",age(),"beam_age",beamStart==0?-1:p.tick-beamStart)));}catch(Exception ignored){}
+                                                                           ^
+/home/runner/work/123/123/lor/src/smoke/java/dev/zlor/qa/NativeSmoke.java:39: error: cannot find symbol
+                p=(ZLorPlugin)Bukkit.getPluginManager().getPlugin("Z_Lor");check("real_plugin_enabled",p!=null&&p.isEnabled());
+                   ^
+  symbol:   class ZLorPlugin
+  location: class NativeSmoke
+/home/runner/work/123/123/lor/src/smoke/java/dev/zlor/qa/NativeSmoke.java:46: error: package State does not exist
+                p.store.change(s->{s.roles.put(observer.getUniqueId(),new State.Role(observer.getName(),p.now()));s.dimensions.put(p.worldKey(normal),DimensionVoid.vanilla(normal.getMinHeight()-64,p.now()).set(80,p.now()));});next();return;
+                                                                               ^
+/home/runner/work/123/123/lor/src/smoke/java/dev/zlor/qa/NativeSmoke.java:46: error: cannot find symbol
+                p.store.change(s->{s.roles.put(observer.getUniqueId(),new State.Role(observer.getName(),p.now()));s.dimensions.put(p.worldKey(normal),DimensionVoid.vanilla(normal.getMinHeight()-64,p.now()).set(80,p.now()));});next();return;
+                                                                                                                                                      ^
+  symbol:   variable DimensionVoid
+  location: class NativeSmoke
+/home/runner/work/123/123/lor/src/smoke/java/dev/zlor/qa/NativeSmoke.java:52: error: package State does not exist
+                absorber=new State.Device("void_absorber",new State.Pos(p.worldKey(normal),1,70,1),0);absorber.fuelUntil=p.fuelNow()+900000;normal.getBlockAt(1,70,1).setType(Material.TARGET);
+                                  ^
+/home/runner/work/123/123/lor/src/smoke/java/dev/zlor/qa/NativeSmoke.java:52: error: package State does not exist
+                absorber=new State.Device("void_absorber",new State.Pos(p.worldKey(normal),1,70,1),0);absorber.fuelUntil=p.fuelNow()+900000;normal.getBlockAt(1,70,1).setType(Material.TARGET);
+                                                                   ^
+/home/runner/work/123/123/lor/src/smoke/java/dev/zlor/qa/NativeSmoke.java:62: error: cannot find symbol
+                p.store.change(s->s.dimensions.put(p.worldKey(normal),DimensionVoid.vanilla(normal.getMinHeight()-64,p.now())));if(visual)face(observer,new Location(normal,85.5,85,.5),new Location(normal,1.5,70.5,1.5));else observer.teleport(new Location(normal,1.5,71,.5));Bukkit.dispatchCommand(observer,"lore view all");next();return;
+                                                                      ^
+  symbol:   variable DimensionVoid
+  location: class NativeSmoke
+/home/runner/work/123/123/lor/src/smoke/java/dev/zlor/qa/NativeSmoke.java:76: error: cannot find symbol
+                towers=NativeSupport.towers(end);for(var at:towers){end.getChunkAt(at.getBlockX()>>4,at.getBlockZ()>>4).load();if(!NativeSupport.entityTicking(end,at.getBlockX()>>4,at.getBlockZ()>>4))return;}
+                       ^
+  symbol:   variable NativeSupport
+  location: class NativeSmoke
+/home/runner/work/123/123/lor/src/smoke/java/dev/zlor/qa/NativeSmoke.java:76: error: cannot find symbol
+                towers=NativeSupport.towers(end);for(var at:towers){end.getChunkAt(at.getBlockX()>>4,at.getBlockZ()>>4).load();if(!NativeSupport.entityTicking(end,at.getBlockX()>>4,at.getBlockZ()>>4))return;}
+                                                                                                                                   ^
+  symbol:   variable NativeSupport
+  location: class NativeSmoke
+/home/runner/work/123/123/lor/src/smoke/java/dev/zlor/qa/NativeSmoke.java:113: error: package StateStore does not exist
+            Files.writeString(Path.of("native-smoke.json"),StateStore.JSON.toJson(result));
+                                                                     ^
+15 errors

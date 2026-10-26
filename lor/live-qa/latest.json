@@ -1,15 +1,6 @@
 {
-  "status": "FAIL",
-  "plugin_version": "unknown",
-  "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
-  "checks": {},
-  "pulse_ticks": [],
-  "damage": 0.0,
-  "client_rendered": false,
-  "source_commit": "e7d9ec7285bc71dfa3cd00a93e2a9623fa6e4a7b",
-  "failure": "java.lang.IllegalStateException: Timeout at stage 0",
-  "server_sha256": "5ffef465eeeb5f2a3c23a24419d97c51afd7dbb4923ff42df9a3f58bba1ccfba",
-  "server_build": 132,
-  "vanilla_client_launched": true,
-  "client_capture_evidence": "client-captures.json (manual visual review required)"
+  "status": "BLOCKED",
+  "error": "Native smoke harness compilation failed; see compile.log",
+  "source_commit": "6a5e266d5d07f3de247bce480990990254b5b275",
+  "client_rendered": false
 }
