@@ -10,14 +10,15 @@
     "plugin_stays_enabled": "PASS",
     "real_native_void_damage": "PASS",
     "shield_diagnostic": {
-      "health": 20.0,
       "position": "Location{world=CraftWorld{name=world},x=0.5,y=71.0,z=0.5,pitch=0.0,yaw=0.0}",
       "shield": true,
-      "cause": "VOID"
+      "cause": "VOID",
+      "health": 20.0
     },
     "absorber_blocks_native_player_void": "PASS",
     "shield_keeps_real_projectile": "PASS",
     "unshielded_projectile_native_discard": "PASS",
+    "render_only_display_survives_raised_void": "PASS",
     "hud_readable_scale": "PASS",
     "hud_private": "PASS",
     "sphere_world_mesh": "PASS",
@@ -54,7 +55,7 @@
   ],
   "damage": 20.0,
   "client_rendered": false,
-  "source_commit": "e4edce88c635945697ea67cffe148cc0b4c3723f",
+  "source_commit": "070f8ce84f0fcc2a3ad6ec678be6150089c748ed",
   "server_sha256": "5ffef465eeeb5f2a3c23a24419d97c51afd7dbb4923ff42df9a3f58bba1ccfba",
   "server_build": 132,
   "vanilla_client_launched": true,
