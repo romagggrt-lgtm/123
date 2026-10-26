@@ -11,7 +11,7 @@ WORK=ROOT/'lor/target/native-server'
 REPORT=ROOT/'lor/live-qa'
 WORK.mkdir(parents=True,exist_ok=True);REPORT.mkdir(parents=True,exist_ok=True)
 for prior in REPORT.iterdir():
-    if prior.is_file() and prior.name!='build.log':prior.unlink()
+    if prior.is_file() and prior.name not in ('build.log','prepare.log'):prior.unlink()
 def download(url,path):
     with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'ZLor-CI/1.0.1'}),timeout=60) as response:path.write_bytes(response.read())
 visual=os.environ.get('ZLOR_VISUAL')=='1'

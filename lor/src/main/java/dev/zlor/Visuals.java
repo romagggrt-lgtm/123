@@ -122,6 +122,11 @@ public class Visuals implements Listener,AutoCloseable {
                 String model=warning?"beam_warning":column.radius()==5?"beam_large":column.radius()==3?"beam_medium":"beam_small";
                 var item=new ItemStack(Material.PAPER);item.editMeta(meta->{meta.setItemModel(new NamespacedKey("z_lor",model));var data=meta.getCustomModelDataComponent();data.setFloats(List.of((float)opacity,(float)((p.tick/4)%8)));meta.setCustomModelDataComponent(data);});
                 if(!item.equals(display.getItemStack()))display.setItemStack(item);
+                // A native coloured outline keeps every damaging column readable
+                // against the dark End sky; the colour fades with the surface.
+                display.setGlowing(!warning&&opacity>.035);
+                var edge=Color.fromRGB(column.edge());double glow=Math.sqrt(Math.clamp(opacity,0,1));
+                display.setGlowColorOverride(Color.fromRGB((int)(edge.getRed()*glow),(int)(edge.getGreen()*glow),(int)(edge.getBlue()*glow)));
                 float diameter=(float)(column.radius()*2*(warning?1:.8+.2*opacity));
                 var transform=new Transformation(new Vector3f(),warning?new Quaternionf().rotateX((float)-Math.PI/2):new Quaternionf(),warning?new Vector3f(diameter,diameter,1):new Vector3f(diameter,(float)Math.max(.001,height),diameter),new Quaternionf());
                 if(!display.getTransformation().equals(transform))display.setTransformation(transform);
