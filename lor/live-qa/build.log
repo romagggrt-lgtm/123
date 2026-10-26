@@ -43,93 +43,93 @@
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running dev.zlor.StateStoreTest
-[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.269 s -- in dev.zlor.StateStoreTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.215 s -- in dev.zlor.StateStoreTest
 [INFO] Running dev.zlor.AudioTest
-[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.063 s -- in dev.zlor.AudioTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.534 s -- in dev.zlor.AudioTest
 [INFO] Running dev.zlor.reference.EncounterRulesTest
-[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.072 s -- in dev.zlor.reference.EncounterRulesTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.053 s -- in dev.zlor.reference.EncounterRulesTest
 [INFO] Running dev.zlor.reference.EndStructureHeightsTest
-[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in dev.zlor.reference.EndStructureHeightsTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in dev.zlor.reference.EndStructureHeightsTest
 [INFO] Running dev.zlor.reference.DomeAnimationTest
 [INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in dev.zlor.reference.DomeAnimationTest
 [INFO] Running dev.zlor.PluginTest
 SLF4J(W): No SLF4J providers were found.
 SLF4J(W): Defaulting to no-operation (NOP) logger implementation
 SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
-[16:56:17 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:18 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:18 WARNING]: Нативное чтение редстоуна недоступно; включён ограниченный Bukkit fallback: NoSuchMethodException
-[16:56:18 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:18 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:18 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:18 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:18 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:18 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:19 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:19 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:19 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:19 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:19 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:19 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:19 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:19 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:19 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:19 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:19 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:19 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:19 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:20 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:20 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:20 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:20 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:20 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:20 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:20 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:20 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:20 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:20 WARNING]: Нативное чтение редстоуна недоступно; включён ограниченный Bukkit fallback: NoSuchMethodException
-[16:56:20 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:20 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:20 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[INFO] Tests run: 33, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.955 s -- in dev.zlor.PluginTest
+[17:01:31 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:31 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:31 WARNING]: Нативное чтение редстоуна недоступно; включён ограниченный Bukkit fallback: NoSuchMethodException
+[17:01:31 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:32 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:32 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:32 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:32 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:32 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:32 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:32 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:32 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:32 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:32 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:32 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:32 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:32 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:32 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:32 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:32 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 WARNING]: Нативное чтение редстоуна недоступно; включён ограниченный Bukkit fallback: NoSuchMethodException
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[INFO] Tests run: 33, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.219 s -- in dev.zlor.PluginTest
 [INFO] Running dev.zlor.Fixes101Test
-[16:56:20 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:20 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:20 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:20 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:20 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:20 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:20 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:21 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:21 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:21 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:21 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.539 s -- in dev.zlor.Fixes101Test
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:33 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:34 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.461 s -- in dev.zlor.Fixes101Test
 [INFO] Running dev.zlor.RulesTest
-[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.029 s -- in dev.zlor.RulesTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 s -- in dev.zlor.RulesTest
 [INFO] Running dev.zlor.NativeBoundaryTest
-[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s -- in dev.zlor.NativeBoundaryTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 s -- in dev.zlor.NativeBoundaryTest
 [INFO] Running dev.zlor.CombatAndLootTest
-[16:56:21 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:21 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:21 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:21 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:21 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:21 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:21 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:21 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:21 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:21 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:21 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:21 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:21 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:21 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:22 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:22 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[16:56:22 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.883 s -- in dev.zlor.CombatAndLootTest
+[17:01:34 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:34 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:34 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:34 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:34 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:34 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:34 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:34 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:34 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:34 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:34 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:34 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:34 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:34 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:34 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:34 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[17:01:34 INFO]: Z_Lor 1.0.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.737 s -- in dev.zlor.CombatAndLootTest
 [INFO] Running dev.zlor.MenuInputTest
-[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in dev.zlor.MenuInputTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in dev.zlor.MenuInputTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -154,6 +154,6 @@ SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  21.873 s
-[INFO] Finished at: 2026-10-26T16:56:25Z
+[INFO] Total time:  12.341 s
+[INFO] Finished at: 2026-10-26T17:01:36Z
 [INFO] ------------------------------------------------------------------------
