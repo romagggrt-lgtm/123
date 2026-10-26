@@ -1,12 +1,12 @@
 {
-  "generated_at_utc": "2026-10-25T20:45:16.494197+00:00",
+  "generated_at_utc": "2026-10-26T17:06:19.279917+00:00",
   "plugin": "Z_Lor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "target": "Paper 1.21.11 / Java 21",
   "automatic_tests": {
     "status": "PASS",
     "totals": {
-      "tests": 93,
+      "tests": 109,
       "failures": 0,
       "errors": 0,
       "skipped": 0
@@ -18,7 +18,7 @@
         "failures": 0,
         "errors": 0,
         "skipped": 0,
-        "seconds": 0.506,
+        "seconds": 0.64,
         "cases": [
           "monoOggRetainsExactBytesAfterActualDecodeValidation",
           "uploadedMp3FixtureConvertsToPlayableMonoVorbis",
@@ -33,20 +33,24 @@
       },
       {
         "name": "dev.zlor.CombatAndLootTest",
-        "tests": 13,
+        "tests": 17,
         "failures": 0,
         "errors": 0,
         "skipped": 0,
-        "seconds": 2.739,
+        "seconds": 3.294,
         "cases": [
           "stoppedDragonInSavedChunkIsRemovedInsteadOfBeingResurrectedOnRestore",
           "kingTakesRealLogicalDamageFromAll1500HpAndKeepsNativePoolInSync",
           "starChoosesEnrichedAndReducesNonLeadersIncomingDamageToThird",
+          "diskAcknowledgementCannotSwallowTheNextDamagePulse",
           "greenEntryShieldRequiresActualPlatformAndProtectsPlayersOnly",
           "stopReopensAnAlreadyInactiveFountainWithoutOverwritingForeignBlocks",
           "dragonsNeverApplyFriendlyFireToOtherTrackedDragons",
           "keepInventoryOrMissingTotemCreatesNoFalseResourceShield",
           "voidTotemConsumesExactlyOneAndMarksOnlyRealNativeDrops",
+          "warningFadeAndCreativePlayersNeverTakeBeamDamage",
+          "restoredDragonStartsInFlightWithFreshAttackCooldownAndVanillaPublicBar",
+          "rejectedDamageDoesNotConsumeErosionCredit",
           "crystalPulsePrioritisesInjuredKingAndDoesNotHealEveryDragon",
           "oneBeamLaunchCountsOnlyOnceEvenWithMultipleDamagePulses",
           "enrichedIgnoresArrowsButOrdinaryDoesNot",
@@ -55,12 +59,33 @@
         ]
       },
       {
+        "name": "dev.zlor.Fixes101Test",
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.558,
+        "cases": [
+          "topHotbarKeySafelySwapsFuelAndRejectsOtherItems",
+          "viewCommandsToggleTogetherAndOffClearsBothWithoutChangingAudit",
+          "towerRepairAddsOnlyMissingEntitiesAndPreservesOccupiedPositions",
+          "packCellIndicesMatchTheServersOverlapMask",
+          "lowerInventoryPickupAndPlaceAreNativeNotCancelled",
+          "oldConfigGetsTenSecondBeamWithoutOverwritingCustomSettings",
+          "risingVoidPreservesRenderEntitiesOutsideAbsorberProtection",
+          "beamHasTenSeparateDamagePulsesAndHarmlessWarningAndFade",
+          "bottomOnlyDragIsNotCancelledAndFuelCanBeSpreadAcrossInputs",
+          "unionHidesOnlyCoveredCellsAndNeverOtherDimensions",
+          "ticketOwnersCannotReleaseEachOthersChunk"
+        ]
+      },
+      {
         "name": "dev.zlor.MenuInputTest",
         "tests": 5,
         "failures": 0,
         "errors": 0,
         "skipped": 0,
-        "seconds": 0.055,
+        "seconds": 0.069,
         "cases": [
           "sirenTrackIsValidatedBeforePreviewStarts",
           "rootNavigationHasAllFivePermanentLabels",
@@ -75,7 +100,7 @@
         "failures": 0,
         "errors": 0,
         "skipped": 0,
-        "seconds": 0.026,
+        "seconds": 0.033,
         "cases": [
           "finalIterationCannotInstallAnEmptyIndependentList",
           "finallyRestoresWorldContextEvenWhenNativeTickThrows",
@@ -88,7 +113,7 @@
         "failures": 0,
         "errors": 0,
         "skipped": 0,
-        "seconds": 1.51,
+        "seconds": 1.544,
         "cases": [
           "sameCoordinatesInDifferentDimensionsNeverShareFuelProtection",
           "breakingCoreClearsBothEndsAndDropsUnlinkedIdentity",
@@ -131,7 +156,7 @@
         "failures": 0,
         "errors": 0,
         "skipped": 0,
-        "seconds": 0.013,
+        "seconds": 0.021,
         "cases": [
           "numericInputAndMeterKeepAllFourDecimalDigits",
           "lootIsNotFullProtectionOrAnExtraFlightMultiplier",
@@ -150,13 +175,14 @@
       },
       {
         "name": "dev.zlor.StateStoreTest",
-        "tests": 6,
+        "tests": 7,
         "failures": 0,
         "errors": 0,
         "skipped": 0,
-        "seconds": 0.03,
+        "seconds": 0.057,
         "cases": [
           "suppressedShutdownEffectsDoNotSpawnOrGiveAfterDisable",
+          "oldStateWithoutCrystalJobFieldKeepsDevicesAndHealthLoss",
           "queuedMutationsPrepareFromLatestCommittedRevision",
           "slowDiskNeverPublishesStateOrEffectsBeforeDurability",
           "invalidMutationDoesNotCorruptQueueOrWriteAFile",
@@ -170,7 +196,7 @@
         "failures": 0,
         "errors": 0,
         "skipped": 0,
-        "seconds": 0.001,
+        "seconds": 0.003,
         "cases": [
           "cellOrderIsStableAndRefillingRestoresEveryCell",
           "openingRunsFromTopToBottom"
@@ -182,7 +208,7 @@
         "failures": 0,
         "errors": 0,
         "skipped": 0,
-        "seconds": 0.018,
+        "seconds": 0.033,
         "cases": [
           "recoveryAndReset",
           "shieldsDoNotStack",
@@ -199,7 +225,7 @@
         "failures": 0,
         "errors": 0,
         "skipped": 0,
-        "seconds": 0.001,
+        "seconds": 0.006,
         "cases": [
           "aFractionalBoundaryAndWorldEdgesRemainOutsideTheStructures",
           "endVoidNineteenAllowsPortalTwentyAndPlacesEntryThirty"
@@ -215,51 +241,65 @@
     "codec_smoke": "SHADED_CODEC_PASS seconds=0.36 bytes=4150 source=file:PROJECT/lor/target/Z_Lor.jar"
   },
   "resource_pack": {
-    "pack": "Z_Server_Pack_1.07.zip",
+    "pack": "Z_Server_Pack_1.08.zip",
     "base": "Z_Server_Pack_1.05_Pantera_1.0.1.zip",
     "base_sha256": "cf12fb8c8facadcc1393657094f65b59b0e313e144d264dce8afba45a1f2b26b",
-    "sha1": "c11ffbe69d4678b351b30ca49d8b4288dc2db8a6",
-    "sha256": "1a38caacbaa6a121b104e83791725f25ce3753296a08725146187611b1d37fd4",
+    "sha1": "fe56020a1d74901c8783de6534cceefe5f05f85d",
+    "sha256": "6a4c66a47c64707a732d549cfdbc53624d7cc3a7f86e6c347e86abfa96c8cfe3",
     "base_asset_files_preserved": 54,
     "provided_png_preserved": 20,
     "provided_ogg_preserved": 9,
     "resource_conflicts": [],
-    "stitched_custom_sprites": [
-      "minecraft:block/copper_block",
-      "minecraft:block/redstone_torch",
-      "smplore:block/magnetite_core_bottom",
-      "smplore:block/magnetite_core_front",
-      "smplore:block/magnetite_core_side",
-      "smplore:block/magnetite_core_top",
-      "smplore:block/void_absorber_bottom",
-      "smplore:block/void_absorber_front",
-      "smplore:block/void_absorber_side",
-      "smplore:block/void_absorber_top",
-      "smplore:block/void_alarm_bottom",
-      "smplore:block/void_alarm_front",
-      "smplore:block/void_alarm_side",
-      "smplore:block/void_alarm_top",
-      "smplore:block/void_siren_bottom",
-      "smplore:block/void_siren_front",
-      "smplore:block/void_siren_side",
-      "smplore:block/void_siren_top",
-      "smplore:item/liquid_void",
-      "smplore:item/void_breath",
-      "smplore:item/voidometer",
-      "z_lor:item/beam_large",
-      "z_lor:item/beam_medium",
-      "z_lor:item/beam_small"
-    ],
+    "vanilla_atlas_overrides": false,
+    "vanilla_texture_aliases": {
+      "minecraft:block/copper_block": "z_lor:item/trim/copper_block",
+      "minecraft:block/redstone_torch": "z_lor:item/trim/redstone_torch",
+      "smplore:block/magnetite_core_bottom": "z_lor:item/device/magnetite_core_bottom",
+      "smplore:block/magnetite_core_front": "z_lor:item/device/magnetite_core_front",
+      "smplore:block/magnetite_core_side": "z_lor:item/device/magnetite_core_side",
+      "smplore:block/magnetite_core_top": "z_lor:item/device/magnetite_core_top",
+      "smplore:block/void_absorber_bottom": "z_lor:item/device/void_absorber_bottom",
+      "smplore:block/void_absorber_front": "z_lor:item/device/void_absorber_front",
+      "smplore:block/void_absorber_side": "z_lor:item/device/void_absorber_side",
+      "smplore:block/void_absorber_top": "z_lor:item/device/void_absorber_top",
+      "smplore:block/void_alarm_bottom": "z_lor:item/device/void_alarm_bottom",
+      "smplore:block/void_alarm_front": "z_lor:item/device/void_alarm_front",
+      "smplore:block/void_alarm_side": "z_lor:item/device/void_alarm_side",
+      "smplore:block/void_alarm_top": "z_lor:item/device/void_alarm_top",
+      "smplore:block/void_siren_bottom": "z_lor:item/device/void_siren_bottom",
+      "smplore:block/void_siren_front": "z_lor:item/device/void_siren_front",
+      "smplore:block/void_siren_side": "z_lor:item/device/void_siren_side",
+      "smplore:block/void_siren_top": "z_lor:item/device/void_siren_top"
+    },
+    "dome_cells": 642,
     "sound_events": 4224,
     "validated": {
-      "json": 89,
-      "models": 39,
-      "textures": 33,
+      "json": 926,
+      "models": 872,
+      "textures": 884,
       "sounds": 12,
-      "items": 36
+      "items": 41
     },
-    "minecraft_client_tested": false,
-    "all_prior_plugin_jars_unchanged": true
+    "minecraft_client_tested": true,
+    "all_prior_plugin_jars_unchanged": true,
+    "client_review": "lor/live-qa/visual-review.json"
+  },
+  "resource_pack_regressions": {
+    "status": "PASS",
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "pack_sha1": "fe56020a1d74901c8783de6534cceefe5f05f85d",
+    "cases": [
+      "test_beam_frames_fade_without_modifying_rgb_tone",
+      "test_beam_warning_has_transparent_background_and_visible_edges",
+      "test_device_models_use_a_single_item_atlas",
+      "test_dome_is_closed_3d_with_642_distinct_facets_and_correct_masks",
+      "test_no_new_vanilla_atlas_or_model_overrides",
+      "test_old_plugins_resources_remain_byte_exact"
+    ],
+    "generated_at_utc": "2026-10-26T16:26:45.243042+00:00"
   },
   "audio_decode": [
     {
@@ -359,25 +399,129 @@
       "decode": "PASS"
     }
   ],
-  "live_server_tested": false,
-  "vanilla_client_tested": false,
+  "native_smoke": {
+    "status": "PASS",
+    "plugin_version": "1.0.1",
+    "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
+    "checks": {
+      "real_plugin_enabled": "PASS",
+      "native_boundary_minecraft:overworld": "PASS",
+      "native_boundary_minecraft:the_nether": "PASS",
+      "native_boundary_minecraft:the_end": "PASS",
+      "plugin_stays_enabled": "PASS",
+      "real_native_void_damage": "PASS",
+      "shield_diagnostic": {
+        "health": 20.0,
+        "cause": "VOID",
+        "shield": true,
+        "position": "Location{world=CraftWorld{name=world},x=0.5,y=71.0,z=0.5,pitch=0.0,yaw=0.0}"
+      },
+      "absorber_blocks_native_player_void": "PASS",
+      "shield_keeps_real_projectile": "PASS",
+      "unshielded_projectile_native_discard": "PASS",
+      "render_only_display_survives_raised_void": "PASS",
+      "hud_readable_scale": "PASS",
+      "hud_private": "PASS",
+      "sphere_world_mesh": "PASS",
+      "sphere_frustum_culling_disabled": "PASS",
+      "protocol_pickup_then_fuel_place": "PASS",
+      "protocol_cursor_not_duplicated": "PASS",
+      "all_tower_crystals_restored": "PASS",
+      "vanilla_dragon_entity": "PASS",
+      "vanilla_bossbar_title": "PASS",
+      "no_global_dragon_nametag": "PASS",
+      "no_immediate_spawn_beam": "PASS",
+      "dragon_flies_after_command_spawn": "PASS",
+      "manual_beam_started": "PASS",
+      "warning_does_not_damage": "PASS",
+      "all_151_column_models_present": "PASS",
+      "column_frustum_culling_disabled": "PASS",
+      "ten_one_second_damage_pulses": "PASS",
+      "ownerless_magic_not_difficulty_scaled": "PASS",
+      "one_erosion_credit_per_attack": "PASS",
+      "fade_does_not_damage": "PASS",
+      "beam_cleanup": "PASS"
+    },
+    "pulse_ticks": [
+      30,
+      50,
+      70,
+      90,
+      110,
+      130,
+      150,
+      170,
+      190,
+      210
+    ],
+    "damage": 20.0,
+    "client_rendered": false,
+    "source_commit": "05610a519b4e672df3ce448cc824143fa14e062a",
+    "server_sha256": "5ffef465eeeb5f2a3c23a24419d97c51afd7dbb4923ff42df9a3f58bba1ccfba",
+    "server_build": 132,
+    "vanilla_client_launched": true,
+    "client_capture_evidence": "client-captures.json (manual visual review required)"
+  },
+  "visual_review": {
+    "status": "PASS",
+    "scope": "Visual inspection of the captured scenes only; not full production or aesthetic acceptance",
+    "client": "Official unmodified Minecraft 1.21.11 / Xvfb / software OpenGL",
+    "source_commit": "05610a519b4e672df3ce448cc824143fa14e062a",
+    "pack_sha1": "fe56020a1d74901c8783de6534cceefe5f05f85d",
+    "reviewed_at_utc": "2026-10-26T17:06:16.855709+00:00",
+    "observations": {
+      "dome": "Closed spherical honeycomb visible from outside; no missing-model cube",
+      "vanilla_blocks": "Placed copper block and redstone torch have normal sprites",
+      "fuel": "The four bottles move from the player inventory into input slot 0; native assertions verify stock and empty cursor",
+      "hud": "Private text and heart icon are visible, with a plain public vanilla dragon bar; server checks privacy for the other player",
+      "beam_warning": "Circular location markers visible before firing",
+      "beam_active": "Dark vertical columns and violet edge glow visible; all 151 server models verified",
+      "beam_fade": "Harmless fade/shrink stage captured; removal verified on the server"
+    },
+    "limits": [
+      "Far dark column surfaces remain subtle; aesthetic preference is not an automated pass criterion",
+      "Green/yellow variants, full 30-second dome expiry and camera movement are not separately certified by these still frames",
+      "No FPS/TPS benchmark or integration run with the users entire plugin set"
+    ],
+    "captures": [
+      {
+        "file": "dome-and-private-view.png",
+        "sha256": "c002c0aed0284b2e57a596a4d402e76679b5d452f1234eeb4e18a354b997a12d"
+      },
+      {
+        "file": "beam-warning.png",
+        "sha256": "4391a56bf9dc0fd8ae1fd5406465fa156f1680d3adf4b7f472c4d5f1227b6ec3"
+      },
+      {
+        "file": "beam-active.png",
+        "sha256": "ee83e8843f52b3335b3609361ac98df7b24a0ab7820a66b7b1aac9a1b07789f8"
+      },
+      {
+        "file": "beam-fade.png",
+        "sha256": "250cacbc79ac6dcfc3d4693fb8e40f479b32f78e2db63227040ba5a55137cc58"
+      },
+      {
+        "file": "fuel-before.png",
+        "sha256": "4c4545ca3093f2d70ef6ee372bfec209f40c4c1062d455a1c1bfd4303189a9b5"
+      },
+      {
+        "file": "fuel-after.png",
+        "sha256": "544057188b892543b5a6836f097984faaf4fb83d481ee36ea1d6c4ba9142e298"
+      }
+    ]
+  },
+  "native_tested_production_code_unchanged": true,
+  "live_server_tested": true,
+  "vanilla_client_tested": true,
   "production_acceptance_complete": false,
   "paper_download": {
     "build": 132,
-    "expected_sha256": "5ffef465eeeb5f2a3c23a24419d97c51afd7dbb4923ff42df9a3f58bba1ccfba",
-    "status": "BLOCKED",
-    "reason": "Official fill-data.papermc.io download: proxy CONNECT 403; v2 API: HTTP 410"
-  },
-  "paper_source_build": {
-    "repository": "PaperMC/Paper",
-    "commit": "c5eb0790f199da6c38d0a650e1e5cd5415b28185",
-    "gradle": "9.2.0",
-    "status": "BLOCKED",
-    "task": "downloadMcManifest",
-    "reason": "Official piston-meta.mojang.com version manifest HTTP 403; launchermeta.mojang.com also CONNECT 403"
+    "sha256": "5ffef465eeeb5f2a3c23a24419d97c51afd7dbb4923ff42df9a3f58bba1ccfba",
+    "status": "PASS",
+    "runner": "isolated GitHub Actions"
   },
   "test_environment_limits": [
-    "MockBukkit boundary adapter is explicitly replaced with a fake-ready fixture",
+    "MockBukkit boundary adapter is explicitly replaced with a fake-ready fixture; unsupported display render tick is intentionally replaced by a no-op (actual render tested separately)",
     "NativeBoundaryTest wraps a fake tick list, not NMS",
     "Dragon SCALE attribute and DamageSource delivery have explicit test fixtures; no native rendering or armour proof",
     "Death/drop events are synthetic, not a live death pipeline"
@@ -840,15 +984,14 @@
     }
   ],
   "known_differences": [
-    "Particle dome mesh replaces Fabric surface shader",
+    "642-cell composite item model replaces Fabric surface shader",
     "Private world TextDisplay HUD replaces Fabric screen HUD",
     "TARGET carrier retains native blast resistance and vertical signal behaviour",
-    "Vanilla dragon bodies; native scale/hitboxes unverified",
+    "Vanilla dragon bodies by current user request; complete native scale/hitbox acceptance remains separate",
     "No separate forced spit/breath/ram diagnostic controls",
     "Server-folder audio import replaces local client file picker"
   ],
   "not_implemented": [
-    "Approved new King model / pink eyes",
     "Player heart HUD recolouring",
     "New potions and recovery balance",
     "Enderman growth and active enriched endermite",

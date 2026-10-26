@@ -1,3 +1,17 @@
+# Z_Lor 1.0.1 — исправления для Paper 1.21.11
+
+Обновление драконов, луча, куполов, личного просмотра и меню топлива. Общий пак **Z_Server_Pack 1.08** сохраняет Shahed, Verity, Golda и Pantera. Плагины этих проектов не меняются.
+
+- [Z_Lor 1.0.1 JAR](dist/Z_Lor_1.0.1.jar)
+- [Общий ресурс-пак 1.08](dist/Z_Server_Pack_1.08.zip)
+- [Весь комплект с исходниками](dist/Z_Lor_1.0.1-install.zip)
+- [Строки server.properties](dist/Z_Lor-server.properties_1.0.1.txt)
+- [Установка и изменения](lor/README_RU.md), [проверки](lor/TESTING_RU.md), [фактический нативный запуск](lor/live-qa/latest.json)
+
+Старые выпуски ниже оставлены для истории.
+
+---
+
 # Shahed и Z_Verity — Paper 1.21.11 / Java 21
 
 **Общий ресурс-пак обновлён до 1.06:** добавлены ресурсы SmpLore из предоставленного

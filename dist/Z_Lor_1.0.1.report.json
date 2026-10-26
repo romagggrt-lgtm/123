@@ -1,0 +1,1032 @@
+{
+  "generated_at_utc": "2026-10-26T17:06:19.279917+00:00",
+  "plugin": "Z_Lor",
+  "version": "1.0.1",
+  "target": "Paper 1.21.11 / Java 21",
+  "automatic_tests": {
+    "status": "PASS",
+    "totals": {
+      "tests": 109,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "suites": [
+      {
+        "name": "dev.zlor.AudioTest",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.64,
+        "cases": [
+          "monoOggRetainsExactBytesAfterActualDecodeValidation",
+          "uploadedMp3FixtureConvertsToPlayableMonoVorbis",
+          "corruptContainersAndRenamedNonAudioAreRejected",
+          "cancellationInterruptsConversion",
+          "stereoWavBecomesMonoWithoutChangingDuration",
+          "durationAndConfiguredHardCapsAreEnforced",
+          "sirenCatalogueHasExactlyTheEightApprovedTracks",
+          "stereoOggIsDownmixedForSpatialPlayback",
+          "oversizeIsRejectedBeforeDecoding"
+        ]
+      },
+      {
+        "name": "dev.zlor.CombatAndLootTest",
+        "tests": 17,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 3.294,
+        "cases": [
+          "stoppedDragonInSavedChunkIsRemovedInsteadOfBeingResurrectedOnRestore",
+          "kingTakesRealLogicalDamageFromAll1500HpAndKeepsNativePoolInSync",
+          "starChoosesEnrichedAndReducesNonLeadersIncomingDamageToThird",
+          "diskAcknowledgementCannotSwallowTheNextDamagePulse",
+          "greenEntryShieldRequiresActualPlatformAndProtectsPlayersOnly",
+          "stopReopensAnAlreadyInactiveFountainWithoutOverwritingForeignBlocks",
+          "dragonsNeverApplyFriendlyFireToOtherTrackedDragons",
+          "keepInventoryOrMissingTotemCreatesNoFalseResourceShield",
+          "voidTotemConsumesExactlyOneAndMarksOnlyRealNativeDrops",
+          "warningFadeAndCreativePlayersNeverTakeBeamDamage",
+          "restoredDragonStartsInFlightWithFreshAttackCooldownAndVanillaPublicBar",
+          "rejectedDamageDoesNotConsumeErosionCredit",
+          "crystalPulsePrioritisesInjuredKingAndDoesNotHealEveryDragon",
+          "oneBeamLaunchCountsOnlyOnceEvenWithMultipleDamagePulses",
+          "enrichedIgnoresArrowsButOrdinaryDoesNot",
+          "yellowShieldDividesOnlyVoidDamageByEightAndExpiresByWallClock",
+          "protectedAndOrdinaryDropsDoNotMergeAndExtendProtection"
+        ]
+      },
+      {
+        "name": "dev.zlor.Fixes101Test",
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.558,
+        "cases": [
+          "topHotbarKeySafelySwapsFuelAndRejectsOtherItems",
+          "viewCommandsToggleTogetherAndOffClearsBothWithoutChangingAudit",
+          "towerRepairAddsOnlyMissingEntitiesAndPreservesOccupiedPositions",
+          "packCellIndicesMatchTheServersOverlapMask",
+          "lowerInventoryPickupAndPlaceAreNativeNotCancelled",
+          "oldConfigGetsTenSecondBeamWithoutOverwritingCustomSettings",
+          "risingVoidPreservesRenderEntitiesOutsideAbsorberProtection",
+          "beamHasTenSeparateDamagePulsesAndHarmlessWarningAndFade",
+          "bottomOnlyDragIsNotCancelledAndFuelCanBeSpreadAcrossInputs",
+          "unionHidesOnlyCoveredCellsAndNeverOtherDimensions",
+          "ticketOwnersCannotReleaseEachOthersChunk"
+        ]
+      },
+      {
+        "name": "dev.zlor.MenuInputTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.069,
+        "cases": [
+          "sirenTrackIsValidatedBeforePreviewStarts",
+          "rootNavigationHasAllFivePermanentLabels",
+          "sirenRangeCannotUseOutOfStepOrOversizedClientValues",
+          "volumeIsARealBoundedPercentageRange",
+          "missingAndNonFiniteSliderPayloadsAreRejected"
+        ]
+      },
+      {
+        "name": "dev.zlor.NativeBoundaryTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.033,
+        "cases": [
+          "finalIterationCannotInstallAnEmptyIndependentList",
+          "finallyRestoresWorldContextEvenWhenNativeTickThrows",
+          "wrapperPreservesOriginalListAndBracketsEachExistingNativeTick"
+        ]
+      },
+      {
+        "name": "dev.zlor.PluginTest",
+        "tests": 33,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 1.544,
+        "cases": [
+          "sameCoordinatesInDifferentDimensionsNeverShareFuelProtection",
+          "breakingCoreClearsBothEndsAndDropsUnlinkedIdentity",
+          "protectionUsesSphereRatherThanCylinderAndEndsAtExactUptime",
+          "ordinaryPlayerCannotUseLoreOrHiddenCommandCompletions",
+          "portableAbsorberRetainsPaidTimeAndCoreNeverRetainsLink",
+          "externalInventoryChangeDuringPendingFuelTransferRollsBackInsteadOfDuplicating",
+          "structuresJournalMovesBothObjectsAndKeepsUnrelatedBlocks",
+          "dimensionsAndSpeedRemainIndependentWithOfflineWallTime",
+          "largeJumpOnlyAppliesAfterRealIssuedTokenAndCannotReplay",
+          "dynamicAudioPackPreservesEveryBaseEntryAndVersionsItsDownload",
+          "liquidVoidCollectionConsumesOneBottleAndBreathIsNotFuel",
+          "customRecipeIngredientCannotBeReplacedByVanillaTarget",
+          "helpStatusAndViewsDoNotReplaceLastMutationAudit",
+          "forgedItemNamesDoNotGainCustomIdentity",
+          "maxHpModifierDoesNotStackOnRepeatedLoginOrApplication",
+          "fuelStartsExactlyOneFifteenMinutePortionAndConvertsOneBottle",
+          "confirmationRejectsAnotherPlayerAndAnExpiredToken",
+          "fuelClockIgnoresOfflineWallButExpiresDuringRealUptime",
+          "physicalHopperOnlyTransfersLiquidVoidIntoInputSlots",
+          "collectingVoidUnderAbsorberFailsWithoutConsumingGlass",
+          "administrativeGiveUsesRealCustomStacksAndSupportsNamespacedAlias",
+          "commandListUsesCollectionAndHidesOnlyUnauthorisedOwnCommands",
+          "occupiedDestinationRejectsWholeMoveBeforeChangingAnything",
+          "revokingRoleInvalidatesPendingConfirmation",
+          "stockIsNotConsumedWhileBoundaryIsVanilla",
+          "immunityDoesNotRequireOpAndResetDoesNotDeleteItOrFuel",
+          "fuelGuiRejectsBreathButAcceptsLiquidAndKeepsOutputReadOnly",
+          "allFiveRecipesAreRegisteredAndNotGloballyDiscovered",
+          "opIsNotAnAutomaticScenaristBypassAndRoleSurvivesDeop",
+          "placedDeviceConsumesOnceAfterDurableRegistration",
+          "staleWorldRevisionCannotOverwriteAnotherScenaristsChange",
+          "physicalHopperBelowOnlyTakesTheEmptyBottleOutput",
+          "unknownFirstRoleNeedsOnlineIdentityAndOfflineKnownRoleCanBeRemoved"
+        ]
+      },
+      {
+        "name": "dev.zlor.RulesTest",
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.021,
+        "cases": [
+          "numericInputAndMeterKeepAllFourDecimalDigits",
+          "lootIsNotFullProtectionOrAnExtraFlightMultiplier",
+          "relayRetainsShortPulseAndShutdownEdgeWhileReceiverLoads",
+          "waveCompositionDoesNotInsertKingOrAutostart",
+          "sensorThresholdsAndPulsesMatchApprovedRange",
+          "ceilingStopsOvershootRatherThanHidingIt",
+          "beamDamageCannotKillBeforeSeventhDistinctAttack",
+          "boundaryDoesNotPullInsideOrBlockEnteringAndTeleports",
+          "entryHeightAlwaysFollowsByTenAndBothDirectionsAreAllowed",
+          "beamLatticeContainsAllThreeSizesAtOnce",
+          "sharedGeometryIsGeodesicAndSphereIndexKeepsKindsSeparate",
+          "speedModesReplaceAndVectorUseOneCanonicalRate",
+          "flightDependsOnVoidHeightAndAbsorberOnlyMultipliesInterval"
+        ]
+      },
+      {
+        "name": "dev.zlor.StateStoreTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.057,
+        "cases": [
+          "suppressedShutdownEffectsDoNotSpawnOrGiveAfterDisable",
+          "oldStateWithoutCrystalJobFieldKeepsDevicesAndHealthLoss",
+          "queuedMutationsPrepareFromLatestCommittedRevision",
+          "slowDiskNeverPublishesStateOrEffectsBeforeDurability",
+          "invalidMutationDoesNotCorruptQueueOrWriteAFile",
+          "failedWriteKeepsLastFileAndRunsNoSuccessEffects",
+          "malformedOrIncompleteInputIsNeverReplaced"
+        ]
+      },
+      {
+        "name": "dev.zlor.reference.DomeAnimationTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.003,
+        "cases": [
+          "cellOrderIsStableAndRefillingRestoresEveryCell",
+          "openingRunsFromTopToBottom"
+        ]
+      },
+      {
+        "name": "dev.zlor.reference.EncounterRulesTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.033,
+        "cases": [
+          "recoveryAndReset",
+          "shieldsDoNotStack",
+          "exactWaveComposition",
+          "onlyTrackedDeathWinsAndPersists",
+          "indexKeepsBorderCandidates",
+          "pushOnlyAtExternalExit",
+          "malformedFilePreserved"
+        ]
+      },
+      {
+        "name": "dev.zlor.reference.EndStructureHeightsTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.006,
+        "cases": [
+          "aFractionalBoundaryAndWorldEdgesRemainOutsideTheStructures",
+          "endVoidNineteenAllowsPortalTwentyAndPlacesEntryThirty"
+        ]
+      }
+    ]
+  },
+  "jar_structure": {
+    "status": "PASS",
+    "class_major": 65,
+    "paper_api_not_bundled": true,
+    "test_libraries_not_bundled": true,
+    "codec_smoke": "SHADED_CODEC_PASS seconds=0.36 bytes=4150 source=file:PROJECT/lor/target/Z_Lor.jar"
+  },
+  "resource_pack": {
+    "pack": "Z_Server_Pack_1.08.zip",
+    "base": "Z_Server_Pack_1.05_Pantera_1.0.1.zip",
+    "base_sha256": "cf12fb8c8facadcc1393657094f65b59b0e313e144d264dce8afba45a1f2b26b",
+    "sha1": "fe56020a1d74901c8783de6534cceefe5f05f85d",
+    "sha256": "6a4c66a47c64707a732d549cfdbc53624d7cc3a7f86e6c347e86abfa96c8cfe3",
+    "base_asset_files_preserved": 54,
+    "provided_png_preserved": 20,
+    "provided_ogg_preserved": 9,
+    "resource_conflicts": [],
+    "vanilla_atlas_overrides": false,
+    "vanilla_texture_aliases": {
+      "minecraft:block/copper_block": "z_lor:item/trim/copper_block",
+      "minecraft:block/redstone_torch": "z_lor:item/trim/redstone_torch",
+      "smplore:block/magnetite_core_bottom": "z_lor:item/device/magnetite_core_bottom",
+      "smplore:block/magnetite_core_front": "z_lor:item/device/magnetite_core_front",
+      "smplore:block/magnetite_core_side": "z_lor:item/device/magnetite_core_side",
+      "smplore:block/magnetite_core_top": "z_lor:item/device/magnetite_core_top",
+      "smplore:block/void_absorber_bottom": "z_lor:item/device/void_absorber_bottom",
+      "smplore:block/void_absorber_front": "z_lor:item/device/void_absorber_front",
+      "smplore:block/void_absorber_side": "z_lor:item/device/void_absorber_side",
+      "smplore:block/void_absorber_top": "z_lor:item/device/void_absorber_top",
+      "smplore:block/void_alarm_bottom": "z_lor:item/device/void_alarm_bottom",
+      "smplore:block/void_alarm_front": "z_lor:item/device/void_alarm_front",
+      "smplore:block/void_alarm_side": "z_lor:item/device/void_alarm_side",
+      "smplore:block/void_alarm_top": "z_lor:item/device/void_alarm_top",
+      "smplore:block/void_siren_bottom": "z_lor:item/device/void_siren_bottom",
+      "smplore:block/void_siren_front": "z_lor:item/device/void_siren_front",
+      "smplore:block/void_siren_side": "z_lor:item/device/void_siren_side",
+      "smplore:block/void_siren_top": "z_lor:item/device/void_siren_top"
+    },
+    "dome_cells": 642,
+    "sound_events": 4224,
+    "validated": {
+      "json": 926,
+      "models": 872,
+      "textures": 884,
+      "sounds": 12,
+      "items": 41
+    },
+    "minecraft_client_tested": true,
+    "all_prior_plugin_jars_unchanged": true,
+    "client_review": "lor/live-qa/visual-review.json"
+  },
+  "resource_pack_regressions": {
+    "status": "PASS",
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "pack_sha1": "fe56020a1d74901c8783de6534cceefe5f05f85d",
+    "cases": [
+      "test_beam_frames_fade_without_modifying_rgb_tone",
+      "test_beam_warning_has_transparent_background_and_visible_edges",
+      "test_device_models_use_a_single_item_atlas",
+      "test_dome_is_closed_3d_with_642_distinct_facets_and_correct_masks",
+      "test_no_new_vanilla_atlas_or_model_overrides",
+      "test_old_plugins_resources_remain_byte_exact"
+    ],
+    "generated_at_utc": "2026-10-26T16:26:45.243042+00:00"
+  },
+  "audio_decode": [
+    {
+      "file": "assets/shah/sounds/engine.ogg",
+      "codec_name": "vorbis",
+      "sample_rate": "44100",
+      "channels": 1,
+      "seconds": 1.0,
+      "decode": "PASS"
+    },
+    {
+      "file": "assets/smplore/sounds/alarms/alarm.ogg",
+      "codec_name": "vorbis",
+      "sample_rate": "44100",
+      "channels": 1,
+      "seconds": 11.1,
+      "decode": "PASS"
+    },
+    {
+      "file": "assets/smplore/sounds/alarms/classic.ogg",
+      "codec_name": "vorbis",
+      "sample_rate": "44100",
+      "channels": 1,
+      "seconds": 12.0,
+      "decode": "PASS"
+    },
+    {
+      "file": "assets/smplore/sounds/alarms/evacuation.ogg",
+      "codec_name": "vorbis",
+      "sample_rate": "44100",
+      "channels": 1,
+      "seconds": 50.2,
+      "decode": "PASS"
+    },
+    {
+      "file": "assets/smplore/sounds/alarms/exchange.ogg",
+      "codec_name": "vorbis",
+      "sample_rate": "44100",
+      "channels": 1,
+      "seconds": 12.0,
+      "decode": "PASS"
+    },
+    {
+      "file": "assets/smplore/sounds/alarms/frontier.ogg",
+      "codec_name": "vorbis",
+      "sample_rate": "44100",
+      "channels": 1,
+      "seconds": 29.0,
+      "decode": "PASS"
+    },
+    {
+      "file": "assets/smplore/sounds/alarms/mechanical.ogg",
+      "codec_name": "vorbis",
+      "sample_rate": "44100",
+      "channels": 1,
+      "seconds": 12.0,
+      "decode": "PASS"
+    },
+    {
+      "file": "assets/smplore/sounds/alarms/pulse.ogg",
+      "codec_name": "vorbis",
+      "sample_rate": "44100",
+      "channels": 1,
+      "seconds": 12.0,
+      "decode": "PASS"
+    },
+    {
+      "file": "assets/smplore/sounds/alarms/watch.ogg",
+      "codec_name": "vorbis",
+      "sample_rate": "44100",
+      "channels": 1,
+      "seconds": 9.6,
+      "decode": "PASS"
+    },
+    {
+      "file": "assets/smplore/sounds/meter_click.ogg",
+      "codec_name": "vorbis",
+      "sample_rate": "44100",
+      "channels": 1,
+      "seconds": 0.034989,
+      "decode": "PASS"
+    },
+    {
+      "file": "assets/z_pantera/sounds/pantera.ogg",
+      "codec_name": "vorbis",
+      "sample_rate": "44100",
+      "channels": 1,
+      "seconds": 1.906939,
+      "decode": "PASS"
+    },
+    {
+      "file": "assets/z_verity/sounds/verity.ogg",
+      "codec_name": "vorbis",
+      "sample_rate": "44100",
+      "channels": 1,
+      "seconds": 1.880816,
+      "decode": "PASS"
+    }
+  ],
+  "native_smoke": {
+    "status": "PASS",
+    "plugin_version": "1.0.1",
+    "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
+    "checks": {
+      "real_plugin_enabled": "PASS",
+      "native_boundary_minecraft:overworld": "PASS",
+      "native_boundary_minecraft:the_nether": "PASS",
+      "native_boundary_minecraft:the_end": "PASS",
+      "plugin_stays_enabled": "PASS",
+      "real_native_void_damage": "PASS",
+      "shield_diagnostic": {
+        "health": 20.0,
+        "cause": "VOID",
+        "shield": true,
+        "position": "Location{world=CraftWorld{name=world},x=0.5,y=71.0,z=0.5,pitch=0.0,yaw=0.0}"
+      },
+      "absorber_blocks_native_player_void": "PASS",
+      "shield_keeps_real_projectile": "PASS",
+      "unshielded_projectile_native_discard": "PASS",
+      "render_only_display_survives_raised_void": "PASS",
+      "hud_readable_scale": "PASS",
+      "hud_private": "PASS",
+      "sphere_world_mesh": "PASS",
+      "sphere_frustum_culling_disabled": "PASS",
+      "protocol_pickup_then_fuel_place": "PASS",
+      "protocol_cursor_not_duplicated": "PASS",
+      "all_tower_crystals_restored": "PASS",
+      "vanilla_dragon_entity": "PASS",
+      "vanilla_bossbar_title": "PASS",
+      "no_global_dragon_nametag": "PASS",
+      "no_immediate_spawn_beam": "PASS",
+      "dragon_flies_after_command_spawn": "PASS",
+      "manual_beam_started": "PASS",
+      "warning_does_not_damage": "PASS",
+      "all_151_column_models_present": "PASS",
+      "column_frustum_culling_disabled": "PASS",
+      "ten_one_second_damage_pulses": "PASS",
+      "ownerless_magic_not_difficulty_scaled": "PASS",
+      "one_erosion_credit_per_attack": "PASS",
+      "fade_does_not_damage": "PASS",
+      "beam_cleanup": "PASS"
+    },
+    "pulse_ticks": [
+      30,
+      50,
+      70,
+      90,
+      110,
+      130,
+      150,
+      170,
+      190,
+      210
+    ],
+    "damage": 20.0,
+    "client_rendered": false,
+    "source_commit": "05610a519b4e672df3ce448cc824143fa14e062a",
+    "server_sha256": "5ffef465eeeb5f2a3c23a24419d97c51afd7dbb4923ff42df9a3f58bba1ccfba",
+    "server_build": 132,
+    "vanilla_client_launched": true,
+    "client_capture_evidence": "client-captures.json (manual visual review required)"
+  },
+  "visual_review": {
+    "status": "PASS",
+    "scope": "Visual inspection of the captured scenes only; not full production or aesthetic acceptance",
+    "client": "Official unmodified Minecraft 1.21.11 / Xvfb / software OpenGL",
+    "source_commit": "05610a519b4e672df3ce448cc824143fa14e062a",
+    "pack_sha1": "fe56020a1d74901c8783de6534cceefe5f05f85d",
+    "reviewed_at_utc": "2026-10-26T17:06:16.855709+00:00",
+    "observations": {
+      "dome": "Closed spherical honeycomb visible from outside; no missing-model cube",
+      "vanilla_blocks": "Placed copper block and redstone torch have normal sprites",
+      "fuel": "The four bottles move from the player inventory into input slot 0; native assertions verify stock and empty cursor",
+      "hud": "Private text and heart icon are visible, with a plain public vanilla dragon bar; server checks privacy for the other player",
+      "beam_warning": "Circular location markers visible before firing",
+      "beam_active": "Dark vertical columns and violet edge glow visible; all 151 server models verified",
+      "beam_fade": "Harmless fade/shrink stage captured; removal verified on the server"
+    },
+    "limits": [
+      "Far dark column surfaces remain subtle; aesthetic preference is not an automated pass criterion",
+      "Green/yellow variants, full 30-second dome expiry and camera movement are not separately certified by these still frames",
+      "No FPS/TPS benchmark or integration run with the users entire plugin set"
+    ],
+    "captures": [
+      {
+        "file": "dome-and-private-view.png",
+        "sha256": "c002c0aed0284b2e57a596a4d402e76679b5d452f1234eeb4e18a354b997a12d"
+      },
+      {
+        "file": "beam-warning.png",
+        "sha256": "4391a56bf9dc0fd8ae1fd5406465fa156f1680d3adf4b7f472c4d5f1227b6ec3"
+      },
+      {
+        "file": "beam-active.png",
+        "sha256": "ee83e8843f52b3335b3609361ac98df7b24a0ab7820a66b7b1aac9a1b07789f8"
+      },
+      {
+        "file": "beam-fade.png",
+        "sha256": "250cacbc79ac6dcfc3d4693fb8e40f479b32f78e2db63227040ba5a55137cc58"
+      },
+      {
+        "file": "fuel-before.png",
+        "sha256": "4c4545ca3093f2d70ef6ee372bfec209f40c4c1062d455a1c1bfd4303189a9b5"
+      },
+      {
+        "file": "fuel-after.png",
+        "sha256": "544057188b892543b5a6836f097984faaf4fb83d481ee36ea1d6c4ba9142e298"
+      }
+    ]
+  },
+  "native_tested_production_code_unchanged": true,
+  "live_server_tested": true,
+  "vanilla_client_tested": true,
+  "production_acceptance_complete": false,
+  "paper_download": {
+    "build": 132,
+    "sha256": "5ffef465eeeb5f2a3c23a24419d97c51afd7dbb4923ff42df9a3f58bba1ccfba",
+    "status": "PASS",
+    "runner": "isolated GitHub Actions"
+  },
+  "test_environment_limits": [
+    "MockBukkit boundary adapter is explicitly replaced with a fake-ready fixture; unsupported display render tick is intentionally replaced by a no-op (actual render tested separately)",
+    "NativeBoundaryTest wraps a fake tick list, not NMS",
+    "Dragon SCALE attribute and DamageSource delivery have explicit test fixtures; no native rendering or armour proof",
+    "Death/drop events are synthetic, not a live death pipeline"
+  ],
+  "live_acceptance": [
+    {
+      "id": "P01",
+      "scenario": "Запуск, выключение и повторный запуск плагина",
+      "expected": "Версия правильная; нет двойных задач, слушателей и ошибок.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "P02",
+      "scenario": "Три клиента принимают или отклоняют ресурспак",
+      "expected": "Статус понятен; принявший видит предметы, отказ не выдаёт скрытые права.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "P03",
+      "scenario": "Назначить и снять scen, сменить ник, убрать OP",
+      "expected": "UUID сохраняется; снятие роли закрывает меню/view и подтверждения.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "P04",
+      "scenario": "После мутации открыть help, меню, view и состояние",
+      "expected": "В /scen остаётся последняя реальная мутация, а не последний просмотр.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "V01",
+      "scenario": "Задать разные высоты в трёх измерениях",
+      "expected": "Состояния независимы, известны их dimension IDs.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "V02",
+      "scenario": "Проверить set/vector высоты и оба режима скорости",
+      "expected": "Скорость одна, пересчёт ×240 правильный, переключение без скачка.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "V03",
+      "scenario": "Нулевая скорость, отрицательная скорость, void stop",
+      "expected": "Фиксация высоты отличается от возврата штатной границы.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "V04",
+      "scenario": "Большой скачок с подтверждением; другой scen меняет revision",
+      "expected": "Применяется только актуальный запрос владельца в том же измерении.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "V05",
+      "scenario": "Пределы высоты и неверные числа",
+      "expected": "Нет NaN, скрытого overshoot, краша или молчаливого reset.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "V06",
+      "scenario": "Закрыть сервер и снова открыть мир",
+      "expected": "Войд и топливо следуют разным описанным часам.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "M01",
+      "scenario": "Измерять обеими руками; убрать прибор, умереть или сменить мир",
+      "expected": "Слышны правильные щелчки по интервалу 4 тика; отмена не даёт ложный результат.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "M02",
+      "scenario": "Измерить штатную и изменённую границу с дробными числами",
+      "expected": "Правильная Y ровно с четырьмя знаками после запятой (0,0000; 19,0000; −1,2500), персональный звук.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "I01",
+      "scenario": "Просмотреть все блоки/предметы в руке, инвентаре и мире",
+      "expected": "Нет MissingTexture; верны стороны, поворот, активный вид и стаки.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "I02",
+      "scenario": "До открытия книги вручную скрафтить пять рецептов",
+      "expected": "Каждый даёт 1 предмет и открывается лично после собственного крафта.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "I03",
+      "scenario": "Переименовать обычный предмет под топливо или прибор",
+      "expected": "Подделка не получает функционал PDC-предмета.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "I04",
+      "scenario": "Добыть блоки рукой и разными кирками с эффектами",
+      "expected": "Корректные время, условия и дроп; нет мгновенной carrier-поломки.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "B01",
+      "scenario": "Набрать Жидкий Войд на поверхности, внутри, за стеной и вне reach",
+      "expected": "Разрешены нужные точки; препятствия, дистанция и cooldown учитываются.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "B02",
+      "scenario": "Набрать внутри Поглотителя или из защищённой точки снаружи",
+      "expected": "Запрет без потери бутылки и без навязчивого сообщения.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "B03",
+      "scenario": "Набрать обычное и обогащённое дыхание, обе руки, полный инвентарь",
+      "expected": "Правильный реагент; радиус −0,5 только после успешной выдачи; стак 1.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "A01",
+      "scenario": "Одна бутылка в Поглотителе при поднятом и штатном Войде",
+      "expected": "Новая порция 15 минут только в подходящих условиях.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "A02",
+      "scenario": "Истечение порции с запасом и без него",
+      "expected": "Начинается ровно одна следующая порция, без заднего списания запаса.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "A03",
+      "scenario": "Выгрузить чанк, уйти всем игрокам, pause SP, закрыть сервер",
+      "expected": "Начатый срок учитывается по uptime; закрытый мир не тратит топливо.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "A04",
+      "scenario": "Хопперы сверху/сбоку/снизу и неверные предметы",
+      "expected": "8 входных слотов; снизу только пустая тара из выхода; дыхание не топливо.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "A05",
+      "scenario": "Полный выход пустых бутылок",
+      "expected": "Тара выбрасывается без потери и без дюпа.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "A06",
+      "scenario": "Сломать, подобрать и поставить Поглотитель",
+      "expected": "Оплаченный остаток и содержимое не теряются и не удваиваются.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "A07",
+      "scenario": "Пересечения 2–4 сфер, последние 30 секунд и пополнение",
+      "expected": "Внешняя общая оболочка, правильные 3 с открытия/30 с распада, независимая защита.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "A08",
+      "scenario": "Мобы, игроки, стрелы, трезубцы, зелья, фейерверки, дропы",
+      "expected": "Под защитой нормально работают; поставленные блоки не удаляются. Ниже native Y — отдельный тест.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "A09",
+      "scenario": "Шаг, спринт, полёт, вход, касательная, overlap и телепорт",
+      "expected": "Сопротивление только на наружной границе; нет притяжения из центра.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "S01",
+      "scenario": "Сигнализатор: analog на start/середине/danger",
+      "expected": "Верные 0..15 и строгие пороги.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "S02",
+      "scenario": "Сигнализатор: pulse на тех же расстояниях",
+      "expected": "Импульсы 100 мс, интервалы 10 с → 0,2 с, без вечного питания.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "S03",
+      "scenario": "Создать активную сферу после запуска датчика",
+      "expected": "Сигнал прекращается; у датчика нет аудиоменю.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "S04",
+      "scenario": "Питать Сирену независимым рычагом под сферой",
+      "expected": "Она продолжает звучать по редстоуну; купол самостоятельно её не подавляет.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "S05",
+      "scenario": "Все 8 записей, slider, range, test/stop, закрытие меню",
+      "expected": "Нет старых тревог, стеков петель и остановки чужой проверки.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "S06",
+      "scenario": "Два источника и два игрока: поворот, уход, поздний подход",
+      "expected": "Всем в радиусе слышно пространственный звук; останавливается нужный источник.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "C01",
+      "scenario": "Соединить два ядра аметистом; отмена; другой мир",
+      "expected": "Одна пара, расход 1 только после сохранения; самосвязь и другой dimension запрещены.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "C02",
+      "scenario": "Передать 15/8/1/0 сначала A→B, затем B→A",
+      "expected": "Верные мощность и выключение в обе стороны.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "C03",
+      "scenario": "Пыль, ступени, indirect power, короткий импульс и обратная петля",
+      "expected": "Нет самопитания или потерянного конца импульса.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "C04",
+      "scenario": "Дальний выгруженный получатель и pearl stasis",
+      "expected": "Приёмник реально entity-ticking, очередь и release tickets работают.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "C05",
+      "scenario": "Сломать/поставить конец, рестарт, onDisable",
+      "expected": "Новая идентичность; выход 0; нет вечной прогрузки и воскрешения старой связи.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "T01",
+      "scenario": "Умереть от Войда с тотемом в разных слотах",
+      "expected": "Смерть сохраняется, расход ровно 1, реальные дропы под жёлтым щитом 5 минут.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "T02",
+      "scenario": "Обычная смерть, keepInventory, отсутствие тотема",
+      "expected": "Нет ложного щита и лишнего расхода.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "T03",
+      "scenario": "Выгрузка, рестарт, подбор, слияние, истечение щита",
+      "expected": "Нет дюпа/продления; старые gravity/invulnerable возвращаются.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "T04",
+      "scenario": "Игрок в жёлтом и снаружи, overlap жёлтых и Поглотителя",
+      "expected": "Урон Войда ×1/8 без стака; полная защита Поглотителя приоритетна.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "E01",
+      "scenario": "VoidY ровно gateY и выше; игрок и жемчуг",
+      "expected": "Строгий порог; проход действительно блокируется, не одно сообщение.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "E02",
+      "scenario": "Три отказных звука, импорт, выбор громкости",
+      "expected": "Сирен в списке нет; тест/остановка персональные.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "E03",
+      "scenario": "OGG/MP3/WAV, повреждение, 21 МиБ, 11 минут, отмена",
+      "expected": "Валидируется фактический звук; второй клиент получает результат через рабочий RP-маршрут.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "E04",
+      "scenario": "Элитры при start/end/fullBlock и разных высотах игрока",
+      "expected": "Критерий — VoidY, максимум 0,2 с; creative/spectator свободны.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "E05",
+      "scenario": "Поглотитель, overlap, полный запрет и фейерверк",
+      "expected": "0,2→0,8 без стака; полный запрет сохраняется, boost-item не уничтожается.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "R01",
+      "scenario": "end raise 100, затем 20 при VoidY19",
+      "expected": "Портал 100/вход110, затем20/30; разные X/Z сохранены, вниз работает.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "R02",
+      "scenario": "Занята одна зона, неверная Y, бой или ритуал",
+      "expected": "Нет половинного переноса, понятная ошибка, постройки целы.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "R03",
+      "scenario": "Сбой посередине журнала, повтор, threshold rule и stop",
+      "expected": "Идемпотентное восстановление; origin/посадка/вход обновлены; stop сохраняет числа.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "R04",
+      "scenario": "Войти на поднятую площадку, проверить её углы",
+      "expected": "Зелёный щит только у входа, защита покрывает стоящего игрока; старая зона исчезла.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "D01",
+      "scenario": "Обычный командой/4 кристалла; обогащённый командой/8",
+      "expected": "Верные имена/200 и500 HP; переход4→8 без двойного спавна; одно тело.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "D02",
+      "scenario": "Анимация, stop, смерть и restart во время призыва",
+      "expected": "Согласованный размер; нет дублей кристаллов/UUID; stop без XP/яйца/победы.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "D03",
+      "scenario": "Стрелы, контакт, снаряд, дыхание, левитация, эндермен",
+      "expected": "Игнор стрел, отбрасывание×2, облако×2, 200 тиков Levitation; агро источнику.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "D04",
+      "scenario": "Луч: решётка, цвета, размеры, рельеф, частицы",
+      "expected": "Вертикальные столбы вместе, r5/3/1,5, поток вниз; warning1,5 с/active3 с.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "D05",
+      "scenario": "Одновременно готовые к лучу 2–4 дракона",
+      "expected": "Один владелец warning+active; death/stop освобождает арбитр.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "D06",
+      "scenario": "Шесть разных атак и седьмая, несколько pulse за атаку",
+      "expected": "−1 maxHP за атаку до−6; первые шесть не добивают, седьмая может; вещи не исчезают.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "D07",
+      "scenario": "Умереть, перезайти, повторно применить modifier",
+      "expected": "Потери сохраняются без двойного наложения; нет выдуманной heal-команды в гайде.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "D08",
+      "scenario": "Главный ★: выбор, смерть, ручной UUID и bossbars",
+      "expected": "Верный перевыбор, треть урона остальным, нет friendly fire и двойного тела.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "D09",
+      "scenario": "Личный view, повтор, показать всё и снятие роли",
+      "expected": "Многострочный HUD, HP/2 и сердце, атака/XYZ, главный внизу; приватность.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "U01",
+      "scenario": "Все меню, GUI scale, размер окна и scroll",
+      "expected": "Всё по центру, подписано и читаемо; 4 поля элитр доступны, нет наложений.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "U02",
+      "scenario": "Чужой/старый token, быстрые клики, смерть/смена dimension",
+      "expected": "Нет старой мутации/дюпа; session/revision проверены, ошибка показана.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "U03",
+      "scenario": "lore default: подтвердить, отменить, просрочить",
+      "expected": "Сброс определённых настроек, но не вещей, топлива, иммунитета и ролей.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    },
+    {
+      "id": "F01",
+      "scenario": "Много устройств, сфер, сирен и драконов",
+      "expected": "Профиль CPU/TPS/пакетов; ограниченные эффекты, нет all-world scan и вечных tickets.",
+      "status": "BLOCKED",
+      "reason": "No real Paper server / vanilla clients available in build environment; unit tests are partial evidence only"
+    }
+  ],
+  "known_differences": [
+    "642-cell composite item model replaces Fabric surface shader",
+    "Private world TextDisplay HUD replaces Fabric screen HUD",
+    "TARGET carrier retains native blast resistance and vertical signal behaviour",
+    "Vanilla dragon bodies by current user request; complete native scale/hitbox acceptance remains separate",
+    "No separate forced spit/breath/ram diagnostic controls",
+    "Server-folder audio import replaces local client file picker"
+  ],
+  "not_implemented": [
+    "Player heart HUD recolouring",
+    "New potions and recovery balance",
+    "Enderman growth and active enriched endermite",
+    "Altars, staff, automatic story egg and calendar automation"
+  ],
+  "artifacts": [
+    {
+      "file": "Z_Lor_1.0.1.jar",
+      "bytes": 6671794,
+      "sha1": "a32cf7e43cc498f80b78de55f26e7c220e568781",
+      "sha256": "55503269e74ec79f418c39506f7e0f958dbb832780c99ae7811ef347ddcb8907"
+    },
+    {
+      "file": "Z_Server_Pack_1.08.zip",
+      "bytes": 3706973,
+      "sha1": "fe56020a1d74901c8783de6534cceefe5f05f85d",
+      "sha256": "6a4c66a47c64707a732d549cfdbc53624d7cc3a7f86e6c347e86abfa96c8cfe3"
+    },
+    {
+      "file": "Z_Lor-Source_1.0.1.zip",
+      "bytes": 9763991,
+      "sha1": "111ed00a62862799e6c72c2b64730ad7aeb5e93c",
+      "sha256": "f8a42bce407d8f11291b3ee0f8e0a697528111738ad8eeff0f57040e2818522a"
+    },
+    {
+      "file": "Z_Lor_ResourcePack_1.0.1.zip",
+      "bytes": 2496759,
+      "sha1": "beae2ef3b725850b8a3f5387ea371e71205ca2d0",
+      "sha256": "0e884e061dcb6705c54009665bd45e56a43699391a60c9858c3eca3a04d030e2"
+    },
+    {
+      "file": "Z_Lor_Overlay_1.0.1.zip",
+      "bytes": 2496565,
+      "sha1": "f9e47e7ec37c0665a36c739e6e36f6d74e907c28",
+      "sha256": "df13213bb7f89f8946be259acec0c44c3e3869d1fba3aa0632803fdb23838d80"
+    }
+  ]
+}

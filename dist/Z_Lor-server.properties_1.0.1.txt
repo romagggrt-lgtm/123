@@ -1,0 +1,5 @@
+resource-pack=https://raw.githubusercontent.com/romagggrt-lgtm/123/refs/heads/feature/z-lor-1.0.1-fixes/dist/Z_Server_Pack_1.08.zip
+resource-pack-sha1=fe56020a1d74901c8783de6534cceefe5f05f85d
+resource-pack-id=17e36816-ac9c-57bc-8a02-d7a0221a689e
+require-resource-pack=true
+resource-pack-prompt={"text":"Z_Server_Pack 1.08"}

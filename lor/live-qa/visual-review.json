@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "scope": "Visual inspection of the captured scenes only; not full production or aesthetic acceptance",
+  "client": "Official unmodified Minecraft 1.21.11 / Xvfb / software OpenGL",
+  "source_commit": "05610a519b4e672df3ce448cc824143fa14e062a",
+  "pack_sha1": "fe56020a1d74901c8783de6534cceefe5f05f85d",
+  "reviewed_at_utc": "2026-10-26T17:06:16.855709+00:00",
+  "observations": {
+    "dome": "Closed spherical honeycomb visible from outside; no missing-model cube",
+    "vanilla_blocks": "Placed copper block and redstone torch have normal sprites",
+    "fuel": "The four bottles move from the player inventory into input slot 0; native assertions verify stock and empty cursor",
+    "hud": "Private text and heart icon are visible, with a plain public vanilla dragon bar; server checks privacy for the other player",
+    "beam_warning": "Circular location markers visible before firing",
+    "beam_active": "Dark vertical columns and violet edge glow visible; all 151 server models verified",
+    "beam_fade": "Harmless fade/shrink stage captured; removal verified on the server"
+  },
+  "limits": [
+    "Far dark column surfaces remain subtle; aesthetic preference is not an automated pass criterion",
+    "Green/yellow variants, full 30-second dome expiry and camera movement are not separately certified by these still frames",
+    "No FPS/TPS benchmark or integration run with the users entire plugin set"
+  ],
+  "captures": [
+    {
+      "file": "dome-and-private-view.png",
+      "sha256": "c002c0aed0284b2e57a596a4d402e76679b5d452f1234eeb4e18a354b997a12d"
+    },
+    {
+      "file": "beam-warning.png",
+      "sha256": "4391a56bf9dc0fd8ae1fd5406465fa156f1680d3adf4b7f472c4d5f1227b6ec3"
+    },
+    {
+      "file": "beam-active.png",
+      "sha256": "ee83e8843f52b3335b3609361ac98df7b24a0ab7820a66b7b1aac9a1b07789f8"
+    },
+    {
+      "file": "beam-fade.png",
+      "sha256": "250cacbc79ac6dcfc3d4693fb8e40f479b32f78e2db63227040ba5a55137cc58"
+    },
+    {
+      "file": "fuel-before.png",
+      "sha256": "4c4545ca3093f2d70ef6ee372bfec209f40c4c1062d455a1c1bfd4303189a9b5"
+    },
+    {
+      "file": "fuel-after.png",
+      "sha256": "544057188b892543b5a6836f097984faaf4fb83d481ee36ea1d6c4ba9142e298"
+    }
+  ]
+}
