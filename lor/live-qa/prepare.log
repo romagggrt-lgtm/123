@@ -1,0 +1,4 @@
+E: Failed to fetch mirror+file:/etc/apt/apt-mirrors.txt/pool/main/g/ghostscript/libgs-common_10.02.1%7edfsg1-0ubuntu7.9_all.deb  404  Not Found [IP: 52.147.219.192 80]
+E: Failed to fetch mirror+file:/etc/apt/apt-mirrors.txt/pool/main/g/ghostscript/libgs10-common_10.02.1%7edfsg1-0ubuntu7.9_all.deb  404  Not Found [IP: 52.147.219.192 80]
+E: Failed to fetch mirror+file:/etc/apt/apt-mirrors.txt/pool/main/g/ghostscript/libgs10_10.02.1%7edfsg1-0ubuntu7.9_amd64.deb  404  Not Found [IP: 52.147.219.192 80]
+E: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?
