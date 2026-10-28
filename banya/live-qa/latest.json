@@ -1,5 +1,87 @@
 {
-  "status": "FAIL",
-  "error": "java.lang.IllegalStateException: original_1_0_0_journal_loaded",
-  "source_commit": "410267200b1b1563e0b4bde3063d29bc273be63b"
+  "status": "PASS",
+  "client_audio": {
+    "capture": "Unmodified Minecraft 1.21.11 / OpenAL Wave File Writer",
+    "ambient_slider": 0.0,
+    "master_slider": 1.0,
+    "sample_rate_analysis": 8000,
+    "seconds": 39.65975,
+    "original_seconds": 10.057125,
+    "match_start_seconds": 14.701,
+    "normalised_correlation": 0.9998115287577635,
+    "matched_rms_dbfs": -15.254252107712174,
+    "matched_peak": 1.0476174354553223,
+    "status": "PASS"
+  },
+  "source_commit": "9d35bb996f46aa6bc4e973f3f92c38616dbccab8",
+  "server_sha256": "5ffef465eeeb5f2a3c23a24419d97c51afd7dbb4923ff42df9a3f58bba1ccfba",
+  "server_build": 132,
+  "phases": [
+    {
+      "status": "UPGRADE",
+      "plugin_version": "1.0.0",
+      "legacy_cells": 1028
+    },
+    {
+      "status": "RESTART",
+      "checks": {
+        "real_plugin_enabled": "PASS",
+        "original_1_0_0_journal_loaded": "PASS",
+        "legacy_barrel_items_preserved": "PASS",
+        "legacy_removal_refuses_player_items": "PASS",
+        "legacy_bath_completely_removed": "PASS",
+        "legacy_entire_terrain_restored": "PASS",
+        "ordinary_player_cannot_create": "PASS",
+        "plugin_stays_enabled": "PASS",
+        "native_build_complete": "PASS",
+        "compact_single_room_7x7": "PASS",
+        "master_channel_with_legacy_config": "PASS",
+        "three_persistent_bucket_frames": "PASS",
+        "exactly_one_native_food": "PASS",
+        "native_food_always_edible": "PASS",
+        "all_native_block_states_placed": "PASS",
+        "private_loop_enters_independently": "PASS",
+        "sound_stops_on_teleport": "PASS",
+        "native_food_consumed_once": "PASS",
+        "six_extra_hearts": "PASS",
+        "effect_minecraft:absorption": "PASS",
+        "effect_minecraft:fire_resistance": "PASS",
+        "effect_minecraft:resistance": "PASS",
+        "effect_minecraft:regeneration": "PASS",
+        "effect_minecraft:nausea": "PASS",
+        "no_vanilla_apple_stacking": "PASS"
+      },
+      "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
+      "source_commit": "9d35bb996f46aa6bc4e973f3f92c38616dbccab8",
+      "restarted": false
+    },
+    {
+      "status": "PASS",
+      "checks": {
+        "real_plugin_enabled": "PASS",
+        "bath_loaded_after_full_server_restart": "PASS",
+        "food_not_respawned_after_restart": "PASS",
+        "persistent_frames_not_duplicated": "PASS",
+        "plugin_stays_enabled": "PASS",
+        "player_items_block_removal": "PASS",
+        "removed_after_full_server_restart": "PASS",
+        "every_original_block_restored": "PASS",
+        "decorative_entities_cleaned": "PASS",
+        "no_orphan_sound_sessions": "PASS",
+        "adjacent_player_chest_preserved": "PASS"
+      },
+      "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
+      "source_commit": "9d35bb996f46aa6bc4e973f3f92c38616dbccab8",
+      "restarted": true
+    }
+  ],
+  "sound_packets": {
+    "inside_plays": 2,
+    "inside_stops": 3,
+    "outside": 0
+  },
+  "pack_sha1": "814ea2b1cef8a7776affcd8ef3ce155600276162",
+  "plugin_sha256": "11a04d136d425ae3ad9088924a707934e9199b471e4ca9b66d8b9f6796aea6c9",
+  "client": "Unmodified official Minecraft 1.21.11",
+  "client_rendered": "See PNG captures; manual review required"
 }

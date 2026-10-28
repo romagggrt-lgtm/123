@@ -1,0 +1,5 @@
+{"username":"BanyaTester","packet":"stop_sound","body":"{\"flags\":3,\"source\":0,\"sound\":\"zbanya:ambient\"}","self_entity":5,"time":1793176775938}
+{"username":"BanyaTester","packet":"entity_sound_effect","body":"{\"sound\":{\"data\":{\"soundName\":\"zbanya:ambient\"}},\"soundCategory\":\"master\",\"entityId\":5,\"volume\":0.949999988079071,\"pitch\":1,\"seed\":[-240160238,881833147]}","self_entity":5,"time":1793176775939}
+{"username":"BanyaTester","packet":"stop_sound","body":"{\"flags\":3,\"source\":0,\"sound\":\"zbanya:ambient\"}","self_entity":5,"time":1793176786010}
+{"username":"BanyaTester","packet":"entity_sound_effect","body":"{\"sound\":{\"data\":{\"soundName\":\"zbanya:ambient\"}},\"soundCategory\":\"master\",\"entityId\":5,\"volume\":0.949999988079071,\"pitch\":1,\"seed\":[431338799,-936869957]}","self_entity":5,"time":1793176786010}
+{"username":"BanyaTester","packet":"stop_sound","body":"{\"flags\":3,\"source\":0,\"sound\":\"zbanya:ambient\"}","self_entity":5,"time":1793176788816}

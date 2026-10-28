@@ -1,0 +1,132 @@
+[08:40:31] [Datafixer Bootstrap/INFO]: 287 Datafixer optimizations took 671 milliseconds
+[08:40:35] [main/INFO]: Completely ignored arguments: [--userType, msa]
+[08:40:35] [Render thread/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[08:40:35] [Render thread/INFO]: Setting user: BanyaObserver
+[08:40:35] [Render thread/INFO]: Backend library: LWJGL version 3.3.3+5
+[08:40:35] [Download-2/ERROR]: Failed to fetch user properties
+com.mojang.authlib.exceptions.InvalidCredentialsException: Status: 401
+	at com.mojang.authlib.exceptions.MinecraftClientHttpException.toAuthenticationException(MinecraftClientHttpException.java:59)
+	at com.mojang.authlib.yggdrasil.YggdrasilUserApiService.fetchProperties(YggdrasilUserApiService.java:150)
+	at gfj.bU(SourceFile:457)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: com.mojang.authlib.exceptions.MinecraftClientHttpException: Status: 401
+	at com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:103)
+	at com.mojang.authlib.minecraft.client.MinecraftClient.get(MinecraftClient.java:56)
+	at com.mojang.authlib.yggdrasil.YggdrasilUserApiService.fetchProperties(YggdrasilUserApiService.java:121)
+	... 5 more
+[08:40:35] [Render thread/INFO]: Using optional rendering extensions: GL_ARB_buffer_storage, GL_KHR_debug, GL_ARB_vertex_attrib_binding, GL_ARB_direct_state_access, GL_EXT_texture_filter_anisotropic
+[08:40:36] [Render thread/ERROR]: Error while loading the narrator
+com.mojang.text2speech.Narrator$InitializeException: Failed to load library flite
+	at com.mojang.text2speech.NarratorLinux$FliteLibrary.loadNative(NarratorLinux.java:81)
+	at com.mojang.text2speech.NarratorLinux.<init>(NarratorLinux.java:18)
+	at com.mojang.text2speech.Narrator.getNarrator(Narrator.java:41)
+	at gfa.<init>(SourceFile:20)
+	at gfj.<init>(SourceFile:702)
+	at net.minecraft.client.main.Main.main(SourceFile:234)
+Caused by: java.lang.UnsatisfiedLinkError: Unable to load library 'flite':
+libflite.so: cannot open shared object file: No such file or directory
+libflite.so: cannot open shared object file: No such file or directory
+Native library (linux-x86-64/libflite.so) not found in resource path (/home/runner/work/123/123/banya/target/vanilla-client/client.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/at/yawk/lz4/lz4-java/1.8.1/lz4-java-1.8.1.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/google/code/gson/gson/2.13.2/gson-2.13.2.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/google/guava/guava/33.5.0-jre/guava-33.5.0-jre.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/ibm/icu/icu4j/77.1/icu4j-77.1.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/microsoft/azure/msal4j/1.23.1/msal4j-1.23.1.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/mojang/authlib/7.0.61/authlib-7.0.61.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/mojang/blocklist/1.0.10/blocklist-1.0.10.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/mojang/brigadier/1.3.10/brigadier-1.3.10.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/mojang/datafixerupper/9.0.19/datafixerupper-9.0.19.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/mojang/jtracy/1.0.37/jtracy-1.0.37.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/mojang/jtracy/1.0.37/jtracy-1.0.37-natives-linux.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/mojang/logging/1.6.11/logging-1.6.11.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/mojang/patchy/2.2.10/patchy-2.2.10.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/mojang/text2speech/1.18.11/text2speech-1.18.11.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/commons-codec/commons-codec/1.19.0/commons-codec-1.19.0.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-buffer/4.2.7.Final/netty-buffer-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-codec-base/4.2.7.Final/netty-codec-base-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-codec-compression/4.2.7.Final/netty-codec-compression-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-codec-http/4.2.7.Final/netty-codec-http-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-common/4.2.7.Final/netty-common-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-handler/4.2.7.Final/netty-handler-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-resolver/4.2.7.Final/netty-resolver-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-transport-classes-epoll/4.2.7.Final/netty-transport-classes-epoll-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-transport-classes-kqueue/4.2.7.Final/netty-transport-classes-kqueue-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-transport-native-epoll/4.2.7.Final/netty-transport-native-epoll-4.2.7.Final-linux-aarch_64.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-transport-native-epoll/4.2.7.Final/netty-transport-native-epoll-4.2.7.Final-linux-x86_64.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-transport-native-unix-common/4.2.7.Final/netty-transport-native-unix-common-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-transport/4.2.7.Final/netty-transport-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/apache/commons/commons-compress/1.28.0/commons-compress-1.28.0.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/apache/commons/commons-lang3/3.19.0/commons-lang3-3.19.0.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/apache/logging/log4j/log4j-api/2.25.2/log4j-api-2.25.2.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/apache/logging/log4j/log4j-core/2.25.2/log4j-core-2.25.2.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.25.2/log4j-slf4j2-impl-2.25.2.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/jcraft/jorbis/0.0.17/jorbis-0.0.17.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/joml/joml/1.10.8/joml-1.10.8.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3-natives-linux.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-glfw/3.3.3/lwjgl-glfw-3.3.3.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-glfw/3.3.3/lwjgl-glfw-3.3.3-natives-linux.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-jemalloc/3.3.3/lwjgl-jemalloc-3.3.3.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-jemalloc/3.3.3/lwjgl-jemalloc-3.3.3-natives-linux.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-openal/3.3.3/lwjgl-openal-3.3.3.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-openal/3.3.3/lwjgl-openal-3.3.3-natives-linux.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3-natives-linux.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-stb/3.3.3/lwjgl-stb-3.3.3.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-stb/3.3.3/lwjgl-stb-3.3.3-natives-linux.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-tinyfd/3.3.3/lwjgl-tinyfd-3.3.3.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-tinyfd/3.3.3/lwjgl-tinyfd-3.3.3-natives-linux.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3-natives-linux.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar)
+	at com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:325)
+	at com.sun.jna.NativeLibrary.getInstance(NativeLibrary.java:481)
+	at com.sun.jna.NativeLibrary.getInstance(NativeLibrary.java:423)
+	at com.mojang.text2speech.NarratorLinux$FliteLibrary.loadNative(NarratorLinux.java:79)
+	... 5 more
+	Suppressed: java.lang.UnsatisfiedLinkError: libflite.so: cannot open shared object file: No such file or directory
+		at com.sun.jna.Native.open(Native Method)
+		at com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:213)
+		... 8 more
+	Suppressed: java.lang.UnsatisfiedLinkError: libflite.so: cannot open shared object file: No such file or directory
+		at com.sun.jna.Native.open(Native Method)
+		at com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:226)
+		... 8 more
+	Suppressed: java.io.IOException: Native library (linux-x86-64/libflite.so) not found in resource path (/home/runner/work/123/123/banya/target/vanilla-client/client.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/at/yawk/lz4/lz4-java/1.8.1/lz4-java-1.8.1.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/google/code/gson/gson/2.13.2/gson-2.13.2.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/google/guava/guava/33.5.0-jre/guava-33.5.0-jre.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/ibm/icu/icu4j/77.1/icu4j-77.1.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/microsoft/azure/msal4j/1.23.1/msal4j-1.23.1.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/mojang/authlib/7.0.61/authlib-7.0.61.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/mojang/blocklist/1.0.10/blocklist-1.0.10.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/mojang/brigadier/1.3.10/brigadier-1.3.10.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/mojang/datafixerupper/9.0.19/datafixerupper-9.0.19.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/mojang/jtracy/1.0.37/jtracy-1.0.37.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/mojang/jtracy/1.0.37/jtracy-1.0.37-natives-linux.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/mojang/logging/1.6.11/logging-1.6.11.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/mojang/patchy/2.2.10/patchy-2.2.10.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/com/mojang/text2speech/1.18.11/text2speech-1.18.11.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/commons-codec/commons-codec/1.19.0/commons-codec-1.19.0.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-buffer/4.2.7.Final/netty-buffer-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-codec-base/4.2.7.Final/netty-codec-base-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-codec-compression/4.2.7.Final/netty-codec-compression-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-codec-http/4.2.7.Final/netty-codec-http-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-common/4.2.7.Final/netty-common-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-handler/4.2.7.Final/netty-handler-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-resolver/4.2.7.Final/netty-resolver-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-transport-classes-epoll/4.2.7.Final/netty-transport-classes-epoll-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-transport-classes-kqueue/4.2.7.Final/netty-transport-classes-kqueue-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-transport-native-epoll/4.2.7.Final/netty-transport-native-epoll-4.2.7.Final-linux-aarch_64.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-transport-native-epoll/4.2.7.Final/netty-transport-native-epoll-4.2.7.Final-linux-x86_64.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-transport-native-unix-common/4.2.7.Final/netty-transport-native-unix-common-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/io/netty/netty-transport/4.2.7.Final/netty-transport-4.2.7.Final.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/apache/commons/commons-compress/1.28.0/commons-compress-1.28.0.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/apache/commons/commons-lang3/3.19.0/commons-lang3-3.19.0.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/apache/logging/log4j/log4j-api/2.25.2/log4j-api-2.25.2.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/apache/logging/log4j/log4j-core/2.25.2/log4j-core-2.25.2.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.25.2/log4j-slf4j2-impl-2.25.2.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/jcraft/jorbis/0.0.17/jorbis-0.0.17.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/joml/joml/1.10.8/joml-1.10.8.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3-natives-linux.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-glfw/3.3.3/lwjgl-glfw-3.3.3.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-glfw/3.3.3/lwjgl-glfw-3.3.3-natives-linux.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-jemalloc/3.3.3/lwjgl-jemalloc-3.3.3.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-jemalloc/3.3.3/lwjgl-jemalloc-3.3.3-natives-linux.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-openal/3.3.3/lwjgl-openal-3.3.3.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-openal/3.3.3/lwjgl-openal-3.3.3-natives-linux.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3-natives-linux.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-stb/3.3.3/lwjgl-stb-3.3.3.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-stb/3.3.3/lwjgl-stb-3.3.3-natives-linux.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-tinyfd/3.3.3/lwjgl-tinyfd-3.3.3.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl-tinyfd/3.3.3/lwjgl-tinyfd-3.3.3-natives-linux.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3-natives-linux.jar:/home/runner/work/123/123/banya/target/vanilla-client/libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar)
+		at com.sun.jna.Native.extractFromResourcePath(Native.java:1141)
+		at com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:297)
+		... 8 more
+[08:40:36] [Render thread/INFO]: Reloading ResourceManager: vanilla
+[08:40:36] [Download-1/INFO]: Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: 0
+[08:40:36] [Download-1/ERROR]: Failed to fetch Realms feature flags
+gce: Realms authentication error with message 'java.lang.RuntimeException: Failed to parse into SignedJWT: 0'
+	at fzz.a(SourceFile:526)
+	at fzz.o(SourceFile:186)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[08:40:36] [Worker-Main-2/INFO]: Found unifont_all_no_pua-17.0.01.hex, loading
+[08:40:36] [Worker-Main-1/INFO]: Found unifont_pua-17.0.01.hex, loading
+[08:40:36] [Worker-Main-2/INFO]: Found unifont_jp_patch-17.0.01.hex, loading
+[ALSOFT] (EE) Could not query RTKit: No such file or directory (2)
+[08:40:38] [Render thread/INFO]: OpenAL initialized on device No Output
+[08:40:38] [Render thread/INFO]: Sound engine started
+[08:40:38] [Render thread/INFO]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[08:40:38] [Render thread/INFO]: Created: 128x128x0 minecraft:textures/atlas/decorated_pot.png-atlas
+[08:40:38] [Render thread/INFO]: Created: 2048x1024x0 minecraft:textures/atlas/armor_trims.png-atlas
+[08:40:38] [Render thread/INFO]: Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
+[08:40:38] [Render thread/INFO]: Created: 1024x512x0 minecraft:textures/atlas/shield_patterns.png-atlas
+[08:40:38] [Render thread/INFO]: Created: 2048x2048x4 minecraft:textures/atlas/blocks.png-atlas
+[08:40:38] [Render thread/INFO]: Created: 512x512x0 minecraft:textures/atlas/chest.png-atlas
+[08:40:38] [Render thread/INFO]: Created: 256x128x0 minecraft:textures/atlas/celestials.png-atlas
+[08:40:38] [Render thread/INFO]: Created: 1024x512x0 minecraft:textures/atlas/banner_patterns.png-atlas
+[08:40:38] [Render thread/INFO]: Created: 512x512x0 minecraft:textures/atlas/beds.png-atlas
+[08:40:38] [Render thread/INFO]: Created: 1024x512x0 minecraft:textures/atlas/items.png-atlas
+[08:40:38] [Render thread/INFO]: Created: 1024x1024x0 minecraft:textures/atlas/gui.png-atlas
+[08:40:38] [Render thread/INFO]: Created: 128x64x0 minecraft:textures/atlas/map_decorations.png-atlas
+[08:40:38] [Render thread/INFO]: Created: 512x256x0 minecraft:textures/atlas/signs.png-atlas
+[08:40:38] [Render thread/INFO]: Created: 512x512x0 minecraft:textures/atlas/shulker_boxes.png-atlas
+[08:40:38] [Render thread/INFO]: Connecting to 127.0.0.1, 25585
+[08:40:38] [Download-1/ERROR]: Failed to retrieve profile key pair
+com.mojang.authlib.exceptions.MinecraftClientHttpException: Status: 401
+	at com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:103)
+	at com.mojang.authlib.minecraft.client.MinecraftClient.post(MinecraftClient.java:64)
+	at com.mojang.authlib.yggdrasil.YggdrasilUserApiService.getKeyPair(YggdrasilUserApiService.java:61)
+	at hhv.a(SourceFile:128)
+	at hhv.b(SourceFile:77)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[08:40:39] [Download-1/INFO]: Returning cached file since actual hash matches requested
+[08:40:40] [Render thread/INFO]: Reloading ResourceManager: vanilla, server/00000000/d2b63d88-4c29-3a4c-a7d9-2757e5ead643
+[08:40:41] [Worker-Main-2/INFO]: Found unifont_all_no_pua-17.0.01.hex, loading
+[08:40:41] [Worker-Main-1/INFO]: Found unifont_pua-17.0.01.hex, loading
+[08:40:41] [Worker-Main-2/INFO]: Found unifont_jp_patch-17.0.01.hex, loading
+[08:40:42] [Worker-Main-1/WARN]: Missing texture references in model z_verity:item/verity_box:
+    particle
+[ALSOFT] (EE) Could not query RTKit: No such file or directory (2)
+[08:40:42] [Render thread/INFO]: OpenAL initialized on device No Output
+[08:40:42] [Render thread/INFO]: Sound engine started
+[08:40:42] [Render thread/INFO]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[08:40:42] [Render thread/INFO]: Created: 128x128x0 minecraft:textures/atlas/decorated_pot.png-atlas
+[08:40:42] [Render thread/INFO]: Created: 2048x1024x0 minecraft:textures/atlas/armor_trims.png-atlas
+[08:40:42] [Render thread/INFO]: Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
+[08:40:42] [Render thread/INFO]: Created: 1024x512x0 minecraft:textures/atlas/shield_patterns.png-atlas
+[08:40:42] [Render thread/INFO]: Created: 2048x2048x4 minecraft:textures/atlas/blocks.png-atlas
+[08:40:42] [Render thread/INFO]: Created: 512x512x0 minecraft:textures/atlas/chest.png-atlas
+[08:40:42] [Render thread/INFO]: Created: 256x128x0 minecraft:textures/atlas/celestials.png-atlas
+[08:40:42] [Render thread/INFO]: Created: 1024x512x0 minecraft:textures/atlas/banner_patterns.png-atlas
+[08:40:42] [Render thread/INFO]: Created: 512x512x0 minecraft:textures/atlas/beds.png-atlas
+[08:40:42] [Render thread/INFO]: Created: 4096x4096x0 minecraft:textures/atlas/items.png-atlas
+[08:40:42] [Render thread/INFO]: Created: 1024x1024x0 minecraft:textures/atlas/gui.png-atlas
+[08:40:42] [Render thread/INFO]: Created: 128x64x0 minecraft:textures/atlas/map_decorations.png-atlas
+[08:40:42] [Render thread/INFO]: Created: 512x256x0 minecraft:textures/atlas/signs.png-atlas
+[08:40:42] [Render thread/INFO]: Created: 512x512x0 minecraft:textures/atlas/shulker_boxes.png-atlas
+[08:40:42] [Render thread/INFO]: [System] [CHAT] BanyaObserver joined the game
+[08:40:43] [Render thread/INFO]: Loaded 2 advancements
+[08:40:43] [Render thread/INFO]: Resizing Dynamic Transforms UBO, capacity limit of 2 reached during a single frame. New capacity will be 4.
+[08:40:43] [Render thread/INFO]: Resizing Dynamic Transforms UBO, capacity limit of 4 reached during a single frame. New capacity will be 8.
+[08:40:43] [Render thread/INFO]: Resizing Chunk Sections UBO, capacity limit of 2 reached during a single frame. New capacity will be 8.
+[08:40:43] [Render thread/INFO]: [System] [CHAT] [Z_Banya] Сначала заберите вещи из контейнера: -4 66 2
+[08:40:43] [Render thread/INFO]: Resizing Chunk Sections UBO, capacity limit of 8 reached during a single frame. New capacity will be 16.
+[08:40:44] [Render thread/INFO]: [System] [CHAT] [Z_Banya] Баня успешно удалена!
+[08:40:44] [Render thread/INFO]: Resizing Chunk Sections UBO, capacity limit of 16 reached during a single frame. New capacity will be 32.
+[08:40:45] [Render thread/INFO]: [System] [CHAT] BanyaTester left the game
+[08:40:45] [Render thread/INFO]: Reloading ResourceManager: vanilla
+[08:40:45] [Render thread/WARN]: Client disconnected with reason: Server closed
+[08:40:45] [Worker-Main-2/INFO]: Found unifont_all_no_pua-17.0.01.hex, loading
+[08:40:45] [Worker-Main-3/INFO]: Found unifont_pua-17.0.01.hex, loading
+[08:40:45] [Worker-Main-2/INFO]: Found unifont_jp_patch-17.0.01.hex, loading

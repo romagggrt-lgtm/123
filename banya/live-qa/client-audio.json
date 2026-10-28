@@ -1,0 +1,13 @@
+{
+  "capture": "Unmodified Minecraft 1.21.11 / OpenAL Wave File Writer",
+  "ambient_slider": 0.0,
+  "master_slider": 1.0,
+  "sample_rate_analysis": 8000,
+  "seconds": 39.65975,
+  "original_seconds": 10.057125,
+  "match_start_seconds": 14.701,
+  "normalised_correlation": 0.9998115287577635,
+  "matched_rms_dbfs": -15.254252107712174,
+  "matched_peak": 1.0476174354553223,
+  "status": "PASS"
+}

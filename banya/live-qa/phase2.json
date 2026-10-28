@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "checks": {
+    "real_plugin_enabled": "PASS",
+    "bath_loaded_after_full_server_restart": "PASS",
+    "food_not_respawned_after_restart": "PASS",
+    "persistent_frames_not_duplicated": "PASS",
+    "plugin_stays_enabled": "PASS",
+    "player_items_block_removal": "PASS",
+    "removed_after_full_server_restart": "PASS",
+    "every_original_block_restored": "PASS",
+    "decorative_entities_cleaned": "PASS",
+    "no_orphan_sound_sessions": "PASS",
+    "adjacent_player_chest_preserved": "PASS"
+  },
+  "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
+  "source_commit": "9d35bb996f46aa6bc4e973f3f92c38616dbccab8",
+  "restarted": true
+}
