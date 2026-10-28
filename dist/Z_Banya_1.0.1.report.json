@@ -1,0 +1,178 @@
+{
+  "plugin": "Z_Banya",
+  "version": "1.0.1",
+  "native": {
+    "status": "PASS",
+    "client_audio": {
+      "capture": "Unmodified Minecraft 1.21.11 / OpenAL Wave File Writer",
+      "ambient_slider": 0.0,
+      "master_slider": 1.0,
+      "sample_rate_analysis": 8000,
+      "seconds": 39.86875,
+      "original_seconds": 10.057125,
+      "match_start_seconds": 14.641,
+      "normalised_correlation": 0.9997798766165338,
+      "matched_rms_dbfs": -15.25392218433318,
+      "matched_peak": 1.048359751701355,
+      "status": "PASS"
+    },
+    "source_commit": "3451e57f03b7c39532c0082f1730a914d1d2202d",
+    "server_sha256": "5ffef465eeeb5f2a3c23a24419d97c51afd7dbb4923ff42df9a3f58bba1ccfba",
+    "server_build": 132,
+    "phases": [
+      {
+        "status": "UPGRADE",
+        "plugin_version": "1.0.0",
+        "legacy_cells": 1028
+      },
+      {
+        "status": "RESTART",
+        "checks": {
+          "real_plugin_enabled": "PASS",
+          "original_1_0_0_journal_loaded": "PASS",
+          "legacy_barrel_items_preserved": "PASS",
+          "legacy_removal_refuses_player_items": "PASS",
+          "legacy_bath_completely_removed": "PASS",
+          "legacy_entire_terrain_restored": "PASS",
+          "ordinary_player_cannot_create": "PASS",
+          "plugin_stays_enabled": "PASS",
+          "native_build_complete": "PASS",
+          "compact_single_room_7x7": "PASS",
+          "master_channel_with_legacy_config": "PASS",
+          "three_persistent_bucket_frames": "PASS",
+          "exactly_one_native_food": "PASS",
+          "native_food_always_edible": "PASS",
+          "all_native_block_states_placed": "PASS",
+          "all_lanterns_have_native_support": "PASS",
+          "private_loop_enters_independently": "PASS",
+          "sound_stops_on_teleport": "PASS",
+          "native_food_consumed_once": "PASS",
+          "six_extra_hearts": "PASS",
+          "effect_minecraft:regeneration": "PASS",
+          "effect_minecraft:resistance": "PASS",
+          "effect_minecraft:fire_resistance": "PASS",
+          "effect_minecraft:absorption": "PASS",
+          "effect_minecraft:nausea": "PASS",
+          "no_vanilla_apple_stacking": "PASS"
+        },
+        "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
+        "source_commit": "3451e57f03b7c39532c0082f1730a914d1d2202d",
+        "restarted": false
+      },
+      {
+        "status": "PASS",
+        "checks": {
+          "real_plugin_enabled": "PASS",
+          "bath_loaded_after_full_server_restart": "PASS",
+          "food_not_respawned_after_restart": "PASS",
+          "persistent_frames_not_duplicated": "PASS",
+          "plugin_stays_enabled": "PASS",
+          "player_items_block_removal": "PASS",
+          "removed_after_full_server_restart": "PASS",
+          "every_original_block_restored": "PASS",
+          "decorative_entities_cleaned": "PASS",
+          "no_orphan_sound_sessions": "PASS",
+          "adjacent_player_chest_preserved": "PASS"
+        },
+        "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
+        "source_commit": "3451e57f03b7c39532c0082f1730a914d1d2202d",
+        "restarted": true
+      }
+    ],
+    "sound_packets": {
+      "inside_plays": 2,
+      "inside_stops": 3,
+      "outside": 0
+    },
+    "pack_sha1": "814ea2b1cef8a7776affcd8ef3ce155600276162",
+    "plugin_sha256": "383638d27518484d45ae5ae7d9546894eab44099fe9b1e5dec3e26a4901ed12f",
+    "client": "Unmodified official Minecraft 1.21.11",
+    "client_rendered": "See PNG captures; manual review required"
+  },
+  "food_name": "Вкусняшка Тома",
+  "unit_tests": 23,
+  "resource_pack_tests": 5,
+  "body_size": [
+    7,
+    7
+  ],
+  "clearance_size": [
+    9,
+    9
+  ],
+  "assets": {
+    "base": "Z_Server_Pack_1.08.zip",
+    "base_sha256": "6a4c66a47c64707a732d549cfdbc53624d7cc3a7f86e6c347e86abfa96c8cfe3",
+    "old_files_preserved": 1829,
+    "new_files": 12,
+    "sha1": "814ea2b1cef8a7776affcd8ef3ce155600276162",
+    "sound_seconds": 10.057143,
+    "source_mp3_sha256": "354eea747f1d23ebbde3406559630cfcabd9bac88b417c59ef88e3696524b560",
+    "source_loudness": {
+      "input_i": "-18.28",
+      "input_tp": "-6.36",
+      "input_lra": "6.20",
+      "input_thresh": "-28.74",
+      "output_i": "-12.96",
+      "output_tp": "-1.00",
+      "output_lra": "3.30",
+      "output_thresh": "-23.57",
+      "normalization_type": "dynamic",
+      "target_offset": "-1.04"
+    },
+    "ogg_loudness": {
+      "input_i": "-14.04",
+      "input_tp": "-1.90",
+      "input_lra": "6.30",
+      "input_thresh": "-24.50",
+      "output_i": "-12.97",
+      "output_tp": "-1.00",
+      "output_lra": "3.40",
+      "output_thresh": "-23.58",
+      "normalization_type": "dynamic",
+      "target_offset": "-1.03"
+    },
+    "normalisation": "two-pass EBU R128 -14 LUFS / -1 dBTP",
+    "geometry_elements_per_frame": 138,
+    "fly_frames": 8,
+    "validated": {
+      "json": 936,
+      "models": 880,
+      "textures": 885,
+      "sounds": 13,
+      "items": 42
+    }
+  },
+  "files": {
+    "Z_Banya.jar": {
+      "bytes": 51416,
+      "sha256": "383638d27518484d45ae5ae7d9546894eab44099fe9b1e5dec3e26a4901ed12f",
+      "sha1": "75a47a7a4f0e81007a51a990743093d97513d6b2"
+    },
+    "Z_Banya_1.0.1.jar": {
+      "bytes": 51416,
+      "sha256": "383638d27518484d45ae5ae7d9546894eab44099fe9b1e5dec3e26a4901ed12f",
+      "sha1": "75a47a7a4f0e81007a51a990743093d97513d6b2"
+    },
+    "Z_Server_Pack_1.09.zip": {
+      "bytes": 3848503,
+      "sha256": "0e424cf0dd2a992180203576ee407f492ffca9fc6129545cef1d0c181406772c",
+      "sha1": "814ea2b1cef8a7776affcd8ef3ce155600276162"
+    },
+    "Z_Banya_ResourcePack.zip": {
+      "bytes": 141736,
+      "sha256": "94198e344262b771cf8e94d991cd505b791174bb602c13d8b857e191064c4a36",
+      "sha1": "187aa035e33f5f709c45258de1794ddf5fd8503c"
+    },
+    "Z_Banya_1.0.1_sources.zip": {
+      "bytes": 3749713,
+      "sha256": "c0a465d2f129691d2f676719ca093701e800e6caeb650f2efaf4b8d5ccaa48c4",
+      "sha1": "3f77653811a730bd2a03273678b97e11d9ae1bec"
+    },
+    "Z_Banya_1.0.1_install.zip": {
+      "bytes": 9743596,
+      "sha256": "27b4c5502b457d07dd9e097d1c87b3b49088dab4b849323888a04b314d1e47b8",
+      "sha1": "8e5e69827c6fe922629a871b440eab3de15cf520"
+    }
+  }
+}
