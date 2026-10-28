@@ -1,19 +1,28 @@
 {
-  "status": "PASS",
+  "status": "RESTART",
   "checks": {
     "real_plugin_enabled": "PASS",
-    "bath_loaded_after_full_server_restart": "PASS",
+    "two_named_baths_loaded_after_restart": "PASS",
     "food_not_respawned_after_restart": "PASS",
-    "persistent_frames_not_duplicated": "PASS",
+    "manually_broken_frame_does_not_respawn": "PASS",
+    "other_bath_frames_untouched": "PASS",
     "plugin_stays_enabled": "PASS",
-    "player_items_block_removal": "PASS",
-    "removed_after_full_server_restart": "PASS",
-    "every_original_block_restored": "PASS",
+    "legacy_loot_survives_restart": "PASS",
+    "native_double_chest_connected": "PASS",
+    "named_removal_works_from_far_away": "PASS",
+    "all_changed_and_added_blocks_restored": "PASS",
+    "double_chest_items_not_duplicated": "PASS",
+    "custom_item_metadata_preserved": "PASS",
+    "recovered_items_do_not_despawn_or_burn": "PASS",
+    "second_bath_not_changed_by_first_removal": "PASS",
+    "other_bath_keeps_its_frames": "PASS",
+    "adjacent_player_chest_preserved": "PASS",
+    "both_named_baths_removed": "PASS",
+    "second_bath_terrain_restored": "PASS",
     "decorative_entities_cleaned": "PASS",
-    "no_orphan_sound_sessions": "PASS",
-    "adjacent_player_chest_preserved": "PASS"
+    "no_orphan_sound_sessions": "PASS"
   },
   "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
-  "source_commit": "3451e57f03b7c39532c0082f1730a914d1d2202d",
+  "source_commit": "d2e83d4ba0b9c1be6804892ece4a046fd53d541d",
   "restarted": true
 }

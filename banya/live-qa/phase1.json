@@ -3,10 +3,11 @@
   "checks": {
     "real_plugin_enabled": "PASS",
     "original_1_0_0_journal_loaded": "PASS",
+    "legacy_name_assigned": "PASS",
     "legacy_barrel_items_preserved": "PASS",
-    "legacy_removal_refuses_player_items": "PASS",
     "legacy_bath_completely_removed": "PASS",
     "legacy_entire_terrain_restored": "PASS",
+    "legacy_items_recovered_once": "PASS",
     "ordinary_player_cannot_create": "PASS",
     "plugin_stays_enabled": "PASS",
     "native_build_complete": "PASS",
@@ -23,12 +24,16 @@
     "six_extra_hearts": "PASS",
     "effect_minecraft:regeneration": "PASS",
     "effect_minecraft:resistance": "PASS",
-    "effect_minecraft:fire_resistance": "PASS",
-    "effect_minecraft:absorption": "PASS",
     "effect_minecraft:nausea": "PASS",
-    "no_vanilla_apple_stacking": "PASS"
+    "effect_minecraft:absorption": "PASS",
+    "effect_minecraft:fire_resistance": "PASS",
+    "no_vanilla_apple_stacking": "PASS",
+    "ordinary_player_can_really_break_bath_wall": "PASS",
+    "same_creator_has_two_named_baths": "PASS",
+    "broken_decor_not_recreated": "PASS",
+    "new_bath_has_three_frames": "PASS"
   },
   "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
-  "source_commit": "3451e57f03b7c39532c0082f1730a914d1d2202d",
+  "source_commit": "d2e83d4ba0b9c1be6804892ece4a046fd53d541d",
   "restarted": false
 }

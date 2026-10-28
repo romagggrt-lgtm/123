@@ -3,11 +3,11 @@
   "ambient_slider": 0.0,
   "master_slider": 1.0,
   "sample_rate_analysis": 8000,
-  "seconds": 39.86875,
+  "seconds": 41.7495,
   "original_seconds": 10.057125,
-  "match_start_seconds": 14.641,
-  "normalised_correlation": 0.9997798766165338,
-  "matched_rms_dbfs": -15.25392218433318,
-  "matched_peak": 1.048359751701355,
+  "match_start_seconds": 15.741,
+  "normalised_correlation": 0.999636299643144,
+  "matched_rms_dbfs": -15.25295102667811,
+  "matched_peak": 1.0527994632720947,
   "status": "PASS"
 }

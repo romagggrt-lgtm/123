@@ -1,0 +1,107 @@
+Starting org.bukkit.craftbukkit.Main
+2026-10-28T09:54:14.218558086Z ServerMain WARN Advanced terminal features are not available in this environment
+[09:54:14 INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.13+9-LTS; Eclipse Adoptium Temurin-21.0.13+9) on Linux 7.0.0-1017-azure (amd64)
+[09:54:14 INFO]: [bootstrap] Loading Paper 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) for Minecraft 1.21.11
+[09:54:14 INFO]: [PluginInitializerManager] Initializing plugins...
+[09:54:14 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Banya_QA.jar'...
+[09:54:15 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Banya_QA.jar' in 364ms.
+[09:54:15 INFO]: [PluginInitializerManager] Initialized 2 plugins
+[09:54:15 INFO]: [PluginInitializerManager] Bukkit plugins (2):
+ - Z_Banya (1.0.2), Z_Banya_QA (1.0.1)
+[09:54:18 WARN]: resource-pack-id missing, using default of d2b63d88-4c29-3a4c-a7d9-2757e5ead643
+[09:54:18 INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[09:54:19 INFO]: Loaded 1470 recipes
+[09:54:19 INFO]: Loaded 1584 advancements
+[09:54:19 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
+[09:54:19 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 230.2ms
+[09:54:19 WARN]: resource-pack-id missing, using default of d2b63d88-4c29-3a4c-a7d9-2757e5ead643
+[09:54:20 INFO]: Starting minecraft server version 1.21.11
+[09:54:20 INFO]: Loading properties
+[09:54:20 INFO]: This server is running Paper version 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) (Implementing API version 1.21.11-R0.1-SNAPSHOT)
+[09:54:20 INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[09:54:20 INFO]: Server Ping Player Sample Count: 12
+[09:54:20 INFO]: Using 4 threads for Netty based IO
+[09:54:20 INFO]: [MoonriseCommon] Paper is using 1 worker threads, 1 I/O threads
+[09:54:21 INFO]: Default game type: SURVIVAL
+[09:54:21 INFO]: Generating keypair
+[09:54:21 INFO]: Starting Minecraft server on 127.0.0.1:25585
+[09:54:21 INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
+[09:54:21 INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
+[09:54:21 INFO]: [Z_Banya] Loading server plugin Z_Banya v1.0.2
+[09:54:21 INFO]: [Z_Banya_QA] Loading server plugin Z_Banya_QA v1.0.1
+[09:54:21 INFO]: Server permissions file permissions.yml is empty, ignoring it
+[09:54:21 WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[09:54:21 WARN]: The server will make no attempt to authenticate usernames. Beware.
+[09:54:21 WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[09:54:21 WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[09:54:21 INFO]: Preparing level "world"
+[09:54:21 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] NUMA enable flag is not set; however there is NUMA interaction support for this OS.
+[09:54:21 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] Detected 1 NUMA nodes.
+[09:54:21 INFO]: Loading 0 persistent chunks for world 'minecraft:overworld'...
+[09:54:21 INFO]: Prepared spawn area in 0 ms
+[09:54:21 INFO]: Loading 0 persistent chunks for world 'minecraft:the_nether'...
+[09:54:21 INFO]: Prepared spawn area in 0 ms
+[09:54:21 INFO]: Loading 0 persistent chunks for world 'minecraft:the_end'...
+[09:54:21 INFO]: Prepared spawn area in 0 ms
+[09:54:21 INFO]: Done preparing level "world" (0.276s)
+[09:54:21 INFO]: [Z_Banya] Enabling Z_Banya v1.0.2
+[09:54:21 INFO]: [Z_Banya] Z_Banya 1.0.2: загружено бань 0. Общий ресурс-пак задаётся в server.properties.
+[09:54:21 INFO]: [Z_Banya_QA] Enabling Z_Banya_QA v1.0.1
+[09:54:21 INFO]: [spark] Starting background profiler...
+[09:54:21 INFO]: Running delayed init tasks
+[09:54:21 INFO]: Done (7.815s)! For help, type "help"
+[09:54:22 WARN]: *************************************************************************************
+[09:54:22 WARN]: You are running the latest build for your Minecraft version (1.21.11)
+[09:54:22 WARN]: However, you are 6 release(s) behind the latest stable release (26.3)!
+[09:54:22 WARN]: It is recommended that you update as soon as possible
+[09:54:22 WARN]: https://papermc.io/downloads/paper
+[09:54:22 WARN]: *************************************************************************************
+[09:54:22 INFO]: UUID of player BanyaOutside is ea22e214-c3b7-33a9-9b81-d012f75f0538
+[09:54:22 INFO]: UUID of player BanyaTester is 6800053f-e1dc-397c-8fde-026bd8368dde
+[09:54:23 INFO]: BanyaTester joined the game
+[09:54:23 INFO]: BanyaTester[/127.0.0.1:43428] logged in with entity id 8 at ([world]0.5, 65.0, 0.5)
+[09:54:23 INFO]: BanyaOutside joined the game
+[09:54:23 INFO]: BanyaOutside[/127.0.0.1:43440] logged in with entity id 9 at ([world]40.5, 65.0, 40.5)
+[09:54:31 INFO]: UUID of player BanyaObserver is 6504bb72-e36f-3555-baf8-ec8aed8c2d0c
+[09:54:34 INFO]: BanyaObserver joined the game
+[09:54:34 INFO]: BanyaObserver[/127.0.0.1:35124] logged in with entity id 10 at ([world]300.5, 65.0, 300.5)
+[09:54:35 INFO]: Stopping server
+[09:54:35 INFO]: [Z_Banya_QA] Disabling Z_Banya_QA v1.0.1
+[09:54:35 INFO]: [Z_Banya] Disabling Z_Banya v1.0.2
+[09:54:35 INFO]: Saving players
+[09:54:35 INFO]: BanyaTester lost connection: Server closed
+[09:54:35 INFO]: BanyaTester left the game
+[09:54:35 INFO]: BanyaOutside lost connection: Server closed
+[09:54:35 INFO]: BanyaOutside left the game
+[09:54:35 INFO]: BanyaObserver lost connection: Server closed
+[09:54:35 INFO]: BanyaObserver left the game
+[09:54:35 INFO]: Saving worlds
+[09:54:35 INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[09:54:35 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[09:54:35 INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[09:54:35 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[09:54:35 INFO]: [ChunkHolderManager] Saved 402 block chunks, 402 entity chunks, 0 poi chunks in world 'world' in 0.42s
+[09:54:35 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world'
+[09:54:35 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world'
+[09:54:35 INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
+[09:54:35 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
+[09:54:35 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
+[09:54:35 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
+[09:54:35 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_nether' in 0.00s
+[09:54:35 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_nether'
+[09:54:35 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_nether'
+[09:54:35 INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[09:54:35 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[09:54:35 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[09:54:35 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[09:54:35 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_the_end' in 0.00s
+[09:54:35 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_the_end'
+[09:54:35 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_the_end'
+[09:54:35 INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[09:54:35 INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[09:54:35 INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[09:54:35 INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[09:54:35 INFO]: Waiting for all RegionFile I/O tasks to complete...
+[09:54:35 INFO]: All RegionFile I/O tasks to complete
+[09:54:35 INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
+[09:54:35 INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...
