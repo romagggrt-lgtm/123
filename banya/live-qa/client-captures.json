@@ -1,11 +1,5 @@
 {
   "vanilla_version": "1.21.11",
   "modified_client": false,
-  "captures": [
-    "benches",
-    "exterior",
-    "rest-room",
-    "steam-room",
-    "vkusnyashka-3d"
-  ]
+  "captures": []
 }

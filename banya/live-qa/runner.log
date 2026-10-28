@@ -1,20 +1,14 @@
 npm warn deprecated uuid@8.3.2: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
 npm warn deprecated uuid@10.0.0: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
 
-added 91 packages in 8s
+added 91 packages in 5s
+127.0.0.1 - - [28/Oct/2026 08:33:35] "GET /Z_Server_Pack_1.09.zip HTTP/1.1" 200 -
 capture: Expecting value: line 1 column 1 (char 0)
 capture: Expecting value: line 1 column 1 (char 0)
 capture: Expecting value: line 1 column 1 (char 0)
 capture: Expecting value: line 1 column 1 (char 0)
-capture: Expecting value: line 1 column 1 (char 0)
-capture: Expecting value: line 1 column 1 (char 0)
-capture: Expecting value: line 1 column 1 (char 0)
-capture: Expecting value: line 1 column 1 (char 0)
-127.0.0.1 - - [28/Oct/2026 07:56:37] "GET /Z_Server_Pack_1.09.zip HTTP/1.1" 200 -
-capture: Expecting value: line 1 column 1 (char 0)
-capture: Expecting value: line 1 column 1 (char 0)
-capture: Expecting value: line 1 column 1 (char 0)
-capture: Expecting value: line 1 column 1 (char 0)
-capture: Expecting value: line 1 column 1 (char 0)
-capture: Expecting value: line 1 column 1 (char 0)
-capture: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/runner/work/123/123/tools/banya_live_smoke.py", line 61, in <module>
+    assert result['status']==('UPGRADE' if boot==0 else 'RESTART' if boot==1 else 'PASS'),result.get('failure','Unexpected phase status')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: java.lang.IllegalStateException: original_1_0_0_journal_loaded

@@ -1,26 +1,10 @@
 {
-  "status": "RESTART",
+  "status": "FAIL",
   "checks": {
-    "real_plugin_enabled": "PASS",
-    "ordinary_player_cannot_create": "PASS",
-    "plugin_stays_enabled": "PASS",
-    "native_build_complete": "PASS",
-    "three_persistent_bucket_frames": "PASS",
-    "exactly_one_native_food": "PASS",
-    "native_food_always_edible": "PASS",
-    "all_native_block_states_placed": "PASS",
-    "private_loop_enters_independently": "PASS",
-    "sound_stops_on_teleport": "PASS",
-    "native_food_consumed_once": "PASS",
-    "six_extra_hearts": "PASS",
-    "effect_minecraft:nausea": "PASS",
-    "effect_minecraft:fire_resistance": "PASS",
-    "effect_minecraft:absorption": "PASS",
-    "effect_minecraft:regeneration": "PASS",
-    "effect_minecraft:resistance": "PASS",
-    "no_vanilla_apple_stacking": "PASS"
+    "real_plugin_enabled": "PASS"
   },
   "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
-  "source_commit": "a454c83178f3352ac2540323d6d3e37b3ae9a2c2",
-  "restarted": false
+  "source_commit": "410267200b1b1563e0b4bde3063d29bc273be63b",
+  "restarted": false,
+  "failure": "java.lang.IllegalStateException: original_1_0_0_journal_loaded"
 }
