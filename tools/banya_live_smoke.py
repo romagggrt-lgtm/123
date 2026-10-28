@@ -11,7 +11,7 @@ WORK.mkdir(parents=True,exist_ok=True);REPORT.mkdir(parents=True,exist_ok=True)
 for path in REPORT.iterdir():
  if path.is_file() and path.name not in {'build.log','prepare.log','runner.log'}:path.unlink()
 def download(url,path):
- with urllib.request.urlopen(url,timeout=60) as r:path.write_bytes(r.read())
+ with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'ZBanya-CI/1.0.0'}),timeout=60) as r:path.write_bytes(r.read())
 try:
  prepare()
  meta=json.loads(urllib.request.urlopen('https://fill.papermc.io/v3/projects/paper/versions/1.21.11/builds/latest',timeout=30).read());record=meta['downloads']['server:default'];download(record['url'],WORK/'paper.jar');expected=record['checksums']['sha256'];assert hashlib.sha256((WORK/'paper.jar').read_bytes()).hexdigest()==expected
