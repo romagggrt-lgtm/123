@@ -1,0 +1,33 @@
+banya:
+  search-min-radius: 5
+  search-max-radius: 20
+  max-per-player: 1
+  allow-overlap: false
+  restore-terrain-on-remove: true
+  max-total: 64
+  blocks-per-tick: 160
+sound:
+  enabled: true
+  sound-key: "zbanya:ambient"
+  volume: 0.95
+  pitch: 1.0
+  stop-on-exit: true
+steam:
+  enabled: true
+  particle-count: 4
+  interval-ticks: 20
+vkusnyashka:
+  spawn-chance: 0.5
+  amount: 1
+  regeneration-seconds: 10
+  absorption-seconds: 120
+  resistance-seconds: 60
+  fire-resistance-seconds: 120
+  nausea-seconds: 8
+messages:
+  built: "&a[Z_Banya] Баня успешно построена!"
+  removed: "&a[Z_Banya] Баня успешно удалена!"
+  no-site: "&c[Z_Banya] Не удалось найти подходящее место для строительства бани!"
+  no-banya: "&c[Z_Banya] Рядом нет созданной бани!"
+  no-permission: "&c[Z_Banya] Недостаточно прав!"
+  welcome: "&6[Z_Banya] Добро пожаловать в баню!"

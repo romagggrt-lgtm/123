@@ -1,0 +1,63 @@
+name: Z_Banya Paper and vanilla acceptance
+on:
+  push:
+    branches: ['feature/z-banya-1.0.0']
+    paths: ['banya/src/**', 'banya/pom.xml', 'tools/banya_*', 'tools/build_banya_pack.py', '.github/workflows/zbanya-native-smoke.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: zbanya-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build and regression tests
+        run: |
+          set -o pipefail
+          mkdir -p banya/live-qa
+          python3 -c 'from pathlib import Path; [p.unlink() for p in Path("banya/live-qa").iterdir() if p.is_file()]'
+          mvn -B -f banya/pom.xml verify 2>&1 | tee banya/live-qa/build.log
+      - name: Prepare vanilla graphics and resource pack
+        run: |
+          command -v Xvfb
+          python3 -m pip install --break-system-packages --retries 1 --timeout 20 Pillow python-xlib nbtlib
+          python3 tools/build_banya_pack.py
+      - name: Paper gameplay, private sound and full server restart
+        env:
+          LIBGL_ALWAYS_SOFTWARE: '1'
+          ALSOFT_DRIVERS: 'null'
+        run: xvfb-run -a -s '-screen 0 1280x720x24' python3 tools/banya_live_smoke.py
+      - name: Preserve blocked execution
+        if: always()
+        run: |
+          test -f banya/live-qa/latest.json || python3 -c 'import json,os,pathlib; p=pathlib.Path("banya/live-qa/latest.json"); p.write_text(json.dumps({"status":"BLOCKED","source_commit":os.environ.get("GITHUB_SHA"),"reason":"Build did not reach native test; inspect build.log"},indent=2))'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: zbanya-acceptance
+          path: banya/live-qa/
+      - name: Record actual evidence on feature branch
+        if: always()
+        env:
+          TESTED_REF: ${{ github.ref_name }}
+        run: |
+          git fetch origin "$TESTED_REF"
+          test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA" || exit 0
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add banya/live-qa/
+          git diff --cached --quiet && exit 0
+          git commit -m 'Record isolated Z_Banya gameplay and vanilla evidence'
+          git push origin "HEAD:refs/heads/$TESTED_REF"

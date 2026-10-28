@@ -1,0 +1,43 @@
+{
+  "base": "Z_Server_Pack_1.08.zip",
+  "base_sha256": "6a4c66a47c64707a732d549cfdbc53624d7cc3a7f86e6c347e86abfa96c8cfe3",
+  "old_files_preserved": 1829,
+  "new_files": 12,
+  "sha1": "923a3fed40a8de2c875daf07a0ac2eca70d95e88",
+  "sound_seconds": 10.057143,
+  "source_mp3_sha256": "354eea747f1d23ebbde3406559630cfcabd9bac88b417c59ef88e3696524b560",
+  "source_loudness": {
+    "input_i": "-18.28",
+    "input_tp": "-6.36",
+    "input_lra": "6.20",
+    "input_thresh": "-28.74",
+    "output_i": "-12.96",
+    "output_tp": "-1.00",
+    "output_lra": "3.30",
+    "output_thresh": "-23.57",
+    "normalization_type": "dynamic",
+    "target_offset": "-1.04"
+  },
+  "ogg_loudness": {
+    "input_i": "-14.04",
+    "input_tp": "-1.90",
+    "input_lra": "6.30",
+    "input_thresh": "-24.50",
+    "output_i": "-12.97",
+    "output_tp": "-1.00",
+    "output_lra": "3.40",
+    "output_thresh": "-23.58",
+    "normalization_type": "dynamic",
+    "target_offset": "-1.03"
+  },
+  "normalisation": "two-pass EBU R128 -14 LUFS / -1 dBTP",
+  "geometry_elements_per_frame": 138,
+  "fly_frames": 8,
+  "validated": {
+    "json": 936,
+    "models": 880,
+    "textures": 885,
+    "sounds": 13,
+    "items": 42
+  }
+}

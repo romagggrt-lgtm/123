@@ -1,0 +1,13 @@
+name: Z_Banya
+version: '1.0.0'
+main: dev.zbanya.ZBanyaPlugin
+api-version: '1.21.11'
+description: Деревянная баня, персональный звук и Вкусняшка Тома
+commands:
+  zbanya:
+    description: Создание и удаление бани
+    usage: /zbanya <set|remove|reload>
+permissions:
+  zbanya.admin:
+    default: op
+    description: Управление банями
