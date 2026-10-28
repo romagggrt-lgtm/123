@@ -22,11 +22,11 @@
     "sound_stops_on_teleport": "PASS",
     "native_food_consumed_once": "PASS",
     "six_extra_hearts": "PASS",
-    "effect_minecraft:regeneration": "PASS",
-    "effect_minecraft:resistance": "PASS",
-    "effect_minecraft:nausea": "PASS",
-    "effect_minecraft:absorption": "PASS",
     "effect_minecraft:fire_resistance": "PASS",
+    "effect_minecraft:regeneration": "PASS",
+    "effect_minecraft:absorption": "PASS",
+    "effect_minecraft:nausea": "PASS",
+    "effect_minecraft:resistance": "PASS",
     "no_vanilla_apple_stacking": "PASS",
     "ordinary_player_can_really_break_bath_wall": "PASS",
     "same_creator_has_two_named_baths": "PASS",
@@ -34,6 +34,6 @@
     "new_bath_has_three_frames": "PASS"
   },
   "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
-  "source_commit": "d2e83d4ba0b9c1be6804892ece4a046fd53d541d",
+  "source_commit": "366aa5b21e1f55daac90d6d44f40fe2b792a6f2b",
   "restarted": false
 }

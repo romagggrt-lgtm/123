@@ -9,6 +9,6 @@
     "no_decor_respawns_after_deletion": "PASS"
   },
   "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
-  "source_commit": "d2e83d4ba0b9c1be6804892ece4a046fd53d541d",
+  "source_commit": "366aa5b21e1f55daac90d6d44f40fe2b792a6f2b",
   "restarted": true
 }

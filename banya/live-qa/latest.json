@@ -5,15 +5,15 @@
     "ambient_slider": 0.0,
     "master_slider": 1.0,
     "sample_rate_analysis": 8000,
-    "seconds": 41.7495,
+    "seconds": 40.100875,
     "original_seconds": 10.057125,
-    "match_start_seconds": 15.741,
-    "normalised_correlation": 0.999636299643144,
-    "matched_rms_dbfs": -15.25295102667811,
-    "matched_peak": 1.0527994632720947,
+    "match_start_seconds": 15.081,
+    "normalised_correlation": 0.9998291310083857,
+    "matched_rms_dbfs": -15.254754013809528,
+    "matched_peak": 1.0484966039657593,
     "status": "PASS"
   },
-  "source_commit": "d2e83d4ba0b9c1be6804892ece4a046fd53d541d",
+  "source_commit": "366aa5b21e1f55daac90d6d44f40fe2b792a6f2b",
   "server_sha256": "5ffef465eeeb5f2a3c23a24419d97c51afd7dbb4923ff42df9a3f58bba1ccfba",
   "server_build": 132,
   "phases": [
@@ -46,11 +46,11 @@
         "sound_stops_on_teleport": "PASS",
         "native_food_consumed_once": "PASS",
         "six_extra_hearts": "PASS",
-        "effect_minecraft:regeneration": "PASS",
-        "effect_minecraft:resistance": "PASS",
-        "effect_minecraft:nausea": "PASS",
-        "effect_minecraft:absorption": "PASS",
         "effect_minecraft:fire_resistance": "PASS",
+        "effect_minecraft:regeneration": "PASS",
+        "effect_minecraft:absorption": "PASS",
+        "effect_minecraft:nausea": "PASS",
+        "effect_minecraft:resistance": "PASS",
         "no_vanilla_apple_stacking": "PASS",
         "ordinary_player_can_really_break_bath_wall": "PASS",
         "same_creator_has_two_named_baths": "PASS",
@@ -58,7 +58,7 @@
         "new_bath_has_three_frames": "PASS"
       },
       "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
-      "source_commit": "d2e83d4ba0b9c1be6804892ece4a046fd53d541d",
+      "source_commit": "366aa5b21e1f55daac90d6d44f40fe2b792a6f2b",
       "restarted": false
     },
     {
@@ -86,7 +86,7 @@
         "no_orphan_sound_sessions": "PASS"
       },
       "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
-      "source_commit": "d2e83d4ba0b9c1be6804892ece4a046fd53d541d",
+      "source_commit": "366aa5b21e1f55daac90d6d44f40fe2b792a6f2b",
       "restarted": true
     },
     {
@@ -100,7 +100,7 @@
         "no_decor_respawns_after_deletion": "PASS"
       },
       "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
-      "source_commit": "d2e83d4ba0b9c1be6804892ece4a046fd53d541d",
+      "source_commit": "366aa5b21e1f55daac90d6d44f40fe2b792a6f2b",
       "restarted": true
     }
   ],
@@ -110,7 +110,7 @@
     "outside": 0
   },
   "pack_sha1": "814ea2b1cef8a7776affcd8ef3ce155600276162",
-  "plugin_sha256": "d3826c18e8d897cc18f3a4344b20d199b711ff67ac41eacca9541a88946bda2c",
+  "plugin_sha256": "5e383240b999986ea6c042ddd5f1d9a0287466ef45d9fbff5cf3689011fd290d",
   "client": "Unmodified official Minecraft 1.21.11",
   "client_rendered": "See PNG captures; manual review required"
 }
