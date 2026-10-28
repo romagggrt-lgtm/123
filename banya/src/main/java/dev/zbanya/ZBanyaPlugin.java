@@ -194,7 +194,7 @@ public class ZBanyaPlugin extends JavaPlugin implements Listener,CommandExecutor
     private void build(Bath b,Player player){
         World w=Bukkit.getWorld(b.world);
         try{
-            for(var c:b.cells)if(!w.getBlockAt(c.x(),c.y(),c.z()).getBlockData().getAsString().equals(c.before()))throw new IllegalStateException("Участок изменился до начала строительства");
+            for(var c:b.cells)if(!c.before().equals(c.after())&&!w.getBlockAt(c.x(),c.y(),c.z()).getBlockData().getAsString().equals(c.before()))throw new IllegalStateException("Участок изменился до начала строительства");
         }catch(Exception e){after(journal.delete(b.id),()->{baths.remove(b.id);finishJob();error(player,e.getMessage());},bad->{finishJob();error(player,"Журнал сохранён для восстановления.");});return;}
         apply(b,false,()->{
             try{decorate(b);if(b.hasFood){Container c=foodContainer(b);c.getInventory().setItem(0,food(b.id,b.foodAmount));}
@@ -223,7 +223,7 @@ public class ZBanyaPlugin extends JavaPlugin implements Listener,CommandExecutor
     private void restore(Bath b,Player player){
         if(!b.rescueCaptured){try{captureItems(b);}catch(Exception e){finishJob();getLogger().log(Level.SEVERE,"Вещи не сохранены; восстановление приостановлено",e);return;}after(journal.save(b),()->restore(b,player),e->{finishJob();getLogger().log(Level.SEVERE,"Вещи не записаны; мир не изменён",e);});return;}
         World w=Bukkit.getWorld(b.world);var saved=new HashMap<String,String>();for(var item:b.rescued)saved.put(item.x()+":"+item.y()+":"+item.z()+":"+item.slot(),item.data());
-        try{for(var c:b.cells)if(w.getBlockAt(c.x(),c.y(),c.z()).getState() instanceof Container container){Inventory inv=ownInventory(container);for(int slot=0;slot<inv.getSize();slot++){var item=inv.getItem(slot);if(item!=null&&!item.isEmpty()&&!unclaimed(item,b.id)&&!Objects.equals(saved.get(c.x()+":"+c.y()+":"+c.z()+":"+slot),encodeItem(item)))throw new IllegalStateException("Содержимое контейнера изменено сторонним плагином во время удаления");}}}
+        try{for(var entry:b.rescued)if(decodeItem(entry.data()).isEmpty())throw new IllegalStateException("Повреждены сохранённые вещи; исходные контейнеры оставлены");for(var c:b.cells)if(w.getBlockAt(c.x(),c.y(),c.z()).getState() instanceof Container container){Inventory inv=ownInventory(container);for(int slot=0;slot<inv.getSize();slot++){var item=inv.getItem(slot);if(item!=null&&!item.isEmpty()&&!unclaimed(item,b.id)&&!Objects.equals(saved.get(c.x()+":"+c.y()+":"+c.z()+":"+slot),encodeItem(item)))throw new IllegalStateException("Содержимое контейнера изменено сторонним плагином во время удаления");}}}
         catch(Exception e){finishJob();getLogger().log(Level.SEVERE,"Удаление остановлено; сохранённые вещи остаются в журнале",e);return;}
         for(Entity e:List.copyOf(w.getEntities()))if(b.id.toString().equals(e.getPersistentDataContainer().get(decorKey,PersistentDataType.STRING))||e instanceof Item item&&unclaimed(item.getItemStack(),b.id))e.remove();
         for(var c:b.cells)if(w.getBlockAt(c.x(),c.y(),c.z()).getState() instanceof Container container)ownInventory(container).clear();
@@ -255,7 +255,7 @@ public class ZBanyaPlugin extends JavaPlugin implements Listener,CommandExecutor
         new org.bukkit.scheduler.BukkitRunnable(){int index;
             public void run(){try{
                 for(int n=0;n<batch&&index<cells.size();n++,index++){
-                    var c=cells.get(index);if(restore&&!b.restore&&c.y()<b.y)continue;Block block=w.getBlockAt(c.x(),c.y(),c.z());
+                    var c=cells.get(index);if(!restore&&c.before().equals(c.after()))continue;if(restore&&!b.restore&&c.y()<b.y)continue;Block block=w.getBlockAt(c.x(),c.y(),c.z());
                     String data=restore?c.before():c.after();
                     if(block.getBlockData().getAsString().equals(data))continue;
                     if(restore){if(block.getState() instanceof Container box&&!ownInventory(box).isEmpty())throw new IllegalStateException("В контейнер добавлены вещи; удаление остановлено");}

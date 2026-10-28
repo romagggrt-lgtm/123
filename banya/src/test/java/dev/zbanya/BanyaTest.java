@@ -105,4 +105,7 @@ class BanyaTest {
     @Test void failedRemovalJournalLeavesSourceItemsUntouchedAndCanRetry()throws Exception{var b=build();p.foodContainer(b).getInventory().setItem(3,new ItemStack(Material.DIAMOND,7));FAIL=true;p.remove(b,admin,false);settle();assertEquals("ACTIVE",b.phase);assertEquals(7,p.foodContainer(b).getInventory().getItem(3).getAmount());assertEquals(0,dropped(Material.DIAMOND));FAIL=false;p.remove(b,admin,false);settle();assertTrue(p.all().isEmpty());assertEquals(7,dropped(Material.DIAMOND));}
     @Test void recoveryCommitFailureDoesNotDuplicateAlreadyStagedItems()throws Exception{var b=build();p.foodContainer(b).getInventory().setItem(3,new ItemStack(Material.DIAMOND,7));FAIL_DELIVERY=true;p.remove(b,admin,false);settle();assertEquals(7,dropped(Material.DIAMOND));assertFalse(b.rescueDelivered);assertEquals(32767,items().getFirst().getPickupDelay());FAIL=false;p.remove(b,admin,true);settle();assertTrue(p.all().isEmpty());assertEquals(7,dropped(Material.DIAMOND));assertEquals(10,items().getFirst().getPickupDelay());}
 
+
+    @Test void corruptRecoveryPayloadCannotClearTheOriginalContainer()throws Exception{var b=build();p.foodContainer(b).getInventory().setItem(3,new ItemStack(Material.DIAMOND,7));b.rescueCaptured=true;b.rescued.add(new Bath.Rescued(b.x,b.y,b.z,3,"invalid_base64"));p.remove(b,admin,true);settle();assertEquals(7,p.foodContainer(b).getInventory().getItem(3).getAmount());assertEquals(0,dropped(Material.DIAMOND));}
+
 }
