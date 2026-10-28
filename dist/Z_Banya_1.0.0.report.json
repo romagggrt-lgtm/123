@@ -1,0 +1,144 @@
+{
+  "plugin": "Z_Banya",
+  "version": "1.0.0",
+  "native": {
+    "status": "PASS",
+    "source_commit": "a454c83178f3352ac2540323d6d3e37b3ae9a2c2",
+    "server_sha256": "5ffef465eeeb5f2a3c23a24419d97c51afd7dbb4923ff42df9a3f58bba1ccfba",
+    "server_build": 132,
+    "phases": [
+      {
+        "status": "RESTART",
+        "checks": {
+          "real_plugin_enabled": "PASS",
+          "ordinary_player_cannot_create": "PASS",
+          "plugin_stays_enabled": "PASS",
+          "native_build_complete": "PASS",
+          "three_persistent_bucket_frames": "PASS",
+          "exactly_one_native_food": "PASS",
+          "native_food_always_edible": "PASS",
+          "all_native_block_states_placed": "PASS",
+          "private_loop_enters_independently": "PASS",
+          "sound_stops_on_teleport": "PASS",
+          "native_food_consumed_once": "PASS",
+          "six_extra_hearts": "PASS",
+          "effect_minecraft:nausea": "PASS",
+          "effect_minecraft:fire_resistance": "PASS",
+          "effect_minecraft:absorption": "PASS",
+          "effect_minecraft:regeneration": "PASS",
+          "effect_minecraft:resistance": "PASS",
+          "no_vanilla_apple_stacking": "PASS"
+        },
+        "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
+        "source_commit": "a454c83178f3352ac2540323d6d3e37b3ae9a2c2",
+        "restarted": false
+      },
+      {
+        "status": "PASS",
+        "checks": {
+          "real_plugin_enabled": "PASS",
+          "bath_loaded_after_full_server_restart": "PASS",
+          "food_not_respawned_after_restart": "PASS",
+          "persistent_frames_not_duplicated": "PASS",
+          "plugin_stays_enabled": "PASS",
+          "player_items_block_removal": "PASS",
+          "removed_after_full_server_restart": "PASS",
+          "every_original_block_restored": "PASS",
+          "decorative_entities_cleaned": "PASS",
+          "no_orphan_sound_sessions": "PASS",
+          "adjacent_player_chest_preserved": "PASS"
+        },
+        "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
+        "source_commit": "a454c83178f3352ac2540323d6d3e37b3ae9a2c2",
+        "restarted": true
+      }
+    ],
+    "sound_packets": {
+      "inside_plays": 2,
+      "inside_stops": 3,
+      "outside": 0
+    },
+    "pack_sha1": "814ea2b1cef8a7776affcd8ef3ce155600276162",
+    "plugin_sha256": "0a90addd6196e0ffa75c44044cf7844ed72a6c8a1ed6c6a848789682690276a0",
+    "client": "Unmodified official Minecraft 1.21.11",
+    "client_rendered": "See PNG captures; manual review required"
+  },
+  "food_name": "Вкусняшка Тома",
+  "unit_tests": 17,
+  "resource_pack_tests": 5,
+  "assets": {
+    "base": "Z_Server_Pack_1.08.zip",
+    "base_sha256": "6a4c66a47c64707a732d549cfdbc53624d7cc3a7f86e6c347e86abfa96c8cfe3",
+    "old_files_preserved": 1829,
+    "new_files": 12,
+    "sha1": "814ea2b1cef8a7776affcd8ef3ce155600276162",
+    "sound_seconds": 10.057143,
+    "source_mp3_sha256": "354eea747f1d23ebbde3406559630cfcabd9bac88b417c59ef88e3696524b560",
+    "source_loudness": {
+      "input_i": "-18.28",
+      "input_tp": "-6.36",
+      "input_lra": "6.20",
+      "input_thresh": "-28.74",
+      "output_i": "-12.96",
+      "output_tp": "-1.00",
+      "output_lra": "3.30",
+      "output_thresh": "-23.57",
+      "normalization_type": "dynamic",
+      "target_offset": "-1.04"
+    },
+    "ogg_loudness": {
+      "input_i": "-14.04",
+      "input_tp": "-1.90",
+      "input_lra": "6.30",
+      "input_thresh": "-24.50",
+      "output_i": "-12.97",
+      "output_tp": "-1.00",
+      "output_lra": "3.40",
+      "output_thresh": "-23.58",
+      "normalization_type": "dynamic",
+      "target_offset": "-1.03"
+    },
+    "normalisation": "two-pass EBU R128 -14 LUFS / -1 dBTP",
+    "geometry_elements_per_frame": 138,
+    "fly_frames": 8,
+    "validated": {
+      "json": 936,
+      "models": 880,
+      "textures": 885,
+      "sounds": 13,
+      "items": 42
+    }
+  },
+  "files": {
+    "Z_Banya.jar": {
+      "bytes": 50161,
+      "sha256": "0a90addd6196e0ffa75c44044cf7844ed72a6c8a1ed6c6a848789682690276a0",
+      "sha1": "4b99cc57a6d257f1c40a96c3f9a48086eda6135e"
+    },
+    "Z_Banya_1.0.0.jar": {
+      "bytes": 50161,
+      "sha256": "0a90addd6196e0ffa75c44044cf7844ed72a6c8a1ed6c6a848789682690276a0",
+      "sha1": "4b99cc57a6d257f1c40a96c3f9a48086eda6135e"
+    },
+    "Z_Server_Pack_1.09.zip": {
+      "bytes": 3848503,
+      "sha256": "0e424cf0dd2a992180203576ee407f492ffca9fc6129545cef1d0c181406772c",
+      "sha1": "814ea2b1cef8a7776affcd8ef3ce155600276162"
+    },
+    "Z_Banya_ResourcePack.zip": {
+      "bytes": 141736,
+      "sha256": "94198e344262b771cf8e94d991cd505b791174bb602c13d8b857e191064c4a36",
+      "sha1": "187aa035e33f5f709c45258de1794ddf5fd8503c"
+    },
+    "Z_Banya_1.0.0_sources.zip": {
+      "bytes": 3691224,
+      "sha256": "753d8fe27f375598ff39ef7537dfddf810c9b42744a8aeb6aabbd29013993832",
+      "sha1": "13303b914a6bb5230c381a304ffdf93212aa08f0"
+    },
+    "Z_Banya_1.0.0_install.zip": {
+      "bytes": 9585171,
+      "sha256": "84df9ec9ae95f27e14987d1d70dcb996767f97df502962aede4fe1371d049950",
+      "sha1": "85edef0e48f85cf13b395a0df45407f15f54ab28"
+    }
+  }
+}
