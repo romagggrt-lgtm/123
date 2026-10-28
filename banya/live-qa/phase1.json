@@ -13,14 +13,14 @@
     "sound_stops_on_teleport": "PASS",
     "native_food_consumed_once": "PASS",
     "six_extra_hearts": "PASS",
-    "effect_minecraft:regeneration": "PASS",
-    "effect_minecraft:fire_resistance": "PASS",
     "effect_minecraft:nausea": "PASS",
+    "effect_minecraft:fire_resistance": "PASS",
     "effect_minecraft:absorption": "PASS",
+    "effect_minecraft:regeneration": "PASS",
     "effect_minecraft:resistance": "PASS",
     "no_vanilla_apple_stacking": "PASS"
   },
   "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
-  "source_commit": "629af0c625af482be4504ef8558755394b405d9b",
+  "source_commit": "a454c83178f3352ac2540323d6d3e37b3ae9a2c2",
   "restarted": false
 }

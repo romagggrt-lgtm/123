@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "source_commit": "629af0c625af482be4504ef8558755394b405d9b",
+  "source_commit": "a454c83178f3352ac2540323d6d3e37b3ae9a2c2",
   "server_sha256": "5ffef465eeeb5f2a3c23a24419d97c51afd7dbb4923ff42df9a3f58bba1ccfba",
   "server_build": 132,
   "phases": [
@@ -19,15 +19,15 @@
         "sound_stops_on_teleport": "PASS",
         "native_food_consumed_once": "PASS",
         "six_extra_hearts": "PASS",
-        "effect_minecraft:regeneration": "PASS",
-        "effect_minecraft:fire_resistance": "PASS",
         "effect_minecraft:nausea": "PASS",
+        "effect_minecraft:fire_resistance": "PASS",
         "effect_minecraft:absorption": "PASS",
+        "effect_minecraft:regeneration": "PASS",
         "effect_minecraft:resistance": "PASS",
         "no_vanilla_apple_stacking": "PASS"
       },
       "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
-      "source_commit": "629af0c625af482be4504ef8558755394b405d9b",
+      "source_commit": "a454c83178f3352ac2540323d6d3e37b3ae9a2c2",
       "restarted": false
     },
     {
@@ -46,7 +46,7 @@
         "adjacent_player_chest_preserved": "PASS"
       },
       "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
-      "source_commit": "629af0c625af482be4504ef8558755394b405d9b",
+      "source_commit": "a454c83178f3352ac2540323d6d3e37b3ae9a2c2",
       "restarted": true
     }
   ],
@@ -55,7 +55,8 @@
     "inside_stops": 3,
     "outside": 0
   },
-  "pack_sha1": "eba2d648e171268777f5da0cf0cb913746ea014d",
+  "pack_sha1": "814ea2b1cef8a7776affcd8ef3ce155600276162",
+  "plugin_sha256": "0a90addd6196e0ffa75c44044cf7844ed72a6c8a1ed6c6a848789682690276a0",
   "client": "Unmodified official Minecraft 1.21.11",
   "client_rendered": "See PNG captures; manual review required"
 }
