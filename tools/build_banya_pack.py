@@ -15,19 +15,20 @@ def png(im):
  out=io.BytesIO();im.save(out,format='PNG');return out.getvalue()
 def cube(lo,hi,uv):
  return {'from':lo,'to':hi,'faces':{side:{'texture':'#skin','uv':uv} for side in ['north','south','east','west','up','down']}}
-def main():
+def main(reencode=False):
  ASSET.mkdir(exist_ok=True)
  source=ASSET/'ambient-original.mp3';ogg=ASSET/'ambient.ogg'
  # Two-pass EBU loudness normalisation, preserving the original 10-second performance.
  first=subprocess.run(['ffmpeg','-hide_banner','-i',str(source),'-af','loudnorm=I=-14:TP=-1:LRA=11:print_format=json','-f','null','-'],capture_output=True,text=True,check=True).stderr
  measured=json.loads(first[first.rfind('{'):first.rfind('}')+1])
  filt='loudnorm=I=-14:TP=-1:LRA=11:measured_I={input_i}:measured_LRA={input_lra}:measured_TP={input_tp}:measured_thresh={input_thresh}:offset={target_offset}:linear=true'.format(**measured)
- subprocess.run(['ffmpeg','-y','-v','error','-i',str(source),'-af',filt,'-ar','44100','-ac','2','-c:a','libvorbis','-q:a','5',str(ogg)],check=True)
+ if reencode or not ogg.exists():
+  subprocess.run(['ffmpeg','-y','-v','error','-i',str(source),'-af',filt,'-ar','44100','-ac','2','-c:a','libvorbis','-q:a','5',str(ogg)],check=True)
  duration=float(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration','-of','default=nw=1:nk=1',str(ogg)]))
  (ROOT/'banya/src/main/resources/ambient-duration.txt').write_text(str(duration)+'\n')
  probe=subprocess.run(['ffmpeg','-hide_banner','-i',str(ogg),'-af','loudnorm=I=-14:TP=-1:LRA=11:print_format=json','-f','null','-'],capture_output=True,text=True,check=True).stderr
  loud=json.loads(probe[probe.rfind('{'):probe.rfind('}')+1]);assert float(loud['input_tp'])<=-.5
- assets={'assets/zbanya/sounds/ambient.ogg':ogg.read_bytes(),'assets/zbanya/sounds.json':encoded({'ambient':{'sounds':[{'name':'zbanya:ambient','stream':True,'attenuation_distance':0}]}})}
+ assets={'assets/zbanya/sounds/ambient.ogg':ogg.read_bytes(),'assets/zbanya/sounds.json':encoded({'ambient':{'sounds':[{'name':'zbanya:ambient','stream':True,'attenuation_distance':16}]}})}
  rng=random.Random(8391);im=Image.new('RGBA',(64,64));pixels=im.load()
  for y in range(64):
   for x in range(64):
@@ -70,4 +71,6 @@ def main():
   archive(path,files);path.with_suffix(path.suffix+'.sha1').write_text(hashlib.sha1(path.read_bytes()).hexdigest()+'\n')
  report={'base':BASE.name,'base_sha256':hashlib.sha256(BASE.read_bytes()).hexdigest(),'old_files_preserved':len(base)-1,'new_files':len(assets),'sha1':hashlib.sha1((DIST/'Z_Server_Pack_1.09.zip').read_bytes()).hexdigest(),'sound_seconds':duration,'source_mp3_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'source_loudness':measured,'ogg_loudness':loud,'normalisation':'two-pass EBU R128 -14 LUFS / -1 dBTP','geometry_elements_per_frame':len(body)+12,'fly_frames':8,'validated':counts}
  (DIST/'Z_Server_Pack_1.09.report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(json.dumps(report,indent=2))
-if __name__=='__main__':main()
+if __name__=='__main__':
+ import argparse
+ parser=argparse.ArgumentParser();parser.add_argument('--reencode-audio',action='store_true',help='Re-encode the original MP3 rather than reuse the verified OGG');main(parser.parse_args().reencode_audio)

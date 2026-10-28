@@ -9,7 +9,7 @@ from banya_vanilla_client import prepare,launch,capture_controller
 ROOT=Path(__file__).resolve().parents[1];WORK=ROOT/'banya/target/native-server';REPORT=ROOT/'banya/live-qa'
 WORK.mkdir(parents=True,exist_ok=True);REPORT.mkdir(parents=True,exist_ok=True)
 for path in REPORT.iterdir():
- if path.is_file() and path.name!='build.log':path.unlink()
+ if path.is_file() and path.name not in {'build.log','prepare.log','runner.log'}:path.unlink()
 def download(url,path):
  with urllib.request.urlopen(url,timeout=60) as r:path.write_bytes(r.read())
 try:

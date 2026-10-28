@@ -45,6 +45,7 @@ public class ZBanyaPlugin extends JavaPlugin implements Listener,CommandExecutor
             journal=openJournal(getDataFolder().toPath().resolve("baths"));for(var b:journal.load()){if(baths.put(b.id,b)!=null)throw new IllegalArgumentException("Повтор UUID бани");}
             getServer().getPluginManager().registerEvents(this,this);getCommand("zbanya").setExecutor(this);getCommand("zbanya").setTabCompleter(this);
             task=getServer().getScheduler().runTaskTimer(this,this::tick,1,1);
+            Bukkit.getScheduler().runTask(this,()->{for(Bath b:baths.values())if(b.phase.equals("ACTIVE")&&Bukkit.getWorld(b.world)!=null)try{decorate(b);}catch(Exception e){getLogger().warning("Декор ожидает загрузки чанка: "+e.getMessage());}});
             getLogger().info("Z_Banya 1.0.0: загружено бань "+baths.size()+". Общий ресурс-пак задаётся в server.properties.");
         }catch(Exception e){getLogger().log(Level.SEVERE,"Z_Banya не запущен. Исходные журналы сохранены.",e);getServer().getPluginManager().disablePlugin(this);}
     }
@@ -77,7 +78,7 @@ public class ZBanyaPlugin extends JavaPlugin implements Listener,CommandExecutor
         int interval=Math.max(5,getConfig().getInt("steam.interval-ticks",20));
         if(ticks%interval==0&&getConfig().getBoolean("steam.enabled",true))for(Bath b:baths.values())if(b.phase.equals("ACTIVE")){
             World w=Bukkit.getWorld(b.world);if(w==null)continue;var source=b.location(w,3,3,4);if(!w.isChunkLoaded(source.getBlockX()>>4,source.getBlockZ()>>4))continue;
-            for(Player p:w.getPlayers())if(p.getLocation().distanceSquared(source)<24*24)p.spawnParticle(Particle.CLOUD,source,Math.clamp(getConfig().getInt("steam.particle-count",4),0,24),.22,.18,.22,.028);
+            for(Player p:w.getPlayers())if(p.getLocation().distanceSquared(source)<24*24)for(int n=0;n<Math.clamp(getConfig().getInt("steam.particle-count",4),0,24);n++)p.spawnParticle(Particle.CLOUD,source.clone().add(ThreadLocalRandom.current().nextDouble(-.22,.22),0,ThreadLocalRandom.current().nextDouble(-.22,.22)),0,0,.035,0,1);
         }
     }
     private void play(Player p,Bath b){

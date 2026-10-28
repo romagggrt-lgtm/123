@@ -29,7 +29,7 @@ class BanyaPackTest(unittest.TestCase):
   definition=json.loads(self.pack['assets/zbanya/items/vkusnyashka.json'])['model'];self.assertEqual('minecraft:range_dispatch',definition['type']);self.assertEqual(list(range(8)),[e['threshold'] for e in definition['entries']])
   for e in definition['entries']:
    ns,path=e['model']['model'].split(':');self.assertIn(f'assets/{ns}/models/{path}.json',self.pack)
-  sound=json.loads(self.pack['assets/zbanya/sounds.json'])['ambient']['sounds'][0];self.assertTrue(sound['stream']);self.assertEqual(0,sound['attenuation_distance']);self.assertEqual('zbanya:ambient',sound['name'])
+  sound=json.loads(self.pack['assets/zbanya/sounds.json'])['ambient']['sounds'][0];self.assertTrue(sound['stream']);self.assertEqual(16,sound['attenuation_distance']);self.assertEqual('zbanya:ambient',sound['name'])
  def test_processed_original_audio_is_loud_and_clip_duration_matches_plugin(self):
   source=(ROOT/'banya/assets-src/ambient-original.mp3').read_bytes();self.assertEqual(hashlib.sha256(source).hexdigest(),self.report['source_mp3_sha256']);self.assertEqual((ROOT/'banya/assets-src/ambient.ogg').read_bytes(),self.pack['assets/zbanya/sounds/ambient.ogg'])
   self.assertTrue(self.pack['assets/zbanya/sounds/ambient.ogg'].startswith(b'OggS'));self.assertAlmostEqual(float((ROOT/'banya/src/main/resources/ambient-duration.txt').read_text()),self.report['sound_seconds'],places=4);self.assertTrue(9<self.report['sound_seconds']<11)
