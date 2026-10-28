@@ -57,14 +57,18 @@ def prepare():
                 if name.endswith('.so'):(natives/Path(name).name).write_bytes(zip.read(name))
     import nbtlib
     nbtlib.File({'servers':nbtlib.List[nbtlib.Compound]([nbtlib.Compound({'name':nbtlib.String('Disposable Z_Banya QA'),'ip':nbtlib.String('127.0.0.1:25585'),'acceptTextures':nbtlib.Byte(1)})])}).save(GAME/'servers.dat')
-    (GAME/'options.txt').write_text('onboardAccessibility:false\nstartedCleanly:true\nlang:en_us\nguiScale:2\nrenderDistance:6\nsimulationDistance:5\nmaxFps:30\nfullscreen:false\nenableVsync:false\nparticles:0\nshowSubtitles:false\ntutorialStep:none\n')
+    (GAME/'options.txt').write_text('onboardAccessibility:false\nstartedCleanly:true\nlang:en_us\nguiScale:2\nrenderDistance:6\nsimulationDistance:5\nmaxFps:30\nfullscreen:false\nenableVsync:false\nparticles:0\nshowSubtitles:false\ntutorialStep:none\nsoundCategory_master:1.0\nsoundCategory_ambient:0.0\nsoundCategory_music:0.0\nsoundCategory_weather:0.0\nsoundCategory_blocks:0.0\nsoundCategory_hostile:0.0\nsoundCategory_neutral:0.0\nsoundCategory_players:0.0\nsoundCategory_records:0.0\n')
     digest=bytearray(hashlib.md5(b'OfflinePlayer:BanyaObserver').digest());digest[6]=(digest[6]&15)|48;digest[8]=(digest[8]&63)|128
     command=['java','-Xms512M','-Xmx2G','-Djava.library.path='+str(natives),'-Dorg.lwjgl.librarypath='+str(natives),'-cp',os.pathsep.join(map(str,classpath)),metadata['mainClass'],'--username','BanyaObserver','--version','1.21.11','--gameDir',str(GAME),'--assetsDir',str(GAME/'assets'),'--assetIndex',str(index['id']),'--uuid',uuid.UUID(bytes=bytes(digest)).hex,'--accessToken','0','--userType','msa','--versionType','release','--width','1280','--height','720','--quickPlayMultiplayer','127.0.0.1:25585']
     (GAME/'command.json').write_text(json.dumps(command));return command
 
-def launch():
+def launch(audio_path=None):
+    environment=os.environ.copy()
+    if audio_path is not None:
+        config=GAME/"alsoft.ini";config.write_text("frequency=44100\nchannels=stereo\nsample-type=int16\n[wave]\nfile="+str(audio_path)+"\n")
+        environment["ALSOFT_DRIVERS"]="wave";environment["ALSOFT_CONF"]=str(config)
     command=json.loads((GAME/'command.json').read_text())
-    return subprocess.Popen(command,cwd=GAME,stdout=(REPORT/'vanilla-console.log').open('w'),stderr=subprocess.STDOUT)
+    return subprocess.Popen(command,cwd=GAME,env=environment,stdout=(REPORT/'vanilla-console.log').open('w'),stderr=subprocess.STDOUT)
 
 def capture_controller(stop):
     from PIL import Image
@@ -86,7 +90,7 @@ def capture_controller(stop):
             if path.exists():
                 data=json.loads(path.read_text());stage=data['stage'];age=data['age']
                 if not data['restart']:
-                    label={2:'exterior',3:'rest-room',4:('steam-room' if age<80 else 'benches'),5:'vkusnyashka-3d'}.get(stage)
+                    label={2:'exterior',3:'entrance',4:('steam-room' if age<80 else 'benches'),5:'vkusnyashka-3d'}.get(stage)
                     if stage==4 and 80<=age<=110:label=None
                     if label and age>45 and label not in seen:capture(REPORT/(label+'.png'));seen.add(label)
             if time.monotonic()-last>10:capture(REPORT/'latest-frame.png');last=time.monotonic()

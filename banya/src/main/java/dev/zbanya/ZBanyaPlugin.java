@@ -5,7 +5,6 @@ import java.util.concurrent.*;
 import java.util.function.*;
 import java.util.logging.Level;
 import net.kyori.adventure.key.Key;
-import net.kyori.adventure.sound.Sound;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.*;
 import org.bukkit.*;
@@ -27,7 +26,8 @@ import org.bukkit.scheduler.BukkitTask;
 
 public class ZBanyaPlugin extends JavaPlugin implements Listener,CommandExecutor,TabCompleter {
     final Map<UUID,Bath> baths=new LinkedHashMap<>();
-    private record Session(UUID bath,long next,String key){}
+    private record Session(UUID bath,long next,String key,SoundCategory category){}
+    private final Set<UUID> waitingPacks=new HashSet<>();
     private final Set<UUID> droppedFood=new HashSet<>();
     private final Map<UUID,Session> listeners=new HashMap<>();
     private final NamespacedKey foodKey=new NamespacedKey("zbanya","vkusnyashka"),originKey=new NamespacedKey("zbanya","origin"),claimedKey=new NamespacedKey("zbanya","claimed"),decorKey=new NamespacedKey("zbanya","decor"),indexKey=new NamespacedKey("zbanya","slot");
@@ -46,12 +46,13 @@ public class ZBanyaPlugin extends JavaPlugin implements Listener,CommandExecutor
             getServer().getPluginManager().registerEvents(this,this);getCommand("zbanya").setExecutor(this);getCommand("zbanya").setTabCompleter(this);
             task=getServer().getScheduler().runTaskTimer(this,this::tick,1,1);
             Bukkit.getScheduler().runTask(this,()->{for(Bath b:baths.values())if(b.phase.equals("ACTIVE")&&Bukkit.getWorld(b.world)!=null)try{decorate(b);}catch(Exception e){getLogger().warning("Декор ожидает загрузки чанка: "+e.getMessage());}});
-            getLogger().info("Z_Banya 1.0.0: загружено бань "+baths.size()+". Общий ресурс-пак задаётся в server.properties.");
+            getLogger().info("Z_Banya 1.0.1: загружено бань "+baths.size()+". Общий ресурс-пак задаётся в server.properties.");
         }catch(Exception e){getLogger().log(Level.SEVERE,"Z_Banya не запущен. Исходные журналы сохранены.",e);getServer().getPluginManager().disablePlugin(this);}
     }
     private void validateConfig(){
         int min=getConfig().getInt("banya.search-min-radius",5),max=getConfig().getInt("banya.search-max-radius",20);
         if(min<5||max>20||max<min)throw new IllegalArgumentException("Радиус должен быть в пределах 5–20");
+        soundCategory();
         Key.key(getConfig().getString("sound.sound-key","zbanya:ambient"));
         if(!Double.isFinite(getConfig().getDouble("sound.volume",.95))||getConfig().getDouble("sound.volume",.95)<0||getConfig().getDouble("sound.volume",.95)>4)throw new IllegalArgumentException("Громкость: 0–4");
         double chance=getConfig().getDouble("vkusnyashka.spawn-chance",.5);if(!Double.isFinite(chance)||chance<0||chance>1)throw new IllegalArgumentException("Шанс появления: 0–1");
@@ -77,43 +78,61 @@ public class ZBanyaPlugin extends JavaPlugin implements Listener,CommandExecutor
         if(ticks%4==0)for(UUID id:List.copyOf(droppedFood)){var e=Bukkit.getEntity(id);if(e instanceof Item item&&item.isValid()&&isFood(item.getItemStack()))animate(item.getItemStack(),item::setItemStack);else droppedFood.remove(id);}
         int interval=Math.max(5,getConfig().getInt("steam.interval-ticks",20));
         if(ticks%interval==0&&getConfig().getBoolean("steam.enabled",true))for(Bath b:baths.values())if(b.phase.equals("ACTIVE")){
-            World w=Bukkit.getWorld(b.world);if(w==null)continue;var source=b.location(w,3,3,4);if(!w.isChunkLoaded(source.getBlockX()>>4,source.getBlockZ()>>4))continue;
+            World w=Bukkit.getWorld(b.world);if(w==null)continue;var source=b.steam(w);if(!w.isChunkLoaded(source.getBlockX()>>4,source.getBlockZ()>>4))continue;
             for(Player p:w.getPlayers())if(p.getLocation().distanceSquared(source)<24*24)for(int n=0;n<Math.clamp(getConfig().getInt("steam.particle-count",4),0,24);n++)p.spawnParticle(Particle.CLOUD,source.clone().add(ThreadLocalRandom.current().nextDouble(-.22,.22),0,ThreadLocalRandom.current().nextDouble(-.22,.22)),0,0,.035,0,1);
         }
     }
+    SoundCategory soundCategory(){return SoundCategory.valueOf(getConfig().getString("sound.category","MASTER").toUpperCase(Locale.ROOT));}
+    protected void emitSound(Player p,String key,SoundCategory category,float volume,float pitch){p.playSound(p,key,category,volume,pitch);}
+    protected void haltSound(Player p,String key,SoundCategory category){p.stopSound(key,category);}
     private void play(Player p,Bath b){
-        String key=getConfig().getString("sound.sound-key","zbanya:ambient");float pitch=(float)getConfig().getDouble("sound.pitch",1);p.stopSound(key,SoundCategory.AMBIENT);
-        p.playSound(Sound.sound(Key.key(key),Sound.Source.AMBIENT,(float)getConfig().getDouble("sound.volume",.95),pitch));
-        listeners.put(p.getUniqueId(),new Session(b.id,nanoClock.getAsLong()+(long)Math.ceil(clipSeconds*1_000_000_000d/pitch),key));
+        String key=getConfig().getString("sound.sound-key","zbanya:ambient");float pitch=(float)getConfig().getDouble("sound.pitch",1);SoundCategory category=soundCategory();
+        Session old=listeners.get(p.getUniqueId());if(old!=null)haltSound(p,old.key,old.category);else haltSound(p,key,category);
+        // Entity sound follows its private recipient instead of fading away from the entry point.
+        emitSound(p,key,category,(float)getConfig().getDouble("sound.volume",1),pitch);
+        listeners.put(p.getUniqueId(),new Session(b.id,nanoClock.getAsLong()+(long)Math.ceil(clipSeconds*1_000_000_000d/pitch),key,category));
     }
     private void check(Player p){
         Bath bath=p.isDead()?null:inside(p.getLocation());Session s=listeners.get(p.getUniqueId());
-        if(bath==null||!getConfig().getBoolean("sound.enabled",true)){if(s!=null)stop(p,false);return;}
+        if(bath==null||waitingPacks.contains(p.getUniqueId())||!getConfig().getBoolean("sound.enabled",true)){if(s!=null)stop(p,false);return;}
         if(s==null||!s.bath.equals(bath.id)){stop(p,true);message(p,"welcome");play(p,bath);}
     }
-    private void stop(Player p,boolean force){Session s=listeners.remove(p.getUniqueId());if(s!=null&&(force||getConfig().getBoolean("sound.stop-on-exit",true)))p.stopSound(s.key,SoundCategory.AMBIENT);}
+    private void stop(Player p,boolean force){Session s=listeners.remove(p.getUniqueId());if(s!=null&&(force||getConfig().getBoolean("sound.stop-on-exit",true)))haltSound(p,s.key,s.category);}
     @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void enterWorksite(PlayerMoveEvent e){if(running!=null&&!running.phase.equals("ACTIVE")&&running.region(e.getTo().getBlock())&&!running.region(e.getFrom().getBlock()))e.setCancelled(true);}
     @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void unload(WorldUnloadEvent e){if(running!=null&&running.world.equals(e.getWorld().getUID()))e.setCancelled(true);}
     @EventHandler(priority=EventPriority.MONITOR,ignoreCancelled=true) public void move(PlayerMoveEvent e){if(e.hasChangedPosition())checkAt(e.getPlayer(),e.getTo());}
     private void checkAt(Player p,Location to){var s=listeners.get(p.getUniqueId());if(s!=null){var b=baths.get(s.bath);if(b==null||!b.contains(to))stop(p,false);}}
     @EventHandler(priority=EventPriority.MONITOR,ignoreCancelled=true) public void teleport(PlayerTeleportEvent e){stop(e.getPlayer(),true);Bukkit.getScheduler().runTask(this,()->check(e.getPlayer()));}
-    @EventHandler public void quit(PlayerQuitEvent e){stop(e.getPlayer(),true);}
+    @EventHandler public void quit(PlayerQuitEvent e){stop(e.getPlayer(),true);waitingPacks.remove(e.getPlayer().getUniqueId());}
     @EventHandler public void death(PlayerDeathEvent e){stop(e.getEntity(),true);}
+    @EventHandler(priority=EventPriority.MONITOR) public void packStatus(PlayerResourcePackStatusEvent e){
+        var player=e.getPlayer();var status=e.getStatus();
+        if(status==PlayerResourcePackStatusEvent.Status.ACCEPTED||status==PlayerResourcePackStatusEvent.Status.DOWNLOADED){waitingPacks.add(player.getUniqueId());stop(player,true);return;}
+        waitingPacks.remove(player.getUniqueId());
+        if(status==PlayerResourcePackStatusEvent.Status.SUCCESSFULLY_LOADED){stop(player,true);Bukkit.getScheduler().runTask(this,()->{if(player.isOnline())check(player);});}
+    }
     @Override public boolean onCommand(CommandSender sender,Command command,String label,String[] args){
         if(!sender.hasPermission("zbanya.admin")){message(sender,"no-permission");return true;}
         try{
             if(args.length==1&&args[0].equalsIgnoreCase("reload")){if(busy){error(sender,"Дождитесь завершения текущей операции.");return true;}String previous=getConfig().saveToString();reloadConfig();try{validateConfig();}catch(Exception invalid){getConfig().loadFromString(previous);throw invalid;}for(Player p:Bukkit.getOnlinePlayers())stop(p,true);sender.sendMessage("§a[Z_Banya] Настройки перезагружены.");return true;}
             if(!(sender instanceof Player p)){error(sender,"Команды set/remove выполняются игроком в мире.");return true;}
-            if(args.length!=1){sender.sendMessage("§e[Z_Banya] /zbanya set | remove | reload");return true;}
+            if(args.length!=1){sender.sendMessage("§e[Z_Banya] /zbanya set | remove | reload | sound | status");return true;}
             if(busy){error(sender,"Дождитесь завершения текущей операции.");return true;}
-            if(args[0].equalsIgnoreCase("set"))create(p);
+            if(args[0].equalsIgnoreCase("status")){
+                var status=p.getResourcePackStatus();p.sendMessage("§e[Z_Banya] Версия: 1.0.1; внутри: "+(inside(p.getLocation())!=null?"да":"нет")+"; звук: "+(getConfig().getBoolean("sound.enabled",true)?"включён":"выключен")+"; канал: "+soundCategory()+"; громкость: "+getConfig().getDouble("sound.volume",1));
+                p.sendMessage("§e[Z_Banya] RP: "+(status==null?"серверный пакет не загружен":status)+"; событие: "+getConfig().getString("sound.sound-key","zbanya:ambient"));
+            }
+            else if(args[0].equalsIgnoreCase("sound")){
+                Bath bath=inside(p.getLocation());if(bath==null)error(p,"Зайдите внутрь бани для проверки звука.");else if(!getConfig().getBoolean("sound.enabled",true))error(p,"Звук выключен в config.yml: sound.enabled.");else if(waitingPacks.contains(p.getUniqueId()))error(p,"Ресурс-пак ещё загружается.");else{play(p,bath);p.sendMessage("§a[Z_Banya] Звук перезапущен. Если тишина, проверьте /zbanya status и общую громкость клиента.");}
+            }
+            else if(args[0].equalsIgnoreCase("set"))create(p);
             else if(args[0].equalsIgnoreCase("remove")){
                 Bath b=baths.values().stream().filter(a->a.world.equals(p.getWorld().getUID())).filter(a->a.location(p.getWorld(),0,2,0).distanceSquared(p.getLocation())<=400).min(java.util.Comparator.comparingDouble(a->a.location(p.getWorld(),0,2,0).distanceSquared(p.getLocation()))).orElse(null);
                 if(b==null)message(p,"no-banya");else remove(b,p,false);
-            }else sender.sendMessage("§e[Z_Banya] /zbanya set | remove | reload");
+            }else sender.sendMessage("§e[Z_Banya] /zbanya set | remove | reload | sound | status");
         }catch(Exception e){error(sender,"Операция не выполнена: "+e.getMessage());getLogger().log(Level.WARNING,"Ошибка команды",e);}return true;
     }
-    @Override public List<String> onTabComplete(CommandSender s,Command c,String alias,String[] args){return !s.hasPermission("zbanya.admin")||args.length!=1?List.of():List.of("set","remove","reload").stream().filter(v->v.startsWith(args[0].toLowerCase(Locale.ROOT))).toList();}
+    @Override public List<String> onTabComplete(CommandSender s,Command c,String alias,String[] args){return !s.hasPermission("zbanya.admin")||args.length!=1?List.of():List.of("set","remove","reload","sound","status").stream().filter(v->v.startsWith(args[0].toLowerCase(Locale.ROOT))).toList();}
     public void create(Player player){
         if(busy)return;
         if(baths.size()>=Math.clamp(getConfig().getInt("banya.max-total",64),1,128)){error(player,"Достигнут общий лимит бань.");return;}
@@ -198,9 +217,9 @@ public class ZBanyaPlugin extends JavaPlugin implements Listener,CommandExecutor
     protected void setBlock(Block block,org.bukkit.block.data.BlockData data){block.setBlockData(data,false);}
     private void release(){if(ticketWorld!=null)for(var c:tickets)ticket(ticketWorld,c[0],c[1],false);tickets.clear();ticketWorld=null;}
     private void finishJob(){release();running=null;busy=false;}
-    public Container foodContainer(Bath b){World w=Bukkit.getWorld(b.world);var at=b.point(4,1,-4);return (Container)w.getBlockAt(at[0],at[1],at[2]).getState();}
+    public Container foodContainer(Bath b){World w=Bukkit.getWorld(b.world);var at=b.foodPoint();return (Container)w.getBlockAt(at[0],at[1],at[2]).getState();}
     protected void decorate(Bath b){
-        World w=Bukkit.getWorld(b.world);int index=0;var existing=w.getEntities();for(var d:Blueprint.DECOR){final int slot=index++;
+        World w=Bukkit.getWorld(b.world);int index=0;var existing=w.getEntities();for(var d:b.decor()){final int slot=index++;
             var at=b.location(w,d.x(),d.y(),d.z());if(!w.isChunkLoaded(at.getBlockX()>>4,at.getBlockZ()>>4))continue;
             if(existing.stream().anyMatch(e->b.id.toString().equals(e.getPersistentDataContainer().get(decorKey,PersistentDataType.STRING))&&Objects.equals(slot,e.getPersistentDataContainer().get(indexKey,PersistentDataType.INTEGER))))continue;
             w.spawn(at,ItemFrame.class,e->{e.setFacingDirection(Blueprint.facing(d.face(),b.turn),true);e.setItem(new ItemStack(Material.WATER_BUCKET),false);e.setItemDropChance(0);e.setFixed(true);e.setInvulnerable(true);e.setPersistent(true);e.getPersistentDataContainer().set(decorKey,PersistentDataType.STRING,b.id.toString());e.getPersistentDataContainer().set(indexKey,PersistentDataType.INTEGER,slot);});

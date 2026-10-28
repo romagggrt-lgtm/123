@@ -1,7 +1,7 @@
 name: Z_Banya Paper and vanilla acceptance
 on:
   push:
-    branches: ['feature/z-banya-1.0.0']
+    branches: ['feature/z-banya-1.0.1']
     paths: ['banya/src/**', 'banya/pom.xml', 'tools/banya_*', 'tools/build_banya_pack.py', 'tools/test_banya_pack.py', '.github/workflows/zbanya-native-smoke.yml']
   workflow_dispatch:
 permissions:
@@ -39,10 +39,11 @@ jobs:
               curl --fail --location --retry 2 --max-time 180 https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz -o "$RUNNER_TEMP/zbanya-ffmpeg.tar.xz"
               tar -xJf "$RUNNER_TEMP/zbanya-ffmpeg.tar.xz" --strip-components=1 -C "$RUNNER_TEMP/zbanya-ffmpeg"
               export PATH="$RUNNER_TEMP/zbanya-ffmpeg:$PATH"
+              echo "$RUNNER_TEMP/zbanya-ffmpeg" >> "$GITHUB_PATH"
             fi
             ffmpeg -version | head -n 1
             ffprobe -version | head -n 1
-            python3 -m pip install --break-system-packages --retries 1 --timeout 20 Pillow python-xlib nbtlib
+            python3 -m pip install --break-system-packages --retries 1 --timeout 20 Pillow python-xlib nbtlib numpy
             python3 tools/build_banya_pack.py
             python3 tools/test_banya_pack.py
           } 2>&1 | tee banya/live-qa/prepare.log

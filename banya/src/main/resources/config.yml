@@ -9,7 +9,8 @@ banya:
 sound:
   enabled: true
   sound-key: "zbanya:ambient"
-  volume: 0.95
+  category: "MASTER"
+  volume: 1.0
   pitch: 1.0
   stop-on-exit: true
 steam:
