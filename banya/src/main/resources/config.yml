@@ -1,7 +1,6 @@
 banya:
   search-min-radius: 5
   search-max-radius: 20
-  max-per-player: 1
   allow-overlap: false
   restore-terrain-on-remove: true
   max-total: 64
@@ -26,8 +25,8 @@ vkusnyashka:
   fire-resistance-seconds: 120
   nausea-seconds: 8
 messages:
-  built: "&a[Z_Banya] Баня успешно построена!"
-  removed: "&a[Z_Banya] Баня успешно удалена!"
+  built: "&a[Z_Banya] Баня «{name}» успешно построена!"
+  removed: "&a[Z_Banya] Баня «{name}» успешно удалена!"
   no-site: "&c[Z_Banya] Не удалось найти подходящее место для строительства бани!"
   no-banya: "&c[Z_Banya] Рядом нет созданной бани!"
   no-permission: "&c[Z_Banya] Недостаточно прав!"

@@ -1,7 +1,7 @@
 name: Z_Banya Paper and vanilla acceptance
 on:
   push:
-    branches: ['feature/z-banya-1.0.1']
+    branches: ['feature/z-banya-1.0.2']
     paths: ['banya/src/**', 'banya/pom.xml', 'tools/banya_*', 'tools/build_banya_pack.py', 'tools/test_banya_pack.py', '.github/workflows/zbanya-native-smoke.yml']
   workflow_dispatch:
 permissions:

@@ -29,7 +29,7 @@ try:
  http=ThreadingHTTPServer(('127.0.0.1',25586),partial(SimpleHTTPRequestHandler,directory=str(pack.parent)));threading.Thread(target=http.serve_forever,daemon=True).start()
  npm=ROOT/'banya/target/bots';npm.mkdir(exist_ok=True);shutil.copyfile(ROOT/'tools/banya_live_bot.js',npm/'bot.js');subprocess.run(['npm','install','--prefix',str(npm),'--no-audit','--no-fund','mineflayer@4.39.0'],check=True)
  reports=[]
- for boot in [0,1,2]:
+ for boot in [0,1,2,3]:
   shutil.copyfile(ROOT/('dist/Z_Banya_1.0.0.jar' if boot==0 else 'banya/target/Z_Banya.jar'),plugins/'Z_Banya.jar')
   with ZipFile(plugins/'Z_Banya_QA.jar','w') as z:
    for path in classes.rglob('*.class'):z.write(path,str(path.relative_to(classes)))
@@ -63,7 +63,7 @@ try:
   if boot==0 and 'bath' in result:result['legacy_cells']=len(result.pop('bath')['cells'])
   reports.append(result)
   (REPORT/f'phase{boot}.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
-  assert result['status']==('UPGRADE' if boot==0 else 'RESTART' if boot==1 else 'PASS'),result.get('failure','Unexpected phase status')
+  assert result['status']==('UPGRADE' if boot==0 else 'RESTART' if boot in (1,2) else 'PASS'),result.get('failure','Unexpected phase status')
  packets=[]
  if (npm/'sound-packets.jsonl').exists():
   shutil.copyfile(npm/'sound-packets.jsonl',REPORT/'sound-packets.jsonl');packets=[json.loads(line) for line in (REPORT/'sound-packets.jsonl').read_text().splitlines()]

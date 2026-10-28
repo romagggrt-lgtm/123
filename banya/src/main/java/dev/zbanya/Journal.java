@@ -16,12 +16,12 @@ public class Journal implements AutoCloseable {
     public Journal(Path directory)throws Exception{this.directory=directory;Files.createDirectories(directory);}
     public List<Bath> load()throws Exception{
         var result=new ArrayList<Bath>();try(var files=Files.list(directory)){for(Path path:files.filter(p->p.toString().endsWith(".json")).toList()){
-            if(Files.size(path)>2_000_000)throw new IllegalArgumentException("Слишком большой журнал: "+path.getFileName());
+            if(Files.size(path)>32_000_000)throw new IllegalArgumentException("Слишком большой журнал: "+path.getFileName());
             var object=JsonParser.parseString(Files.readString(path)).getAsJsonObject();for(String key:List.of("schema","id","owner","world","x","y","z","turn","phase","hasFood","restore","foodAmount","cells"))if(!object.has(key))throw new IllegalArgumentException("Неполный журнал: "+path.getFileName());
             Bath b=JSON.fromJson(object,Bath.class);b.validate();if(!path.getFileName().toString().equals(b.id+".json"))throw new IllegalArgumentException("UUID журнала не совпал");result.add(b);
         }}return result;
     }
-    public CompletableFuture<Void> save(Bath bath){String text=JSON.toJson(bath);return CompletableFuture.runAsync(()->{try{atomic(directory.resolve(bath.id+".json"),text);}catch(Exception e){throw new CompletionException(e);}},writer);}
+    public CompletableFuture<Void> save(Bath bath){String text=JSON.toJson(bath);if(text.getBytes(StandardCharsets.UTF_8).length>32_000_000)return CompletableFuture.failedFuture(new IllegalStateException("Журнал вещей слишком велик; удаление остановлено до изменения мира"));return CompletableFuture.runAsync(()->{try{atomic(directory.resolve(bath.id+".json"),text);}catch(Exception e){throw new CompletionException(e);}},writer);}
     public CompletableFuture<Void> delete(UUID id){return CompletableFuture.runAsync(()->{try{Files.deleteIfExists(directory.resolve(id+".json"));}catch(Exception e){throw new CompletionException(e);}},writer);}
     public static void atomic(Path file,String text)throws Exception{
         Path temp=Files.createTempFile(file.getParent(),"banya-",".pending");try{

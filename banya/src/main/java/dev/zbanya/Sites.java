@@ -33,14 +33,15 @@ public final class Sites {
                 for(int py=bath.y-2;py<bath.y;py++){var b=w.getBlockAt(px,py,pz);if(!GROUND.contains(b.getType())&&!b.getType().isAir()){valid=false;break;}}
             }
             if(!valid)return null;
-            for(var e:Blueprint.blocks().entrySet()){
-                var p=bath.point(e.getKey().x(),e.getKey().y(),e.getKey().z());var b=w.getBlockAt(p[0],p[1],p[2]);String after=Blueprint.orient(e.getValue(),bath.turn);
-                if(!b.getBlockData().getAsString().equals(after))bath.cells.add(new Bath.Saved(p[0],p[1],p[2],b.getBlockData().getAsString(),after));
+            var target=new HashMap<String,String>();
+            for(var e:Blueprint.blocks().entrySet()){var p=bath.point(e.getKey().x(),e.getKey().y(),e.getKey().z());target.put(p[0]+":"+p[1]+":"+p[2],Blueprint.orient(e.getValue(),bath.turn));}
+            // Full snapshot: player-placed blocks in originally empty cells are removed too.
+            for(int px=box[0];px<=box[3];px++)for(int py=box[1];py<=box[4];py++)for(int pz=box[2];pz<=box[5];pz++){
+                var block=w.getBlockAt(px,py,pz);String before=block.getBlockData().getAsString();String after=target.get(px+":"+py+":"+pz);
+                if(after==null)after=py>=bath.y&&replaceable(block.getType())&&!block.getType().isAir()?"minecraft:air":before;
+                bath.cells.add(new Bath.Saved(px,py,pz,before,after));
             }
-            // Preserve plants from the interior/clearance as well.
-            for(int px=box[0];px<=box[3];px++)for(int pz=box[2];pz<=box[5];pz++)for(int py=bath.y+1;py<=bath.y+Blueprint.MAX_Y;py++){
-                final int ax=px,ay=py,az=pz;var b=w.getBlockAt(px,py,pz);if(!b.getType().isAir()&&replaceable(b.getType())&&bath.cells.stream().noneMatch(q->q.x()==ax&&q.y()==ay&&q.z()==az))bath.cells.add(new Bath.Saved(px,py,pz,b.getBlockData().getAsString(),"minecraft:air"));
-            }
+            bath.areaCaptured=true;
             if(w.getNearbyEntities(new Location(w,(box[0]+box[3]+1)/2d,bath.y+3,(box[2]+box[5]+1)/2d),(box[3]-box[0]+1)/2d+1,6,(box[5]-box[2]+1)/2d+1,e->true).isEmpty())return bath;
         return null;
     }
