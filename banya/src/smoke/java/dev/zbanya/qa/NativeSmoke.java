@@ -46,7 +46,7 @@ public final class NativeSmoke extends JavaPlugin implements Listener {
                 world.setTime(14000);camera(-9,5,-11,0,2,0);target.teleport(bath.location(world,0,1,-1));next();return;
             }
             if(stage==2){if(age()==40)check("private_loop_enters_independently",p.listening(target.getUniqueId())&&!p.listening(outside.getUniqueId())&&!p.listening(observer.getUniqueId()));if(age()>=260){target.teleport(new Location(world,35.5,65,35.5));check("sound_stops_on_teleport",!p.listening(target.getUniqueId()));camera(0,1,-2,1,2,1);next();}return;}
-            if(stage==3&&age()>=70){camera(0,1,-2,1,2,2);next();return;}
+            if(stage==3&&age()>=280){camera(0,1,-2,1,2,2);next();return;}
             if(stage==4&&age()==80)camera(1,1,-1,-2,2,1);
             if(stage==4&&age()>=150){
                 camera(0,1,-2,0,2,-1);display=world.spawn(bath.location(world,0,2,-1),ItemDisplay.class,e->{e.setItemStack(p.food(bath.id,1));e.setBrightness(new Display.Brightness(15,15));e.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.FIXED);e.setPersistent(false);e.setTransformation(new org.bukkit.util.Transformation(new org.joml.Vector3f(),new org.joml.Quaternionf().rotateY(.4f),new org.joml.Vector3f(.8f),new org.joml.Quaternionf()));});next();return;
@@ -65,7 +65,7 @@ public final class NativeSmoke extends JavaPlugin implements Listener {
         }catch(Throwable error){getLogger().log(java.util.logging.Level.SEVERE,"BANYA_NATIVE_FAILED stage="+stage,error);finish("FAIL",error);}
     }
     boolean legacyUpgrade(){
-        if(legacyStage==0){legacy=p.all().stream().filter(b->b.layout==0).findFirst().orElseThrow();check("original_1_0_0_journal_loaded",legacy.bounds()[3]-legacy.bounds()[0]==12&&legacy.bounds()[5]-legacy.bounds()[2]==15);check("legacy_barrel_items_preserved",p.foodContainer(legacy).getInventory().getItem(3).getAmount()==7);p.remove(legacy,observer,false);legacyStage=1;return true;}
+        if(legacyStage==0){legacy=p.all().stream().filter(b->b.layout==0).findFirst().orElseThrow();check("original_1_0_0_journal_loaded",Math.min(legacy.bounds()[3]-legacy.bounds()[0],legacy.bounds()[5]-legacy.bounds()[2])==12&&Math.max(legacy.bounds()[3]-legacy.bounds()[0],legacy.bounds()[5]-legacy.bounds()[2])==15);check("legacy_barrel_items_preserved",p.foodContainer(legacy).getInventory().getItem(3).getAmount()==7);p.remove(legacy,observer,false);legacyStage=1;return true;}
         if(!p.idle())return true;
         if(legacyStage==1){check("legacy_removal_refuses_player_items",p.all().size()==1&&p.foodContainer(legacy).getInventory().getItem(3).getAmount()==7);p.foodContainer(legacy).getInventory().clear();p.remove(legacy,observer,false);legacyStage=2;return true;}
         check("legacy_bath_completely_removed",p.all().isEmpty());for(var c:legacy.cells)check("legacy_entire_terrain_restored",world.getBlockAt(c.x(),c.y(),c.z()).getBlockData().getAsString().equals(c.before()));upgraded=true;return false;
