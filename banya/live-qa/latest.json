@@ -1,5 +1,5 @@
 {
-  "status": "BLOCKED",
-  "source_commit": "425e25dab479e07a59badf39248d92f5a32f0e81",
-  "reason": "Build did not reach native test; inspect build.log"
+  "status": "FAIL",
+  "error": "HTTP Error 403: Forbidden",
+  "source_commit": "249de8ec249058a537f8df80b16106879ef12352"
 }
