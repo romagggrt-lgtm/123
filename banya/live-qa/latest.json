@@ -1,0 +1,5 @@
+{
+  "status": "BLOCKED",
+  "source_commit": "e06a598f4fd8e3c1effbfdf751126780a7da6ac8",
+  "reason": "Build did not reach native test; inspect build.log"
+}
