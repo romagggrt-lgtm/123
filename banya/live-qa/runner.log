@@ -1,25 +1,37 @@
-Traceback (most recent call last):
-  File "/home/runner/work/123/123/tools/banya_live_smoke.py", line 17, in <module>
-    meta=json.loads(urllib.request.urlopen('https://fill.papermc.io/v3/projects/paper/versions/1.21.11/builds/latest',timeout=30).read());record=meta['downloads']['server:default'];download(record['url'],WORK/'paper.jar');expected=record['checksums']['sha256'];assert hashlib.sha256((WORK/'paper.jar').read_bytes()).hexdigest()==expected
-                                                                                                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/123/123/tools/banya_live_smoke.py", line 14, in download
-    with urllib.request.urlopen(url,timeout=60) as r:path.write_bytes(r.read())
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/urllib/request.py", line 215, in urlopen
-    return opener.open(url, data, timeout)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/urllib/request.py", line 521, in open
-    response = meth(req, response)
-               ^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/urllib/request.py", line 630, in http_response
-    response = self.parent.error(
-               ^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/urllib/request.py", line 559, in error
-    return self._call_chain(*args)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/urllib/request.py", line 492, in _call_chain
-    result = func(*args)
-             ^^^^^^^^^^^
-  File "/usr/lib/python3.12/urllib/request.py", line 639, in http_error_default
-    raise HTTPError(req.full_url, code, msg, hdrs, fp)
-urllib.error.HTTPError: HTTP Error 403: Forbidden
+npm warn deprecated uuid@8.3.2: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
+npm warn deprecated uuid@10.0.0: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
+
+added 91 packages in 7s
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+127.0.0.1 - - [28/Oct/2026 07:51:04] "GET /Z_Server_Pack_1.09.zip HTTP/1.1" 200 -
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)
+capture: Expecting value: line 1 column 1 (char 0)

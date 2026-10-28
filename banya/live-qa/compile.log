@@ -1,0 +1,10 @@
+/home/runner/work/123/123/banya/src/smoke/java/dev/zbanya/qa/NativeSmoke.java:31: warning: [removal] DO_MOB_SPAWNING in GameRule has been deprecated and marked for removal
+                world.setGameRule(GameRule.DO_MOB_SPAWNING,false);world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE,false);world.setGameRule(GameRule.RANDOM_TICK_SPEED,0);world.setTime(6000);
+                                          ^
+/home/runner/work/123/123/banya/src/smoke/java/dev/zbanya/qa/NativeSmoke.java:31: warning: [removal] DO_DAYLIGHT_CYCLE in GameRule has been deprecated and marked for removal
+                world.setGameRule(GameRule.DO_MOB_SPAWNING,false);world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE,false);world.setGameRule(GameRule.RANDOM_TICK_SPEED,0);world.setTime(6000);
+                                                                                            ^
+/home/runner/work/123/123/banya/src/smoke/java/dev/zbanya/qa/NativeSmoke.java:31: warning: [removal] RANDOM_TICK_SPEED in GameRule has been deprecated and marked for removal
+                world.setGameRule(GameRule.DO_MOB_SPAWNING,false);world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE,false);world.setGameRule(GameRule.RANDOM_TICK_SPEED,0);world.setTime(6000);
+                                                                                                                                                ^
+3 warnings
