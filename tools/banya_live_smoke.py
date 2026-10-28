@@ -42,6 +42,11 @@ try:
     while time.monotonic()<deadline and server.poll() is None:
      if bots is None and 'Done (' in (REPORT/f'server-phase{boot}.log').read_text(errors='replace'):
       bots=subprocess.Popen(['node','bot.js'],cwd=npm,stdout=botlog,stderr=subprocess.STDOUT);client=launch(WORK/'client-phase1.wav' if boot==1 else None);capture=threading.Thread(target=capture_controller,args=(stop,),daemon=True);capture.start()
+     if boot==1 and not (WORK/'client-phase1-preserved.wav').exists() and (WORK/'banya-stage.json').exists():
+      try:
+       state=json.loads((WORK/'banya-stage.json').read_text())
+       if not state['restart'] and state['stage']>=6 and (WORK/'client-phase1.wav').exists():shutil.copyfile(WORK/'client-phase1.wav',WORK/'client-phase1-preserved.wav')
+      except json.JSONDecodeError:pass
      if (WORK/'banya-native.json').exists():break
      time.sleep(.5)
    finally:
@@ -66,7 +71,7 @@ try:
  assert not outside,'Ambient leaked to outside client';assert len(plays)>=2 and len(stops)>=2,'Private looping/stop packets missing'
  for packet in plays:
   body=json.loads(packet['body']);assert packet['packet']=='entity_sound_effect' and body['soundCategory']=='master' and body['entityId']==packet['self_entity'],'Sound must follow its private recipient on MASTER'
- audio=measure(WORK/'client-phase1.wav',ROOT/'banya/assets-src/ambient.ogg',REPORT)
+ audio=measure(WORK/'client-phase1-preserved.wav',ROOT/'banya/assets-src/ambient.ogg',REPORT)
  combined={'status':'PASS','client_audio':audio,'source_commit':os.environ.get('GITHUB_SHA'),'server_sha256':expected,'server_build':meta['id'],'phases':reports,'sound_packets':{'inside_plays':len(plays),'inside_stops':len(stops),'outside':len(outside)},'pack_sha1':hashlib.sha1(pack.read_bytes()).hexdigest(),'plugin_sha256':hashlib.sha256((REPORT/'tested-plugin.jar').read_bytes()).hexdigest(),'client':'Unmodified official Minecraft 1.21.11','client_rendered':'See PNG captures; manual review required'}
  (REPORT/'latest.json').write_text(json.dumps(combined,ensure_ascii=False,indent=2)+'\n')
 except Exception as error:
