@@ -20,7 +20,7 @@ def main():
   for name in z.namelist():
    if name.endswith('.class'):assert struct.unpack('>H',z.read(name)[6:8])[0]==65
    assert not name.startswith(('org/junit/','org/mockbukkit/','dev/zbanya/qa/'))
- shutil.copyfile(jar,DIST/'Z_Banya.jar');shutil.copyfile(jar,DIST/'Z_Banya_1.0.1.jar')
+ shutil.copyfile(jar,DIST/'Z_Banya.jar');shutil.copyfile(jar,DIST/'Z_Banya_1.0.2.jar')
  pack=DIST/'Z_Server_Pack_1.09.zip';packsha=hashlib.sha1(pack.read_bytes()).hexdigest();assert native['pack_sha1']==packsha
  properties=(PROJECT/'server.properties.txt').read_text();assert 'resource-pack-sha1='+packsha in properties
  source={}
@@ -32,15 +32,15 @@ def main():
  source['dist/Z_Server_Pack_1.08.zip']=(DIST/'Z_Server_Pack_1.08.zip').read_bytes()
  with ZipFile(DIST/'Z_Banya_ResourcePack.zip') as z:
   for name in z.namelist():source['resourcepack/'+name]=z.read(name)
- archive(DIST/'Z_Banya_1.0.1_sources.zip',source)
- for src,dst in [('README_RU.md','Z_Banya_1.0.1_README_RU.md'),('TESTING_RU.md','Z_Banya_1.0.1_TESTING_RU.md'),('server.properties.txt','Z_Banya-server.properties_1.0.1.txt')]:shutil.copyfile(PROJECT/src,DIST/dst)
- install={'plugins/Z_Banya.jar':jar.read_bytes(),'resourcepack/Z_Server_Pack_1.09.zip':pack.read_bytes(),'optional/Z_Banya_ResourcePack.zip':(DIST/'Z_Banya_ResourcePack.zip').read_bytes(),'source/Z_Banya_1.0.1_sources.zip':(DIST/'Z_Banya_1.0.1_sources.zip').read_bytes(),'README_RU.md':(PROJECT/'README_RU.md').read_bytes(),'TESTING_RU.md':(PROJECT/'TESTING_RU.md').read_bytes(),'server.properties.txt':(PROJECT/'server.properties.txt').read_bytes(),'config.example.yml':(PROJECT/'src/main/resources/config.yml').read_bytes()}
+ archive(DIST/'Z_Banya_1.0.2_sources.zip',source)
+ for src,dst in [('README_RU.md','Z_Banya_1.0.2_README_RU.md'),('TESTING_RU.md','Z_Banya_1.0.2_TESTING_RU.md'),('server.properties.txt','Z_Banya-server.properties_1.0.2.txt')]:shutil.copyfile(PROJECT/src,DIST/dst)
+ install={'plugins/Z_Banya.jar':jar.read_bytes(),'resourcepack/Z_Server_Pack_1.09.zip':pack.read_bytes(),'optional/Z_Banya_ResourcePack.zip':(DIST/'Z_Banya_ResourcePack.zip').read_bytes(),'source/Z_Banya_1.0.2_sources.zip':(DIST/'Z_Banya_1.0.2_sources.zip').read_bytes(),'README_RU.md':(PROJECT/'README_RU.md').read_bytes(),'TESTING_RU.md':(PROJECT/'TESTING_RU.md').read_bytes(),'server.properties.txt':(PROJECT/'server.properties.txt').read_bytes(),'config.example.yml':(PROJECT/'src/main/resources/config.yml').read_bytes()}
  for path in (PROJECT/'live-qa').iterdir():
   if path.is_file() and path.name not in ['tested-plugin.jar']:install['verification/'+path.name]=path.read_bytes()
- archive(DIST/'Z_Banya_1.0.1_install.zip',install)
- names=['Z_Banya.jar','Z_Banya_1.0.1.jar','Z_Server_Pack_1.09.zip','Z_Banya_ResourcePack.zip','Z_Banya_1.0.1_sources.zip','Z_Banya_1.0.1_install.zip']
+ archive(DIST/'Z_Banya_1.0.2_install.zip',install)
+ names=['Z_Banya.jar','Z_Banya_1.0.2.jar','Z_Server_Pack_1.09.zip','Z_Banya_ResourcePack.zip','Z_Banya_1.0.2_sources.zip','Z_Banya_1.0.2_install.zip']
  hashes={name:{'bytes':(DIST/name).stat().st_size,'sha256':hashlib.sha256((DIST/name).read_bytes()).hexdigest(),'sha1':hashlib.sha1((DIST/name).read_bytes()).hexdigest()} for name in names}
  for name,digest in hashes.items():(DIST/(name+'.sha256')).write_text(digest['sha256']+'\n')
- report={'plugin':'Z_Banya','version':'1.0.1','native':native,'food_name':'Вкусняшка Тома','unit_tests':23,'resource_pack_tests':5,'body_size':[7,7],'clearance_size':[9,9],'assets':json.loads((DIST/'Z_Server_Pack_1.09.report.json').read_text()),'files':hashes}
- (DIST/'Z_Banya_1.0.1.report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(json.dumps(hashes,indent=2))
+ report={'plugin':'Z_Banya','version':'1.0.2','native':native,'food_name':'Вкусняшка Тома','unit_tests':36,'resource_pack_tests':5,'body_size':[7,7],'clearance_size':[9,9],'assets':json.loads((DIST/'Z_Server_Pack_1.09.report.json').read_text()),'files':hashes}
+ (DIST/'Z_Banya_1.0.2.report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(json.dumps(hashes,indent=2))
 if __name__=='__main__':main()

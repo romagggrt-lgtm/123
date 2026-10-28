@@ -1,0 +1,206 @@
+{
+  "plugin": "Z_Banya",
+  "version": "1.0.2",
+  "native": {
+    "status": "PASS",
+    "client_audio": {
+      "capture": "Unmodified Minecraft 1.21.11 / OpenAL Wave File Writer",
+      "ambient_slider": 0.0,
+      "master_slider": 1.0,
+      "sample_rate_analysis": 8000,
+      "seconds": 40.100875,
+      "original_seconds": 10.057125,
+      "match_start_seconds": 15.081,
+      "normalised_correlation": 0.9998291310083857,
+      "matched_rms_dbfs": -15.254754013809528,
+      "matched_peak": 1.0484966039657593,
+      "status": "PASS"
+    },
+    "source_commit": "366aa5b21e1f55daac90d6d44f40fe2b792a6f2b",
+    "server_sha256": "5ffef465eeeb5f2a3c23a24419d97c51afd7dbb4923ff42df9a3f58bba1ccfba",
+    "server_build": 132,
+    "phases": [
+      {
+        "status": "UPGRADE",
+        "plugin_version": "1.0.0",
+        "legacy_cells": 1028
+      },
+      {
+        "status": "RESTART",
+        "checks": {
+          "real_plugin_enabled": "PASS",
+          "original_1_0_0_journal_loaded": "PASS",
+          "legacy_name_assigned": "PASS",
+          "legacy_barrel_items_preserved": "PASS",
+          "legacy_bath_completely_removed": "PASS",
+          "legacy_entire_terrain_restored": "PASS",
+          "legacy_items_recovered_once": "PASS",
+          "ordinary_player_cannot_create": "PASS",
+          "plugin_stays_enabled": "PASS",
+          "native_build_complete": "PASS",
+          "compact_single_room_7x7": "PASS",
+          "master_channel_with_legacy_config": "PASS",
+          "three_persistent_bucket_frames": "PASS",
+          "exactly_one_native_food": "PASS",
+          "native_food_always_edible": "PASS",
+          "all_native_block_states_placed": "PASS",
+          "all_lanterns_have_native_support": "PASS",
+          "private_loop_enters_independently": "PASS",
+          "sound_stops_on_teleport": "PASS",
+          "native_food_consumed_once": "PASS",
+          "six_extra_hearts": "PASS",
+          "effect_minecraft:fire_resistance": "PASS",
+          "effect_minecraft:regeneration": "PASS",
+          "effect_minecraft:absorption": "PASS",
+          "effect_minecraft:nausea": "PASS",
+          "effect_minecraft:resistance": "PASS",
+          "no_vanilla_apple_stacking": "PASS",
+          "ordinary_player_can_really_break_bath_wall": "PASS",
+          "same_creator_has_two_named_baths": "PASS",
+          "broken_decor_not_recreated": "PASS",
+          "new_bath_has_three_frames": "PASS"
+        },
+        "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
+        "source_commit": "366aa5b21e1f55daac90d6d44f40fe2b792a6f2b",
+        "restarted": false
+      },
+      {
+        "status": "RESTART",
+        "checks": {
+          "real_plugin_enabled": "PASS",
+          "two_named_baths_loaded_after_restart": "PASS",
+          "food_not_respawned_after_restart": "PASS",
+          "manually_broken_frame_does_not_respawn": "PASS",
+          "other_bath_frames_untouched": "PASS",
+          "plugin_stays_enabled": "PASS",
+          "legacy_loot_survives_restart": "PASS",
+          "native_double_chest_connected": "PASS",
+          "named_removal_works_from_far_away": "PASS",
+          "all_changed_and_added_blocks_restored": "PASS",
+          "double_chest_items_not_duplicated": "PASS",
+          "custom_item_metadata_preserved": "PASS",
+          "recovered_items_do_not_despawn_or_burn": "PASS",
+          "second_bath_not_changed_by_first_removal": "PASS",
+          "other_bath_keeps_its_frames": "PASS",
+          "adjacent_player_chest_preserved": "PASS",
+          "both_named_baths_removed": "PASS",
+          "second_bath_terrain_restored": "PASS",
+          "decorative_entities_cleaned": "PASS",
+          "no_orphan_sound_sessions": "PASS"
+        },
+        "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
+        "source_commit": "366aa5b21e1f55daac90d6d44f40fe2b792a6f2b",
+        "restarted": true
+      },
+      {
+        "status": "PASS",
+        "checks": {
+          "real_plugin_enabled": "PASS",
+          "no_deleted_baths_return_after_restart": "PASS",
+          "no_recovered_item_duplication_after_restart": "PASS",
+          "recovery_flags_persist_after_restart": "PASS",
+          "restored_blocks_persist_after_restart": "PASS",
+          "no_decor_respawns_after_deletion": "PASS"
+        },
+        "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
+        "source_commit": "366aa5b21e1f55daac90d6d44f40fe2b792a6f2b",
+        "restarted": true
+      }
+    ],
+    "sound_packets": {
+      "inside_plays": 5,
+      "inside_stops": 8,
+      "outside": 0
+    },
+    "pack_sha1": "814ea2b1cef8a7776affcd8ef3ce155600276162",
+    "plugin_sha256": "5e383240b999986ea6c042ddd5f1d9a0287466ef45d9fbff5cf3689011fd290d",
+    "client": "Unmodified official Minecraft 1.21.11",
+    "client_rendered": "See PNG captures; manual review required"
+  },
+  "food_name": "Вкусняшка Тома",
+  "unit_tests": 36,
+  "resource_pack_tests": 5,
+  "body_size": [
+    7,
+    7
+  ],
+  "clearance_size": [
+    9,
+    9
+  ],
+  "assets": {
+    "base": "Z_Server_Pack_1.08.zip",
+    "base_sha256": "6a4c66a47c64707a732d549cfdbc53624d7cc3a7f86e6c347e86abfa96c8cfe3",
+    "old_files_preserved": 1829,
+    "new_files": 12,
+    "sha1": "814ea2b1cef8a7776affcd8ef3ce155600276162",
+    "sound_seconds": 10.057143,
+    "source_mp3_sha256": "354eea747f1d23ebbde3406559630cfcabd9bac88b417c59ef88e3696524b560",
+    "source_loudness": {
+      "input_i": "-18.28",
+      "input_tp": "-6.36",
+      "input_lra": "6.20",
+      "input_thresh": "-28.74",
+      "output_i": "-12.96",
+      "output_tp": "-1.00",
+      "output_lra": "3.30",
+      "output_thresh": "-23.57",
+      "normalization_type": "dynamic",
+      "target_offset": "-1.04"
+    },
+    "ogg_loudness": {
+      "input_i": "-14.04",
+      "input_tp": "-1.90",
+      "input_lra": "6.30",
+      "input_thresh": "-24.50",
+      "output_i": "-12.97",
+      "output_tp": "-1.00",
+      "output_lra": "3.40",
+      "output_thresh": "-23.58",
+      "normalization_type": "dynamic",
+      "target_offset": "-1.03"
+    },
+    "normalisation": "two-pass EBU R128 -14 LUFS / -1 dBTP",
+    "geometry_elements_per_frame": 138,
+    "fly_frames": 8,
+    "validated": {
+      "json": 936,
+      "models": 880,
+      "textures": 885,
+      "sounds": 13,
+      "items": 42
+    }
+  },
+  "files": {
+    "Z_Banya.jar": {
+      "bytes": 58918,
+      "sha256": "5e383240b999986ea6c042ddd5f1d9a0287466ef45d9fbff5cf3689011fd290d",
+      "sha1": "8e828e5b0010783d9de4ef9fe670fa11e1e3c006"
+    },
+    "Z_Banya_1.0.2.jar": {
+      "bytes": 58918,
+      "sha256": "5e383240b999986ea6c042ddd5f1d9a0287466ef45d9fbff5cf3689011fd290d",
+      "sha1": "8e828e5b0010783d9de4ef9fe670fa11e1e3c006"
+    },
+    "Z_Server_Pack_1.09.zip": {
+      "bytes": 3848503,
+      "sha256": "0e424cf0dd2a992180203576ee407f492ffca9fc6129545cef1d0c181406772c",
+      "sha1": "814ea2b1cef8a7776affcd8ef3ce155600276162"
+    },
+    "Z_Banya_ResourcePack.zip": {
+      "bytes": 141736,
+      "sha256": "94198e344262b771cf8e94d991cd505b791174bb602c13d8b857e191064c4a36",
+      "sha1": "187aa035e33f5f709c45258de1794ddf5fd8503c"
+    },
+    "Z_Banya_1.0.2_sources.zip": {
+      "bytes": 3753992,
+      "sha256": "3d69186cb7c8fcc52c6928a1fe1a4f3ab6ccb1e1d17183210c9209de408c0619",
+      "sha1": "a3b45ed9e219037f2685b554a8175885139c86a3"
+    },
+    "Z_Banya_1.0.2_install.zip": {
+      "bytes": 9767312,
+      "sha256": "2673e4aecfd6a795d0847678bf6e761692bb04a6a602a894a83435c7f71678fe",
+      "sha1": "653a72f21f59ce68064ed5df9e94cb5a2d75a8a5"
+    }
+  }
+}
