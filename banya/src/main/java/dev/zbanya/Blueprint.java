@@ -36,12 +36,13 @@ public final class Blueprint {
         for(int x=-1;x<=0;x++){put(map,x,1,2,"spruce_planks");put(map,x,2,2,"spruce_slab[type=bottom]");}
         put(map,0,1,1,"spruce_stairs[facing=south]");
         for(int x=1;x<=2;x++)for(int z=1;z<=2;z++)put(map,x,1,z,"stone_bricks");
-        put(map,1,1,1,"blast_furnace[facing=north]");put(map,1,2,2,"magma_block");put(map,2,2,2,"cobbled_deepslate_slab[type=bottom]");
+        put(map,1,1,1,"blast_furnace[facing=north]");put(map,1,2,2,"magma_block");put(map,2,2,2,"chiseled_stone_bricks");
         put(map,2,1,0,"water_cauldron[level=3]");
         for(int y=3;y<=5;y++)put(map,2,y,2,"brick_wall");
         put(map,2,6,2,"bricks");put(map,2,7,2,"campfire[lit=true,signal_fire=false]");
         // The rare food stays in a small barrel by the entrance.
         put(map,2,1,-2,"barrel[facing=up]");
+        put(map,0,4,0,"spruce_planks");put(map,2,4,-2,"spruce_planks");
         put(map,0,3,0,"lantern[hanging=true]");put(map,2,3,-2,"lantern[hanging=true]");
         put(map,0,0,0,"dark_prismarine");put(map,1,0,0,"dark_prismarine");
         return Collections.unmodifiableMap(map);

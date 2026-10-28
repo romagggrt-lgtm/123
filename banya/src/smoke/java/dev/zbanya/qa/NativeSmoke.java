@@ -42,7 +42,7 @@ public final class NativeSmoke extends JavaPlugin implements Listener {
                 if(!p.idle())return;bath=p.all().stream().findFirst().orElseThrow();check("native_build_complete",bath.phase.equals("ACTIVE"));check("compact_single_room_7x7",bath.layout==1&&bath.bounds()[3]-bath.bounds()[0]==8&&bath.bounds()[5]-bath.bounds()[2]==8);check("master_channel_with_legacy_config",p.getConfig().getString("sound.category","MASTER").equals("MASTER"));check("three_persistent_bucket_frames",frames()==3);
                 check("exactly_one_native_food",p.foodContainer(bath).getInventory().getItem(0).getAmount()==1&&p.isFood(p.foodContainer(bath).getInventory().getItem(0)));
                 check("native_food_always_edible",p.foodContainer(bath).getInventory().getItem(0).getItemMeta().getFood().canAlwaysEat());
-                for(var c:bath.cells)check("all_native_block_states_placed",world.getBlockAt(c.x(),c.y(),c.z()).getBlockData().getAsString().equals(c.after()));
+                for(var c:bath.cells){var block=world.getBlockAt(c.x(),c.y(),c.z());check("all_native_block_states_placed",block.getBlockData().getAsString().equals(c.after()));if(block.getType()==Material.LANTERN)check("all_lanterns_have_native_support",block.getBlockData().isSupported(block));}
                 world.setTime(14000);camera(-9,5,-11,0,2,0);target.teleport(bath.location(world,0,1,-1));next();return;
             }
             if(stage==2){if(age()==40)check("private_loop_enters_independently",p.listening(target.getUniqueId())&&!p.listening(outside.getUniqueId())&&!p.listening(observer.getUniqueId()));if(age()>=260){target.teleport(new Location(world,35.5,65,35.5));check("sound_stops_on_teleport",!p.listening(target.getUniqueId()));camera(0,1,-2,1,2,1);next();}return;}
