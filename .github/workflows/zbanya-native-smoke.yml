@@ -34,7 +34,14 @@ jobs:
           set -o pipefail
           {
             command -v Xvfb
-            command -v ffmpeg
+            if ! command -v ffmpeg >/dev/null; then
+              mkdir -p "$RUNNER_TEMP/zbanya-ffmpeg"
+              curl --fail --location --retry 2 --max-time 180 https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz -o "$RUNNER_TEMP/zbanya-ffmpeg.tar.xz"
+              tar -xJf "$RUNNER_TEMP/zbanya-ffmpeg.tar.xz" --strip-components=1 -C "$RUNNER_TEMP/zbanya-ffmpeg"
+              export PATH="$RUNNER_TEMP/zbanya-ffmpeg:$PATH"
+            fi
+            ffmpeg -version | head -n 1
+            ffprobe -version | head -n 1
             python3 -m pip install --break-system-packages --retries 1 --timeout 20 Pillow python-xlib nbtlib
             python3 tools/build_banya_pack.py
             python3 tools/test_banya_pack.py
