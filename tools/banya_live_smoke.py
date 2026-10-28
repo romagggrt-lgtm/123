@@ -5,24 +5,26 @@ from zipfile import ZipFile
 from functools import partial
 from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
 import hashlib,json,os,subprocess,shutil,time,threading,urllib.request
+import xml.etree.ElementTree as ET
 from banya_vanilla_client import prepare,launch,capture_controller
 from banya_audio_check import measure
 ROOT=Path(__file__).resolve().parents[1];WORK=ROOT/'banya/target/native-server';REPORT=ROOT/'banya/live-qa'
+VERSION=ET.parse(ROOT/'banya/pom.xml').getroot().findtext('{http://maven.apache.org/POM/4.0.0}version');PLUGIN=ROOT/f'banya/target/Z_Banya-{VERSION}.jar'
 WORK.mkdir(parents=True,exist_ok=True);REPORT.mkdir(parents=True,exist_ok=True)
 for path in REPORT.iterdir():
  if path.is_file() and path.name not in {'build.log','prepare.log','runner.log'}:path.unlink()
 def download(url,path):
  with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'ZBanya-CI/1.0.0'}),timeout=60) as r:path.write_bytes(r.read())
 try:
- shutil.copyfile(ROOT/'banya/target/Z_Banya.jar',REPORT/'tested-plugin.jar')
+ shutil.copyfile(PLUGIN,REPORT/'tested-plugin.jar')
  prepare()
  meta=json.loads(urllib.request.urlopen('https://fill.papermc.io/v3/projects/paper/versions/1.21.11/builds/latest',timeout=30).read());record=meta['downloads']['server:default'];download(record['url'],WORK/'paper.jar');expected=record['checksums']['sha256'];assert hashlib.sha256((WORK/'paper.jar').read_bytes()).hexdigest()==expected
- jars=[ROOT/'banya/target/Z_Banya.jar']+list((Path.home()/'.m2/repository/io/papermc/paper/paper-api/1.21.11-R0.1-SNAPSHOT').glob('*.jar'))+[p for p in (Path.home()/'.m2/repository').rglob('*.jar') if 'paper-api' not in p.parts]
+ jars=[PLUGIN]+list((Path.home()/'.m2/repository/io/papermc/paper/paper-api/1.21.11-R0.1-SNAPSHOT').glob('*.jar'))+[p for p in (Path.home()/'.m2/repository').rglob('*.jar') if 'paper-api' not in p.parts]
  classes=WORK/'qa-classes';classes.mkdir(exist_ok=True)
  with (REPORT/'compile.log').open('w') as log:
   r=subprocess.run(['javac','-proc:none','--release','21','-cp',os.pathsep.join(map(str,jars)),'-d',str(classes),*[str(p) for p in (ROOT/'banya/src/smoke/java/dev/zbanya/qa').glob('*.java')]],stdout=log,stderr=subprocess.STDOUT)
  assert r.returncode==0,'Native QA compilation failed: compile.log'
- plugins=WORK/'plugins';plugins.mkdir(exist_ok=True);shutil.copyfile(ROOT/'banya/target/Z_Banya.jar',plugins/'Z_Banya.jar')
+ plugins=WORK/'plugins';plugins.mkdir(exist_ok=True)
  (WORK/'eula.txt').write_text('eula=true\n')
  pack=ROOT/'dist/Z_Server_Pack_1.09.zip'
  (WORK/'server.properties').write_text('server-ip=127.0.0.1\nserver-port=25585\nonline-mode=false\nview-distance=6\nsimulation-distance=4\nspawn-protection=0\nmax-players=3\nlevel-type=minecraft:flat\ngenerator-settings={"layers":[{"block":"minecraft:bedrock","height":1},{"block":"minecraft:dirt","height":127},{"block":"minecraft:grass_block","height":1}],"biome":"minecraft:plains"}\ngenerate-structures=false\nresource-pack=http://127.0.0.1:25586/'+pack.name+'\nresource-pack-sha1='+hashlib.sha1(pack.read_bytes()).hexdigest()+'\nrequire-resource-pack=true\n')
@@ -30,7 +32,9 @@ try:
  npm=ROOT/'banya/target/bots';npm.mkdir(exist_ok=True);shutil.copyfile(ROOT/'tools/banya_live_bot.js',npm/'bot.js');subprocess.run(['npm','install','--prefix',str(npm),'--no-audit','--no-fund','mineflayer@4.39.0'],check=True)
  reports=[]
  for boot in [0,1,2,3]:
-  shutil.copyfile(ROOT/('dist/Z_Banya_1.0.0.jar' if boot==0 else 'banya/target/Z_Banya.jar'),plugins/'Z_Banya.jar')
+  for path in plugins.glob('Z_Banya*.jar'):path.unlink()
+  source=ROOT/'dist/Z_Banya_1.0.0.jar' if boot==0 else PLUGIN
+  shutil.copyfile(source,plugins/source.name)
   with ZipFile(plugins/'Z_Banya_QA.jar','w') as z:
    for path in classes.rglob('*.class'):z.write(path,str(path.relative_to(classes)))
    main='LegacySeed' if boot==0 else 'NativeSmoke'

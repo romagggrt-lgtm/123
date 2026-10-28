@@ -3,24 +3,30 @@
 from pathlib import Path
 from zipfile import ZipFile,ZipInfo,ZIP_DEFLATED
 import hashlib,json,shutil,struct,subprocess
+import xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1];DIST=ROOT/'dist';PROJECT=ROOT/'banya'
 def archive(path,data):
  with ZipFile(path,'w',ZIP_DEFLATED) as z:
   for name,body in sorted(data.items()):
    entry=ZipInfo(name,(2026,1,1,0,0,0));entry.compress_type=ZIP_DEFLATED;z.writestr(entry,body)
 def main():
+ pom=(PROJECT/'pom.xml').read_text();version=ET.fromstring(pom).findtext('{http://maven.apache.org/POM/4.0.0}version');jar_name=f'Z_Banya-{version}.jar'
  native=json.loads((PROJECT/'live-qa/latest.json').read_text());assert native['status']=='PASS','Native acceptance must pass first'
  if native.get('source_commit'):
-  checked=subprocess.run(['git','diff','--quiet',native['source_commit'],'--','banya/src/main','banya/pom.xml'],cwd=ROOT)
+  checked=subprocess.run(['git','diff','--quiet',native['source_commit'],'--','banya/src/main'],cwd=ROOT)
   assert checked.returncode==0,'Production sources changed after native acceptance'
+  accepted_pom=subprocess.check_output(['git','show',native['source_commit']+':banya/pom.xml'],cwd=ROOT,text=True)
+  assert pom in (accepted_pom,accepted_pom.replace('<finalName>Z_Banya</finalName>','<finalName>${project.artifactId}-${project.version}</finalName>')),'Build settings changed after native acceptance'
  jar=PROJECT/'live-qa/tested-plugin.jar';assert jar.is_file(),'Use the exact native-tested JAR'
  assert hashlib.sha256(jar.read_bytes()).hexdigest()==native['plugin_sha256']
  with ZipFile(jar) as z:
   assert z.testzip() is None;assert 'plugin.yml' in z.namelist()
+  plugin_version=next(line.split(':',1)[1].strip().strip("'\"") for line in z.read('plugin.yml').decode().splitlines() if line.startswith('version:'))
+  assert plugin_version==version,'Filename version must match plugin.yml'
   for name in z.namelist():
    if name.endswith('.class'):assert struct.unpack('>H',z.read(name)[6:8])[0]==65
    assert not name.startswith(('org/junit/','org/mockbukkit/','dev/zbanya/qa/'))
- shutil.copyfile(jar,DIST/'Z_Banya.jar');shutil.copyfile(jar,DIST/'Z_Banya_1.0.2.jar')
+ shutil.copyfile(jar,DIST/jar_name)
  pack=DIST/'Z_Server_Pack_1.09.zip';packsha=hashlib.sha1(pack.read_bytes()).hexdigest();assert native['pack_sha1']==packsha
  properties=(PROJECT/'server.properties.txt').read_text();assert 'resource-pack-sha1='+packsha in properties
  source={}
@@ -34,11 +40,11 @@ def main():
   for name in z.namelist():source['resourcepack/'+name]=z.read(name)
  archive(DIST/'Z_Banya_1.0.2_sources.zip',source)
  for src,dst in [('README_RU.md','Z_Banya_1.0.2_README_RU.md'),('TESTING_RU.md','Z_Banya_1.0.2_TESTING_RU.md'),('server.properties.txt','Z_Banya-server.properties_1.0.2.txt')]:shutil.copyfile(PROJECT/src,DIST/dst)
- install={'plugins/Z_Banya.jar':jar.read_bytes(),'resourcepack/Z_Server_Pack_1.09.zip':pack.read_bytes(),'optional/Z_Banya_ResourcePack.zip':(DIST/'Z_Banya_ResourcePack.zip').read_bytes(),'source/Z_Banya_1.0.2_sources.zip':(DIST/'Z_Banya_1.0.2_sources.zip').read_bytes(),'README_RU.md':(PROJECT/'README_RU.md').read_bytes(),'TESTING_RU.md':(PROJECT/'TESTING_RU.md').read_bytes(),'server.properties.txt':(PROJECT/'server.properties.txt').read_bytes(),'config.example.yml':(PROJECT/'src/main/resources/config.yml').read_bytes()}
+ install={'plugins/'+jar_name:jar.read_bytes(),'resourcepack/Z_Server_Pack_1.09.zip':pack.read_bytes(),'optional/Z_Banya_ResourcePack.zip':(DIST/'Z_Banya_ResourcePack.zip').read_bytes(),'source/Z_Banya_1.0.2_sources.zip':(DIST/'Z_Banya_1.0.2_sources.zip').read_bytes(),'README_RU.md':(PROJECT/'README_RU.md').read_bytes(),'TESTING_RU.md':(PROJECT/'TESTING_RU.md').read_bytes(),'server.properties.txt':(PROJECT/'server.properties.txt').read_bytes(),'config.example.yml':(PROJECT/'src/main/resources/config.yml').read_bytes()}
  for path in (PROJECT/'live-qa').iterdir():
   if path.is_file() and path.name not in ['tested-plugin.jar']:install['verification/'+path.name]=path.read_bytes()
  archive(DIST/'Z_Banya_1.0.2_install.zip',install)
- names=['Z_Banya.jar','Z_Banya_1.0.2.jar','Z_Server_Pack_1.09.zip','Z_Banya_ResourcePack.zip','Z_Banya_1.0.2_sources.zip','Z_Banya_1.0.2_install.zip']
+ names=[jar_name,'Z_Server_Pack_1.09.zip','Z_Banya_ResourcePack.zip','Z_Banya_1.0.2_sources.zip','Z_Banya_1.0.2_install.zip']
  hashes={name:{'bytes':(DIST/name).stat().st_size,'sha256':hashlib.sha256((DIST/name).read_bytes()).hexdigest(),'sha1':hashlib.sha1((DIST/name).read_bytes()).hexdigest()} for name in names}
  for name,digest in hashes.items():(DIST/(name+'.sha256')).write_text(digest['sha256']+'\n')
  report={'plugin':'Z_Banya','version':'1.0.2','native':native,'food_name':'Вкусняшка Тома','unit_tests':36,'resource_pack_tests':5,'body_size':[7,7],'clearance_size':[9,9],'assets':json.loads((DIST/'Z_Server_Pack_1.09.report.json').read_text()),'files':hashes}

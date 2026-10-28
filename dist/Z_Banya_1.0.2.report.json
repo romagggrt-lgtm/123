@@ -172,12 +172,7 @@
     }
   },
   "files": {
-    "Z_Banya.jar": {
-      "bytes": 58918,
-      "sha256": "5e383240b999986ea6c042ddd5f1d9a0287466ef45d9fbff5cf3689011fd290d",
-      "sha1": "8e828e5b0010783d9de4ef9fe670fa11e1e3c006"
-    },
-    "Z_Banya_1.0.2.jar": {
+    "Z_Banya-1.0.2.jar": {
       "bytes": 58918,
       "sha256": "5e383240b999986ea6c042ddd5f1d9a0287466ef45d9fbff5cf3689011fd290d",
       "sha1": "8e828e5b0010783d9de4ef9fe670fa11e1e3c006"
@@ -193,14 +188,14 @@
       "sha1": "187aa035e33f5f709c45258de1794ddf5fd8503c"
     },
     "Z_Banya_1.0.2_sources.zip": {
-      "bytes": 3753992,
-      "sha256": "3d69186cb7c8fcc52c6928a1fe1a4f3ab6ccb1e1d17183210c9209de408c0619",
-      "sha1": "a3b45ed9e219037f2685b554a8175885139c86a3"
+      "bytes": 3754488,
+      "sha256": "9e9156f877ca358e014485a84aedfcd458f01b692d7cd0a4db2257ec45ae825f",
+      "sha1": "4d90553a0000f7e9fa5f1172dade403e9a5c3d34"
     },
     "Z_Banya_1.0.2_install.zip": {
-      "bytes": 9767312,
-      "sha256": "2673e4aecfd6a795d0847678bf6e761692bb04a6a602a894a83435c7f71678fe",
-      "sha1": "653a72f21f59ce68064ed5df9e94cb5a2d75a8a5"
+      "bytes": 9767893,
+      "sha256": "638560804875154bc1ee8f0509df34838b1afa2e8fdf3ccd8a407a0ebdfd7ab2",
+      "sha1": "4623345070ac15ffca3366316ab1db05d3ef290d"
     }
   }
 }

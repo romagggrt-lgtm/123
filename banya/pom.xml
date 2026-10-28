@@ -7,7 +7,7 @@
     <dependency><groupId>org.mockbukkit.mockbukkit</groupId><artifactId>mockbukkit-v1.21</artifactId><version>4.110.0</version><scope>test</scope></dependency>
     <dependency><groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter</artifactId><version>6.0.3</version><scope>test</scope></dependency>
   </dependencies>
-  <build><finalName>Z_Banya</finalName><plugins>
+  <build><finalName>${project.artifactId}-${project.version}</finalName><plugins>
     <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><version>3.14.1</version><configuration><proc>none</proc></configuration></plugin>
     <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-surefire-plugin</artifactId><version>3.5.4</version></plugin>
   </plugins></build>
