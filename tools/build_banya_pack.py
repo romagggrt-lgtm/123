@@ -40,7 +40,7 @@ def main():
  # Voxel tube following a tapering helix, with a broad rounded base and curled tip.
  for layer in range(2):
   for z in range(-5,6):
-   half=math.sqrt(max(0,25-z*z));body.append(cube([8-half,1+layer,8+z-.5],[8+half,2+layer,8+z+.5],[0,0,6,6]))
+   half=max(.5,math.sqrt(max(0,25-z*z)));body.append(cube([8-half,1+layer,8+z-.5],[8+half,2+layer,8+z+.5],[0,0,6,6]))
  for i in range(104):
   t=i/103;angle=t*math.pi*5.3;radius=4.6*(1-t);cx=8+math.cos(angle)*radius;cz=8+math.sin(angle)*radius;cy=2.2+t*10.4;size=2.8-1.2*t
   uv=[6+(i%4),1+(i%3),10+(i%4),5+(i%3)] if i%4 else [0,0,4,4]

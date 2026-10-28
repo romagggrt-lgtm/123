@@ -2,7 +2,7 @@ name: Z_Banya Paper and vanilla acceptance
 on:
   push:
     branches: ['feature/z-banya-1.0.0']
-    paths: ['banya/src/**', 'banya/pom.xml', 'tools/banya_*', 'tools/build_banya_pack.py', '.github/workflows/zbanya-native-smoke.yml']
+    paths: ['banya/src/**', 'banya/pom.xml', 'tools/banya_*', 'tools/build_banya_pack.py', 'tools/test_banya_pack.py', '.github/workflows/zbanya-native-smoke.yml']
   workflow_dispatch:
 permissions:
   contents: write
@@ -31,14 +31,21 @@ jobs:
           mvn -B -f banya/pom.xml verify 2>&1 | tee banya/live-qa/build.log
       - name: Prepare vanilla graphics and resource pack
         run: |
-          command -v Xvfb
-          python3 -m pip install --break-system-packages --retries 1 --timeout 20 Pillow python-xlib nbtlib
-          python3 tools/build_banya_pack.py
+          set -o pipefail
+          {
+            command -v Xvfb
+            command -v ffmpeg
+            python3 -m pip install --break-system-packages --retries 1 --timeout 20 Pillow python-xlib nbtlib
+            python3 tools/build_banya_pack.py
+            python3 tools/test_banya_pack.py
+          } 2>&1 | tee banya/live-qa/prepare.log
       - name: Paper gameplay, private sound and full server restart
         env:
           LIBGL_ALWAYS_SOFTWARE: '1'
           ALSOFT_DRIVERS: 'null'
-        run: xvfb-run -a -s '-screen 0 1280x720x24' python3 tools/banya_live_smoke.py
+        run: |
+          set -o pipefail
+          xvfb-run -a -s '-screen 0 1280x720x24' python3 tools/banya_live_smoke.py 2>&1 | tee banya/live-qa/runner.log
       - name: Preserve blocked execution
         if: always()
         run: |
