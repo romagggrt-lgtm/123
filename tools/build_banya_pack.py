@@ -59,7 +59,7 @@ def main(reencode=False):
     elements.append(cube([cx+sign*.8-.8,cy+.2,cz-.45],[cx+sign*.8+.8,cy+.2+lift,cz+.45],[8,12,12,16]))
   name=f'vkusnyashka_{frame}';model={'ambientocclusion':False,'gui_light':'front','textures':{'skin':'zbanya:item/vkusnyashka','particle':'zbanya:item/vkusnyashka'},'elements':elements,'display':transforms}
   assets[f'assets/zbanya/models/item/{name}.json']=encoded(model);frames.append({'threshold':frame,'model':{'type':'minecraft:model','model':'zbanya:item/'+name}})
- assets['assets/zbanya/items/vkusnyashka.json']=encoded({'model':{'type':'minecraft:range_dispatch','property':'minecraft:custom_model_data','index':0,'fallback':frames[0]['model'],'entries':frames}})
+ assets['assets/zbanya/items/vkusnyashka.json']=encoded({'hand_animation_on_swap':False,'model':{'type':'minecraft:range_dispatch','property':'minecraft:custom_model_data','index':0,'fallback':frames[0]['model'],'entries':frames}})
  with ZipFile(BASE) as z:base={n:z.read(n) for n in z.namelist()}
  assert not any(n in base for n in assets)
  merged={**base,**assets};meta=json.loads(base['pack.mcmeta']);meta['pack']['description']='Z_Server_Pack 1.09 | Shahed + Verity + Golda + Pantera + Z_Lor + Z_Banya | 1.21.11';merged['pack.mcmeta']=encoded(meta)

@@ -26,7 +26,7 @@ class BanyaPackTest(unittest.TestCase):
   self.assertEqual(8,len({json.dumps(v,sort_keys=True) for v in variants}))
  def test_texture_sound_and_item_dispatch_are_namespaced_and_resolvable(self):
   im=Image.open(io.BytesIO(self.pack['assets/zbanya/textures/item/vkusnyashka.png']));self.assertEqual((64,64),im.size);self.assertEqual('RGBA',im.mode)
-  definition=json.loads(self.pack['assets/zbanya/items/vkusnyashka.json'])['model'];self.assertEqual('minecraft:range_dispatch',definition['type']);self.assertEqual(list(range(8)),[e['threshold'] for e in definition['entries']])
+  item=json.loads(self.pack['assets/zbanya/items/vkusnyashka.json']);self.assertFalse(item['hand_animation_on_swap']);definition=item['model'];self.assertEqual('minecraft:range_dispatch',definition['type']);self.assertEqual(list(range(8)),[e['threshold'] for e in definition['entries']])
   for e in definition['entries']:
    ns,path=e['model']['model'].split(':');self.assertIn(f'assets/{ns}/models/{path}.json',self.pack)
   sound=json.loads(self.pack['assets/zbanya/sounds.json'])['ambient']['sounds'][0];self.assertTrue(sound['stream']);self.assertEqual(16,sound['attenuation_distance']);self.assertEqual('zbanya:ambient',sound['name'])

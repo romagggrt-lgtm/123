@@ -13,6 +13,7 @@ for path in REPORT.iterdir():
 def download(url,path):
  with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'ZBanya-CI/1.0.0'}),timeout=60) as r:path.write_bytes(r.read())
 try:
+ shutil.copyfile(ROOT/'banya/target/Z_Banya.jar',REPORT/'tested-plugin.jar')
  prepare()
  meta=json.loads(urllib.request.urlopen('https://fill.papermc.io/v3/projects/paper/versions/1.21.11/builds/latest',timeout=30).read());record=meta['downloads']['server:default'];download(record['url'],WORK/'paper.jar');expected=record['checksums']['sha256'];assert hashlib.sha256((WORK/'paper.jar').read_bytes()).hexdigest()==expected
  jars=[ROOT/'banya/target/Z_Banya.jar']+list((Path.home()/'.m2/repository/io/papermc/paper/paper-api/1.21.11-R0.1-SNAPSHOT').glob('*.jar'))+[p for p in (Path.home()/'.m2/repository').rglob('*.jar') if 'paper-api' not in p.parts]
@@ -58,7 +59,7 @@ try:
   shutil.copyfile(npm/'sound-packets.jsonl',REPORT/'sound-packets.jsonl');packets=[json.loads(line) for line in (REPORT/'sound-packets.jsonl').read_text().splitlines()]
  outside=[p for p in packets if p['username']=='BanyaOutside'];inside=[p for p in packets if p['username']=='BanyaTester'];plays=[p for p in inside if 'stop' not in p['packet']];stops=[p for p in inside if 'stop' in p['packet']]
  assert not outside,'Ambient leaked to outside client';assert len(plays)>=2 and len(stops)>=2,'Private looping/stop packets missing'
- combined={'status':'PASS','source_commit':os.environ.get('GITHUB_SHA'),'server_sha256':expected,'server_build':meta['id'],'phases':reports,'sound_packets':{'inside_plays':len(plays),'inside_stops':len(stops),'outside':len(outside)},'pack_sha1':hashlib.sha1(pack.read_bytes()).hexdigest(),'client':'Unmodified official Minecraft 1.21.11','client_rendered':'See PNG captures; manual review required'}
+ combined={'status':'PASS','source_commit':os.environ.get('GITHUB_SHA'),'server_sha256':expected,'server_build':meta['id'],'phases':reports,'sound_packets':{'inside_plays':len(plays),'inside_stops':len(stops),'outside':len(outside)},'pack_sha1':hashlib.sha1(pack.read_bytes()).hexdigest(),'plugin_sha256':hashlib.sha256((REPORT/'tested-plugin.jar').read_bytes()).hexdigest(),'client':'Unmodified official Minecraft 1.21.11','client_rendered':'See PNG captures; manual review required'}
  (REPORT/'latest.json').write_text(json.dumps(combined,ensure_ascii=False,indent=2)+'\n')
 except Exception as error:
  (REPORT/'latest.json').write_text(json.dumps({'status':'FAIL','error':str(error),'source_commit':os.environ.get('GITHUB_SHA')},indent=2)+'\n');raise
