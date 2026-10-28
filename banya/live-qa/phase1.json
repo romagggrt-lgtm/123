@@ -16,18 +16,19 @@
     "exactly_one_native_food": "PASS",
     "native_food_always_edible": "PASS",
     "all_native_block_states_placed": "PASS",
+    "all_lanterns_have_native_support": "PASS",
     "private_loop_enters_independently": "PASS",
     "sound_stops_on_teleport": "PASS",
     "native_food_consumed_once": "PASS",
     "six_extra_hearts": "PASS",
-    "effect_minecraft:absorption": "PASS",
-    "effect_minecraft:fire_resistance": "PASS",
-    "effect_minecraft:resistance": "PASS",
     "effect_minecraft:regeneration": "PASS",
+    "effect_minecraft:resistance": "PASS",
+    "effect_minecraft:fire_resistance": "PASS",
+    "effect_minecraft:absorption": "PASS",
     "effect_minecraft:nausea": "PASS",
     "no_vanilla_apple_stacking": "PASS"
   },
   "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
-  "source_commit": "9d35bb996f46aa6bc4e973f3f92c38616dbccab8",
+  "source_commit": "3451e57f03b7c39532c0082f1730a914d1d2202d",
   "restarted": false
 }

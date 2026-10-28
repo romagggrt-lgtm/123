@@ -5,15 +5,15 @@
     "ambient_slider": 0.0,
     "master_slider": 1.0,
     "sample_rate_analysis": 8000,
-    "seconds": 39.65975,
+    "seconds": 39.86875,
     "original_seconds": 10.057125,
-    "match_start_seconds": 14.701,
-    "normalised_correlation": 0.9998115287577635,
-    "matched_rms_dbfs": -15.254252107712174,
-    "matched_peak": 1.0476174354553223,
+    "match_start_seconds": 14.641,
+    "normalised_correlation": 0.9997798766165338,
+    "matched_rms_dbfs": -15.25392218433318,
+    "matched_peak": 1.048359751701355,
     "status": "PASS"
   },
-  "source_commit": "9d35bb996f46aa6bc4e973f3f92c38616dbccab8",
+  "source_commit": "3451e57f03b7c39532c0082f1730a914d1d2202d",
   "server_sha256": "5ffef465eeeb5f2a3c23a24419d97c51afd7dbb4923ff42df9a3f58bba1ccfba",
   "server_build": 132,
   "phases": [
@@ -40,19 +40,20 @@
         "exactly_one_native_food": "PASS",
         "native_food_always_edible": "PASS",
         "all_native_block_states_placed": "PASS",
+        "all_lanterns_have_native_support": "PASS",
         "private_loop_enters_independently": "PASS",
         "sound_stops_on_teleport": "PASS",
         "native_food_consumed_once": "PASS",
         "six_extra_hearts": "PASS",
-        "effect_minecraft:absorption": "PASS",
-        "effect_minecraft:fire_resistance": "PASS",
-        "effect_minecraft:resistance": "PASS",
         "effect_minecraft:regeneration": "PASS",
+        "effect_minecraft:resistance": "PASS",
+        "effect_minecraft:fire_resistance": "PASS",
+        "effect_minecraft:absorption": "PASS",
         "effect_minecraft:nausea": "PASS",
         "no_vanilla_apple_stacking": "PASS"
       },
       "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
-      "source_commit": "9d35bb996f46aa6bc4e973f3f92c38616dbccab8",
+      "source_commit": "3451e57f03b7c39532c0082f1730a914d1d2202d",
       "restarted": false
     },
     {
@@ -71,7 +72,7 @@
         "adjacent_player_chest_preserved": "PASS"
       },
       "server": "1.21.11-132-c5eb079 (MC: 1.21.11)",
-      "source_commit": "9d35bb996f46aa6bc4e973f3f92c38616dbccab8",
+      "source_commit": "3451e57f03b7c39532c0082f1730a914d1d2202d",
       "restarted": true
     }
   ],
@@ -81,7 +82,7 @@
     "outside": 0
   },
   "pack_sha1": "814ea2b1cef8a7776affcd8ef3ce155600276162",
-  "plugin_sha256": "11a04d136d425ae3ad9088924a707934e9199b471e4ca9b66d8b9f6796aea6c9",
+  "plugin_sha256": "383638d27518484d45ae5ae7d9546894eab44099fe9b1e5dec3e26a4901ed12f",
   "client": "Unmodified official Minecraft 1.21.11",
   "client_rendered": "See PNG captures; manual review required"
 }
