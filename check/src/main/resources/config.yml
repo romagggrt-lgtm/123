@@ -1,0 +1,40 @@
+allow-self-check: false
+public-logout-notice: false
+notify-moderators: true
+notify-initiator: true
+allowed-commands: [msg, tell, r, helpop]
+protect-from-damage: true
+block-interactions: true
+reminder-interval-ticks: 40
+effects:
+  enabled: true
+  sound: ENTITY_EXPERIENCE_ORB_PICKUP
+  volume: 0.8
+  pitch: 0.7
+  particle: CLOUD
+  particle-count: 16
+title:
+  start: '<red><bold>ПРОВЕРКА НА ЧИТЫ</bold></red>'
+  start-subtitle: '<yellow>Не выходите с сервера. Ожидайте модератора.</yellow>'
+  end: '<green><bold>ПРОВЕРКА ЗАВЕРШЕНА</bold></green>'
+  end-subtitle: '<white>Вы можете продолжить игру.</white>'
+  fade-in-ticks: 10
+  stay-ticks: 70
+  fade-out-ticks: 15
+  repeat-delays-ticks: [80, 180]
+messages:
+  prefix: '<red>[Z_Check]</red> '
+  usage: '<yellow>Использование: /zc &lt;ник&gt;</yellow>'
+  no-permission: '<red>Недостаточно прав.</red>'
+  player-not-found: '<red>Игрок не найден. Начать проверку можно только онлайн.</red>'
+  self: '<red>Нельзя вызвать на проверку самого себя.</red>'
+  bypass: '<red>Этот игрок защищён от вызова на проверку.</red>'
+  vehicle: '<red>Не удалось безопасно снять игрока с транспорта. Проверьте защиту транспорта.</red>'
+  started-moderator: '<green>Игрок <player> вызван на проверку.</green>'
+  started-player: '<red>Вы вызваны на проверку на читы. Не выходите с сервера и следуйте указаниям администрации.</red>'
+  ended-moderator: '<green>Проверка игрока <player> завершена.</green>'
+  ended-player: '<green>Проверка завершена.</green>'
+  logout: '<yellow>Игрок <player> вышел с проверки.</yellow>'
+  reminder: '<red><bold>ИДЁТ ПРОВЕРКА НА ЧИТЫ • НЕ ВЫХОДИТЕ</bold></red>'
+  command-blocked: '<red>Во время проверки эта команда недоступна.</red>'
+  save-error: '<red>Ошибка сохранения проверки. Действие не выполнено; подробности в консоли.</red>'

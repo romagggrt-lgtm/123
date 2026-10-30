@@ -1,0 +1,6 @@
+const mineflayer=require(process.cwd()+'/node_modules/mineflayer');const fs=require('fs');const [dir,phase]=process.argv.slice(2);let result={phase};
+const bot=mineflayer.createBot({host:'127.0.0.1',port:25592,username:'CheckTester',version:'1.21.11',auth:'offline'});
+function waitfile(name,done){let deadline=Date.now()+45000;let t=setInterval(()=>{if(fs.existsSync(dir+'/'+name)){clearInterval(t);done()}else if(Date.now()>deadline){console.error('missing',name);process.exit(2)}},100)}
+bot.on('error',e=>{console.error(e);process.exit(2)});bot.once('spawn',()=>{fs.writeFileSync(dir+'/ready'+phase,'1');waitfile('freeze'+phase,()=>{const start=bot.entity.position.clone();bot.setControlState('forward',true);setTimeout(()=>{bot.setControlState('forward',false);result.freezeDistance=bot.entity.position.distanceTo(start);result.health=bot.health;if(phase==='one')finish();else{fs.writeFileSync(dir+'/release_request','1');waitfile('released',()=>{const free=bot.entity.position.clone();bot.setControlState('forward',true);setTimeout(()=>{bot.setControlState('forward',false);result.freeDistance=bot.entity.position.distanceTo(free);finish()},3500)})}},3500)})});
+function finish(){fs.writeFileSync(dir+'/bot-'+phase+'.json',JSON.stringify(result));bot.quit();setTimeout(()=>process.exit(0),300)}
+setTimeout(()=>{console.error('timeout');process.exit(2)},90000).unref();

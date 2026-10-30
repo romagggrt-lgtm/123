@@ -1,0 +1,17 @@
+name: Z_Check
+version: '1.0.0'
+main: dev.zcheck.ZCheckPlugin
+api-version: '1.21.11'
+description: Проверки игроков с сохранением состояния
+commands:
+  zcheck:
+    description: Начать или завершить проверку игрока
+    aliases: [zc]
+    usage: /zcheck <игрок>
+permissions:
+  zcheck.use:
+    default: op
+  zcheck.notify:
+    default: op
+  zcheck.bypass:
+    default: false
