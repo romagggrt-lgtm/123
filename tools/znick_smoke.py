@@ -36,7 +36,7 @@ try:
  if (work/'result.json').exists(): shutil.copyfile(work/'result.json',report/'bot-result.json')
  assert exitcode==0,'Bot failure'
  text=(report/'paper.log').read_text(errors='replace'); assert 'Ошибка обработки пакета Z_Nick' not in text and 'Не удалось включить Z_Nick' not in text, 'Plugin reported error'
- result=json.loads((work/'result.json').read_text()); assert result['sawNickname'] and result['sawAlias'] and result['sawTeam'] and result['sawChanged'] and result['sawRestored'] and (compat or result['restoredTeam']) and not result['disconnected'],result
+ result=json.loads((work/'result.json').read_text()); assert result['sawNickname'] and result['sawAlias'] and result['sawTeam'] and result['chatNick'] and result['sawChanged'] and result['sawRestored'] and (compat or result['restoredTeam']) and not result['disconnected'],result
  # Verify an offline target, reload and a real server restart.
  server.stdin.write('/znick set &aКиса NickTarget\n'.encode());server.stdin.flush()
  wait_for('Ник NickTarget установлен: Киса',20)
