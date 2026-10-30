@@ -1,7 +1,7 @@
 {
   "status": "PASS",
   "paper_build": 132,
-  "plugin_sha256": "955c4fcf0273846d6b15cfe8d45c4bdc84ae70f990ad38e8cd2652074f042834",
+  "plugin_sha256": "4479554d82f2e30fb71fff231da5ba210605bf34d8a020d01e2fb9b3787c165b",
   "details": {
     "targetUUID": "8cb1478d-a989-3bab-816d-85f6c2f42d5b",
     "spawns": [
@@ -13,50 +13,92 @@
       },
       {
         "phase": "initial",
-        "uuid": "33d5a0f5-d56c-4ff8-ba49-9218f0e455ac",
+        "uuid": "8cb1478d-a989-3bab-816d-85f6c2f42d5b",
+        "id": 165,
+        "name": "player",
+        "type": "player"
+      },
+      {
+        "phase": "initial",
+        "uuid": "8cb1478d-a989-3bab-816d-85f6c2f42d5b",
+        "id": 165,
+        "name": "player",
+        "type": "player"
+      },
+      {
+        "phase": "initial",
+        "uuid": "5b8d354b-ad4f-40cd-86b2-3891fdaf5aaf",
+        "id": 168,
+        "name": "item",
+        "type": "other"
+      },
+      {
+        "phase": "initial",
+        "uuid": "9e100e19-726b-45de-b9d2-0750ace22cd4",
         "id": 165,
         "name": "zombie",
         "type": "hostile"
       },
       {
         "phase": "teleport",
-        "uuid": "ffca9120-1788-4966-b213-345a70a6ddb5",
-        "id": 179,
+        "uuid": "7c84d690-95a4-48a4-939b-c77063e923b9",
+        "id": 169,
+        "name": "slime",
+        "type": "mob"
+      },
+      {
+        "phase": "teleport",
+        "uuid": "fa5efd7c-b1f8-4ca2-a548-284cd3699ca2",
+        "id": 170,
         "name": "slime",
         "type": "mob"
       },
       {
         "phase": "creeper",
-        "uuid": "950596ff-57d6-4f27-b6e9-ae6e52d309cd",
+        "uuid": "82989f33-1e58-4124-b3ee-f9ffda3b38a8",
         "id": 165,
         "name": "creeper",
         "type": "hostile"
       },
       {
+        "phase": "creeper",
+        "uuid": "b35eb750-1142-4986-a4a6-9926cdc4b6fb",
+        "id": 171,
+        "name": "slime",
+        "type": "mob"
+      },
+      {
         "phase": "late",
         "uuid": "26280fac-eb5f-3956-9ab5-6e9f831d49c0",
-        "id": 180,
+        "id": 172,
         "name": "player",
         "type": "player"
       },
       {
         "phase": "death",
-        "uuid": "950596ff-57d6-4f27-b6e9-ae6e52d309cd",
+        "uuid": "82989f33-1e58-4124-b3ee-f9ffda3b38a8",
         "id": 165,
         "name": "creeper",
         "type": "hostile"
       },
       {
         "phase": "death",
-        "uuid": "852b5e19-30ce-43ff-99a7-bfa182978ac7",
-        "id": 182,
+        "uuid": "d686d14b-ff84-47a5-a4e7-dabfd9259fe7",
+        "id": 173,
         "name": "slime",
         "type": "mob"
       },
       {
         "phase": "death",
-        "uuid": "14fc98b8-ebc2-47a4-96f9-d87b6aa5bc5e",
-        "id": 183,
+        "uuid": "78bf2ee8-d8d3-403c-a182-dd183ead1607",
+        "id": 174,
+        "name": "slime",
+        "type": "mob"
+      },
+      {
+        "phase": "death",
+        "uuid": "e390ae57-ea21-42a2-906c-82374f9963c9",
+        "id": 175,
         "name": "slime",
         "type": "mob"
       },
@@ -69,8 +111,15 @@
       },
       {
         "phase": "remove",
-        "uuid": "579714a6-b9d1-4ea0-9f33-d2c59a2a90ae",
-        "id": 185,
+        "uuid": "b35eb750-1142-4986-a4a6-9926cdc4b6fb",
+        "id": 171,
+        "name": "slime",
+        "type": "mob"
+      },
+      {
+        "phase": "remove",
+        "uuid": "413d2c26-b38f-4101-a61c-a091bba01cc3",
+        "id": 176,
         "name": "slime",
         "type": "mob"
       }
@@ -78,13 +127,13 @@
     "lateSpawns": [
       {
         "phase": "late",
-        "id": 180,
+        "id": 172,
         "name": "player",
         "type": "player"
       },
       {
         "phase": "late",
-        "uuid": "950596ff-57d6-4f27-b6e9-ae6e52d309cd",
+        "uuid": "82989f33-1e58-4124-b3ee-f9ffda3b38a8",
         "id": 165,
         "name": "creeper",
         "type": "hostile"
@@ -98,50 +147,43 @@
       },
       {
         "phase": "late",
-        "uuid": "ffca9120-1788-4966-b213-345a70a6ddb5",
-        "id": 179,
+        "uuid": "7c84d690-95a4-48a4-939b-c77063e923b9",
+        "id": 169,
+        "name": "slime",
+        "type": "mob"
+      },
+      {
+        "phase": "late",
+        "uuid": "fa5efd7c-b1f8-4ca2-a548-284cd3699ca2",
+        "id": 170,
         "name": "slime",
         "type": "mob"
       },
       {
         "phase": "death",
-        "uuid": "950596ff-57d6-4f27-b6e9-ae6e52d309cd",
+        "uuid": "82989f33-1e58-4124-b3ee-f9ffda3b38a8",
         "id": 165,
         "name": "creeper",
         "type": "hostile"
       },
       {
         "phase": "death",
-        "uuid": "d54e66a8-90a4-411d-b30e-a34ff3bf5493",
-        "id": 181,
+        "uuid": "d686d14b-ff84-47a5-a4e7-dabfd9259fe7",
+        "id": 173,
         "name": "slime",
         "type": "mob"
       },
       {
         "phase": "death",
-        "uuid": "852b5e19-30ce-43ff-99a7-bfa182978ac7",
-        "id": 182,
+        "uuid": "78bf2ee8-d8d3-403c-a182-dd183ead1607",
+        "id": 174,
         "name": "slime",
         "type": "mob"
       },
       {
         "phase": "death",
-        "uuid": "14fc98b8-ebc2-47a4-96f9-d87b6aa5bc5e",
-        "id": 183,
-        "name": "slime",
-        "type": "mob"
-      },
-      {
-        "phase": "death",
-        "uuid": "79c4ec52-84f4-428e-90f9-303c2f43b36c",
-        "id": 184,
-        "name": "slime",
-        "type": "mob"
-      },
-      {
-        "phase": "death",
-        "uuid": "579714a6-b9d1-4ea0-9f33-d2c59a2a90ae",
-        "id": 185,
+        "uuid": "e390ae57-ea21-42a2-906c-82374f9963c9",
+        "id": 175,
         "name": "slime",
         "type": "mob"
       },
@@ -151,12 +193,44 @@
         "id": 165,
         "name": "player",
         "type": "player"
+      },
+      {
+        "phase": "remove",
+        "uuid": "413d2c26-b38f-4101-a61c-a091bba01cc3",
+        "id": 176,
+        "name": "slime",
+        "type": "mob"
       }
     ],
     "moves": [
       {
         "phase": "initial",
         "id": 165,
+        "name": "player"
+      },
+      {
+        "phase": "initial",
+        "id": 165,
+        "name": "player"
+      },
+      {
+        "phase": "initial",
+        "id": 165,
+        "name": "zombie"
+      },
+      {
+        "phase": "initial",
+        "id": 168,
+        "name": "item"
+      },
+      {
+        "phase": "initial",
+        "id": 165,
+        "name": "zombie"
+      },
+      {
+        "phase": "initial",
+        "id": 165,
         "name": "zombie"
       },
       {
@@ -246,72 +320,137 @@
       },
       {
         "phase": "teleport",
-        "id": 179,
+        "id": 165,
+        "name": "zombie"
+      },
+      {
+        "phase": "teleport",
+        "id": 165,
+        "name": "zombie"
+      },
+      {
+        "phase": "teleport",
+        "id": 165,
+        "name": "zombie"
+      },
+      {
+        "phase": "teleport",
+        "id": 165,
+        "name": "zombie"
+      },
+      {
+        "phase": "teleport",
+        "id": 169,
         "name": "slime"
       },
       {
         "phase": "teleport",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "teleport",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "teleport",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "teleport",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "teleport",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "teleport",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "teleport",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "teleport",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "teleport",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "teleport",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "teleport",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "teleport",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "teleport",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "teleport",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "teleport",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "teleport",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "teleport",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "teleport",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "teleport",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "creeper",
         "id": 165,
-        "name": "zombie"
+        "name": "creeper"
       },
       {
-        "phase": "teleport",
-        "id": 165,
-        "name": "zombie"
-      },
-      {
-        "phase": "teleport",
-        "id": 179,
+        "phase": "creeper",
+        "id": 169,
         "name": "slime"
       },
       {
-        "phase": "teleport",
-        "id": 179,
-        "name": "slime"
-      },
-      {
-        "phase": "teleport",
-        "id": 165,
-        "name": "zombie"
-      },
-      {
-        "phase": "teleport",
-        "id": 179,
-        "name": "slime"
-      },
-      {
-        "phase": "teleport",
-        "id": 179,
-        "name": "slime"
-      },
-      {
-        "phase": "teleport",
-        "id": 165,
-        "name": "zombie"
-      },
-      {
-        "phase": "teleport",
-        "id": 165,
-        "name": "zombie"
-      },
-      {
-        "phase": "teleport",
-        "id": 179,
-        "name": "slime"
-      },
-      {
-        "phase": "teleport",
-        "id": 179,
-        "name": "slime"
-      },
-      {
-        "phase": "teleport",
-        "id": 179,
-        "name": "slime"
-      },
-      {
-        "phase": "teleport",
-        "id": 179,
+        "phase": "creeper",
+        "id": 170,
         "name": "slime"
       },
       {
@@ -326,52 +465,142 @@
       },
       {
         "phase": "creeper",
-        "id": 179,
+        "id": 171,
         "name": "slime"
       },
       {
-        "phase": "creeper",
+        "phase": "late",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "late",
+        "id": 171,
+        "name": "slime"
+      },
+      {
+        "phase": "late",
+        "id": 171,
+        "name": "slime"
+      },
+      {
+        "phase": "late",
+        "id": 172,
+        "name": "player"
+      },
+      {
+        "phase": "late",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "late",
+        "id": 172,
+        "name": "player"
+      },
+      {
+        "phase": "late",
+        "id": 171,
+        "name": "slime"
+      },
+      {
+        "phase": "late",
+        "id": 171,
+        "name": "slime"
+      },
+      {
+        "phase": "late",
         "id": 165,
         "name": "creeper"
       },
       {
         "phase": "late",
-        "id": 179,
+        "id": 170,
         "name": "slime"
       },
       {
         "phase": "late",
-        "id": 180,
-        "name": "player"
-      },
-      {
-        "phase": "late",
-        "id": 180,
-        "name": "player"
-      },
-      {
-        "phase": "late",
-        "id": 179,
+        "id": 171,
         "name": "slime"
       },
       {
         "phase": "late",
-        "id": 179,
+        "id": 170,
         "name": "slime"
       },
       {
         "phase": "late",
-        "id": 180,
-        "name": "player"
+        "id": 170,
+        "name": "slime"
       },
       {
         "phase": "late",
-        "id": 180,
-        "name": "player"
+        "id": 169,
+        "name": "slime"
       },
       {
         "phase": "late",
-        "id": 179,
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "late",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "late",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "late",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "late",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "late",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "late",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "late",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "late",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "late",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "late",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "late",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "late",
+        "id": 169,
         "name": "slime"
       },
       {
@@ -380,128 +609,18 @@
         "name": "creeper"
       },
       {
-        "phase": "late",
-        "id": 179,
-        "name": "slime"
-      },
-      {
-        "phase": "late",
-        "id": 179,
-        "name": "slime"
-      },
-      {
-        "phase": "late",
-        "id": 179,
-        "name": "slime"
-      },
-      {
-        "phase": "late",
-        "id": 179,
-        "name": "slime"
-      },
-      {
-        "phase": "late",
-        "id": 179,
+        "phase": "death",
+        "id": 169,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 165,
-        "name": "creeper"
-      },
-      {
-        "phase": "death",
-        "id": 165,
-        "name": "creeper"
-      },
-      {
-        "phase": "death",
-        "id": 180,
-        "name": "player"
-      },
-      {
-        "phase": "death",
-        "id": 180,
-        "name": "player"
-      },
-      {
-        "phase": "death",
-        "id": 165,
-        "name": "creeper"
-      },
-      {
-        "phase": "death",
-        "id": 179,
+        "id": 169,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 179,
-        "name": "slime"
-      },
-      {
-        "phase": "death",
-        "id": 179,
-        "name": "slime"
-      },
-      {
-        "phase": "death",
-        "id": 179,
-        "name": "slime"
-      },
-      {
-        "phase": "death",
-        "id": 182,
-        "name": "slime"
-      },
-      {
-        "phase": "death",
-        "id": 183,
-        "name": "slime"
-      },
-      {
-        "phase": "death",
-        "id": 179,
-        "name": "slime"
-      },
-      {
-        "phase": "death",
-        "id": 179,
-        "name": "slime"
-      },
-      {
-        "phase": "death",
-        "id": 182,
-        "name": "slime"
-      },
-      {
-        "phase": "death",
-        "id": 182,
-        "name": "slime"
-      },
-      {
-        "phase": "death",
-        "id": 183,
-        "name": "slime"
-      },
-      {
-        "phase": "death",
-        "id": 183,
-        "name": "slime"
-      },
-      {
-        "phase": "death",
-        "id": 182,
-        "name": "slime"
-      },
-      {
-        "phase": "death",
-        "id": 182,
-        "name": "slime"
-      },
-      {
-        "phase": "death",
-        "id": 179,
+        "id": 170,
         "name": "slime"
       },
       {
@@ -511,22 +630,22 @@
       },
       {
         "phase": "death",
-        "id": 182,
+        "id": 170,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 182,
+        "id": 170,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 183,
-        "name": "slime"
+        "id": 172,
+        "name": "player"
       },
       {
         "phase": "death",
-        "id": 179,
+        "id": 170,
         "name": "slime"
       },
       {
@@ -536,67 +655,92 @@
       },
       {
         "phase": "death",
-        "id": 182,
+        "id": 172,
+        "name": "player"
+      },
+      {
+        "phase": "death",
+        "id": 169,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 183,
+        "id": 170,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 182,
+        "id": 169,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 183,
+        "id": 170,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 182,
+        "id": 169,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 183,
+        "id": 169,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 182,
+        "id": 170,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 183,
+        "id": 169,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 182,
+        "id": 170,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 183,
+        "id": 169,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 182,
+        "id": 173,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 183,
+        "id": 169,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 179,
+        "id": 173,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 173,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 173,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 173,
         "name": "slime"
       },
       {
@@ -606,67 +750,227 @@
       },
       {
         "phase": "death",
-        "id": 180,
+        "id": 165,
+        "name": "creeper"
+      },
+      {
+        "phase": "death",
+        "id": 173,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 173,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 173,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 174,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 173,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 174,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 174,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 173,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 174,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 174,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 174,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 174,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 174,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 174,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 174,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 174,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 165,
+        "name": "creeper"
+      },
+      {
+        "phase": "death",
+        "id": 174,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 172,
         "name": "player"
       },
       {
         "phase": "death",
-        "id": 179,
+        "id": 169,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 179,
+        "id": 170,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 182,
+        "id": 169,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 182,
+        "id": 170,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 179,
+        "id": 173,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 182,
+        "id": 169,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 179,
+        "id": 170,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 182,
+        "id": 173,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 179,
+        "id": 169,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 182,
+        "id": 170,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 183,
+        "id": 173,
         "name": "slime"
       },
       {
         "phase": "death",
-        "id": 179,
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 173,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 173,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 173,
+        "name": "slime"
+      },
+      {
+        "phase": "death",
+        "id": 175,
         "name": "slime"
       },
       {
@@ -676,132 +980,207 @@
       },
       {
         "phase": "remove",
-        "id": 182,
+        "id": 171,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 185,
+        "id": 171,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 179,
+        "id": 173,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 182,
+        "id": 175,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 185,
+        "id": 175,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 183,
+        "id": 171,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 185,
+        "id": 175,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 183,
+        "id": 171,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 185,
+        "id": 175,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 183,
+        "id": 175,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 185,
+        "id": 169,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 179,
+        "id": 175,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 179,
+        "id": 171,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 183,
+        "id": 175,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 183,
+        "id": 169,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 182,
+        "id": 174,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 182,
+        "id": 171,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 183,
+        "id": 175,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 179,
+        "id": 169,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 179,
+        "id": 174,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 183,
+        "id": 171,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 179,
+        "id": 175,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 183,
+        "id": 169,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 183,
+        "id": 174,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 179,
+        "id": 175,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 179,
+        "id": 176,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 174,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 176,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 176,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 174,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 176,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 176,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 176,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 176,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 174,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 176,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 174,
         "name": "slime"
       },
       {
@@ -811,137 +1190,222 @@
       },
       {
         "phase": "remove",
-        "id": 179,
+        "id": 176,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 180,
+        "id": 169,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 171,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 176,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 172,
         "name": "player"
       },
       {
         "phase": "remove",
-        "id": 179,
+        "id": 176,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 183,
+        "id": 170,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 183,
+        "id": 170,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 183,
+        "id": 173,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 182,
+        "id": 173,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 182,
+        "id": 176,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 183,
+        "id": 171,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 182,
+        "id": 171,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 183,
+        "id": 171,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 185,
+        "id": 173,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 185,
+        "id": 174,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 182,
+        "id": 174,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 183,
+        "id": 171,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 185,
+        "id": 173,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 182,
+        "id": 169,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 183,
+        "id": 170,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 185,
+        "id": 171,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 182,
+        "id": 173,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 183,
+        "id": 170,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 185,
+        "id": 171,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 182,
+        "id": 173,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 185,
+        "id": 170,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 185,
+        "id": 171,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 179,
+        "id": 173,
         "name": "slime"
       },
       {
         "phase": "remove",
-        "id": 179,
+        "id": 175,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 174,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 171,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 173,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 175,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 175,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 176,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 174,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 173,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 176,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 170,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 174,
+        "name": "slime"
+      },
+      {
+        "phase": "remove",
+        "id": 176,
         "name": "slime"
       }
     ],
@@ -953,31 +1417,12 @@
       "[Server: Gave 3 [Diamond] to MorphTest]",
       "[Server: Teleported MorphObserver to MorphTest]",
       "[Z_Morph] Вы превратились в zombie.",
-      "Currently disguised as Zombie",
-      "Currently disguised as Zombie",
-      "Currently disguised as Zombie",
-      "Currently disguised as Zombie",
       "[Server: Teleported MorphTest to 10.500000, 2.000000, 10.500000]",
       "[Server: Teleported MorphObserver to MorphTest]",
-      "Currently disguised as Zombie",
-      "Currently disguised as Zombie",
-      "Currently disguised as Zombie",
       "[Z_Morph] Вы превратились в creeper.",
-      "Currently disguised as Creeper",
-      "Currently disguised as Creeper",
       "MorphLate joined the game",
-      "Currently disguised as Creeper",
-      "Currently disguised as Creeper",
-      "Currently disguised as Creeper",
-      "Currently disguised as Creeper",
       "MorphTest was killed",
       "[Server: Killed MorphTest]",
-      "Currently disguised as Creeper",
-      "Currently disguised as Creeper",
-      "Currently disguised as Creeper",
-      "Currently disguised as Creeper",
-      "Currently disguised as Creeper",
-      "Currently disguised as Creeper",
       "[Z_Morph] Ваш облик восстановлен."
     ],
     "viewerMessages": [
@@ -994,21 +1439,35 @@
     "observed_target": [
       {
         "phase": "initial",
-        "uuid": "33d5a0f5-d56c-4ff8-ba49-9218f0e455ac",
+        "uuid": "8cb1478d-a989-3bab-816d-85f6c2f42d5b",
+        "id": 165,
+        "name": "player",
+        "type": "player"
+      },
+      {
+        "phase": "initial",
+        "uuid": "8cb1478d-a989-3bab-816d-85f6c2f42d5b",
+        "id": 165,
+        "name": "player",
+        "type": "player"
+      },
+      {
+        "phase": "initial",
+        "uuid": "9e100e19-726b-45de-b9d2-0750ace22cd4",
         "id": 165,
         "name": "zombie",
         "type": "hostile"
       },
       {
         "phase": "creeper",
-        "uuid": "950596ff-57d6-4f27-b6e9-ae6e52d309cd",
+        "uuid": "82989f33-1e58-4124-b3ee-f9ffda3b38a8",
         "id": 165,
         "name": "creeper",
         "type": "hostile"
       },
       {
         "phase": "death",
-        "uuid": "950596ff-57d6-4f27-b6e9-ae6e52d309cd",
+        "uuid": "82989f33-1e58-4124-b3ee-f9ffda3b38a8",
         "id": 165,
         "name": "creeper",
         "type": "hostile"
