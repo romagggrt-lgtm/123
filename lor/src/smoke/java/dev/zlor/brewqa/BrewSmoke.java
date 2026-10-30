@@ -17,7 +17,7 @@ public final class BrewSmoke extends JavaPlugin {
  ZLorPlugin lor; Player one,two; World world; Location spot; int phase=-1,age;long startTick;
  final LinkedHashMap<String,Boolean> checks=new LinkedHashMap<>();
  final NamespacedKey itemId=new NamespacedKey("z_lor","brew");
- @Override public void onEnable(){lor=(ZLorPlugin)Bukkit.getPluginManager().getPlugin("Z_Lor");if(lor==null||!lor.isEnabled()){fail("plugin unavailable");return;}world=Bukkit.getWorlds().getFirst();spot=new Location(world,0,world.getHighestBlockYAt(0,0)+1,0);world.getChunkAt(spot).load();if(Files.exists(getServer().getWorldContainer().toPath().resolve("brew-restart-marker")))phase=100;Bukkit.getScheduler().runTaskTimer(this,this::tick,1,1);}
+ @Override public void onEnable(){lor=(ZLorPlugin)Bukkit.getPluginManager().getPlugin("Z_Lor");if(lor==null||!lor.isEnabled()){fail("plugin unavailable");return;}world=Bukkit.getWorlds().getFirst();world.setGameRule(GameRule.NATURAL_REGENERATION,false);spot=new Location(world,0,1,0);world.getChunkAt(spot).load();if(Files.exists(getServer().getWorldContainer().toPath().resolve("brew-restart-marker")))phase=100;Bukkit.getScheduler().runTaskTimer(this,this::tick,1,1);}
  ItemStack awkward(){var i=new ItemStack(Material.POTION);var m=(PotionMeta)i.getItemMeta();m.setBasePotionType(PotionType.AWKWARD);i.setItemMeta(m);return i;}
  ItemStack water(){var i=new ItemStack(Material.POTION);var m=(PotionMeta)i.getItemMeta();m.setBasePotionType(PotionType.WATER);i.setItemMeta(m);return i;}
  String id(ItemStack i){return i!=null&&i.getItemMeta() instanceof PotionMeta m?m.getPersistentDataContainer().get(itemId,PersistentDataType.STRING):null;}
