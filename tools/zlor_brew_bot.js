@@ -1,0 +1,1 @@
+const mineflayer=require(process.cwd()+'/node_modules/mineflayer');for(const username of ['BrewOne','BrewTwo']){const b=mineflayer.createBot({host:'127.0.0.1',port:25594,username,version:'1.21.11',auth:'offline',respawn:false});b.on('error',e=>console.error(username,e));b.on('end',r=>console.log(username,r))}

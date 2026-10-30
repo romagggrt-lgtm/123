@@ -20,6 +20,8 @@ public final class State {
     public Map<String, Arena> arenas = new LinkedHashMap<>();
     public Map<String, Structures> structures = new LinkedHashMap<>();
     public Map<UUID, Integer> beamHits = new HashMap<>();
+    /** Optional schema-1 field: restored HP does not change the beam attack count. */
+    public Map<UUID, Integer> beamRestored = new HashMap<>();
     public Map<String, Audio> audio = new LinkedHashMap<>();
     /** Optional in schema 1: pending entity-only tower repair, survives restart. */
     public Set<String> crystalRepairs = new HashSet<>();
@@ -84,7 +86,7 @@ public final class State {
         if (schema != 1 || revision < 0 || fuelClock < 0 || dimensions == null || devices == null ||
                 roles == null || immune == null || names == null || actions == null ||
                 dragons == null || arenas == null || structures == null || beamHits == null ||
-                restrictions == null || audio == null || dimensionRevisions == null || crystalRepairs == null) {
+                restrictions == null || audio == null || dimensionRevisions == null || crystalRepairs == null || beamRestored == null) {
             throw new IllegalArgumentException("Неполные или неподдерживаемые данные Z_Lor");
         }
         if (devices.size()>4096 || dragons.size()>4096) throw new IllegalArgumentException("Превышен лимит записей");
@@ -99,5 +101,6 @@ public final class State {
         });
         dimensions.forEach((key,d)->new DimensionVoid(d.active(),d.baseY(),d.perFourHours(),d.anchor(),d.minuteMode()));
         beamHits.forEach((id,hits)->{if(hits<0 || hits>7)throw new IllegalArgumentException("Повреждён счётчик луча");});
+        beamRestored.forEach((id,hp)->{if(hp<0 || hp>6 || hp>DragonRules.lost(beamHits.getOrDefault(id,0)))throw new IllegalArgumentException("Повреждены восстановленные сердца");});
     }
 }

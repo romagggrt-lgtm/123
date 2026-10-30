@@ -19,9 +19,16 @@ import static org.junit.jupiter.api.Assertions.*;
 class PluginTest {
     static final AtomicLong WALL=new AtomicLong(1_000_000),NANOS=new AtomicLong(1_000_000_000);
     public static class TestPlugin extends ZLorPlugin{
+        final Map<NamespacedKey,io.papermc.paper.potion.PotionMix> brewMixes=new HashMap<>();
         @Override public void onEnable(){wall=WALL::get;nanos=NANOS::get;super.onEnable();}
         /** MockBukkit cannot render private displays. Command/view state stays
          * real; the native CI tests the actual render tick and packet visibility. */
+        /** MockBukkit does not implement Paper's native PotionBrewer. */
+        @Override protected Brewing createBrewing(){return new Brewing(this){
+            @Override protected void addMix(io.papermc.paper.potion.PotionMix mix){brewMixes.put(mix.getKey(),mix);}
+            @Override protected void removeMix(NamespacedKey key){brewMixes.remove(key);}
+            @Override protected void deliverDamage(org.bukkit.entity.LivingEntity victim,double amount){victim.damage(amount);}
+        };}
         @Override protected Visuals createVisuals(){return new Visuals(this){@Override public void tick(){}};}
         @Override protected NativeBoundary createNativeBoundary(){return new NativeBoundary(this){
             @Override public void attach(World world){}
