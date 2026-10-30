@@ -1,0 +1,16 @@
+name: Z_Morph
+version: '1.0.0'
+main: dev.zmorph.ZMorphPlugin
+api-version: '1.21.11'
+description: Визуальное превращение игрока в моба
+# Официальные серверные плагины, не включены в JAR.
+depend: [LibsDisguises, packetevents]
+softdepend: [Z_Nick, TAB, LuckPerms]
+commands:
+  morph:
+    description: Превращение в моба и возврат к своему облику
+    usage: /morph set <моб> | /morph remove
+permissions:
+  zmorph.use:
+    description: Использование Z_Morph
+    default: op

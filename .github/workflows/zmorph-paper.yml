@@ -1,0 +1,51 @@
+name: Z_Morph native disguises
+on:
+  push:
+    branches: [feature/z-morph-1.0.0]
+    paths: ['morph/src/**', 'morph/pom.xml', 'tools/zmorph_*', '.github/workflows/zmorph-paper.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Official dependencies
+        run: |
+          mkdir -p morph/target/deps morph/live-qa
+          curl --fail --location --retry 3 https://github.com/libraryaddict/LibsDisguises/releases/download/v26.10.24/LibsDisguises-26.10.24-Github.jar -o morph/target/deps/LibsDisguises-26.10.24.jar
+          curl --fail --location --retry 3 https://github.com/retrooper/packetevents/releases/download/v2.14.0/packetevents-spigot-2.14.0.jar -o morph/target/deps/packetevents-spigot-2.14.0.jar
+          mvn -B install:install-file -Dfile=morph/target/deps/LibsDisguises-26.10.24.jar -DgroupId=me.libraryaddict.disguises -DartifactId=libsdisguises -Dversion=26.10.24 -Dpackaging=jar -DgeneratePom=true
+      - name: Build
+        run: |
+          set -o pipefail
+          mvn -B -f morph/pom.xml verify 2>&1 | tee morph/live-qa/build.log
+      - name: Two-client disguise and restoration
+        run: |
+          npm install --prefix morph/target/bots --no-audit --no-fund mineflayer@4.39.0
+          python3 tools/zmorph_smoke.py
+      - name: Preserve evidence
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin "$GITHUB_REF_NAME"
+          test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA" || exit 0
+          git add morph/live-qa
+          git diff --cached --quiet && exit 0
+          git commit -m 'Record Z_Morph Paper acceptance [skip ci]'
+          git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: zmorph-native-evidence
+          path: morph/live-qa/

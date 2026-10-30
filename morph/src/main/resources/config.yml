@@ -1,0 +1,15 @@
+# Физический хитбокс и инвентарь игрока остаются без изменений.
+view-self-disguise: false
+hide-equipment: true
+messages:
+  prefix: '&d[Z_Morph] &r'
+  usage: '&e/morph set <моб> | /morph remove'
+  only-player: '&cЭта команда доступна только игроку.'
+  no-permission: '&cНедостаточно прав.'
+  unknown: '&cНеизвестный или неподдерживаемый моб: {mob}.'
+  already: '&eВы уже превращены в {mob}.'
+  active: '&aВы превратились в {mob}.'
+  removed: '&aВаш облик восстановлен.'
+  not-active: '&eУ вас нет маскировки Z_Morph.'
+  external: '&cСначала снимите маскировку, созданную другим плагином.'
+  failure: '&cНе удалось применить маскировку. Проверьте журнал сервера.'
