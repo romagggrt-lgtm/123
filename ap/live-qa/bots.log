@@ -10,5 +10,5 @@ window APLocked minecraft:anvil [ 'paper', undefined, 'paper' ]
 after APLocked undefined
 window APAdmin minecraft:anvil [ 'paper', undefined, 'paper' ]
 after APAdmin minecraft:generic_9x6
-Error: Failed checks {"denied_without_permission":true,"five_bad_attempts_locked":true,"login_opened_menu":true,"no_password_in_chat":true,"inventory_before":true,"gamemode_changed":false,"inventory_after":true,"no_global_announcements":true,"morph_menu":true,"morph_command":true}
-    at run (/home/runner/work/123/123/tools/zap_bot.js:16:123)
+Error: Failed checks {"closed_during_auth_did_not_login":true,"denied_without_permission":true,"five_bad_attempts_locked":true,"login_opened_menu":true,"no_password_in_chat":true,"inventory_before":true,"gamemode_changed":true,"inventory_after":true,"no_global_announcements":true,"morph_menu":true,"morph_command":true,"morph_visible_to_observer":true,"nevidimka_on":true,"nevidimka_off":true,"nick_command":false,"kit_save":true,"kit_restore":true,"banya_list":true}
+    at run (/home/runner/work/123/123/tools/zap_bot.js:25:123)
