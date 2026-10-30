@@ -48,3 +48,8 @@ dragons:
   king-dive-speed: 1.2
 storage:
   checkpoint-ticks: 200
+
+# Длительность зелья левитации и версии с редстоуном.
+brewing:
+  levitation-seconds: 10
+  levitation-long-seconds: 30

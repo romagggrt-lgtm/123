@@ -1,0 +1,47 @@
+name: Z_Lor native brewing
+on:
+  push:
+    branches: [feature/z-lor-brewing-1.0.2]
+    paths: ['lor/src/**', 'lor/pom.xml', 'tools/zlor_brew_*', '.github/workflows/zlor-brewing.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build and tests
+        run: |
+          set -o pipefail
+          mkdir -p lor/brew-qa
+          mvn -B -f lor/pom.xml verify 2>&1 | tee lor/brew-qa/build.log
+      - name: Paper brewing, effects and restart
+        run: |
+          npm install --prefix lor/target/brew-bots --no-audit --no-fund mineflayer@4.39.0
+          python3 tools/zlor_brew_smoke.py
+      - name: Preserve evidence
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin "$GITHUB_REF_NAME"
+          test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA" || exit 0
+          git add lor/brew-qa
+          git diff --cached --quiet && exit 0
+          git commit -m 'Record Z_Lor brewing acceptance [skip ci]'
+          git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: zlor-brewing-evidence
+          path: lor/brew-qa/

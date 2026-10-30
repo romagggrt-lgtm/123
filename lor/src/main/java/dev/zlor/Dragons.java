@@ -273,7 +273,7 @@ public final class Dragons implements Listener,AutoCloseable {
     }
     public void applyMaxLoss(Player player){
         var attribute=player.getAttribute(Attribute.MAX_HEALTH);if(attribute==null)return;
-        attribute.removeModifier(lossKey);double loss=Math.min(DragonRules.lost(p.state().beamHits.getOrDefault(player.getUniqueId(),0)),Math.max(0,attribute.getValue()-1));
+        attribute.removeModifier(lossKey);double loss=Math.min(Math.max(0,DragonRules.lost(p.state().beamHits.getOrDefault(player.getUniqueId(),0))-p.state().beamRestored.getOrDefault(player.getUniqueId(),0)),Math.max(0,attribute.getValue()-1));
         if(loss>0)attribute.addTransientModifier(new AttributeModifier(lossKey,-loss,AttributeModifier.Operation.ADD_NUMBER));
         if(player.getHealth()>attribute.getValue())player.setHealth(attribute.getValue());
     }

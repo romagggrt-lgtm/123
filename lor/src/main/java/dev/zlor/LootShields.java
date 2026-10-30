@@ -41,6 +41,12 @@ public final class LootShields implements Listener,AutoCloseable {
         player.playEffect(EntityEffect.TOTEM_RESURRECT);
         player.getWorld().playSound(player.getLocation(),Sound.ITEM_TOTEM_USE,SoundCategory.PLAYERS,1,1);
     }
+    /** Protect the actual vanilla drops after an erosion death; never recreate items. */
+    public void protectErosionDrops(PlayerDeathEvent event){
+        if(event.getKeepInventory()||event.getDrops().isEmpty())return;
+        Player player=event.getEntity();var zone=new Zone(UUID.randomUUID(),player.getLocation().clone(),p.now()+300_000);zones.put(zone.id,zone);
+        deaths.add(new Death(zone,p.tick,event.getDrops().stream().map(ItemStack::clone).toList()));
+    }
     @EventHandler(priority=EventPriority.MONITOR,ignoreCancelled=true)
     public void spawn(ItemSpawnEvent event){
         Item item=event.getEntity();
