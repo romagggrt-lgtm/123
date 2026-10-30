@@ -336,7 +336,7 @@
             },
             "gamemode": 0,
             "listed": 1,
-            "latency": 8,
+            "latency": 6,
             "displayName": {
               "type": "compound",
               "value": {
