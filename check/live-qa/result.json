@@ -1,5 +1,18 @@
 {
-  "status": "FAIL",
-  "error": "{'phase': 'one', 'freezeDistance': 3.7775389400502437, 'health': 20}",
-  "trace": "Traceback (most recent call last):\n  File \"/home/runner/work/123/123/tools/zcheck_smoke.py\", line 37, in <module>\n    assert result['freezeDistance']<.3 and result['health']>=19,result\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'phase': 'one', 'freezeDistance': 3.7775389400502437, 'health': 20}\n"
+  "status": "PASS",
+  "server_build": 132,
+  "plugin_sha256": "c84cc67aeaaa1b77b3928cbb95986c8a1bb61f8f5c95ef7d03c710c2ee83a2f0",
+  "phases": [
+    {
+      "phase": "one",
+      "freezeDistance": 0,
+      "health": 20
+    },
+    {
+      "phase": "two",
+      "freezeDistance": 0.0570359999999992,
+      "health": 20,
+      "freeDistance": 14.850536608156084
+    }
+  ]
 }
