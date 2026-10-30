@@ -1,0 +1,5 @@
+{
+  "status": "FAIL",
+  "error": "{'phase': 'one', 'freezeDistance': 3.7775389400502437, 'health': 20}",
+  "trace": "Traceback (most recent call last):\n  File \"/home/runner/work/123/123/tools/zcheck_smoke.py\", line 37, in <module>\n    assert result['freezeDistance']<.3 and result['health']>=19,result\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'phase': 'one', 'freezeDistance': 3.7775389400502437, 'health': 20}\n"
+}
