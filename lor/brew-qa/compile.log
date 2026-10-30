@@ -1,0 +1,7 @@
+/home/runner/work/123/123/lor/src/smoke/java/dev/zlor/brewqa/BrewSmoke.java:66: warning: [removal] PlayerItemConsumeEvent(Player,ItemStack) in PlayerItemConsumeEvent has been deprecated and marked for removal
+    if(age==1){one.setHealth(20);one.setNoDamageTicks(0);startTick=lor.tick;lor.brewing.consume(new PlayerItemConsumeEvent(one,lor.brewing.potion("EROSION_1",Material.POTION)));}
+                                                                                                ^
+/home/runner/work/123/123/lor/src/smoke/java/dev/zlor/brewqa/BrewSmoke.java:73: warning: [removal] PlayerItemConsumeEvent(Player,ItemStack) in PlayerItemConsumeEvent has been deprecated and marked for removal
+    if(age==1){two.getInventory().clear();two.getInventory().addItem(new ItemStack(Material.DIAMOND,5));two.setHealth(2);two.setNoDamageTicks(0);startTick=lor.tick;lor.brewing.consume(new PlayerItemConsumeEvent(two,lor.brewing.potion("EROSION_2",Material.POTION)));}
+                                                                                                                                                                                        ^
+2 warnings
