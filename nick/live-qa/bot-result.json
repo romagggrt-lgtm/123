@@ -4,8 +4,77 @@
   "sawTeam": true,
   "sawChanged": true,
   "sawRestored": true,
+  "restoredTeam": true,
   "disconnected": false,
   "packets": [
+    {
+      "phase": "set",
+      "type": "teams",
+      "data": {
+        "team": "testteam",
+        "mode": "add",
+        "name": {
+          "type": "string",
+          "value": "testteam"
+        },
+        "flags": {
+          "_value": 3,
+          "friendly_fire": true,
+          "see_friendly_invisible": true
+        },
+        "nameTagVisibility": "always",
+        "collisionRule": "always",
+        "formatting": 21,
+        "prefix": {
+          "type": "string",
+          "value": ""
+        },
+        "suffix": {
+          "type": "string",
+          "value": ""
+        },
+        "players": []
+      }
+    },
+    {
+      "phase": "set",
+      "type": "teams",
+      "data": {
+        "team": "testteam",
+        "mode": "change",
+        "name": {
+          "type": "string",
+          "value": "testteam"
+        },
+        "flags": {
+          "_value": 3,
+          "friendly_fire": true,
+          "see_friendly_invisible": true
+        },
+        "nameTagVisibility": "always",
+        "collisionRule": "always",
+        "formatting": 21,
+        "prefix": {
+          "type": "string",
+          "value": ""
+        },
+        "suffix": {
+          "type": "string",
+          "value": ""
+        }
+      }
+    },
+    {
+      "phase": "set",
+      "type": "teams",
+      "data": {
+        "team": "testteam",
+        "mode": "join",
+        "players": [
+          "NickTarget"
+        ]
+      }
+    },
     {
       "phase": "set",
       "type": "teams",
@@ -267,7 +336,7 @@
             },
             "gamemode": 0,
             "listed": 1,
-            "latency": 7,
+            "latency": 1,
             "displayName": {
               "type": "compound",
               "value": {
@@ -480,7 +549,7 @@
             },
             "gamemode": 0,
             "listed": 1,
-            "latency": 4,
+            "latency": 1,
             "displayName": {
               "type": "compound",
               "value": {
@@ -558,6 +627,17 @@
             "listPriority": 0,
             "showHat": true
           }
+        ]
+      }
+    },
+    {
+      "phase": "remove",
+      "type": "teams",
+      "data": {
+        "team": "testteam",
+        "mode": "join",
+        "players": [
+          "NickTarget"
         ]
       }
     }
