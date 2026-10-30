@@ -1,0 +1,46 @@
+name: Z_Nick Paper smoke
+on:
+  push:
+    branches: [feature/z-nick-1.0.0]
+    paths: ['nick/**', 'tools/znick_*', '.github/workflows/znick-paper.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build
+        run: |
+          mkdir -p nick/live-qa
+          set -o pipefail
+          mvn -B -f nick/pom.xml verify 2>&1 | tee nick/live-qa/build.log
+      - name: Native Paper and player packets
+        run: |
+          npm install --prefix nick/target/bots --no-audit --no-fund mineflayer@4.39.0
+          python3 tools/znick_smoke.py
+      - name: Preserve results
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin "$GITHUB_REF_NAME"
+          test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA" || exit 0
+          git add nick/live-qa
+          git diff --cached --quiet && exit 0
+          git commit -m 'Record Z_Nick native smoke evidence [skip ci]'
+          git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: znick-paper-evidence
+          path: nick/live-qa/

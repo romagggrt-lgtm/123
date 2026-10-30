@@ -1,0 +1,23 @@
+name: Z_Nick
+version: '1.0.0'
+main: dev.znick.ZNickPlugin
+api-version: '1.21.11'
+description: Единые цветные ники без изменения игрового аккаунта
+softdepend: [TAB, Essentials, LuckPerms]
+commands:
+  znick:
+    description: Управление отображаемыми никами
+    usage: /znick set <ник> <игрок> | remove <игрок> | reload
+permissions:
+  znick.admin:
+    default: op
+    children:
+      znick.set: true
+      znick.remove: true
+      znick.reload: true
+  znick.set:
+    default: op
+  znick.remove:
+    default: op
+  znick.reload:
+    default: op
