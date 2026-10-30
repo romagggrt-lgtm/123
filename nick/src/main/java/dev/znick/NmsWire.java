@@ -103,11 +103,26 @@ final class NmsWire implements Wire {
             if (!viewer.canSee(target)) continue;
             if (viewer.equals(target)) { send(viewer, removePacket); send(viewer, initialPacket); }
             else { hide.invoke(viewer, target); show.invoke(viewer, target); }
+            if (!plugin.state.players.containsKey(target.getUniqueId())) {
+                View view = views.get(viewer.getUniqueId());
+                if (view != null) view.restoreMembership(target.getName());
+            }
         }
     }
     private final class View extends ChannelDuplexHandler {
         final Channel channel;
         final Map<UUID, Nick> sentTeams = new HashMap<>();
+        final Map<String, String> membership = new HashMap<>();
+        ChannelHandlerContext context;
+        @Override public void handlerAdded(ChannelHandlerContext ctx) { context = ctx; }
+        void restoreMembership(String account) {
+            channel.eventLoop().execute(() -> {
+                String team = membership.get(account);
+                if (team == null || context == null) return;
+                try { context.writeAndFlush(teamPacketCtor.newInstance(team, 3, Optional.empty(), List.of(account))); }
+                catch (Exception error) { plugin.getLogger().log(Level.WARNING, "Не удалось восстановить команду игрока", error); }
+            });
+        }
         View(Channel channel) { this.channel = channel; }
         void detach() { channel.eventLoop().execute(() -> { if (channel.pipeline().get("znick") == this) channel.pipeline().remove(this); }); }
         @SuppressWarnings({"rawtypes", "unchecked"})
@@ -141,6 +156,9 @@ final class NmsWire implements Wire {
                     if (!name.startsWith("zn$")) {
                         int method = (int)field(message, "method");
                         Collection<String> players = (Collection<String>)field(message, "players");
+                        if (method == 0 || method == 1) membership.values().removeIf(name::equals);
+                        if (method == 0 || method == 3) players.forEach(player -> membership.put(player, name));
+                        if (method == 4) players.forEach(player -> membership.remove(player, name));
                         List<String> keep = players.stream().filter(s -> !snapshot.managed(s)).toList();
                         if (keep.size() != players.size()) message = teamPacketCtor.newInstance(name, method, field(message,"parameters"), keep);
                     }

@@ -23,7 +23,7 @@ try:
  while time.monotonic()<deadline and bots.poll() is None:
   ready=work/'ready'
   if ready.exists():
-   ready.unlink();server.stdin.write('/znick set &#54DAF4н&#54C5EAи&#54B1DFк NickTarget\n'.encode());server.stdin.flush()
+   ready.unlink();server.stdin.write('team add testteam\nteam join testteam NickTarget\n/znick set &#54DAF4н&#54C5EAи&#54B1DFк NickTarget\n'.encode());server.stdin.flush()
   for filename,command in [('change','/znick set &bЛапа NickTarget\n'),('remove','/znick remove NickTarget\n')]:
    marker=work/filename
    if marker.exists():
@@ -33,7 +33,7 @@ try:
  if (work/'result.json').exists(): shutil.copyfile(work/'result.json',report/'bot-result.json')
  assert exitcode==0,'Bot failure'
  text=(report/'paper.log').read_text(errors='replace'); assert 'Ошибка обработки пакета Z_Nick' not in text and 'Не удалось включить Z_Nick' not in text, 'Plugin reported error'
- result=json.loads((work/'result.json').read_text()); assert result['sawNickname'] and result['sawAlias'] and result['sawTeam'] and result['sawChanged'] and result['sawRestored'] and not result['disconnected'],result
+ result=json.loads((work/'result.json').read_text()); assert result['sawNickname'] and result['sawAlias'] and result['sawTeam'] and result['sawChanged'] and result['sawRestored'] and result['restoredTeam'] and not result['disconnected'],result
  (report/'result.json').write_text(json.dumps({'status':'PASS','paper_build':meta['id'],'details':result},ensure_ascii=False,indent=2))
 except Exception as e:
  (report/'result.json').write_text(json.dumps({'status':'FAIL','error':str(e),'trace':traceback.format_exc()},ensure_ascii=False,indent=2));raise
