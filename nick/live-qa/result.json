@@ -1,6 +1,8 @@
 {
   "status": "PASS",
   "paper_build": 132,
+  "plugin_sha256": "cf0148db581279b0d79e5ecb7ede0b6a302860d408eec52c3cf9753a79cdae2c",
+  "offline_reload_restart": "PASS",
   "details": {
     "sawNickname": true,
     "sawAlias": true,
@@ -339,7 +341,7 @@
               },
               "gamemode": 0,
               "listed": 1,
-              "latency": 1,
+              "latency": 8,
               "displayName": {
                 "type": "compound",
                 "value": {
@@ -552,7 +554,7 @@
               },
               "gamemode": 0,
               "listed": 1,
-              "latency": 1,
+              "latency": 5,
               "displayName": {
                 "type": "compound",
                 "value": {
@@ -626,7 +628,7 @@
               },
               "gamemode": 0,
               "listed": 1,
-              "latency": 1,
+              "latency": 4,
               "listPriority": 0,
               "showHat": true
             }
