@@ -1,0 +1,43 @@
+{
+  "messages": {
+    "APAdmin": [
+      "APAdmin joined the game",
+      "APLocked joined the game",
+      "APObserver joined the game",
+      "APAdmin has made the advancement [Diamonds!]",
+      "[Server: Gave 3 [Diamond] to APAdmin]"
+    ],
+    "APLocked": [
+      "APLocked joined the game",
+      "APObserver joined the game",
+      "APAdmin has made the advancement [Diamonds!]",
+      "[Server: Gave 3 [Diamond] to APAdmin]"
+    ],
+    "APObserver": [
+      "APObserver joined the game",
+      "[Z_AP] Недостаточно прав.",
+      "APAdmin has made the advancement [Diamonds!]"
+    ]
+  },
+  "checks": {
+    "denied_without_permission": true,
+    "five_bad_attempts_locked": false,
+    "login_opened_menu": false,
+    "no_password_in_chat": true
+  },
+  "spawns": [
+    {
+      "name": "player",
+      "id": 167
+    },
+    {
+      "name": "player",
+      "id": 165
+    },
+    {
+      "name": "slime",
+      "id": 178
+    }
+  ],
+  "error": "Error: login menu did not open"
+}

@@ -1,0 +1,5 @@
+{
+  "status": "FAIL",
+  "error": "Bot failed; see bots.log and bot-result.json",
+  "trace": "Traceback (most recent call last):\n  File \"/home/runner/work/123/123/tools/zap_smoke.py\", line 27, in <module>\n    assert bot.wait(timeout=90)==0,'Bot failed; see bots.log and bot-result.json'\n           ^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Bot failed; see bots.log and bot-result.json\n"
+}
