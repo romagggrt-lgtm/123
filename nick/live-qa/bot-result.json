@@ -2,6 +2,7 @@
   "sawNickname": true,
   "sawAlias": true,
   "sawTeam": true,
+  "chatNick": false,
   "sawChanged": true,
   "sawRestored": true,
   "restoredTeam": true,
@@ -66,6 +67,95 @@
     },
     {
       "phase": "set",
+      "type": "system_chat",
+      "data": {
+        "content": {
+          "type": "compound",
+          "value": {
+            "italic": {
+              "type": "byte",
+              "value": 1
+            },
+            "color": {
+              "type": "string",
+              "value": "gray"
+            },
+            "with": {
+              "type": "list",
+              "value": {
+                "type": "compound",
+                "value": [
+                  {
+                    "": {
+                      "type": "string",
+                      "value": "Server"
+                    }
+                  },
+                  {
+                    "with": {
+                      "type": "list",
+                      "value": {
+                        "type": "compound",
+                        "value": [
+                          {
+                            "with": {
+                              "type": "list",
+                              "value": {
+                                "type": "compound",
+                                "value": [
+                                  {
+                                    "insertion": {
+                                      "type": "string",
+                                      "value": "testteam"
+                                    },
+                                    "hover_event": {
+                                      "type": "compound",
+                                      "value": {
+                                        "action": {
+                                          "type": "string",
+                                          "value": "show_text"
+                                        },
+                                        "value": {
+                                          "type": "string",
+                                          "value": "testteam"
+                                        }
+                                      }
+                                    },
+                                    "text": {
+                                      "type": "string",
+                                      "value": "testteam"
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "translate": {
+                              "type": "string",
+                              "value": "chat.square_brackets"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "translate": {
+                      "type": "string",
+                      "value": "commands.team.add.success"
+                    }
+                  }
+                ]
+              }
+            },
+            "translate": {
+              "type": "string",
+              "value": "chat.type.admin"
+            }
+          }
+        },
+        "isActionBar": false
+      }
+    },
+    {
+      "phase": "set",
       "type": "teams",
       "data": {
         "team": "testteam",
@@ -73,6 +163,140 @@
         "players": [
           "NickTarget"
         ]
+      }
+    },
+    {
+      "phase": "set",
+      "type": "system_chat",
+      "data": {
+        "content": {
+          "type": "compound",
+          "value": {
+            "italic": {
+              "type": "byte",
+              "value": 1
+            },
+            "color": {
+              "type": "string",
+              "value": "gray"
+            },
+            "with": {
+              "type": "list",
+              "value": {
+                "type": "compound",
+                "value": [
+                  {
+                    "": {
+                      "type": "string",
+                      "value": "Server"
+                    }
+                  },
+                  {
+                    "with": {
+                      "type": "list",
+                      "value": {
+                        "type": "compound",
+                        "value": [
+                          {
+                            "click_event": {
+                              "type": "compound",
+                              "value": {
+                                "command": {
+                                  "type": "string",
+                                  "value": "/tell NickTarget "
+                                },
+                                "action": {
+                                  "type": "string",
+                                  "value": "suggest_command"
+                                }
+                              }
+                            },
+                            "extra": {
+                              "type": "list",
+                              "value": {
+                                "type": "string",
+                                "value": [
+                                  "NickTarget"
+                                ]
+                              }
+                            },
+                            "insertion": {
+                              "type": "string",
+                              "value": "NickTarget"
+                            },
+                            "hover_event": {
+                              "type": "compound",
+                              "value": {
+                                "action": {
+                                  "type": "string",
+                                  "value": "show_text"
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "value": "NickTarget"
+                                }
+                              }
+                            },
+                            "text": {
+                              "type": "string",
+                              "value": ""
+                            }
+                          },
+                          {
+                            "with": {
+                              "type": "list",
+                              "value": {
+                                "type": "compound",
+                                "value": [
+                                  {
+                                    "insertion": {
+                                      "type": "string",
+                                      "value": "testteam"
+                                    },
+                                    "hover_event": {
+                                      "type": "compound",
+                                      "value": {
+                                        "action": {
+                                          "type": "string",
+                                          "value": "show_text"
+                                        },
+                                        "value": {
+                                          "type": "string",
+                                          "value": "testteam"
+                                        }
+                                      }
+                                    },
+                                    "text": {
+                                      "type": "string",
+                                      "value": "testteam"
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "translate": {
+                              "type": "string",
+                              "value": "chat.square_brackets"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "translate": {
+                      "type": "string",
+                      "value": "commands.team.join.success.single"
+                    }
+                  }
+                ]
+              }
+            },
+            "translate": {
+              "type": "string",
+              "value": "chat.type.admin"
+            }
+          }
+        },
+        "isActionBar": false
       }
     },
     {
@@ -336,7 +560,7 @@
             },
             "gamemode": 0,
             "listed": 1,
-            "latency": 6,
+            "latency": 3,
             "displayName": {
               "type": "compound",
               "value": {
@@ -392,6 +616,52 @@
             "showHat": true
           }
         ]
+      }
+    },
+    {
+      "phase": "set",
+      "type": "player_chat",
+      "data": {
+        "globalIndex": 0,
+        "senderUuid": "05bf88ee-0528-33c0-8f5f-287778b7613e",
+        "index": 0,
+        "plainMessage": "hello_z",
+        "timestamp": [
+          417,
+          -1948969252
+        ],
+        "salt": [
+          0,
+          0
+        ],
+        "previousMessages": [],
+        "unsignedChatContent": {
+          "type": "compound",
+          "value": {
+            "with": {
+              "type": "list",
+              "value": {
+                "type": "string",
+                "value": [
+                  "NickAdmin",
+                  "hello_z"
+                ]
+              }
+            },
+            "translate": {
+              "type": "string",
+              "value": "chat.type.text"
+            }
+          }
+        },
+        "filterType": 0,
+        "type": {
+          "chatType": 4
+        },
+        "networkName": {
+          "type": "string",
+          "value": "NickAdmin"
+        }
       }
     },
     {
@@ -549,7 +819,7 @@
             },
             "gamemode": 0,
             "listed": 1,
-            "latency": 5,
+            "latency": 3,
             "displayName": {
               "type": "compound",
               "value": {
@@ -623,7 +893,7 @@
             },
             "gamemode": 0,
             "listed": 1,
-            "latency": 4,
+            "latency": 1,
             "listPriority": 0,
             "showHat": true
           }
