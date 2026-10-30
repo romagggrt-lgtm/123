@@ -1,0 +1,4 @@
+session-idle-seconds: 600
+max-failures: 5
+lock-seconds: 900
+bcrypt-cost: 10

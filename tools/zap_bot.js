@@ -1,0 +1,19 @@
+const mineflayer=require(process.cwd()+'/node_modules/mineflayer');const fs=require('fs');const dir=process.argv[2];
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));const result={messages:{},checks:{},spawns:[]};let bots=[];
+function connect(name){const b=mineflayer.createBot({host:'127.0.0.1',port:25594,username:name,version:'1.21.11',auth:'offline'});bots.push(b);result.messages[name]=[];b.on('messagestr',m=>result.messages[name].push(m));b.on('error',e=>console.error(name,e));return new Promise((resolve,reject)=>{b.once('spawn',()=>resolve(b));b.once('error',reject)})}
+function nextWindow(b){return new Promise((resolve,reject)=>{let timeout=setTimeout(()=>{b.off('windowOpen',f);reject(Error('No window: '+b.username))},6000);function f(w){clearTimeout(timeout);resolve(w)}b.once('windowOpen',f)})}
+async function login(b,password){let opened=nextWindow(b);b.chat('/ap');await opened;await sleep(400);b._client.write('name_item',{name:password});await sleep(600);await b.clickWindow(2,0,0);await sleep(1100)}
+async function screenClick(b,slot){let promise=nextWindow(b);await sleep(300);await b.clickWindow(slot,0,0);return await promise}
+async function run(){let admin=await connect('APAdmin'),locked=await connect('APLocked'),observer=await connect('APObserver');observer.on('entitySpawn',e=>result.spawns.push({name:e.name,id:e.id}));fs.writeFileSync(dir+'/ready','1');while(!fs.existsSync(dir+'/begin'))await sleep(100);
+ observer.chat('/ap');await sleep(500);result.checks.denied_without_permission=result.messages.APObserver.some(m=>m.includes('Недостаточно прав'));
+ for(let i=0;i<5;i++)await login(locked,'bad-pass');locked.chat('/ap');await sleep(500);result.checks.five_bad_attempts_locked=result.messages.APLocked.some(m=>m.includes('заблокирован')||m.includes('Слишком много'));
+ await login(admin,'324657');result.checks.login_opened_menu=admin.currentWindow?.slots.length>=54;result.checks.no_password_in_chat=!Object.values(result.messages).flat().some(m=>m.includes('324657'));
+ if(!result.checks.login_opened_menu)throw Error('login menu did not open');
+ let diamonds=()=>admin.inventory.items().filter(i=>i.name==='diamond').reduce((a,i)=>a+i.count,0);result.checks.inventory_before=diamonds()===3;
+ await screenClick(admin,12);await sleep(250);await admin.clickWindow(20,0,0);await sleep(500);result.checks.gamemode_changed=result.messages.APAdmin.some(m=>m.includes('CREATIVE'));result.checks.inventory_after=diamonds()===3;
+ result.checks.no_global_announcements=!result.messages.APObserver.some(m=>m.includes('CREATIVE')||m.includes('игровой режим'));
+ await screenClick(admin,13);result.checks.morph_menu=!!admin.currentWindow;await sleep(250);await admin.clickWindow(10,0,0);await sleep(800);result.checks.morph_command=result.messages.APAdmin.some(m=>m.toLowerCase().includes('облик')||m.toLowerCase().includes('морф')||m.toLowerCase().includes('преврат'));
+ fs.writeFileSync(dir+'/bot-result.json',JSON.stringify(result,null,2));if(Object.values(result.checks).some(v=>!v))throw Error('Failed checks '+JSON.stringify(result.checks));
+ for(const b of bots)b.quit();await sleep(300);process.exit(0)
+}
+run().catch(e=>{console.error(e);fs.writeFileSync(dir+'/bot-result.json',JSON.stringify({...result,error:String(e)},null,2));for(const b of bots)b.quit();process.exit(1)});setTimeout(()=>process.exit(2),100000).unref();

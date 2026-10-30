@@ -1,0 +1,34 @@
+name: Z_AP
+version: 1.0.0
+main: dev.zap.ZAPPlugin
+api-version: '1.21.11'
+softdepend: [Z_Morph, InventoryCache, Z_Nick, Nevidimka, Z_Banya, Z_Check, Z_RG, WorldEdit, LuckPerms, TAB]
+commands:
+  ap:
+    aliases: [zap]
+    description: Защищённая панель администратора
+permissions:
+  z_ap.use:
+    default: op
+  z_ap.reload:
+    default: op
+  z_ap.see_vanish:
+    default: op
+  z_ap.actions.*:
+    default: op
+    children:
+      z_ap.actions.gamemode: true
+      z_ap.actions.morph: true
+      z_ap.actions.kits: true
+      z_ap.actions.nick: true
+      z_ap.actions.vanish: true
+      z_ap.actions.banya: true
+      z_ap.actions.teleport: true
+      z_ap.actions.summon: true
+      z_ap.actions.players: true
+      z_ap.actions.speed: true
+      z_ap.actions.world: true
+      z_ap.actions.regions: true
+      z_ap.actions.worldedit: true
+      z_ap.actions.moderation: true
+      z_ap.actions.settings: true
