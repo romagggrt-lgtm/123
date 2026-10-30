@@ -1,0 +1,160 @@
+{
+  "sawNickname": true,
+  "sawAlias": true,
+  "disconnected": false,
+  "packets": [
+    {
+      "type": "player_info",
+      "data": {
+        "action": {
+          "_value": 32,
+          "add_player": false,
+          "initialize_chat": false,
+          "update_game_mode": false,
+          "update_listed": false,
+          "update_latency": false,
+          "update_display_name": true,
+          "update_hat": false,
+          "update_list_order": false
+        },
+        "data": [
+          {
+            "uuid": "028a2709-16f4-33f4-9667-384b8246d84f",
+            "displayName": {
+              "type": "compound",
+              "value": {
+                "color": {
+                  "type": "string",
+                  "value": "white"
+                },
+                "extra": {
+                  "type": "list",
+                  "value": {
+                    "type": "compound",
+                    "value": [
+                      {
+                        "color": {
+                          "type": "string",
+                          "value": "#54DAF4"
+                        },
+                        "text": {
+                          "type": "string",
+                          "value": "н"
+                        }
+                      },
+                      {
+                        "color": {
+                          "type": "string",
+                          "value": "#54C5EA"
+                        },
+                        "text": {
+                          "type": "string",
+                          "value": "и"
+                        }
+                      },
+                      {
+                        "color": {
+                          "type": "string",
+                          "value": "#54B1DF"
+                        },
+                        "text": {
+                          "type": "string",
+                          "value": "к"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "text": {
+                  "type": "string",
+                  "value": ""
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "player_info",
+      "data": {
+        "action": {
+          "_value": 255,
+          "add_player": true,
+          "initialize_chat": true,
+          "update_game_mode": true,
+          "update_listed": true,
+          "update_latency": true,
+          "update_display_name": true,
+          "update_hat": true,
+          "update_list_order": true
+        },
+        "data": [
+          {
+            "uuid": "028a2709-16f4-33f4-9667-384b8246d84f",
+            "player": {
+              "name": "§0§5§f§f§4§f§9‌",
+              "properties": []
+            },
+            "gamemode": 0,
+            "listed": 1,
+            "latency": 0,
+            "displayName": {
+              "type": "compound",
+              "value": {
+                "color": {
+                  "type": "string",
+                  "value": "white"
+                },
+                "extra": {
+                  "type": "list",
+                  "value": {
+                    "type": "compound",
+                    "value": [
+                      {
+                        "color": {
+                          "type": "string",
+                          "value": "#54DAF4"
+                        },
+                        "text": {
+                          "type": "string",
+                          "value": "н"
+                        }
+                      },
+                      {
+                        "color": {
+                          "type": "string",
+                          "value": "#54C5EA"
+                        },
+                        "text": {
+                          "type": "string",
+                          "value": "и"
+                        }
+                      },
+                      {
+                        "color": {
+                          "type": "string",
+                          "value": "#54B1DF"
+                        },
+                        "text": {
+                          "type": "string",
+                          "value": "к"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "text": {
+                  "type": "string",
+                  "value": ""
+                }
+              }
+            },
+            "listPriority": 0,
+            "showHat": true
+          }
+        ]
+      }
+    }
+  ]
+}
