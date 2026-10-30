@@ -22,7 +22,7 @@ try:
  send('op Morpher')
  with (report/'bots.log').open('w') as botlog:
   bot=subprocess.Popen(['node',str(root/'tools/zmorph_bot.js'),str(work)],cwd=root/'morph/target/bots',stdout=botlog,stderr=subprocess.STDOUT)
-  wait_for(lambda:(work/'ready').exists(),60,'player join');send('gamerule keep_inventory true');send('give Morpher diamond 3');send('tp MorphObserver Morpher');(work/'begin').write_text('1')
+  wait_for(lambda:(work/'ready').exists(),60,'player join');send('gamerule keep_inventory true');send('znick set &aMorphTest Morpher');send('give Morpher diamond 3');send('tp MorphObserver Morpher');(work/'begin').write_text('1')
   deadline=time.monotonic()+50
   while bot.poll() is None and time.monotonic()<deadline:
    marker=work/'teleport_request'
