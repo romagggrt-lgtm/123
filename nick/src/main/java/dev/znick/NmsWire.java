@@ -101,7 +101,6 @@ final class NmsWire implements Wire {
         Object initialPacket = initial.invoke(null, handle(target), true);
         for (Player viewer : Bukkit.getOnlinePlayers()) {
             if (!viewer.canSee(target)) continue;
-            if (previous != null) send(viewer, buildTeam(previous, true));
             if (viewer.equals(target)) { send(viewer, removePacket); send(viewer, initialPacket); }
             else { hide.invoke(viewer, target); show.invoke(viewer, target); }
         }
