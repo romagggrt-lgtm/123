@@ -1,121 +1,123 @@
 Downloading mojang_1.21.11.jar
 Applying patches
 Starting org.bukkit.craftbukkit.Main
-2026-10-30T07:52:09.411532657Z ServerMain WARN Advanced terminal features are not available in this environment
-[07:52:09 INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.13+9-LTS; Eclipse Adoptium Temurin-21.0.13+9) on Linux 7.0.0-1017-azure (amd64)
-[07:52:09 INFO]: [bootstrap] Loading Paper 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) for Minecraft 1.21.11
-[07:52:10 INFO]: [PluginInitializerManager] Initializing plugins...
-[07:52:10 INFO]: [ReobfServer] Remapping server...
-[07:52:14 INFO]: [ReobfServer] Done remapping server in 3993ms.
-[07:52:14 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Nick-1.0.0.jar'...
-[07:52:14 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Nick-1.0.0.jar' in 78ms.
-[07:52:15 INFO]: [PluginInitializerManager] Initialized 1 plugin
-[07:52:15 INFO]: [PluginInitializerManager] Bukkit plugins (1):
+2026-10-30T07:53:55.223172547Z ServerMain WARN Advanced terminal features are not available in this environment
+[07:53:55 INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.13+9-LTS; Eclipse Adoptium Temurin-21.0.13+9) on Linux 7.0.0-1017-azure (amd64)
+[07:53:55 INFO]: [bootstrap] Loading Paper 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) for Minecraft 1.21.11
+[07:53:56 INFO]: [PluginInitializerManager] Initializing plugins...
+[07:53:56 INFO]: [ReobfServer] Remapping server...
+[07:54:00 INFO]: [ReobfServer] Done remapping server in 3702ms.
+[07:54:00 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Nick-1.0.0.jar'...
+[07:54:00 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Nick-1.0.0.jar' in 59ms.
+[07:54:00 INFO]: [PluginInitializerManager] Initialized 1 plugin
+[07:54:00 INFO]: [PluginInitializerManager] Bukkit plugins (1):
  - Z_Nick (1.0.0)
-[07:52:17 INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
-[07:52:18 INFO]: Found new data pack file/bukkit, loading it automatically
-[07:52:18 INFO]: Found new data pack paper, loading it automatically
-[07:52:18 INFO]: No existing world data, creating new world
-[07:52:18 ERROR]: No key layers in MapLike[{}]
-[07:52:19 INFO]: Loaded 1470 recipes
-[07:52:19 INFO]: Loaded 1584 advancements
-[07:52:19 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
-[07:52:19 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 309.4ms
-[07:52:19 INFO]: Starting minecraft server version 1.21.11
-[07:52:19 INFO]: Loading properties
-[07:52:19 INFO]: This server is running Paper version 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) (Implementing API version 1.21.11-R0.1-SNAPSHOT)
-[07:52:19 INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
-[07:52:19 INFO]: Server Ping Player Sample Count: 12
-[07:52:19 INFO]: Using 4 threads for Netty based IO
-[07:52:20 INFO]: [MoonriseCommon] Paper is using 1 worker threads, 1 I/O threads
-[07:52:20 INFO]: Default game type: SURVIVAL
-[07:52:20 INFO]: Generating keypair
-[07:52:20 INFO]: Starting Minecraft server on 127.0.0.1:25591
-[07:52:20 INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
-[07:52:20 INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
-[07:52:20 INFO]: [Z_Nick] Loading server plugin Z_Nick v1.0.0
-[07:52:20 WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[07:52:20 WARN]: The server will make no attempt to authenticate usernames. Beware.
-[07:52:20 WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[07:52:20 WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[07:52:20 INFO]: Preparing level "world"
-[07:52:20 ERROR]: No key layers in MapLike[{}]
-[07:52:21 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] NUMA enable flag is not set; however there is NUMA interaction support for this OS.
-[07:52:21 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] Detected 1 NUMA nodes.
-[07:52:21 INFO]: Selecting spawn point for world 'minecraft:overworld'...
-[07:52:21 ERROR]: No key layers in MapLike[{}]
-[07:52:21 INFO]: Selecting spawn point for world 'minecraft:the_nether'...
-[07:52:22 ERROR]: No key layers in MapLike[{}]
-[07:52:22 INFO]: Selecting spawn point for world 'minecraft:the_end'...
-[07:52:23 INFO]: Loading 0 persistent chunks for world 'minecraft:overworld'...
-[07:52:23 INFO]: Preparing spawn area: 100%
-[07:52:23 INFO]: Prepared spawn area in 1978 ms
-[07:52:23 INFO]: Loading 0 persistent chunks for world 'minecraft:the_nether'...
-[07:52:23 INFO]: Preparing spawn area: 100%
-[07:52:23 INFO]: Prepared spawn area in 1323 ms
-[07:52:23 INFO]: Loading 0 persistent chunks for world 'minecraft:the_end'...
-[07:52:23 INFO]: Preparing spawn area: 100%
-[07:52:23 INFO]: Prepared spawn area in 181 ms
-[07:52:23 INFO]: Done preparing level "world" (2.295s)
-[07:52:23 INFO]: [Z_Nick] Enabling Z_Nick v1.0.0
-[07:52:23 INFO]: [Z_Nick] Z_Nick 1.0.0: загружено ников 0
-[07:52:23 INFO]: [spark] Starting background profiler...
-[07:52:23 INFO]: Running delayed init tasks
-[07:52:23 INFO]: Done (14.808s)! For help, type "help"
-[07:52:23 INFO]: *************************************************************************************
-[07:52:23 INFO]: This is the first time you're starting this server.
-[07:52:23 INFO]: It's recommended you read our 'Getting Started' documentation for guidance.
-[07:52:23 INFO]: View this and more helpful information here: https://docs.papermc.io/paper/next-steps
-[07:52:23 INFO]: *************************************************************************************
-[07:52:24 WARN]: *************************************************************************************
-[07:52:24 WARN]: You are running the latest build for your Minecraft version (1.21.11)
-[07:52:24 WARN]: However, you are 6 release(s) behind the latest stable release (26.3)!
-[07:52:24 WARN]: It is recommended that you update as soon as possible
-[07:52:24 WARN]: https://papermc.io/downloads/paper
-[07:52:24 WARN]: *************************************************************************************
-[07:52:24 INFO]: Made NickAdmin a server operator
-[07:52:24 INFO]: UUID of player NickAdmin is 05bf88ee-0528-33c0-8f5f-287778b7613e
-[07:52:24 INFO]: UUID of player NickTarget is 028a2709-16f4-33f4-9667-384b8246d84f
-[07:52:25 INFO]: NickTarget joined the game
-[07:52:25 INFO]: NickTarget[/127.0.0.1:45432] logged in with entity id 1 at ([world]7.5, -60.0, -7.5)
-[07:52:25 INFO]: NickAdmin joined the game
-[07:52:25 INFO]: NickAdmin[/127.0.0.1:45426] logged in with entity id 2 at ([world]8.5, -60.0, 6.5)
-[07:52:25 INFO]: [Z_Nick] Ник NickTarget установлен: ник.
-[07:52:32 INFO]: NickAdmin lost connection: Disconnected
-[07:52:32 INFO]: NickAdmin left the game
-[07:52:32 INFO]: NickTarget lost connection: Disconnected
-[07:52:32 INFO]: ник left the game
-[07:52:33 INFO]: Stopping the server
-[07:52:33 INFO]: Stopping server
-[07:52:33 INFO]: [Z_Nick] Disabling Z_Nick v1.0.0
-[07:52:33 INFO]: Saving players
-[07:52:33 INFO]: Saving worlds
-[07:52:33 INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[07:52:34 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
-[07:52:34 INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
-[07:52:34 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
-[07:52:34 INFO]: [ChunkHolderManager] Saved 1260 block chunks, 182 entity chunks, 0 poi chunks in world 'world' in 0.50s
-[07:52:34 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world'
-[07:52:34 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world'
-[07:52:34 INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
-[07:52:34 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
-[07:52:34 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
-[07:52:34 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
-[07:52:34 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_nether' in 0.01s
-[07:52:34 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_nether'
-[07:52:34 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_nether'
-[07:52:34 INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
-[07:52:34 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
-[07:52:34 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
-[07:52:34 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
-[07:52:34 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_the_end' in 0.01s
-[07:52:34 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_the_end'
-[07:52:34 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_the_end'
-[07:52:34 INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[07:52:34 INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[07:52:34 INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[07:52:34 INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[07:52:34 INFO]: Waiting for all RegionFile I/O tasks to complete...
-[07:52:34 INFO]: All RegionFile I/O tasks to complete
-[07:52:34 INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
-[07:52:34 INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...
+[07:54:03 INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[07:54:03 INFO]: Found new data pack file/bukkit, loading it automatically
+[07:54:03 INFO]: Found new data pack paper, loading it automatically
+[07:54:03 INFO]: No existing world data, creating new world
+[07:54:03 ERROR]: No key layers in MapLike[{}]
+[07:54:04 INFO]: Loaded 1470 recipes
+[07:54:04 INFO]: Loaded 1584 advancements
+[07:54:04 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
+[07:54:04 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 286.8ms
+[07:54:04 INFO]: Starting minecraft server version 1.21.11
+[07:54:04 INFO]: Loading properties
+[07:54:04 INFO]: This server is running Paper version 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) (Implementing API version 1.21.11-R0.1-SNAPSHOT)
+[07:54:04 INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[07:54:04 INFO]: Server Ping Player Sample Count: 12
+[07:54:04 INFO]: Using 4 threads for Netty based IO
+[07:54:05 INFO]: [MoonriseCommon] Paper is using 1 worker threads, 1 I/O threads
+[07:54:05 INFO]: Default game type: SURVIVAL
+[07:54:05 INFO]: Generating keypair
+[07:54:05 INFO]: Starting Minecraft server on 127.0.0.1:25591
+[07:54:05 INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
+[07:54:05 INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
+[07:54:05 INFO]: [Z_Nick] Loading server plugin Z_Nick v1.0.0
+[07:54:05 WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[07:54:05 WARN]: The server will make no attempt to authenticate usernames. Beware.
+[07:54:05 WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[07:54:05 WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[07:54:05 INFO]: Preparing level "world"
+[07:54:05 ERROR]: No key layers in MapLike[{}]
+[07:54:05 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] NUMA enable flag is not set; however there is NUMA interaction support for this OS.
+[07:54:05 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] Detected 1 NUMA nodes.
+[07:54:05 INFO]: Selecting spawn point for world 'minecraft:overworld'...
+[07:54:06 ERROR]: No key layers in MapLike[{}]
+[07:54:06 INFO]: Selecting spawn point for world 'minecraft:the_nether'...
+[07:54:06 ERROR]: No key layers in MapLike[{}]
+[07:54:06 INFO]: Selecting spawn point for world 'minecraft:the_end'...
+[07:54:06 INFO]: Loading 0 persistent chunks for world 'minecraft:overworld'...
+[07:54:06 INFO]: Preparing spawn area: 100%
+[07:54:06 INFO]: Prepared spawn area in 1013 ms
+[07:54:06 INFO]: Loading 0 persistent chunks for world 'minecraft:the_nether'...
+[07:54:06 INFO]: Preparing spawn area: 100%
+[07:54:06 INFO]: Prepared spawn area in 734 ms
+[07:54:06 INFO]: Loading 0 persistent chunks for world 'minecraft:the_end'...
+[07:54:06 INFO]: Preparing spawn area: 100%
+[07:54:06 INFO]: Prepared spawn area in 188 ms
+[07:54:06 INFO]: Done preparing level "world" (1.194s)
+[07:54:06 INFO]: [Z_Nick] Enabling Z_Nick v1.0.0
+[07:54:06 INFO]: [Z_Nick] Z_Nick 1.0.0: загружено ников 0
+[07:54:07 INFO]: [spark] Starting background profiler...
+[07:54:07 INFO]: Running delayed init tasks
+[07:54:07 INFO]: Done (13.115s)! For help, type "help"
+[07:54:07 INFO]: *************************************************************************************
+[07:54:07 INFO]: This is the first time you're starting this server.
+[07:54:07 INFO]: It's recommended you read our 'Getting Started' documentation for guidance.
+[07:54:07 INFO]: View this and more helpful information here: https://docs.papermc.io/paper/next-steps
+[07:54:07 INFO]: *************************************************************************************
+[07:54:07 INFO]: Made NickAdmin a server operator
+[07:54:07 WARN]: *************************************************************************************
+[07:54:07 WARN]: You are running the latest build for your Minecraft version (1.21.11)
+[07:54:07 WARN]: However, you are 6 release(s) behind the latest stable release (26.3)!
+[07:54:07 WARN]: It is recommended that you update as soon as possible
+[07:54:07 WARN]: https://papermc.io/downloads/paper
+[07:54:07 WARN]: *************************************************************************************
+[07:54:08 INFO]: UUID of player NickAdmin is 05bf88ee-0528-33c0-8f5f-287778b7613e
+[07:54:08 INFO]: UUID of player NickTarget is 028a2709-16f4-33f4-9667-384b8246d84f
+[07:54:09 INFO]: NickTarget joined the game
+[07:54:09 INFO]: NickTarget[/127.0.0.1:52626] logged in with entity id 1 at ([world]-3.5, -60.0, -8.5)
+[07:54:09 INFO]: NickAdmin joined the game
+[07:54:09 INFO]: NickAdmin[/127.0.0.1:52616] logged in with entity id 2 at ([world]6.5, -60.0, -0.5)
+[07:54:09 INFO]: [Z_Nick] Ник NickTarget установлен: ник.
+[07:54:12 INFO]: [Z_Nick] Ник NickTarget установлен: Лапа.
+[07:54:14 INFO]: [Z_Nick] Ник NickTarget сброшен.
+[07:54:17 INFO]: NickAdmin lost connection: Disconnected
+[07:54:17 INFO]: NickAdmin left the game
+[07:54:17 INFO]: NickTarget lost connection: Disconnected
+[07:54:17 INFO]: NickTarget left the game
+[07:54:18 INFO]: Stopping the server
+[07:54:18 INFO]: Stopping server
+[07:54:18 INFO]: [Z_Nick] Disabling Z_Nick v1.0.0
+[07:54:18 INFO]: Saving players
+[07:54:19 INFO]: Saving worlds
+[07:54:19 INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[07:54:19 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[07:54:19 INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[07:54:19 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[07:54:19 INFO]: [ChunkHolderManager] Saved 1260 block chunks, 182 entity chunks, 0 poi chunks in world 'world' in 0.31s
+[07:54:19 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world'
+[07:54:19 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world'
+[07:54:19 INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
+[07:54:19 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
+[07:54:19 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
+[07:54:19 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
+[07:54:19 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_nether' in 0.01s
+[07:54:19 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_nether'
+[07:54:19 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_nether'
+[07:54:19 INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[07:54:19 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[07:54:19 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[07:54:19 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[07:54:19 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_the_end' in 0.01s
+[07:54:19 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_the_end'
+[07:54:19 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_the_end'
+[07:54:19 INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[07:54:19 INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[07:54:19 INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[07:54:19 INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[07:54:19 INFO]: Waiting for all RegionFile I/O tasks to complete...
+[07:54:19 INFO]: All RegionFile I/O tasks to complete
+[07:54:19 INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
+[07:54:19 INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...

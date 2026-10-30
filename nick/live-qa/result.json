@@ -5,9 +5,12 @@
     "sawNickname": true,
     "sawAlias": true,
     "sawTeam": true,
+    "sawChanged": true,
+    "sawRestored": true,
     "disconnected": false,
     "packets": [
       {
+        "phase": "set",
         "type": "teams",
         "data": {
           "team": "zn$5ff4f9",
@@ -85,6 +88,7 @@
         }
       },
       {
+        "phase": "set",
         "type": "player_info",
         "data": {
           "action": {
@@ -157,6 +161,7 @@
         }
       },
       {
+        "phase": "set",
         "type": "teams",
         "data": {
           "team": "zn$5ff4f9",
@@ -164,6 +169,7 @@
         }
       },
       {
+        "phase": "set",
         "type": "teams",
         "data": {
           "team": "zn$5ff4f9",
@@ -241,6 +247,7 @@
         }
       },
       {
+        "phase": "set",
         "type": "player_info",
         "data": {
           "action": {
@@ -263,7 +270,7 @@
               },
               "gamemode": 0,
               "listed": 1,
-              "latency": 0,
+              "latency": 7,
               "displayName": {
                 "type": "compound",
                 "value": {
@@ -315,6 +322,242 @@
                   }
                 }
               },
+              "listPriority": 0,
+              "showHat": true
+            }
+          ]
+        }
+      },
+      {
+        "phase": "change",
+        "type": "teams",
+        "data": {
+          "team": "zn$5ff4f9",
+          "mode": "remove"
+        }
+      },
+      {
+        "phase": "change",
+        "type": "teams",
+        "data": {
+          "team": "zn$5ff4f9",
+          "mode": "add",
+          "name": {
+            "type": "string",
+            "value": "zn$5ff4f9"
+          },
+          "flags": {
+            "_value": 3,
+            "friendly_fire": true,
+            "see_friendly_invisible": true
+          },
+          "nameTagVisibility": "always",
+          "collisionRule": "always",
+          "formatting": 21,
+          "prefix": {
+            "type": "compound",
+            "value": {
+              "color": {
+                "type": "string",
+                "value": "aqua"
+              },
+              "text": {
+                "type": "string",
+                "value": "Лапа"
+              }
+            }
+          },
+          "suffix": {
+            "type": "string",
+            "value": ""
+          },
+          "players": [
+            "§0§5§f§f§4§f§9‌"
+          ]
+        }
+      },
+      {
+        "phase": "change",
+        "type": "player_info",
+        "data": {
+          "action": {
+            "_value": 32,
+            "add_player": false,
+            "initialize_chat": false,
+            "update_game_mode": false,
+            "update_listed": false,
+            "update_latency": false,
+            "update_display_name": true,
+            "update_hat": false,
+            "update_list_order": false
+          },
+          "data": [
+            {
+              "uuid": "028a2709-16f4-33f4-9667-384b8246d84f",
+              "displayName": {
+                "type": "compound",
+                "value": {
+                  "color": {
+                    "type": "string",
+                    "value": "aqua"
+                  },
+                  "text": {
+                    "type": "string",
+                    "value": "Лапа"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "phase": "change",
+        "type": "teams",
+        "data": {
+          "team": "zn$5ff4f9",
+          "mode": "remove"
+        }
+      },
+      {
+        "phase": "change",
+        "type": "teams",
+        "data": {
+          "team": "zn$5ff4f9",
+          "mode": "add",
+          "name": {
+            "type": "string",
+            "value": "zn$5ff4f9"
+          },
+          "flags": {
+            "_value": 3,
+            "friendly_fire": true,
+            "see_friendly_invisible": true
+          },
+          "nameTagVisibility": "always",
+          "collisionRule": "always",
+          "formatting": 21,
+          "prefix": {
+            "type": "compound",
+            "value": {
+              "color": {
+                "type": "string",
+                "value": "aqua"
+              },
+              "text": {
+                "type": "string",
+                "value": "Лапа"
+              }
+            }
+          },
+          "suffix": {
+            "type": "string",
+            "value": ""
+          },
+          "players": [
+            "§0§5§f§f§4§f§9‌"
+          ]
+        }
+      },
+      {
+        "phase": "change",
+        "type": "player_info",
+        "data": {
+          "action": {
+            "_value": 255,
+            "add_player": true,
+            "initialize_chat": true,
+            "update_game_mode": true,
+            "update_listed": true,
+            "update_latency": true,
+            "update_display_name": true,
+            "update_hat": true,
+            "update_list_order": true
+          },
+          "data": [
+            {
+              "uuid": "028a2709-16f4-33f4-9667-384b8246d84f",
+              "player": {
+                "name": "§0§5§f§f§4§f§9‌",
+                "properties": []
+              },
+              "gamemode": 0,
+              "listed": 1,
+              "latency": 4,
+              "displayName": {
+                "type": "compound",
+                "value": {
+                  "color": {
+                    "type": "string",
+                    "value": "aqua"
+                  },
+                  "text": {
+                    "type": "string",
+                    "value": "Лапа"
+                  }
+                }
+              },
+              "listPriority": 0,
+              "showHat": true
+            }
+          ]
+        }
+      },
+      {
+        "phase": "remove",
+        "type": "player_info",
+        "data": {
+          "action": {
+            "_value": 32,
+            "add_player": false,
+            "initialize_chat": false,
+            "update_game_mode": false,
+            "update_listed": false,
+            "update_latency": false,
+            "update_display_name": true,
+            "update_hat": false,
+            "update_list_order": false
+          },
+          "data": [
+            {
+              "uuid": "028a2709-16f4-33f4-9667-384b8246d84f"
+            }
+          ]
+        }
+      },
+      {
+        "phase": "remove",
+        "type": "teams",
+        "data": {
+          "team": "zn$5ff4f9",
+          "mode": "remove"
+        }
+      },
+      {
+        "phase": "remove",
+        "type": "player_info",
+        "data": {
+          "action": {
+            "_value": 255,
+            "add_player": true,
+            "initialize_chat": true,
+            "update_game_mode": true,
+            "update_listed": true,
+            "update_latency": true,
+            "update_display_name": true,
+            "update_hat": true,
+            "update_list_order": true
+          },
+          "data": [
+            {
+              "uuid": "028a2709-16f4-33f4-9667-384b8246d84f",
+              "player": {
+                "name": "NickTarget",
+                "properties": []
+              },
+              "gamemode": 0,
+              "listed": 1,
+              "latency": 1,
               "listPriority": 0,
               "showHat": true
             }
