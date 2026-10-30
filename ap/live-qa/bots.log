@@ -1,2 +1,14 @@
+window APLocked minecraft:anvil [ 'paper', undefined, undefined ]
+after APLocked minecraft:anvil
+window APLocked minecraft:anvil [ 'paper', undefined, undefined ]
+after APLocked minecraft:anvil
+window APLocked minecraft:anvil [ 'paper', undefined, undefined ]
+after APLocked minecraft:anvil
+window APLocked minecraft:anvil [ 'paper', undefined, undefined ]
+after APLocked minecraft:anvil
+window APLocked minecraft:anvil [ 'paper', undefined, undefined ]
+after APLocked minecraft:anvil
+window APAdmin minecraft:anvil [ 'paper', undefined, undefined ]
+after APAdmin minecraft:anvil
 Error: login menu did not open
     at run (/home/runner/work/123/123/tools/zap_bot.js:11:44)

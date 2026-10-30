@@ -15,8 +15,8 @@
     ],
     "APObserver": [
       "APObserver joined the game",
-      "[Z_AP] Недостаточно прав.",
-      "APAdmin has made the advancement [Diamonds!]"
+      "APAdmin has made the advancement [Diamonds!]",
+      "[Z_AP] Недостаточно прав."
     ]
   },
   "checks": {
@@ -28,15 +28,51 @@
   "spawns": [
     {
       "name": "player",
-      "id": 167
+      "id": 165
     },
     {
       "name": "player",
-      "id": 165
+      "id": 167
+    },
+    {
+      "name": "slime",
+      "id": 170
+    },
+    {
+      "name": "slime",
+      "id": 171
+    },
+    {
+      "name": "slime",
+      "id": 172
+    },
+    {
+      "name": "slime",
+      "id": 173
+    },
+    {
+      "name": "slime",
+      "id": 174
+    },
+    {
+      "name": "slime",
+      "id": 175
+    },
+    {
+      "name": "slime",
+      "id": 176
+    },
+    {
+      "name": "slime",
+      "id": 177
     },
     {
       "name": "slime",
       "id": 178
+    },
+    {
+      "name": "slime",
+      "id": 179
     }
   ],
   "error": "Error: login menu did not open"
