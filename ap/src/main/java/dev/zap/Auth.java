@@ -9,17 +9,18 @@ import org.mindrot.jbcrypt.BCrypt;
 
 /** Persistent salted hashes and lockouts. Called on main thread except BCrypt.checkpw. */
 final class Auth {
- private final Path path; private final int failures,lockSeconds,cost;
+ private final Path path; private int failures,lockSeconds,cost;
  private String hash; private final Map<UUID,Integer> attempts=new HashMap<>();
  private final Map<UUID,Long> locked=new HashMap<>();
  Auth(Path dir,int failures,int lockSeconds,int cost) throws IOException {
-  Files.createDirectories(dir);path=dir.resolve("auth.yml");this.failures=Math.clamp(failures,1,20);this.lockSeconds=Math.clamp(lockSeconds,30,86400);this.cost=Math.clamp(cost,10,12);
+  Files.createDirectories(dir);path=dir.resolve("auth.yml");configure(failures,lockSeconds,cost);
   if(Files.exists(path)){
    YamlConfiguration data=YamlConfiguration.loadConfiguration(path.toFile());hash=data.getString("password-hash");
    if(hash==null||!hash.matches("\\$2[ayb]\\$[0-9]{2}\\$.{53}"))throw new IOException("Invalid password hash, refusing to reset credentials");
    var sec=data.getConfigurationSection("players");if(sec!=null)for(String key:sec.getKeys(false))try{UUID id=UUID.fromString(key);attempts.put(id,sec.getInt(key+".attempts"));locked.put(id,sec.getLong(key+".locked-until"));}catch(IllegalArgumentException ignored){}
   } else {hash=BCrypt.hashpw("324657",BCrypt.gensalt(this.cost));save();}
  }
+ void configure(int failures,int lockSeconds,int cost){this.failures=Math.clamp(failures,1,20);this.lockSeconds=Math.clamp(lockSeconds,30,86400);this.cost=Math.clamp(cost,10,12);}
  String currentHash(){return hash;}
  static boolean validPassword(String s){return s!=null&&!s.isEmpty()&&s.getBytes(StandardCharsets.UTF_8).length<=72;}
  static boolean verify(String input,String hash){try{return validPassword(input)&&BCrypt.checkpw(input,hash);}catch(IllegalArgumentException e){return false;}}

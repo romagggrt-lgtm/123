@@ -1,6 +1,8 @@
 package dev.zap;
 
 import java.io.IOException;
+import java.io.File;
+import org.bukkit.configuration.file.YamlConfiguration;
 import java.util.*;
 import java.util.function.Consumer;
 import net.kyori.adventure.text.Component;
@@ -21,7 +23,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.mindrot.jbcrypt.BCrypt;
 
 public final class ZAPPlugin extends JavaPlugin implements Listener,CommandExecutor,TabCompleter {
- private Auth auth; private final Map<UUID,Long> sessions=new HashMap<>(),lastClick=new HashMap<>();
+ private Auth auth; private YamlConfiguration messages; private final Map<UUID,Long> sessions=new HashMap<>(),lastClick=new HashMap<>();
  private final Set<UUID> pending=new HashSet<>(),packed=new HashSet<>();
  private long generation=0;
  private static final NamedTextColor PURPLE=NamedTextColor.LIGHT_PURPLE;
@@ -30,15 +32,15 @@ public final class ZAPPlugin extends JavaPlugin implements Listener,CommandExecu
   Screen(Player p,String kind){owner=p.getUniqueId();this.kind=kind;}
   @Override public Inventory getInventory(){return inventory;}
  }
- @Override public void onEnable(){saveDefaultConfig();saveResource("messages.yml",false);try{auth=new Auth(getDataFolder().toPath(),getConfig().getInt("max-failures",5),getConfig().getInt("lock-seconds",900),getConfig().getInt("bcrypt-cost",10));}catch(IOException e){getLogger().severe("Credentials unavailable; panel disabled: "+e.getMessage());getServer().getPluginManager().disablePlugin(this);return;}getServer().getPluginManager().registerEvents(this,this);Objects.requireNonNull(getCommand("ap")).setExecutor(this);Objects.requireNonNull(getCommand("ap")).setTabCompleter(this);}
+ @Override public void onEnable(){saveDefaultConfig();if(!new File(getDataFolder(),"messages.yml").exists())saveResource("messages.yml",false);messages=YamlConfiguration.loadConfiguration(new File(getDataFolder(),"messages.yml"));try{auth=new Auth(getDataFolder().toPath(),getConfig().getInt("max-failures",5),getConfig().getInt("lock-seconds",900),getConfig().getInt("bcrypt-cost",10));}catch(IOException e){getLogger().severe("Credentials unavailable; panel disabled: "+e.getMessage());getServer().getPluginManager().disablePlugin(this);return;}getServer().getPluginManager().registerEvents(this,this);Objects.requireNonNull(getCommand("ap")).setExecutor(this);Objects.requireNonNull(getCommand("ap")).setTabCompleter(this);}
  @Override public void onDisable(){generation++;for(Player p:Bukkit.getOnlinePlayers())if(p.getOpenInventory().getTopInventory().getHolder() instanceof Screen)p.closeInventory();sessions.clear();pending.clear();packed.clear();}
- private void msg(Player p,String text){p.sendMessage(Component.text("[Z_AP] ",NamedTextColor.DARK_PURPLE).append(LegacyComponentSerializer.legacySection().deserialize(text)));}
+ private void msg(Player p,String text){String key=switch(text){case "§cНедостаточно прав."->"no-access";case "§cСлишком много неверных попыток. Повторите позже."->"locked";case "§eСессия завершена. Войдите снова."->"expired";default->null;};if(key!=null)text=messages.getString(key,text);String prefix=messages.getString("prefix","§8[§dZ_AP§8] §r");p.sendMessage(LegacyComponentSerializer.legacySection().deserialize(prefix+text));}
  private boolean access(Player p){return p.hasPermission("z_ap.use");}
  private boolean allowed(Player p,String action){if(!access(p)||!p.hasPermission("z_ap.actions."+action)){msg(p,"§cНедостаточно прав.");return false;}return true;}
  private boolean live(Player p){Long t=sessions.get(p.getUniqueId());long now=System.currentTimeMillis(),timeout=Math.clamp(getConfig().getInt("session-idle-seconds",600),30,86400)*1000L;if(!access(p)||t==null||now-t>timeout){sessions.remove(p.getUniqueId());return false;}sessions.put(p.getUniqueId(),now);return true;}
  @Override public boolean onCommand(CommandSender sender,Command cmd,String label,String[] args){
   if(!(sender instanceof Player p)){sender.sendMessage("Команда доступна только игроку.");return true;}
-  if(args.length>0&&args[0].equalsIgnoreCase("reload")){if(!p.hasPermission("z_ap.reload")){msg(p,"§cНедостаточно прав.");return true;}reloadConfig();sessions.clear();generation++;msg(p,"§aКонфигурация перезагружена; сессии закрыты.");return true;}
+  if(args.length>0&&args[0].equalsIgnoreCase("reload")){if(!p.hasPermission("z_ap.reload")){msg(p,"§cНедостаточно прав.");return true;}reloadConfig();messages=YamlConfiguration.loadConfiguration(new File(getDataFolder(),"messages.yml"));auth.configure(getConfig().getInt("max-failures",5),getConfig().getInt("lock-seconds",900),getConfig().getInt("bcrypt-cost",10));sessions.clear();generation++;msg(p,"§aКонфигурация перезагружена; сессии закрыты.");return true;}
   if(!access(p)){msg(p,"§cНедостаточно прав.");return true;}
   if(args.length>0&&args[0].equalsIgnoreCase("lock")){sessions.remove(p.getUniqueId());p.closeInventory();msg(p,"§eСессия закрыта.");return true;}
   if(args.length>0&&args[0].equalsIgnoreCase("help")){msg(p,"/ap — открыть панель; /ap lock — закрыть сессию; /ap reload — настройки.");return true;}
@@ -67,7 +69,7 @@ public final class ZAPPlugin extends JavaPlugin implements Listener,CommandExecu
  }
  @EventHandler public void prepare(PrepareAnvilEvent e){if(e.getInventory().getHolder() instanceof Screen h&&h.input!=null){e.setResult(item(Material.PAPER,"Подтвердить",null));if(e.getView() instanceof AnvilView v)v.setRepairCost(0);}}
  @EventHandler public void click(InventoryClickEvent e){
-  if(!(e.getWhoClicked() instanceof Player p)||!(e.getView().getTopInventory().getHolder() instanceof Screen h))return;e.setCancelled(true);if(!h.owner.equals(p.getUniqueId()))return;
+  if(!(e.getWhoClicked() instanceof Player p)||!(e.getView().getTopInventory().getHolder() instanceof Screen h))return;getLogger().info("QA click kind="+h.kind+" raw="+e.getRawSlot()+" item="+e.getCurrentItem());e.setCancelled(true);if(!h.owner.equals(p.getUniqueId()))return;
   if(e.getRawSlot()<0||e.getRawSlot()>=e.getView().getTopInventory().getSize())return;
   if(h.input!=null){if(e.getRawSlot()!=2||h.busy)return;if(!h.kind.equals("auth")&&!live(p)){p.closeInventory();return;}if(!(e.getView() instanceof AnvilView view))return;String s=view.getRenameText();if(s==null||s.length()>128){msg(p,"§cНекорректный ввод.");return;}h.busy=true;h.input.accept(s);return;}
   if(!live(p)){p.closeInventory();msg(p,"§eСессия завершена. Войдите снова.");return;}
@@ -106,7 +108,7 @@ public final class ZAPPlugin extends JavaPlugin implements Listener,CommandExecu
  private Player visible(Player viewer,UUID id){if(!viewer.getUniqueId().equals(id)&&!allowed(viewer,"players"))return null;Player t=Bukkit.getPlayer(id);if(t==null||!t.isOnline()||(!viewer.canSee(t)&&!viewer.hasPermission("z_ap.see_vanish"))){msg(viewer,"§cИгрок недоступен.");return null;}return t;}
  private List<Player> visiblePlayers(Player p,String filter){return Bukkit.getOnlinePlayers().stream().map(t->(Player)t).filter(t->p.canSee(t)||p.hasPermission("z_ap.see_vanish")).filter(t->t.getName().toLowerCase(Locale.ROOT).contains(filter.toLowerCase(Locale.ROOT))).sorted(Comparator.comparing(Player::getName,String.CASE_INSENSITIVE_ORDER)).toList();}
  private void players(Player p,int page,String filter){if(!live(p)||!allowed(p,"players"))return;Screen h=chest(p,"Игроки • "+(page+1),"players");List<Player> list=visiblePlayers(p,filter);int start=Math.max(0,page)*28;for(int n=0;n<28&&start+n<list.size();n++){
-  Player t=list.get(start+n);UUID id=t.getUniqueId();int slot=10+(n/7)*9+n%7;button(h,slot,Material.PLAYER_HEAD,t.getName(),"players",q->{if(allowed(q,"players")&&visible(q,id)!=null)profile(q,id);},"Мир: "+t.getWorld().getName(),"Режим: "+t.getGameMode(),"Ping: "+t.getPing());
+  Player t=list.get(start+n);UUID id=t.getUniqueId();int slot=10+(n/7)*9+n%7;button(h,slot,Material.PLAYER_HEAD,t.getName(),null,q->{if(allowed(q,"players")&&visible(q,id)!=null)profile(q,id);},"Мир: "+t.getWorld().getName(),"Режим: "+t.getGameMode(),"Ping: "+t.getPing());ItemStack skull=h.inventory.getItem(slot);skull.editMeta(SkullMeta.class,meta->meta.setOwningPlayer(t));
  }navigation(h);if(page>0)button(h,46,Material.ARROW,"Предыдущая","back",q->players(q,page-1,filter));if(start+28<list.size())button(h,52,Material.ARROW,"Следующая","next",q->players(q,page+1,filter));button(h,48,Material.OAK_SIGN,"Поиск","search",q->input(q,"Имя игрока","search",s->{if(s.matches("[A-Za-z0-9_]{0,16}"))players(q,0,s);else{msg(q,"§cНеверное имя.");players(q,0,"");}}));button(h,50,Material.SUNFLOWER,"Обновить","refresh",q->players(q,page,filter));open(p,h);}
  private boolean safe(Location l){if(l==null||l.getWorld()==null||!l.getWorld().getWorldBorder().isInside(l))return false;World w=l.getWorld();if(l.getY()<w.getMinHeight()||l.getY()+1>=w.getMaxHeight()||!w.isChunkLoaded(l.getBlockX()>>4,l.getBlockZ()>>4))return false;Block feet=l.getBlock(),head=feet.getRelative(0,1,0),floor=feet.getRelative(0,-1,0);if(!feet.isPassable()||!head.isPassable()||!floor.getType().isSolid())return false;return !Set.of(Material.LAVA,Material.FIRE,Material.SOUL_FIRE,Material.MAGMA_BLOCK,Material.CAMPFIRE,Material.SOUL_CAMPFIRE).contains(feet.getType())&&!Set.of(Material.LAVA,Material.FIRE,Material.SOUL_FIRE,Material.MAGMA_BLOCK,Material.CAMPFIRE,Material.SOUL_CAMPFIRE).contains(floor.getType());}
  private void teleport(Player actor,Player who,Location where){if(!allowed(actor,"teleport"))return;if(!safe(where)){msg(actor,"§cТочка небезопасна или чанк не загружен.");return;}if(who.teleport(where)){msg(actor,"§aТелепортация выполнена.");actor.closeInventory();}else msg(actor,"§cТелепортация отменена сервером или другим плагином.");}
@@ -119,12 +121,14 @@ public final class ZAPPlugin extends JavaPlugin implements Listener,CommandExecu
   button(h,33,Material.PACKED_ICE,"Проверка игрока","settings",q->{if(!allowed(q,"moderation"))return;Player v=visible(q,id);if(v==null)return;confirm(q,"Переключить проверку для "+v.getName()+"?",r->{Player target=visible(r,id);if(target!=null)external(r,"moderation","Z_Check","zcheck.use","z_check:zcheck "+target.getName());});});
   navigation(h);open(p,h);
  }
- private void morph(Player p,int page,String filter){if(!live(p)||!allowed(p,"morph"))return;if(!installed("Z_Morph")||!p.hasPermission("zmorph.use")){msg(p,"§cZ_Morph не установлен или нет права zmorph.use.");return;}
+ private void morph(Player p,int page,String filter){morph(p,page,filter,"all");}
+ private void morph(Player p,int page,String filter,String category){if(!live(p)||!allowed(p,"morph"))return;if(!installed("Z_Morph")||!p.hasPermission("zmorph.use")){msg(p,"§cZ_Morph не установлен или нет права zmorph.use.");return;}
   PluginCommand command=Bukkit.getPluginCommand("z_morph:morph");if(command==null)command=Bukkit.getPluginCommand("morph");if(command==null){msg(p,"§cКоманда морфа недоступна.");return;}
   List<String> list;try{list=command.tabComplete(p,"morph",new String[]{"set",filter.toLowerCase(Locale.ROOT)});}catch(Exception ex){msg(p,"§cНе удалось получить список мобов.");return;}
+  if(!category.equals("all"))list=list.stream().filter(name->{try{Class<?> c=org.bukkit.entity.EntityType.valueOf(name.toUpperCase(Locale.ROOT)).getEntityClass();boolean animal=c!=null&&org.bukkit.entity.Animals.class.isAssignableFrom(c),hostile=c!=null&&org.bukkit.entity.Monster.class.isAssignableFrom(c);return category.equals("animals")?animal:category.equals("hostile")?hostile:!animal&&!hostile;}catch(IllegalArgumentException ex){return false;}}).toList();
   Screen h=chest(p,"Морфы • "+(page+1),"morph");int start=page*28;for(int n=0;n<28&&start+n<list.size();n++){
    String name=list.get(start+n);if(!name.matches("[a-z0-9_]{1,64}"))continue;int slot=10+(n/7)*9+n%7;button(h,slot,Material.CREEPER_HEAD,name,"morph",q->external(q,"morph","Z_Morph","zmorph.use","z_morph:morph set "+name));
-  }navigation(h);if(page>0)button(h,46,Material.ARROW,"Предыдущая","back",q->morph(q,page-1,filter));if(start+28<list.size())button(h,52,Material.ARROW,"Следующая","next",q->morph(q,page+1,filter));button(h,48,Material.OAK_SIGN,"Поиск моба","search",q->input(q,"Имя моба","morph-search",s->{if(s.matches("[a-zA-Z0-9_]{0,64}"))morph(q,0,s);else msg(q,"§cНекорректное имя.");}));button(h,50,Material.MILK_BUCKET,"Вернуть облик","morph",q->external(q,"morph","Z_Morph","zmorph.use","z_morph:morph remove"));open(p,h);
+  }navigation(h);if(page>0)button(h,46,Material.ARROW,"Предыдущая","back",q->morph(q,page-1,filter,category));if(start+28<list.size())button(h,52,Material.ARROW,"Следующая","next",q->morph(q,page+1,filter,category));button(h,48,Material.OAK_SIGN,"Поиск моба","search",q->input(q,"Имя моба","morph-search",s->{if(s.matches("[a-zA-Z0-9_]{0,64}"))morph(q,0,s,category);else msg(q,"§cНекорректное имя.");}));button(h,47,Material.BOOK,"Категория: "+switch(category){case "animals"->"мирные";case "hostile"->"враждебные";case "other"->"прочие";default->"все";},"morph",q->morph(q,0,filter,switch(category){case "all"->"animals";case "animals"->"hostile";case "hostile"->"other";default->"all";}));button(h,50,Material.MILK_BUCKET,"Вернуть облик","morph",q->external(q,"morph","Z_Morph","zmorph.use","z_morph:morph remove"));open(p,h);
  }
  private void confirm(Player p,String title,Consumer<Player> action){Screen h=chest(p,"Подтверждение","confirm");h.inventory.setItem(4,item(Material.PAPER,title,null));button(h,20,Material.LIME_CONCRETE,"Подтвердить","confirm",action);button(h,24,Material.RED_CONCRETE,"Отмена","close",this::home);navigation(h);open(p,h);}
  private void kits(Player p){Screen h=chest(p,"InventoryCache","kits");h.inventory.setItem(4,item(Material.BOOK,"Наборы по имени",null,"Установленная версия поддерживает /dk save и load.","При загрузке InventoryCache создаёт резервную копию."));
