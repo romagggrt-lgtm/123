@@ -25,7 +25,12 @@ try:
   wait_for(lambda:(work/'ready').exists(),60,'player join');send('tp MorphObserver Morpher');(work/'begin').write_text('1')
   assert bot.wait(timeout=50)==0,'Bot failed'
  result=json.loads((work/'bot-result.json').read_text());(report/'bot-result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2))
- target=result['targetUUID'].lower();observed=[e for e in result['spawns'] if (e.get('uuid') or '').lower()==target]
+ target=result['targetUUID'].lower()
+ # LibsDisguises deliberately uses synthetic UUIDs for mob presentations;
+ # the network entity id is the stable identity seen by the observer.
+ restored=next((e for e in result['spawns'] if (e.get('uuid') or '').lower()==target and e.get('name')=='player'),None)
+ assert restored is not None,'Player entity was not restored'
+ observed=[e for e in result['spawns'] if e.get('id')==restored['id']]
  result['observed_target']=observed;names=[e.get('name') for e in observed];assert 'zombie' in names and 'creeper' in names and 'player' in names and not result['disconnected'],result
  text=read();assert '[Z_Morph] Ошибка' not in text and '[Z_Morph] Не удалось' not in text
  jar=root/'morph/target/Z_Morph-1.0.0.jar';shutil.copyfile(jar,report/'tested-plugin.jar')
