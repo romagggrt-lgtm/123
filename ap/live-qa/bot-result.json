@@ -5,13 +5,21 @@
       "APLocked joined the game",
       "APObserver joined the game",
       "APAdmin has made the advancement [Diamonds!]",
-      "[Server: Gave 3 [Diamond] to APAdmin]"
+      "[Server: Gave 3 [Diamond] to APAdmin]",
+      "[Z_AP] Режим игрока APAdmin: SURVIVAL",
+      "[Z_Morph] Вы превратились в allay."
     ],
     "APLocked": [
       "APLocked joined the game",
       "APObserver joined the game",
       "APAdmin has made the advancement [Diamonds!]",
-      "[Server: Gave 3 [Diamond] to APAdmin]"
+      "[Server: Gave 3 [Diamond] to APAdmin]",
+      "[Z_AP] Неверный пароль.",
+      "[Z_AP] Неверный пароль.",
+      "[Z_AP] Неверный пароль.",
+      "[Z_AP] Неверный пароль.",
+      "[Z_AP] Доступ временно заблокирован.",
+      "[Z_AP] Слишком много неверных попыток. Повторите позже."
     ],
     "APObserver": [
       "APObserver joined the game",
@@ -21,9 +29,15 @@
   },
   "checks": {
     "denied_without_permission": true,
-    "five_bad_attempts_locked": false,
-    "login_opened_menu": false,
-    "no_password_in_chat": true
+    "five_bad_attempts_locked": true,
+    "login_opened_menu": true,
+    "no_password_in_chat": true,
+    "inventory_before": true,
+    "gamemode_changed": false,
+    "inventory_after": true,
+    "no_global_announcements": true,
+    "morph_menu": true,
+    "morph_command": true
   },
   "spawns": [
     {
@@ -63,17 +77,9 @@
       "id": 176
     },
     {
-      "name": "slime",
-      "id": 177
-    },
-    {
-      "name": "slime",
-      "id": 178
-    },
-    {
-      "name": "slime",
-      "id": 179
+      "name": "allay",
+      "id": 165
     }
   ],
-  "error": "Error: login menu did not open"
+  "error": "Error: Failed checks {\"denied_without_permission\":true,\"five_bad_attempts_locked\":true,\"login_opened_menu\":true,\"no_password_in_chat\":true,\"inventory_before\":true,\"gamemode_changed\":false,\"inventory_after\":true,\"no_global_announcements\":true,\"morph_menu\":true,\"morph_command\":true}"
 }

@@ -6,597 +6,597 @@
 [INFO] --------------------------------[ jar ]---------------------------------
 [INFO] Loaded 24305 auto-discovered prefixes for remote repository central (prefixes-central.txt)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/3.5.0/maven-resources-plugin-3.5.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/3.5.0/maven-resources-plugin-3.5.0.pom (7.7 kB at 170 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/3.5.0/maven-resources-plugin-3.5.0.pom (7.7 kB at 163 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/47/maven-plugins-47.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/47/maven-plugins-47.pom (7.2 kB at 232 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/47/maven-plugins-47.pom (7.2 kB at 240 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/47/maven-parent-47.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/47/maven-parent-47.pom (54 kB at 1.6 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/47/maven-parent-47.pom (54 kB at 1.4 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/37/apache-37.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/37/apache-37.pom (26 kB at 826 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/37/apache-37.pom (26 kB at 657 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.14.2/junit-bom-5.14.2.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.14.2/junit-bom-5.14.2.pom (5.7 kB at 189 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.14.2/junit-bom-5.14.2.pom (5.7 kB at 183 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/3.5.0/maven-resources-plugin-3.5.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/3.5.0/maven-resources-plugin-3.5.0.jar (32 kB at 973 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/3.5.0/maven-resources-plugin-3.5.0.jar (32 kB at 868 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.14.1/maven-compiler-plugin-3.14.1.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.14.1/maven-compiler-plugin-3.14.1.pom (9.9 kB at 341 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.14.1/maven-compiler-plugin-3.14.1.pom (9.9 kB at 260 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/45/maven-plugins-45.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/45/maven-plugins-45.pom (8.4 kB at 270 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/45/maven-plugins-45.pom (8.4 kB at 253 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/45/maven-parent-45.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/45/maven-parent-45.pom (53 kB at 1.7 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/45/maven-parent-45.pom (53 kB at 1.6 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/35/apache-35.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/35/apache-35.pom (24 kB at 866 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/35/apache-35.pom (24 kB at 638 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.13.1/junit-bom-5.13.1.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.13.1/junit-bom-5.13.1.pom (5.6 kB at 188 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.13.1/junit-bom-5.13.1.pom (5.6 kB at 282 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.14.1/maven-compiler-plugin-3.14.1.jar
 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.14.1/maven-compiler-plugin-3.14.1.jar (84 kB at 2.4 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/3.5.4/maven-surefire-plugin-3.5.4.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/3.5.4/maven-surefire-plugin-3.5.4.pom (4.9 kB at 157 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/3.5.4/maven-surefire-plugin-3.5.4.pom (4.9 kB at 181 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire/3.5.4/surefire-3.5.4.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire/3.5.4/surefire-3.5.4.pom (19 kB at 618 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire/3.5.4/surefire-3.5.4.pom (19 kB at 532 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/44/maven-parent-44.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/44/maven-parent-44.pom (52 kB at 1.4 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/44/maven-parent-44.pom (52 kB at 1.9 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/34/apache-34.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/34/apache-34.pom (24 kB at 808 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/34/apache-34.pom (24 kB at 866 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.12.1/junit-bom-5.12.1.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.12.1/junit-bom-5.12.1.pom (5.6 kB at 105 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.12.1/junit-bom-5.12.1.pom (5.6 kB at 166 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/3.5.4/maven-surefire-plugin-3.5.4.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/3.5.4/maven-surefire-plugin-3.5.4.jar (46 kB at 1.6 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/3.5.4/maven-surefire-plugin-3.5.4.jar (46 kB at 1.2 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/3.5.1/maven-jar-plugin-3.5.1.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/3.5.1/maven-jar-plugin-3.5.1.pom (7.6 kB at 232 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/3.5.1/maven-jar-plugin-3.5.1.pom (7.6 kB at 294 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/49/maven-plugins-49.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/49/maven-plugins-49.pom (7.2 kB at 240 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/49/maven-plugins-49.pom (7.2 kB at 232 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/49/maven-parent-49.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/49/maven-parent-49.pom (51 kB at 1.8 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/49/maven-parent-49.pom (51 kB at 1.4 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/39/apache-39.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/39/apache-39.pom (27 kB at 845 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/39/apache-39.pom (27 kB at 966 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.14.4/junit-bom-5.14.4.pom
 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.14.4/junit-bom-5.14.4.pom (5.7 kB at 210 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/3.5.1/maven-jar-plugin-3.5.1.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/3.5.1/maven-jar-plugin-3.5.1.jar (35 kB at 854 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/3.5.1/maven-jar-plugin-3.5.1.jar (35 kB at 796 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.6.1/maven-shade-plugin-3.6.1.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.6.1/maven-shade-plugin-3.6.1.pom (12 kB at 402 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.6.1/maven-shade-plugin-3.6.1.pom (12 kB at 376 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.6.1/maven-shade-plugin-3.6.1.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.6.1/maven-shade-plugin-3.6.1.jar (150 kB at 3.9 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.6.1/maven-shade-plugin-3.6.1.jar (150 kB at 3.6 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter/6.0.3/junit-jupiter-6.0.3.pom
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/mockbukkit/mockbukkit/mockbukkit-v1.21/4.110.0/mockbukkit-v1.21-4.110.0.pom
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/mindrot/jbcrypt/0.4/jbcrypt-0.4.pom
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/io/papermc/paper/paper-api/1.21.11-R0.1-SNAPSHOT/maven-metadata.xml
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/mockbukkit/mockbukkit/mockbukkit-v1.21/4.110.0/mockbukkit-v1.21-4.110.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/io/papermc/paper/paper-api/1.21.11-R0.1-SNAPSHOT/maven-metadata.xml (2.4 kB at 39 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/io/papermc/paper/paper-api/1.21.11-R0.1-SNAPSHOT/maven-metadata.xml (2.4 kB at 48 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/io/papermc/paper/paper-api/1.21.11-R0.1-SNAPSHOT/paper-api-1.21.11-R0.1-20260511.115010-91.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/io/papermc/paper/paper-api/1.21.11-R0.1-SNAPSHOT/paper-api-1.21.11-R0.1-20260511.115010-91.pom (4.9 kB at 206 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-bom/4.26.1/adventure-bom-4.26.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-bom/4.26.1/adventure-bom-4.26.1.pom (5.0 kB at 207 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/guava/33.3.1-jre/guava-33.3.1-jre.pom
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson/2.11.0/gson-2.11.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/mindrot/jbcrypt/0.4/jbcrypt-0.4.pom (4.1 kB at 24 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/yaml/snakeyaml/2.2/snakeyaml-2.2.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter/6.0.3/junit-jupiter-6.0.3.pom (3.2 kB at 17 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter/6.0.3/junit-jupiter-6.0.3.pom (3.2 kB at 24 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/mindrot/jbcrypt/0.4/jbcrypt-0.4.pom (4.1 kB at 30 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/junit/junit-bom/6.0.3/junit-bom-6.0.3.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/mockbukkit/mockbukkit/mockbukkit-v1.21/4.110.0/mockbukkit-v1.21-4.110.0.pom (4.1 kB at 19 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/mockbukkit/mockbukkit/mockbukkit-v1.21/4.110.0/mockbukkit-v1.21-4.110.0.pom (4.1 kB at 27 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/io/papermc/paper/paper-api/1.21.11-R0.1-SNAPSHOT/paper-api-1.21.11-R0.1-20260511.115010-91.pom (4.9 kB at 35 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-bom/4.26.1/adventure-bom-4.26.1.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/junit-bom/6.0.3/junit-bom-6.0.3.pom (5.1 kB at 40 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-bom/4.26.1/adventure-bom-4.26.1.pom (5.0 kB at 38 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson/2.11.0/gson-2.11.0.pom
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/guava/33.3.1-jre/guava-33.3.1-jre.pom
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/joml/joml/1.10.8/joml-1.10.8.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/guava/33.3.1-jre/guava-33.3.1-jre.pom (9.3 kB at 48 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/guava-parent/33.3.1-jre/guava-parent-33.3.1-jre.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/yaml/snakeyaml/2.2/snakeyaml-2.2.pom (21 kB at 130 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/yaml/snakeyaml/2.2/snakeyaml-2.2.pom
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/it/unimi/dsi/fastutil/8.5.15/fastutil-8.5.15.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/junit-bom/6.0.3/junit-bom-6.0.3.pom (5.1 kB at 31 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/logging/log4j/log4j-api/2.24.1/log4j-api-2.24.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/joml/joml/1.10.8/joml-1.10.8.pom (1.5 kB at 8.5 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.pom (2.8 kB at 97 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-parent/2.0.16/slf4j-parent-2.0.16.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-parent/2.0.16/slf4j-parent-2.0.16.pom (13 kB at 495 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-bom/2.0.16/slf4j-bom-2.0.16.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-bom/2.0.16/slf4j-bom-2.0.16.pom (7.3 kB at 262 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/guava-parent/33.3.1-jre/guava-parent-33.3.1-jre.pom (20 kB at 125 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/md-5/bungeecord-chat/1.21-R0.2-deprecated+build.21/bungeecord-chat-1.21-R0.2-deprecated+build.21.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/it/unimi/dsi/fastutil/8.5.15/fastutil-8.5.15.pom (1.6 kB at 9.6 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-resolver-provider/3.9.6/maven-resolver-provider-3.9.6.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/md-5/bungeecord-chat/1.21-R0.2-deprecated+build.21/bungeecord-chat-1.21-R0.2-deprecated+build.21.pom (1.2 kB at 51 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/mojang/brigadier/1.3.10/brigadier-1.3.10.pom
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/mojang/brigadier/1.3.10/brigadier-1.3.10.pom (393 B at 16 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.pom (1.5 kB at 63 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-api/4.26.1/adventure-api-4.26.1.pom
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-minimessage/4.26.1/adventure-text-minimessage-4.26.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-api/4.26.1/adventure-api-4.26.1.pom (3.3 kB at 115 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-gson/4.26.1/adventure-text-serializer-gson-4.26.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson/2.11.0/gson-2.11.0.pom (12 kB at 25 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson/2.11.0/gson-2.11.0.pom (12 kB at 657 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/guava/33.3.1-jre/guava-33.3.1-jre.pom (9.3 kB at 423 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson-parent/2.11.0/gson-parent-2.11.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/logging/log4j/log4j-api/2.24.1/log4j-api-2.24.1.pom (4.4 kB at 17 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/it/unimi/dsi/fastutil/8.5.15/fastutil-8.5.15.pom (1.6 kB at 76 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/guava-parent/33.3.1-jre/guava-parent-33.3.1-jre.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/joml/joml/1.10.8/joml-1.10.8.pom (1.5 kB at 58 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/logging/log4j/log4j-api/2.24.1/log4j-api-2.24.1.pom
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson-parent/2.11.0/gson-parent-2.11.0.pom (26 kB at 1.5 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/guava-parent/33.3.1-jre/guava-parent-33.3.1-jre.pom (20 kB at 1.1 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/logging/log4j/log4j-api/2.24.1/log4j-api-2.24.1.pom (4.4 kB at 245 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/md-5/bungeecord-chat/1.21-R0.2-deprecated+build.21/bungeecord-chat-1.21-R0.2-deprecated+build.21.pom
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/logging/log4j/log4j/2.24.1/log4j-2.24.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/logging/log4j/log4j/2.24.1/log4j-2.24.1.pom (35 kB at 1.2 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/yaml/snakeyaml/2.2/snakeyaml-2.2.pom (21 kB at 366 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-resolver-provider/3.9.6/maven-resolver-provider-3.9.6.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/logging/log4j/log4j/2.24.1/log4j-2.24.1.pom (35 kB at 1.9 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/md-5/bungeecord-chat/1.21-R0.2-deprecated+build.21/bungeecord-chat-1.21-R0.2-deprecated+build.21.pom (1.2 kB at 61 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.pom
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/logging/log4j/log4j-bom/2.24.1/log4j-bom-2.24.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-resolver-provider/3.9.6/maven-resolver-provider-3.9.6.pom (4.5 kB at 27 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-resolver-provider/3.9.6/maven-resolver-provider-3.9.6.pom (4.5 kB at 196 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/mojang/brigadier/1.3.10/brigadier-1.3.10.pom
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven/3.9.6/maven-3.9.6.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/logging/log4j/log4j-bom/2.24.1/log4j-bom-2.24.1.pom (12 kB at 533 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/logging/log4j/log4j-bom/2.24.1/log4j-bom-2.24.1.pom (12 kB at 681 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/logging/logging-parent/11.3.0/logging-parent-11.3.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-minimessage/4.26.1/adventure-text-minimessage-4.26.1.pom (2.9 kB at 17 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-legacy/4.26.1/adventure-text-serializer-legacy-4.26.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/logging/logging-parent/11.3.0/logging-parent-11.3.0.pom (53 kB at 1.8 MB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/33/apache-33.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-gson/4.26.1/adventure-text-serializer-gson-4.26.1.pom (3.4 kB at 21 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-plain/4.26.1/adventure-text-serializer-plain-4.26.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson-parent/2.11.0/gson-parent-2.11.0.pom (26 kB at 153 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-logger-slf4j/4.26.1/adventure-text-logger-slf4j-4.26.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven/3.9.6/maven-3.9.6.pom (29 kB at 176 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.pom (1.5 kB at 69 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-api/4.26.1/adventure-api-4.26.1.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/mojang/brigadier/1.3.10/brigadier-1.3.10.pom (393 B at 22 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-minimessage/4.26.1/adventure-text-minimessage-4.26.1.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven/3.9.6/maven-3.9.6.pom (29 kB at 1.2 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-parent/41/maven-parent-41.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-parent/41/maven-parent-41.pom (51 kB at 1.9 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/logging/logging-parent/11.3.0/logging-parent-11.3.0.pom (53 kB at 2.0 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-minimessage/4.26.1/adventure-text-minimessage-4.26.1.pom (2.9 kB at 220 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-gson/4.26.1/adventure-text-serializer-gson-4.26.1.pom
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/33/apache-33.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-parent/41/maven-parent-41.pom (51 kB at 2.7 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-gson/4.26.1/adventure-text-serializer-gson-4.26.1.pom (3.4 kB at 201 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/31/apache-31.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/33/apache-33.pom (24 kB at 149 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-legacy/4.26.1/adventure-text-serializer-legacy-4.26.1.pom (2.8 kB at 17 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/checkerframework/checker-qual/3.49.2/checker-qual-3.49.2.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/33/apache-33.pom (24 kB at 1.3 MB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-legacy/4.26.1/adventure-text-serializer-legacy-4.26.1.pom
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/groovy/groovy-bom/4.0.22/groovy-bom-4.0.22.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-plain/4.26.1/adventure-text-serializer-plain-4.26.1.pom (2.8 kB at 18 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-connector-basic/1.9.18/maven-resolver-connector-basic-1.9.18.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/31/apache-31.pom (23 kB at 1.0 MB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-transport-http/1.9.18/maven-resolver-transport-http-1.9.18.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/groovy/groovy-bom/4.0.22/groovy-bom-4.0.22.pom (27 kB at 1.2 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.pom (2.8 kB at 22 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/31/apache-31.pom (23 kB at 1.6 MB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-parent/2.0.16/slf4j-parent-2.0.16.pom
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-plain/4.26.1/adventure-text-serializer-plain-4.26.1.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/groovy/groovy-bom/4.0.22/groovy-bom-4.0.22.pom (27 kB at 1.6 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-legacy/4.26.1/adventure-text-serializer-legacy-4.26.1.pom (2.8 kB at 118 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/fasterxml/jackson/jackson-bom/2.17.2/jackson-bom-2.17.2.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-connector-basic/1.9.18/maven-resolver-connector-basic-1.9.18.pom (3.7 kB at 169 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver/1.9.18/maven-resolver-1.9.18.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-transport-http/1.9.18/maven-resolver-transport-http-1.9.18.pom (5.6 kB at 256 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/fasterxml/jackson/jackson-bom/2.17.2/jackson-bom-2.17.2.pom (19 kB at 752 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-logger-slf4j/4.26.1/adventure-text-logger-slf4j-4.26.1.pom (3.0 kB at 18 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.1.0/annotations-26.1.0.pom
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-logger-slf4j/4.26.1/adventure-text-logger-slf4j-4.26.1.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-plain/4.26.1/adventure-text-serializer-plain-4.26.1.pom (2.8 kB at 141 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/checkerframework/checker-qual/3.49.2/checker-qual-3.49.2.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-logger-slf4j/4.26.1/adventure-text-logger-slf4j-4.26.1.pom (3.0 kB at 149 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/fasterxml/jackson/jackson-bom/2.17.2/jackson-bom-2.17.2.pom (19 kB at 895 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-connector-basic/1.9.18/maven-resolver-connector-basic-1.9.18.pom
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/fasterxml/jackson/jackson-parent/2.17/jackson-parent-2.17.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver/1.9.18/maven-resolver-1.9.18.pom (22 kB at 893 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/hamcrest/hamcrest/3.0/hamcrest-3.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.1.0/annotations-26.1.0.pom (1.7 kB at 73 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/fasterxml/jackson/jackson-parent/2.17/jackson-parent-2.17.pom (6.3 kB at 275 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/checkerframework/checker-qual/3.49.2/checker-qual-3.49.2.pom (2.1 kB at 116 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-transport-http/1.9.18/maven-resolver-transport-http-1.9.18.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-connector-basic/1.9.18/maven-resolver-connector-basic-1.9.18.pom (3.7 kB at 196 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver/1.9.18/maven-resolver-1.9.18.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/fasterxml/jackson/jackson-parent/2.17/jackson-parent-2.17.pom (6.3 kB at 253 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/fasterxml/oss-parent/58/oss-parent-58.pom
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/fasterxml/oss-parent/58/oss-parent-58.pom (24 kB at 920 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-transport-http/1.9.18/maven-resolver-transport-http-1.9.18.pom (5.6 kB at 235 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver/1.9.18/maven-resolver-1.9.18.pom (22 kB at 1.2 MB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.1.0/annotations-26.1.0.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/fasterxml/oss-parent/58/oss-parent-58.pom (24 kB at 1.1 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/jakarta/platform/jakarta.jakartaee-bom/9.1.0/jakarta.jakartaee-bom-9.1.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/jakarta/platform/jakarta.jakartaee-bom/9.1.0/jakarta.jakartaee-bom-9.1.0.pom (9.6 kB at 434 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/jakarta/platform/jakartaee-api-parent/9.1.0/jakartaee-api-parent-9.1.0.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-api/4.26.1/adventure-api-4.26.1.pom (3.3 kB at 20 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/hamcrest/hamcrest/3.0/hamcrest-3.0.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.1.0/annotations-26.1.0.pom (1.7 kB at 84 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-parent/2.0.16/slf4j-parent-2.0.16.pom (13 kB at 107 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-bom/2.0.16/slf4j-bom-2.0.16.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/hamcrest/hamcrest/3.0/hamcrest-3.0.pom (1.6 kB at 74 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/jakarta/platform/jakarta.jakartaee-bom/9.1.0/jakarta.jakartaee-bom-9.1.0.pom (9.6 kB at 318 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-bungeecord/4.4.1/adventure-platform-bungeecord-4.4.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/jakarta/platform/jakartaee-api-parent/9.1.0/jakartaee-api-parent-9.1.0.pom (15 kB at 571 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/jakarta/platform/jakartaee-api-parent/9.1.0/jakartaee-api-parent-9.1.0.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/jakarta/platform/jakartaee-api-parent/9.1.0/jakartaee-api-parent-9.1.0.pom (15 kB at 781 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/eclipse/ee4j/project/1.0.7/project-1.0.7.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/checkerframework/checker-qual/3.49.2/checker-qual-3.49.2.pom (2.1 kB at 12 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/eclipse/ee4j/project/1.0.7/project-1.0.7.pom (14 kB at 645 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/bytebuddy/byte-buddy/1.18.8/byte-buddy-1.18.8.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/hamcrest/hamcrest/3.0/hamcrest-3.0.pom (1.6 kB at 10 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-resolver-provider/3.8.5/maven-resolver-provider-3.8.5.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/eclipse/ee4j/project/1.0.7/project-1.0.7.pom (14 kB at 89 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.pom (3.4 kB at 14 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/junit/junit-bom/5.10.3/junit-bom-5.10.3.pom
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter-params/6.0.3/junit-jupiter-params-6.0.3.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/bytebuddy/byte-buddy/1.18.8/byte-buddy-1.18.8.pom (21 kB at 127 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/bytebuddy/byte-buddy-parent/1.18.8/byte-buddy-parent-1.18.8.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/junit-bom/5.10.3/junit-bom-5.10.3.pom (5.6 kB at 226 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/junit-bom/5.10.3/junit-bom-5.10.3.pom (5.6 kB at 332 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/mockito/mockito-bom/4.11.0/mockito-bom-4.11.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-resolver-provider/3.8.5/maven-resolver-provider-3.8.5.pom (4.2 kB at 26 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven/3.8.5/maven-3.8.5.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-bungeecord/4.4.1/adventure-platform-bungeecord-4.4.1.pom (3.3 kB at 12 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter-params/6.0.3/junit-jupiter-params-6.0.3.pom (3.2 kB at 19 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/failureaccess/1.0.2/failureaccess-1.0.2.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/bytebuddy/byte-buddy-parent/1.18.8/byte-buddy-parent-1.18.8.pom (68 kB at 418 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/mockito/mockito-bom/4.11.0/mockito-bom-4.11.0.pom (3.2 kB at 19 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.pom (3.4 kB at 27 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-resolver-provider/3.8.5/maven-resolver-provider-3.8.5.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/mockito/mockito-bom/4.11.0/mockito-bom-4.11.0.pom (3.2 kB at 90 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-bom/2.0.16/slf4j-bom-2.0.16.pom (7.3 kB at 59 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/springframework/spring-framework-bom/5.3.39/spring-framework-bom-5.3.39.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.pom (2.3 kB at 108 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/guava-parent/26.0-android/guava-parent-26.0-android.pom
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter-params/6.0.3/junit-jupiter-params-6.0.3.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-bungeecord/4.4.1/adventure-platform-bungeecord-4.4.1.pom (3.3 kB at 26 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-resolver-provider/3.8.5/maven-resolver-provider-3.8.5.pom (4.2 kB at 162 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.pom
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven/3.8.5/maven-3.8.5.pom
 [INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/springframework/spring-framework-bom/5.3.39/spring-framework-bom-5.3.39.pom (5.7 kB at 269 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven/3.8.5/maven-3.8.5.pom (27 kB at 168 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/failureaccess/1.0.2/failureaccess-1.0.2.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven/3.8.5/maven-3.8.5.pom (27 kB at 1.3 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-parent/35/maven-parent-35.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.pom (4.3 kB at 171 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.pom (3.4 kB at 20 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/checkerframework/checker-qual/3.43.0/checker-qual-3.43.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/sonatype/oss/oss-parent/7/oss-parent-7.pom (4.6 kB at 145 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/errorprone/error_prone_annotations/2.28.0/error_prone_annotations-2.28.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/checkerframework/checker-qual/3.43.0/checker-qual-3.43.0.pom (2.1 kB at 75 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/j2objc/j2objc-annotations/3.0.0/j2objc-annotations-3.0.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/errorprone/error_prone_annotations/2.28.0/error_prone_annotations-2.28.0.pom (4.3 kB at 185 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/errorprone/error_prone_parent/2.28.0/error_prone_parent-2.28.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/j2objc/j2objc-annotations/3.0.0/j2objc-annotations-3.0.0.pom (5.1 kB at 220 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/errorprone/error_prone_annotations/2.27.0/error_prone_annotations-2.27.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/failureaccess/1.0.2/failureaccess-1.0.2.pom (3.3 kB at 21 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/errorprone/error_prone_parent/2.28.0/error_prone_parent-2.28.0.pom (13 kB at 469 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/errorprone/error_prone_annotations/2.27.0/error_prone_annotations-2.27.0.pom (4.3 kB at 177 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson/2.8.8/gson-2.8.8.pom
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/errorprone/error_prone_parent/2.27.0/error_prone_parent-2.27.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson/2.8.8/gson-2.8.8.pom (6.0 kB at 271 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/guava-parent/26.0-android/guava-parent-26.0-android.pom (10 kB at 65 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson-parent/2.8.8/gson-parent-2.8.8.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/errorprone/error_prone_parent/2.27.0/error_prone_parent-2.27.0.pom (13 kB at 525 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/failureaccess/1.0.2/failureaccess-1.0.2.pom (3.3 kB at 101 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/guava-parent/26.0-android/guava-parent-26.0-android.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-parent/35/maven-parent-35.pom (46 kB at 2.1 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/bytebuddy/byte-buddy/1.18.8/byte-buddy-1.18.8.pom (21 kB at 159 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/25/apache-25.pom
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/bytebuddy/byte-buddy-parent/1.18.8/byte-buddy-parent-1.18.8.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/guava-parent/26.0-android/guava-parent-26.0-android.pom (10 kB at 848 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/25/apache-25.pom (20 kB at 1.5 MB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/sonatype/oss/oss-parent/9/oss-parent-9.pom (6.3 kB at 392 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.pom (2.3 kB at 142 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/checkerframework/checker-qual/3.43.0/checker-qual-3.43.0.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/checkerframework/checker-qual/3.43.0/checker-qual-3.43.0.pom (2.1 kB at 95 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter-params/6.0.3/junit-jupiter-params-6.0.3.pom (3.2 kB at 24 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/errorprone/error_prone_annotations/2.28.0/error_prone_annotations-2.28.0.pom
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/j2objc/j2objc-annotations/3.0.0/j2objc-annotations-3.0.0.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.pom (3.4 kB at 24 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/errorprone/error_prone_annotations/2.27.0/error_prone_annotations-2.27.0.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/j2objc/j2objc-annotations/3.0.0/j2objc-annotations-3.0.0.pom (5.1 kB at 181 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson/2.8.8/gson-2.8.8.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/errorprone/error_prone_annotations/2.27.0/error_prone_annotations-2.27.0.pom (4.3 kB at 147 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/errorprone/error_prone_parent/2.27.0/error_prone_parent-2.27.0.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson/2.8.8/gson-2.8.8.pom (6.0 kB at 249 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson-parent/2.8.8/gson-parent-2.8.8.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/bytebuddy/byte-buddy-parent/1.18.8/byte-buddy-parent-1.18.8.pom (68 kB at 497 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/errorprone/error_prone_parent/2.27.0/error_prone_parent-2.27.0.pom (13 kB at 691 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-model/3.9.6/maven-model-3.9.6.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson-parent/2.8.8/gson-parent-2.8.8.pom (4.6 kB at 220 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-model-builder/3.9.6/maven-model-builder-3.9.6.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/sonatype/oss/oss-parent/9/oss-parent-9.pom (6.3 kB at 273 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-model/3.9.6/maven-model-3.9.6.pom (2.7 kB at 123 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson-parent/2.8.8/gson-parent-2.8.8.pom (4.6 kB at 149 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-model/3.9.6/maven-model-3.9.6.pom (2.7 kB at 181 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-model-builder/3.9.6/maven-model-builder-3.9.6.pom (3.5 kB at 196 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-repository-metadata/3.9.6/maven-repository-metadata-3.9.6.pom
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-api/1.9.18/maven-resolver-api-1.9.18.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-parent/35/maven-parent-35.pom (46 kB at 252 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/25/apache-25.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-repository-metadata/3.9.6/maven-repository-metadata-3.9.6.pom (2.1 kB at 98 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.pom (4.3 kB at 28 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-api/1.9.18/maven-resolver-api-1.9.18.pom (2.7 kB at 179 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-repository-metadata/3.9.6/maven-repository-metadata-3.9.6.pom (2.1 kB at 93 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/sonatype/oss/oss-parent/7/oss-parent-7.pom (4.6 kB at 171 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-spi/1.9.18/maven-resolver-spi-1.9.18.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-api/1.9.18/maven-resolver-api-1.9.18.pom (2.7 kB at 103 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-util/1.9.18/maven-resolver-util-1.9.18.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-spi/1.9.18/maven-resolver-spi-1.9.18.pom (2.7 kB at 129 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-impl/1.9.18/maven-resolver-impl-1.9.18.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/errorprone/error_prone_annotations/2.28.0/error_prone_annotations-2.28.0.pom (4.3 kB at 31 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/errorprone/error_prone_parent/2.28.0/error_prone_parent-2.28.0.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-impl/1.9.18/maven-resolver-impl-1.9.18.pom (4.3 kB at 254 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-util/1.9.18/maven-resolver-util-1.9.18.pom (2.9 kB at 136 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-spi/1.9.18/maven-resolver-spi-1.9.18.pom (2.7 kB at 97 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-util/1.9.18/maven-resolver-util-1.9.18.pom (2.9 kB at 143 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/javax/inject/javax.inject/1/javax.inject-1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-impl/1.9.18/maven-resolver-impl-1.9.18.pom (4.3 kB at 227 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-key/4.26.1/adventure-key-4.26.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.pom (8.8 kB at 351 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus/10/plexus-10.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-key/4.26.1/adventure-key-4.26.1.pom (3.1 kB at 150 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/javax/inject/javax.inject/1/javax.inject-1.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/javax/inject/javax.inject/1/javax.inject-1.pom (612 B at 41 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/examination-api/1.3.0/examination-api-1.3.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus/10/plexus-10.pom (25 kB at 1.2 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/examination-api/1.3.0/examination-api-1.3.0.pom (2.1 kB at 114 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/examination-string/1.3.0/examination-string-1.3.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/examination-api/1.3.0/examination-api-1.3.0.pom (2.1 kB at 89 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.0.2-1/annotations-26.0.2-1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/examination-string/1.3.0/examination-string-1.3.0.pom (2.1 kB at 73 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/examination-string/1.3.0/examination-string-1.3.0.pom (2.1 kB at 137 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-json/4.26.1/adventure-text-serializer-json-4.26.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-model-builder/3.9.6/maven-model-builder-3.9.6.pom (3.5 kB at 22 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.0.2-1/annotations-26.0.2-1.pom (1.7 kB at 121 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson/2.8.0/gson-2.8.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/25/apache-25.pom (20 kB at 125 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson/2.8.0/gson-2.8.0.pom (1.4 kB at 63 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson-parent/2.8.0/gson-parent-2.8.0.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-json/4.26.1/adventure-text-serializer-json-4.26.1.pom (3.2 kB at 159 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/auto/service/auto-service-annotations/1.1.1/auto-service-annotations-1.1.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/auto/service/auto-service-annotations/1.1.1/auto-service-annotations-1.1.1.pom (2.3 kB at 99 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/javax/inject/javax.inject/1/javax.inject-1.pom (612 B at 4.0 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/auto/service/auto-service-aggregator/1.1.1/auto-service-aggregator-1.1.1.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson/2.8.0/gson-2.8.0.pom (1.4 kB at 90 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson-parent/2.8.0/gson-parent-2.8.0.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/errorprone/error_prone_parent/2.28.0/error_prone_parent-2.28.0.pom (13 kB at 108 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/auto/service/auto-service-annotations/1.1.1/auto-service-annotations-1.1.1.pom (2.3 kB at 163 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-commons/4.26.1/adventure-text-serializer-commons-4.26.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson-parent/2.8.0/gson-parent-2.8.0.pom (3.5 kB at 108 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/auto/service/auto-service-aggregator/1.1.1/auto-service-aggregator-1.1.1.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson-parent/2.8.0/gson-parent-2.8.0.pom (3.5 kB at 248 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/auto/service/auto-service-aggregator/1.1.1/auto-service-aggregator-1.1.1.pom (4.3 kB at 185 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-commons/4.26.1/adventure-text-serializer-commons-4.26.1.pom (2.8 kB at 123 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/auto/service/auto-service-aggregator/1.1.1/auto-service-aggregator-1.1.1.pom (4.3 kB at 250 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpclient/4.5.14/httpclient-4.5.14.pom
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpcore/4.4.16/httpcore-4.4.16.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpcore/4.4.16/httpcore-4.4.16.pom (5.0 kB at 237 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpclient/4.5.14/httpclient-4.5.14.pom (6.6 kB at 265 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpcomponents-core/4.4.16/httpcomponents-core-4.4.16.pom
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpcomponents-client/4.5.14/httpcomponents-client-4.5.14.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.0.2-1/annotations-26.0.2-1.pom (1.7 kB at 10 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/commons-codec/commons-codec/1.16.0/commons-codec-1.16.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpcomponents-core/4.4.16/httpcomponents-core-4.4.16.pom (12 kB at 460 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpcomponents-client/4.5.14/httpcomponents-client-4.5.14.pom (15 kB at 546 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpcomponents-parent/11/httpcomponents-parent-11.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-json/4.26.1/adventure-text-serializer-json-4.26.1.pom (3.2 kB at 19 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/jcl-over-slf4j/1.7.36/jcl-over-slf4j-1.7.36.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/commons-codec/commons-codec/1.16.0/commons-codec-1.16.0.pom (16 kB at 666 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/commons/commons-parent/58/commons-parent-58.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpcomponents-parent/11/httpcomponents-parent-11.pom (35 kB at 1.6 MB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/21/apache-21.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/jcl-over-slf4j/1.7.36/jcl-over-slf4j-1.7.36.pom (1.2 kB at 51 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.pom (2.7 kB at 137 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-parent/1.7.36/slf4j-parent-1.7.36.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/21/apache-21.pom (17 kB at 691 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/commons/commons-parent/58/commons-parent-58.pom (83 kB at 2.8 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.pom (8.8 kB at 64 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus/10/plexus-10.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-parent/1.7.36/slf4j-parent-1.7.36.pom (14 kB at 1.0 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpclient/4.5.14/httpclient-4.5.14.pom (6.6 kB at 301 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpcomponents-client/4.5.14/httpcomponents-client-4.5.14.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus/10/plexus-10.pom (25 kB at 1.6 MB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpcore/4.4.16/httpcore-4.4.16.pom
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/commons-codec/commons-codec/1.16.0/commons-codec-1.16.0.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpcore/4.4.16/httpcore-4.4.16.pom (5.0 kB at 331 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpcomponents-client/4.5.14/httpcomponents-client-4.5.14.pom (15 kB at 899 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpcomponents-core/4.4.16/httpcomponents-core-4.4.16.pom
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpcomponents-parent/11/httpcomponents-parent-11.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-key/4.26.1/adventure-key-4.26.1.pom (3.1 kB at 18 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/commons-codec/commons-codec/1.16.0/commons-codec-1.16.0.pom (16 kB at 941 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/commons/commons-parent/58/commons-parent-58.pom
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/jcl-over-slf4j/1.7.36/jcl-over-slf4j-1.7.36.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpcomponents-parent/11/httpcomponents-parent-11.pom (35 kB at 1.8 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/jcl-over-slf4j/1.7.36/jcl-over-slf4j-1.7.36.pom (1.2 kB at 98 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpcomponents-core/4.4.16/httpcomponents-core-4.4.16.pom (12 kB at 498 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/commons/commons-parent/58/commons-parent-58.pom (83 kB at 3.8 MB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/21/apache-21.pom
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/29/apache-29.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.pom (2.7 kB at 16 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.pom (2.0 kB at 88 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/21/apache-21.pom (17 kB at 785 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-parent/1.7.36/slf4j-parent-1.7.36.pom (14 kB at 89 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.pom
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-legacy/4.21.0/adventure-text-serializer-legacy-4.21.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.pom (2.0 kB at 13 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-gson/4.21.0/adventure-text-serializer-gson-4.21.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/29/apache-29.pom (21 kB at 122 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/29/apache-29.pom (21 kB at 939 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/junit/junit-bom/5.9.3/junit-bom-5.9.3.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/junit-bom/5.9.3/junit-bom-5.9.3.pom (5.6 kB at 268 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.pom (1.5 kB at 95 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-legacy/4.21.0/adventure-text-serializer-legacy-4.21.0.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/junit-bom/5.9.3/junit-bom-5.9.3.pom (5.6 kB at 313 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-gson/4.21.0/adventure-text-serializer-gson-4.21.0.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-commons/4.26.1/adventure-text-serializer-commons-4.26.1.pom (2.8 kB at 15 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-bungeecord/4.4.1/adventure-text-serializer-bungeecord-4.4.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.pom (3.0 kB at 18 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-facet/4.4.1/adventure-platform-facet-4.4.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-legacy/4.21.0/adventure-text-serializer-legacy-4.21.0.pom (2.9 kB at 18 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-bom/4.21.0/adventure-bom-4.21.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.pom (1.5 kB at 8.8 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.pom (3.0 kB at 25 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-gson/4.21.0/adventure-text-serializer-gson-4.21.0.pom (3.4 kB at 21 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-bungeecord/4.4.1/adventure-text-serializer-bungeecord-4.4.1.pom (2.9 kB at 18 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-legacy/4.21.0/adventure-text-serializer-legacy-4.21.0.pom (2.9 kB at 23 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-bom/4.21.0/adventure-bom-4.21.0.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-gson/4.21.0/adventure-text-serializer-gson-4.21.0.pom (3.4 kB at 27 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-bungeecord/4.4.1/adventure-text-serializer-bungeecord-4.4.1.pom (2.9 kB at 23 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus-interpolation/1.26/plexus-interpolation-1.26.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-facet/4.4.1/adventure-platform-facet-4.4.1.pom (2.5 kB at 16 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-artifact/3.9.6/maven-artifact-3.9.6.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus-interpolation/1.26/plexus-interpolation-1.26.pom (2.7 kB at 121 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus-interpolation/1.26/plexus-interpolation-1.26.pom (2.7 kB at 190 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus/5.1/plexus-5.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-artifact/3.9.6/maven-artifact-3.9.6.pom (2.3 kB at 101 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-facet/4.4.1/adventure-platform-facet-4.4.1.pom (2.5 kB at 19 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-artifact/3.9.6/maven-artifact-3.9.6.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus/5.1/plexus-5.1.pom (23 kB at 1.7 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-artifact/3.9.6/maven-artifact-3.9.6.pom (2.3 kB at 193 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-builder-support/3.9.6/maven-builder-support-3.9.6.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus/5.1/plexus-5.1.pom (23 kB at 1.1 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/eclipse/sisu/org.eclipse.sisu.inject/0.9.0.M2/org.eclipse.sisu.inject-0.9.0.M2.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-builder-support/3.9.6/maven-builder-support-3.9.6.pom (1.4 kB at 65 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-builder-support/3.9.6/maven-builder-support-3.9.6.pom (1.4 kB at 85 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/eclipse/sisu/org.eclipse.sisu.inject/0.9.0.M2/org.eclipse.sisu.inject-0.9.0.M2.pom (17 kB at 963 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-named-locks/1.9.18/maven-resolver-named-locks-1.9.18.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/eclipse/sisu/org.eclipse.sisu.inject/0.9.0.M2/org.eclipse.sisu.inject-0.9.0.M2.pom (17 kB at 788 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/eclipse/sisu/sisu-inject/0.9.0.M2/sisu-inject-0.9.0.M2.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-named-locks/1.9.18/maven-resolver-named-locks-1.9.18.pom (3.2 kB at 215 kB/s)
 [INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/eclipse/sisu/sisu-inject/0.9.0.M2/sisu-inject-0.9.0.M2.pom (15 kB at 742 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-named-locks/1.9.18/maven-resolver-named-locks-1.9.18.pom (3.2 kB at 146 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/option/1.1.0/option-1.1.0.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-bom/4.21.0/adventure-bom-4.21.0.pom (5.0 kB at 41 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/22.0.0/annotations-22.0.0.pom
 [INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.pom (3.4 kB at 22 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/22.0.0/annotations-22.0.0.pom (1.3 kB at 63 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-bom/4.21.0/adventure-bom-4.21.0.pom (5.0 kB at 28 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/option/1.1.0/option-1.1.0.pom (2.2 kB at 88 kB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/option/1.1.0/option-1.1.0.pom
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/option/1.1.0/option-1.1.0.pom (2.2 kB at 183 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/22.0.0/annotations-22.0.0.pom (1.3 kB at 60 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-nbt/4.21.0/adventure-nbt-4.21.0.pom
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.pom
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.0.2/annotations-26.0.2.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.0.2/annotations-26.0.2.pom (1.7 kB at 84 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.pom (31 kB at 1.3 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.0.2/annotations-26.0.2.pom (1.7 kB at 120 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-nbt/4.21.0/adventure-nbt-4.21.0.pom (3.2 kB at 167 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.pom (31 kB at 1.5 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/commons/commons-parent/52/commons-parent-52.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-nbt/4.21.0/adventure-nbt-4.21.0.pom (3.2 kB at 19 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/commons/commons-parent/52/commons-parent-52.pom (79 kB at 492 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/commons/commons-parent/52/commons-parent-52.pom (79 kB at 5.3 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/23/apache-23.pom
 [INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/23/apache-23.pom (18 kB at 631 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/junit/junit-bom/5.7.1/junit-bom-5.7.1.pom
 [INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/junit-bom/5.7.1/junit-bom-5.7.1.pom (5.1 kB at 243 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/io/papermc/paper/paper-api/1.21.11-R0.1-SNAPSHOT/paper-api-1.21.11-R0.1-20260511.115010-91.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/io/papermc/paper/paper-api/1.21.11-R0.1-SNAPSHOT/paper-api-1.21.11-R0.1-20260511.115010-91.jar (2.8 MB at 36 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/io/papermc/paper/paper-api/1.21.11-R0.1-SNAPSHOT/paper-api-1.21.11-R0.1-20260511.115010-91.jar (2.8 MB at 40 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/mindrot/jbcrypt/0.4/jbcrypt-0.4.jar
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/mockbukkit/mockbukkit/mockbukkit-v1.21/4.110.0/mockbukkit-v1.21-4.110.0.jar
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter/6.0.3/junit-jupiter-6.0.3.jar
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/guava/33.3.1-jre/guava-33.3.1-jre.jar
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson/2.11.0/gson-2.11.0.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter/6.0.3/junit-jupiter-6.0.3.jar (6.4 kB at 220 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter/6.0.3/junit-jupiter-6.0.3.jar (6.4 kB at 290 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson/2.11.0/gson-2.11.0.jar (298 kB at 7.9 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/gson/gson/2.11.0/gson-2.11.0.jar (298 kB at 9.6 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/joml/joml/1.10.8/joml-1.10.8.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/guava/33.3.1-jre/guava-33.3.1-jre.jar (3.1 MB at 38 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/mockbukkit/mockbukkit/mockbukkit-v1.21/4.110.0/mockbukkit-v1.21-4.110.0.jar (2.0 MB at 45 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/it/unimi/dsi/fastutil/8.5.15/fastutil-8.5.15.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar (334 kB at 4.1 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar (334 kB at 8.4 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/logging/log4j/log4j-api/2.24.1/log4j-api-2.24.1.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/joml/joml/1.10.8/joml-1.10.8.jar (779 kB at 9.0 MB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/mockbukkit/mockbukkit/mockbukkit-v1.21/4.110.0/mockbukkit-v1.21-4.110.0.jar (2.0 MB at 22 MB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/mojang/brigadier/1.3.10/brigadier-1.3.10.jar
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/joml/joml/1.10.8/joml-1.10.8.jar (779 kB at 15 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar (69 kB at 626 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/guava/33.3.1-jre/guava-33.3.1-jre.jar (3.1 MB at 45 MB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/mojang/brigadier/1.3.10/brigadier-1.3.10.jar
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/logging/log4j/log4j-api/2.24.1/log4j-api-2.24.1.jar (348 kB at 5.1 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/md-5/bungeecord-chat/1.21-R0.2-deprecated+build.21/bungeecord-chat-1.21-R0.2-deprecated+build.21.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/mojang/brigadier/1.3.10/brigadier-1.3.10.jar (80 kB at 715 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar (69 kB at 1.0 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-resolver-provider/3.9.6/maven-resolver-provider-3.9.6.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/logging/log4j/log4j-api/2.24.1/log4j-api-2.24.1.jar (348 kB at 3.1 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/mojang/brigadier/1.3.10/brigadier-1.3.10.jar (80 kB at 953 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-resolver-provider/3.9.6/maven-resolver-provider-3.9.6.jar (74 kB at 547 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/md-5/bungeecord-chat/1.21-R0.2-deprecated+build.21/bungeecord-chat-1.21-R0.2-deprecated+build.21.jar (168 kB at 2.0 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-api/4.26.1/adventure-api-4.26.1.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/md-5/bungeecord-chat/1.21-R0.2-deprecated+build.21/bungeecord-chat-1.21-R0.2-deprecated+build.21.jar (168 kB at 1.2 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-resolver-provider/3.9.6/maven-resolver-provider-3.9.6.jar (74 kB at 855 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-minimessage/4.26.1/adventure-text-minimessage-4.26.1.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar (3.8 kB at 28 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar (3.8 kB at 39 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-gson/4.26.1/adventure-text-serializer-gson-4.26.1.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-gson/4.26.1/adventure-text-serializer-gson-4.26.1.jar (66 kB at 415 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-api/4.26.1/adventure-api-4.26.1.jar (455 kB at 4.3 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-legacy/4.26.1/adventure-text-serializer-legacy-4.26.1.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-minimessage/4.26.1/adventure-text-minimessage-4.26.1.jar (194 kB at 1.2 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-minimessage/4.26.1/adventure-text-minimessage-4.26.1.jar (194 kB at 1.8 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-plain/4.26.1/adventure-text-serializer-plain-4.26.1.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-api/4.26.1/adventure-api-4.26.1.jar (455 kB at 2.7 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-gson/4.26.1/adventure-text-serializer-gson-4.26.1.jar (66 kB at 588 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-logger-slf4j/4.26.1/adventure-text-logger-slf4j-4.26.1.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/mindrot/jbcrypt/0.4/jbcrypt-0.4.jar (17 kB at 98 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/mindrot/jbcrypt/0.4/jbcrypt-0.4.jar (17 kB at 142 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/checkerframework/checker-qual/3.49.2/checker-qual-3.49.2.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-legacy/4.26.1/adventure-text-serializer-legacy-4.26.1.jar (30 kB at 165 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-plain/4.26.1/adventure-text-serializer-plain-4.26.1.jar (13 kB at 109 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-connector-basic/1.9.18/maven-resolver-connector-basic-1.9.18.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-plain/4.26.1/adventure-text-serializer-plain-4.26.1.jar (13 kB at 70 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-logger-slf4j/4.26.1/adventure-text-logger-slf4j-4.26.1.jar (20 kB at 156 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-transport-http/1.9.18/maven-resolver-transport-http-1.9.18.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-logger-slf4j/4.26.1/adventure-text-logger-slf4j-4.26.1.jar (20 kB at 102 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/checkerframework/checker-qual/3.49.2/checker-qual-3.49.2.jar (238 kB at 1.8 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.1.0/annotations-26.1.0.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/checkerframework/checker-qual/3.49.2/checker-qual-3.49.2.jar (238 kB at 1.2 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-transport-http/1.9.18/maven-resolver-transport-http-1.9.18.jar (56 kB at 396 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/hamcrest/hamcrest/3.0/hamcrest-3.0.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-connector-basic/1.9.18/maven-resolver-connector-basic-1.9.18.jar (40 kB at 197 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.1.0/annotations-26.1.0.jar (31 kB at 216 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-transport-http/1.9.18/maven-resolver-transport-http-1.9.18.jar (56 kB at 264 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-connector-basic/1.9.18/maven-resolver-connector-basic-1.9.18.jar (40 kB at 271 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-bungeecord/4.4.1/adventure-platform-bungeecord-4.4.1.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.1.0/annotations-26.1.0.jar (31 kB at 141 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/hamcrest/hamcrest/3.0/hamcrest-3.0.jar (126 kB at 775 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/bytebuddy/byte-buddy/1.18.8/byte-buddy-1.18.8.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/it/unimi/dsi/fastutil/8.5.15/fastutil-8.5.15.jar (24 MB at 104 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar (251 kB at 1.5 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter-params/6.0.3/junit-jupiter-params-6.0.3.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar (251 kB at 1.1 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-bungeecord/4.4.1/adventure-platform-bungeecord-4.4.1.jar (31 kB at 181 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-bungeecord/4.4.1/adventure-platform-bungeecord-4.4.1.jar (31 kB at 133 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter-params/6.0.3/junit-jupiter-params-6.0.3.jar (297 kB at 1.5 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/failureaccess/1.0.2/failureaccess-1.0.2.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar (356 kB at 1.4 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar (356 kB at 1.8 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/failureaccess/1.0.2/failureaccess-1.0.2.jar (4.7 kB at 19 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/failureaccess/1.0.2/failureaccess-1.0.2.jar (4.7 kB at 22 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/jupiter/junit-jupiter-params/6.0.3/junit-jupiter-params-6.0.3.jar (297 kB at 1.1 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar (2.2 kB at 9.8 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/errorprone/error_prone_annotations/2.28.0/error_prone_annotations-2.28.0.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar (2.2 kB at 7.9 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/bytebuddy/byte-buddy/1.18.8/byte-buddy-1.18.8.jar (4.7 MB at 21 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/j2objc/j2objc-annotations/3.0.0/j2objc-annotations-3.0.0.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar (20 kB at 71 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar (20 kB at 83 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-model/3.9.6/maven-model-3.9.6.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/errorprone/error_prone_annotations/2.28.0/error_prone_annotations-2.28.0.jar (19 kB at 68 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/errorprone/error_prone_annotations/2.28.0/error_prone_annotations-2.28.0.jar (19 kB at 80 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-model-builder/3.9.6/maven-model-builder-3.9.6.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/bytebuddy/byte-buddy/1.18.8/byte-buddy-1.18.8.jar (4.7 MB at 16 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/j2objc/j2objc-annotations/3.0.0/j2objc-annotations-3.0.0.jar (12 kB at 51 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-repository-metadata/3.9.6/maven-repository-metadata-3.9.6.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/j2objc/j2objc-annotations/3.0.0/j2objc-annotations-3.0.0.jar (12 kB at 41 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-model/3.9.6/maven-model-3.9.6.jar (218 kB at 709 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-legacy/4.26.1/adventure-text-serializer-legacy-4.26.1.jar (30 kB at 121 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-api/1.9.18/maven-resolver-api-1.9.18.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-model-builder/3.9.6/maven-model-builder-3.9.6.jar (198 kB at 646 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-repository-metadata/3.9.6/maven-repository-metadata-3.9.6.jar (28 kB at 109 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-spi/1.9.18/maven-resolver-spi-1.9.18.jar
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-model/3.9.6/maven-model-3.9.6.jar (218 kB at 834 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-util/1.9.18/maven-resolver-util-1.9.18.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-repository-metadata/3.9.6/maven-repository-metadata-3.9.6.jar (28 kB at 92 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-model-builder/3.9.6/maven-model-builder-3.9.6.jar (198 kB at 757 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-impl/1.9.18/maven-resolver-impl-1.9.18.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-api/1.9.18/maven-resolver-api-1.9.18.jar (157 kB at 479 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-spi/1.9.18/maven-resolver-spi-1.9.18.jar (52 kB at 158 kB/s)
-[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/javax/inject/javax.inject/1/javax.inject-1.jar
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-api/1.9.18/maven-resolver-api-1.9.18.jar (157 kB at 600 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-util/1.9.18/maven-resolver-util-1.9.18.jar (196 kB at 592 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/it/unimi/dsi/fastutil/8.5.15/fastutil-8.5.15.jar (24 MB at 86 MB/s)
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/javax/inject/javax.inject/1/javax.inject-1.jar
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-spi/1.9.18/maven-resolver-spi-1.9.18.jar (52 kB at 186 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-key/4.26.1/adventure-key-4.26.1.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-impl/1.9.18/maven-resolver-impl-1.9.18.jar (318 kB at 929 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-util/1.9.18/maven-resolver-util-1.9.18.jar (196 kB at 698 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/examination-api/1.3.0/examination-api-1.3.0.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-key/4.26.1/adventure-key-4.26.1.jar (11 kB at 33 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-impl/1.9.18/maven-resolver-impl-1.9.18.jar (318 kB at 1.1 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/examination-string/1.3.0/examination-string-1.3.0.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/javax/inject/javax.inject/1/javax.inject-1.jar (2.5 kB at 7.1 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.jar (269 kB at 942 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-json/4.26.1/adventure-text-serializer-json-4.26.1.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/hamcrest/hamcrest/3.0/hamcrest-3.0.jar (126 kB at 351 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/javax/inject/javax.inject/1/javax.inject-1.jar (2.5 kB at 8.6 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/google/auto/service/auto-service-annotations/1.1.1/auto-service-annotations-1.1.1.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.jar (269 kB at 746 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-key/4.26.1/adventure-key-4.26.1.jar (11 kB at 39 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-commons/4.26.1/adventure-text-serializer-commons-4.26.1.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/examination-api/1.3.0/examination-api-1.3.0.jar (23 kB at 64 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/examination-string/1.3.0/examination-string-1.3.0.jar (13 kB at 44 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpclient/4.5.14/httpclient-4.5.14.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/examination-string/1.3.0/examination-string-1.3.0.jar (13 kB at 36 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/examination-api/1.3.0/examination-api-1.3.0.jar (23 kB at 78 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpcore/4.4.16/httpcore-4.4.16.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-json/4.26.1/adventure-text-serializer-json-4.26.1.jar (17 kB at 46 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/auto/service/auto-service-annotations/1.1.1/auto-service-annotations-1.1.1.jar (3.2 kB at 11 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/commons-codec/commons-codec/1.16.0/commons-codec-1.16.0.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/google/auto/service/auto-service-annotations/1.1.1/auto-service-annotations-1.1.1.jar (3.2 kB at 8.3 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-commons/4.26.1/adventure-text-serializer-commons-4.26.1.jar (2.8 kB at 9.2 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/jcl-over-slf4j/1.7.36/jcl-over-slf4j-1.7.36.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-commons/4.26.1/adventure-text-serializer-commons-4.26.1.jar (2.8 kB at 7.3 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-json/4.26.1/adventure-text-serializer-json-4.26.1.jar (17 kB at 55 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpcore/4.4.16/httpcore-4.4.16.jar (328 kB at 847 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpcore/4.4.16/httpcore-4.4.16.jar (328 kB at 1.0 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpclient/4.5.14/httpclient-4.5.14.jar (786 kB at 2.0 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/commons-codec/commons-codec/1.16.0/commons-codec-1.16.0.jar (361 kB at 1.1 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/commons-codec/commons-codec/1.16.0/commons-codec-1.16.0.jar (361 kB at 902 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/jcl-over-slf4j/1.7.36/jcl-over-slf4j-1.7.36.jar (17 kB at 41 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/jcl-over-slf4j/1.7.36/jcl-over-slf4j-1.7.36.jar (17 kB at 51 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/httpcomponents/httpclient/4.5.14/httpclient-4.5.14.jar (786 kB at 2.4 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-bungeecord/4.4.1/adventure-text-serializer-bungeecord-4.4.1.jar
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-facet/4.4.1/adventure-platform-facet-4.4.1.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar (14 kB at 35 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar (171 kB at 513 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar (171 kB at 415 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar (6.8 kB at 20 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar (14 kB at 42 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus-interpolation/1.26/plexus-interpolation-1.26.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar (6.8 kB at 16 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-facet/4.4.1/adventure-platform-facet-4.4.1.jar (43 kB at 127 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-artifact/3.9.6/maven-artifact-3.9.6.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-bungeecord/4.4.1/adventure-text-serializer-bungeecord-4.4.1.jar (9.6 kB at 23 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-builder-support/3.9.6/maven-builder-support-3.9.6.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-facet/4.4.1/adventure-platform-facet-4.4.1.jar (43 kB at 101 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-bungeecord/4.4.1/adventure-text-serializer-bungeecord-4.4.1.jar (9.6 kB at 28 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/eclipse/sisu/org.eclipse.sisu.inject/0.9.0.M2/org.eclipse.sisu.inject-0.9.0.M2.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar (280 kB at 647 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-builder-support/3.9.6/maven-builder-support-3.9.6.jar (14 kB at 40 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-named-locks/1.9.18/maven-resolver-named-locks-1.9.18.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus-interpolation/1.26/plexus-interpolation-1.26.jar (85 kB at 197 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-artifact/3.9.6/maven-artifact-3.9.6.jar (59 kB at 165 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/option/1.1.0/option-1.1.0.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-artifact/3.9.6/maven-artifact-3.9.6.jar (59 kB at 133 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus-interpolation/1.26/plexus-interpolation-1.26.jar (85 kB at 237 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-nbt/4.21.0/adventure-nbt-4.21.0.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-builder-support/3.9.6/maven-builder-support-3.9.6.jar (14 kB at 32 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/eclipse/sisu/org.eclipse.sisu.inject/0.9.0.M2/org.eclipse.sisu.inject-0.9.0.M2.jar (425 kB at 1.2 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/eclipse/sisu/org.eclipse.sisu.inject/0.9.0.M2/org.eclipse.sisu.inject-0.9.0.M2.jar (425 kB at 946 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/option/1.1.0/option-1.1.0.jar (32 kB at 71 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-named-locks/1.9.18/maven-resolver-named-locks-1.9.18.jar (38 kB at 83 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar (587 kB at 1.3 MB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-nbt/4.21.0/adventure-nbt-4.21.0.jar (103 kB at 171 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/option/1.1.0/option-1.1.0.jar (32 kB at 87 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar (280 kB at 755 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-nbt/4.21.0/adventure-nbt-4.21.0.jar (103 kB at 274 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-named-locks/1.9.18/maven-resolver-named-locks-1.9.18.jar (38 kB at 100 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar (587 kB at 1.5 MB/s)
 [INFO] 
 [INFO] --- resources:3.5.0:resources (default-resources) @ Z_AP ---
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/3.5.0/maven-filtering-3.5.0.pom
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.6.0/plexus-utils-3.6.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/3.5.0/maven-filtering-3.5.0.pom (6.2 kB at 221 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/3.5.0/maven-filtering-3.5.0.pom (6.2 kB at 176 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/47/maven-shared-components-47.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/47/maven-shared-components-47.pom (3.8 kB at 131 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.6.0/plexus-utils-3.6.0.pom (7.6 kB at 127 kB/s)
-[INFO] Artifact org.slf4j:slf4j-api:pom:1.7.36 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
-[INFO] Artifact org.slf4j:slf4j-api:pom:1.7.36 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-build-api/1.2.0/plexus-build-api-1.2.0.pom
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.29/plexus-interpolation-1.29.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.6.0/plexus-utils-3.6.0.pom (7.6 kB at 153 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/19/plexus-19.pom
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-build-api/1.2.0/plexus-build-api-1.2.0.pom (4.7 kB at 152 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/13/plexus-13.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/19/plexus-19.pom (25 kB at 747 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/47/maven-shared-components-47.pom (3.8 kB at 108 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/19/plexus-19.pom (25 kB at 1.3 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.11.1/junit-bom-5.11.1.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/13/plexus-13.pom (27 kB at 1.1 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.29/plexus-interpolation-1.29.pom (4.7 kB at 79 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-build-api/1.2.0/plexus-build-api-1.2.0.pom
+[INFO] Artifact org.slf4j:slf4j-api:pom:1.7.36 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
+[INFO] Artifact org.slf4j:slf4j-api:pom:1.7.36 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.29/plexus-interpolation-1.29.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.11.1/junit-bom-5.11.1.pom (5.6 kB at 217 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-build-api/1.2.0/plexus-build-api-1.2.0.pom (4.7 kB at 163 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/13/plexus-13.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.29/plexus-interpolation-1.29.pom (4.7 kB at 131 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/24/plexus-24.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.11.1/junit-bom-5.11.1.pom (5.6 kB at 202 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.pom (2.7 kB at 42 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.pom (2.7 kB at 51 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/13/plexus-13.pom (27 kB at 856 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/24/plexus-24.pom (31 kB at 1.1 MB/s)
 [INFO] Artifact javax.inject:javax.inject:pom:1 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.13.4/junit-bom-5.13.4.pom
 [INFO] Artifact javax.inject:javax.inject:pom:1 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/javax/inject/javax.inject/1/javax.inject-1.pom
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.9.0.M4/org.eclipse.sisu.plexus-0.9.0.M4.pom
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.7/plexus-build-api-0.0.7.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/24/plexus-24.pom (31 kB at 981 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.7/plexus-build-api-0.0.7.pom (3.2 kB at 114 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/15/spice-parent-15.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/javax/inject/javax.inject/1/javax.inject-1.pom (612 B at 20 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.13.4/junit-bom-5.13.4.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.9.0.M4/org.eclipse.sisu.plexus-0.9.0.M4.pom (17 kB at 526 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.9.0.M4/org.eclipse.sisu.plexus-0.9.0.M4.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.13.4/junit-bom-5.13.4.pom (5.7 kB at 183 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.9.0.M4/org.eclipse.sisu.plexus-0.9.0.M4.pom (17 kB at 643 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.7/plexus-build-api-0.0.7.pom (3.2 kB at 92 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/sisu-inject/0.9.0.M4/sisu-inject-0.9.0.M4.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/15/spice-parent-15.pom (8.4 kB at 261 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.13.4/junit-bom-5.13.4.pom (5.7 kB at 189 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/15/spice-parent-15.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/javax/inject/javax.inject/1/javax.inject-1.pom (612 B at 13 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/15/spice-parent-15.pom (8.4 kB at 334 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/5/forge-parent-5.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/sisu-inject/0.9.0.M4/sisu-inject-0.9.0.M4.pom (25 kB at 769 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/sisu-inject/0.9.0.M4/sisu-inject-0.9.0.M4.pom (25 kB at 845 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.12.2/junit-bom-5.12.2.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/5/forge-parent-5.pom (8.4 kB at 232 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.12.2/junit-bom-5.12.2.pom (5.6 kB at 171 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.12.2/junit-bom-5.12.2.pom (5.6 kB at 257 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/5/forge-parent-5.pom (8.4 kB at 299 kB/s)
 [INFO] Artifact javax.inject:javax.inject:jar:1 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
 [INFO] Artifact javax.inject:javax.inject:jar:1 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/3.5.0/maven-filtering-3.5.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/3.5.0/maven-filtering-3.5.0.jar (61 kB at 1.5 MB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.6.0/plexus-utils-3.6.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/3.5.0/maven-filtering-3.5.0.jar (61 kB at 2.3 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-build-api/1.2.0/plexus-build-api-1.2.0.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.6.0/plexus-utils-3.6.0.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.29/plexus-interpolation-1.29.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/javax/inject/javax.inject/1/javax.inject-1.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar (41 kB at 1.5 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar (41 kB at 1.3 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.7/plexus-build-api-0.0.7.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-build-api/1.2.0/plexus-build-api-1.2.0.jar (6.6 kB at 200 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.9.0.M4/org.eclipse.sisu.plexus-0.9.0.M4.jar
 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.29/plexus-interpolation-1.29.jar (88 kB at 2.4 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.6.0/plexus-utils-3.6.0.jar (272 kB at 5.0 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.7/plexus-build-api-0.0.7.jar (8.5 kB at 154 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/javax/inject/javax.inject/1/javax.inject-1.jar (2.5 kB at 34 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.9.0.M4/org.eclipse.sisu.plexus-0.9.0.M4.jar (216 kB at 2.3 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.9.0.M4/org.eclipse.sisu.plexus-0.9.0.M4.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/javax/inject/javax.inject/1/javax.inject-1.jar (2.5 kB at 66 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-build-api/1.2.0/plexus-build-api-1.2.0.jar (6.6 kB at 150 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.6.0/plexus-utils-3.6.0.jar (272 kB at 5.9 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.7/plexus-build-api-0.0.7.jar (8.5 kB at 135 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.9.0.M4/org.eclipse.sisu.plexus-0.9.0.M4.jar (216 kB at 2.7 MB/s)
 [INFO] Copying 3 resources from src/main/resources to target/classes
 [INFO] 
 [INFO] --- compiler:3.14.1:compile (default-compile) @ Z_AP ---
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.pom
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/3.4.2/maven-shared-utils-3.4.2.pom
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-java/1.5.0/plexus-java-1.5.0.pom
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.8/asm-9.8.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-java/1.5.0/plexus-java-1.5.0.pom
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/2.15.0/plexus-compiler-api-2.15.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/2.15.0/plexus-compiler-api-2.15.0.pom (1.4 kB at 50 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/3.4.2/maven-shared-utils-3.4.2.pom (5.9 kB at 203 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler/2.15.0/plexus-compiler-2.15.0.pom
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/39/maven-shared-components-39.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.pom (4.7 kB at 148 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.8/asm-9.8.pom (2.4 kB at 76 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.pom (4.7 kB at 216 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/3.4.2/maven-shared-utils-3.4.2.pom (5.9 kB at 236 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/19/maven-shared-components-19.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/39/maven-shared-components-39.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/2.15.0/plexus-compiler-api-2.15.0.pom (1.4 kB at 49 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.8/asm-9.8.pom (2.4 kB at 76 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-java/1.5.0/plexus-java-1.5.0.pom (4.1 kB at 117 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler/2.15.0/plexus-compiler-2.15.0.pom
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/ow2/1.5.1/ow2-1.5.1.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-java/1.5.0/plexus-java-1.5.0.pom (4.1 kB at 95 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-languages/1.5.0/plexus-languages-1.5.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/39/maven-shared-components-39.pom (3.2 kB at 111 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler/2.15.0/plexus-compiler-2.15.0.pom (7.6 kB at 262 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/19/maven-shared-components-19.pom (6.4 kB at 227 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/ow2/1.5.1/ow2-1.5.1.pom (11 kB at 376 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/39/maven-parent-39.pom
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/17/plexus-17.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/19/maven-shared-components-19.pom (6.4 kB at 289 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/23/maven-parent-23.pom
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.15.0/plexus-compiler-manager-2.15.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-languages/1.5.0/plexus-languages-1.5.0.pom (3.9 kB at 94 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/39/maven-shared-components-39.pom (3.2 kB at 111 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/39/maven-parent-39.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/ow2/1.5.1/ow2-1.5.1.pom (11 kB at 314 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-languages/1.5.0/plexus-languages-1.5.0.pom (3.9 kB at 124 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/20/plexus-20.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.15.0/plexus-compiler-manager-2.15.0.pom (1.3 kB at 46 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.15.0/plexus-compiler-manager-2.15.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler/2.15.0/plexus-compiler-2.15.0.pom (7.6 kB at 185 kB/s)
 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/23/maven-parent-23.pom (33 kB at 1.1 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/17/plexus-17.pom (28 kB at 881 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/39/maven-parent-39.pom (48 kB at 1.4 MB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.10.2/junit-bom-5.10.2.pom
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/13/apache-13.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/17/plexus-17.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/39/maven-parent-39.pom (48 kB at 1.7 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/2.15.0/plexus-compiler-javac-2.15.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/20/plexus-20.pom (29 kB at 789 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/13/apache-13.pom (14 kB at 537 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.10.2/junit-bom-5.10.2.pom (5.6 kB at 195 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.15.0/plexus-compiler-manager-2.15.0.pom (1.3 kB at 71 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/20/plexus-20.pom (29 kB at 1.3 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.11.4/junit-bom-5.11.4.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/2.15.0/plexus-compiler-javac-2.15.0.pom (1.3 kB at 43 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/13/apache-13.pom (14 kB at 499 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/17/plexus-17.pom (28 kB at 881 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.2/plexus-utils-4.0.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/2.15.0/plexus-compiler-javac-2.15.0.pom (1.3 kB at 52 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.10.2/junit-bom-5.10.2.pom
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compilers/2.15.0/plexus-compilers-2.15.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.11.4/junit-bom-5.11.4.pom (5.6 kB at 209 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.11.4/junit-bom-5.11.4.pom (5.6 kB at 226 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.10.2/junit-bom-5.10.2.pom (5.6 kB at 269 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compilers/2.15.0/plexus-compilers-2.15.0.pom (1.6 kB at 78 kB/s)
 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.2/plexus-utils-4.0.2.pom (13 kB at 427 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compilers/2.15.0/plexus-compilers-2.15.0.pom (1.6 kB at 54 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/thoughtworks/qdox/qdox/2.2.0/qdox-2.2.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/thoughtworks/qdox/qdox/2.2.0/qdox-2.2.0.pom (18 kB at 569 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/thoughtworks/qdox/qdox/2.2.0/qdox-2.2.0.pom (18 kB at 588 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-xml/3.0.1/plexus-xml-3.0.1.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-xml/3.0.1/plexus-xml-3.0.1.pom (3.7 kB at 127 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-xml/3.0.1/plexus-xml-3.0.1.pom (3.7 kB at 109 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/18/plexus-18.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/18/plexus-18.pom (29 kB at 1.0 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/18/plexus-18.pom (29 kB at 886 kB/s)
 [INFO] Loaded 74 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.11.0/commons-io-2.11.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.11.0/commons-io-2.11.0.pom (20 kB at 636 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.11.0/commons-io-2.11.0.pom (20 kB at 789 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.7.2/junit-bom-5.7.2.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.7.2/junit-bom-5.7.2.pom (5.1 kB at 196 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.7.2/junit-bom-5.7.2.pom (5.1 kB at 212 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.8/asm-9.8.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.8/asm-9.8.jar (126 kB at 4.3 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.8/asm-9.8.jar (126 kB at 4.7 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/3.4.2/maven-shared-utils-3.4.2.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-java/1.5.0/plexus-java-1.5.0.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/2.15.0/plexus-compiler-api-2.15.0.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.15.0/plexus-compiler-manager-2.15.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.15.0/plexus-compiler-manager-2.15.0.jar (5.2 kB at 174 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.jar (14 kB at 645 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-java/1.5.0/plexus-java-1.5.0.jar (57 kB at 2.7 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/2.15.0/plexus-compiler-javac-2.15.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.jar (14 kB at 423 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.2/plexus-utils-4.0.2.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/3.4.2/maven-shared-utils-3.4.2.jar (151 kB at 4.1 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/3.4.2/maven-shared-utils-3.4.2.jar (151 kB at 5.2 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-java/1.5.0/plexus-java-1.5.0.jar (57 kB at 1.5 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.15.0/plexus-compiler-manager-2.15.0.jar (5.2 kB at 131 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/thoughtworks/qdox/qdox/2.2.0/qdox-2.2.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/2.15.0/plexus-compiler-api-2.15.0.jar (29 kB at 765 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/2.15.0/plexus-compiler-api-2.15.0.jar (29 kB at 676 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-xml/3.0.1/plexus-xml-3.0.1.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/2.15.0/plexus-compiler-javac-2.15.0.jar (26 kB at 443 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar (327 kB at 4.5 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.2/plexus-utils-4.0.2.jar (193 kB at 2.4 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/thoughtworks/qdox/qdox/2.2.0/qdox-2.2.0.jar (353 kB at 3.8 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-xml/3.0.1/plexus-xml-3.0.1.jar (94 kB at 1.0 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/2.15.0/plexus-compiler-javac-2.15.0.jar (26 kB at 584 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.2/plexus-utils-4.0.2.jar (193 kB at 4.4 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar (327 kB at 6.1 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-xml/3.0.1/plexus-xml-3.0.1.jar (94 kB at 1.5 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/thoughtworks/qdox/qdox/2.2.0/qdox-2.2.0.jar (353 kB at 4.6 MB/s)
 [INFO] Recompiling the module because of changed source code.
 [INFO] Compiling 2 source files with javac [debug release 21] to target/classes
 [INFO] /home/runner/work/123/123/ap/src/main/java/dev/zap/ZAPPlugin.java: /home/runner/work/123/123/ap/src/main/java/dev/zap/ZAPPlugin.java uses or overrides a deprecated API.
@@ -610,105 +610,105 @@
 [INFO] Compiling 1 source file with javac [debug release 21] to target/test-classes
 [INFO] 
 [INFO] --- surefire:3.5.4:test (default-test) @ Z_AP ---
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-api/3.5.4/surefire-api-3.5.4.pom
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-api/3.5.4/surefire-extensions-api-3.5.4.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-api/3.5.4/surefire-api-3.5.4.pom
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/maven-surefire-common/3.5.4/maven-surefire-common-3.5.4.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/maven-surefire-common/3.5.4/maven-surefire-common-3.5.4.pom (7.3 kB at 236 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-api/3.5.4/surefire-extensions-api-3.5.4.pom (3.6 kB at 102 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-api/3.5.4/surefire-api-3.5.4.pom (3.7 kB at 100 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-api/3.5.4/surefire-extensions-api-3.5.4.pom (3.6 kB at 111 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-api/3.5.4/surefire-api-3.5.4.pom (3.7 kB at 116 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/maven-surefire-common/3.5.4/maven-surefire-common-3.5.4.pom (7.3 kB at 197 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-logger-api/3.5.4/surefire-logger-api-3.5.4.pom
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.4.0/maven-common-artifact-filters-3.4.0.pom
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver-util/1.4.1/maven-resolver-util-1.4.1.pom
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-booter/3.5.4/surefire-booter-3.5.4.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver-util/1.4.1/maven-resolver-util-1.4.1.pom
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-shared-utils/3.5.4/surefire-shared-utils-3.5.4.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.4.0/maven-common-artifact-filters-3.4.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-booter/3.5.4/surefire-booter-3.5.4.pom (5.0 kB at 178 kB/s)
 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-shared-utils/3.5.4/surefire-shared-utils-3.5.4.pom (4.0 kB at 141 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.4.0/maven-common-artifact-filters-3.4.0.pom (5.4 kB at 199 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-logger-api/3.5.4/surefire-logger-api-3.5.4.pom (3.5 kB at 116 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.4.0/maven-common-artifact-filters-3.4.0.pom (5.4 kB at 185 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/42/maven-shared-components-42.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-booter/3.5.4/surefire-booter-3.5.4.pom (5.0 kB at 161 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver-util/1.4.1/maven-resolver-util-1.4.1.pom (2.8 kB at 97 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver-util/1.4.1/maven-resolver-util-1.4.1.pom (2.8 kB at 80 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver/1.4.1/maven-resolver-1.4.1.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-logger-api/3.5.4/surefire-logger-api-3.5.4.pom (3.5 kB at 94 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-spi/3.5.4/surefire-extensions-spi-3.5.4.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/42/maven-shared-components-42.pom (3.8 kB at 130 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/42/maven-shared-components-42.pom (3.8 kB at 157 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/42/maven-parent-42.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-spi/3.5.4/surefire-extensions-spi-3.5.4.pom (1.7 kB at 64 kB/s)
 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver/1.4.1/maven-resolver-1.4.1.pom (18 kB at 519 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/33/maven-parent-33.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-spi/3.5.4/surefire-extensions-spi-3.5.4.pom (1.7 kB at 48 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/42/maven-parent-42.pom (50 kB at 1.6 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/42/maven-parent-42.pom (50 kB at 1.9 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/32/apache-32.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/33/maven-parent-33.pom (44 kB at 1.5 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/33/maven-parent-33.pom (44 kB at 1.4 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver-api/1.4.1/maven-resolver-api-1.4.1.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/32/apache-32.pom (24 kB at 780 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/32/apache-32.pom (24 kB at 515 kB/s)
 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver-api/1.4.1/maven-resolver-api-1.4.1.pom (2.6 kB at 91 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-api/3.5.4/surefire-api-3.5.4.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-api/3.5.4/surefire-api-3.5.4.jar (174 kB at 5.1 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-api/3.5.4/surefire-api-3.5.4.jar (174 kB at 6.4 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-api/3.5.4/surefire-extensions-api-3.5.4.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/maven-surefire-common/3.5.4/maven-surefire-common-3.5.4.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-logger-api/3.5.4/surefire-logger-api-3.5.4.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-shared-utils/3.5.4/surefire-shared-utils-3.5.4.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-booter/3.5.4/surefire-booter-3.5.4.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-booter/3.5.4/surefire-booter-3.5.4.jar (119 kB at 4.1 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-logger-api/3.5.4/surefire-logger-api-3.5.4.jar (14 kB at 591 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/maven-surefire-common/3.5.4/maven-surefire-common-3.5.4.jar (314 kB at 13 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver-util/1.4.1/maven-resolver-util-1.4.1.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-api/3.5.4/surefire-extensions-api-3.5.4.jar (26 kB at 779 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.4.0/maven-common-artifact-filters-3.4.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-logger-api/3.5.4/surefire-logger-api-3.5.4.jar (14 kB at 367 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-api/3.5.4/surefire-extensions-api-3.5.4.jar (26 kB at 989 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-spi/3.5.4/surefire-extensions-spi-3.5.4.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/maven-surefire-common/3.5.4/maven-surefire-common-3.5.4.jar (314 kB at 7.7 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-booter/3.5.4/surefire-booter-3.5.4.jar (119 kB at 4.2 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver-api/1.4.1/maven-resolver-api-1.4.1.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver-util/1.4.1/maven-resolver-util-1.4.1.jar (168 kB at 2.7 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-shared-utils/3.5.4/surefire-shared-utils-3.5.4.jar (2.9 MB at 48 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.4.0/maven-common-artifact-filters-3.4.0.jar (58 kB at 928 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-spi/3.5.4/surefire-extensions-spi-3.5.4.jar (8.2 kB at 119 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver-api/1.4.1/maven-resolver-api-1.4.1.jar (149 kB at 2.0 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.4.0/maven-common-artifact-filters-3.4.0.jar (58 kB at 1.2 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-shared-utils/3.5.4/surefire-shared-utils-3.5.4.jar (2.9 MB at 60 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-spi/3.5.4/surefire-extensions-spi-3.5.4.jar (8.2 kB at 157 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver-util/1.4.1/maven-resolver-util-1.4.1.jar (168 kB at 3.2 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver-api/1.4.1/maven-resolver-api-1.4.1.jar (149 kB at 2.4 MB/s)
 [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.4/surefire-junit-platform-3.5.4.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.4/surefire-junit-platform-3.5.4.pom (5.2 kB at 157 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.4/surefire-junit-platform-3.5.4.pom (5.2 kB at 105 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.5.4/surefire-providers-3.5.4.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.5.4/surefire-providers-3.5.4.pom (2.5 kB at 77 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.1/junit-platform-launcher-1.12.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.5.4/surefire-providers-3.5.4.pom (2.5 kB at 40 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.12.1/junit-platform-engine-1.12.1.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.1/junit-platform-launcher-1.12.1.pom
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.4/common-java5-3.5.4.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.4/common-java5-3.5.4.pom (3.1 kB at 99 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.1/junit-platform-launcher-1.12.1.pom (3.0 kB at 74 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.12.1/junit-platform-engine-1.12.1.pom (3.2 kB at 75 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.1/junit-platform-launcher-1.12.1.pom (3.0 kB at 138 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.4/common-java5-3.5.4.pom (3.1 kB at 122 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.12.1/junit-platform-engine-1.12.1.pom (3.2 kB at 89 kB/s)
 [INFO] Artifact org.apiguardian:apiguardian-api:pom:1.1.2 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
 [INFO] Artifact org.apiguardian:apiguardian-api:pom:1.1.2 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.pom
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.12.1/junit-platform-commons-1.12.1.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.pom
 [INFO] Artifact org.opentest4j:opentest4j:pom:1.3.0 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
 [INFO] Artifact org.opentest4j:opentest4j:pom:1.3.0 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.pom (2.0 kB at 73 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.12.1/junit-platform-commons-1.12.1.pom (2.8 kB at 89 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.pom (1.5 kB at 42 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.12.1/junit-platform-commons-1.12.1.pom (2.8 kB at 109 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.pom (1.5 kB at 59 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.pom (2.0 kB at 75 kB/s)
 [INFO] Artifact org.opentest4j:opentest4j:jar:1.3.0 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
 [INFO] Artifact org.apiguardian:apiguardian-api:jar:1.1.2 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
 [INFO] Artifact org.opentest4j:opentest4j:jar:1.3.0 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
 [INFO] Artifact org.apiguardian:apiguardian-api:jar:1.1.2 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.4/surefire-junit-platform-3.5.4.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.4/surefire-junit-platform-3.5.4.jar (35 kB at 771 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.4/surefire-junit-platform-3.5.4.jar (35 kB at 1.7 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.4/common-java5-3.5.4.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.12.1/junit-platform-engine-1.12.1.jar
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.1/junit-platform-launcher-1.12.1.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.12.1/junit-platform-commons-1.12.1.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar (14 kB at 511 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.1/junit-platform-launcher-1.12.1.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.4/common-java5-3.5.4.jar (18 kB at 705 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.4/common-java5-3.5.4.jar (18 kB at 550 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.1/junit-platform-launcher-1.12.1.jar (208 kB at 6.3 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.12.1/junit-platform-commons-1.12.1.jar (152 kB at 4.6 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar (6.8 kB at 124 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.12.1/junit-platform-engine-1.12.1.jar (256 kB at 4.6 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.1/junit-platform-launcher-1.12.1.jar (208 kB at 7.2 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar (14 kB at 477 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.12.1/junit-platform-engine-1.12.1.jar (256 kB at 8.0 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.12.1/junit-platform-commons-1.12.1.jar (152 kB at 4.9 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar (6.8 kB at 119 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/junit/platform/junit-platform-launcher/6.0.3/junit-platform-launcher-6.0.3.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/platform/junit-platform-launcher/6.0.3/junit-platform-launcher-6.0.3.pom (3.2 kB at 19 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/platform/junit-platform-launcher/6.0.3/junit-platform-launcher-6.0.3.pom (3.2 kB at 24 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/junit/platform/junit-platform-launcher/6.0.3/junit-platform-launcher-6.0.3.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/platform/junit-platform-launcher/6.0.3/junit-platform-launcher-6.0.3.jar (246 kB at 9.5 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/junit/platform/junit-platform-launcher/6.0.3/junit-platform-launcher-6.0.3.jar (246 kB at 14 MB/s)
 [INFO] 
 [INFO] -------------------------------------------------------
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running dev.zap.AuthTest
-[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.547 s -- in dev.zap.AuthTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.844 s -- in dev.zap.AuthTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -716,104 +716,104 @@
 [INFO] 
 [INFO] 
 [INFO] --- jar:3.5.1:jar (default-jar) @ Z_AP ---
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/file-management/3.2.0/file-management-3.2.0.pom
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.22.0/commons-io-2.22.0.pom
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.12.0/plexus-archiver-4.12.0.pom
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-archiver/3.6.6/maven-archiver-3.6.6.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.22.0/commons-io-2.22.0.pom (20 kB at 724 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.12.0/plexus-archiver-4.12.0.pom (5.6 kB at 182 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-archiver/3.6.6/maven-archiver-3.6.6.pom (5.2 kB at 168 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.22.0/commons-io-2.22.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/file-management/3.2.0/file-management-3.2.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.12.0/plexus-archiver-4.12.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.22.0/commons-io-2.22.0.pom (20 kB at 965 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.12.0/plexus-archiver-4.12.0.pom (5.6 kB at 201 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/98/commons-parent-98.pom
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/25/plexus-25.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-archiver/3.6.6/maven-archiver-3.6.6.pom (5.2 kB at 157 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/file-management/3.2.0/file-management-3.2.0.pom (4.5 kB at 132 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/45/maven-shared-components-45.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/file-management/3.2.0/file-management-3.2.0.pom (4.5 kB at 121 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/44/maven-shared-components-44.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/25/plexus-25.pom (31 kB at 1.1 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/98/commons-parent-98.pom (80 kB at 2.5 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/45/maven-shared-components-45.pom (3.8 kB at 126 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/25/plexus-25.pom (31 kB at 1.2 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/98/commons-parent-98.pom (80 kB at 2.8 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.14.1/junit-bom-5.14.1.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/44/maven-shared-components-44.pom (3.8 kB at 102 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/45/maven-shared-components-45.pom (3.8 kB at 158 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/44/maven-shared-components-44.pom (3.8 kB at 108 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.3/plexus-utils-4.0.3.pom
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.19.0/commons-io-2.19.0.pom
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.10.4/plexus-archiver-4.10.4.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.14.1/junit-bom-5.14.1.pom (5.7 kB at 167 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.19.0/commons-io-2.19.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.14.1/junit-bom-5.14.1.pom (5.7 kB at 202 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/3.6.0/plexus-io-3.6.0.pom
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.28.0/commons-compress-1.28.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.19.0/commons-io-2.19.0.pom (21 kB at 666 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/81/commons-parent-81.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.10.4/plexus-archiver-4.10.4.pom (5.6 kB at 166 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.3/plexus-utils-4.0.3.pom (6.8 kB at 174 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.7-9/zstd-jni-1.5.7-9.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.3/plexus-utils-4.0.3.pom (6.8 kB at 308 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.10.4/plexus-archiver-4.10.4.pom (5.6 kB at 269 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/tukaani/xz/1.12/xz-1.12.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/3.6.0/plexus-io-3.6.0.pom (3.5 kB at 129 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.28.0/commons-compress-1.28.0.pom (25 kB at 589 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/81/commons-parent-81.pom (78 kB at 2.3 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.19.0/commons-io-2.19.0.pom (21 kB at 826 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.7-9/zstd-jni-1.5.7-9.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/81/commons-parent-81.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.28.0/commons-compress-1.28.0.pom (25 kB at 904 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/3.6.0/plexus-io-3.6.0.pom (3.5 kB at 116 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/85/commons-parent-85.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.7-9/zstd-jni-1.5.7-9.pom (2.0 kB at 74 kB/s)
 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/tukaani/xz/1.12/xz-1.12.pom (1.9 kB at 64 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/81/commons-parent-81.pom (78 kB at 2.2 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.20.0/commons-io-2.20.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.7-9/zstd-jni-1.5.7-9.pom (2.0 kB at 39 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/85/commons-parent-85.pom (78 kB at 2.3 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.20.0/commons-io-2.20.0.pom (20 kB at 706 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.18.0/commons-lang3-3.18.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/85/commons-parent-85.pom (78 kB at 1.5 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.20.0/commons-io-2.20.0.pom (20 kB at 890 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.19.0/commons-codec-1.19.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.19.0/commons-codec-1.19.0.pom (18 kB at 546 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.18.0/commons-lang3-3.18.0.pom (32 kB at 915 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.18.0/commons-lang3-3.18.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.18.0/commons-lang3-3.18.0.pom (32 kB at 1.2 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.19.0/commons-codec-1.19.0.pom (18 kB at 600 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/file-management/3.2.0/file-management-3.2.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/file-management/3.2.0/file-management-3.2.0.jar (26 kB at 864 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/file-management/3.2.0/file-management-3.2.0.jar (26 kB at 648 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-archiver/3.6.6/maven-archiver-3.6.6.jar
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.12.0/plexus-archiver-4.12.0.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.22.0/commons-io-2.22.0.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.3/plexus-utils-4.0.3.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.12.0/plexus-archiver-4.12.0.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/3.6.0/plexus-io-3.6.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.12.0/plexus-archiver-4.12.0.jar (227 kB at 8.4 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/3.6.0/plexus-io-3.6.0.jar (80 kB at 3.2 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.28.0/commons-compress-1.28.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-archiver/3.6.6/maven-archiver-3.6.6.jar (28 kB at 945 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.12.0/plexus-archiver-4.12.0.jar (227 kB at 8.7 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/tukaani/xz/1.12/xz-1.12.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.3/plexus-utils-4.0.3.jar (193 kB at 5.1 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.3/plexus-utils-4.0.3.jar (193 kB at 6.2 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.7-9/zstd-jni-1.5.7-9.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/3.6.0/plexus-io-3.6.0.jar (80 kB at 2.0 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-archiver/3.6.6/maven-archiver-3.6.6.jar (28 kB at 834 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.19.0/commons-codec-1.19.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.22.0/commons-io-2.22.0.jar (609 kB at 15 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.22.0/commons-io-2.22.0.jar (609 kB at 17 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.18.0/commons-lang3-3.18.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/tukaani/xz/1.12/xz-1.12.jar (169 kB at 2.8 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.28.0/commons-compress-1.28.0.jar (1.1 MB at 18 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.18.0/commons-lang3-3.18.0.jar (703 kB at 8.8 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.19.0/commons-codec-1.19.0.jar (375 kB at 3.9 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.7-9/zstd-jni-1.5.7-9.jar (7.6 MB at 53 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/tukaani/xz/1.12/xz-1.12.jar (169 kB at 3.4 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.28.0/commons-compress-1.28.0.jar (1.1 MB at 20 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.18.0/commons-lang3-3.18.0.jar (703 kB at 11 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.19.0/commons-codec-1.19.0.jar (375 kB at 5.8 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.7-9/zstd-jni-1.5.7-9.jar (7.6 MB at 64 MB/s)
 [INFO] Building jar: /home/runner/work/123/123/ap/target/Z_AP-1.0.0.jar
 [INFO] 
 [INFO] --- shade:3.6.1:shade (default) @ Z_AP ---
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.8/asm-commons-9.8.pom
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.10/jdependency-2.10.pom
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.16.1/commons-io-2.16.1.pom
+[INFO] Artifact org.codehaus.plexus:plexus-utils:pom:3.5.1 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
+[INFO] Artifact org.codehaus.plexus:plexus-utils:pom:3.5.1 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.pom
-[INFO] Artifact org.codehaus.plexus:plexus-utils:pom:3.5.1 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
-[INFO] Artifact org.codehaus.plexus:plexus-utils:pom:3.5.1 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.16.1/commons-io-2.16.1.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.10/jdependency-2.10.pom
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.10/jdependency-2.10.pom (14 kB at 379 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.pom (4.6 kB at 131 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.16.1/commons-io-2.16.1.pom (20 kB at 530 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.8/asm-commons-9.8.pom (2.8 kB at 73 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.pom (8.8 kB at 225 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.8/asm-commons-9.8.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.pom (8.8 kB at 351 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.10/jdependency-2.10.pom (14 kB at 561 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.pom (4.6 kB at 153 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.8/asm-commons-9.8.pom (2.8 kB at 90 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.16.1/commons-io-2.16.1.pom (20 kB at 595 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/69/commons-parent-69.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/69/commons-parent-69.pom (77 kB at 1.7 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/69/commons-parent-69.pom (77 kB at 1.4 MB/s)
 [INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.8/asm-tree-9.8.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.8/asm-tree-9.8.pom (2.6 kB at 72 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.8/asm-tree-9.8.pom (2.6 kB at 93 kB/s)
 [INFO] Artifact org.codehaus.plexus:plexus-utils:jar:3.5.1 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
 [INFO] Artifact org.codehaus.plexus:plexus-utils:jar:3.5.1 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.jar (269 kB at 6.9 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.jar (269 kB at 7.9 MB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.8/asm-commons-9.8.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.16.1/commons-io-2.16.1.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.10/jdependency-2.10.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.8/asm-tree-9.8.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.10/jdependency-2.10.jar (416 kB at 16 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.8/asm-commons-9.8.jar (73 kB at 2.4 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.8/asm-tree-9.8.jar (52 kB at 1.4 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.jar (328 kB at 8.4 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.16.1/commons-io-2.16.1.jar (509 kB at 13 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.8/asm-commons-9.8.jar (73 kB at 3.3 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.16.1/commons-io-2.16.1.jar (509 kB at 23 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.8/asm-tree-9.8.jar (52 kB at 2.1 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.10/jdependency-2.10.jar (416 kB at 15 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.jar (328 kB at 11 MB/s)
 [WARNING] Z_AP-1.0.0.jar, jbcrypt-0.4.jar define 1 overlapping resource: 
 [WARNING]   - META-INF/MANIFEST.MF
 [WARNING] maven-shade-plugin has detected that some files are
@@ -827,6 +827,6 @@
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  13.311 s
-[INFO] Finished at: 2026-10-30T19:43:36Z
+[INFO] Total time:  14.296 s
+[INFO] Finished at: 2026-10-30T19:46:22Z
 [INFO] ------------------------------------------------------------------------
