@@ -103,7 +103,11 @@ public class ZCheckPlugin extends JavaPlugin implements Listener,CommandExecutor
         UUID id=p.getUniqueId();CheckRecord initial=checks.get(id);for(int delay:getConfig().getIntegerList("title.repeat-delays-ticks"))if(delay>0&&delay<=1200)Bukkit.getScheduler().runTaskLater(this,()->{Player live=Bukkit.getPlayer(id);if(live!=null&&initial.equals(checks.get(id)))showTitle(live,true);},delay);
     }
     private void pulse(){
-        ticks++;int interval=Math.clamp(getConfig().getInt("reminder-interval-ticks",40),20,1200);
+        ticks++;
+        int autosave=getConfig().getInt("autosave-interval-ticks",1200);
+        if(autosave>0&&!checks.isEmpty()&&ticks%Math.clamp(autosave,200,72000)==0)
+            try{store.save(checks);}catch(Exception e){getLogger().log(Level.SEVERE,"Не удалось выполнить периодическое сохранение проверок",e);}
+        int interval=Math.clamp(getConfig().getInt("reminder-interval-ticks",40),20,1200);
         if(ticks%interval!=0)return;
         for(UUID id:checks.keySet()){Player p=Bukkit.getPlayer(id);if(p!=null)p.sendActionBar(format("messages.reminder","Проверка",null));}
     }
