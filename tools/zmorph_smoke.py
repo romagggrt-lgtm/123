@@ -1,7 +1,7 @@
 from pathlib import Path
 import hashlib,json,subprocess,time,urllib.request,shutil,traceback
 root=Path(__file__).resolve().parents[1];work=root/'morph/target/live';report=root/'morph/live-qa';work.mkdir(parents=True,exist_ok=True);report.mkdir(parents=True,exist_ok=True);server=None
-for name in ['ready','begin','bot-result.json']:(work/name).unlink(missing_ok=True)
+for name in ['ready','begin','teleport_request','death_request','bot-result.json']:(work/name).unlink(missing_ok=True)
 def get(url):
  with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'ZMorph-CI/1.0.0'}),timeout=60) as r:return r.read()
 def wait_for(f,seconds,label):
@@ -22,8 +22,15 @@ try:
  send('op Morpher')
  with (report/'bots.log').open('w') as botlog:
   bot=subprocess.Popen(['node',str(root/'tools/zmorph_bot.js'),str(work)],cwd=root/'morph/target/bots',stdout=botlog,stderr=subprocess.STDOUT)
-  wait_for(lambda:(work/'ready').exists(),60,'player join');send('tp MorphObserver Morpher');(work/'begin').write_text('1')
-  assert bot.wait(timeout=50)==0,'Bot failed'
+  wait_for(lambda:(work/'ready').exists(),60,'player join');send('gamerule keepInventory true');send('give Morpher diamond 3');send('tp MorphObserver Morpher');(work/'begin').write_text('1')
+  deadline=time.monotonic()+50
+  while bot.poll() is None and time.monotonic()<deadline:
+   marker=work/'teleport_request'
+   if marker.exists():marker.unlink();send('tp Morpher 10 65 10');send('tp MorphObserver Morpher')
+   marker=work/'death_request'
+   if marker.exists():marker.unlink();send('kill Morpher')
+   time.sleep(.2)
+  assert bot.wait(timeout=5)==0,'Bot failed'
  result=json.loads((work/'bot-result.json').read_text());(report/'bot-result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2))
  target=result['targetUUID'].lower()
  # LibsDisguises deliberately uses synthetic UUIDs for mob presentations;
@@ -31,7 +38,14 @@ try:
  restored=next((e for e in result['spawns'] if (e.get('uuid') or '').lower()==target and e.get('name')=='player'),None)
  assert restored is not None,'Player entity was not restored'
  observed=[e for e in result['spawns'] if e.get('id')==restored['id']]
- result['observed_target']=observed;names=[e.get('name') for e in observed];assert 'zombie' in names and 'creeper' in names and 'player' in names and not result['disconnected'],result
+ result['observed_target']=observed;names=[e.get('name') for e in observed]
+ assert 'zombie' in names and 'creeper' in names and 'player' in names and not result['disconnected'],result
+ assert any(e.get('id')==restored['id'] and e.get('name')=='zombie' for e in result['moves']), 'No disguised movement was observed'
+ assert any(e.get('id')==restored['id'] and e.get('name')=='creeper' for e in result['lateSpawns']), 'Late viewer did not see disguise'
+ assert result['death'] and result['respawn'], 'Death/respawn not observed'
+ assert any(e.get('name')=='creeper' and e.get('phase')=='death' for e in result['spawns']), 'Disguise not restored on respawn'
+ assert result['diamond']==3, 'Inventory changed during morph or respawn'
+ assert any('Недостаточно прав' in m for m in result['viewerMessages']), 'Non-OP was not denied'
  text=read();assert '[Z_Morph] Ошибка' not in text and '[Z_Morph] Не удалось' not in text
  jar=root/'morph/target/Z_Morph-1.0.0.jar';shutil.copyfile(jar,report/'tested-plugin.jar')
  (report/'result.json').write_text(json.dumps({'status':'PASS','paper_build':meta['id'],'plugin_sha256':hashlib.sha256(jar.read_bytes()).hexdigest(),'details':result},ensure_ascii=False,indent=2))

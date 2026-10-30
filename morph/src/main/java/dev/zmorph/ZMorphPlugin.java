@@ -63,7 +63,10 @@ public final class ZMorphPlugin extends JavaPlugin implements Listener,CommandEx
                 msg(p,"failure",null);return false;
             }
             sessions.put(p.getUniqueId(),new Session(type,candidate));msg(p,"active",type.name().toLowerCase(Locale.ROOT));return true;
-        }catch(RuntimeException e){getLogger().log(Level.WARNING,"Ошибка применения маскировки",e);msg(p,"failure",null);return false;}
+        }catch(RuntimeException e){
+            if(old!=null&&p.isOnline()&&!old.disguise().isDisguiseInUse())try{old.disguise().startDisguise();}catch(RuntimeException restore){getLogger().log(Level.WARNING,"Не удалось восстановить прежнюю маскировку",restore);}
+            getLogger().log(Level.WARNING,"Ошибка применения маскировки",e);msg(p,"failure",null);return false;
+        }
     }
     @Override public boolean onCommand(CommandSender sender,Command command,String label,String[] args){
         if(!(sender instanceof Player p)){msg(sender,"only-player",null);return true;}
