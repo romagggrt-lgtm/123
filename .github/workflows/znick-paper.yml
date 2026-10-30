@@ -28,6 +28,7 @@ jobs:
         run: |
           npm install --prefix nick/target/bots --no-audit --no-fund mineflayer@4.39.0
           python3 tools/znick_smoke.py
+          ZNICK_COMPAT=1 python3 tools/znick_smoke.py
       - name: Preserve results
         if: always()
         run: |
