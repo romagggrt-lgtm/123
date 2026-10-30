@@ -1,7 +1,7 @@
 {
   "status": "PASS",
   "server_build": 132,
-  "plugin_sha256": "c84cc67aeaaa1b77b3928cbb95986c8a1bb61f8f5c95ef7d03c710c2ee83a2f0",
+  "plugin_sha256": "52864f38e2b2014439fa433caa07b271244af334de818af7b5771e4c8717a4c6",
   "phases": [
     {
       "phase": "one",
@@ -10,9 +10,9 @@
     },
     {
       "phase": "two",
-      "freezeDistance": 0.0570359999999992,
+      "freezeDistance": 0,
       "health": 20,
-      "freeDistance": 14.850536608156084
+      "freeDistance": 14.85053660815608
     }
   ]
 }
