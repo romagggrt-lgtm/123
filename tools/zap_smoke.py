@@ -20,7 +20,7 @@ try:
  (work/'eula.txt').write_text('eula=true\n');(work/'server.properties').write_text('server-ip=127.0.0.1\nserver-port=25594\nonline-mode=false\nspawn-protection=0\nview-distance=5\nsimulation-distance=4\nlevel-type=minecraft:flat\ngenerator-settings={"layers":[{"block":"minecraft:bedrock","height":1},{"block":"minecraft:dirt","height":63},{"block":"minecraft:grass_block","height":1}],"biome":"minecraft:plains"}\n')
  logpath=report/'paper.log';log=logpath.open('w');server=subprocess.Popen(['java','-Xms512M','-Xmx2G','-jar','paper.jar','nogui'],cwd=work,stdin=subprocess.PIPE,stdout=log,stderr=subprocess.STDOUT);read=lambda:logpath.read_text(errors='replace')
  wait_for(lambda:'Done (' in read(),300,'startup');assert '[Z_AP] Enabling' in read(),'Panel failed to enable'
- send('op APAdmin');send('op APLocked')
+ send('op APAdmin');send('op APLocked');send('op APClose')
  with (report/'bots.log').open('w') as botlog:
   bot=subprocess.Popen(['node',str(root/'tools/zap_bot.js'),str(work)],cwd=root/'ap/target/bots',stdout=botlog,stderr=subprocess.STDOUT)
   wait_for(lambda:(work/'ready').exists(),60,'players join');send('give APAdmin diamond 3');(work/'begin').write_text('1')
