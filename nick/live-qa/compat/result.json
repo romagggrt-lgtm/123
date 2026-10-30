@@ -12,11 +12,184 @@
     "sawNickname": true,
     "sawAlias": true,
     "sawTeam": true,
+    "chatNick": true,
     "sawChanged": true,
     "sawRestored": true,
     "restoredTeam": false,
     "disconnected": false,
     "packets": [
+      {
+        "phase": "set",
+        "type": "system_chat",
+        "data": {
+          "content": {
+            "type": "compound",
+            "value": {
+              "color": {
+                "type": "string",
+                "value": "yellow"
+              },
+              "with": {
+                "type": "list",
+                "value": {
+                  "type": "compound",
+                  "value": [
+                    {
+                      "click_event": {
+                        "type": "compound",
+                        "value": {
+                          "command": {
+                            "type": "string",
+                            "value": "/tell NickTarget "
+                          },
+                          "action": {
+                            "type": "string",
+                            "value": "suggest_command"
+                          }
+                        }
+                      },
+                      "insertion": {
+                        "type": "string",
+                        "value": "NickTarget"
+                      },
+                      "hover_event": {
+                        "type": "compound",
+                        "value": {
+                          "name": {
+                            "type": "string",
+                            "value": "NickTarget"
+                          },
+                          "id": {
+                            "type": "string",
+                            "value": "minecraft:player"
+                          },
+                          "action": {
+                            "type": "string",
+                            "value": "show_entity"
+                          },
+                          "uuid": {
+                            "type": "intArray",
+                            "value": [
+                              42608393,
+                              385102836,
+                              -1771620277,
+                              -2109286321
+                            ]
+                          }
+                        }
+                      },
+                      "text": {
+                        "type": "string",
+                        "value": "NickTarget"
+                      }
+                    }
+                  ]
+                }
+              },
+              "translate": {
+                "type": "string",
+                "value": "multiplayer.player.joined"
+              }
+            }
+          },
+          "isActionBar": false
+        }
+      },
+      {
+        "phase": "set",
+        "type": "player_info",
+        "data": {
+          "action": {
+            "_value": 255,
+            "add_player": true,
+            "initialize_chat": true,
+            "update_game_mode": true,
+            "update_listed": true,
+            "update_latency": true,
+            "update_display_name": true,
+            "update_hat": true,
+            "update_list_order": true
+          },
+          "data": [
+            {
+              "uuid": "028a2709-16f4-33f4-9667-384b8246d84f",
+              "player": {
+                "name": "NickTarget",
+                "properties": []
+              },
+              "gamemode": 0,
+              "listed": 1,
+              "latency": 8,
+              "displayName": {
+                "type": "compound",
+                "value": {
+                  "italic": {
+                    "type": "byte",
+                    "value": 0
+                  },
+                  "underlined": {
+                    "type": "byte",
+                    "value": 0
+                  },
+                  "bold": {
+                    "type": "byte",
+                    "value": 0
+                  },
+                  "color": {
+                    "type": "string",
+                    "value": "#FFFFFF"
+                  },
+                  "obfuscated": {
+                    "type": "byte",
+                    "value": 0
+                  },
+                  "strikethrough": {
+                    "type": "byte",
+                    "value": 0
+                  },
+                  "text": {
+                    "type": "string",
+                    "value": "NickTarget"
+                  }
+                }
+              },
+              "listPriority": 0,
+              "showHat": true
+            }
+          ]
+        }
+      },
+      {
+        "phase": "set",
+        "type": "teams",
+        "data": {
+          "team": "7NickTargetA",
+          "mode": "add",
+          "name": {
+            "type": "string",
+            "value": "7NickTargetA"
+          },
+          "flags": {
+            "_value": 0,
+            "friendly_fire": false,
+            "see_friendly_invisible": false
+          },
+          "nameTagVisibility": "always",
+          "collisionRule": "never",
+          "formatting": 21,
+          "prefix": {
+            "type": "string",
+            "value": ""
+          },
+          "suffix": {
+            "type": "string",
+            "value": ""
+          },
+          "players": [
+            "NickTarget"
+          ]
+        }
+      },
       {
         "phase": "set",
         "type": "teams",
@@ -76,11 +249,234 @@
       },
       {
         "phase": "set",
+        "type": "system_chat",
+        "data": {
+          "content": {
+            "type": "compound",
+            "value": {
+              "italic": {
+                "type": "byte",
+                "value": 1
+              },
+              "color": {
+                "type": "string",
+                "value": "gray"
+              },
+              "with": {
+                "type": "list",
+                "value": {
+                  "type": "compound",
+                  "value": [
+                    {
+                      "": {
+                        "type": "string",
+                        "value": "Server"
+                      }
+                    },
+                    {
+                      "with": {
+                        "type": "list",
+                        "value": {
+                          "type": "compound",
+                          "value": [
+                            {
+                              "with": {
+                                "type": "list",
+                                "value": {
+                                  "type": "compound",
+                                  "value": [
+                                    {
+                                      "insertion": {
+                                        "type": "string",
+                                        "value": "testteam"
+                                      },
+                                      "hover_event": {
+                                        "type": "compound",
+                                        "value": {
+                                          "action": {
+                                            "type": "string",
+                                            "value": "show_text"
+                                          },
+                                          "value": {
+                                            "type": "string",
+                                            "value": "testteam"
+                                          }
+                                        }
+                                      },
+                                      "text": {
+                                        "type": "string",
+                                        "value": "testteam"
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              "translate": {
+                                "type": "string",
+                                "value": "chat.square_brackets"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "translate": {
+                        "type": "string",
+                        "value": "commands.team.add.success"
+                      }
+                    }
+                  ]
+                }
+              },
+              "translate": {
+                "type": "string",
+                "value": "chat.type.admin"
+              }
+            }
+          },
+          "isActionBar": false
+        }
+      },
+      {
+        "phase": "set",
         "type": "teams",
         "data": {
           "team": "testteam",
           "mode": "join",
           "players": []
+        }
+      },
+      {
+        "phase": "set",
+        "type": "system_chat",
+        "data": {
+          "content": {
+            "type": "compound",
+            "value": {
+              "italic": {
+                "type": "byte",
+                "value": 1
+              },
+              "color": {
+                "type": "string",
+                "value": "gray"
+              },
+              "with": {
+                "type": "list",
+                "value": {
+                  "type": "compound",
+                  "value": [
+                    {
+                      "": {
+                        "type": "string",
+                        "value": "Server"
+                      }
+                    },
+                    {
+                      "with": {
+                        "type": "list",
+                        "value": {
+                          "type": "compound",
+                          "value": [
+                            {
+                              "click_event": {
+                                "type": "compound",
+                                "value": {
+                                  "command": {
+                                    "type": "string",
+                                    "value": "/tell NickTarget "
+                                  },
+                                  "action": {
+                                    "type": "string",
+                                    "value": "suggest_command"
+                                  }
+                                }
+                              },
+                              "extra": {
+                                "type": "list",
+                                "value": {
+                                  "type": "string",
+                                  "value": [
+                                    "NickTarget"
+                                  ]
+                                }
+                              },
+                              "insertion": {
+                                "type": "string",
+                                "value": "NickTarget"
+                              },
+                              "hover_event": {
+                                "type": "compound",
+                                "value": {
+                                  "action": {
+                                    "type": "string",
+                                    "value": "show_text"
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "value": "NickTarget"
+                                  }
+                                }
+                              },
+                              "text": {
+                                "type": "string",
+                                "value": ""
+                              }
+                            },
+                            {
+                              "with": {
+                                "type": "list",
+                                "value": {
+                                  "type": "compound",
+                                  "value": [
+                                    {
+                                      "insertion": {
+                                        "type": "string",
+                                        "value": "testteam"
+                                      },
+                                      "hover_event": {
+                                        "type": "compound",
+                                        "value": {
+                                          "action": {
+                                            "type": "string",
+                                            "value": "show_text"
+                                          },
+                                          "value": {
+                                            "type": "string",
+                                            "value": "testteam"
+                                          }
+                                        }
+                                      },
+                                      "text": {
+                                        "type": "string",
+                                        "value": "testteam"
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              "translate": {
+                                "type": "string",
+                                "value": "chat.square_brackets"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "translate": {
+                        "type": "string",
+                        "value": "commands.team.join.success.single"
+                      }
+                    }
+                  ]
+                }
+              },
+              "translate": {
+                "type": "string",
+                "value": "chat.type.admin"
+              }
+            }
+          },
+          "isActionBar": false
         }
       },
       {
@@ -344,7 +740,7 @@
               },
               "gamemode": 0,
               "listed": 1,
-              "latency": 4,
+              "latency": 8,
               "displayName": {
                 "type": "compound",
                 "value": {
@@ -459,6 +855,62 @@
       },
       {
         "phase": "set",
+        "type": "teams",
+        "data": {
+          "team": "7NickTargetA",
+          "mode": "change",
+          "name": {
+            "type": "string",
+            "value": "7NickTargetA"
+          },
+          "flags": {
+            "_value": 0,
+            "friendly_fire": false,
+            "see_friendly_invisible": false
+          },
+          "nameTagVisibility": "always",
+          "collisionRule": "always",
+          "formatting": 21,
+          "prefix": {
+            "type": "string",
+            "value": ""
+          },
+          "suffix": {
+            "type": "string",
+            "value": ""
+          }
+        }
+      },
+      {
+        "phase": "set",
+        "type": "teams",
+        "data": {
+          "team": "7NickTargetA",
+          "mode": "change",
+          "name": {
+            "type": "string",
+            "value": "7NickTargetA"
+          },
+          "flags": {
+            "_value": 0,
+            "friendly_fire": false,
+            "see_friendly_invisible": false
+          },
+          "nameTagVisibility": "always",
+          "collisionRule": "always",
+          "formatting": 21,
+          "prefix": {
+            "type": "string",
+            "value": ""
+          },
+          "suffix": {
+            "type": "string",
+            "value": ""
+          }
+        }
+      },
+      {
+        "phase": "set",
         "type": "player_info",
         "data": {
           "action": {
@@ -528,6 +980,157 @@
               }
             }
           ]
+        }
+      },
+      {
+        "phase": "set",
+        "type": "player_chat",
+        "data": {
+          "globalIndex": 0,
+          "senderUuid": "028a2709-16f4-33f4-9667-384b8246d84f",
+          "index": 0,
+          "plainMessage": "hello_z",
+          "timestamp": [
+            417,
+            -1948792460
+          ],
+          "salt": [
+            0,
+            0
+          ],
+          "previousMessages": [],
+          "unsignedChatContent": {
+            "type": "compound",
+            "value": {
+              "extra": {
+                "type": "list",
+                "value": {
+                  "type": "compound",
+                  "value": [
+                    {
+                      "color": {
+                        "type": "string",
+                        "value": "white"
+                      },
+                      "extra": {
+                        "type": "list",
+                        "value": {
+                          "type": "compound",
+                          "value": [
+                            {
+                              "color": {
+                                "type": "string",
+                                "value": "#54DAF4"
+                              },
+                              "text": {
+                                "type": "string",
+                                "value": "н"
+                              }
+                            },
+                            {
+                              "color": {
+                                "type": "string",
+                                "value": "#54C5EA"
+                              },
+                              "text": {
+                                "type": "string",
+                                "value": "и"
+                              }
+                            },
+                            {
+                              "color": {
+                                "type": "string",
+                                "value": "#54B1DF"
+                              },
+                              "text": {
+                                "type": "string",
+                                "value": "к"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "text": {
+                        "type": "string",
+                        "value": ""
+                      }
+                    },
+                    {
+                      "": {
+                        "type": "string",
+                        "value": "> "
+                      }
+                    },
+                    {
+                      "": {
+                        "type": "string",
+                        "value": "hello_z"
+                      }
+                    }
+                  ]
+                }
+              },
+              "text": {
+                "type": "string",
+                "value": "<"
+              }
+            }
+          },
+          "filterType": 0,
+          "type": {
+            "chatType": 4
+          },
+          "networkName": {
+            "type": "compound",
+            "value": {
+              "color": {
+                "type": "string",
+                "value": "white"
+              },
+              "extra": {
+                "type": "list",
+                "value": {
+                  "type": "compound",
+                  "value": [
+                    {
+                      "color": {
+                        "type": "string",
+                        "value": "#54DAF4"
+                      },
+                      "text": {
+                        "type": "string",
+                        "value": "н"
+                      }
+                    },
+                    {
+                      "color": {
+                        "type": "string",
+                        "value": "#54C5EA"
+                      },
+                      "text": {
+                        "type": "string",
+                        "value": "и"
+                      }
+                    },
+                    {
+                      "color": {
+                        "type": "string",
+                        "value": "#54B1DF"
+                      },
+                      "text": {
+                        "type": "string",
+                        "value": "к"
+                      }
+                    }
+                  ]
+                }
+              },
+              "text": {
+                "type": "string",
+                "value": ""
+              }
+            }
+          }
         }
       },
       {
@@ -685,7 +1288,7 @@
               },
               "gamemode": 0,
               "listed": 1,
-              "latency": 4,
+              "latency": 6,
               "displayName": {
                 "type": "compound",
                 "value": {

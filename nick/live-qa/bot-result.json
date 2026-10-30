@@ -2,7 +2,7 @@
   "sawNickname": true,
   "sawAlias": true,
   "sawTeam": true,
-  "chatNick": false,
+  "chatNick": true,
   "sawChanged": true,
   "sawRestored": true,
   "restoredTeam": true,
@@ -560,7 +560,7 @@
             },
             "gamemode": 0,
             "listed": 1,
-            "latency": 3,
+            "latency": 8,
             "displayName": {
               "type": "compound",
               "value": {
@@ -623,12 +623,12 @@
       "type": "player_chat",
       "data": {
         "globalIndex": 0,
-        "senderUuid": "05bf88ee-0528-33c0-8f5f-287778b7613e",
+        "senderUuid": "028a2709-16f4-33f4-9667-384b8246d84f",
         "index": 0,
         "plainMessage": "hello_z",
         "timestamp": [
           417,
-          -1948969252
+          -1948848952
         ],
         "salt": [
           0,
@@ -641,10 +641,62 @@
             "with": {
               "type": "list",
               "value": {
-                "type": "string",
+                "type": "compound",
                 "value": [
-                  "NickAdmin",
-                  "hello_z"
+                  {
+                    "color": {
+                      "type": "string",
+                      "value": "white"
+                    },
+                    "extra": {
+                      "type": "list",
+                      "value": {
+                        "type": "compound",
+                        "value": [
+                          {
+                            "color": {
+                              "type": "string",
+                              "value": "#54DAF4"
+                            },
+                            "text": {
+                              "type": "string",
+                              "value": "н"
+                            }
+                          },
+                          {
+                            "color": {
+                              "type": "string",
+                              "value": "#54C5EA"
+                            },
+                            "text": {
+                              "type": "string",
+                              "value": "и"
+                            }
+                          },
+                          {
+                            "color": {
+                              "type": "string",
+                              "value": "#54B1DF"
+                            },
+                            "text": {
+                              "type": "string",
+                              "value": "к"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "text": {
+                      "type": "string",
+                      "value": ""
+                    }
+                  },
+                  {
+                    "": {
+                      "type": "string",
+                      "value": "hello_z"
+                    }
+                  }
                 ]
               }
             },
@@ -659,8 +711,55 @@
           "chatType": 4
         },
         "networkName": {
-          "type": "string",
-          "value": "NickAdmin"
+          "type": "compound",
+          "value": {
+            "color": {
+              "type": "string",
+              "value": "white"
+            },
+            "extra": {
+              "type": "list",
+              "value": {
+                "type": "compound",
+                "value": [
+                  {
+                    "color": {
+                      "type": "string",
+                      "value": "#54DAF4"
+                    },
+                    "text": {
+                      "type": "string",
+                      "value": "н"
+                    }
+                  },
+                  {
+                    "color": {
+                      "type": "string",
+                      "value": "#54C5EA"
+                    },
+                    "text": {
+                      "type": "string",
+                      "value": "и"
+                    }
+                  },
+                  {
+                    "color": {
+                      "type": "string",
+                      "value": "#54B1DF"
+                    },
+                    "text": {
+                      "type": "string",
+                      "value": "к"
+                    }
+                  }
+                ]
+              }
+            },
+            "text": {
+              "type": "string",
+              "value": ""
+            }
+          }
         }
       }
     },
@@ -819,7 +918,7 @@
             },
             "gamemode": 0,
             "listed": 1,
-            "latency": 3,
+            "latency": 4,
             "displayName": {
               "type": "compound",
               "value": {
@@ -893,7 +992,7 @@
             },
             "gamemode": 0,
             "listed": 1,
-            "latency": 1,
+            "latency": 3,
             "listPriority": 0,
             "showHat": true
           }
