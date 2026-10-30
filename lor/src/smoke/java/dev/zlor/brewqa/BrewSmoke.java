@@ -14,7 +14,7 @@ import org.bukkit.potion.PotionType;
 
 /** Isolated QA plugin; never shipped inside Z_Lor. */
 public final class BrewSmoke extends JavaPlugin {
- ZLorPlugin lor; Player one,two; World world; Location spot; int phase=-1,age;long startTick;
+ ZLorPlugin lor; Player one,two; World world; Location spot; Cow subject; int phase=-1,age;long startTick;
  final LinkedHashMap<String,Boolean> checks=new LinkedHashMap<>();
  final NamespacedKey itemId=new NamespacedKey("z_lor","brew");
  @Override public void onEnable(){lor=(ZLorPlugin)Bukkit.getPluginManager().getPlugin("Z_Lor");if(lor==null||!lor.isEnabled()){fail("plugin unavailable");return;}world=Bukkit.getWorlds().getFirst();world.setGameRule(GameRule.NATURAL_REGENERATION,false);spot=new Location(world,0,1,0);world.getChunkAt(spot).load();if(Files.exists(getServer().getWorldContainer().toPath().resolve("brew-restart-marker")))phase=100;Bukkit.getScheduler().runTaskTimer(this,this::tick,1,1);}
@@ -74,7 +74,17 @@ public final class BrewSmoke extends JavaPlugin {
     long dt=lor.tick-startTick;if(dt==39)check("erosion_two_not_early",!two.isDead());
     if(dt==43){check("erosion_two_can_kill",two.isDead());next();}
    }
-   case 11 -> {if(age==5){boolean protectedDrop=world.getNearbyEntities(two.getLocation(),4,4,4).stream().filter(e->e instanceof Item).map(e->(Item)e).anyMatch(i->i.getItemStack().getType()==Material.DIAMOND&&i.getItemStack().getAmount()==5&&i.isInvulnerable());check("erosion_death_drops_protected",protectedDrop);next();}}
+   case 11 -> {if(age==5){boolean protectedDrop=world.getNearbyEntities(two.getLocation(),4,4,4).stream().filter(e->e instanceof Item).map(e->(Item)e).anyMatch(i->i.getItemStack().getType()==Material.DIAMOND&&i.getItemStack().getAmount()==5&&i.isInvulnerable());check("erosion_death_drops_protected",protectedDrop);phase=13;age=0;}}
+   case 13,14 -> {
+    if(age==1){
+     int x=20+phase*3,z=20; Location loc=new Location(world,x+.5,world.getHighestBlockYAt(x,z)+1,z+.5);
+     subject=world.spawn(loc,Cow.class,c->{c.setAI(false);c.setSilent(true);});
+     var potion=world.spawn(loc.clone().add(0,2,0),ThrownPotion.class);
+     potion.setItem(lor.brewing.potion("EROSION_1",phase==13?Material.SPLASH_POTION:Material.LINGERING_POTION));
+     potion.setVelocity(new org.bukkit.util.Vector(0,-0.5,0));
+    }
+    if(age==100){check(phase==13?"real_splash_applies_erosion":"real_lingering_applies_erosion",subject.getHealth()<10);check("cloud_has_no_unluck_side_effect_"+phase,!subject.hasPotionEffect(org.bukkit.potion.PotionEffectType.UNLUCK));subject.remove();if(phase==13)next();else {phase=12;age=0;}}
+   }
    case 12 -> {
     if(age==1)prepare(awkward(),new ItemStack(Material.SHULKER_SHELL),false);
     if(age==8){check("persist_brew_running_before_restart",((BrewingStand)spot.getBlock().getState()).getBrewingTime()>0);finish("RESTART",null);}
