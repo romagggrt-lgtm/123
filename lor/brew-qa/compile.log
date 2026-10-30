@@ -1,7 +1,10 @@
+/home/runner/work/123/123/lor/src/smoke/java/dev/zlor/brewqa/BrewSmoke.java:20: warning: [removal] NATURAL_REGENERATION in GameRule has been deprecated and marked for removal
+ @Override public void onEnable(){lor=(ZLorPlugin)Bukkit.getPluginManager().getPlugin("Z_Lor");if(lor==null||!lor.isEnabled()){fail("plugin unavailable");return;}world=Bukkit.getWorlds().getFirst();world.setGameRule(GameRule.NATURAL_REGENERATION,false);spot=new Location(world,0,1,0);world.getChunkAt(spot).load();if(Files.exists(getServer().getWorldContainer().toPath().resolve("brew-restart-marker")))phase=100;Bukkit.getScheduler().runTaskTimer(this,this::tick,1,1);}
+                                                                                                                                                                                                                                ^
 /home/runner/work/123/123/lor/src/smoke/java/dev/zlor/brewqa/BrewSmoke.java:66: warning: [removal] PlayerItemConsumeEvent(Player,ItemStack) in PlayerItemConsumeEvent has been deprecated and marked for removal
     if(age==1){one.setHealth(20);one.setNoDamageTicks(0);startTick=lor.tick;lor.brewing.consume(new PlayerItemConsumeEvent(one,lor.brewing.potion("EROSION_1",Material.POTION)));}
                                                                                                 ^
 /home/runner/work/123/123/lor/src/smoke/java/dev/zlor/brewqa/BrewSmoke.java:73: warning: [removal] PlayerItemConsumeEvent(Player,ItemStack) in PlayerItemConsumeEvent has been deprecated and marked for removal
     if(age==1){two.getInventory().clear();two.getInventory().addItem(new ItemStack(Material.DIAMOND,5));two.setHealth(2);two.setNoDamageTicks(0);startTick=lor.tick;lor.brewing.consume(new PlayerItemConsumeEvent(two,lor.brewing.potion("EROSION_2",Material.POTION)));}
                                                                                                                                                                                         ^
-2 warnings
+3 warnings
