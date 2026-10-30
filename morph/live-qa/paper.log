@@ -1,186 +1,183 @@
 Downloading mojang_1.21.11.jar
 Applying patches
 Starting org.bukkit.craftbukkit.Main
-2026-10-30T19:22:08.400514135Z ServerMain WARN Advanced terminal features are not available in this environment
-[19:22:08 INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.13+9-LTS; Eclipse Adoptium Temurin-21.0.13+9) on Linux 7.0.0-1017-azure (amd64)
-[19:22:08 INFO]: [bootstrap] Loading Paper 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) for Minecraft 1.21.11
-[19:22:09 INFO]: [PluginInitializerManager] Initializing plugins...
-[19:22:09 INFO]: [ReobfServer] Remapping server...
-[19:22:15 INFO]: [ReobfServer] Done remapping server in 5866ms.
-[19:22:15 INFO]: [PluginRemapper] Remapping plugin 'plugins/LibsDisguises-26.10.24.jar'...
-[19:22:15 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Nick-1.0.0.jar'...
-[19:22:15 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Morph-1.0.0.jar'...
-[19:22:16 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Morph-1.0.0.jar' in 175ms.
-[19:22:16 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Nick-1.0.0.jar' in 199ms.
-[19:22:16 INFO]: [PluginRemapper] Done remapping plugin 'plugins/LibsDisguises-26.10.24.jar' in 902ms.
-[19:22:16 INFO]: [PluginInitializerManager] Initialized 4 plugins
-[19:22:16 INFO]: [PluginInitializerManager] Bukkit plugins (4):
+2026-10-30T19:24:13.807078641Z ServerMain WARN Advanced terminal features are not available in this environment
+[19:24:13 INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.13+9-LTS; Eclipse Adoptium Temurin-21.0.13+9) on Linux 7.0.0-1017-azure (amd64)
+[19:24:13 INFO]: [bootstrap] Loading Paper 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) for Minecraft 1.21.11
+[19:24:14 INFO]: [PluginInitializerManager] Initializing plugins...
+[19:24:15 INFO]: [ReobfServer] Remapping server...
+[19:24:18 INFO]: [ReobfServer] Done remapping server in 3273ms.
+[19:24:18 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Nick-1.0.0.jar'...
+[19:24:18 INFO]: [PluginRemapper] Remapping plugin 'plugins/LibsDisguises-26.10.24.jar'...
+[19:24:18 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Nick-1.0.0.jar' in 97ms.
+[19:24:18 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Morph-1.0.0.jar'...
+[19:24:18 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Morph-1.0.0.jar' in 36ms.
+[19:24:18 INFO]: [PluginRemapper] Done remapping plugin 'plugins/LibsDisguises-26.10.24.jar' in 445ms.
+[19:24:18 INFO]: [PluginInitializerManager] Initialized 4 plugins
+[19:24:18 INFO]: [PluginInitializerManager] Bukkit plugins (4):
  - LibsDisguises (26.10.24), Z_Morph (1.0.0), Z_Nick (1.0.0), packetevents (2.14.0)
-[19:22:21 INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
-[19:22:21 INFO]: Found new data pack file/bukkit, loading it automatically
-[19:22:21 INFO]: Found new data pack paper, loading it automatically
-[19:22:22 INFO]: No existing world data, creating new world
-[19:22:23 INFO]: Loaded 1470 recipes
-[19:22:23 INFO]: Loaded 1584 advancements
-[19:22:23 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
-[19:22:23 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 490.0ms
-[19:22:24 INFO]: Starting minecraft server version 1.21.11
-[19:22:24 INFO]: Loading properties
-[19:22:24 INFO]: This server is running Paper version 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) (Implementing API version 1.21.11-R0.1-SNAPSHOT)
-[19:22:24 INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
-[19:22:24 INFO]: Server Ping Player Sample Count: 12
-[19:22:24 INFO]: Using 4 threads for Netty based IO
-[19:22:24 INFO]: [MoonriseCommon] Paper is using 1 worker threads, 1 I/O threads
-[19:22:25 INFO]: Default game type: SURVIVAL
-[19:22:25 INFO]: Generating keypair
-[19:22:25 INFO]: Starting Minecraft server on 127.0.0.1:25593
-[19:22:25 INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
-[19:22:25 INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
-[19:22:25 INFO]: [packetevents] Loading server plugin packetevents v2.14.0
-[19:22:26 INFO]: [packetevents] Loading packetevents...
-[19:22:27 INFO]: [packetevents] Loading block mappings for V_26_3/23...
-[19:22:28 INFO]: [packetevents] Finished loading block mappings for V_26_3/23 in 357.603694ms
-[19:22:28 INFO]: [packetevents] Loaded packetevents v2.14.0
-[19:22:28 INFO]: [Z_Nick] Loading server plugin Z_Nick v1.0.0
-[19:22:28 INFO]: [LibsDisguises] Loading server plugin LibsDisguises v26.10.24
-[19:22:28 INFO]: [LibsDisguises] Saving default config commands.yml
-[19:22:28 INFO]: [LibsDisguises] Saving default config dangerous.yml
-[19:22:28 INFO]: [LibsDisguises] Saving default config displays.yml
-[19:22:28 INFO]: [LibsDisguises] Saving default config events.yml
-[19:22:28 INFO]: [LibsDisguises] Saving default config libsdisguises.yml
-[19:22:28 INFO]: [LibsDisguises] Saving default config premium.yml
-[19:22:28 INFO]: [LibsDisguises] Saving default config protocol.yml
-[19:22:28 INFO]: [LibsDisguises] Saving default config self_disguise.yml
-[19:22:29 INFO]: [Z_Morph] Loading server plugin Z_Morph v1.0.0
-[19:22:29 WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[19:22:29 WARN]: The server will make no attempt to authenticate usernames. Beware.
-[19:22:29 WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[19:22:29 WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[19:22:29 INFO]: Preparing level "world"
-[19:22:29 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] NUMA enable flag is not set; however there is NUMA interaction support for this OS.
-[19:22:29 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] Detected 1 NUMA nodes.
-[19:22:29 INFO]: Selecting spawn point for world 'minecraft:overworld'...
-[19:22:29 INFO]: Selecting spawn point for world 'minecraft:the_nether'...
-[19:22:31 INFO]: Selecting spawn point for world 'minecraft:the_end'...
-[19:22:31 INFO]: Loading 0 persistent chunks for world 'minecraft:overworld'...
-[19:22:31 INFO]: Preparing spawn area: 100%
-[19:22:31 INFO]: Prepared spawn area in 2306 ms
-[19:22:31 INFO]: Loading 0 persistent chunks for world 'minecraft:the_nether'...
-[19:22:31 INFO]: Preparing spawn area: 100%
-[19:22:31 INFO]: Prepared spawn area in 1721 ms
-[19:22:31 INFO]: Loading 0 persistent chunks for world 'minecraft:the_end'...
-[19:22:31 INFO]: Preparing spawn area: 100%
-[19:22:31 INFO]: Prepared spawn area in 315 ms
-[19:22:31 INFO]: Done preparing level "world" (2.591s)
-[19:22:31 INFO]: [packetevents] Enabling packetevents v2.14.0
-[19:22:31 INFO]: [packetevents] Checking for updates, please wait...
-[19:22:31 INFO]: [Z_Nick] Enabling Z_Nick v1.0.0
-[19:22:31 INFO]: [Z_Nick] Z_Nick 1.0.0: загружено ников 0
-[19:22:31 INFO]: [LibsDisguises] Enabling LibsDisguises v26.10.24
-[19:22:31 INFO]: [LibsDisguises] File Name: LibsDisguises-26.10.24.jar
-[19:22:31 INFO]: [LibsDisguises] Discovered nms version (LD: v1_21_R7) (MC: 1.21.11)
-[19:22:31 INFO]: [LibsDisguises] Jenkins Build: #1836
-[19:22:31 INFO]: [LibsDisguises] Build Date: 24/10/2026 06:17
-[19:22:31 INFO]: [LibsDisguises] Build Hash: 0720e79a~1
-[19:22:31 ERROR]: [LibsDisguises] Check for BisectHosting failed! Connection error?
-[19:22:31 INFO]: [LibsDisguises] If you own the plugin, place the premium jar downloaded from https://www.spigotmc.org/resources/libs-disguises.32453/ in plugins/LibsDisguises/
-[19:22:31 INFO]: [LibsDisguises] You are running the free version, commands limited to non-players and operators. (Console, Command Blocks, Admins)
-[19:22:31 INFO]: [LibsDisguises] Config 'TallSelfDisguises' is set to 'SCALED', LD will scale down (when possible) oversized disguises from self disguise. https://www.spigotmc.org/wiki/lib-s-disguises-faq/#tall-disguises-self-disguises
-[19:22:31 INFO]: [packetevents] You are running the latest release: 2.14.0
-[19:22:32 INFO]: [packetevents] Loading block mappings for V_1_21_9/20...
-[19:22:32 INFO]: [packetevents] Finished loading block mappings for V_1_21_9/20 in 136.174738ms
-[19:22:33 INFO]: [LibsDisguises] Translations for DISGUISES missing! Saving..
-[19:22:33 INFO]: [LibsDisguises] Translations for MESSAGES missing! Saving..
-[19:22:33 INFO]: [LibsDisguises] Translations for DISGUISE_OPTIONS missing! Saving..
-[19:22:33 INFO]: [LibsDisguises] Translations for DISGUISE_OPTIONS_PARAMETERS missing! Saving..
-[19:22:33 INFO]: [LibsDisguises] Translations for DISGUISE_ANIMATIONS missing! Saving..
-[19:22:33 INFO]: [LibsDisguises] Saved 249 translations that were not in disguises.yml
-[19:22:33 INFO]: [LibsDisguises] Saved 316 translations that were not in messages.yml
-[19:22:33 INFO]: [LibsDisguises] Saved 245 translations that were not in disguise_options.yml
-[19:22:33 INFO]: [LibsDisguises] Saved 2521 translations that were not in disguise_option_parameters.yml
-[19:22:33 INFO]: [LibsDisguises] Saved 63 translations that were not in disguise_animations.yml
-[19:22:33 INFO]: [LibsDisguises] Config is up to date!
-[19:22:33 INFO]: [Z_Morph] Enabling Z_Morph v1.0.0
-[19:22:33 INFO]: [Z_Morph] Доступно мобов: 89
-[19:22:33 INFO]: [spark] Starting background profiler...
-[19:22:34 INFO]: Running delayed init tasks
-[19:22:34 INFO]: Done (26.257s)! For help, type "help"
-[19:22:34 INFO]: *************************************************************************************
-[19:22:34 INFO]: This is the first time you're starting this server.
-[19:22:34 INFO]: It's recommended you read our 'Getting Started' documentation for guidance.
-[19:22:34 INFO]: View this and more helpful information here: https://docs.papermc.io/paper/next-steps
-[19:22:34 INFO]: *************************************************************************************
-[19:22:34 WARN]: *************************************************************************************
-[19:22:34 WARN]: You are running the latest build for your Minecraft version (1.21.11)
-[19:22:34 WARN]: However, you are 6 release(s) behind the latest stable release (26.3)!
-[19:22:34 WARN]: It is recommended that you update as soon as possible
-[19:22:34 WARN]: https://papermc.io/downloads/paper
-[19:22:34 WARN]: *************************************************************************************
-[19:22:34 INFO]: Made Morpher a server operator
-[19:22:35 INFO]: UUID of player Morpher is 8cb1478d-a989-3bab-816d-85f6c2f42d5b
-[19:22:35 INFO]: UUID of player MorphObserver is b5d73936-3d1f-3562-aafe-fe29e99ea29b
-[19:22:37 INFO]: Morpher joined the game
-[19:22:37 INFO]: Morpher[/127.0.0.1:59664] logged in with entity id 165 at ([world]-7.5, 1.0, -5.5)
-[19:22:37 INFO]: MorphObserver joined the game
-[19:22:37 INFO]: MorphObserver[/127.0.0.1:59650] logged in with entity id 167 at ([world]-1.5, 1.0, 3.5)
-[19:22:37 INFO]: Incorrect argument for command
-gamerule keepInventory true<--[HERE]
-[19:22:37 INFO]: Morpher has made the advancement [Diamonds!]
-[19:22:37 INFO]: Gave 3 [Diamond] to Morpher
-[19:22:37 INFO]: Teleported MorphObserver to Morpher
-[19:22:37 INFO]: Morpher issued server command: /morph set zombie
-[19:22:37 INFO]: MorphObserver issued server command: /morph set zombie
-[19:22:40 INFO]: Teleported Morpher to 10.500000, 65.000000, 10.500000
-[19:22:40 INFO]: Teleported MorphObserver to Morpher
-[19:22:42 INFO]: Morpher issued server command: /morph set creeper
-[19:22:42 INFO]: Morpher fell from a high place
-[19:22:42 INFO]: MorphObserver fell from a high place
-[19:22:43 INFO]: UUID of player MorphLate is 26280fac-eb5f-3956-9ab5-6e9f831d49c0
-[19:22:43 INFO]: MorphLate joined the game
-[19:22:43 INFO]: MorphLate[/127.0.0.1:43270] logged in with entity id 173 at ([world]-6.5, 1.0, 2.5)
-[19:22:46 INFO]: Morpher was killed
-[19:22:46 INFO]: Killed Morpher
-[19:22:50 INFO]: Morpher issued server command: /morph remove
-[19:22:54 INFO]: Morpher lost connection: Disconnected
-[19:22:54 INFO]: Morpher left the game
-[19:22:54 INFO]: MorphObserver lost connection: Disconnected
-[19:22:54 INFO]: MorphObserver left the game
-[19:22:54 INFO]: MorphLate lost connection: Disconnected
-[19:22:54 INFO]: MorphLate left the game
-[19:22:54 INFO]: Stopping the server
-[19:22:54 INFO]: Stopping server
-[19:22:54 INFO]: [Z_Morph] Disabling Z_Morph v1.0.0
-[19:22:54 INFO]: [LibsDisguises] Disabling LibsDisguises v26.10.24
-[19:22:54 INFO]: [Z_Nick] Disabling Z_Nick v1.0.0
-[19:22:54 INFO]: [packetevents] Disabling packetevents v2.14.0
-[19:22:54 INFO]: Saving players
-[19:22:54 INFO]: Saving worlds
-[19:22:54 INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[19:22:54 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
-[19:22:54 INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
-[19:22:54 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
-[19:22:55 INFO]: [ChunkHolderManager] Saved 1442 block chunks, 256 entity chunks, 0 poi chunks in world 'world' in 0.59s
-[19:22:55 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world'
-[19:22:55 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world'
-[19:22:55 INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
-[19:22:55 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
-[19:22:55 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
-[19:22:55 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
-[19:22:55 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_nether' in 0.01s
-[19:22:55 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_nether'
-[19:22:55 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_nether'
-[19:22:55 INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
-[19:22:55 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
-[19:22:55 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
-[19:22:55 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
-[19:22:55 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_the_end' in 0.00s
-[19:22:55 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_the_end'
-[19:22:55 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_the_end'
-[19:22:55 INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[19:22:55 INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[19:22:55 INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[19:22:55 INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[19:22:55 INFO]: Waiting for all RegionFile I/O tasks to complete...
-[19:22:55 INFO]: All RegionFile I/O tasks to complete
-[19:22:55 INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
-[19:22:55 INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...
+[19:24:21 INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[19:24:21 INFO]: Found new data pack file/bukkit, loading it automatically
+[19:24:21 INFO]: Found new data pack paper, loading it automatically
+[19:24:21 INFO]: No existing world data, creating new world
+[19:24:22 INFO]: Loaded 1470 recipes
+[19:24:22 INFO]: Loaded 1584 advancements
+[19:24:22 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
+[19:24:22 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 275.3ms
+[19:24:22 INFO]: Starting minecraft server version 1.21.11
+[19:24:22 INFO]: Loading properties
+[19:24:22 INFO]: This server is running Paper version 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) (Implementing API version 1.21.11-R0.1-SNAPSHOT)
+[19:24:22 INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[19:24:22 INFO]: Server Ping Player Sample Count: 12
+[19:24:22 INFO]: Using 4 threads for Netty based IO
+[19:24:23 INFO]: [MoonriseCommon] Paper is using 1 worker threads, 1 I/O threads
+[19:24:23 INFO]: Default game type: SURVIVAL
+[19:24:23 INFO]: Generating keypair
+[19:24:23 INFO]: Starting Minecraft server on 127.0.0.1:25593
+[19:24:23 INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
+[19:24:23 INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
+[19:24:23 INFO]: [packetevents] Loading server plugin packetevents v2.14.0
+[19:24:24 INFO]: [packetevents] Loading packetevents...
+[19:24:25 INFO]: [packetevents] Loading block mappings for V_26_3/23...
+[19:24:25 INFO]: [packetevents] Finished loading block mappings for V_26_3/23 in 266.687654ms
+[19:24:25 INFO]: [packetevents] Loaded packetevents v2.14.0
+[19:24:25 INFO]: [Z_Nick] Loading server plugin Z_Nick v1.0.0
+[19:24:25 INFO]: [LibsDisguises] Loading server plugin LibsDisguises v26.10.24
+[19:24:25 INFO]: [LibsDisguises] Saving default config commands.yml
+[19:24:25 INFO]: [LibsDisguises] Saving default config dangerous.yml
+[19:24:25 INFO]: [LibsDisguises] Saving default config displays.yml
+[19:24:25 INFO]: [LibsDisguises] Saving default config events.yml
+[19:24:25 INFO]: [LibsDisguises] Saving default config libsdisguises.yml
+[19:24:25 INFO]: [LibsDisguises] Saving default config premium.yml
+[19:24:25 INFO]: [LibsDisguises] Saving default config protocol.yml
+[19:24:25 INFO]: [LibsDisguises] Saving default config self_disguise.yml
+[19:24:25 INFO]: [Z_Morph] Loading server plugin Z_Morph v1.0.0
+[19:24:25 WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[19:24:25 WARN]: The server will make no attempt to authenticate usernames. Beware.
+[19:24:25 WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[19:24:25 WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[19:24:25 INFO]: Preparing level "world"
+[19:24:25 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] NUMA enable flag is not set; however there is NUMA interaction support for this OS.
+[19:24:25 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] Detected 1 NUMA nodes.
+[19:24:25 INFO]: Selecting spawn point for world 'minecraft:overworld'...
+[19:24:26 INFO]: Selecting spawn point for world 'minecraft:the_nether'...
+[19:24:26 INFO]: Selecting spawn point for world 'minecraft:the_end'...
+[19:24:26 INFO]: Loading 0 persistent chunks for world 'minecraft:overworld'...
+[19:24:26 INFO]: Preparing spawn area: 100%
+[19:24:26 INFO]: Prepared spawn area in 1000 ms
+[19:24:26 INFO]: Loading 0 persistent chunks for world 'minecraft:the_nether'...
+[19:24:26 INFO]: Preparing spawn area: 100%
+[19:24:26 INFO]: Prepared spawn area in 654 ms
+[19:24:26 INFO]: Loading 0 persistent chunks for world 'minecraft:the_end'...
+[19:24:26 INFO]: Preparing spawn area: 100%
+[19:24:26 INFO]: Prepared spawn area in 143 ms
+[19:24:26 INFO]: Done preparing level "world" (1.118s)
+[19:24:26 INFO]: [packetevents] Enabling packetevents v2.14.0
+[19:24:26 INFO]: [packetevents] Checking for updates, please wait...
+[19:24:26 INFO]: [Z_Nick] Enabling Z_Nick v1.0.0
+[19:24:26 INFO]: [Z_Nick] Z_Nick 1.0.0: загружено ников 0
+[19:24:26 INFO]: [LibsDisguises] Enabling LibsDisguises v26.10.24
+[19:24:26 INFO]: [LibsDisguises] File Name: LibsDisguises-26.10.24.jar
+[19:24:26 INFO]: [LibsDisguises] Discovered nms version (LD: v1_21_R7) (MC: 1.21.11)
+[19:24:26 INFO]: [LibsDisguises] Jenkins Build: #1836
+[19:24:26 INFO]: [LibsDisguises] Build Date: 24/10/2026 06:17
+[19:24:26 INFO]: [LibsDisguises] Build Hash: 0720e79a~1
+[19:24:26 ERROR]: [LibsDisguises] Check for BisectHosting failed! Connection error?
+[19:24:26 INFO]: [LibsDisguises] If you own the plugin, place the premium jar downloaded from https://www.spigotmc.org/resources/libs-disguises.32453/ in plugins/LibsDisguises/
+[19:24:26 INFO]: [LibsDisguises] You are running the free version, commands limited to non-players and operators. (Console, Command Blocks, Admins)
+[19:24:26 INFO]: [LibsDisguises] Config 'TallSelfDisguises' is set to 'SCALED', LD will scale down (when possible) oversized disguises from self disguise. https://www.spigotmc.org/wiki/lib-s-disguises-faq/#tall-disguises-self-disguises
+[19:24:27 INFO]: [packetevents] You are running the latest release: 2.14.0
+[19:24:27 INFO]: [packetevents] Loading block mappings for V_1_21_9/20...
+[19:24:27 INFO]: [packetevents] Finished loading block mappings for V_1_21_9/20 in 132.697269ms
+[19:24:27 INFO]: [LibsDisguises] Translations for DISGUISES missing! Saving..
+[19:24:27 INFO]: [LibsDisguises] Translations for MESSAGES missing! Saving..
+[19:24:27 INFO]: [LibsDisguises] Translations for DISGUISE_OPTIONS missing! Saving..
+[19:24:27 INFO]: [LibsDisguises] Translations for DISGUISE_OPTIONS_PARAMETERS missing! Saving..
+[19:24:27 INFO]: [LibsDisguises] Translations for DISGUISE_ANIMATIONS missing! Saving..
+[19:24:27 INFO]: [LibsDisguises] Saved 249 translations that were not in disguises.yml
+[19:24:27 INFO]: [LibsDisguises] Saved 316 translations that were not in messages.yml
+[19:24:27 INFO]: [LibsDisguises] Saved 245 translations that were not in disguise_options.yml
+[19:24:27 INFO]: [LibsDisguises] Saved 2521 translations that were not in disguise_option_parameters.yml
+[19:24:27 INFO]: [LibsDisguises] Saved 63 translations that were not in disguise_animations.yml
+[19:24:27 INFO]: [LibsDisguises] Config is up to date!
+[19:24:28 INFO]: [Z_Morph] Enabling Z_Morph v1.0.0
+[19:24:28 INFO]: [Z_Morph] Доступно мобов: 89
+[19:24:28 INFO]: [spark] Starting background profiler...
+[19:24:28 INFO]: Running delayed init tasks
+[19:24:28 INFO]: Done (15.201s)! For help, type "help"
+[19:24:28 INFO]: *************************************************************************************
+[19:24:28 INFO]: This is the first time you're starting this server.
+[19:24:28 INFO]: It's recommended you read our 'Getting Started' documentation for guidance.
+[19:24:28 INFO]: View this and more helpful information here: https://docs.papermc.io/paper/next-steps
+[19:24:28 INFO]: *************************************************************************************
+[19:24:28 WARN]: *************************************************************************************
+[19:24:28 WARN]: You are running the latest build for your Minecraft version (1.21.11)
+[19:24:28 WARN]: However, you are 6 release(s) behind the latest stable release (26.3)!
+[19:24:28 WARN]: It is recommended that you update as soon as possible
+[19:24:28 WARN]: https://papermc.io/downloads/paper
+[19:24:28 WARN]: *************************************************************************************
+[19:24:28 INFO]: Made Morpher a server operator
+[19:24:29 INFO]: UUID of player MorphObserver is b5d73936-3d1f-3562-aafe-fe29e99ea29b
+[19:24:29 INFO]: UUID of player Morpher is 8cb1478d-a989-3bab-816d-85f6c2f42d5b
+[19:24:30 INFO]: MorphObserver joined the game
+[19:24:30 INFO]: MorphObserver[/127.0.0.1:56856] logged in with entity id 165 at ([world]-5.5, 1.0, 10.5)
+[19:24:30 INFO]: Morpher joined the game
+[19:24:30 INFO]: Morpher[/127.0.0.1:56872] logged in with entity id 167 at ([world]3.5, 1.0, -3.5)
+[19:24:30 INFO]: Gamerule keep_inventory is now set to: true
+[19:24:30 INFO]: Morpher has made the advancement [Diamonds!]
+[19:24:30 INFO]: Gave 3 [Diamond] to Morpher
+[19:24:30 INFO]: Teleported MorphObserver to Morpher
+[19:24:30 INFO]: Morpher issued server command: /morph set zombie
+[19:24:30 INFO]: MorphObserver issued server command: /morph set zombie
+[19:24:33 INFO]: Teleported Morpher to 10.500000, 2.000000, 10.500000
+[19:24:33 INFO]: Teleported MorphObserver to Morpher
+[19:24:35 INFO]: Morpher issued server command: /morph set creeper
+[19:24:36 INFO]: UUID of player MorphLate is 26280fac-eb5f-3956-9ab5-6e9f831d49c0
+[19:24:36 INFO]: MorphLate joined the game
+[19:24:36 INFO]: MorphLate[/127.0.0.1:52954] logged in with entity id 171 at ([world]-6.5, 1.0, 3.5)
+[19:24:39 INFO]: Morpher was killed
+[19:24:39 INFO]: Killed Morpher
+[19:24:43 INFO]: Morpher issued server command: /morph remove
+[19:24:47 INFO]: MorphObserver lost connection: Disconnected
+[19:24:47 INFO]: MorphObserver left the game
+[19:24:47 INFO]: Morpher lost connection: Disconnected
+[19:24:47 INFO]: Morpher left the game
+[19:24:47 INFO]: MorphLate lost connection: Disconnected
+[19:24:47 INFO]: MorphLate left the game
+[19:24:47 INFO]: Stopping the server
+[19:24:47 INFO]: Stopping server
+[19:24:47 INFO]: [Z_Morph] Disabling Z_Morph v1.0.0
+[19:24:47 INFO]: [LibsDisguises] Disabling LibsDisguises v26.10.24
+[19:24:47 INFO]: [Z_Nick] Disabling Z_Nick v1.0.0
+[19:24:47 INFO]: [packetevents] Disabling packetevents v2.14.0
+[19:24:47 INFO]: Saving players
+[19:24:47 INFO]: Saving worlds
+[19:24:47 INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[19:24:47 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[19:24:47 INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[19:24:47 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[19:24:48 INFO]: [ChunkHolderManager] Saved 1406 block chunks, 255 entity chunks, 0 poi chunks in world 'world' in 0.44s
+[19:24:48 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world'
+[19:24:48 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world'
+[19:24:48 INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
+[19:24:48 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
+[19:24:48 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
+[19:24:48 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
+[19:24:48 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_nether' in 0.01s
+[19:24:48 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_nether'
+[19:24:48 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_nether'
+[19:24:48 INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[19:24:48 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[19:24:48 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[19:24:48 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[19:24:48 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_the_end' in 0.01s
+[19:24:48 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_the_end'
+[19:24:48 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_the_end'
+[19:24:48 INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[19:24:48 INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[19:24:48 INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[19:24:48 INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[19:24:48 INFO]: Waiting for all RegionFile I/O tasks to complete...
+[19:24:48 INFO]: All RegionFile I/O tasks to complete
+[19:24:48 INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
+[19:24:48 INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...
