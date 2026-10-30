@@ -34,7 +34,25 @@ try:
  assert exitcode==0,'Bot failure'
  text=(report/'paper.log').read_text(errors='replace'); assert 'Ошибка обработки пакета Z_Nick' not in text and 'Не удалось включить Z_Nick' not in text, 'Plugin reported error'
  result=json.loads((work/'result.json').read_text()); assert result['sawNickname'] and result['sawAlias'] and result['sawTeam'] and result['sawChanged'] and result['sawRestored'] and result['restoredTeam'] and not result['disconnected'],result
- (report/'result.json').write_text(json.dumps({'status':'PASS','paper_build':meta['id'],'details':result},ensure_ascii=False,indent=2))
+ # Verify an offline target, reload and a real server restart.
+ server.stdin.write('/znick set &aКиса NickTarget\n'.encode());server.stdin.flush()
+ wait_for('Ник NickTarget установлен: Киса',20)
+ server.stdin.write(b'/znick reload\n');server.stdin.flush()
+ wait_for('Конфигурация и сохранённые ники перезагружены',20)
+ server.communicate(b'stop\n',timeout=60); log.close()
+ restart_log=(report/'restart.log').open('w')
+ server=subprocess.Popen(['java','-Xms512M','-Xmx2G','-jar','paper.jar','nogui'],cwd=work,stdin=subprocess.PIPE,stdout=restart_log,stderr=subprocess.STDOUT)
+ deadline=time.monotonic()+180
+ while time.monotonic()<deadline:
+  text=(report/'restart.log').read_text(errors='replace')
+  if 'Done (' in text:break
+  if server.poll() is not None:raise RuntimeError('Server failed during restart')
+  time.sleep(.5)
+ else:raise RuntimeError('Restart timed out')
+ assert 'загружено ников 1' in text, 'Nickname was not restored on restart'
+ data=(work/'plugins/Z_Nick/nicknames.yml').read_text();assert 'Киса' in data and 'NickTarget' in data
+ jar=root/'nick/target/Z_Nick-1.0.0.jar';shutil.copyfile(jar,report/'tested-plugin.jar')
+ (report/'result.json').write_text(json.dumps({'status':'PASS','paper_build':meta['id'],'plugin_sha256':hashlib.sha256(jar.read_bytes()).hexdigest(),'offline_reload_restart':'PASS','details':result},ensure_ascii=False,indent=2))
 except Exception as e:
  (report/'result.json').write_text(json.dumps({'status':'FAIL','error':str(e),'trace':traceback.format_exc()},ensure_ascii=False,indent=2));raise
 finally:
