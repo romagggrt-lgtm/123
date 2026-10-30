@@ -23,7 +23,7 @@ class CheckTest {
   server.dispatchCommand(admin,"zc Guest");assertTrue(plugin.isChecked(guest.getUniqueId()));
   Location from=guest.getLocation(),to=from.clone().add(2,0,0);to.setYaw(30);
   PlayerMoveEvent move=new PlayerMoveEvent(guest,from,to);server.getPluginManager().callEvent(move);
-  assertEquals(from.getX(),move.getTo().getX());assertEquals(30,move.getTo().getYaw());
+  assertTrue(move.isCancelled());assertEquals(from.getX(),move.getFrom().getX());assertEquals(30,move.getFrom().getYaw());
   PlayerTeleportEvent teleport=new PlayerTeleportEvent(guest,from,from.clone().add(5,0,0));server.getPluginManager().callEvent(teleport);assertTrue(teleport.isCancelled());
   var breakEvent=new BlockBreakEvent(world.getBlockAt(0,63,0),guest);server.getPluginManager().callEvent(breakEvent);assertTrue(breakEvent.isCancelled());
   server.dispatchCommand(admin,"zc Guest");assertFalse(plugin.isChecked(guest.getUniqueId()));

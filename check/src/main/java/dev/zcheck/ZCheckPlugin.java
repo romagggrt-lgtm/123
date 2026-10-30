@@ -129,9 +129,11 @@ public class ZCheckPlugin extends JavaPlugin implements Listener,CommandExecutor
     @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void move(PlayerMoveEvent e){
         if(e instanceof PlayerTeleportEvent||!checked(e.getPlayer())||e.getTo()==null)return;
         Location from=e.getFrom(),to=e.getTo();if(from.getX()==to.getX()&&from.getY()==to.getY()&&from.getZ()==to.getZ())return;
-        Location anchor=checks.get(e.getPlayer().getUniqueId()).at(to.getYaw(),to.getPitch());
-        if(anchor==null||!anchor.getWorld().equals(from.getWorld()))anchor=new Location(from.getWorld(),from.getX(),from.getY(),from.getZ(),to.getYaw(),to.getPitch());
-        e.setTo(anchor);
+        // Cancellation restores the last server position without firing a nested
+        // PlayerTeleportEvent, which our teleport protection must reject.
+        // Keep the requested camera rotation even while movement is blocked.
+        Location facing=from.clone();facing.setYaw(to.getYaw());facing.setPitch(to.getPitch());
+        e.setFrom(facing);e.setCancelled(true);
     }
     @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void velocity(PlayerVelocityEvent e){if(checked(e.getPlayer()))e.setCancelled(true);}
     @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void vehicle(VehicleEnterEvent e){if(e.getEntered() instanceof Player p&&checked(p))e.setCancelled(true);}
