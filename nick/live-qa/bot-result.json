@@ -1,8 +1,86 @@
 {
   "sawNickname": true,
   "sawAlias": true,
+  "sawTeam": true,
   "disconnected": false,
   "packets": [
+    {
+      "type": "teams",
+      "data": {
+        "team": "zn$5ff4f9",
+        "mode": "add",
+        "name": {
+          "type": "string",
+          "value": "zn$5ff4f9"
+        },
+        "flags": {
+          "_value": 3,
+          "friendly_fire": true,
+          "see_friendly_invisible": true
+        },
+        "nameTagVisibility": "always",
+        "collisionRule": "always",
+        "formatting": 21,
+        "prefix": {
+          "type": "compound",
+          "value": {
+            "color": {
+              "type": "string",
+              "value": "white"
+            },
+            "extra": {
+              "type": "list",
+              "value": {
+                "type": "compound",
+                "value": [
+                  {
+                    "color": {
+                      "type": "string",
+                      "value": "#54DAF4"
+                    },
+                    "text": {
+                      "type": "string",
+                      "value": "н"
+                    }
+                  },
+                  {
+                    "color": {
+                      "type": "string",
+                      "value": "#54C5EA"
+                    },
+                    "text": {
+                      "type": "string",
+                      "value": "и"
+                    }
+                  },
+                  {
+                    "color": {
+                      "type": "string",
+                      "value": "#54B1DF"
+                    },
+                    "text": {
+                      "type": "string",
+                      "value": "к"
+                    }
+                  }
+                ]
+              }
+            },
+            "text": {
+              "type": "string",
+              "value": ""
+            }
+          }
+        },
+        "suffix": {
+          "type": "string",
+          "value": ""
+        },
+        "players": [
+          "§0§5§f§f§4§f§9‌"
+        ]
+      }
+    },
     {
       "type": "player_info",
       "data": {
@@ -72,6 +150,90 @@
               }
             }
           }
+        ]
+      }
+    },
+    {
+      "type": "teams",
+      "data": {
+        "team": "zn$5ff4f9",
+        "mode": "remove"
+      }
+    },
+    {
+      "type": "teams",
+      "data": {
+        "team": "zn$5ff4f9",
+        "mode": "add",
+        "name": {
+          "type": "string",
+          "value": "zn$5ff4f9"
+        },
+        "flags": {
+          "_value": 3,
+          "friendly_fire": true,
+          "see_friendly_invisible": true
+        },
+        "nameTagVisibility": "always",
+        "collisionRule": "always",
+        "formatting": 21,
+        "prefix": {
+          "type": "compound",
+          "value": {
+            "color": {
+              "type": "string",
+              "value": "white"
+            },
+            "extra": {
+              "type": "list",
+              "value": {
+                "type": "compound",
+                "value": [
+                  {
+                    "color": {
+                      "type": "string",
+                      "value": "#54DAF4"
+                    },
+                    "text": {
+                      "type": "string",
+                      "value": "н"
+                    }
+                  },
+                  {
+                    "color": {
+                      "type": "string",
+                      "value": "#54C5EA"
+                    },
+                    "text": {
+                      "type": "string",
+                      "value": "и"
+                    }
+                  },
+                  {
+                    "color": {
+                      "type": "string",
+                      "value": "#54B1DF"
+                    },
+                    "text": {
+                      "type": "string",
+                      "value": "к"
+                    }
+                  }
+                ]
+              }
+            },
+            "text": {
+              "type": "string",
+              "value": ""
+            }
+          }
+        },
+        "suffix": {
+          "type": "string",
+          "value": ""
+        },
+        "players": [
+          "§0§5§f§f§4§f§9‌"
         ]
       }
     },
