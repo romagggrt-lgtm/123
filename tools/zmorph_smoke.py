@@ -45,6 +45,7 @@ try:
  assert result['death'] and result['respawn'], 'Death/respawn not observed'
  assert any(e.get('name')=='creeper' and e.get('phase')=='death' for e in result['spawns']), 'Disguise not restored on respawn'
  assert result['diamond']==3, 'Inventory changed during morph or respawn'
+ assert not any('Currently disguised as' in m for m in result['messages']), 'Disguise action bar interfered with other plugins'
  assert any('Недостаточно прав' in m for m in result['viewerMessages']), 'Non-OP was not denied'
  text=read();assert '[Z_Morph] Ошибка' not in text and '[Z_Morph] Не удалось' not in text
  jar=root/'morph/target/Z_Morph-1.0.0.jar';shutil.copyfile(jar,report/'tested-plugin.jar')

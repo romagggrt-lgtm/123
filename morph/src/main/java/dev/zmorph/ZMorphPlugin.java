@@ -3,6 +3,7 @@ package dev.zmorph;
 import java.util.*;
 import java.util.logging.Level;
 import me.libraryaddict.disguise.DisguiseAPI;
+import me.libraryaddict.disguise.DisguiseConfig;
 import me.libraryaddict.disguise.disguisetypes.Disguise;
 import me.libraryaddict.disguise.disguisetypes.DisguiseType;
 import me.libraryaddict.disguise.disguisetypes.MobDisguise;
@@ -41,7 +42,7 @@ public final class ZMorphPlugin extends JavaPlugin implements Listener,CommandEx
     private MobDisguise create(Player p,EntityType type){
         var d=new MobDisguise(DisguiseType.getType(type));
         d.setViewSelfDisguise(getConfig().getBoolean("view-self-disguise",false));
-        d.setKeepDisguiseOnPlayerDeath(true);d.setModifyBoundingBox(false);
+        d.setKeepDisguiseOnPlayerDeath(true);d.setModifyBoundingBox(false);d.setNotifyBar(DisguiseConfig.NotifyBar.NONE);
         d.getWatcher().setCustomNameVisible(false);d.getWatcher().setCustomName(null);
         if(getConfig().getBoolean("hide-equipment",true)){
             ItemStack air=new ItemStack(Material.AIR);
