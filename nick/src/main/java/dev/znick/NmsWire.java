@@ -108,7 +108,7 @@ final class NmsWire implements Wire {
     }
     private final class View extends ChannelDuplexHandler {
         final Channel channel;
-        final Map<UUID, String> sentTeams = new HashMap<>();
+        final Map<UUID, Nick> sentTeams = new HashMap<>();
         View(Channel channel) { this.channel = channel; }
         void detach() { channel.eventLoop().execute(() -> { if (channel.pipeline().get("znick") == this) channel.pipeline().remove(this); }); }
         @SuppressWarnings({"rawtypes", "unchecked"})
@@ -125,9 +125,10 @@ final class NmsWire implements Wire {
                         UUID id = (UUID)entry.getMethod("profileId").invoke(record);
                         Nick nick = snapshot.players.get(id);
                         if (nick == null) { rewritten.add(record); continue; }
-                        String teamSignature = nick.alias() + nick.raw() + plugin.collision;
-                        if (!teamSignature.equals(sentTeams.get(id))) {
-                            ctx.write(buildTeam(nick, false)); sentTeams.put(id, teamSignature);
+                        Nick sent = sentTeams.get(id);
+                        if (!nick.equals(sent)) {
+                            if (sent != null) ctx.write(buildTeam(sent, true));
+                            ctx.write(buildTeam(nick, false)); sentTeams.put(id, nick);
                         }
                         Map<String,Object> changes = new HashMap<>();
                         Object oldProfile = entry.getMethod("profile").invoke(record);
@@ -146,7 +147,7 @@ final class NmsWire implements Wire {
                     }
                 } else if (type.equals("ClientboundPlayerInfoRemovePacket")) {
                     Collection<UUID> ids = (Collection<UUID>)field(message, "profileIds");
-                    for (UUID id : ids) { Nick n = snapshot.players.get(id); if (n != null && sentTeams.remove(id) != null) ctx.write(buildTeam(n, true)); }
+                    for (UUID id : ids) { Nick n = sentTeams.remove(id); if (n != null) ctx.write(buildTeam(n, true)); }
                 } else if (type.equals("ClientboundBundlePacket")) {
                     // The encoder unbundles this type upstream on Paper; no mutable packet is shared.
                 } else if (Set.of("ClientboundSystemChatPacket", "ClientboundDisguisedChatPacket", "ClientboundPlayerChatPacket", "ClientboundPlayerCombatKillPacket", "ClientboundSetTitleTextPacket", "ClientboundSetSubtitleTextPacket", "ClientboundSetActionBarTextPacket", "ClientboundTabListPacket").contains(type)) {

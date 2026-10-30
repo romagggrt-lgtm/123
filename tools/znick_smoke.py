@@ -29,7 +29,7 @@ try:
  if (work/'result.json').exists(): shutil.copyfile(work/'result.json',report/'bot-result.json')
  assert exitcode==0,'Bot failure'
  text=(report/'paper.log').read_text(errors='replace'); assert 'Ошибка обработки пакета Z_Nick' not in text and 'Не удалось включить Z_Nick' not in text, 'Plugin reported error'
- result=json.loads((work/'result.json').read_text()); assert result['sawNickname'] and result['sawAlias'] and not result['disconnected'],result
+ result=json.loads((work/'result.json').read_text()); assert result['sawNickname'] and result['sawAlias'] and result['sawTeam'] and not result['disconnected'],result
  (report/'result.json').write_text(json.dumps({'status':'PASS','paper_build':meta['id'],'details':result},ensure_ascii=False,indent=2))
 except Exception as e:
  (report/'result.json').write_text(json.dumps({'status':'FAIL','error':str(e),'trace':traceback.format_exc()},ensure_ascii=False,indent=2));raise
