@@ -1,0 +1,5 @@
+{
+  "status": "FAIL",
+  "error": "Bot failure",
+  "trace": "Traceback (most recent call last):\n  File \"/home/runner/work/123/123/tools/znick_smoke.py\", line 28, in <module>\n    assert bots.wait(timeout=5)==0,'Bot failure'\n           ^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Bot failure\n"
+}
