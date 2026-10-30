@@ -1,7 +1,7 @@
 {
   "status": "PASS",
   "paper_build": 132,
-  "source_commit": "7b7be293408e3c127d3cf760c8dcc81370d8334e",
+  "source_commit": "5ccbf055c229e155eae5cde93cfe6b724b476f51",
   "plugin_sha256": "36e27b62aa7ce0da55566008d6cb305947b8f141debd6fe7f9e85c01a560f002",
   "phases": [
     {
@@ -58,6 +58,10 @@
         "erosion_two_not_early": true,
         "erosion_two_can_kill": true,
         "erosion_death_drops_protected": true,
+        "real_splash_applies_erosion": true,
+        "cloud_has_no_unluck_side_effect_13": true,
+        "real_lingering_applies_erosion": true,
+        "cloud_has_no_unluck_side_effect_14": true,
         "persist_brew_running_before_restart": true
       }
     },
