@@ -1,7 +1,7 @@
 {
   "status": "PASS",
   "paper_build": 132,
-  "plugin_sha256": "511c377a891a2225b20f20bc770613e192c6c5b21cae4337b9da811830bd1ae6",
+  "plugin_sha256": "f020f53ebf4978847df10cf620eb9372bde6e0cc65449f7c161019971e2ce337",
   "checks": {
     "closed_during_auth_did_not_login": true,
     "denied_without_permission": true,
@@ -25,6 +25,9 @@
     "teleport_to_player": true,
     "summon_player": true,
     "check_started": true,
-    "check_stopped": true
+    "check_stopped": true,
+    "password_changed": true,
+    "old_password_rejected": true,
+    "new_password_accepted": true
   }
 }

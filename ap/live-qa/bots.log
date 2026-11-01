@@ -10,3 +10,7 @@ window APLocked minecraft:anvil [ 'paper', undefined, 'paper' ]
 after APLocked undefined
 window APAdmin minecraft:anvil [ 'paper', undefined, 'paper' ]
 after APAdmin minecraft:generic_9x6
+window APAdmin minecraft:anvil [ 'paper', undefined, 'paper' ]
+after APAdmin undefined
+window APAdmin minecraft:anvil [ 'paper', undefined, 'paper' ]
+after APAdmin minecraft:generic_9x6
