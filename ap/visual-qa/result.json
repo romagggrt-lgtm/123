@@ -1,4 +1,15 @@
 {
-  "status": "FAIL",
-  "error": "Timed out: resource pack and login screen"
+  "status": "CAPTURED",
+  "paper_build": 132,
+  "client": "official unmodified Minecraft 1.21.11",
+  "resource_pack_sha1": "416c182d7ada2ea49a4b7a4570f44946a67af84f",
+  "captures": [
+    "01-login.png",
+    "02-login-filled.png",
+    "03-welcome.png",
+    "04-home.png",
+    "05-modes.png",
+    "06-after-mode.png"
+  ],
+  "manual_visual_review_required": true
 }

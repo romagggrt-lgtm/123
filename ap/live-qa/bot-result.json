@@ -95,59 +95,35 @@
   },
   "spawns": [
     {
-      "name": "player",
-      "id": 165
+      "name": "item",
+      "id": 172
     },
     {
-      "name": "player",
+      "name": "slime",
       "id": 167
     },
     {
-      "name": "player",
-      "id": 169
-    },
-    {
-      "name": "item",
-      "id": 170
+      "name": "slime",
+      "id": 168
     },
     {
       "name": "slime",
-      "id": 171
+      "id": 173
     },
     {
       "name": "slime",
-      "id": 175
-    },
-    {
-      "name": "slime",
-      "id": 176
-    },
-    {
-      "name": "slime",
-      "id": 177
-    },
-    {
-      "name": "slime",
-      "id": 178
-    },
-    {
-      "name": "slime",
-      "id": 179
-    },
-    {
-      "name": "sheep",
       "id": 180
     },
     {
-      "name": "sheep",
+      "name": "slime",
       "id": 181
     },
     {
-      "name": "sheep",
+      "name": "slime",
       "id": 182
     },
     {
-      "name": "sheep",
+      "name": "slime",
       "id": 183
     },
     {
@@ -156,19 +132,15 @@
     },
     {
       "name": "slime",
-      "id": 185
-    },
-    {
-      "name": "slime",
       "id": 186
-    },
-    {
-      "name": "slime",
-      "id": 187
     },
     {
       "name": "allay",
       "id": 165
+    },
+    {
+      "name": "slime",
+      "id": 187
     },
     {
       "name": "allay",
@@ -183,27 +155,43 @@
       "id": 165
     },
     {
-      "name": "sheep",
-      "id": 193
+      "name": "slime",
+      "id": 189
     },
     {
       "name": "sheep",
+      "id": 190
+    },
+    {
+      "name": "slime",
       "id": 194
     },
     {
       "name": "sheep",
-      "id": 195
+      "id": 193
     },
     {
-      "name": "sheep",
+      "name": "slime",
       "id": 196
     },
     {
-      "name": "donkey",
+      "name": "slime",
+      "id": 179
+    },
+    {
+      "name": "slime",
+      "id": 188
+    },
+    {
+      "name": "sheep",
+      "id": 192
+    },
+    {
+      "name": "slime",
       "id": 197
     },
     {
-      "name": "donkey",
+      "name": "slime",
       "id": 198
     },
     {
@@ -212,19 +200,35 @@
     },
     {
       "name": "slime",
-      "id": 189
-    },
-    {
-      "name": "slime",
       "id": 200
     },
     {
       "name": "slime",
+      "id": 201
+    },
+    {
+      "name": "horse",
       "id": 202
     },
     {
+      "name": "horse",
+      "id": 203
+    },
+    {
+      "name": "cow",
+      "id": 204
+    },
+    {
+      "name": "cow",
+      "id": 205
+    },
+    {
       "name": "slime",
-      "id": 201
+      "id": 206
+    },
+    {
+      "name": "slime",
+      "id": 207
     }
   ]
 }

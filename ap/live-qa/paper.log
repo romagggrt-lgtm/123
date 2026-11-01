@@ -1,239 +1,239 @@
 Downloading mojang_1.21.11.jar
 Applying patches
 Starting org.bukkit.craftbukkit.Main
-2026-11-01T15:19:02.397568270Z ServerMain WARN Advanced terminal features are not available in this environment
-[15:19:02 INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.13+9-LTS; Eclipse Adoptium Temurin-21.0.13+9) on Linux 7.0.0-1017-azure (amd64)
-[15:19:02 INFO]: [bootstrap] Loading Paper 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) for Minecraft 1.21.11
-[15:19:03 INFO]: [PluginInitializerManager] Initializing plugins...
-[15:19:04 INFO]: [ReobfServer] Remapping server...
-[15:19:09 INFO]: [ReobfServer] Done remapping server in 5289ms.
-[15:19:09 INFO]: [PluginRemapper] Remapping plugin 'plugins/LibsDisguises.jar'...
-[15:19:09 INFO]: [PluginRemapper] Remapping plugin 'plugins/InventoryCache_1.0.1.jar'...
-[15:19:09 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Check-1.0.0.jar'...
-[15:19:09 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_AP-1.1.0.jar'...
-[15:19:09 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Check-1.0.0.jar' in 184ms.
-[15:19:09 INFO]: [PluginRemapper] Remapping plugin 'plugins/Nevidimka-1.0.2.jar'...
-[15:19:09 INFO]: [PluginRemapper] Done remapping plugin 'plugins/InventoryCache_1.0.1.jar' in 189ms.
-[15:19:09 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Banya-1.0.2.jar'...
-[15:19:09 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_AP-1.1.0.jar' in 193ms.
-[15:19:09 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Nick-1.0.0.jar'...
-[15:19:10 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Banya-1.0.2.jar' in 136ms.
-[15:19:10 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Morph-1.0.0.jar'...
-[15:19:10 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Nevidimka-1.0.2.jar' in 168ms.
-[15:19:10 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Nick-1.0.0.jar' in 172ms.
-[15:19:10 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Morph-1.0.0.jar' in 87ms.
-[15:19:10 INFO]: [PluginRemapper] Done remapping plugin 'plugins/LibsDisguises.jar' in 1057ms.
-[15:19:10 INFO]: [PluginInitializerManager] Initialized 9 plugins
-[15:19:10 INFO]: [PluginInitializerManager] Bukkit plugins (9):
+2026-11-01T15:29:31.638463208Z ServerMain WARN Advanced terminal features are not available in this environment
+[15:29:31 INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.13+9-LTS; Eclipse Adoptium Temurin-21.0.13+9) on Linux 7.0.0-1017-azure (amd64)
+[15:29:31 INFO]: [bootstrap] Loading Paper 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) for Minecraft 1.21.11
+[15:29:32 INFO]: [PluginInitializerManager] Initializing plugins...
+[15:29:33 INFO]: [ReobfServer] Remapping server...
+[15:29:39 INFO]: [ReobfServer] Done remapping server in 5570ms.
+[15:29:39 INFO]: [PluginRemapper] Remapping plugin 'plugins/LibsDisguises.jar'...
+[15:29:39 INFO]: [PluginRemapper] Remapping plugin 'plugins/InventoryCache_1.0.1.jar'...
+[15:29:39 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Check-1.0.0.jar'...
+[15:29:39 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_AP-1.1.0.jar'...
+[15:29:39 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Check-1.0.0.jar' in 228ms.
+[15:29:39 INFO]: [PluginRemapper] Done remapping plugin 'plugins/InventoryCache_1.0.1.jar' in 232ms.
+[15:29:39 INFO]: [PluginRemapper] Remapping plugin 'plugins/Nevidimka-1.0.2.jar'...
+[15:29:39 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Banya-1.0.2.jar'...
+[15:29:39 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_AP-1.1.0.jar' in 247ms.
+[15:29:39 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Nick-1.0.0.jar'...
+[15:29:39 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Nick-1.0.0.jar' in 87ms.
+[15:29:39 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Morph-1.0.0.jar'...
+[15:29:39 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Nevidimka-1.0.2.jar' in 169ms.
+[15:29:39 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Banya-1.0.2.jar' in 187ms.
+[15:29:39 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Morph-1.0.0.jar' in 109ms.
+[15:29:40 INFO]: [PluginRemapper] Done remapping plugin 'plugins/LibsDisguises.jar' in 836ms.
+[15:29:40 INFO]: [PluginInitializerManager] Initialized 9 plugins
+[15:29:40 INFO]: [PluginInitializerManager] Bukkit plugins (9):
  - InventoryCache (1.0.1), LibsDisguises (26.10.24), Nevidimka (1.0.2), Z_AP (1.1.0), Z_Banya (1.0.2), Z_Check (1.0.0), Z_Morph (1.0.0), Z_Nick (1.0.0), packetevents (2.14.0)
-[15:19:15 INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
-[15:19:15 INFO]: Found new data pack file/bukkit, loading it automatically
-[15:19:15 INFO]: Found new data pack paper, loading it automatically
-[15:19:16 INFO]: No existing world data, creating new world
-[15:19:17 INFO]: Loaded 1470 recipes
-[15:19:17 INFO]: Loaded 1584 advancements
-[15:19:17 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
-[15:19:17 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 515.4ms
-[15:19:17 INFO]: Starting minecraft server version 1.21.11
-[15:19:17 INFO]: Loading properties
-[15:19:18 INFO]: This server is running Paper version 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) (Implementing API version 1.21.11-R0.1-SNAPSHOT)
-[15:19:18 INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
-[15:19:18 INFO]: Server Ping Player Sample Count: 12
-[15:19:18 INFO]: Using 4 threads for Netty based IO
-[15:19:18 INFO]: [MoonriseCommon] Paper is using 1 worker threads, 1 I/O threads
-[15:19:19 INFO]: Default game type: SURVIVAL
-[15:19:19 INFO]: Generating keypair
-[15:19:19 INFO]: Starting Minecraft server on 127.0.0.1:25594
-[15:19:19 INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
-[15:19:19 INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
-[15:19:19 INFO]: [packetevents] Loading server plugin packetevents v2.14.0
-[15:19:20 INFO]: [packetevents] Loading packetevents...
-[15:19:22 INFO]: [packetevents] Loading block mappings for V_26_3/23...
-[15:19:22 INFO]: [packetevents] Finished loading block mappings for V_26_3/23 in 424.428125ms
-[15:19:22 INFO]: [packetevents] Loaded packetevents v2.14.0
-[15:19:22 INFO]: [Z_Nick] Loading server plugin Z_Nick v1.0.0
-[15:19:22 INFO]: [LibsDisguises] Loading server plugin LibsDisguises v26.10.24
-[15:19:22 INFO]: [LibsDisguises] Saving default config commands.yml
-[15:19:22 INFO]: [LibsDisguises] Saving default config dangerous.yml
-[15:19:22 INFO]: [LibsDisguises] Saving default config displays.yml
-[15:19:22 INFO]: [LibsDisguises] Saving default config events.yml
-[15:19:22 INFO]: [LibsDisguises] Saving default config libsdisguises.yml
-[15:19:22 INFO]: [LibsDisguises] Saving default config premium.yml
-[15:19:22 INFO]: [LibsDisguises] Saving default config protocol.yml
-[15:19:22 INFO]: [LibsDisguises] Saving default config self_disguise.yml
-[15:19:23 INFO]: [Z_Banya] Loading server plugin Z_Banya v1.0.2
-[15:19:23 INFO]: [InventoryCache] Loading server plugin InventoryCache v1.0.1
-[15:19:23 INFO]: [Z_Check] Loading server plugin Z_Check v1.0.0
-[15:19:23 INFO]: [Z_Morph] Loading server plugin Z_Morph v1.0.0
-[15:19:23 INFO]: [Nevidimka] Loading server plugin Nevidimka v1.0.2
-[15:19:23 INFO]: [Z_AP] Loading server plugin Z_AP v1.1.0
-[15:19:23 WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[15:19:23 WARN]: The server will make no attempt to authenticate usernames. Beware.
-[15:19:23 WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[15:19:23 WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[15:19:23 INFO]: Preparing level "world"
-[15:19:23 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] NUMA enable flag is not set; however there is NUMA interaction support for this OS.
-[15:19:23 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] Detected 1 NUMA nodes.
-[15:19:23 INFO]: Selecting spawn point for world 'minecraft:overworld'...
-[15:19:23 INFO]: Selecting spawn point for world 'minecraft:the_nether'...
-[15:19:25 INFO]: Selecting spawn point for world 'minecraft:the_end'...
-[15:19:25 INFO]: Loading 0 persistent chunks for world 'minecraft:overworld'...
-[15:19:25 INFO]: Preparing spawn area: 100%
-[15:19:25 INFO]: Prepared spawn area in 2191 ms
-[15:19:25 INFO]: Loading 0 persistent chunks for world 'minecraft:the_nether'...
-[15:19:25 INFO]: Preparing spawn area: 100%
-[15:19:25 INFO]: Prepared spawn area in 1619 ms
-[15:19:25 INFO]: Loading 0 persistent chunks for world 'minecraft:the_end'...
-[15:19:25 INFO]: Preparing spawn area: 100%
-[15:19:25 INFO]: Prepared spawn area in 287 ms
-[15:19:25 INFO]: Done preparing level "world" (2.378s)
-[15:19:25 INFO]: [packetevents] Enabling packetevents v2.14.0
-[15:19:25 INFO]: [packetevents] Checking for updates, please wait...
-[15:19:25 INFO]: [Z_Nick] Enabling Z_Nick v1.0.0
-[15:19:25 INFO]: [Z_Nick] Z_Nick 1.0.0: загружено ников 0
-[15:19:25 INFO]: [LibsDisguises] Enabling LibsDisguises v26.10.24
-[15:19:25 INFO]: [LibsDisguises] File Name: LibsDisguises.jar
-[15:19:25 INFO]: [LibsDisguises] Discovered nms version (LD: v1_21_R7) (MC: 1.21.11)
-[15:19:25 INFO]: [LibsDisguises] Jenkins Build: #1836
-[15:19:25 INFO]: [LibsDisguises] Build Date: 24/10/2026 06:17
-[15:19:25 INFO]: [LibsDisguises] Build Hash: 0720e79a~1
-[15:19:25 ERROR]: [LibsDisguises] Check for BisectHosting failed! Connection error?
-[15:19:25 INFO]: [LibsDisguises] If you own the plugin, place the premium jar downloaded from https://www.spigotmc.org/resources/libs-disguises.32453/ in plugins/LibsDisguises/
-[15:19:25 INFO]: [LibsDisguises] You are running the free version, commands limited to non-players and operators. (Console, Command Blocks, Admins)
-[15:19:25 INFO]: [LibsDisguises] Config 'TallSelfDisguises' is set to 'SCALED', LD will scale down (when possible) oversized disguises from self disguise. https://www.spigotmc.org/wiki/lib-s-disguises-faq/#tall-disguises-self-disguises
-[15:19:25 INFO]: [packetevents] You are running the latest release: 2.14.0
-[15:19:26 INFO]: [packetevents] Loading block mappings for V_1_21_9/20...
-[15:19:26 INFO]: [packetevents] Finished loading block mappings for V_1_21_9/20 in 138.95253ms
-[15:19:27 INFO]: [LibsDisguises] Translations for DISGUISES missing! Saving..
-[15:19:27 INFO]: [LibsDisguises] Translations for MESSAGES missing! Saving..
-[15:19:27 INFO]: [LibsDisguises] Translations for DISGUISE_OPTIONS missing! Saving..
-[15:19:27 INFO]: [LibsDisguises] Translations for DISGUISE_OPTIONS_PARAMETERS missing! Saving..
-[15:19:27 INFO]: [LibsDisguises] Translations for DISGUISE_ANIMATIONS missing! Saving..
-[15:19:27 INFO]: [LibsDisguises] Saved 249 translations that were not in disguises.yml
-[15:19:27 INFO]: [LibsDisguises] Saved 316 translations that were not in messages.yml
-[15:19:27 INFO]: [LibsDisguises] Saved 245 translations that were not in disguise_options.yml
-[15:19:27 INFO]: [LibsDisguises] Saved 2521 translations that were not in disguise_option_parameters.yml
-[15:19:27 INFO]: [LibsDisguises] Saved 63 translations that were not in disguise_animations.yml
-[15:19:27 INFO]: [LibsDisguises] Config is up to date!
-[15:19:27 INFO]: [Z_Banya] Enabling Z_Banya v1.0.2
-[15:19:27 INFO]: [Z_Banya] Z_Banya 1.0.2: загружено бань 0. Общий ресурс-пак задаётся в server.properties.
-[15:19:27 INFO]: [InventoryCache] Enabling InventoryCache v1.0.1
-[15:19:27 INFO]: [Z_Check] Enabling Z_Check v1.0.0
-[15:19:27 INFO]: [Z_Check] Загружено активных проверок: 0
-[15:19:27 INFO]: [Z_Morph] Enabling Z_Morph v1.0.0
-[15:19:27 INFO]: [Z_Morph] Доступно мобов: 89
-[15:19:27 INFO]: [Nevidimka] Enabling Nevidimka v1.0.2
-[15:19:27 INFO]: [Nevidimka] Nevidimka enabled, saved invisible profiles: 0
-[15:19:27 INFO]: [Z_AP] Enabling Z_AP v1.1.0
-[15:19:27 INFO]: [spark] Starting background profiler...
-[15:19:27 INFO]: Running delayed init tasks
-[15:19:27 INFO]: Done (25.973s)! For help, type "help"
-[15:19:27 INFO]: *************************************************************************************
-[15:19:27 INFO]: This is the first time you're starting this server.
-[15:19:27 INFO]: It's recommended you read our 'Getting Started' documentation for guidance.
-[15:19:27 INFO]: View this and more helpful information here: https://docs.papermc.io/paper/next-steps
-[15:19:27 INFO]: *************************************************************************************
-[15:19:28 INFO]: Made APAdmin a server operator
-[15:19:28 INFO]: Made APLocked a server operator
-[15:19:28 INFO]: Made APClose a server operator
-[15:19:28 WARN]: *************************************************************************************
-[15:19:28 WARN]: You are running the latest build for your Minecraft version (1.21.11)
-[15:19:28 WARN]: However, you are 6 release(s) behind the latest stable release (26.3)!
-[15:19:28 WARN]: It is recommended that you update as soon as possible
-[15:19:28 WARN]: https://papermc.io/downloads/paper
-[15:19:28 WARN]: *************************************************************************************
-[15:19:28 INFO]: UUID of player APAdmin is 42144877-d291-3964-a5ff-564021e97610
-[15:19:31 INFO]: APAdmin joined the game
-[15:19:31 INFO]: APAdmin[/127.0.0.1:60128] logged in with entity id 165 at ([world]4.5, 1.0, 3.5)
-[15:19:31 INFO]: UUID of player APLocked is 76725d86-e100-3e0d-8056-a5598d8495db
-[15:19:31 INFO]: APLocked joined the game
-[15:19:31 INFO]: APLocked[/127.0.0.1:60144] logged in with entity id 167 at ([world]4.5, 1.0, 1.5)
-[15:19:31 INFO]: UUID of player APObserver is 29d2ea06-478d-358c-bb5d-97822eff9c8d
-[15:19:31 INFO]: APObserver joined the game
-[15:19:31 INFO]: APObserver[/127.0.0.1:60156] logged in with entity id 168 at ([world]2.5, 1.0, -2.5)
-[15:19:31 INFO]: UUID of player APClose is 7804a83b-14aa-34cb-951d-73815740c233
-[15:19:31 INFO]: APClose joined the game
-[15:19:31 INFO]: APClose[/127.0.0.1:60172] logged in with entity id 169 at ([world]-6.5, 1.0, -4.5)
-[15:19:32 INFO]: APAdmin has made the advancement [Diamonds!]
-[15:19:32 INFO]: Gave 3 [Diamond] to APAdmin
-[15:19:32 INFO]: Successfully filled 176 block(s)
-[15:19:32 INFO]: Teleported APAdmin to 0.500000, 71.000000, 0.500000
-[15:19:32 INFO]: Teleported APObserver to 4.500000, 71.000000, 0.500000
-[15:19:34 INFO]: APClose issued server command: /ap
-[15:19:35 INFO]: APClose issued server command: /ap
-[15:19:35 INFO]: APClose issued server command: /ap
-[15:19:36 INFO]: APClose issued server command: /ap lock
-[15:19:37 INFO]: APObserver issued server command: /ap
-[15:19:38 INFO]: APLocked issued server command: /ap
-[15:19:41 INFO]: APLocked issued server command: /ap
-[15:19:44 INFO]: APLocked issued server command: /ap
-[15:19:48 INFO]: APLocked issued server command: /ap
-[15:19:51 INFO]: APLocked issued server command: /ap
-[15:19:54 INFO]: APLocked issued server command: /ap
-[15:19:55 INFO]: APAdmin issued server command: /ap
-[15:20:00 INFO]: APAdmin issued server command: /ap
-[15:20:00 INFO]: APAdmin issued server command: /ap
-[15:20:02 INFO]: APAdmin issued server command: /ap
-[15:20:03 INFO]: APAdmin issued server command: /ap
-[15:20:06 INFO]: APAdmin issued server command: /ap
-[15:20:09 INFO]: APAdmin issued server command: /ap
-[15:20:12 INFO]: APAdmin issued server command: /ap
-[15:20:14 INFO]: APAdmin issued server command: /ap
-[15:20:15 INFO]: APAdmin issued server command: /minecraft:tp 0.5 71 0.5
-[15:20:15 INFO]: [APAdmin: Teleported APAdmin to 0.500000, 71.000000, 0.500000]
-[15:20:16 INFO]: APAdmin issued server command: /ap
-[15:20:18 INFO]: APAdmin issued server command: /ap
-[15:20:20 INFO]: APAdmin issued server command: /ap
-[15:20:22 INFO]: APAdmin issued server command: /ap
-[15:20:25 INFO]: APAdmin issued server command: /ap
-[15:20:28 INFO]: APAdmin issued server command: /ap
-[15:20:31 INFO]: APAdmin lost connection: Disconnected
-[15:20:31 INFO]: PanelTest left the game
-[15:20:31 INFO]: APLocked lost connection: Disconnected
-[15:20:31 INFO]: APLocked left the game
-[15:20:31 INFO]: APObserver lost connection: Disconnected
-[15:20:31 INFO]: APObserver left the game
-[15:20:31 INFO]: APClose lost connection: Disconnected
-[15:20:31 INFO]: APClose left the game
-[15:20:32 INFO]: Stopping the server
-[15:20:32 INFO]: Stopping server
-[15:20:32 INFO]: [Z_AP] Disabling Z_AP v1.1.0
-[15:20:32 INFO]: [Nevidimka] Disabling Nevidimka v1.0.2
-[15:20:32 INFO]: [Z_Morph] Disabling Z_Morph v1.0.0
-[15:20:32 INFO]: [Z_Check] Disabling Z_Check v1.0.0
-[15:20:32 INFO]: [InventoryCache] Disabling InventoryCache v1.0.1
-[15:20:32 INFO]: [Z_Banya] Disabling Z_Banya v1.0.2
-[15:20:32 INFO]: [LibsDisguises] Disabling LibsDisguises v26.10.24
-[15:20:32 INFO]: [Z_Nick] Disabling Z_Nick v1.0.0
-[15:20:32 INFO]: [packetevents] Disabling packetevents v2.14.0
-[15:20:32 INFO]: Saving players
-[15:20:32 INFO]: Saving worlds
-[15:20:32 INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[15:20:32 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
-[15:20:32 INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
-[15:20:32 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
-[15:20:33 INFO]: [ChunkHolderManager] Saved 1442 block chunks, 254 entity chunks, 0 poi chunks in world 'world' in 0.78s
-[15:20:33 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world'
-[15:20:33 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world'
-[15:20:33 INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
-[15:20:33 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
-[15:20:33 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
-[15:20:33 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
-[15:20:33 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_nether' in 0.00s
-[15:20:33 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_nether'
-[15:20:33 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_nether'
-[15:20:33 INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
-[15:20:33 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
-[15:20:33 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
-[15:20:33 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
-[15:20:33 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_the_end' in 0.00s
-[15:20:33 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_the_end'
-[15:20:33 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_the_end'
-[15:20:33 INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[15:20:33 INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[15:20:33 INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[15:20:33 INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[15:20:33 INFO]: Waiting for all RegionFile I/O tasks to complete...
-[15:20:33 INFO]: All RegionFile I/O tasks to complete
-[15:20:33 INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
-[15:20:33 INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...
+[15:29:45 INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[15:29:45 INFO]: Found new data pack file/bukkit, loading it automatically
+[15:29:45 INFO]: Found new data pack paper, loading it automatically
+[15:29:46 INFO]: No existing world data, creating new world
+[15:29:46 INFO]: Loaded 1470 recipes
+[15:29:46 INFO]: Loaded 1584 advancements
+[15:29:47 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
+[15:29:47 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 534.6ms
+[15:29:47 INFO]: Starting minecraft server version 1.21.11
+[15:29:47 INFO]: Loading properties
+[15:29:47 INFO]: This server is running Paper version 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) (Implementing API version 1.21.11-R0.1-SNAPSHOT)
+[15:29:47 INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[15:29:47 INFO]: Server Ping Player Sample Count: 12
+[15:29:47 INFO]: Using 4 threads for Netty based IO
+[15:29:48 INFO]: [MoonriseCommon] Paper is using 1 worker threads, 1 I/O threads
+[15:29:48 INFO]: Default game type: SURVIVAL
+[15:29:48 INFO]: Generating keypair
+[15:29:49 INFO]: Starting Minecraft server on 127.0.0.1:25594
+[15:29:49 INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
+[15:29:49 INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
+[15:29:49 INFO]: [packetevents] Loading server plugin packetevents v2.14.0
+[15:29:50 INFO]: [packetevents] Loading packetevents...
+[15:29:51 INFO]: [packetevents] Loading block mappings for V_26_3/23...
+[15:29:52 INFO]: [packetevents] Finished loading block mappings for V_26_3/23 in 375.472018ms
+[15:29:52 INFO]: [packetevents] Loaded packetevents v2.14.0
+[15:29:52 INFO]: [Z_Nick] Loading server plugin Z_Nick v1.0.0
+[15:29:52 INFO]: [LibsDisguises] Loading server plugin LibsDisguises v26.10.24
+[15:29:52 INFO]: [LibsDisguises] Saving default config commands.yml
+[15:29:52 INFO]: [LibsDisguises] Saving default config dangerous.yml
+[15:29:52 INFO]: [LibsDisguises] Saving default config displays.yml
+[15:29:52 INFO]: [LibsDisguises] Saving default config events.yml
+[15:29:52 INFO]: [LibsDisguises] Saving default config libsdisguises.yml
+[15:29:52 INFO]: [LibsDisguises] Saving default config premium.yml
+[15:29:52 INFO]: [LibsDisguises] Saving default config protocol.yml
+[15:29:52 INFO]: [LibsDisguises] Saving default config self_disguise.yml
+[15:29:53 INFO]: [Z_Banya] Loading server plugin Z_Banya v1.0.2
+[15:29:53 INFO]: [InventoryCache] Loading server plugin InventoryCache v1.0.1
+[15:29:53 INFO]: [Z_Check] Loading server plugin Z_Check v1.0.0
+[15:29:53 INFO]: [Z_Morph] Loading server plugin Z_Morph v1.0.0
+[15:29:53 INFO]: [Nevidimka] Loading server plugin Nevidimka v1.0.2
+[15:29:53 INFO]: [Z_AP] Loading server plugin Z_AP v1.1.0
+[15:29:53 WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[15:29:53 WARN]: The server will make no attempt to authenticate usernames. Beware.
+[15:29:53 WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[15:29:53 WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[15:29:53 INFO]: Preparing level "world"
+[15:29:53 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] NUMA enable flag is not set; however there is NUMA interaction support for this OS.
+[15:29:53 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] Detected 1 NUMA nodes.
+[15:29:53 INFO]: Selecting spawn point for world 'minecraft:overworld'...
+[15:29:54 INFO]: Selecting spawn point for world 'minecraft:the_nether'...
+[15:29:55 INFO]: Selecting spawn point for world 'minecraft:the_end'...
+[15:29:56 INFO]: Loading 0 persistent chunks for world 'minecraft:overworld'...
+[15:29:56 INFO]: Preparing spawn area: 100%
+[15:29:56 INFO]: Prepared spawn area in 2936 ms
+[15:29:56 INFO]: Loading 0 persistent chunks for world 'minecraft:the_nether'...
+[15:29:56 INFO]: Preparing spawn area: 100%
+[15:29:56 INFO]: Prepared spawn area in 1795 ms
+[15:29:56 INFO]: Loading 0 persistent chunks for world 'minecraft:the_end'...
+[15:29:56 INFO]: Preparing spawn area: 100%
+[15:29:56 INFO]: Prepared spawn area in 403 ms
+[15:29:56 INFO]: Done preparing level "world" (3.159s)
+[15:29:56 INFO]: [packetevents] Enabling packetevents v2.14.0
+[15:29:56 INFO]: [packetevents] Checking for updates, please wait...
+[15:29:56 INFO]: [Z_Nick] Enabling Z_Nick v1.0.0
+[15:29:56 INFO]: [Z_Nick] Z_Nick 1.0.0: загружено ников 0
+[15:29:56 INFO]: [LibsDisguises] Enabling LibsDisguises v26.10.24
+[15:29:56 INFO]: [LibsDisguises] File Name: LibsDisguises.jar
+[15:29:56 INFO]: [LibsDisguises] Discovered nms version (LD: v1_21_R7) (MC: 1.21.11)
+[15:29:56 INFO]: [LibsDisguises] Jenkins Build: #1836
+[15:29:56 INFO]: [LibsDisguises] Build Date: 24/10/2026 06:17
+[15:29:56 INFO]: [LibsDisguises] Build Hash: 0720e79a~1
+[15:29:56 ERROR]: [LibsDisguises] Check for BisectHosting failed! Connection error?
+[15:29:56 INFO]: [LibsDisguises] If you own the plugin, place the premium jar downloaded from https://www.spigotmc.org/resources/libs-disguises.32453/ in plugins/LibsDisguises/
+[15:29:56 INFO]: [LibsDisguises] You are running the free version, commands limited to non-players and operators. (Console, Command Blocks, Admins)
+[15:29:56 INFO]: [LibsDisguises] Config 'TallSelfDisguises' is set to 'SCALED', LD will scale down (when possible) oversized disguises from self disguise. https://www.spigotmc.org/wiki/lib-s-disguises-faq/#tall-disguises-self-disguises
+[15:29:56 INFO]: [packetevents] You are running the latest release: 2.14.0
+[15:29:56 INFO]: [packetevents] Loading block mappings for V_1_21_9/20...
+[15:29:57 INFO]: [packetevents] Finished loading block mappings for V_1_21_9/20 in 250.272723ms
+[15:29:58 INFO]: [LibsDisguises] Translations for DISGUISES missing! Saving..
+[15:29:58 INFO]: [LibsDisguises] Translations for MESSAGES missing! Saving..
+[15:29:58 INFO]: [LibsDisguises] Translations for DISGUISE_OPTIONS missing! Saving..
+[15:29:58 INFO]: [LibsDisguises] Translations for DISGUISE_OPTIONS_PARAMETERS missing! Saving..
+[15:29:58 INFO]: [LibsDisguises] Translations for DISGUISE_ANIMATIONS missing! Saving..
+[15:29:58 INFO]: [LibsDisguises] Saved 249 translations that were not in disguises.yml
+[15:29:58 INFO]: [LibsDisguises] Saved 316 translations that were not in messages.yml
+[15:29:58 INFO]: [LibsDisguises] Saved 245 translations that were not in disguise_options.yml
+[15:29:58 INFO]: [LibsDisguises] Saved 2521 translations that were not in disguise_option_parameters.yml
+[15:29:58 INFO]: [LibsDisguises] Saved 63 translations that were not in disguise_animations.yml
+[15:29:58 INFO]: [LibsDisguises] Config is up to date!
+[15:29:58 INFO]: [Z_Banya] Enabling Z_Banya v1.0.2
+[15:29:58 INFO]: [Z_Banya] Z_Banya 1.0.2: загружено бань 0. Общий ресурс-пак задаётся в server.properties.
+[15:29:58 INFO]: [InventoryCache] Enabling InventoryCache v1.0.1
+[15:29:58 INFO]: [Z_Check] Enabling Z_Check v1.0.0
+[15:29:58 INFO]: [Z_Check] Загружено активных проверок: 0
+[15:29:58 INFO]: [Z_Morph] Enabling Z_Morph v1.0.0
+[15:29:58 INFO]: [Z_Morph] Доступно мобов: 89
+[15:29:58 INFO]: [Nevidimka] Enabling Nevidimka v1.0.2
+[15:29:58 INFO]: [Nevidimka] Nevidimka enabled, saved invisible profiles: 0
+[15:29:58 INFO]: [Z_AP] Enabling Z_AP v1.1.0
+[15:29:58 INFO]: [spark] Starting background profiler...
+[15:29:59 INFO]: Running delayed init tasks
+[15:29:59 INFO]: Done (28.667s)! For help, type "help"
+[15:29:59 INFO]: *************************************************************************************
+[15:29:59 INFO]: This is the first time you're starting this server.
+[15:29:59 INFO]: It's recommended you read our 'Getting Started' documentation for guidance.
+[15:29:59 INFO]: View this and more helpful information here: https://docs.papermc.io/paper/next-steps
+[15:29:59 INFO]: *************************************************************************************
+[15:29:59 WARN]: *************************************************************************************
+[15:29:59 WARN]: You are running the latest build for your Minecraft version (1.21.11)
+[15:29:59 WARN]: However, you are 6 release(s) behind the latest stable release (26.3)!
+[15:29:59 WARN]: It is recommended that you update as soon as possible
+[15:29:59 WARN]: https://papermc.io/downloads/paper
+[15:29:59 WARN]: *************************************************************************************
+[15:29:59 INFO]: Made APAdmin a server operator
+[15:29:59 INFO]: Made APLocked a server operator
+[15:29:59 INFO]: Made APClose a server operator
+[15:30:00 INFO]: UUID of player APAdmin is 42144877-d291-3964-a5ff-564021e97610
+[15:30:02 INFO]: APAdmin joined the game
+[15:30:02 INFO]: APAdmin[/127.0.0.1:38726] logged in with entity id 165 at ([world]-1.5, 1.0, -1.5)
+[15:30:02 INFO]: UUID of player APLocked is 76725d86-e100-3e0d-8056-a5598d8495db
+[15:30:02 INFO]: APLocked joined the game
+[15:30:02 INFO]: APLocked[/127.0.0.1:38730] logged in with entity id 169 at ([world]-8.5, 1.0, -6.5)
+[15:30:02 INFO]: UUID of player APObserver is 29d2ea06-478d-358c-bb5d-97822eff9c8d
+[15:30:03 INFO]: APObserver joined the game
+[15:30:03 INFO]: APObserver[/127.0.0.1:38744] logged in with entity id 170 at ([world]-2.5, 1.0, 10.5)
+[15:30:03 INFO]: UUID of player APClose is 7804a83b-14aa-34cb-951d-73815740c233
+[15:30:03 INFO]: APClose joined the game
+[15:30:03 INFO]: APClose[/127.0.0.1:38754] logged in with entity id 171 at ([world]8.5, 1.0, 2.5)
+[15:30:03 INFO]: APAdmin has made the advancement [Diamonds!]
+[15:30:03 INFO]: Gave 3 [Diamond] to APAdmin
+[15:30:03 INFO]: Successfully filled 176 block(s)
+[15:30:03 INFO]: Teleported APAdmin to 0.500000, 71.000000, 0.500000
+[15:30:03 INFO]: Teleported APObserver to 4.500000, 71.000000, 0.500000
+[15:30:05 INFO]: APClose issued server command: /ap
+[15:30:07 INFO]: APClose issued server command: /ap
+[15:30:07 INFO]: APClose issued server command: /ap
+[15:30:08 INFO]: APClose issued server command: /ap lock
+[15:30:09 INFO]: APObserver issued server command: /ap
+[15:30:10 INFO]: APLocked issued server command: /ap
+[15:30:13 INFO]: APLocked issued server command: /ap
+[15:30:16 INFO]: APLocked issued server command: /ap
+[15:30:19 INFO]: APLocked issued server command: /ap
+[15:30:23 INFO]: APLocked issued server command: /ap
+[15:30:26 INFO]: APLocked issued server command: /ap
+[15:30:26 INFO]: APAdmin issued server command: /ap
+[15:30:32 INFO]: APAdmin issued server command: /ap
+[15:30:32 INFO]: APAdmin issued server command: /ap
+[15:30:34 INFO]: APAdmin issued server command: /ap
+[15:30:35 INFO]: APAdmin issued server command: /ap
+[15:30:38 INFO]: APAdmin issued server command: /ap
+[15:30:41 INFO]: APAdmin issued server command: /ap
+[15:30:44 INFO]: APAdmin issued server command: /ap
+[15:30:46 INFO]: APAdmin issued server command: /ap
+[15:30:47 INFO]: APAdmin issued server command: /minecraft:tp 0.5 71 0.5
+[15:30:47 INFO]: [APAdmin: Teleported APAdmin to 0.500000, 71.000000, 0.500000]
+[15:30:48 INFO]: APAdmin issued server command: /ap
+[15:30:50 INFO]: APAdmin issued server command: /ap
+[15:30:52 INFO]: APAdmin issued server command: /ap
+[15:30:54 INFO]: APAdmin issued server command: /ap
+[15:30:57 INFO]: APAdmin issued server command: /ap
+[15:31:00 INFO]: APAdmin issued server command: /ap
+[15:31:03 INFO]: APAdmin lost connection: Disconnected
+[15:31:03 INFO]: PanelTest left the game
+[15:31:03 INFO]: APLocked lost connection: Disconnected
+[15:31:03 INFO]: APLocked left the game
+[15:31:03 INFO]: APObserver lost connection: Disconnected
+[15:31:03 INFO]: APObserver left the game
+[15:31:03 INFO]: APClose lost connection: Disconnected
+[15:31:03 INFO]: APClose left the game
+[15:31:04 INFO]: Stopping the server
+[15:31:04 INFO]: Stopping server
+[15:31:04 INFO]: [Z_AP] Disabling Z_AP v1.1.0
+[15:31:04 INFO]: [Nevidimka] Disabling Nevidimka v1.0.2
+[15:31:04 INFO]: [Z_Morph] Disabling Z_Morph v1.0.0
+[15:31:04 INFO]: [Z_Check] Disabling Z_Check v1.0.0
+[15:31:04 INFO]: [InventoryCache] Disabling InventoryCache v1.0.1
+[15:31:04 INFO]: [Z_Banya] Disabling Z_Banya v1.0.2
+[15:31:04 INFO]: [LibsDisguises] Disabling LibsDisguises v26.10.24
+[15:31:04 INFO]: [Z_Nick] Disabling Z_Nick v1.0.0
+[15:31:04 INFO]: [packetevents] Disabling packetevents v2.14.0
+[15:31:04 INFO]: Saving players
+[15:31:04 INFO]: Saving worlds
+[15:31:04 INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[15:31:04 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[15:31:04 INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[15:31:04 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[15:31:04 INFO]: [ChunkHolderManager] Saved 1442 block chunks, 254 entity chunks, 5 poi chunks in world 'world' in 0.69s
+[15:31:04 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world'
+[15:31:04 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world'
+[15:31:04 INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
+[15:31:04 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
+[15:31:04 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
+[15:31:04 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
+[15:31:04 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_nether' in 0.00s
+[15:31:04 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_nether'
+[15:31:04 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_nether'
+[15:31:04 INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[15:31:04 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[15:31:04 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[15:31:04 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[15:31:04 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_the_end' in 0.00s
+[15:31:04 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_the_end'
+[15:31:04 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_the_end'
+[15:31:04 INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[15:31:04 INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[15:31:04 INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[15:31:04 INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[15:31:04 INFO]: Waiting for all RegionFile I/O tasks to complete...
+[15:31:04 INFO]: All RegionFile I/O tasks to complete
+[15:31:04 INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
+[15:31:04 INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...
