@@ -1,5 +1,26 @@
 {
-  "status": "FAIL",
-  "error": "Bot failed; see bots.log and bot-result.json",
-  "trace": "Traceback (most recent call last):\n  File \"/home/runner/work/123/123/tools/zap_smoke.py\", line 27, in <module>\n    assert bot.wait(timeout=90)==0,'Bot failed; see bots.log and bot-result.json'\n           ^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Bot failed; see bots.log and bot-result.json\n"
+  "status": "PASS",
+  "paper_build": 132,
+  "plugin_sha256": "511c377a891a2225b20f20bc770613e192c6c5b21cae4337b9da811830bd1ae6",
+  "checks": {
+    "closed_during_auth_did_not_login": true,
+    "denied_without_permission": true,
+    "five_bad_attempts_locked": true,
+    "login_opened_menu": true,
+    "no_password_in_chat": true,
+    "inventory_before": true,
+    "no_anvil_paper_leak": true,
+    "gamemode_changed": true,
+    "inventory_after": true,
+    "no_global_announcements": true,
+    "morph_menu": true,
+    "morph_command": true,
+    "morph_visible_to_observer": true,
+    "nevidimka_on": true,
+    "nevidimka_off": true,
+    "nick_command": true,
+    "kit_save": true,
+    "kit_restore": true,
+    "banya_list": true
+  }
 }

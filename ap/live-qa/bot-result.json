@@ -48,6 +48,7 @@
     "login_opened_menu": true,
     "no_password_in_chat": true,
     "inventory_before": true,
+    "no_anvil_paper_leak": true,
     "gamemode_changed": true,
     "inventory_after": true,
     "no_global_announcements": true,
@@ -56,7 +57,7 @@
     "morph_visible_to_observer": true,
     "nevidimka_on": true,
     "nevidimka_off": true,
-    "nick_command": false,
+    "nick_command": true,
     "kit_save": true,
     "kit_restore": true,
     "banya_list": true
@@ -75,6 +76,10 @@
       "id": 165
     },
     {
+      "name": "item",
+      "id": 170
+    },
+    {
       "name": "slime",
       "id": 171
     },
@@ -83,121 +88,48 @@
       "id": 172
     },
     {
-      "name": "slime",
+      "name": "allay",
+      "id": 165
+    },
+    {
+      "name": "horse",
       "id": 173
     },
     {
-      "name": "slime",
+      "name": "horse",
       "id": 174
     },
     {
-      "name": "slime",
-      "id": 175
-    },
-    {
-      "name": "slime",
+      "name": "horse",
       "id": 177
     },
     {
-      "name": "slime",
+      "name": "pig",
       "id": 178
-    },
-    {
-      "name": "slime",
-      "id": 176
     },
     {
       "name": "slime",
       "id": 179
     },
     {
-      "name": "pig",
+      "name": "slime",
       "id": 180
     },
     {
-      "name": "pig",
+      "name": "allay",
+      "id": 165
+    },
+    {
+      "name": "slime",
       "id": 181
     },
     {
-      "name": "pig",
+      "name": "allay",
+      "id": 165
+    },
+    {
+      "name": "slime",
       "id": 182
-    },
-    {
-      "name": "pig",
-      "id": 183
-    },
-    {
-      "name": "slime",
-      "id": 184
-    },
-    {
-      "name": "slime",
-      "id": 185
-    },
-    {
-      "name": "allay",
-      "id": 165
-    },
-    {
-      "name": "slime",
-      "id": 186
-    },
-    {
-      "name": "slime",
-      "id": 187
-    },
-    {
-      "name": "slime",
-      "id": 188
-    },
-    {
-      "name": "slime",
-      "id": 189
-    },
-    {
-      "name": "allay",
-      "id": 165
-    },
-    {
-      "name": "slime",
-      "id": 191
-    },
-    {
-      "name": "slime",
-      "id": 193
-    },
-    {
-      "name": "allay",
-      "id": 165
-    },
-    {
-      "name": "slime",
-      "id": 192
-    },
-    {
-      "name": "slime",
-      "id": 194
-    },
-    {
-      "name": "slime",
-      "id": 195
-    },
-    {
-      "name": "slime",
-      "id": 196
-    },
-    {
-      "name": "slime",
-      "id": 197
-    },
-    {
-      "name": "slime",
-      "id": 199
-    },
-    {
-      "name": "slime",
-      "id": 200
     }
-  ],
-  "error": "Error: Failed checks {\"closed_during_auth_did_not_login\":true,\"denied_without_permission\":true,\"five_bad_attempts_locked\":true,\"login_opened_menu\":true,\"no_password_in_chat\":true,\"inventory_before\":true,\"gamemode_changed\":true,\"inventory_after\":true,\"no_global_announcements\":true,\"morph_menu\":true,\"morph_command\":true,\"morph_visible_to_observer\":true,\"nevidimka_on\":true,\"nevidimka_off\":true,\"nick_command\":false,\"kit_save\":true,\"kit_restore\":true,\"banya_list\":true}"
+  ]
 }
