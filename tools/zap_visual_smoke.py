@@ -12,7 +12,7 @@ from Xlib.ext import xtest
 ROOT=Path(__file__).resolve().parents[1];WORK=ROOT/'ap/target/visual-server';REPORT=ROOT/'ap/visual-qa';WORK.mkdir(parents=True,exist_ok=True);REPORT.mkdir(parents=True,exist_ok=True)
 for file in WORK.glob('visual-*'):file.unlink()
 sys.path.insert(0,str(ROOT/'tools'))
-import lor_vanilla_client as vanilla
+import zap_vanilla_client as vanilla
 vanilla.GAME=ROOT/'ap/target/visual-client';vanilla.REPORT=REPORT
 server=None;client=None;http=None
 

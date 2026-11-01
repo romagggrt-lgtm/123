@@ -2,7 +2,7 @@ name: Z_AP 1.1 visual and interaction verification
 on:
   push:
     branches: [feature/z-ap-1.1.0]
-    paths: ['ap/src/**', 'ap/pom.xml', 'ap/ui-assets/**', 'tools/zap_*', 'tools/build_zap_ui_pack.py', 'dist/Z_Server_Pack_1.11.zip', '.github/workflows/zap-design-paper.yml']
+    paths: ['ap/src/**', 'ap/pom.xml', 'ap/ui-assets/**', 'tools/zap_*', 'tools/build_zap_ui_pack.py', 'tools/test_zap_ui_pack.py', 'dist/Z_Server_Pack_1.11.zip', '.github/workflows/zap-design-paper.yml']
   workflow_dispatch:
 permissions:
   contents: write
@@ -35,6 +35,14 @@ jobs:
         run: |
           command -v Xvfb
           python3 -m pip install --break-system-packages --retries 1 --timeout 20 Pillow python-xlib nbtlib
+          python3 tools/test_zap_ui_pack.py
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ap/target/visual-client/client.jar
+            ap/target/visual-client/assets
+            ap/target/visual-client/libraries
+          key: minecraft-1.21.11-gui-asset-v1
       - name: Capture unmodified Minecraft with server pack
         env:
           LIBGL_ALWAYS_SOFTWARE: '1'

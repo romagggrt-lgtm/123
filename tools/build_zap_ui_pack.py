@@ -70,16 +70,41 @@ def make_anvil():
  for col in range(9):slot_outline(d,8+col*18,142)
  return im
 def make_welcome():
- w,h=128,48;im=Image.new('RGBA',(w*S,h*S));glow=Image.new('RGBA',im.size);gd=ImageDraw.Draw(glow);gd.ellipse((42*S,1*S,86*S,43*S),fill=(121,51,255,170));glow=glow.filter(ImageFilter.GaussianBlur(8*S));im.alpha_composite(glow);d=ImageDraw.Draw(im);logo(d,57,2,1.4);text(d,(64,22),'Z_AP',10,'#f5e8ff',True,anchor='mm');text(d,(64,35),'ДОБРО ПОЖАЛОВАТЬ',5.3,'#e9d0ff',True,anchor='mm');text(d,(64,43),'ADMIN PANEL',3.5,'#b499ed',anchor='mm');return im
+ # User-supplied reference: crop away the reference's numbered heading while
+ # keeping the original city, logo and welcome message.
+ source=Image.open(assets/'welcome_reference.png').convert('RGB').crop((0,190,1058,850))
+ im=source.resize((384,240),Image.Resampling.LANCZOS).convert('RGBA')
+ mask=Image.new('L',im.size,0);md=ImageDraw.Draw(mask);md.rounded_rectangle((4,4,379,235),radius=15,fill=255);mask=mask.filter(ImageFilter.GaussianBlur(5));im.putalpha(mask);return im
+
 home=make_home();home.save(assets/'home.png')
 for i,opacity in enumerate((.42,.72,1.0)):
  im=home.copy();im.putalpha(im.getchannel('A').point(lambda a:round(a*opacity)));im.save(assets/f'home_{i}.png')
 make_generic().save(assets/'generic.png');make_anvil().save(assets/'anvil.png');make_welcome().save(assets/'welcome.png')
-providers=[{'type':'space','advances':{'\ue000':-8,'\ue001':-137,'\ue002':-60,'\ue003':-137}}]
-for char,name,height,ascent in [('\ue010','home_0',222,13),('\ue011','home_1',222,13),('\ue012','home_2',222,13),('\ue013','generic',222,13),('\ue014','anvil',166,13),('\ue015','welcome',48,32)]:
- providers.append({'type':'bitmap','file':f'z_ap:font/gui/{name}.png','height':height,'ascent':ascent,'chars':[char]})
-additions={'assets/z_ap/font/gui.json':json.dumps({'providers':providers},ensure_ascii=False,separators=(',',':')).encode()}
-for name in ('home_0','home_1','home_2','generic','anvil','welcome'):additions[f'assets/z_ap/textures/font/gui/{name}.png']=(assets/f'{name}.png').read_bytes()
+# Minecraft stores each baked font glyph in a 256x256 atlas. Split the
+# high-resolution artwork into 176x224 cells so it remains sharp and valid.
+providers=[{'type':'space','advances':{'\ue000':-8,'\ue001':-136,'\ue002':-60,'\ue003':-136,'\ue004':-176,'\ue005':-1,'\ue006':-96}}]
+additions={}
+for name,start_code,rows in [('home_0',0xe100,4),('home_1',0xe110,4),('home_2',0xe120,4),('generic',0xe130,4),('anvil',0xe140,3)]:
+ im=Image.open(assets/f'{name}.png').convert('RGBA').resize((704,rows*224),Image.Resampling.LANCZOS)
+ for row in range(rows):
+  strip=im.crop((0,row*224,704,(row+1)*224));file=f'{name}_row{row}'
+  # Keep the right edge of each cell non-zero so the advance is exactly 45px.
+  for col in range(4):
+   if strip.getpixel((col*176+175,0))[3]==0:strip.putpixel((col*176+175,0),(0,0,0,1))
+  strip.save(assets/f'{file}.png')
+  chars=''.join(chr(start_code+row*4+col) for col in range(4))
+  providers.append({'type':'bitmap','file':f'z_ap:font/gui/{file}.png','height':56,'ascent':13-row*56,'chars':[chars]})
+  additions[f'assets/z_ap/textures/font/gui/{file}.png']=(assets/f'{file}.png').read_bytes()
+welcome=Image.open(assets/'welcome.png').convert('RGBA')
+for row in range(2):
+ strip=welcome.crop((0,row*120,384,(row+1)*120))
+ for col in range(2):
+  if strip.getpixel((col*192+191,0))[3]==0:strip.putpixel((col*192+191,0),(0,0,0,1))
+ file=f'welcome_row{row}';strip.save(assets/f'{file}.png')
+ chars=''.join(chr(0xe150+row*2+col) for col in range(2))
+ providers.append({'type':'bitmap','file':f'z_ap:font/gui/{file}.png','height':30,'ascent':27-row*30,'chars':[chars]})
+ additions[f'assets/z_ap/textures/font/gui/{file}.png']=(assets/f'{file}.png').read_bytes()
+additions['assets/z_ap/font/gui.json']=json.dumps({'providers':providers},ensure_ascii=False,separators=(',',':')).encode()
 import io
 buf=io.BytesIO();Image.new('RGBA',(16,16),(0,0,0,0)).save(buf,format='PNG')
 additions['assets/z_ap/textures/item/invisible.png']=buf.getvalue()

@@ -22,6 +22,6 @@ sections:
 
 # The same SHA-1 as the server resource pack in server.properties.
 ui:
-  server-pack-sha1: "112d2874851e8ddc7f6440489bb836709f932e5b"
+  server-pack-sha1: "64baa1f393ec010696c9c28f989d39228b1d1301"
   welcome-animation: true
   menu-animation: true
