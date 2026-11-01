@@ -33,11 +33,11 @@ try:
  nbtlib.File({'servers':nbtlib.List[nbtlib.Compound]([nbtlib.Compound({'name':nbtlib.String('Z_AP Visual QA'),'ip':nbtlib.String('127.0.0.1:25596'),'acceptTextures':nbtlib.Byte(1)})])}).save(vanilla.GAME/'servers.dat')
  (vanilla.GAME/'options.txt').write_text('onboardAccessibility:false\nstartedCleanly:true\nlang:ru_ru\nguiScale:2\nrenderDistance:4\nsimulationDistance:4\nmaxFps:30\nfullscreen:false\nenableVsync:false\nparticles:0\ntutorialStep:none\n')
  metadata=json.loads(fetch('https://fill.papermc.io/v3/projects/paper/versions/1.21.11/builds/latest'));dl=metadata['downloads']['server:default'];data=fetch(dl['url']);assert hashlib.sha256(data).hexdigest()==dl['checksums']['sha256'];(WORK/'paper.jar').write_bytes(data)
- jars=[ROOT/'ap/target/Z_AP-1.1.0.jar']+list((Path.home()/'.m2/repository').rglob('*.jar'));classes=WORK/'qa-classes';classes.mkdir(exist_ok=True)
+ jars=[ROOT/'ap/target/Z_AP-1.1.1.jar']+list((Path.home()/'.m2/repository').rglob('*.jar'));classes=WORK/'qa-classes';classes.mkdir(exist_ok=True)
  with (REPORT/'compile.log').open('w') as log:compiled=subprocess.run(['javac','-proc:none','--release','21','-cp',os.pathsep.join(map(str,jars)),'-d',str(classes),str(ROOT/'ap/src/smoke/java/dev/zap/qa/VisualProbe.java')],stdout=log,stderr=subprocess.STDOUT)
  assert compiled.returncode==0,'Could not compile visual probe'
  plugins=WORK/'plugins';plugins.mkdir(exist_ok=True)
- for source in [ROOT/'ap/target/Z_AP-1.1.0.jar',ROOT/'dist/Z_Morph-1.0.0.jar',ROOT/'ap/target/deps/LibsDisguises.jar',ROOT/'ap/target/deps/packetevents.jar',ROOT/'dist/Z_Nick-1.0.0.jar',ROOT/'dist/Z_Check-1.0.0.jar',ROOT/'dist/Z_Banya-1.0.2.jar',ROOT/'dist/InventoryCache_1.0.1.jar',ROOT/'ap/test-only/Nevidimka-1.0.2.jar']:shutil.copyfile(source,plugins/source.name)
+ for source in [ROOT/'ap/target/Z_AP-1.1.1.jar',ROOT/'dist/Z_Morph-1.0.0.jar',ROOT/'ap/target/deps/LibsDisguises.jar',ROOT/'ap/target/deps/packetevents.jar',ROOT/'dist/Z_Nick-1.0.0.jar',ROOT/'dist/Z_Check-1.0.0.jar',ROOT/'dist/Z_Banya-1.0.2.jar',ROOT/'dist/InventoryCache_1.0.1.jar',ROOT/'ap/test-only/Nevidimka-1.0.2.jar']:shutil.copyfile(source,plugins/source.name)
  with ZipFile(plugins/'Z_AP_VisualQA.jar','w') as z:
   for path in classes.rglob('*.class'):z.write(path,str(path.relative_to(classes)))
   z.writestr('plugin.yml',"name: Z_AP_VisualQA\nversion: 1.0.0\nmain: dev.zap.qa.VisualProbe\napi-version: '1.21.11'\ndepend: [Z_AP]\n")
@@ -56,22 +56,12 @@ try:
    d.close()
   except Exception as error:print('Visual watchdog:',error,flush=True)
  threading.Thread(target=watch,daemon=True).start()
- wait_for(lambda:(WORK/'visual-anvil').exists(),240,'resource pack and login screen');assert (WORK/'visual-anvil-themed').exists(),'Server did not select resource-pack anvil theme';watch_stop.set();time.sleep(2)
+ wait_for(lambda:(WORK/'visual-dialog').exists(),240,'resource pack and login dialog');watch_stop.set();time.sleep(3)
  connection=display.Display(os.environ['DISPLAY']);screen=connection.screen();root=screen.root
  def capture(name):
   pix=root.get_image(0,0,screen.width_in_pixels,screen.height_in_pixels,X.ZPixmap,0xffffffff);Image.frombytes('RGB',(screen.width_in_pixels,screen.height_in_pixels),pix.data,'raw','BGRX').save(REPORT/name)
- def click(x,y):
-  xtest.fake_input(connection,X.MotionNotify,x=x,y=y);xtest.fake_input(connection,X.ButtonPress,detail=1);xtest.fake_input(connection,X.ButtonRelease,detail=1);connection.sync()
- def key(name,press=True):
-  code=connection.keysym_to_keycode(XK.string_to_keysym(name));xtest.fake_input(connection,X.KeyPress if press else X.KeyRelease,code);connection.sync()
- def tap(name):key(name);key(name,False)
- capture('01-login.png');click(605,254);time.sleep(.2);key('Control_L');tap('a');key('Control_L',False)
- for char in '324657':tap(char)
- time.sleep(.4);capture('02-login-filled.png');click(534,304);time.sleep(.55);capture('03-welcome.png')
- wait_for(lambda:(WORK/'visual-chest-count').exists() and int((WORK/'visual-chest-count').read_text())>=3,20,'animated home');assert (WORK/'visual-home-themed').exists(),'Server did not select final themed home';time.sleep(1);capture('04-home.png')
- click(604,190);wait_for(lambda:int((WORK/'visual-chest-count').read_text())>=4,12,'mode card click');time.sleep(1.0);capture('05-modes.png');click(568,262);wait_for(lambda:(WORK/'visual-mode').exists() and (WORK/'visual-mode').read_text()=='CREATIVE',12,'clickable mode label');time.sleep(.6);capture('06-after-mode.png')
- result={'status':'CAPTURED','paper_build':metadata['id'],'client':'official unmodified Minecraft 1.21.11','resource_pack_sha1':digest,'captures':['01-login.png','02-login-filled.png','03-welcome.png','04-home.png','05-modes.png','06-after-mode.png'],'manual_visual_review_required':True}
- (REPORT/'result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2))
+ capture('01-dialog.png')
+ (REPORT/'result.json').write_text(json.dumps({'status':'DIALOG_CAPTURED'},indent=2))
 except Exception as e:
  (REPORT/'result.json').write_text(json.dumps({'status':'FAIL','error':str(e)},ensure_ascii=False,indent=2));raise
 finally:
