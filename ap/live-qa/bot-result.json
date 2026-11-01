@@ -58,11 +58,13 @@
       "[Server: Successfully filled 176 block(s)]",
       "[Server: Teleported APAdmin to 0.500000, 71.000000, 0.500000]",
       "[Server: Teleported APObserver to 4.500000, 71.000000, 0.500000]",
+      "[Z_AP] Сессия закрыта.",
       "[PanelTest: Teleported PanelTest to 0.500000, 71.000000, 0.500000]"
     ]
   },
   "checks": {
     "closed_during_auth_did_not_login": true,
+    "lock_cancels_welcome": true,
     "denied_without_permission": true,
     "five_bad_attempts_locked": true,
     "login_opened_menu": true,
@@ -88,108 +90,141 @@
     "check_stopped": true,
     "password_changed": true,
     "old_password_rejected": true,
-    "new_password_accepted": true
+    "new_password_accepted": true,
+    "no_paper_after_forms": true
   },
   "spawns": [
     {
       "name": "player",
-      "id": 173
+      "id": 165
     },
     {
       "name": "player",
-      "id": 166
+      "id": 167
     },
     {
       "name": "player",
-      "id": 168
+      "id": 169
     },
     {
       "name": "item",
-      "id": 194
+      "id": 170
     },
     {
       "name": "slime",
+      "id": 171
+    },
+    {
+      "name": "slime",
+      "id": 175
+    },
+    {
+      "name": "slime",
+      "id": 176
+    },
+    {
+      "name": "slime",
+      "id": 177
+    },
+    {
+      "name": "slime",
+      "id": 178
+    },
+    {
+      "name": "slime",
+      "id": 179
+    },
+    {
+      "name": "sheep",
+      "id": 180
+    },
+    {
+      "name": "sheep",
+      "id": 181
+    },
+    {
+      "name": "sheep",
+      "id": 182
+    },
+    {
+      "name": "sheep",
+      "id": 183
+    },
+    {
+      "name": "slime",
+      "id": 184
+    },
+    {
+      "name": "slime",
+      "id": 185
+    },
+    {
+      "name": "slime",
+      "id": 186
+    },
+    {
+      "name": "slime",
+      "id": 187
+    },
+    {
+      "name": "allay",
+      "id": 165
+    },
+    {
+      "name": "allay",
+      "id": 165
+    },
+    {
+      "name": "slime",
+      "id": 188
+    },
+    {
+      "name": "allay",
+      "id": 165
+    },
+    {
+      "name": "sheep",
+      "id": 193
+    },
+    {
+      "name": "sheep",
+      "id": 194
+    },
+    {
+      "name": "sheep",
+      "id": 195
+    },
+    {
+      "name": "sheep",
+      "id": 196
+    },
+    {
+      "name": "donkey",
+      "id": 197
+    },
+    {
+      "name": "donkey",
       "id": 198
     },
     {
-      "name": "villager",
-      "id": 172
+      "name": "slime",
+      "id": 199
+    },
+    {
+      "name": "slime",
+      "id": 189
+    },
+    {
+      "name": "slime",
+      "id": 200
+    },
+    {
+      "name": "slime",
+      "id": 202
     },
     {
       "name": "slime",
       "id": 201
-    },
-    {
-      "name": "slime",
-      "id": 204
-    },
-    {
-      "name": "pig",
-      "id": 205
-    },
-    {
-      "name": "pig",
-      "id": 206
-    },
-    {
-      "name": "pig",
-      "id": 207
-    },
-    {
-      "name": "pig",
-      "id": 208
-    },
-    {
-      "name": "pig",
-      "id": 209
-    },
-    {
-      "name": "pig",
-      "id": 210
-    },
-    {
-      "name": "pig",
-      "id": 211
-    },
-    {
-      "name": "pig",
-      "id": 212
-    },
-    {
-      "name": "chicken",
-      "id": 213
-    },
-    {
-      "name": "chicken",
-      "id": 214
-    },
-    {
-      "name": "allay",
-      "id": 166
-    },
-    {
-      "name": "allay",
-      "id": 166
-    },
-    {
-      "name": "allay",
-      "id": 166
-    },
-    {
-      "name": "slime",
-      "id": 215
-    },
-    {
-      "name": "slime",
-      "id": 216
-    },
-    {
-      "name": "slime",
-      "id": 217
-    },
-    {
-      "name": "slime",
-      "id": 218
     }
   ]
 }

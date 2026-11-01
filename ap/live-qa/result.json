@@ -1,9 +1,10 @@
 {
   "status": "PASS",
   "paper_build": 132,
-  "plugin_sha256": "3c57647b815987ac5725d881d5c889a1906a854401360665927d44b972df2b78",
+  "plugin_sha256": "b7f206b60fdf0d1be96a2d3d8098af991ff7a356f069685ff661186125b6fdf5",
   "checks": {
     "closed_during_auth_did_not_login": true,
+    "lock_cancels_welcome": true,
     "denied_without_permission": true,
     "five_bad_attempts_locked": true,
     "login_opened_menu": true,
@@ -30,6 +31,7 @@
     "password_changed": true,
     "old_password_rejected": true,
     "new_password_accepted": true,
+    "no_paper_after_forms": true,
     "startup_without_integrations": true
   }
 }
