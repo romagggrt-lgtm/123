@@ -1,3 +1,4 @@
 {
-  "status": "DIALOG_CAPTURED"
+  "status": "FAIL",
+  "error": "Timed out: home after correct password"
 }
