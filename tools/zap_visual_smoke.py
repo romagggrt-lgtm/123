@@ -65,10 +65,14 @@ try:
  def tap(name):
   code=connection.keysym_to_keycode(XK.string_to_keysym(name));xtest.fake_input(connection,X.KeyPress,code);xtest.fake_input(connection,X.KeyRelease,code);connection.sync()
  def enter(value):
-  click(500,245)
-  for char in value:tap(char)
-  time.sleep(.3)
- capture('01-dialog.png');enter('111111');capture('02-filled-wrong.png');click(640,686)
+  click(500,245);time.sleep(.4)
+  for char in value:
+   tap(char);time.sleep(.08)
+  time.sleep(.5)
+ capture('01-dialog.png');enter('111111');capture('02-filled-wrong.png')
+ from PIL import ImageChops
+ assert ImageChops.difference(Image.open(REPORT/'01-dialog.png').crop((421,225,860,263)),Image.open(REPORT/'02-filled-wrong.png').crop((421,225,860,263))).getbbox(), 'Typed password is not visible in field'
+ click(640,686)
  auth=WORK/'plugins/Z_AP/auth.yml';wait_for(lambda:auth.exists() and 'attempts: 1' in auth.read_text(),20,'wrong password counted')
  send('execute as ZapVisual run ap');time.sleep(1.5);enter('324657');capture('03-filled-correct.png');click(640,686);time.sleep(.55);capture('04-welcome.png')
  wait_for(lambda:(WORK/'visual-chest-count').exists() and int((WORK/'visual-chest-count').read_text())>=1,20,'home after correct password');assert (WORK/'visual-home-themed').exists(),'Server did not select themed home';time.sleep(1);capture('05-home.png')
