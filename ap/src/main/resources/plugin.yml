@@ -21,6 +21,7 @@ permissions:
       z_ap.actions.morph: true
       z_ap.actions.kits: true
       z_ap.actions.nick: true
+      z_ap.actions.nick.others: true
       z_ap.actions.vanish: true
       z_ap.actions.banya: true
       z_ap.actions.teleport: true
@@ -32,3 +33,7 @@ permissions:
       z_ap.actions.worldedit: true
       z_ap.actions.moderation: true
       z_ap.actions.settings: true
+
+  z_ap.actions.nick.others:
+    description: Разрешает менять ник другому игроку
+    default: op
