@@ -15,7 +15,7 @@ def send(s):server.stdin.write((s+'\n').encode());server.stdin.flush()
 try:
  meta=json.loads(get('https://fill.papermc.io/v3/projects/paper/versions/1.21.11/builds/latest'));dl=meta['downloads']['server:default'];data=get(dl['url']);assert hashlib.sha256(data).hexdigest()==dl['checksums']['sha256'];(work/'paper.jar').write_bytes(data)
  (work/'plugins').mkdir(exist_ok=True)
- paths=[root/'ap/target/Z_AP-1.0.0.jar',root/'dist/Z_Morph-1.0.0.jar',root/'ap/target/deps/LibsDisguises.jar',root/'ap/target/deps/packetevents.jar',root/'dist/Z_Nick-1.0.0.jar',root/'dist/Z_Check-1.0.0.jar',root/'dist/Z_Banya-1.0.2.jar',root/'dist/InventoryCache_1.0.1.jar',root/'ap/test-only/Nevidimka-1.0.2.jar']
+ paths=[root/'ap/target/Z_AP-1.1.0.jar',root/'dist/Z_Morph-1.0.0.jar',root/'ap/target/deps/LibsDisguises.jar',root/'ap/target/deps/packetevents.jar',root/'dist/Z_Nick-1.0.0.jar',root/'dist/Z_Check-1.0.0.jar',root/'dist/Z_Banya-1.0.2.jar',root/'dist/InventoryCache_1.0.1.jar',root/'ap/test-only/Nevidimka-1.0.2.jar']
  for p in paths:shutil.copyfile(p,work/'plugins'/p.name)
  (work/'eula.txt').write_text('eula=true\n');(work/'server.properties').write_text('server-ip=127.0.0.1\nserver-port=25594\nonline-mode=false\nspawn-protection=0\nview-distance=5\nsimulation-distance=4\nlevel-type=minecraft:flat\ngenerator-settings={"layers":[{"block":"minecraft:bedrock","height":1},{"block":"minecraft:dirt","height":63},{"block":"minecraft:grass_block","height":1}],"biome":"minecraft:plains"}\n')
  logpath=report/'paper.log';log=logpath.open('w');server=subprocess.Popen(['java','-Xms512M','-Xmx2G','-jar','paper.jar','nogui'],cwd=work,stdin=subprocess.PIPE,stdout=log,stderr=subprocess.STDOUT);read=lambda:logpath.read_text(errors='replace')
@@ -28,10 +28,10 @@ try:
  result=json.loads((work/'bot-result.json').read_text());(report/'bot-result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2))
  auth=(work/'plugins/Z_AP/auth.yml').read_text();assert '324657' not in auth and 'SandboxOnly7' not in auth and 'locked-until:' in auth,'Credential or lockout storage failed'
  send('stop');server.wait(timeout=40);log.close();server=None
- optional=root/'ap/target/optional';(optional/'plugins').mkdir(parents=True,exist_ok=True);shutil.copyfile(work/'paper.jar',optional/'paper.jar');shutil.copyfile(root/'ap/target/Z_AP-1.0.0.jar',optional/'plugins/Z_AP-1.0.0.jar');(optional/'eula.txt').write_text('eula=true\n');(optional/'server.properties').write_text('server-ip=127.0.0.1\nserver-port=25595\nonline-mode=false\nspawn-protection=0\n')
+ optional=root/'ap/target/optional';(optional/'plugins').mkdir(parents=True,exist_ok=True);shutil.copyfile(work/'paper.jar',optional/'paper.jar');shutil.copyfile(root/'ap/target/Z_AP-1.1.0.jar',optional/'plugins/Z_AP-1.1.0.jar');(optional/'eula.txt').write_text('eula=true\n');(optional/'server.properties').write_text('server-ip=127.0.0.1\nserver-port=25595\nonline-mode=false\nspawn-protection=0\n')
  optpath=report/'optional-paper.log';log=optpath.open('w');server=subprocess.Popen(['java','-Xms512M','-Xmx2G','-jar','paper.jar','nogui'],cwd=optional,stdin=subprocess.PIPE,stdout=log,stderr=subprocess.STDOUT)
  wait_for(lambda:'Done (' in optpath.read_text(errors='replace'),300,'optional-dependency startup');optionalLog=optpath.read_text(errors='replace');assert '[Z_AP] Enabling' in optionalLog and '[Z_AP] Disabling' not in optionalLog,'Panel requires optional dependency';result['checks']['startup_without_integrations']=True
- jar=root/'ap/target/Z_AP-1.0.0.jar';shutil.copyfile(jar,report/'tested-plugin.jar')
+ jar=root/'ap/target/Z_AP-1.1.0.jar';shutil.copyfile(jar,report/'tested-plugin.jar')
  (report/'result.json').write_text(json.dumps({'status':'PASS','paper_build':meta['id'],'plugin_sha256':hashlib.sha256(jar.read_bytes()).hexdigest(),'checks':result['checks']},ensure_ascii=False,indent=2))
 except Exception as e:
  if (work/'bot-result.json').exists():shutil.copyfile(work/'bot-result.json',report/'bot-result.json')

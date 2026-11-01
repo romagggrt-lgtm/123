@@ -5,6 +5,7 @@ import java.io.File;
 import org.bukkit.configuration.file.YamlConfiguration;
 import java.util.*;
 import java.util.function.Consumer;
+import java.time.Duration;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.title.Title;
@@ -24,16 +25,16 @@ import org.mindrot.jbcrypt.BCrypt;
 
 public final class ZAPPlugin extends JavaPlugin implements Listener,CommandExecutor,TabCompleter {
  private Auth auth; private YamlConfiguration messages; private final Map<UUID,Long> sessions=new HashMap<>(),lastClick=new HashMap<>();
- private final Set<UUID> pending=new HashSet<>(),packed=new HashSet<>(); private final Map<UUID,Screen> inputs=new HashMap<>();
+ private final Set<UUID> pending=new HashSet<>(),packed=new HashSet<>(); private final Map<UUID,Screen> inputs=new HashMap<>(); private final Map<UUID,Long> openings=new HashMap<>(); private long openingSerial;
  private long generation=0;
  private static final NamedTextColor PURPLE=NamedTextColor.LIGHT_PURPLE;
  private final class Screen implements InventoryHolder {
-  Inventory inventory; final UUID owner; final String kind; final Map<Integer,Consumer<Player>> actions=new HashMap<>(); Consumer<String> input; boolean busy;
+  Inventory inventory; final UUID owner; final String kind; String title; boolean themed; final Map<Integer,Consumer<Player>> actions=new HashMap<>(); Consumer<String> input; boolean busy;
   Screen(Player p,String kind){owner=p.getUniqueId();this.kind=kind;}
   @Override public Inventory getInventory(){return inventory;}
  }
  @Override public void onEnable(){saveDefaultConfig();if(!new File(getDataFolder(),"messages.yml").exists())saveResource("messages.yml",false);messages=YamlConfiguration.loadConfiguration(new File(getDataFolder(),"messages.yml"));try{auth=new Auth(getDataFolder().toPath(),getConfig().getInt("max-failures",5),getConfig().getInt("lock-seconds",900),getConfig().getInt("bcrypt-cost",10));}catch(IOException e){getLogger().severe("Credentials unavailable; panel disabled: "+e.getMessage());getServer().getPluginManager().disablePlugin(this);return;}getServer().getPluginManager().registerEvents(this,this);Objects.requireNonNull(getCommand("ap")).setExecutor(this);Objects.requireNonNull(getCommand("ap")).setTabCompleter(this);Bukkit.getScheduler().runTaskTimer(this,this::reapSessions,100,100);}
- @Override public void onDisable(){generation++;for(Player p:Bukkit.getOnlinePlayers())if(screen(p,p.getOpenInventory().getTopInventory())!=null)p.closeInventory();sessions.clear();pending.clear();packed.clear();inputs.clear();}
+ @Override public void onDisable(){generation++;for(Player p:Bukkit.getOnlinePlayers())if(screen(p,p.getOpenInventory().getTopInventory())!=null)p.closeInventory();sessions.clear();pending.clear();packed.clear();inputs.clear();openings.clear();}
  private void msg(Player p,String text){String key=switch(text){case "§cНедостаточно прав."->"no-access";case "§cСлишком много неверных попыток. Повторите позже."->"locked";case "§eСессия завершена. Войдите снова."->"expired";default->null;};if(key!=null)text=messages.getString(key,text);String prefix=messages.getString("prefix","§8[§dZ_AP§8] §r");p.sendMessage(LegacyComponentSerializer.legacySection().deserialize(prefix+text));}
  private void reapSessions(){long now=System.currentTimeMillis(),timeout=Math.clamp(getConfig().getInt("session-idle-seconds",600),30,86400)*1000L;for(var entry:new ArrayList<>(sessions.entrySet())){Player p=Bukkit.getPlayer(entry.getKey());if(p==null||!access(p)||now-entry.getValue()>timeout){sessions.remove(entry.getKey());if(p!=null&&screen(p,p.getOpenInventory().getTopInventory())!=null){p.closeInventory();msg(p,"§eСессия завершена. Войдите снова.");}}}}
  private boolean access(Player p){return p.hasPermission("z_ap.use");}
@@ -43,21 +44,34 @@ public final class ZAPPlugin extends JavaPlugin implements Listener,CommandExecu
   if(!(sender instanceof Player p)){sender.sendMessage("Команда доступна только игроку.");return true;}
   if(args.length>0&&args[0].equalsIgnoreCase("reload")){if(!p.hasPermission("z_ap.reload")){msg(p,"§cНедостаточно прав.");return true;}reloadConfig();messages=YamlConfiguration.loadConfiguration(new File(getDataFolder(),"messages.yml"));auth.configure(getConfig().getInt("max-failures",5),getConfig().getInt("lock-seconds",900),getConfig().getInt("bcrypt-cost",10));sessions.clear();generation++;msg(p,"§aКонфигурация перезагружена; сессии закрыты.");return true;}
   if(!access(p)){msg(p,"§cНедостаточно прав.");return true;}
-  if(args.length>0&&args[0].equalsIgnoreCase("lock")){sessions.remove(p.getUniqueId());p.closeInventory();msg(p,"§eСессия закрыта.");return true;}
+  if(args.length>0&&args[0].equalsIgnoreCase("lock")){sessions.remove(p.getUniqueId());openings.remove(p.getUniqueId());p.clearTitle();p.closeInventory();msg(p,"§eСессия закрыта.");return true;}
   if(args.length>0&&args[0].equalsIgnoreCase("help")){msg(p,"/ap — открыть панель; /ap lock — закрыть сессию; /ap reload — настройки.");return true;}
   if(args.length>0){msg(p,"Неизвестная команда. /ap help");return true;}
-  if(live(p))home(p);else login(p);return true;
+  if(live(p)){openings.remove(p.getUniqueId());p.clearTitle();home(p);}else login(p);return true;
  }
  @Override public List<String> onTabComplete(CommandSender s,Command c,String a,String[] args){if(!s.hasPermission("z_ap.use"))return List.of();if(args.length!=1)return List.of();List<String> o=new ArrayList<>(List.of("lock","help"));if(s.hasPermission("z_ap.reload"))o.add("reload");return o.stream().filter(v->v.startsWith(args[0].toLowerCase(Locale.ROOT))).toList();}
- private Screen chest(Player p,String title,String type){Screen h=new Screen(p,type);h.inventory=Bukkit.createInventory(h,54,Component.text(title,PURPLE));ItemStack glass=item(Material.BLACK_STAINED_GLASS_PANE," ",null);for(int i=0;i<54;i++)h.inventory.setItem(i,glass);return h;}
+ private Screen chest(Player p,String title,String type){Screen h=new Screen(p,type);h.title=title;h.themed=packed.contains(h.owner);h.inventory=Bukkit.createInventory(h,54,h.themed?GuiTheme.chest(type,title,2):Component.text(title,PURPLE));if(!h.themed){ItemStack glass=item(Material.BLACK_STAINED_GLASS_PANE," ",null);for(int i=0;i<54;i++)h.inventory.setItem(i,glass);}return h;}
  private ItemStack item(Material type,String name,String icon,String... lore){ItemStack i=new ItemStack(type);i.editMeta(m->{m.displayName(Component.text(name,PURPLE));if(lore.length>0)m.lore(Arrays.stream(lore).map(s->Component.text(s,NamedTextColor.GRAY)).toList());if(icon!=null)m.setItemModel(new NamespacedKey("z_ap",icon));});return i;}
  private void button(Screen h,int slot,Material mat,String name,String icon,Consumer<Player> action,String... lore){h.inventory.setItem(slot,item(mat,name,packed.contains(h.owner)?icon:null,lore));h.actions.put(slot,action);}
  private void integrationButton(Screen h,int slot,Material mat,String name,String icon,String plugin,Consumer<Player> action){if(installed(plugin))button(h,slot,mat,name,icon,action);else button(h,slot,Material.GRAY_DYE,name+" • недоступен",null,p->msg(p,"§cПлагин "+plugin+" не установлен или не включён."));}
- private void open(Player p,Screen h){p.openInventory(h.inventory);}
+ private void open(Player p,Screen h){
+  if(!h.themed||!h.kind.equals("home")||!getConfig().getBoolean("ui.menu-animation",true)){p.openInventory(h.inventory);return;}
+  Screen first=frame(p,h,0);p.openInventory(first.inventory);animateHome(p.getUniqueId(),first,h,1);
+ }
+ private Screen frame(Player p,Screen target,int number){Screen f=new Screen(p,target.kind);f.title=target.title;f.themed=true;f.busy=true;f.inventory=Bukkit.createInventory(f,54,GuiTheme.chest(f.kind,f.title,number));f.inventory.setContents(target.inventory.getContents());f.actions.putAll(target.actions);return f;}
+ private void animateHome(UUID id,Screen current,Screen target,int number){Bukkit.getScheduler().runTaskLater(this,()->{Player p=Bukkit.getPlayer(id);if(p==null||!live(p)||p.getOpenInventory().getTopInventory().getHolder()!=current)return;Screen next=number==2?target:frame(p,target,number);p.openInventory(next.inventory);if(number<2&&p.getOpenInventory().getTopInventory().getHolder()==next)animateHome(id,next,target,number+1);},3L);}
+ private void welcome(Player p){
+  p.closeInventory();if(!getConfig().getBoolean("ui.welcome-animation",true)){home(p);return;}
+  UUID id=p.getUniqueId();long token=++openingSerial;openings.put(id,token);long currentGeneration=generation;
+  Component title=packed.contains(id)?GuiTheme.welcome():Component.text("ДОБРО ПОЖАЛОВАТЬ",PURPLE);
+  Component subtitle=packed.contains(id)?Component.empty():Component.text("Z_AP • ADMIN PANEL",NamedTextColor.GRAY);
+  p.showTitle(Title.title(title,subtitle,Title.Times.times(Duration.ofMillis(350),Duration.ofMillis(700),Duration.ofMillis(350))));
+  Bukkit.getScheduler().runTaskLater(this,()->{Player livePlayer=Bukkit.getPlayer(id);if(livePlayer==null||generation!=currentGeneration||!Objects.equals(openings.get(id),token)||!live(livePlayer))return;openings.remove(id);if(livePlayer.getOpenInventory().getTopInventory().getType()!=InventoryType.CRAFTING)return;livePlayer.clearTitle();home(livePlayer);},29L);
+ }
  private void navigation(Screen h){button(h,45,Material.ARROW,"Назад","back",this::home);button(h,49,Material.NETHER_STAR,"Главная","home",this::home);button(h,53,Material.BARRIER,"Закрыть","close",Player::closeInventory);}
  private void login(Player p){if(auth.locked(p.getUniqueId(),System.currentTimeMillis())){msg(p,"§cСлишком много неверных попыток. Повторите позже.");return;}input(p,"Введите пароль","auth",password->verify(p,password));}
  private Screen screen(Player p,Inventory inv){if(inv.getHolder() instanceof Screen h)return h;Screen h=inputs.get(p.getUniqueId());return h!=null&&h.inventory.equals(inv)?h:null;}
- private void input(Player p,String title,String kind,Consumer<String> submit){Screen h=new Screen(p,kind);AnvilView view=MenuType.ANVIL.builder().title(Component.text(title,PURPLE)).checkReachable(false).build(p);h.inventory=view.getTopInventory();h.input=submit;p.openInventory(view);inputs.put(p.getUniqueId(),h);h.inventory.setItem(0,item(Material.PAPER,"Введите текст",null,"Введите текст в верхнем поле, затем нажмите этот предмет."));}
+ private void input(Player p,String title,String kind,Consumer<String> submit){Screen h=new Screen(p,kind);AnvilView view=MenuType.ANVIL.builder().title(packed.contains(p.getUniqueId())?GuiTheme.anvil(title):Component.text(title,PURPLE)).checkReachable(false).build(p);h.inventory=view.getTopInventory();h.input=submit;p.openInventory(view);inputs.put(p.getUniqueId(),h);h.inventory.setItem(0,item(Material.PAPER,"Введите текст",null,"Введите текст в верхнем поле, затем нажмите этот предмет."));}
  private void verify(Player p,String password){
   UUID id=p.getUniqueId();if(!access(p)||auth.locked(id,System.currentTimeMillis())||!pending.add(id))return;
   Screen screen=screen(p,p.getOpenInventory().getTopInventory());long g=generation;String expected=auth.currentHash();
@@ -66,22 +80,23 @@ public final class ZAPPlugin extends JavaPlugin implements Listener,CommandExecu
    try{
     if(!ok){auth.fail(id,System.currentTimeMillis());if(live!=null&&screen(live,live.getOpenInventory().getTopInventory())==screen){msg(live,auth.locked(id,System.currentTimeMillis())?"§cДоступ временно заблокирован.":"§cНеверный пароль.");live.closeInventory();}return;}
     if(live==null||!access(live)||screen(live,live.getOpenInventory().getTopInventory())!=screen)return;
-    auth.success(id);sessions.put(id,System.currentTimeMillis());live.showTitle(Title.title(Component.text("ДОБРО ПОЖАЛОВАТЬ",PURPLE),Component.text("Z_AP • ADMIN PANEL",NamedTextColor.GRAY)));home(live);
+    auth.success(id);sessions.put(id,System.currentTimeMillis());welcome(live);
    }catch(IOException e){getLogger().severe("Authentication storage failed: "+e.getMessage());if(live!=null){msg(live,"§cОшибка сохранения авторизации. Доступ не выдан.");live.closeInventory();}}
   });});
  }
  @EventHandler public void prepare(PrepareAnvilEvent e){if(e.getView().getPlayer() instanceof Player p){Screen h=screen(p,e.getInventory());if(h!=null&&h.input!=null){e.setResult(item(Material.PAPER,"Подтвердить",null));if(e.getView() instanceof AnvilView v)v.setRepairCost(0);}}}
  @EventHandler public void click(InventoryClickEvent e){
   if(!(e.getWhoClicked() instanceof Player p))return;Screen h=screen(p,e.getView().getTopInventory());if(h==null)return;e.setCancelled(true);if(!h.owner.equals(p.getUniqueId()))return;
-  if(e.getRawSlot()<0||e.getRawSlot()>=e.getView().getTopInventory().getSize())return;
+  if(e.getRawSlot()<0||e.getRawSlot()>=e.getView().getTopInventory().getSize())return;if(h.busy&&h.input==null)return;
   if(h.input!=null){if((e.getRawSlot()!=0&&e.getRawSlot()!=2)||h.busy)return;if(!h.kind.equals("auth")&&!live(p)){p.closeInventory();return;}if(!(e.getView() instanceof AnvilView view))return;String s=view.getRenameText();if(s==null||s.length()>128){msg(p,"§cНекорректный ввод.");return;}h.busy=true;h.input.accept(s);return;}
   if(!live(p)){p.closeInventory();msg(p,"§eСессия завершена. Войдите снова.");return;}
   long now=System.currentTimeMillis();if(now-lastClick.getOrDefault(p.getUniqueId(),0L)<200)return;lastClick.put(p.getUniqueId(),now);Consumer<Player> action=h.actions.get(e.getRawSlot());if(action!=null)action.accept(p);
  }
  @EventHandler public void drag(InventoryDragEvent e){if(e.getWhoClicked() instanceof Player p&&screen(p,e.getView().getTopInventory())!=null)e.setCancelled(true);}
  @EventHandler public void close(InventoryCloseEvent e){if(e.getPlayer() instanceof Player p){Screen h=inputs.get(p.getUniqueId());if(h!=null&&h.inventory.equals(e.getInventory())){h.inventory.clear();inputs.remove(p.getUniqueId());}}}
- @EventHandler public void quit(PlayerQuitEvent e){UUID id=e.getPlayer().getUniqueId();sessions.remove(id);lastClick.remove(id);packed.remove(id);Screen h=inputs.remove(id);if(h!=null)h.inventory.clear();}
- @EventHandler public void pack(PlayerResourcePackStatusEvent e){if(e.getStatus()==PlayerResourcePackStatusEvent.Status.SUCCESSFULLY_LOADED)packed.add(e.getPlayer().getUniqueId());else if(e.getStatus()==PlayerResourcePackStatusEvent.Status.DECLINED||e.getStatus()==PlayerResourcePackStatusEvent.Status.FAILED_DOWNLOAD)packed.remove(e.getPlayer().getUniqueId());}
+ @EventHandler public void quit(PlayerQuitEvent e){UUID id=e.getPlayer().getUniqueId();sessions.remove(id);lastClick.remove(id);packed.remove(id);openings.remove(id);Screen h=inputs.remove(id);if(h!=null)h.inventory.clear();}
+ @EventHandler public void pack(PlayerResourcePackStatusEvent e){var serverPack=Bukkit.getServer().getServerResourcePack();if(serverPack==null||!serverPack.getId().equals(e.getID()))return;String expected=getConfig().getString("ui.server-pack-sha1",GuiTheme.DEFAULT_PACK_SHA1);boolean matches=expected!=null&&expected.matches("(?i)[0-9a-f]{40}")&&expected.equalsIgnoreCase(serverPack.getHash());if(e.getStatus()==PlayerResourcePackStatusEvent.Status.SUCCESSFULLY_LOADED&&matches)packed.add(e.getPlayer().getUniqueId());else if(e.getStatus()!=PlayerResourcePackStatusEvent.Status.ACCEPTED)packed.remove(e.getPlayer().getUniqueId());}
+ @EventHandler(priority=EventPriority.MONITOR,ignoreCancelled=true) public void otherWindow(InventoryOpenEvent e){if(e.getPlayer() instanceof Player p)openings.remove(p.getUniqueId());}
  private boolean installed(String plugin){return Bukkit.getPluginManager().isPluginEnabled(plugin);}
  private void external(Player p,String action,String plugin,String perm,String command){
   if(!live(p)||!allowed(p,action))return;if(!installed(plugin)){msg(p,"§cПлагин "+plugin+" не установлен или не включён.");return;}
@@ -90,20 +105,23 @@ public final class ZAPPlugin extends JavaPlugin implements Listener,CommandExecu
   p.closeInventory();if(!p.performCommand(command))msg(p,"§cКоманда не найдена; проверьте версию плагина.");
  }
  private void home(Player p){if(!live(p)){login(p);return;}Screen h=chest(p,"Z_AP • Главная","home");
-  h.inventory.setItem(4,item(Material.PLAYER_HEAD,p.getName(),null,"Мир: "+p.getWorld().getName(),"Режим: "+p.getGameMode(),"Игроков онлайн: "+Bukkit.getOnlinePlayers().size()));
-  button(h,10,Material.PLAYER_HEAD,"Игроки","players",q->{if(allowed(q,"players"))players(q,0,"");});
-  button(h,11,Material.ENDER_PEARL,"Телепортация","teleport",q->{if(allowed(q,"teleport")&&allowed(q,"players"))players(q,0,"");});
-  button(h,12,Material.GRASS_BLOCK,"Режим игры","mode",q->{if(allowed(q,"gamemode"))modes(q,q.getUniqueId());});
-  integrationButton(h,13,Material.CREEPER_HEAD,"Морфы","morph","Z_Morph",q->{if(allowed(q,"morph"))morph(q,0,"");});
-  integrationButton(h,14,Material.CHEST,"Наборы инвентаря","kits","InventoryCache",q->{if(allowed(q,"kits"))kits(q);});
-  integrationButton(h,15,Material.NAME_TAG,"Никнейм","nick","Z_Nick",q->{if(allowed(q,"nick"))nick(q,q.getUniqueId());});
-  integrationButton(h,16,Material.ENDER_EYE,"Невидимка","vanish","Nevidimka",q->{if(allowed(q,"vanish"))vanish(q);});
-  integrationButton(h,21,Material.CAMPFIRE,"Баня","banya","Z_Banya",q->{if(allowed(q,"banya"))banya(q);});
-  button(h,22,Material.CLOCK,"Мир и инструменты","world",q->{if(allowed(q,"world"))world(q);});
-  button(h,23,Material.WOODEN_AXE,"Регионы и WorldEdit","region",q->{if(allowed(q,"regions")||q.hasPermission("z_ap.actions.worldedit"))regions(q);});
-  button(h,31,Material.COMPARATOR,"Настройки","settings",q->{if(allowed(q,"settings"))settings(q);});
-  h.inventory.setItem(40,item(Material.BOOK,"Подключения",null,"Z_Morph: "+status("Z_Morph"),"InventoryCache: "+status("InventoryCache"),"Z_Nick: "+status("Z_Nick"),"Nevidimka: "+status("Nevidimka"),"Z_Banya: "+status("Z_Banya")));
-  button(h,49,Material.BARRIER,"Заблокировать панель","close",q->{sessions.remove(q.getUniqueId());q.closeInventory();});open(p,h);
+  button(h,0,Material.NETHER_STAR,"Главная","home",this::home,"Игрок: "+p.getName(),"Мир: "+p.getWorld().getName(),"Режим: "+p.getGameMode(),"Онлайн: "+Bukkit.getOnlinePlayers().size());
+  button(h,9,Material.PLAYER_HEAD,"Игроки","players",q->{if(allowed(q,"players"))players(q,0,"");});
+  button(h,18,Material.ENDER_PEARL,"Телепортация","teleport",q->{if(allowed(q,"teleport")&&allowed(q,"players"))players(q,0,"");});
+  button(h,27,Material.CLOCK,"Мир и инструменты","world",q->{if(allowed(q,"world"))world(q);});
+  button(h,36,Material.COMPARATOR,"Настройки","settings",q->{if(allowed(q,"settings"))settings(q);});
+  button(h,45,Material.BARRIER,"Заблокировать панель","close",q->{sessions.remove(q.getUniqueId());q.closeInventory();});
+  button(h,3,Material.GRASS_BLOCK,"Режим игры","mode",q->{if(allowed(q,"gamemode"))modes(q,q.getUniqueId());});
+  integrationButton(h,5,Material.CREEPER_HEAD,"Морфы","morph","Z_Morph",q->{if(allowed(q,"morph"))morph(q,0,"");});
+  integrationButton(h,7,Material.CHEST,"Наборы инвентаря","kits","InventoryCache",q->{if(allowed(q,"kits"))kits(q);});
+  integrationButton(h,21,Material.NAME_TAG,"Никнейм","nick","Z_Nick",q->{if(allowed(q,"nick"))nick(q,q.getUniqueId());});
+  integrationButton(h,23,Material.ENDER_EYE,"Невидимка","vanish","Nevidimka",q->{if(allowed(q,"vanish"))vanish(q);});
+  integrationButton(h,25,Material.CAMPFIRE,"Баня","banya","Z_Banya",q->{if(allowed(q,"banya"))banya(q);});
+  button(h,39,Material.PLAYER_HEAD,"Игроки","players",q->{if(allowed(q,"players"))players(q,0,"");});
+  button(h,41,Material.ENDER_PEARL,"Телепортация","teleport",q->{if(allowed(q,"teleport")&&allowed(q,"players"))players(q,0,"");});
+  button(h,43,Material.WOODEN_AXE,"Инструменты и регионы","region",q->{if(allowed(q,"regions")||q.hasPermission("z_ap.actions.worldedit"))regions(q);});
+  if(h.themed)for(int slot:new int[]{3,5,7,21,23,25,39,41,43}){int proxy=slot+9;if(proxy<54&&h.inventory.getItem(proxy)==null){ItemStack item=item(Material.PAPER,"Открыть", "invisible");h.inventory.setItem(proxy,item);h.actions.put(proxy,h.actions.get(slot));}}
+  open(p,h);
  }
  private String status(String name){return installed(name)?"доступен":"не установлен";}
  private void modes(Player viewer,UUID targetId){Screen h=chest(viewer,"Режим игры","modes");int slot=19;for(GameMode m:GameMode.values()){

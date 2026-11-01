@@ -1,5 +1,5 @@
 name: Z_AP
-version: 1.0.0
+version: 1.1.0
 main: dev.zap.ZAPPlugin
 api-version: '1.21.11'
 softdepend: [LibsDisguises, Z_Morph, InventoryCache, Z_Nick, Nevidimka, Z_Banya, Z_Check, Z_RG, WorldEdit, LuckPerms, TAB]

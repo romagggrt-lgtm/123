@@ -19,3 +19,9 @@ sections:
   worldedit: true
   moderation: true
   settings: true
+
+# The same SHA-1 as the server resource pack in server.properties.
+ui:
+  server-pack-sha1: "112d2874851e8ddc7f6440489bb836709f932e5b"
+  welcome-animation: true
+  menu-animation: true

@@ -1,0 +1,60 @@
+name: Z_AP 1.1 visual and interaction verification
+on:
+  push:
+    branches: [feature/z-ap-1.1.0]
+    paths: ['ap/src/**', 'ap/pom.xml', 'ap/ui-assets/**', 'tools/zap_*', 'tools/build_zap_ui_pack.py', 'dist/Z_Server_Pack_1.11.zip', '.github/workflows/zap-design-paper.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build with official API and run unit tests
+        run: |
+          set -o pipefail
+          mkdir -p ap/live-qa ap/visual-qa ap/target/deps
+          curl -fL --retry 3 https://github.com/libraryaddict/LibsDisguises/releases/download/v26.10.24/LibsDisguises-26.10.24-Github.jar -o ap/target/deps/LibsDisguises.jar
+          curl -fL --retry 3 https://github.com/retrooper/packetevents/releases/download/v2.14.0/packetevents-spigot-2.14.0.jar -o ap/target/deps/packetevents.jar
+          mvn -B install:install-file -Dfile=ap/target/deps/LibsDisguises.jar -DgroupId=me.libraryaddict.disguises -DartifactId=libsdisguises -Dversion=26.10.24 -Dpackaging=jar -DgeneratePom=true
+          mvn -B -f ap/pom.xml verify 2>&1 | tee ap/live-qa/build.log
+          npm install --prefix ap/target/bots --no-audit --no-fund mineflayer@4.39.0
+      - name: Interactions on Paper with client bots
+        run: python3 tools/zap_smoke.py
+      - name: Prepare original graphical client
+        run: |
+          command -v Xvfb
+          python3 -m pip install --break-system-packages --retries 1 --timeout 20 Pillow python-xlib nbtlib
+      - name: Capture unmodified Minecraft with server pack
+        env:
+          LIBGL_ALWAYS_SOFTWARE: '1'
+          ALSOFT_DRIVERS: 'null'
+        run: xvfb-run -a -s '-screen 0 1280x720x24' python3 tools/zap_visual_smoke.py
+      - name: Record test evidence
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin "$GITHUB_REF_NAME"
+          test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA" || exit 0
+          git add ap/live-qa ap/visual-qa
+          git diff --cached --quiet && exit 0
+          git commit -m 'Record Z_AP visual test evidence [skip ci]'
+          git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: zap-design-evidence
+          path: |
+            ap/live-qa/
+            ap/visual-qa/
