@@ -23,7 +23,7 @@ try:
  send('op APAdmin');send('op APLocked');send('op APClose')
  with (report/'bots.log').open('w') as botlog:
   bot=subprocess.Popen(['node',str(root/'tools/zap_bot.js'),str(work)],cwd=root/'ap/target/bots',stdout=botlog,stderr=subprocess.STDOUT)
-  wait_for(lambda:(work/'ready').exists(),60,'players join');send('give APAdmin diamond 3');(work/'begin').write_text('1')
+  wait_for(lambda:(work/'ready').exists(),60,'players join');send('give APAdmin diamond 3');send('fill -5 70 -5 10 70 5 minecraft:stone');send('tp APAdmin 0.5 71 0.5');send('tp APObserver 4.5 71 0.5');time.sleep(2);(work/'begin').write_text('1')
   assert bot.wait(timeout=90)==0,'Bot failed; see bots.log and bot-result.json'
  result=json.loads((work/'bot-result.json').read_text());(report/'bot-result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2))
  auth=(work/'plugins/Z_AP/auth.yml').read_text();assert '324657' not in auth and 'locked-until:' in auth,'Credential or lockout storage failed'
