@@ -7,6 +7,9 @@
       "APClose joined the game",
       "APAdmin has made the advancement [Diamonds!]",
       "[Server: Gave 3 [Diamond] to APAdmin]",
+      "[Server: Successfully filled 176 block(s)]",
+      "[Server: Teleported APAdmin to 0.500000, 71.000000, 0.500000]",
+      "[Server: Teleported APObserver to 4.500000, 71.000000, 0.500000]",
       "[Z_AP] Режим игрока APAdmin: CREATIVE",
       "[Z_Morph] Вы превратились в allay.",
       "[Невидимка] Ты скрыт от игроков.",
@@ -14,7 +17,12 @@
       "[Z_Nick] Ник PanelTest установлен: PanelTest.",
       "Инвентарь сохранён: apitest",
       "Инвентарь загружен: apitest",
-      "[Z_Banya] Бани: нет"
+      "[Z_Banya] Бани: нет",
+      "[Z_AP] Телепортация выполнена.",
+      "Teleported PanelTest to 0.500000, 71.000000, 0.500000",
+      "[Z_AP] Телепортация выполнена.",
+      "[Z_Check] Игрок APObserver вызван на проверку.",
+      "[Z_Check] Проверка игрока APObserver завершена."
     ],
     "APLocked": [
       "APLocked joined the game",
@@ -22,23 +30,33 @@
       "APClose joined the game",
       "APAdmin has made the advancement [Diamonds!]",
       "[Server: Gave 3 [Diamond] to APAdmin]",
+      "[Server: Successfully filled 176 block(s)]",
+      "[Server: Teleported APAdmin to 0.500000, 71.000000, 0.500000]",
+      "[Server: Teleported APObserver to 4.500000, 71.000000, 0.500000]",
       "[Z_AP] Неверный пароль.",
       "[Z_AP] Неверный пароль.",
       "[Z_AP] Неверный пароль.",
       "[Z_AP] Неверный пароль.",
       "[Z_AP] Доступ временно заблокирован.",
-      "[Z_AP] Слишком много неверных попыток. Повторите позже."
+      "[Z_AP] Слишком много неверных попыток. Повторите позже.",
+      "[PanelTest: Teleported PanelTest to 0.500000, 71.000000, 0.500000]"
     ],
     "APObserver": [
       "APObserver joined the game",
       "APClose joined the game",
       "APAdmin has made the advancement [Diamonds!]",
-      "[Z_AP] Недостаточно прав."
+      "[Z_AP] Недостаточно прав.",
+      "[Z_Check] Вы вызваны на проверку на читы. Не выходите с сервера и следуйте указаниям администрации.",
+      "[Z_Check] Проверка завершена."
     ],
     "APClose": [
       "APClose joined the game",
       "APAdmin has made the advancement [Diamonds!]",
-      "[Server: Gave 3 [Diamond] to APAdmin]"
+      "[Server: Gave 3 [Diamond] to APAdmin]",
+      "[Server: Successfully filled 176 block(s)]",
+      "[Server: Teleported APAdmin to 0.500000, 71.000000, 0.500000]",
+      "[Server: Teleported APObserver to 4.500000, 71.000000, 0.500000]",
+      "[PanelTest: Teleported PanelTest to 0.500000, 71.000000, 0.500000]"
     ]
   },
   "checks": {
@@ -60,12 +78,16 @@
     "nick_command": true,
     "kit_save": true,
     "kit_restore": true,
-    "banya_list": true
+    "banya_list": true,
+    "teleport_to_player": true,
+    "summon_player": true,
+    "check_started": true,
+    "check_stopped": true
   },
   "spawns": [
     {
       "name": "player",
-      "id": 167
+      "id": 171
     },
     {
       "name": "player",
@@ -73,63 +95,155 @@
     },
     {
       "name": "player",
-      "id": 165
-    },
-    {
-      "name": "item",
-      "id": 170
-    },
-    {
-      "name": "slime",
-      "id": 171
-    },
-    {
-      "name": "slime",
-      "id": 172
-    },
-    {
-      "name": "allay",
-      "id": 165
-    },
-    {
-      "name": "horse",
       "id": 173
     },
     {
-      "name": "horse",
-      "id": 174
+      "name": "item",
+      "id": 176
     },
     {
-      "name": "horse",
-      "id": 177
+      "name": "cow",
+      "id": 175
     },
     {
       "name": "pig",
-      "id": 178
+      "id": 183
+    },
+    {
+      "name": "pig",
+      "id": 184
     },
     {
       "name": "slime",
-      "id": 179
+      "id": 203
     },
     {
       "name": "slime",
-      "id": 180
+      "id": 204
+    },
+    {
+      "name": "slime",
+      "id": 205
+    },
+    {
+      "name": "slime",
+      "id": 206
+    },
+    {
+      "name": "slime",
+      "id": 207
+    },
+    {
+      "name": "slime",
+      "id": 208
+    },
+    {
+      "name": "slime",
+      "id": 209
+    },
+    {
+      "name": "slime",
+      "id": 211
+    },
+    {
+      "name": "slime",
+      "id": 213
+    },
+    {
+      "name": "slime",
+      "id": 214
+    },
+    {
+      "name": "slime",
+      "id": 215
+    },
+    {
+      "name": "chicken",
+      "id": 216
+    },
+    {
+      "name": "chicken",
+      "id": 217
+    },
+    {
+      "name": "chicken",
+      "id": 218
+    },
+    {
+      "name": "chicken",
+      "id": 219
+    },
+    {
+      "name": "sheep",
+      "id": 224
+    },
+    {
+      "name": "sheep",
+      "id": 225
+    },
+    {
+      "name": "sheep",
+      "id": 226
+    },
+    {
+      "name": "sheep",
+      "id": 228
+    },
+    {
+      "name": "slime",
+      "id": 208
     },
     {
       "name": "allay",
-      "id": 165
-    },
-    {
-      "name": "slime",
-      "id": 181
+      "id": 169
     },
     {
       "name": "allay",
-      "id": 165
+      "id": 169
+    },
+    {
+      "name": "allay",
+      "id": 169
     },
     {
       "name": "slime",
-      "id": 182
+      "id": 208
+    },
+    {
+      "name": "slime",
+      "id": 229
+    },
+    {
+      "name": "slime",
+      "id": 231
+    },
+    {
+      "name": "slime",
+      "id": 232
+    },
+    {
+      "name": "slime",
+      "id": 233
+    },
+    {
+      "name": "slime",
+      "id": 230
+    },
+    {
+      "name": "slime",
+      "id": 234
+    },
+    {
+      "name": "sheep",
+      "id": 235
+    },
+    {
+      "name": "sheep",
+      "id": 236
+    },
+    {
+      "name": "slime",
+      "id": 237
     }
   ]
 }

@@ -21,6 +21,10 @@
     "nick_command": true,
     "kit_save": true,
     "kit_restore": true,
-    "banya_list": true
+    "banya_list": true,
+    "teleport_to_player": true,
+    "summon_player": true,
+    "check_started": true,
+    "check_stopped": true
   }
 }
