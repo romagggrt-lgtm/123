@@ -14,7 +14,7 @@ for file in WORK.glob('visual-*'):file.unlink()
 sys.path.insert(0,str(ROOT/'tools'))
 import zap_vanilla_client as vanilla
 vanilla.GAME=ROOT/'ap/target/visual-client';vanilla.REPORT=REPORT
-server=None;client=None;http=None
+server=None;client=None;http=None;watch_stop=None
 
 def fetch(url):
  with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'ZAP-visual-QA/1.1'}),timeout=90) as r:return r.read()
@@ -47,7 +47,16 @@ try:
  logpath=REPORT/'server.log';log=logpath.open('w');server=subprocess.Popen(['java','-Xms512M','-Xmx2G','-jar','paper.jar','nogui'],cwd=WORK,stdin=subprocess.PIPE,stdout=log,stderr=subprocess.STDOUT)
  wait_for(lambda:'Done (' in logpath.read_text(errors='replace'),300,'server startup');send('op ZapVisual');time.sleep(1)
  clientlog=(REPORT/'client-console.log').open('w');client=subprocess.Popen(command,cwd=vanilla.GAME,stdout=clientlog,stderr=subprocess.STDOUT)
- wait_for(lambda:(WORK/'visual-anvil').exists(),240,'resource pack and login screen');time.sleep(2)
+ watch_stop=threading.Event()
+ def watch():
+  try:
+   d=display.Display(os.environ['DISPLAY']);sc=d.screen();r=sc.root
+   while not watch_stop.wait(8):
+    px=r.get_image(0,0,sc.width_in_pixels,sc.height_in_pixels,X.ZPixmap,0xffffffff);Image.frombytes('RGB',(sc.width_in_pixels,sc.height_in_pixels),px.data,'raw','BGRX').save(REPORT/'00-awaiting.png')
+   d.close()
+  except Exception as error:print('Visual watchdog:',error,flush=True)
+ threading.Thread(target=watch,daemon=True).start()
+ wait_for(lambda:(WORK/'visual-anvil').exists(),240,'resource pack and login screen');watch_stop.set();time.sleep(2)
  connection=display.Display(os.environ['DISPLAY']);screen=connection.screen();root=screen.root
  def capture(name):
   pix=root.get_image(0,0,screen.width_in_pixels,screen.height_in_pixels,X.ZPixmap,0xffffffff);Image.frombytes('RGB',(screen.width_in_pixels,screen.height_in_pixels),pix.data,'raw','BGRX').save(REPORT/name)
@@ -66,6 +75,7 @@ try:
 except Exception as e:
  (REPORT/'result.json').write_text(json.dumps({'status':'FAIL','error':str(e)},ensure_ascii=False,indent=2));raise
 finally:
+ if watch_stop is not None:watch_stop.set()
  if client is not None and client.poll() is None:client.terminate();client.wait(timeout=20)
  if server is not None and server.poll() is None:
   try:server.communicate(b'stop\n',timeout=40)

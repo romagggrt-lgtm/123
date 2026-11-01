@@ -6,7 +6,7 @@ import net.kyori.adventure.text.format.NamedTextColor;
 
 /** Isolated resource-pack font; never overrides the vanilla Minecraft font. */
 final class GuiTheme {
- static final String DEFAULT_PACK_SHA1="64baa1f393ec010696c9c28f989d39228b1d1301";
+ static final String DEFAULT_PACK_SHA1="fc453bfa21c5a393f56a38d38b20644836771f42";
  private static final Key FONT=Key.key("z_ap","gui"),DEFAULT=Key.key("minecraft","default");
  private GuiTheme(){}
  private static Component glyph(String text){return Component.text(text).font(FONT).color(NamedTextColor.WHITE);}

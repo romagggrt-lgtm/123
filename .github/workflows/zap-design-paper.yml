@@ -42,7 +42,8 @@ jobs:
             ap/target/visual-client/client.jar
             ap/target/visual-client/assets
             ap/target/visual-client/libraries
-          key: minecraft-1.21.11-gui-asset-v1
+          key: minecraft-1.21.11-gui-asset-v2
+          restore-keys: minecraft-1.21.11-gui-asset-v1
       - name: Capture unmodified Minecraft with server pack
         env:
           LIBGL_ALWAYS_SOFTWARE: '1'

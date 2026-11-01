@@ -28,6 +28,16 @@ def backdrop(width,height,title):
  logo(d,6,3,.7);text(d,(17,5),'Z_AP',5.5,'#ede6ff',True);text(d,(34,5),'│  '+title,4.4,'#a59acb')
  return im,d
 def slot_outline(d,x,y):rect(d,(x-1,y-1,x+16,y+16),'#11162a','#2f3057',r=2)
+def punch_slots(im,slots):
+ # Container labels are drawn after item stacks. Transparent windows let the
+ # actual items and hover highlights remain visible and clickable.
+ alpha=im.getchannel('A');d=ImageDraw.Draw(alpha)
+ for x,y in slots:d.rectangle((x*S,y*S,(x+16)*S-1,(y+16)*S-1),fill=0)
+ im.putalpha(alpha);return im
+
+def inventory_slots(top):
+ return [(8+18*c,top+18*r) for r in range(3) for c in range(9)]+[(8+18*c,top+58) for c in range(9)]
+
 def make_home():
  im,d=backdrop(176,222,'ADMIN PANEL')
  rect(d,(3,17,48,126),'#090c1b','#292142',r=2)
@@ -45,7 +55,8 @@ def make_home():
  for row in range(3):
   for col in range(9):slot_outline(d,8+col*18,140+row*18)
  for col in range(9):slot_outline(d,8+col*18,198)
- return im
+ indexes=[0,3,5,7,9,18,21,23,25,27,36,39,41,43,45]
+ return punch_slots(im,[(8+18*(i%9),18+18*(i//9)) for i in indexes]+inventory_slots(140))
 def make_generic():
  im,d=backdrop(176,222,'')
  rect(d,(3,17,172,127),'#0c1023','#392d59',r=2)
@@ -55,7 +66,7 @@ def make_generic():
  for row in range(3):
   for col in range(9):slot_outline(d,8+col*18,140+row*18)
  for col in range(9):slot_outline(d,8+col*18,198)
- return im
+ return punch_slots(im,[(8+18*c,18+18*r) for r in range(6) for c in range(9)]+inventory_slots(140))
 def make_anvil():
  im,d=backdrop(176,166,'')
  rect(d,(3,17,172,80),'#0c1023','#59407d',r=3)
@@ -64,11 +75,11 @@ def make_anvil():
  rect(d,(60,21,169,38),'#0e1429','#9262f5',r=2)
  for x in [27,76,134]:slot_outline(d,x,47)
  text(d,(48,67),'НАЖМИТЕ БУМАГУ ДЛЯ ПОДТВЕРЖДЕНИЯ',3.5,'#b7a5d4')
- rect(d,(3,82,172,162),'#0b0e20','#2d2546',r=2);text(d,(8,84),'ИНВЕНТАРЬ',4.2,'#9d94af',True)
+ rect(d,(3,82,172,162),'#0b0e20','#2d2546',r=2);text(d,(8,76),'ИНВЕНТАРЬ',4.2,'#9d94af',True)
  for row in range(3):
   for col in range(9):slot_outline(d,8+col*18,84+row*18)
  for col in range(9):slot_outline(d,8+col*18,142)
- return im
+ return punch_slots(im,[(27,47),(76,47),(134,47)]+inventory_slots(84))
 def make_welcome():
  # User-supplied reference: crop away the reference's numbered heading while
  # keeping the original city, logo and welcome message.
@@ -85,7 +96,7 @@ make_generic().save(assets/'generic.png');make_anvil().save(assets/'anvil.png');
 providers=[{'type':'space','advances':{'\ue000':-8,'\ue001':-136,'\ue002':-60,'\ue003':-136,'\ue004':-176,'\ue005':-1,'\ue006':-96}}]
 additions={}
 for name,start_code,rows in [('home_0',0xe100,4),('home_1',0xe110,4),('home_2',0xe120,4),('generic',0xe130,4),('anvil',0xe140,3)]:
- im=Image.open(assets/f'{name}.png').convert('RGBA').resize((704,rows*224),Image.Resampling.LANCZOS)
+ im=Image.open(assets/f'{name}.png').convert('RGBA');canvas=Image.new('RGBA',(704,rows*224));canvas.alpha_composite(im,(0,0));im=canvas
  for row in range(rows):
   strip=im.crop((0,row*224,704,(row+1)*224));file=f'{name}_row{row}'
   # Keep the right edge of each cell non-zero so the advance is exactly 45px.

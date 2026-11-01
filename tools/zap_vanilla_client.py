@@ -47,7 +47,7 @@ def prepare():
     index=metadata['assetIndex'];indexfile=GAME/'assets/indexes'/str(index['id']+'.json');fetch(index,indexfile)
     assets=json.loads(indexfile.read_text())['objects']
     for key,record in assets.items():
-        if not key.endswith(('.json','.png')):continue
+        if key.endswith(('.ogg','.mp3')):continue
         digest=record['hash'];jobs.append(({'url':f'https://resources.download.minecraft.net/{digest[:2]}/{digest}','sha1':digest},GAME/'assets/objects'/digest[:2]/digest))
     with ThreadPoolExecutor(max_workers=16) as pool:list(pool.map(lambda task:fetch(*task),jobs))
     natives=GAME/'natives';natives.mkdir(exist_ok=True)
