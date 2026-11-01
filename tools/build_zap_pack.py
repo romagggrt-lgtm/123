@@ -2,7 +2,7 @@ from pathlib import Path
 from PIL import Image,ImageDraw
 import json,zipfile,io,hashlib
 root=Path(__file__).resolve().parents[1]
-source=root/'dist/Z_Server_Pack_1.09.zip';output=root/'dist/Z_Server_Pack_1.10.zip'
+source=root/'dist/Z_Server_Pack_1.09.zip';output=root/'dist/Z_Server_Pack_1.10.zip';assets=(root/'ap/assets' if (root/'ap/assets').is_dir() else root/'assets');assets.mkdir(parents=True,exist_ok=True)
 icons=['players','teleport','mode','morph','kits','nick','vanish','banya','world','region','settings','back','home','close','next','search','refresh','summon','confirm','speed']
 S=4
 for name in icons:
@@ -44,7 +44,7 @@ for name in icons:
   d.arc((7*S,7*S,25*S,25*S),20,300,fill=light,width=2*S);d.polygon([(23*S,7*S),(26*S,14*S),(19*S,12*S)],fill=purple)
  elif name=='speed':
   line([(9,7),(23,7),(17,14),(23,14),(11,25),(14,17),(8,17)],light,2)
- im.resize((32,32),Image.Resampling.LANCZOS).save(root/'ap/assets'/f'{name}.png')
+ im.resize((32,32),Image.Resampling.LANCZOS).save(assets/f'{name}.png')
 with zipfile.ZipFile(source) as old,zipfile.ZipFile(output,'w',zipfile.ZIP_DEFLATED,compresslevel=9) as out:
  existing=set(old.namelist())
  for info in old.infolist():
@@ -53,7 +53,7 @@ with zipfile.ZipFile(source) as old,zipfile.ZipFile(output,'w',zipfile.ZIP_DEFLA
    meta=json.loads(b);meta['pack']['description']='Z_Server_Pack 1.10 | Z_AP + существующие плагины | 1.21.11';b=json.dumps(meta,ensure_ascii=False,separators=(',',':')).encode()
   out.writestr(info,b)
  for name in icons:
-  entries={f'assets/z_ap/textures/item/{name}.png':(root/'ap/assets'/f'{name}.png').read_bytes(),f'assets/z_ap/models/item/{name}.json':json.dumps({'parent':'minecraft:item/generated','textures':{'layer0':'z_ap:item/'+name}},separators=(',',':')).encode(),f'assets/z_ap/items/{name}.json':json.dumps({'model':{'type':'minecraft:model','model':'z_ap:item/'+name}},separators=(',',':')).encode()}
+  entries={f'assets/z_ap/textures/item/{name}.png':(assets/f'{name}.png').read_bytes(),f'assets/z_ap/models/item/{name}.json':json.dumps({'parent':'minecraft:item/generated','textures':{'layer0':'z_ap:item/'+name}},separators=(',',':')).encode(),f'assets/z_ap/items/{name}.json':json.dumps({'model':{'type':'minecraft:model','model':'z_ap:item/'+name}},separators=(',',':')).encode()}
   for path,data in entries.items():
    if path in existing:raise SystemExit('Resource collision: '+path)
    out.writestr(path,data)
