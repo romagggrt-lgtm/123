@@ -2,7 +2,7 @@ name: Z_AP
 version: 1.0.0
 main: dev.zap.ZAPPlugin
 api-version: '1.21.11'
-softdepend: [Z_Morph, InventoryCache, Z_Nick, Nevidimka, Z_Banya, Z_Check, Z_RG, WorldEdit, LuckPerms, TAB]
+softdepend: [LibsDisguises, Z_Morph, InventoryCache, Z_Nick, Nevidimka, Z_Banya, Z_Check, Z_RG, WorldEdit, LuckPerms, TAB]
 commands:
   ap:
     aliases: [zap]

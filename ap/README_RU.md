@@ -40,7 +40,7 @@ require-resource-pack=false
 
 ## Сборка
 
-Установите Java 21 и Maven и выполните `mvn clean verify` в каталоге исходников. BCrypt упакован внутрь JAR; Paper API остаётся внешним. Результат: `target/Z_AP-1.0.0.jar`.
+Установите Java 21 и Maven. Скачайте официальный LibsDisguises по ссылке в инструкции Z_Morph и добавьте его в локальный Maven-репозиторий: `mvn install:install-file -Dfile=LibsDisguises-26.10.24-Github.jar -DgroupId=me.libraryaddict.disguises -DartifactId=libsdisguises -Dversion=26.10.24 -Dpackaging=jar -DgeneratePom=true`. Затем выполните `mvn clean verify` в каталоге исходников. BCrypt упакован внутрь JAR; Paper API и LibsDisguises остаются внешними. Без LibsDisguises панель запускается, но морф недоступен. Результат: `target/Z_AP-1.0.0.jar`.
 
 ## Проверено
 
