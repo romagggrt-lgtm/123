@@ -75,6 +75,8 @@ try:
  click(604,190);wait_for(lambda:int((WORK/'visual-chest-count').read_text())>=2,12,'mode card click');time.sleep(1);capture('06-modes.png');click(568,262);wait_for(lambda:(WORK/'visual-mode').exists() and (WORK/'visual-mode').read_text()=='CREATIVE',12,'clickable mode label');time.sleep(.6);capture('07-after-mode.png')
  assert '324657' not in logpath.read_text(errors='replace'),'Password leaked to server log'
  result={'status':'PASS','paper_build':metadata['id'],'client':'official unmodified Minecraft 1.21.11','resource_pack_sha1':digest,'checks':['wrong_password_rejected','correct_password_accepted','password_not_logged','menu_opened','mode_label_click'],'captures':['01-dialog.png','02-filled-wrong.png','03-filled-correct.png','04-welcome.png','05-home.png','06-modes.png','07-after-mode.png']}
+ shutil.copyfile(ROOT/'ap/target/Z_AP-1.1.1.jar',REPORT/'tested-plugin.jar')
+ result['plugin_sha256']=hashlib.sha256((REPORT/'tested-plugin.jar').read_bytes()).hexdigest()
  (REPORT/'result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2))
 except Exception as e:
  (REPORT/'result.json').write_text(json.dumps({'status':'FAIL','error':str(e)},ensure_ascii=False,indent=2));raise

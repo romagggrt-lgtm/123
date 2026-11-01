@@ -91,7 +91,7 @@ public final class ZAPPlugin extends JavaPlugin implements Listener,CommandExecu
   },ClickCallback.Options.builder().uses(1).lifetime(Duration.ofMinutes(5)).build());
   var dialog=Dialog.create(factory->factory.empty()
    .base(DialogBase.builder(Component.text("Z_AP  •  "+title,PURPLE))
-    .canCloseWithEscape(true).pause(false).afterAction(DialogBase.DialogAfterAction.WAIT_FOR_RESPONSE)
+    .canCloseWithEscape(true).pause(false).afterAction(DialogBase.DialogAfterAction.CLOSE)
     .body(List.of(DialogBody.plainMessage(Component.text("Введите текст и нажмите «Подтвердить».",NamedTextColor.GRAY))))
     .inputs(List.of(DialogInput.text("value",Component.text(title,NamedTextColor.WHITE)).width(220).initial("").maxLength(128).build())).build())
    .type(DialogType.notice(ActionButton.builder(Component.text("Подтвердить",NamedTextColor.LIGHT_PURPLE)).width(220).action(callback).build())));
