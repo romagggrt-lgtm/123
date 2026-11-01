@@ -6,7 +6,7 @@ import net.kyori.adventure.text.format.NamedTextColor;
 
 /** Isolated resource-pack font; never overrides the vanilla Minecraft font. */
 final class GuiTheme {
- static final String DEFAULT_PACK_SHA1="fc453bfa21c5a393f56a38d38b20644836771f42";
+ static final String DEFAULT_PACK_SHA1="416c182d7ada2ea49a4b7a4570f44946a67af84f";
  private static final Key FONT=Key.key("z_ap","gui"),DEFAULT=Key.key("minecraft","default");
  private GuiTheme(){}
  private static Component glyph(String text){return Component.text(text).font(FONT).color(NamedTextColor.WHITE);}
@@ -19,11 +19,12 @@ final class GuiTheme {
   return b.toString();
  }
  static Component chest(String kind,String title,int frame){
-  boolean home=kind.equals("home");int first=home?0xe100+Math.clamp(frame,0,2)*16:0xe130;
+  boolean home=kind.equals("home");int first=home?0xe100+Math.clamp(frame,0,2)*16:kind.equals("players")||kind.equals("morph")?0xe160:kind.equals("modes")?0xe170:0xe130;
   Component image=glyph(image(first,4,'\ue000'));if(home)return image;
   String label=title.length()>20?title.substring(0,19)+"…":title;
   return image.append(glyph("\ue001")).append(Component.text(label,NamedTextColor.WHITE).font(DEFAULT));
  }
+ static Component homeBadge(int online,int max){return glyph("\ue007").append(Component.text(online+"/"+max,NamedTextColor.GREEN).font(DEFAULT));}
  static Component anvil(String title){String label=title.length()>20?title.substring(0,19)+"…":title;return glyph(image(0xe140,3,'\ue002')+"\ue003").append(Component.text(label,NamedTextColor.WHITE).font(DEFAULT));}
  static Component welcome(){return glyph("\ue150\ue005\ue151\ue005\ue006\ue152\ue005\ue153\ue005");}
 }

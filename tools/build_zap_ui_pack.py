@@ -50,23 +50,39 @@ def make_home():
  labels=[('РЕЖИМ','МОРФЫ','НАБОРЫ'),('НИК','НЕВИДИМКА','БАНЯ'),('ИГРОКИ','ТЕЛЕПОРТ','РЕГИОНЫ')]
  for row,arr in enumerate(labels):
   for col,label in enumerate(arr):text(d,(69+col*36,44+row*36),label,3.7,'#dad2ee',anchor='mm')
- rect(d,(3,129,172,218),'#0b0e20','#2d2546',r=2)
- text(d,(8,132),'ИНВЕНТАРЬ',4.3,'#a79dbd',True)
- for row in range(3):
-  for col in range(9):slot_outline(d,8+col*18,140+row*18)
- for col in range(9):slot_outline(d,8+col*18,198)
+ rect(d,(3,129,86,216),'#0b0e20','#393058',r=2);rect(d,(89,129,172,216),'#0b0e20','#393058',r=2)
+ text(d,(8,135),'ИНФОРМАЦИЯ',4.6,'#eee4ff',True);text(d,(8,150),'Профиль администратора',4.2,'#c1b3da')
+ text(d,(8,161),'Мир, режим и онлайн:',4.1,'#9389ae');text(d,(8,170),'наведите на «Главная»',4.1,'#9389ae')
+ text(d,(94,135),'ПОЛЕЗНЫЕ КОМАНДЫ',4.6,'#eee4ff',True);text(d,(94,151),'/ap  — открыть панель',4.1,'#b5a9ce')
+ text(d,(94,163),'/ap lock  — закрыть',4.1,'#b5a9ce');text(d,(94,181),'●  Сессия защищена',4.0,'#ad8fff')
+ text(d,(8,194),'Инвентарь доступен',3.8,'#807899');text(d,(8,204),'после закрытия меню',3.8,'#807899')
  indexes=[0,3,5,7,9,18,21,23,25,27,36,39,41,43,45]
- return punch_slots(im,[(8+18*(i%9),18+18*(i//9)) for i in indexes]+inventory_slots(140))
-def make_generic():
+ return punch_slots(im,[(8+18*(i%9),18+18*(i//9)) for i in indexes])
+def make_generic(list_mode=False):
  im,d=backdrop(176,222,'')
  rect(d,(3,17,172,127),'#0c1023','#392d59',r=2)
  for row in range(6):
   for col in range(9):slot_outline(d,8+col*18,18+row*18)
- rect(d,(3,129,172,218),'#0b0e20','#2d2546',r=2);text(d,(8,132),'ИНВЕНТАРЬ',4.3,'#a79dbd',True)
- for row in range(3):
-  for col in range(9):slot_outline(d,8+col*18,140+row*18)
- for col in range(9):slot_outline(d,8+col*18,198)
- return punch_slots(im,[(8+18*c,18+18*r) for r in range(6) for c in range(9)]+inventory_slots(140))
+ rect(d,(3,129,172,218),'#0b0e20','#393058',r=2)
+ text(d,(9,137),'Z_AP  •  ADMIN PANEL',5.4,'#eee4ff',True)
+ text(d,(9,154),'Выберите нужное действие выше.',4.5,'#bcb0d3')
+ text(d,(9,166),'Наведите курсор на значок для подробностей.',4.1,'#968caf')
+ text(d,(9,190),'Назад  •  Главная  •  Закрыть',4.1,'#aa93d3')
+ text(d,(9,204),'Инвентарь доступен после закрытия меню',3.8,'#807899')
+ visible=([10+9*r+c for r in range(4) for c in range(7)]+[45,46,47,48,49,50,52,53]) if list_mode else [4,19,20,21,22,23,24,25,29,31,33,45,49,53]
+ return punch_slots(im,[(8+18*(i%9),18+18*(i//9)) for i in visible])
+def make_modes():
+ im,d=backdrop(176,222,'')
+ rect(d,(3,17,172,127),'#0c1023','#392d59',r=2)
+ for row,label in enumerate(('ВЫЖИВАНИЕ','ТВОРЧЕСКИЙ','ПРИКЛЮЧЕНИЕ','НАБЛЮДАТЕЛЬ')):
+  y=35+row*18;rect(d,(8,y,168,y+17),'#12172e','#55427f',r=2);text(d,(48,y+6),label,4.5,'#e9dfff',True)
+ for i in (45,49,53):slot_outline(d,8+18*(i%9),18+18*(i//9))
+ rect(d,(3,129,172,218),'#0b0e20','#393058',r=2)
+ text(d,(9,137),'РЕЖИМ ИГРЫ',5.2,'#eee4ff',True)
+ text(d,(9,154),'Нажмите на нужный режим.',4.5,'#bcb0d3')
+ text(d,(9,166),'Текущий режим выделен значком.',4.1,'#968caf')
+ text(d,(9,202),'Инвентарь доступен после закрытия меню',3.8,'#807899')
+ return punch_slots(im,[(8+18*(i%9),18+18*(i//9)) for i in (10,19,28,37,45,49,53)])
 def make_anvil():
  im,d=backdrop(176,166,'')
  rect(d,(3,17,172,80),'#0c1023','#59407d',r=3)
@@ -75,11 +91,12 @@ def make_anvil():
  rect(d,(60,21,169,38),'#0e1429','#9262f5',r=2)
  for x in [27,76,134]:slot_outline(d,x,47)
  text(d,(48,67),'НАЖМИТЕ БУМАГУ ДЛЯ ПОДТВЕРЖДЕНИЯ',3.5,'#b7a5d4')
- rect(d,(3,82,172,162),'#0b0e20','#2d2546',r=2);text(d,(8,76),'ИНВЕНТАРЬ',4.2,'#9d94af',True)
- for row in range(3):
-  for col in range(9):slot_outline(d,8+col*18,84+row*18)
- for col in range(9):slot_outline(d,8+col*18,142)
- return punch_slots(im,[(27,47),(76,47),(134,47)]+inventory_slots(84))
+ rect(d,(3,82,172,162),'#0b0e20','#393058',r=2)
+ text(d,(10,91),'ЗАЩИЩЁННЫЙ ДОСТУП',5.1,'#e6dbfc',True)
+ text(d,(10,108),'Введите текст в поле сверху.',4.5,'#b7a9d0')
+ text(d,(10,120),'Затем нажмите бумагу слева.',4.5,'#b7a9d0')
+ text(d,(10,144),'Инвентарь сохранён и доступен после закрытия.',3.9,'#817899')
+ return punch_slots(im,[(27,47),(76,47),(134,47)])
 def make_welcome():
  # User-supplied reference: crop away the reference's numbered heading while
  # keeping the original city, logo and welcome message.
@@ -90,12 +107,12 @@ def make_welcome():
 home=make_home();home.save(assets/'home.png')
 for i,opacity in enumerate((.42,.72,1.0)):
  im=home.copy();im.putalpha(im.getchannel('A').point(lambda a:round(a*opacity)));im.save(assets/f'home_{i}.png')
-make_generic().save(assets/'generic.png');make_anvil().save(assets/'anvil.png');make_welcome().save(assets/'welcome.png')
+make_generic().save(assets/'generic.png');make_generic(True).save(assets/'generic_list.png');make_modes().save(assets/'modes.png');make_anvil().save(assets/'anvil.png');make_welcome().save(assets/'welcome.png')
 # Minecraft stores each baked font glyph in a 256x256 atlas. Split the
 # high-resolution artwork into 176x224 cells so it remains sharp and valid.
-providers=[{'type':'space','advances':{'\ue000':-8,'\ue001':-136,'\ue002':-60,'\ue003':-136,'\ue004':-176,'\ue005':-1,'\ue006':-96}}]
+providers=[{'type':'space','advances':{'\ue000':-8,'\ue001':-136,'\ue002':-60,'\ue003':-136,'\ue004':-176,'\ue005':-1,'\ue006':-96,'\ue007':-50}}]
 additions={}
-for name,start_code,rows in [('home_0',0xe100,4),('home_1',0xe110,4),('home_2',0xe120,4),('generic',0xe130,4),('anvil',0xe140,3)]:
+for name,start_code,rows in [('home_0',0xe100,4),('home_1',0xe110,4),('home_2',0xe120,4),('generic',0xe130,4),('anvil',0xe140,3),('generic_list',0xe160,4),('modes',0xe170,4)]:
  im=Image.open(assets/f'{name}.png').convert('RGBA');canvas=Image.new('RGBA',(704,rows*224));canvas.alpha_composite(im,(0,0));im=canvas
  for row in range(rows):
   strip=im.crop((0,row*224,704,(row+1)*224));file=f'{name}_row{row}'

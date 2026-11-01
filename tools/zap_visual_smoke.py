@@ -41,7 +41,7 @@ try:
  with ZipFile(plugins/'Z_AP_VisualQA.jar','w') as z:
   for path in classes.rglob('*.class'):z.write(path,str(path.relative_to(classes)))
   z.writestr('plugin.yml',"name: Z_AP_VisualQA\nversion: 1.0.0\nmain: dev.zap.qa.VisualProbe\napi-version: '1.21.11'\ndepend: [Z_AP]\n")
- pack=ROOT/'dist/Z_Server_Pack_1.11.zip';digest=hashlib.sha1(pack.read_bytes()).hexdigest();(WORK/'eula.txt').write_text('eula=true\n');(WORK/'server.properties').write_text('server-ip=127.0.0.1\nserver-port=25596\nonline-mode=false\nspawn-protection=0\nview-distance=4\nsimulation-distance=4\nlevel-type=minecraft:flat\nresource-pack=http://127.0.0.1:25597/'+pack.name+'\nresource-pack-sha1='+digest+'\nrequire-resource-pack=true\n')
+ pack=ROOT/'dist/Z_Server_Pack_1.11.zip';digest=hashlib.sha1(pack.read_bytes()).hexdigest();(WORK/'eula.txt').write_text('eula=true\n');(WORK/'server.properties').write_text('server-ip=127.0.0.1\nserver-port=25596\nonline-mode=false\nspawn-protection=0\nview-distance=4\nsimulation-distance=4\nlevel-type=minecraft:flat\ndifficulty=peaceful\nresource-pack=http://127.0.0.1:25597/'+pack.name+'\nresource-pack-sha1='+digest+'\nrequire-resource-pack=true\n')
  http=ThreadingHTTPServer(('127.0.0.1',25597),partial(SimpleHTTPRequestHandler,directory=str(pack.parent)))
  import threading;threading.Thread(target=http.serve_forever,daemon=True).start()
  logpath=REPORT/'server.log';log=logpath.open('w');server=subprocess.Popen(['java','-Xms512M','-Xmx2G','-jar','paper.jar','nogui'],cwd=WORK,stdin=subprocess.PIPE,stdout=log,stderr=subprocess.STDOUT)
@@ -56,7 +56,7 @@ try:
    d.close()
   except Exception as error:print('Visual watchdog:',error,flush=True)
  threading.Thread(target=watch,daemon=True).start()
- wait_for(lambda:(WORK/'visual-anvil').exists(),240,'resource pack and login screen');watch_stop.set();time.sleep(2)
+ wait_for(lambda:(WORK/'visual-anvil').exists(),240,'resource pack and login screen');assert (WORK/'visual-anvil-themed').exists(),'Server did not select resource-pack anvil theme';watch_stop.set();time.sleep(2)
  connection=display.Display(os.environ['DISPLAY']);screen=connection.screen();root=screen.root
  def capture(name):
   pix=root.get_image(0,0,screen.width_in_pixels,screen.height_in_pixels,X.ZPixmap,0xffffffff);Image.frombytes('RGB',(screen.width_in_pixels,screen.height_in_pixels),pix.data,'raw','BGRX').save(REPORT/name)
@@ -68,9 +68,9 @@ try:
  capture('01-login.png');click(605,254);time.sleep(.2);key('Control_L');tap('a');key('Control_L',False)
  for char in '324657':tap(char)
  time.sleep(.4);capture('02-login-filled.png');click(534,304);time.sleep(.55);capture('03-welcome.png')
- wait_for(lambda:(WORK/'visual-chest-count').exists() and int((WORK/'visual-chest-count').read_text())>=3,20,'animated home');time.sleep(1);capture('04-home.png')
- click(604,190);time.sleep(1.2);capture('05-modes.png')
- result={'status':'CAPTURED','paper_build':metadata['id'],'client':'official unmodified Minecraft 1.21.11','resource_pack_sha1':digest,'captures':['01-login.png','02-login-filled.png','03-welcome.png','04-home.png','05-modes.png'],'manual_visual_review_required':True}
+ wait_for(lambda:(WORK/'visual-chest-count').exists() and int((WORK/'visual-chest-count').read_text())>=3,20,'animated home');assert (WORK/'visual-home-themed').exists(),'Server did not select final themed home';time.sleep(1);capture('04-home.png')
+ click(604,190);wait_for(lambda:int((WORK/'visual-chest-count').read_text())>=4,12,'mode card click');time.sleep(1.0);capture('05-modes.png');click(568,262);wait_for(lambda:(WORK/'visual-mode').exists() and (WORK/'visual-mode').read_text()=='CREATIVE',12,'clickable mode label');time.sleep(.6);capture('06-after-mode.png')
+ result={'status':'CAPTURED','paper_build':metadata['id'],'client':'official unmodified Minecraft 1.21.11','resource_pack_sha1':digest,'captures':['01-login.png','02-login-filled.png','03-welcome.png','04-home.png','05-modes.png','06-after-mode.png'],'manual_visual_review_required':True}
  (REPORT/'result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2))
 except Exception as e:
  (REPORT/'result.json').write_text(json.dumps({'status':'FAIL','error':str(e)},ensure_ascii=False,indent=2));raise
