@@ -2,3 +2,20 @@ session-idle-seconds: 600
 max-failures: 5
 lock-seconds: 900
 bcrypt-cost: 10
+# Укажите false, чтобы отключить раздел и связанные с ним действия.
+sections:
+  morph: true
+  kits: true
+  nick: true
+  vanish: true
+  banya: true
+  gamemode: true
+  players: true
+  teleport: true
+  summon: true
+  speed: true
+  world: true
+  regions: true
+  worldedit: true
+  moderation: true
+  settings: true

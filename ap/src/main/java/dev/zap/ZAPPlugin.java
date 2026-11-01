@@ -37,7 +37,7 @@ public final class ZAPPlugin extends JavaPlugin implements Listener,CommandExecu
  private void msg(Player p,String text){String key=switch(text){case "§cНедостаточно прав."->"no-access";case "§cСлишком много неверных попыток. Повторите позже."->"locked";case "§eСессия завершена. Войдите снова."->"expired";default->null;};if(key!=null)text=messages.getString(key,text);String prefix=messages.getString("prefix","§8[§dZ_AP§8] §r");p.sendMessage(LegacyComponentSerializer.legacySection().deserialize(prefix+text));}
  private void reapSessions(){long now=System.currentTimeMillis(),timeout=Math.clamp(getConfig().getInt("session-idle-seconds",600),30,86400)*1000L;for(var entry:new ArrayList<>(sessions.entrySet())){Player p=Bukkit.getPlayer(entry.getKey());if(p==null||!access(p)||now-entry.getValue()>timeout){sessions.remove(entry.getKey());if(p!=null&&screen(p,p.getOpenInventory().getTopInventory())!=null){p.closeInventory();msg(p,"§eСессия завершена. Войдите снова.");}}}}
  private boolean access(Player p){return p.hasPermission("z_ap.use");}
- private boolean allowed(Player p,String action){if(!access(p)||!p.hasPermission("z_ap.actions."+action)){msg(p,"§cНедостаточно прав.");return false;}return true;}
+ private boolean allowed(Player p,String action){if(!getConfig().getBoolean("sections."+action,true)){msg(p,"§cЭтот раздел отключён в конфигурации.");return false;}if(!access(p)||!p.hasPermission("z_ap.actions."+action)){msg(p,"§cНедостаточно прав.");return false;}return true;}
  private boolean live(Player p){Long t=sessions.get(p.getUniqueId());long now=System.currentTimeMillis(),timeout=Math.clamp(getConfig().getInt("session-idle-seconds",600),30,86400)*1000L;if(!access(p)||t==null||now-t>timeout){sessions.remove(p.getUniqueId());return false;}sessions.put(p.getUniqueId(),now);return true;}
  @Override public boolean onCommand(CommandSender sender,Command cmd,String label,String[] args){
   if(!(sender instanceof Player p)){sender.sendMessage("Команда доступна только игроку.");return true;}
@@ -52,11 +52,12 @@ public final class ZAPPlugin extends JavaPlugin implements Listener,CommandExecu
  private Screen chest(Player p,String title,String type){Screen h=new Screen(p,type);h.inventory=Bukkit.createInventory(h,54,Component.text(title,PURPLE));ItemStack glass=item(Material.BLACK_STAINED_GLASS_PANE," ",null);for(int i=0;i<54;i++)h.inventory.setItem(i,glass);return h;}
  private ItemStack item(Material type,String name,String icon,String... lore){ItemStack i=new ItemStack(type);i.editMeta(m->{m.displayName(Component.text(name,PURPLE));if(lore.length>0)m.lore(Arrays.stream(lore).map(s->Component.text(s,NamedTextColor.GRAY)).toList());if(icon!=null)m.setItemModel(new NamespacedKey("z_ap",icon));});return i;}
  private void button(Screen h,int slot,Material mat,String name,String icon,Consumer<Player> action,String... lore){h.inventory.setItem(slot,item(mat,name,packed.contains(h.owner)?icon:null,lore));h.actions.put(slot,action);}
+ private void integrationButton(Screen h,int slot,Material mat,String name,String icon,String plugin,Consumer<Player> action){if(installed(plugin))button(h,slot,mat,name,icon,action);else button(h,slot,Material.GRAY_DYE,name+" • недоступен",null,p->msg(p,"§cПлагин "+plugin+" не установлен или не включён."));}
  private void open(Player p,Screen h){p.openInventory(h.inventory);}
  private void navigation(Screen h){button(h,45,Material.ARROW,"Назад","back",this::home);button(h,49,Material.NETHER_STAR,"Главная","home",this::home);button(h,53,Material.BARRIER,"Закрыть","close",Player::closeInventory);}
  private void login(Player p){if(auth.locked(p.getUniqueId(),System.currentTimeMillis())){msg(p,"§cСлишком много неверных попыток. Повторите позже.");return;}input(p,"Введите пароль","auth",password->verify(p,password));}
  private Screen screen(Player p,Inventory inv){if(inv.getHolder() instanceof Screen h)return h;Screen h=inputs.get(p.getUniqueId());return h!=null&&h.inventory.equals(inv)?h:null;}
- private void input(Player p,String title,String kind,Consumer<String> submit){Screen h=new Screen(p,kind);AnvilView view=MenuType.ANVIL.builder().title(Component.text(title,PURPLE)).checkReachable(false).build(p);h.inventory=view.getTopInventory();h.input=submit;inputs.put(p.getUniqueId(),h);p.openInventory(view);h.inventory.setItem(0,item(Material.PAPER,"Введите текст",null,"Введите текст в верхнем поле, затем нажмите этот предмет."));}
+ private void input(Player p,String title,String kind,Consumer<String> submit){Screen h=new Screen(p,kind);AnvilView view=MenuType.ANVIL.builder().title(Component.text(title,PURPLE)).checkReachable(false).build(p);h.inventory=view.getTopInventory();h.input=submit;p.openInventory(view);inputs.put(p.getUniqueId(),h);h.inventory.setItem(0,item(Material.PAPER,"Введите текст",null,"Введите текст в верхнем поле, затем нажмите этот предмет."));}
  private void verify(Player p,String password){
   UUID id=p.getUniqueId();if(!access(p)||auth.locked(id,System.currentTimeMillis())||!pending.add(id))return;
   Screen screen=screen(p,p.getOpenInventory().getTopInventory());long g=generation;String expected=auth.currentHash();
@@ -78,8 +79,8 @@ public final class ZAPPlugin extends JavaPlugin implements Listener,CommandExecu
   long now=System.currentTimeMillis();if(now-lastClick.getOrDefault(p.getUniqueId(),0L)<200)return;lastClick.put(p.getUniqueId(),now);Consumer<Player> action=h.actions.get(e.getRawSlot());if(action!=null)action.accept(p);
  }
  @EventHandler public void drag(InventoryDragEvent e){if(e.getWhoClicked() instanceof Player p&&screen(p,e.getView().getTopInventory())!=null)e.setCancelled(true);}
- @EventHandler public void close(InventoryCloseEvent e){if(e.getPlayer() instanceof Player p){Screen h=inputs.get(p.getUniqueId());if(h!=null&&h.inventory.equals(e.getInventory()))inputs.remove(p.getUniqueId());}}
- @EventHandler public void quit(PlayerQuitEvent e){UUID id=e.getPlayer().getUniqueId();sessions.remove(id);lastClick.remove(id);packed.remove(id);inputs.remove(id);}
+ @EventHandler public void close(InventoryCloseEvent e){if(e.getPlayer() instanceof Player p){Screen h=inputs.get(p.getUniqueId());if(h!=null&&h.inventory.equals(e.getInventory())){h.inventory.clear();inputs.remove(p.getUniqueId());}}}
+ @EventHandler public void quit(PlayerQuitEvent e){UUID id=e.getPlayer().getUniqueId();sessions.remove(id);lastClick.remove(id);packed.remove(id);Screen h=inputs.remove(id);if(h!=null)h.inventory.clear();}
  @EventHandler public void pack(PlayerResourcePackStatusEvent e){if(e.getStatus()==PlayerResourcePackStatusEvent.Status.SUCCESSFULLY_LOADED)packed.add(e.getPlayer().getUniqueId());else if(e.getStatus()==PlayerResourcePackStatusEvent.Status.DECLINED||e.getStatus()==PlayerResourcePackStatusEvent.Status.FAILED_DOWNLOAD)packed.remove(e.getPlayer().getUniqueId());}
  private boolean installed(String plugin){return Bukkit.getPluginManager().isPluginEnabled(plugin);}
  private void external(Player p,String action,String plugin,String perm,String command){
@@ -93,11 +94,11 @@ public final class ZAPPlugin extends JavaPlugin implements Listener,CommandExecu
   button(h,10,Material.PLAYER_HEAD,"Игроки","players",q->{if(allowed(q,"players"))players(q,0,"");});
   button(h,11,Material.ENDER_PEARL,"Телепортация","teleport",q->{if(allowed(q,"teleport")&&allowed(q,"players"))players(q,0,"");});
   button(h,12,Material.GRASS_BLOCK,"Режим игры","mode",q->{if(allowed(q,"gamemode"))modes(q,q.getUniqueId());});
-  button(h,13,Material.CREEPER_HEAD,"Морфы","morph",q->{if(allowed(q,"morph"))morph(q,0,"");});
-  button(h,14,Material.CHEST,"Наборы инвентаря","kits",q->{if(allowed(q,"kits"))kits(q);});
-  button(h,15,Material.NAME_TAG,"Никнейм","nick",q->{if(allowed(q,"nick"))nick(q,q.getUniqueId());});
-  button(h,16,Material.ENDER_EYE,"Невидимка","vanish",q->{if(allowed(q,"vanish"))vanish(q);});
-  button(h,21,Material.CAMPFIRE,"Баня","banya",q->{if(allowed(q,"banya"))banya(q);});
+  integrationButton(h,13,Material.CREEPER_HEAD,"Морфы","morph","Z_Morph",q->{if(allowed(q,"morph"))morph(q,0,"");});
+  integrationButton(h,14,Material.CHEST,"Наборы инвентаря","kits","InventoryCache",q->{if(allowed(q,"kits"))kits(q);});
+  integrationButton(h,15,Material.NAME_TAG,"Никнейм","nick","Z_Nick",q->{if(allowed(q,"nick"))nick(q,q.getUniqueId());});
+  integrationButton(h,16,Material.ENDER_EYE,"Невидимка","vanish","Nevidimka",q->{if(allowed(q,"vanish"))vanish(q);});
+  integrationButton(h,21,Material.CAMPFIRE,"Баня","banya","Z_Banya",q->{if(allowed(q,"banya"))banya(q);});
   button(h,22,Material.CLOCK,"Мир и инструменты","world",q->{if(allowed(q,"world"))world(q);});
   button(h,23,Material.WOODEN_AXE,"Регионы и WorldEdit","region",q->{if(allowed(q,"regions")||q.hasPermission("z_ap.actions.worldedit"))regions(q);});
   button(h,31,Material.COMPARATOR,"Настройки","settings",q->{if(allowed(q,"settings"))settings(q);});
