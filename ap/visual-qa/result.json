@@ -1,4 +1,23 @@
 {
-  "status": "FAIL",
-  "error": "Timed out: home after correct password"
+  "status": "PASS",
+  "paper_build": 132,
+  "client": "official unmodified Minecraft 1.21.11",
+  "resource_pack_sha1": "416c182d7ada2ea49a4b7a4570f44946a67af84f",
+  "checks": [
+    "wrong_password_rejected",
+    "correct_password_accepted",
+    "password_not_logged",
+    "menu_opened",
+    "mode_label_click"
+  ],
+  "captures": [
+    "01-dialog.png",
+    "02-filled-wrong.png",
+    "03-filled-correct.png",
+    "04-welcome.png",
+    "05-home.png",
+    "06-modes.png",
+    "07-after-mode.png"
+  ],
+  "plugin_sha256": "c4c2ccddf0fa94650db55574622fdb24ad3d12699c26e3a8efb885c7526ebc7f"
 }
