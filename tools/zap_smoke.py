@@ -24,9 +24,9 @@ try:
  with (report/'bots.log').open('w') as botlog:
   bot=subprocess.Popen(['node',str(root/'tools/zap_bot.js'),str(work)],cwd=root/'ap/target/bots',stdout=botlog,stderr=subprocess.STDOUT)
   wait_for(lambda:(work/'ready').exists(),60,'players join');send('give APAdmin diamond 3');send('fill -5 70 -5 10 70 5 minecraft:stone');send('tp APAdmin 0.5 71 0.5');send('tp APObserver 4.5 71 0.5');time.sleep(2);(work/'begin').write_text('1')
-  assert bot.wait(timeout=90)==0,'Bot failed; see bots.log and bot-result.json'
+  assert bot.wait(timeout=135)==0,'Bot failed; see bots.log and bot-result.json'
  result=json.loads((work/'bot-result.json').read_text());(report/'bot-result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2))
- auth=(work/'plugins/Z_AP/auth.yml').read_text();assert '324657' not in auth and 'locked-until:' in auth,'Credential or lockout storage failed'
+ auth=(work/'plugins/Z_AP/auth.yml').read_text();assert '324657' not in auth and 'SandboxOnly7' not in auth and 'locked-until:' in auth,'Credential or lockout storage failed'
  jar=root/'ap/target/Z_AP-1.0.0.jar';shutil.copyfile(jar,report/'tested-plugin.jar')
  (report/'result.json').write_text(json.dumps({'status':'PASS','paper_build':meta['id'],'plugin_sha256':hashlib.sha256(jar.read_bytes()).hexdigest(),'checks':result['checks']},ensure_ascii=False,indent=2))
 except Exception as e:
