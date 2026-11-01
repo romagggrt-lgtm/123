@@ -7,7 +7,7 @@
 [INFO] Loaded 24317 auto-discovered prefixes for remote repository central (prefixes-central.txt)
 [INFO] 
 [INFO] --- resources:3.5.0:resources (default-resources) @ Z_AP ---
-[INFO] Copying 3 resources from src/main/resources to target/classes
+[INFO] Copying 4 resources from src/main/resources to target/classes
 [INFO] 
 [INFO] --- compiler:3.14.1:compile (default-compile) @ Z_AP ---
 [INFO] Loaded 74 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
@@ -30,7 +30,7 @@
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running dev.zap.AuthTest
-[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.748 s -- in dev.zap.AuthTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.498 s -- in dev.zap.AuthTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -55,6 +55,6 @@
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  5.989 s
-[INFO] Finished at: 2026-11-01T09:12:33Z
+[INFO] Total time:  5.680 s
+[INFO] Finished at: 2026-11-01T09:14:45Z
 [INFO] ------------------------------------------------------------------------

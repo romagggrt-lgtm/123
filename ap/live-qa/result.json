@@ -1,7 +1,7 @@
 {
   "status": "PASS",
   "paper_build": 132,
-  "plugin_sha256": "f020f53ebf4978847df10cf620eb9372bde6e0cc65449f7c161019971e2ce337",
+  "plugin_sha256": "7f2f0c2d3cda4996cd16e7c03d8e5f4b799e7f263c09bdc370a13090aa25a451",
   "checks": {
     "closed_during_auth_did_not_login": true,
     "denied_without_permission": true,

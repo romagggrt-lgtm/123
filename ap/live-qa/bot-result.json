@@ -92,27 +92,31 @@
   "spawns": [
     {
       "name": "player",
-      "id": 165
+      "id": 169
     },
     {
       "name": "player",
-      "id": 169
+      "id": 165
     },
     {
       "name": "player",
       "id": 167
     },
     {
-      "name": "item",
-      "id": 170
+      "name": "allay",
+      "id": 165
     },
     {
-      "name": "player",
+      "name": "allay",
       "id": 165
     },
     {
       "name": "slime",
       "id": 171
+    },
+    {
+      "name": "allay",
+      "id": 165
     },
     {
       "name": "slime",
@@ -127,20 +131,24 @@
       "id": 174
     },
     {
-      "name": "slime",
+      "name": "chicken",
       "id": 175
     },
     {
-      "name": "slime",
+      "name": "chicken",
       "id": 176
     },
     {
-      "name": "slime",
+      "name": "chicken",
       "id": 177
     },
     {
-      "name": "slime",
+      "name": "chicken",
       "id": 178
+    },
+    {
+      "name": "slime",
+      "id": 179
     },
     {
       "name": "slime",
@@ -148,127 +156,7 @@
     },
     {
       "name": "slime",
-      "id": 182
-    },
-    {
-      "name": "slime",
-      "id": 183
-    },
-    {
-      "name": "slime",
-      "id": 184
-    },
-    {
-      "name": "sheep",
-      "id": 185
-    },
-    {
-      "name": "sheep",
-      "id": 186
-    },
-    {
-      "name": "sheep",
-      "id": 187
-    },
-    {
-      "name": "sheep",
-      "id": 188
-    },
-    {
-      "name": "slime",
-      "id": 189
-    },
-    {
-      "name": "slime",
-      "id": 190
-    },
-    {
-      "name": "allay",
-      "id": 165
-    },
-    {
-      "name": "slime",
-      "id": 191
-    },
-    {
-      "name": "slime",
-      "id": 192
-    },
-    {
-      "name": "slime",
-      "id": 193
-    },
-    {
-      "name": "allay",
-      "id": 165
-    },
-    {
-      "name": "slime",
       "id": 181
-    },
-    {
-      "name": "allay",
-      "id": 165
-    },
-    {
-      "name": "slime",
-      "id": 194
-    },
-    {
-      "name": "slime",
-      "id": 195
-    },
-    {
-      "name": "slime",
-      "id": 196
-    },
-    {
-      "name": "slime",
-      "id": 197
-    },
-    {
-      "name": "slime",
-      "id": 184
-    },
-    {
-      "name": "pig",
-      "id": 198
-    },
-    {
-      "name": "pig",
-      "id": 199
-    },
-    {
-      "name": "pig",
-      "id": 200
-    },
-    {
-      "name": "pig",
-      "id": 201
-    },
-    {
-      "name": "slime",
-      "id": 202
-    },
-    {
-      "name": "slime",
-      "id": 203
-    },
-    {
-      "name": "slime",
-      "id": 204
-    },
-    {
-      "name": "slime",
-      "id": 205
-    },
-    {
-      "name": "slime",
-      "id": 206
-    },
-    {
-      "name": "slime",
-      "id": 207
     }
   ]
 }
