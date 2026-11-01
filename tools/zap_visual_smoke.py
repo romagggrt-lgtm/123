@@ -60,8 +60,22 @@ try:
  connection=display.Display(os.environ['DISPLAY']);screen=connection.screen();root=screen.root
  def capture(name):
   pix=root.get_image(0,0,screen.width_in_pixels,screen.height_in_pixels,X.ZPixmap,0xffffffff);Image.frombytes('RGB',(screen.width_in_pixels,screen.height_in_pixels),pix.data,'raw','BGRX').save(REPORT/name)
- capture('01-dialog.png')
- (REPORT/'result.json').write_text(json.dumps({'status':'DIALOG_CAPTURED'},indent=2))
+ def click(x,y):
+  xtest.fake_input(connection,X.MotionNotify,x=x,y=y);xtest.fake_input(connection,X.ButtonPress,detail=1);xtest.fake_input(connection,X.ButtonRelease,detail=1);connection.sync()
+ def tap(name):
+  code=connection.keysym_to_keycode(XK.string_to_keysym(name));xtest.fake_input(connection,X.KeyPress,code);xtest.fake_input(connection,X.KeyRelease,code);connection.sync()
+ def enter(value):
+  click(500,245)
+  for char in value:tap(char)
+  time.sleep(.3)
+ capture('01-dialog.png');enter('111111');capture('02-filled-wrong.png');click(640,686)
+ auth=WORK/'plugins/Z_AP/auth.yml';wait_for(lambda:auth.exists() and 'attempts: 1' in auth.read_text(),20,'wrong password counted')
+ send('execute as ZapVisual run ap');time.sleep(1.5);enter('324657');capture('03-filled-correct.png');click(640,686);time.sleep(.55);capture('04-welcome.png')
+ wait_for(lambda:(WORK/'visual-chest-count').exists() and int((WORK/'visual-chest-count').read_text())>=1,20,'home after correct password');assert (WORK/'visual-home-themed').exists(),'Server did not select themed home';time.sleep(1);capture('05-home.png')
+ click(604,190);wait_for(lambda:int((WORK/'visual-chest-count').read_text())>=2,12,'mode card click');time.sleep(1);capture('06-modes.png');click(568,262);wait_for(lambda:(WORK/'visual-mode').exists() and (WORK/'visual-mode').read_text()=='CREATIVE',12,'clickable mode label');time.sleep(.6);capture('07-after-mode.png')
+ assert '324657' not in logpath.read_text(errors='replace'),'Password leaked to server log'
+ result={'status':'PASS','paper_build':metadata['id'],'client':'official unmodified Minecraft 1.21.11','resource_pack_sha1':digest,'checks':['wrong_password_rejected','correct_password_accepted','password_not_logged','menu_opened','mode_label_click'],'captures':['01-dialog.png','02-filled-wrong.png','03-filled-correct.png','04-welcome.png','05-home.png','06-modes.png','07-after-mode.png']}
+ (REPORT/'result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2))
 except Exception as e:
  (REPORT/'result.json').write_text(json.dumps({'status':'FAIL','error':str(e)},ensure_ascii=False,indent=2));raise
 finally:
