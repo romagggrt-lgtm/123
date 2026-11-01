@@ -1,7 +1,7 @@
 {
   "status": "PASS",
   "paper_build": 132,
-  "plugin_sha256": "7f2f0c2d3cda4996cd16e7c03d8e5f4b799e7f263c09bdc370a13090aa25a451",
+  "plugin_sha256": "6a2150c3b6f0559c5bbcada997cfe78a5eddfed38b51b5d270fea6a483012b20",
   "checks": {
     "closed_during_auth_did_not_login": true,
     "denied_without_permission": true,
@@ -16,6 +16,7 @@
     "morph_menu": true,
     "morph_command": true,
     "morph_visible_to_observer": true,
+    "active_morph_highlight": true,
     "nevidimka_on": true,
     "nevidimka_off": true,
     "nick_command": true,
@@ -28,6 +29,7 @@
     "check_stopped": true,
     "password_changed": true,
     "old_password_rejected": true,
-    "new_password_accepted": true
+    "new_password_accepted": true,
+    "startup_without_integrations": true
   }
 }

@@ -75,6 +75,7 @@
     "morph_menu": true,
     "morph_command": true,
     "morph_visible_to_observer": true,
+    "active_morph_highlight": true,
     "nevidimka_on": true,
     "nevidimka_off": true,
     "nick_command": true,
@@ -92,10 +93,6 @@
   "spawns": [
     {
       "name": "player",
-      "id": 169
-    },
-    {
-      "name": "player",
       "id": 165
     },
     {
@@ -103,20 +100,16 @@
       "id": 167
     },
     {
-      "name": "allay",
-      "id": 165
+      "name": "player",
+      "id": 169
     },
     {
-      "name": "allay",
-      "id": 165
+      "name": "item",
+      "id": 170
     },
     {
       "name": "slime",
       "id": 171
-    },
-    {
-      "name": "allay",
-      "id": 165
     },
     {
       "name": "slime",
@@ -131,24 +124,28 @@
       "id": 174
     },
     {
-      "name": "chicken",
+      "name": "slime",
       "id": 175
     },
     {
-      "name": "chicken",
+      "name": "slime",
       "id": 176
     },
     {
-      "name": "chicken",
+      "name": "slime",
       "id": 177
     },
     {
-      "name": "chicken",
+      "name": "slime",
       "id": 178
     },
     {
       "name": "slime",
       "id": 179
+    },
+    {
+      "name": "allay",
+      "id": 165
     },
     {
       "name": "slime",
@@ -157,6 +154,138 @@
     {
       "name": "slime",
       "id": 181
+    },
+    {
+      "name": "slime",
+      "id": 182
+    },
+    {
+      "name": "allay",
+      "id": 165
+    },
+    {
+      "name": "allay",
+      "id": 165
+    },
+    {
+      "name": "slime",
+      "id": 183
+    },
+    {
+      "name": "slime",
+      "id": 184
+    },
+    {
+      "name": "slime",
+      "id": 185
+    },
+    {
+      "name": "slime",
+      "id": 186
+    },
+    {
+      "name": "slime",
+      "id": 187
+    },
+    {
+      "name": "slime",
+      "id": 188
+    },
+    {
+      "name": "slime",
+      "id": 189
+    },
+    {
+      "name": "slime",
+      "id": 190
+    },
+    {
+      "name": "slime",
+      "id": 191
+    },
+    {
+      "name": "slime",
+      "id": 192
+    },
+    {
+      "name": "slime",
+      "id": 193
+    },
+    {
+      "name": "chicken",
+      "id": 194
+    },
+    {
+      "name": "chicken",
+      "id": 195
+    },
+    {
+      "name": "chicken",
+      "id": 196
+    },
+    {
+      "name": "chicken",
+      "id": 197
+    },
+    {
+      "name": "cow",
+      "id": 198
+    },
+    {
+      "name": "cow",
+      "id": 199
+    },
+    {
+      "name": "cow",
+      "id": 200
+    },
+    {
+      "name": "cow",
+      "id": 201
+    },
+    {
+      "name": "horse",
+      "id": 202
+    },
+    {
+      "name": "horse",
+      "id": 203
+    },
+    {
+      "name": "slime",
+      "id": 204
+    },
+    {
+      "name": "horse",
+      "id": 203
+    },
+    {
+      "name": "slime",
+      "id": 205
+    },
+    {
+      "name": "slime",
+      "id": 206
+    },
+    {
+      "name": "slime",
+      "id": 207
+    },
+    {
+      "name": "slime",
+      "id": 208
+    },
+    {
+      "name": "slime",
+      "id": 209
+    },
+    {
+      "name": "slime",
+      "id": 210
+    },
+    {
+      "name": "slime",
+      "id": 211
     }
   ]
 }
