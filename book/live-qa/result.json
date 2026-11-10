@@ -1,5 +1,5 @@
 {
   "status": "FAIL",
   "error": "bot failed: see bots.log",
-  "trace": "Traceback (most recent call last):\n  File \"/home/runner/work/123/123/tools/zbook_smoke.py\", line 35, in <module>\n    assert bot.wait(timeout=80)==0,'bot failed: see bots.log'\n           ^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: bot failed: see bots.log\n"
+  "trace": "Traceback (most recent call last):\n  File \"/home/runner/work/123/123/tools/zbook_smoke.py\", line 38, in <module>\n    assert bot.wait(timeout=80)==0,'bot failed: see bots.log'\n           ^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: bot failed: see bots.log\n"
 }
