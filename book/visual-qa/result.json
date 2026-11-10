@@ -1,3 +1,10 @@
 {
-  "status": "PAGE_CAPTURED"
+  "status": "PASS",
+  "checks": [
+    "native_book_page_navigation",
+    "book_callback_without_confirmation",
+    "book_closed_and_right_click_cast"
+  ],
+  "paper_build": 132,
+  "resource_pack_sha1": "86d49bb8fe6f810d9fb9b6e4ce6632a7e636f640"
 }
