@@ -1,16 +1,5 @@
 {
-  "status": "PASS",
-  "paper_build": 132,
-  "plugin_sha256": "7ffff71ef7171db5a7a315d18324175fc8fa031f7b97fe51677acbc74ab63711",
-  "checks": {
-    "items_identified": true,
-    "craft_result_exists": true,
-    "normal_craft": true,
-    "duplicate_has_no_result": true,
-    "shift_craft_once": true,
-    "no_target_no_cooldown": true,
-    "hit_cast_and_cooldown": true,
-    "cooldown_prevents_second_strike": true,
-    "cooldown_persists_relog": true
-  }
+  "status": "FAIL",
+  "error": "bot failed: see bots.log",
+  "trace": "Traceback (most recent call last):\n  File \"/home/runner/work/123/123/tools/zbook_smoke.py\", line 35, in <module>\n    assert bot.wait(timeout=80)==0,'bot failed: see bots.log'\n           ^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: bot failed: see bots.log\n"
 }
