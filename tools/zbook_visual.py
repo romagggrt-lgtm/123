@@ -8,7 +8,7 @@ from PIL import Image
 from Xlib import X,display
 from Xlib.ext import xtest
 root=Path(__file__).resolve().parents[1];work=root/'book/target/visual-server';report=root/'book/visual-qa';work.mkdir(parents=True,exist_ok=True);report.mkdir(parents=True,exist_ok=True)
-(work/'book-ready').unlink(missing_ok=True)
+(work/'book-ready').unlink(missing_ok=True);(work/'book-lightning').unlink(missing_ok=True)
 sys.path.insert(0,str(root/'tools'));import zap_vanilla_client as vanilla
 vanilla.GAME=root/'book/target/visual-client';vanilla.REPORT=report
 server=client=http=None
@@ -43,7 +43,7 @@ try:
   xtest.fake_input(conn,X.MotionNotify,x=x,y=y);xtest.fake_input(conn,X.ButtonPress,detail=button);xtest.fake_input(conn,X.ButtonRelease,detail=button);conn.sync()
  def capture(name):
   pix=screen.get_image(0,0,sc.width_in_pixels,sc.height_in_pixels,X.ZPixmap,0xffffffff);Image.frombytes('RGB',(sc.width_in_pixels,sc.height_in_pixels),pix.data,'raw','BGRX').save(report/name)
- click(640,360,3);time.sleep(2);capture('01-index.png');click(600,107);time.sleep(1);capture('02-spell.png');(report/'result.json').write_text(json.dumps({'status':'PAGE_CAPTURED'},indent=2))
+ click(640,360,3);time.sleep(2);capture('01-index.png');click(600,107);time.sleep(1);capture('02-spell.png');click(600,251);time.sleep(1);capture('03-armed.png');click(640,360,3);time.sleep(1);capture('04-cast.png');wait_for(lambda:(work/'book-lightning').exists(),12,'book button followed by cast');(report/'result.json').write_text(json.dumps({'status':'PASS','checks':['native_book_page_navigation','book_callback_without_confirmation','book_closed_and_right_click_cast'],'paper_build':meta['id'],'resource_pack_sha1':sha1},indent=2))
 except Exception as ex:
  (report/'result.json').write_text(json.dumps({'status':'FAIL','error':str(ex),'trace':traceback.format_exc()},indent=2));raise
 finally:

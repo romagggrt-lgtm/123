@@ -2,7 +2,7 @@ from pathlib import Path
 from zipfile import ZipFile
 import hashlib,json,os,shutil,subprocess,time,traceback,urllib.request
 root=Path(__file__).resolve().parents[1];work=root/'book/target/live';report=root/'book/live-qa';work.mkdir(parents=True,exist_ok=True);report.mkdir(parents=True,exist_ok=True);server=None
-for name in ['ready','begin','target-ready','target-set','bot-result.json']:(work/name).unlink(missing_ok=True)
+for name in ['ready','begin','cast-ready','cast-set','target-ready','target-set','bot-result.json']:(work/name).unlink(missing_ok=True)
 def get(url):
  with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'ZBook-QA/1.0'}),timeout=60) as r:return r.read()
 def wait_for(f,seconds,label):
@@ -27,7 +27,9 @@ try:
  wait_for(lambda:'Done (' in logpath.read_text(errors='replace'),300,'startup');assert '[Z_Book] Enabling' in logpath.read_text(errors='replace');send('op BookTester')
  with (report/'bots.log').open('w') as output:
   bot=subprocess.Popen(['node',str(root/'tools/zbook_bot.js'),str(work)],cwd=root/'book/target/bots',stdout=output,stderr=subprocess.STDOUT)
-  wait_for(lambda:(work/'ready').exists(),80,'bot joined');send('fill -6 70 -6 6 70 6 minecraft:stone');send('tp BookTester 0.5 71 0.5 0 -90');time.sleep(2);(work/'begin').write_text('1')
+  wait_for(lambda:(work/'ready').exists(),80,'bot joined');send('fill -6 70 -6 6 70 6 minecraft:stone');send('setblock 2 71 2 minecraft:crafting_table');send('tp BookTester 0.5 71 0.5 0 -90');time.sleep(2);(work/'begin').write_text('1')
+  wait_for(lambda:(work/'cast-ready').exists() or bot.poll() is not None,120,'ready for non-admin cast')
+  if bot.poll() is None:send('deop BookTester');time.sleep(.5);(work/'cast-set').write_text('1')
   wait_for(lambda:(work/'target-ready').exists() or bot.poll() is not None,120,'ready for strike')
   if bot.poll() is None:send('tp BookTester 0.5 71 0.5 0 90');time.sleep(1);(work/'target-set').write_text('1')
   assert bot.wait(timeout=80)==0,'bot failed: see bots.log'

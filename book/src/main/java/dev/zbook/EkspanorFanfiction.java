@@ -11,7 +11,7 @@ final class EkspanorFanfiction implements Spell {
  public double range(ZBookPlugin plugin){return Math.clamp(plugin.getConfig().getDouble(configPath()+".range",60),1,128);}
  public boolean cast(Player p,ZBookPlugin plugin){
   Location origin=p.getEyeLocation();Vector direction=origin.getDirection().normalize();double range=range(plugin);
-  RayTraceResult hit=p.getWorld().rayTrace(origin,direction,range,FluidCollisionMode.NEVER,true,0.2,e->!e.getUniqueId().equals(p.getUniqueId()) && !(e instanceof org.bukkit.entity.Item));
+  RayTraceResult hit=p.getWorld().rayTrace(origin,direction,range,FluidCollisionMode.NEVER,true,0.2,e->!e.getUniqueId().equals(p.getUniqueId()));
   if(hit==null){plugin.text().send(p,"too-far");return false;}
   Location target=hit.getHitPosition().toLocation(p.getWorld());
   LightningStrike bolt=plugin.getConfig().getBoolean(configPath()+".lightning.real",true)?p.getWorld().strikeLightning(target):p.getWorld().strikeLightningEffect(target);
