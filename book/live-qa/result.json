@@ -1,7 +1,7 @@
 {
   "status": "PASS",
   "paper_build": 132,
-  "plugin_sha256": "20da3f53012004d81f9ae5f5f4f01c135e41b1832635ad89d5560696dc9a8ea5",
+  "plugin_sha256": "7ffff71ef7171db5a7a315d18324175fc8fa031f7b97fe51677acbc74ab63711",
   "checks": {
     "items_identified": true,
     "craft_result_exists": true,
