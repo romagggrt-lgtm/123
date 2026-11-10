@@ -21,5 +21,6 @@ class BookItemsTest {
   Spell spell=plugin.registry().get("EKSPANOR_FANFICTION");assertNotNull(spell);ItemStack page=plugin.items().page(spell,16);assertEquals(16,page.getAmount());/* MockBukkit does not preserve item_model when cloning metadata; checked on Paper. */assertEquals(spell.id(),plugin.items().pageSpell(page));
   ItemStack vanilla=new ItemStack(Material.PAPER);vanilla.editMeta(meta->meta.displayName(page.getItemMeta().displayName()));assertNull(plugin.items().pageSpell(vanilla));assertFalse(plugin.items().isBook(new ItemStack(Material.BOOK)));
  }
+ @Test void missingTextFallsBackToBundledDefault(){plugin.getConfig().set("messages.too-far",null);assertTrue(plugin.text().raw("messages.too-far").contains("далеко"));}
  @Test void registryRejectsDuplicateOrMalformedIds(){SpellRegistry registry=new SpellRegistry();registry.register(new EkspanorFanfiction());assertThrows(IllegalArgumentException.class,()->registry.register(new EkspanorFanfiction()));assertNotNull(registry.get("Ekspanor_Fanfiction"));}
 }

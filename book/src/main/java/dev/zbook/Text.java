@@ -11,7 +11,7 @@ final class Text {
  private static final LegacyComponentSerializer SERIALIZER=LegacyComponentSerializer.builder().character('&').hexColors().build();
  private final JavaPlugin plugin;
  Text(JavaPlugin plugin){this.plugin=plugin;}
- String raw(String path){return plugin.getConfig().getString(path, "");}
+ String raw(String path){String value=plugin.getConfig().getString(path);return value==null?"":value;}
  List<String> lines(String path){return plugin.getConfig().getStringList(path);}
  Component component(String value){return Component.empty().decoration(TextDecoration.ITALIC,false).append(SERIALIZER.deserialize(value));}
  Component get(String path){return component(raw(path));}
