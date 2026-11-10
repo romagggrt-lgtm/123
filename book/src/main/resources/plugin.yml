@@ -1,0 +1,13 @@
+name: Z_Book
+version: 1.0.0
+main: dev.zbook.ZBookPlugin
+api-version: '1.21'
+authors: [Z_Server]
+commands:
+  zbook:
+    description: Книга заклинаний
+    usage: /zbook
+permissions:
+  zbook.admin:
+    description: Управление книгой заклинаний
+    default: op
