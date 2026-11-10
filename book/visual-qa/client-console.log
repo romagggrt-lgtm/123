@@ -1,10 +1,10 @@
-[20:56:05] [Datafixer Bootstrap/INFO]: 287 Datafixer optimizations took 540 milliseconds
-[20:56:09] [main/INFO]: Completely ignored arguments: [--userType, msa]
-[20:56:09] [Render thread/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
-[20:56:09] [Render thread/INFO]: Setting user: BookVisual
-[20:56:09] [Render thread/ERROR]: Error parsing option value 4 for option Simulation Distance: Value 4 outside of range [5:33]
-[20:56:09] [Render thread/INFO]: Backend library: LWJGL version 3.3.3+5
-[20:56:10] [Download-2/ERROR]: Failed to fetch user properties
+[21:04:57] [Datafixer Bootstrap/INFO]: 287 Datafixer optimizations took 304 milliseconds
+[21:04:59] [main/INFO]: Completely ignored arguments: [--userType, msa]
+[21:05:00] [Render thread/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[21:05:00] [Render thread/INFO]: Setting user: BookVisual
+[21:05:00] [Render thread/ERROR]: Error parsing option value 4 for option Simulation Distance: Value 4 outside of range [5:33]
+[21:05:00] [Render thread/INFO]: Backend library: LWJGL version 3.3.3+5
+[21:05:00] [Download-2/ERROR]: Failed to fetch user properties
 com.mojang.authlib.exceptions.InvalidCredentialsException: Status: 401
 	at com.mojang.authlib.exceptions.MinecraftClientHttpException.toAuthenticationException(MinecraftClientHttpException.java:59)
 	at com.mojang.authlib.yggdrasil.YggdrasilUserApiService.fetchProperties(YggdrasilUserApiService.java:150)
@@ -18,8 +18,17 @@ Caused by: com.mojang.authlib.exceptions.MinecraftClientHttpException: Status: 4
 	at com.mojang.authlib.minecraft.client.MinecraftClient.get(MinecraftClient.java:56)
 	at com.mojang.authlib.yggdrasil.YggdrasilUserApiService.fetchProperties(YggdrasilUserApiService.java:121)
 	... 5 more
-[20:56:10] [Render thread/INFO]: Using optional rendering extensions: GL_ARB_buffer_storage, GL_KHR_debug, GL_ARB_vertex_attrib_binding, GL_ARB_direct_state_access, GL_EXT_texture_filter_anisotropic
-[20:56:10] [Render thread/ERROR]: Error while loading the narrator
+[21:05:03] [Render thread/INFO]: Using optional rendering extensions: GL_ARB_buffer_storage, GL_KHR_debug, GL_ARB_vertex_attrib_binding, GL_ARB_direct_state_access, GL_EXT_texture_filter_anisotropic
+[21:05:04] [Download-1/INFO]: Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: 0
+[21:05:04] [Download-1/ERROR]: Failed to fetch Realms feature flags
+gce: Realms authentication error with message 'java.lang.RuntimeException: Failed to parse into SignedJWT: 0'
+	at fzz.a(SourceFile:526)
+	at fzz.o(SourceFile:186)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[21:05:04] [Render thread/ERROR]: Error while loading the narrator
 com.mojang.text2speech.Narrator$InitializeException: Failed to load library flite
 	at com.mojang.text2speech.NarratorLinux$FliteLibrary.loadNative(NarratorLinux.java:81)
 	at com.mojang.text2speech.NarratorLinux.<init>(NarratorLinux.java:18)
@@ -48,39 +57,30 @@ Native library (linux-x86-64/libflite.so) not found in resource path (/home/runn
 		at com.sun.jna.Native.extractFromResourcePath(Native.java:1141)
 		at com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:297)
 		... 8 more
-[20:56:10] [Render thread/INFO]: Reloading ResourceManager: vanilla
-[20:56:11] [Download-2/INFO]: Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: 0
-[20:56:11] [Download-2/ERROR]: Failed to fetch Realms feature flags
-gce: Realms authentication error with message 'java.lang.RuntimeException: Failed to parse into SignedJWT: 0'
-	at fzz.a(SourceFile:526)
-	at fzz.o(SourceFile:186)
-	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
-[20:56:11] [Worker-Main-3/INFO]: Found unifont_all_no_pua-17.0.01.hex, loading
-[20:56:11] [Worker-Main-2/INFO]: Found unifont_pua-17.0.01.hex, loading
-[20:56:12] [Worker-Main-3/INFO]: Found unifont_jp_patch-17.0.01.hex, loading
+[21:05:04] [Render thread/INFO]: Reloading ResourceManager: vanilla
+[21:05:04] [Worker-Main-2/INFO]: Found unifont_all_no_pua-17.0.01.hex, loading
+[21:05:04] [Worker-Main-3/INFO]: Found unifont_pua-17.0.01.hex, loading
+[21:05:04] [Worker-Main-2/INFO]: Found unifont_jp_patch-17.0.01.hex, loading
 [ALSOFT] (EE) Could not query RTKit: No such file or directory (2)
-[20:56:13] [Render thread/INFO]: OpenAL initialized on device No Output
-[20:56:13] [Render thread/INFO]: Sound engine started
-[20:56:13] [Render thread/INFO]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
-[20:56:13] [Render thread/INFO]: Created: 128x128x0 minecraft:textures/atlas/decorated_pot.png-atlas
-[20:56:13] [Render thread/INFO]: Created: 2048x1024x0 minecraft:textures/atlas/armor_trims.png-atlas
-[20:56:14] [Render thread/INFO]: Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
-[20:56:14] [Render thread/INFO]: Created: 1024x512x0 minecraft:textures/atlas/shield_patterns.png-atlas
-[20:56:14] [Render thread/INFO]: Created: 2048x2048x4 minecraft:textures/atlas/blocks.png-atlas
-[20:56:14] [Render thread/INFO]: Created: 512x512x0 minecraft:textures/atlas/chest.png-atlas
-[20:56:14] [Render thread/INFO]: Created: 256x128x0 minecraft:textures/atlas/celestials.png-atlas
-[20:56:14] [Render thread/INFO]: Created: 1024x512x0 minecraft:textures/atlas/banner_patterns.png-atlas
-[20:56:14] [Render thread/INFO]: Created: 512x512x0 minecraft:textures/atlas/beds.png-atlas
-[20:56:14] [Render thread/INFO]: Created: 1024x512x0 minecraft:textures/atlas/items.png-atlas
-[20:56:14] [Render thread/INFO]: Created: 1024x1024x0 minecraft:textures/atlas/gui.png-atlas
-[20:56:14] [Render thread/INFO]: Created: 128x64x0 minecraft:textures/atlas/map_decorations.png-atlas
-[20:56:14] [Render thread/INFO]: Created: 512x256x0 minecraft:textures/atlas/signs.png-atlas
-[20:56:14] [Render thread/INFO]: Created: 512x512x0 minecraft:textures/atlas/shulker_boxes.png-atlas
-[20:56:14] [Render thread/INFO]: Connecting to 127.0.0.1, 25592
-[20:56:14] [Download-1/ERROR]: Failed to retrieve profile key pair
+[21:05:06] [Render thread/INFO]: OpenAL initialized on device No Output
+[21:05:06] [Render thread/INFO]: Sound engine started
+[21:05:06] [Render thread/INFO]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[21:05:06] [Render thread/INFO]: Created: 128x128x0 minecraft:textures/atlas/decorated_pot.png-atlas
+[21:05:06] [Render thread/INFO]: Created: 2048x1024x0 minecraft:textures/atlas/armor_trims.png-atlas
+[21:05:06] [Render thread/INFO]: Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
+[21:05:06] [Render thread/INFO]: Created: 1024x512x0 minecraft:textures/atlas/shield_patterns.png-atlas
+[21:05:06] [Render thread/INFO]: Created: 2048x2048x4 minecraft:textures/atlas/blocks.png-atlas
+[21:05:06] [Render thread/INFO]: Created: 512x512x0 minecraft:textures/atlas/chest.png-atlas
+[21:05:06] [Render thread/INFO]: Created: 256x128x0 minecraft:textures/atlas/celestials.png-atlas
+[21:05:06] [Render thread/INFO]: Created: 1024x512x0 minecraft:textures/atlas/banner_patterns.png-atlas
+[21:05:06] [Render thread/INFO]: Created: 512x512x0 minecraft:textures/atlas/beds.png-atlas
+[21:05:06] [Render thread/INFO]: Created: 1024x512x0 minecraft:textures/atlas/items.png-atlas
+[21:05:06] [Render thread/INFO]: Created: 1024x1024x0 minecraft:textures/atlas/gui.png-atlas
+[21:05:06] [Render thread/INFO]: Created: 128x64x0 minecraft:textures/atlas/map_decorations.png-atlas
+[21:05:06] [Render thread/INFO]: Created: 512x256x0 minecraft:textures/atlas/signs.png-atlas
+[21:05:06] [Render thread/INFO]: Created: 512x512x0 minecraft:textures/atlas/shulker_boxes.png-atlas
+[21:05:06] [Render thread/INFO]: Connecting to 127.0.0.1, 25592
+[21:05:06] [Download-1/ERROR]: Failed to retrieve profile key pair
 com.mojang.authlib.exceptions.MinecraftClientHttpException: Status: 401
 	at com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:103)
 	at com.mojang.authlib.minecraft.client.MinecraftClient.post(MinecraftClient.java:64)
@@ -91,41 +91,38 @@ com.mojang.authlib.exceptions.MinecraftClientHttpException: Status: 401
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
-[20:56:15] [Download-1/WARN]: Existing file /home/runner/work/123/123/book/target/visual-client/downloads/5c6560c4-3647-3d62-9f1a-4d7b0c16acfc/86d49bb8fe6f810d9fb9b6e4ce6632a7e636f640 not found or had mismatched hash
-[20:56:16] [Render thread/INFO]: Reloading ResourceManager: vanilla, server/00000000/5c6560c4-3647-3d62-9f1a-4d7b0c16acfc
-[20:56:17] [Worker-Main-1/INFO]: Found unifont_all_no_pua-17.0.01.hex, loading
-[20:56:17] [Worker-Main-2/INFO]: Found unifont_pua-17.0.01.hex, loading
-[20:56:17] [Worker-Main-1/INFO]: Found unifont_jp_patch-17.0.01.hex, loading
-[20:56:18] [Worker-Main-1/WARN]: Missing texture references in model z_verity:item/verity_box:
+[21:05:07] [Download-1/WARN]: Existing file /home/runner/work/123/123/book/target/visual-client/downloads/5c6560c4-3647-3d62-9f1a-4d7b0c16acfc/86d49bb8fe6f810d9fb9b6e4ce6632a7e636f640 not found or had mismatched hash
+[21:05:08] [Render thread/INFO]: Reloading ResourceManager: vanilla, server/00000000/5c6560c4-3647-3d62-9f1a-4d7b0c16acfc
+[21:05:08] [Worker-Main-3/INFO]: Found unifont_all_no_pua-17.0.01.hex, loading
+[21:05:08] [Worker-Main-1/INFO]: Found unifont_pua-17.0.01.hex, loading
+[21:05:09] [Worker-Main-3/INFO]: Found unifont_jp_patch-17.0.01.hex, loading
+[21:05:09] [Worker-Main-3/WARN]: Missing texture references in model z_verity:item/verity_box:
     particle
-[20:56:19] [Render thread/INFO]: OpenAL initialized on device No Output
-[20:56:19] [Render thread/INFO]: Sound engine started
+[21:05:09] [Render thread/INFO]: OpenAL initialized on device No Output
 [ALSOFT] (EE) Could not query RTKit: No such file or directory (2)
-[20:56:19] [Render thread/INFO]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
-[20:56:19] [Render thread/INFO]: Created: 128x128x0 minecraft:textures/atlas/decorated_pot.png-atlas
-[20:56:19] [Render thread/INFO]: Created: 2048x1024x0 minecraft:textures/atlas/armor_trims.png-atlas
-[20:56:19] [Render thread/INFO]: Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
-[20:56:19] [Render thread/INFO]: Created: 1024x512x0 minecraft:textures/atlas/shield_patterns.png-atlas
-[20:56:19] [Render thread/INFO]: Created: 2048x2048x4 minecraft:textures/atlas/blocks.png-atlas
-[20:56:19] [Render thread/INFO]: Created: 512x512x0 minecraft:textures/atlas/chest.png-atlas
-[20:56:19] [Render thread/INFO]: Created: 256x128x0 minecraft:textures/atlas/celestials.png-atlas
-[20:56:19] [Render thread/INFO]: Created: 1024x512x0 minecraft:textures/atlas/banner_patterns.png-atlas
-[20:56:19] [Render thread/INFO]: Created: 512x512x0 minecraft:textures/atlas/beds.png-atlas
-[20:56:19] [Render thread/INFO]: Created: 4096x4096x0 minecraft:textures/atlas/items.png-atlas
-[20:56:19] [Render thread/INFO]: Created: 1024x1024x0 minecraft:textures/atlas/gui.png-atlas
-[20:56:19] [Render thread/INFO]: Created: 128x64x0 minecraft:textures/atlas/map_decorations.png-atlas
-[20:56:19] [Render thread/INFO]: Created: 512x256x0 minecraft:textures/atlas/signs.png-atlas
-[20:56:19] [Render thread/INFO]: Created: 512x512x0 minecraft:textures/atlas/shulker_boxes.png-atlas
-[20:56:22] [Render thread/INFO]: [System] [CHAT] BookVisual присоединился к игре
-[20:56:22] [Render thread/INFO]: Loaded 2 advancements
-[20:56:22] [Render thread/INFO]: Resizing Dynamic Transforms UBO, capacity limit of 2 reached during a single frame. New capacity will be 4.
-[20:56:23] [Render thread/INFO]: Resizing Dynamic Transforms UBO, capacity limit of 4 reached during a single frame. New capacity will be 8.
-[20:56:24] [Render thread/INFO]: [System] [CHAT] [Z_Book] Предмет выдан: =Книга Заклинаний= ×1 игроку BookVisual.
-[20:56:24] [Render thread/INFO]: [System] [CHAT] [Z_Book] Все доступные заклинания изучены.
-[20:56:24] [Render thread/INFO]: Loaded 6 advancements
-[20:56:24] [Render thread/INFO]: Resizing Dynamic Transforms UBO, capacity limit of 8 reached during a single frame. New capacity will be 16.
-[20:56:24] [Render thread/INFO]: Resizing Chunk Sections UBO, capacity limit of 2 reached during a single frame. New capacity will be 4.
-[20:56:29] [Render thread/ERROR]: ########## GL ERROR ##########
-[20:56:29] [Render thread/ERROR]: @ Render
-[20:56:29] [Render thread/ERROR]: 65547: X11: Standard cursor shape unavailable
-[20:56:30] [Render thread/INFO]: [System] [CHAT] [Z_Book] Заклинание применено.
+[21:05:09] [Render thread/INFO]: Sound engine started
+[21:05:09] [Render thread/INFO]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[21:05:09] [Render thread/INFO]: Created: 128x128x0 minecraft:textures/atlas/decorated_pot.png-atlas
+[21:05:09] [Render thread/INFO]: Created: 2048x1024x0 minecraft:textures/atlas/armor_trims.png-atlas
+[21:05:09] [Render thread/INFO]: Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
+[21:05:09] [Render thread/INFO]: Created: 1024x512x0 minecraft:textures/atlas/shield_patterns.png-atlas
+[21:05:09] [Render thread/INFO]: Created: 2048x2048x4 minecraft:textures/atlas/blocks.png-atlas
+[21:05:09] [Render thread/INFO]: Created: 512x512x0 minecraft:textures/atlas/chest.png-atlas
+[21:05:09] [Render thread/INFO]: Created: 256x128x0 minecraft:textures/atlas/celestials.png-atlas
+[21:05:09] [Render thread/INFO]: Created: 1024x512x0 minecraft:textures/atlas/banner_patterns.png-atlas
+[21:05:09] [Render thread/INFO]: Created: 512x512x0 minecraft:textures/atlas/beds.png-atlas
+[21:05:09] [Render thread/INFO]: Created: 4096x4096x0 minecraft:textures/atlas/items.png-atlas
+[21:05:10] [Render thread/INFO]: Created: 1024x1024x0 minecraft:textures/atlas/gui.png-atlas
+[21:05:10] [Render thread/INFO]: Created: 128x64x0 minecraft:textures/atlas/map_decorations.png-atlas
+[21:05:10] [Render thread/INFO]: Created: 512x256x0 minecraft:textures/atlas/signs.png-atlas
+[21:05:10] [Render thread/INFO]: Created: 512x512x0 minecraft:textures/atlas/shulker_boxes.png-atlas
+[21:05:11] [Render thread/INFO]: [System] [CHAT] BookVisual присоединился к игре
+[21:05:11] [Render thread/INFO]: Loaded 2 advancements
+[21:05:11] [Render thread/INFO]: Resizing Dynamic Transforms UBO, capacity limit of 2 reached during a single frame. New capacity will be 4.
+[21:05:12] [Render thread/INFO]: Resizing Dynamic Transforms UBO, capacity limit of 4 reached during a single frame. New capacity will be 8.
+[21:05:12] [Render thread/INFO]: Resizing Chunk Sections UBO, capacity limit of 2 reached during a single frame. New capacity will be 4.
+[21:05:13] [Render thread/INFO]: [System] [CHAT] [Z_Book] Предмет выдан: =Книга Заклинаний= ×1 игроку BookVisual.
+[21:05:13] [Render thread/INFO]: [System] [CHAT] [Z_Book] Все доступные заклинания изучены.
+[21:05:13] [Render thread/INFO]: Loaded 6 advancements
+[21:05:13] [Render thread/INFO]: Resizing Dynamic Transforms UBO, capacity limit of 8 reached during a single frame. New capacity will be 16.
+[21:05:19] [Render thread/INFO]: [System] [CHAT] [Z_Book] Заклинание применено.
