@@ -15,6 +15,7 @@ final class EkspanorFanfiction implements Spell {
   if(hit==null){plugin.text().send(p,"too-far");return false;}
   Location target=hit.getHitPosition().toLocation(p.getWorld());
   LightningStrike bolt=plugin.getConfig().getBoolean(configPath()+".lightning.real",true)?p.getWorld().strikeLightning(target):p.getWorld().strikeLightningEffect(target);
+  if(bolt==null||!bolt.isValid()){plugin.text().send(p,"blocked");return false;}
   bolt.setCausingPlayer(p);
   if(!plugin.getConfig().getBoolean(configPath()+".lightning.affect-caster",false))bolt.getPersistentDataContainer().set(plugin.protectedCasterKey(),PersistentDataType.STRING,p.getUniqueId().toString());
   double length=Math.min(range,origin.distance(target));for(double d=1;d<length;d+=1.5)p.getWorld().spawnParticle(Particle.ELECTRIC_SPARK,origin.clone().add(direction.clone().multiply(d)),1,0.03,0.03,0.03,0);
