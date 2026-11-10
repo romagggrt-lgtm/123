@@ -1,175 +1,171 @@
 Downloading mojang_1.21.11.jar
 Applying patches
 Starting org.bukkit.craftbukkit.Main
-2026-11-10T21:03:19.327927360Z ServerMain WARN Advanced terminal features are not available in this environment
-[21:03:19 INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.13+9-LTS; Eclipse Adoptium Temurin-21.0.13+9) on Linux 7.0.0-1019-azure (amd64)
-[21:03:19 INFO]: [bootstrap] Loading Paper 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) for Minecraft 1.21.11
-[21:03:20 INFO]: [PluginInitializerManager] Initializing plugins...
-[21:03:20 INFO]: [ReobfServer] Remapping server...
-[21:03:24 INFO]: [ReobfServer] Done remapping server in 3865ms.
-[21:03:24 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Book_Probe.jar'...
-[21:03:24 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Book-1.0.0.jar'...
-[21:03:24 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Book_Probe.jar' in 90ms.
-[21:03:24 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Book-1.0.0.jar' in 92ms.
-[21:03:24 INFO]: [PluginInitializerManager] Initialized 2 plugins
-[21:03:24 INFO]: [PluginInitializerManager] Bukkit plugins (2):
+2026-11-10T21:06:16.041561567Z ServerMain WARN Advanced terminal features are not available in this environment
+[21:06:16 INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.13+9-LTS; Eclipse Adoptium Temurin-21.0.13+9) on Linux 7.0.0-1019-azure (amd64)
+[21:06:16 INFO]: [bootstrap] Loading Paper 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) for Minecraft 1.21.11
+[21:06:16 INFO]: [PluginInitializerManager] Initializing plugins...
+[21:06:17 INFO]: [ReobfServer] Remapping server...
+[21:06:22 INFO]: [ReobfServer] Done remapping server in 5289ms.
+[21:06:22 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Book_Probe.jar'...
+[21:06:22 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Book-1.0.0.jar'...
+[21:06:23 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Book_Probe.jar' in 132ms.
+[21:06:23 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Book-1.0.0.jar' in 147ms.
+[21:06:23 INFO]: [PluginInitializerManager] Initialized 2 plugins
+[21:06:23 INFO]: [PluginInitializerManager] Bukkit plugins (2):
  - Z_Book (1.0.0), Z_Book_Probe (1.0.0)
-[21:03:27 INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
-[21:03:27 INFO]: Found new data pack file/bukkit, loading it automatically
-[21:03:27 INFO]: Found new data pack paper, loading it automatically
-[21:03:28 INFO]: No existing world data, creating new world
-[21:03:28 ERROR]: No key layers in MapLike[{}]
-[21:03:28 INFO]: Loaded 1470 recipes
-[21:03:28 INFO]: Loaded 1584 advancements
-[21:03:28 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
-[21:03:28 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 277.8ms
-[21:03:29 INFO]: Starting minecraft server version 1.21.11
-[21:03:29 INFO]: Loading properties
-[21:03:29 INFO]: This server is running Paper version 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) (Implementing API version 1.21.11-R0.1-SNAPSHOT)
-[21:03:29 INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
-[21:03:29 INFO]: Server Ping Player Sample Count: 12
-[21:03:29 INFO]: Using 4 threads for Netty based IO
-[21:03:29 INFO]: [MoonriseCommon] Paper is using 1 worker threads, 1 I/O threads
-[21:03:29 INFO]: Default game type: SURVIVAL
-[21:03:29 INFO]: Generating keypair
-[21:03:29 INFO]: Starting Minecraft server on 127.0.0.1:25591
-[21:03:29 INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
-[21:03:29 INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
-[21:03:29 INFO]: [Z_Book] Loading server plugin Z_Book v1.0.0
-[21:03:29 INFO]: [Z_Book_Probe] Loading server plugin Z_Book_Probe v1.0.0
-[21:03:29 WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[21:03:29 WARN]: The server will make no attempt to authenticate usernames. Beware.
-[21:03:29 WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[21:03:29 WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[21:03:29 INFO]: Preparing level "world"
-[21:03:29 ERROR]: No key layers in MapLike[{}]
-[21:03:30 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] NUMA enable flag is not set; however there is NUMA interaction support for this OS.
-[21:03:30 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] Detected 1 NUMA nodes.
-[21:03:30 INFO]: Selecting spawn point for world 'minecraft:overworld'...
-[21:03:30 ERROR]: No key layers in MapLike[{}]
-[21:03:30 INFO]: Selecting spawn point for world 'minecraft:the_nether'...
-[21:03:31 ERROR]: No key layers in MapLike[{}]
-[21:03:31 INFO]: Selecting spawn point for world 'minecraft:the_end'...
-[21:03:31 INFO]: Loading 0 persistent chunks for world 'minecraft:overworld'...
-[21:03:31 INFO]: Preparing spawn area: 100%
-[21:03:31 INFO]: Prepared spawn area in 1521 ms
-[21:03:31 INFO]: Loading 0 persistent chunks for world 'minecraft:the_nether'...
-[21:03:31 INFO]: Preparing spawn area: 100%
-[21:03:31 INFO]: Prepared spawn area in 1164 ms
-[21:03:31 INFO]: Loading 0 persistent chunks for world 'minecraft:the_end'...
-[21:03:31 INFO]: Preparing spawn area: 100%
-[21:03:31 INFO]: Prepared spawn area in 178 ms
-[21:03:31 INFO]: Done preparing level "world" (1.708s)
-[21:03:31 INFO]: [Z_Book] Enabling Z_Book v1.0.0
-[21:03:31 INFO]: [Z_Book_Probe] Enabling Z_Book_Probe v1.0.0
-[21:03:31 INFO]: [spark] Starting background profiler...
-[21:03:32 INFO]: Running delayed init tasks
-[21:03:32 INFO]: Done (13.473s)! For help, type "help"
-[21:03:32 INFO]: *************************************************************************************
-[21:03:32 INFO]: This is the first time you're starting this server.
-[21:03:32 INFO]: It's recommended you read our 'Getting Started' documentation for guidance.
-[21:03:32 INFO]: View this and more helpful information here: https://docs.papermc.io/paper/next-steps
-[21:03:32 INFO]: *************************************************************************************
-[21:03:32 INFO]: Made BookTester a server operator
-[21:03:32 WARN]: *************************************************************************************
-[21:03:32 WARN]: You are running the latest build for your Minecraft version (1.21.11)
-[21:03:32 WARN]: However, you are 6 release(s) behind the latest stable release (26.3)!
-[21:03:32 WARN]: It is recommended that you update as soon as possible
-[21:03:32 WARN]: https://papermc.io/downloads/paper
-[21:03:32 WARN]: *************************************************************************************
-[21:03:33 INFO]: UUID of player BookTester is 45a957cb-856c-30b7-ae2d-10156317eff8
-[21:03:34 INFO]: BookTester joined the game
-[21:03:34 INFO]: BookTester[/127.0.0.1:35194] logged in with entity id 7 at ([world]-0.5, -60.0, -3.5)
-[21:03:34 INFO]: Successfully filled 169 block(s)
-[21:03:34 INFO]: Changed the block at 2, 71, 2
-[21:03:34 INFO]: Teleported BookTester to 0.500000, 71.000000, 0.500000
-[21:03:36 INFO]: BookTester issued server command: /minecraft:clear BookTester
-[21:03:37 INFO]: BookTester issued server command: /minecraft:give BookTester book
-[21:03:37 INFO]: [BookTester: Gave 1 [Book] to BookTester]
-[21:03:37 INFO]: BookTester issued server command: /minecraft:give BookTester paper
-[21:03:37 INFO]: [BookTester: Gave 1 [Paper] to BookTester]
-[21:03:41 INFO]: BookTester issued server command: /minecraft:clear BookTester
-[21:03:41 INFO]: [BookTester: Removed 2 item(s) from player BookTester]
-[21:03:41 INFO]: BookTester issued server command: /zbook give book
-[21:03:42 INFO]: BookTester issued server command: /zbook give ekspanor_fanfiction BookTester 4
-[21:03:42 INFO]: BookTester issued server command: /bookprobe
-[21:03:45 INFO]: BookTester issued server command: /minecraft:give BookTester dirt
-[21:03:45 INFO]: [BookTester: Gave 1 [Dirt] to BookTester]
-[21:03:48 INFO]: BookTester issued server command: /bookprobe
-[21:03:51 INFO]: BookTester issued server command: /minecraft:clear BookTester
-[21:03:51 INFO]: [BookTester: Removed 5 item(s) from player BookTester]
-[21:03:52 INFO]: BookTester issued server command: /zbook give book
-[21:03:53 INFO]: BookTester issued server command: /zbook give ekspanor_fanfiction BookTester 4
-[21:03:54 INFO]: BookTester issued server command: /minecraft:give BookTester stone 2304
-[21:03:54 INFO]: [BookTester: Gave 2304 [Stone] to BookTester]
-[21:03:55 INFO]: BookTester issued server command: /minecraft:clear BookTester stone
-[21:03:55 INFO]: [BookTester: Removed 2304 item(s) from player BookTester]
-[21:03:57 INFO]: BookTester issued server command: /minecraft:clear BookTester
-[21:03:57 INFO]: [BookTester: Removed 5 item(s) from player BookTester]
-[21:03:57 INFO]: BookTester issued server command: /zbook give book
-[21:03:58 INFO]: BookTester issued server command: /zbook give ekspanor_fanfiction BookTester 4
-[21:04:01 INFO]: BookTester issued server command: /bookprobe
-[21:04:02 INFO]: BookTester issued server command: /minecraft:clear BookTester
-[21:04:02 INFO]: [BookTester: Removed 4 item(s) from player BookTester]
-[21:04:02 INFO]: BookTester issued server command: /zbook give book
-[21:04:03 INFO]: BookTester issued server command: /zbook give ekspanor_fanfiction BookTester 4
-[21:04:07 INFO]: BookTester issued server command: /bookprobe
-[21:04:09 INFO]: Teleported BookTester to 0.500000, 71.000000, 0.500000
-[21:04:09 INFO]: Made BookTester no longer a server operator
-[21:04:10 INFO]: BookTester issued server command: /zbook give book
-[21:04:10 INFO]: BookTester issued server command: /zbook cast ekspanor_fanfiction
-[21:04:11 INFO]: BookTester issued server command: /bookprobe
-[21:04:12 INFO]: Teleported BookTester to 0.500000, 71.000000, 0.500000
-[21:04:13 INFO]: BookTester issued server command: /bookprobe block
-[21:04:14 INFO]: BookTester issued server command: /zbook cast ekspanor_fanfiction
-[21:04:15 INFO]: BookTester issued server command: /bookprobe
-[21:04:15 INFO]: BookTester issued server command: /bookprobe unblock
-[21:04:16 INFO]: BookTester issued server command: /zbook cast ekspanor_fanfiction
-[21:04:16 INFO]: [Z_Book_Probe] PROBE damage cause=LIGHTNING damager=LIGHTNING_BOLT cancelled=true health=20.0 damage=5.0
-[21:04:17 INFO]: [Z_Book_Probe] PROBE damage cause=LIGHTNING damager=LIGHTNING_BOLT cancelled=true health=20.0 damage=5.0
-[21:04:17 INFO]: [Z_Book_Probe] PROBE damage cause=LIGHTNING damager=LIGHTNING_BOLT cancelled=true health=20.0 damage=5.0
-[21:04:17 INFO]: [Z_Book_Probe] PROBE damage cause=LIGHTNING damager=LIGHTNING_BOLT cancelled=true health=20.0 damage=5.0
-[21:04:17 INFO]: [Z_Book_Probe] PROBE damage cause=LIGHTNING damager=LIGHTNING_BOLT cancelled=true health=20.0 damage=5.0
-[21:04:17 INFO]: [Z_Book_Probe] PROBE damage cause=LIGHTNING damager=LIGHTNING_BOLT cancelled=true health=20.0 damage=5.0
-[21:04:17 INFO]: [Z_Book_Probe] PROBE damage cause=LIGHTNING damager=LIGHTNING_BOLT cancelled=true health=20.0 damage=5.0
-[21:04:17 INFO]: [Z_Book_Probe] PROBE damage cause=LIGHTNING damager=LIGHTNING_BOLT cancelled=true health=20.0 damage=5.0
-[21:04:17 INFO]: BookTester issued server command: /bookprobe
-[21:04:18 INFO]: BookTester issued server command: /zbook cast ekspanor_fanfiction
-[21:04:19 INFO]: BookTester issued server command: /bookprobe
-[21:04:20 INFO]: BookTester lost connection: Disconnected
-[21:04:20 INFO]: BookTester left the game
-[21:04:21 INFO]: Stopping the server
-[21:04:21 INFO]: Stopping server
-[21:04:21 INFO]: [Z_Book_Probe] Disabling Z_Book_Probe v1.0.0
-[21:04:21 INFO]: [Z_Book] Disabling Z_Book v1.0.0
-[21:04:21 INFO]: Saving players
-[21:04:21 INFO]: Saving worlds
-[21:04:21 INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[21:04:21 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
-[21:04:21 INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
-[21:04:21 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
-[21:04:22 INFO]: [ChunkHolderManager] Saved 1225 block chunks, 169 entity chunks, 0 poi chunks in world 'world' in 0.29s
-[21:04:22 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world'
-[21:04:22 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world'
-[21:04:22 INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
-[21:04:22 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
-[21:04:22 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
-[21:04:22 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
-[21:04:22 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_nether' in 0.00s
-[21:04:22 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_nether'
-[21:04:22 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_nether'
-[21:04:22 INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
-[21:04:22 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
-[21:04:22 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
-[21:04:22 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
-[21:04:22 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_the_end' in 0.00s
-[21:04:22 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_the_end'
-[21:04:22 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_the_end'
-[21:04:22 INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[21:04:22 INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[21:04:22 INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[21:04:22 INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[21:04:22 INFO]: Waiting for all RegionFile I/O tasks to complete...
-[21:04:22 INFO]: All RegionFile I/O tasks to complete
-[21:04:22 INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
-[21:04:22 INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...
+[21:06:27 INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[21:06:27 INFO]: Found new data pack file/bukkit, loading it automatically
+[21:06:27 INFO]: Found new data pack paper, loading it automatically
+[21:06:28 INFO]: No existing world data, creating new world
+[21:06:28 ERROR]: No key layers in MapLike[{}]
+[21:06:29 INFO]: Loaded 1470 recipes
+[21:06:29 INFO]: Loaded 1584 advancements
+[21:06:29 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
+[21:06:29 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 461.2ms
+[21:06:29 INFO]: Starting minecraft server version 1.21.11
+[21:06:29 INFO]: Loading properties
+[21:06:29 INFO]: This server is running Paper version 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) (Implementing API version 1.21.11-R0.1-SNAPSHOT)
+[21:06:29 INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[21:06:29 INFO]: Server Ping Player Sample Count: 12
+[21:06:29 INFO]: Using 4 threads for Netty based IO
+[21:06:30 INFO]: [MoonriseCommon] Paper is using 1 worker threads, 1 I/O threads
+[21:06:30 INFO]: Default game type: SURVIVAL
+[21:06:30 INFO]: Generating keypair
+[21:06:31 INFO]: Starting Minecraft server on 127.0.0.1:25591
+[21:06:31 INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
+[21:06:31 INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
+[21:06:31 INFO]: [Z_Book] Loading server plugin Z_Book v1.0.0
+[21:06:31 INFO]: [Z_Book_Probe] Loading server plugin Z_Book_Probe v1.0.0
+[21:06:31 WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[21:06:31 WARN]: The server will make no attempt to authenticate usernames. Beware.
+[21:06:31 WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[21:06:31 WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[21:06:31 INFO]: Preparing level "world"
+[21:06:31 ERROR]: No key layers in MapLike[{}]
+[21:06:31 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] NUMA enable flag is not set; however there is NUMA interaction support for this OS.
+[21:06:31 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] Detected 1 NUMA nodes.
+[21:06:31 INFO]: Selecting spawn point for world 'minecraft:overworld'...
+[21:06:32 ERROR]: No key layers in MapLike[{}]
+[21:06:32 INFO]: Selecting spawn point for world 'minecraft:the_nether'...
+[21:06:33 ERROR]: No key layers in MapLike[{}]
+[21:06:33 INFO]: Selecting spawn point for world 'minecraft:the_end'...
+[21:06:33 INFO]: Loading 0 persistent chunks for world 'minecraft:overworld'...
+[21:06:33 INFO]: Preparing spawn area: 100%
+[21:06:33 INFO]: Prepared spawn area in 2022 ms
+[21:06:33 INFO]: Loading 0 persistent chunks for world 'minecraft:the_nether'...
+[21:06:33 INFO]: Preparing spawn area: 100%
+[21:06:33 INFO]: Prepared spawn area in 1404 ms
+[21:06:33 INFO]: Loading 0 persistent chunks for world 'minecraft:the_end'...
+[21:06:33 INFO]: Preparing spawn area: 100%
+[21:06:33 INFO]: Prepared spawn area in 251 ms
+[21:06:33 INFO]: Done preparing level "world" (2.381s)
+[21:06:33 INFO]: [Z_Book] Enabling Z_Book v1.0.0
+[21:06:33 INFO]: [Z_Book_Probe] Enabling Z_Book_Probe v1.0.0
+[21:06:34 INFO]: [spark] Starting background profiler...
+[21:06:34 INFO]: Running delayed init tasks
+[21:06:34 INFO]: Done (18.966s)! For help, type "help"
+[21:06:34 INFO]: *************************************************************************************
+[21:06:34 INFO]: This is the first time you're starting this server.
+[21:06:34 INFO]: It's recommended you read our 'Getting Started' documentation for guidance.
+[21:06:34 INFO]: View this and more helpful information here: https://docs.papermc.io/paper/next-steps
+[21:06:34 INFO]: *************************************************************************************
+[21:06:34 INFO]: Made BookTester a server operator
+[21:06:34 WARN]: *************************************************************************************
+[21:06:34 WARN]: You are running the latest build for your Minecraft version (1.21.11)
+[21:06:34 WARN]: However, you are 6 release(s) behind the latest stable release (26.3)!
+[21:06:34 WARN]: It is recommended that you update as soon as possible
+[21:06:34 WARN]: https://papermc.io/downloads/paper
+[21:06:34 WARN]: *************************************************************************************
+[21:06:35 INFO]: UUID of player BookTester is 45a957cb-856c-30b7-ae2d-10156317eff8
+[21:06:36 INFO]: BookTester joined the game
+[21:06:36 INFO]: BookTester[/127.0.0.1:57608] logged in with entity id 1 at ([world]-9.5, -60.0, 2.5)
+[21:06:37 INFO]: Successfully filled 169 block(s)
+[21:06:37 INFO]: Changed the block at 2, 71, 2
+[21:06:37 INFO]: Teleported BookTester to 0.500000, 71.000000, 0.500000
+[21:06:39 INFO]: BookTester issued server command: /minecraft:clear BookTester
+[21:06:39 INFO]: BookTester issued server command: /minecraft:give BookTester book
+[21:06:39 INFO]: [BookTester: Gave 1 [Book] to BookTester]
+[21:06:40 INFO]: BookTester issued server command: /minecraft:give BookTester paper
+[21:06:40 INFO]: [BookTester: Gave 1 [Paper] to BookTester]
+[21:06:43 INFO]: BookTester issued server command: /minecraft:clear BookTester
+[21:06:43 INFO]: [BookTester: Removed 2 item(s) from player BookTester]
+[21:06:44 INFO]: BookTester issued server command: /zbook give book
+[21:06:44 INFO]: BookTester issued server command: /zbook give ekspanor_fanfiction BookTester 4
+[21:06:45 INFO]: BookTester issued server command: /bookprobe
+[21:06:47 INFO]: BookTester issued server command: /minecraft:give BookTester dirt
+[21:06:47 INFO]: [BookTester: Gave 1 [Dirt] to BookTester]
+[21:06:50 INFO]: BookTester issued server command: /bookprobe
+[21:06:54 INFO]: BookTester issued server command: /minecraft:clear BookTester
+[21:06:54 INFO]: [BookTester: Removed 5 item(s) from player BookTester]
+[21:06:55 INFO]: BookTester issued server command: /zbook give book
+[21:06:55 INFO]: BookTester issued server command: /zbook give ekspanor_fanfiction BookTester 4
+[21:06:57 INFO]: BookTester issued server command: /minecraft:give BookTester stone 2304
+[21:06:57 INFO]: [BookTester: Gave 2304 [Stone] to BookTester]
+[21:06:58 INFO]: BookTester issued server command: /minecraft:clear BookTester stone
+[21:06:58 INFO]: [BookTester: Removed 2304 item(s) from player BookTester]
+[21:06:59 INFO]: BookTester issued server command: /minecraft:clear BookTester
+[21:06:59 INFO]: [BookTester: Removed 5 item(s) from player BookTester]
+[21:07:00 INFO]: BookTester issued server command: /zbook give book
+[21:07:00 INFO]: BookTester issued server command: /zbook give ekspanor_fanfiction BookTester 4
+[21:07:04 INFO]: BookTester issued server command: /bookprobe
+[21:07:04 INFO]: BookTester issued server command: /minecraft:clear BookTester
+[21:07:04 INFO]: [BookTester: Removed 4 item(s) from player BookTester]
+[21:07:05 INFO]: BookTester issued server command: /zbook give book
+[21:07:06 INFO]: BookTester issued server command: /zbook give ekspanor_fanfiction BookTester 4
+[21:07:10 INFO]: BookTester issued server command: /bookprobe
+[21:07:11 INFO]: Teleported BookTester to 0.500000, 71.000000, 0.500000
+[21:07:11 INFO]: Made BookTester no longer a server operator
+[21:07:12 INFO]: BookTester issued server command: /zbook give book
+[21:07:13 INFO]: BookTester issued server command: /zbook cast ekspanor_fanfiction
+[21:07:14 INFO]: BookTester issued server command: /bookprobe
+[21:07:15 INFO]: Teleported BookTester to 0.500000, 71.000000, 0.500000
+[21:07:16 INFO]: BookTester issued server command: /bookprobe block
+[21:07:16 INFO]: BookTester issued server command: /zbook cast ekspanor_fanfiction
+[21:07:17 INFO]: BookTester issued server command: /bookprobe
+[21:07:18 INFO]: BookTester issued server command: /bookprobe unblock
+[21:07:18 INFO]: BookTester issued server command: /zbook cast ekspanor_fanfiction
+[21:07:19 INFO]: [Z_Book_Probe] PROBE damage cause=LIGHTNING damager=LIGHTNING_BOLT cancelled=true health=20.0 damage=5.0
+[21:07:19 INFO]: [Z_Book_Probe] PROBE damage cause=LIGHTNING damager=LIGHTNING_BOLT cancelled=true health=20.0 damage=5.0
+[21:07:19 INFO]: [Z_Book_Probe] PROBE damage cause=LIGHTNING damager=LIGHTNING_BOLT cancelled=true health=20.0 damage=5.0
+[21:07:19 INFO]: [Z_Book_Probe] PROBE damage cause=LIGHTNING damager=LIGHTNING_BOLT cancelled=true health=20.0 damage=5.0
+[21:07:20 INFO]: BookTester issued server command: /bookprobe
+[21:07:20 INFO]: BookTester issued server command: /zbook cast ekspanor_fanfiction
+[21:07:21 INFO]: BookTester issued server command: /bookprobe
+[21:07:22 INFO]: BookTester lost connection: Disconnected
+[21:07:22 INFO]: BookTester left the game
+[21:07:24 INFO]: Stopping the server
+[21:07:24 INFO]: Stopping server
+[21:07:24 INFO]: [Z_Book_Probe] Disabling Z_Book_Probe v1.0.0
+[21:07:24 INFO]: [Z_Book] Disabling Z_Book v1.0.0
+[21:07:24 INFO]: Saving players
+[21:07:24 INFO]: Saving worlds
+[21:07:24 INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[21:07:24 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[21:07:24 INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[21:07:24 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[21:07:24 INFO]: [ChunkHolderManager] Saved 1225 block chunks, 169 entity chunks, 0 poi chunks in world 'world' in 0.45s
+[21:07:24 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world'
+[21:07:24 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world'
+[21:07:24 INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
+[21:07:24 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
+[21:07:24 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
+[21:07:24 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
+[21:07:24 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_nether' in 0.00s
+[21:07:24 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_nether'
+[21:07:24 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_nether'
+[21:07:24 INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[21:07:24 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[21:07:24 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[21:07:24 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[21:07:24 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_the_end' in 0.00s
+[21:07:24 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_the_end'
+[21:07:24 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_the_end'
+[21:07:24 INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[21:07:24 INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[21:07:24 INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[21:07:24 INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[21:07:24 INFO]: Waiting for all RegionFile I/O tasks to complete...
+[21:07:24 INFO]: All RegionFile I/O tasks to complete
+[21:07:24 INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
+[21:07:24 INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...

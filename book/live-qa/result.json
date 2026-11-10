@@ -1,7 +1,7 @@
 {
   "status": "PASS",
   "paper_build": 132,
-  "plugin_sha256": "6edb1aa80330e81256665c61ecefdc17e8d1768baba279f1c0d9a91385b33bf5",
+  "plugin_sha256": "6c822675211a1c11bbd7ff0510b378510044f236879a1e10fa371732c5bf3aad",
   "checks": {
     "vanilla_inputs_no_result": true,
     "items_identified": true,
