@@ -4,6 +4,8 @@ import org.bukkit.*;
 import org.bukkit.entity.*;
 import org.bukkit.event.*;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockIgniteEvent;
+import org.bukkit.util.BoundingBox;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
@@ -44,5 +46,12 @@ final class CastManager implements Listener {
  @EventHandler public void death(PlayerDeathEvent e){armed.remove(e.getEntity().getUniqueId());}
  @EventHandler public void world(PlayerChangedWorldEvent e){armed.remove(e.getPlayer().getUniqueId());}
  @EventHandler public void quit(PlayerQuitEvent e){armed.remove(e.getPlayer().getUniqueId());}
- @EventHandler(priority=EventPriority.HIGH,ignoreCancelled=true) public void lightning(EntityDamageByEntityEvent e){if(!(e.getEntity() instanceof Player p)||!(e.getDamager() instanceof LightningStrike bolt))return;String id=bolt.getPersistentDataContainer().get(plugin.protectedCasterKey(),PersistentDataType.STRING);if(p.getUniqueId().toString().equals(id))e.setCancelled(true);}
+ private boolean protects(Player p,LightningStrike bolt){String id=bolt.getPersistentDataContainer().get(plugin.protectedCasterKey(),PersistentDataType.STRING);return p.getUniqueId().toString().equals(id);}
+ @EventHandler(priority=EventPriority.HIGH,ignoreCancelled=true) public void lightning(EntityDamageByEntityEvent e){if(e.getEntity() instanceof Player p&&e.getDamager() instanceof LightningStrike bolt&&protects(p,bolt))e.setCancelled(true);}
+ @EventHandler(priority=EventPriority.HIGH,ignoreCancelled=true) public void ignite(EntityCombustByEntityEvent e){if(e.getEntity() instanceof Player p&&e.getCombuster() instanceof LightningStrike bolt&&protects(p,bolt))e.setCancelled(true);}
+ @EventHandler(priority=EventPriority.HIGH,ignoreCancelled=true) public void fireBlock(BlockIgniteEvent e){
+  if(e.getCause()!=BlockIgniteEvent.IgniteCause.LIGHTNING||!(e.getIgnitingEntity() instanceof LightningStrike bolt))return;
+  String id=bolt.getPersistentDataContainer().get(plugin.protectedCasterKey(),PersistentDataType.STRING);if(id==null)return;
+  try{Player p=Bukkit.getPlayer(UUID.fromString(id));var b=e.getBlock();if(p!=null&&p.getWorld().equals(b.getWorld())&&p.getBoundingBox().overlaps(new BoundingBox(b.getX(),b.getY(),b.getZ(),b.getX()+1,b.getY()+1,b.getZ()+1)))e.setCancelled(true);}catch(IllegalArgumentException ignored){}
+ }
 }
