@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "paper_build": 132,
+  "plugin_sha256": "3ad7ecaa0e1b95eb3f8cf948cb177644072de316325b4880b125a38360c32261",
+  "checks": {
+    "items_identified": true,
+    "craft_result_exists": true,
+    "normal_craft": true,
+    "duplicate_has_no_result": true,
+    "shift_craft_once": true,
+    "no_target_no_cooldown": true,
+    "hit_cast_and_cooldown": true,
+    "cooldown_prevents_second_strike": true,
+    "cooldown_persists_relog": true
+  }
+}
