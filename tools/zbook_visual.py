@@ -43,7 +43,7 @@ try:
   xtest.fake_input(conn,X.MotionNotify,x=x,y=y);xtest.fake_input(conn,X.ButtonPress,detail=button);xtest.fake_input(conn,X.ButtonRelease,detail=button);conn.sync()
  def capture(name):
   pix=screen.get_image(0,0,sc.width_in_pixels,sc.height_in_pixels,X.ZPixmap,0xffffffff);Image.frombytes('RGB',(sc.width_in_pixels,sc.height_in_pixels),pix.data,'raw','BGRX').save(report/name)
- click(640,360,3);time.sleep(2);capture('01-index.png');(report/'result.json').write_text(json.dumps({'status':'CAPTURED'},indent=2))
+ click(640,360,3);time.sleep(2);capture('01-index.png');click(600,107);time.sleep(1);capture('02-spell.png');(report/'result.json').write_text(json.dumps({'status':'PAGE_CAPTURED'},indent=2))
 except Exception as ex:
  (report/'result.json').write_text(json.dumps({'status':'FAIL','error':str(ex),'trace':traceback.format_exc()},indent=2));raise
 finally:
