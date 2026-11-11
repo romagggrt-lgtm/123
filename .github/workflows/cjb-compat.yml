@@ -1,0 +1,94 @@
+name: CustomJukebox uploaded JAR on Paper 1.21.11
+on:
+  push:
+    branches: [research/customjukebox-3.7.1]
+    paths: ['cjb-qa/**', '.github/workflows/cjb-compat.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Fetch the exact official JAR and compare with user upload
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p cjb-qa/evidence
+          python3 cjb-qa/resolve_jar.py 2>&1 | tee cjb-qa/evidence/official-match.log
+          cp cjb-qa/target/official-match.json cjb-qa/evidence/official-match.json
+      - name: Prepare Paper API, Minecraft client and audio tools
+        run: |
+          mvn -B -f book/pom.xml -DskipTests package
+          python3 -m pip install --break-system-packages Pillow python-xlib nbtlib
+          sudo apt-get update -qq
+          sudo apt-get install -y pulseaudio ffmpeg
+      - uses: actions/cache@v4
+        with:
+          path: |
+            cjb-qa/target/visual-client/client.jar
+            cjb-qa/target/visual-client/assets
+            cjb-qa/target/visual-client/libraries
+          key: minecraft-1.21.11-cjbqa-assets-v1
+      - name: Test jukebox playback on Paper and unmodified Minecraft
+        shell: bash
+        env:
+          LIBGL_ALWAYS_SOFTWARE: '1'
+          ALSOFT_DRIVERS: pulse
+        run: |
+          export XDG_RUNTIME_DIR="/tmp/cjbqa-pulse-$UID"
+          mkdir -p "$XDG_RUNTIME_DIR"
+          chmod 700 "$XDG_RUNTIME_DIR"
+          pulseaudio --start --exit-idle-time=-1
+          pactl load-module module-null-sink sink_name=cjbqa_sink
+          pactl set-default-sink cjbqa_sink
+          pactl set-sink-mute cjbqa_sink 0
+          pactl set-sink-volume cjbqa_sink 100%
+          xvfb-run -a -s '-screen 0 1280x720x24' python3 cjb-qa/run_compat.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: customjukebox-compat-evidence
+          path: cjb-qa/evidence/
+          if-no-files-found: warn
+  publish-evidence:
+    needs: [verify]
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: customjukebox-compat-evidence
+          path: /tmp/cjbqa-evidence
+      - name: Save only test reports for review
+        shell: bash
+        run: |
+          mkdir -p cjb-qa/evidence
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          source=Path('/tmp/cjbqa-evidence');dest=Path('cjb-qa/evidence')
+          allow={'official-match.log','official-match.json','result.json','server.log','client.log','client-console.log','compile.log','audio-capture.log','01-disc-ready.png','02-playing.png','03-stopped.png'}
+          for p in source.iterdir():
+              if p.is_file() and not p.is_symlink() and p.name in allow and p.stat().st_size<4_000_000: shutil.copyfile(p,dest/p.name)
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin "$GITHUB_REF_NAME"
+          test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA" || exit 0
+          git add cjb-qa/evidence
+          git diff --cached --quiet && exit 0
+          git commit -m 'Record CustomJukebox compatibility evidence [skip ci]'
+          git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
