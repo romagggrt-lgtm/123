@@ -1,0 +1,181 @@
+Downloading mojang_1.21.11.jar
+Applying patches
+Starting org.bukkit.craftbukkit.Main
+2026-11-11T18:25:52.073021865Z ServerMain WARN Advanced terminal features are not available in this environment
+[18:25:52 INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.13+9-LTS; Eclipse Adoptium Temurin-21.0.13+9) on Linux 7.0.0-1019-azure (amd64)
+[18:25:52 INFO]: [bootstrap] Loading Paper 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) for Minecraft 1.21.11
+[18:25:52 INFO]: [PluginInitializerManager] Initializing plugins...
+[18:25:53 INFO]: [ReobfServer] Remapping server...
+[18:25:57 INFO]: [ReobfServer] Done remapping server in 4044ms.
+[18:25:57 INFO]: [PluginRemapper] Remapping plugin 'plugins/InventoryCache_1.0.1.jar'...
+[18:25:57 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Nick-1.0.0.jar'...
+[18:25:57 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Check-1.0.0.jar'...
+[18:25:57 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Book-1.0.0.jar'...
+[18:25:57 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Book-1.0.0.jar' in 109ms.
+[18:25:57 INFO]: [PluginRemapper] Remapping plugin 'plugins/CJB_CompatibilityProbe.jar'...
+[18:25:57 INFO]: [PluginRemapper] Done remapping plugin 'plugins/InventoryCache_1.0.1.jar' in 131ms.
+[18:25:57 INFO]: [PluginRemapper] Remapping plugin 'plugins/CustomJukebox-3.7.1.jar'...
+[18:25:57 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Check-1.0.0.jar' in 183ms.
+[18:25:57 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_AP-1.1.1.jar'...
+[18:25:57 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Nick-1.0.0.jar' in 183ms.
+[18:25:57 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Banya-1.0.2.jar'...
+[18:25:57 INFO]: [PluginRemapper] Done remapping plugin 'plugins/CJB_CompatibilityProbe.jar' in 74ms.
+[18:25:57 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_AP-1.1.1.jar' in 44ms.
+[18:25:57 INFO]: [PluginRemapper] Done remapping plugin 'plugins/CustomJukebox-3.7.1.jar' in 121ms.
+[18:25:57 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Banya-1.0.2.jar' in 69ms.
+[18:25:57 INFO]: [PluginInitializerManager] Initialized 8 plugins
+[18:25:57 INFO]: [PluginInitializerManager] Bukkit plugins (8):
+ - CJB_CompatibilityProbe (1.0), CustomJukebox (3.7.1), InventoryCache (1.0.1), Z_AP (1.1.1), Z_Banya (1.0.2), Z_Book (1.0.0), Z_Check (1.0.0), Z_Nick (1.0.0)
+[18:26:00 WARN]: resource-pack-id missing, using default of 1b0ccb07-7466-3ac9-a1f1-7e721bf6c7a7
+[18:26:00 INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[18:26:00 INFO]: Found new data pack file/bukkit, loading it automatically
+[18:26:00 INFO]: Found new data pack paper, loading it automatically
+[18:26:00 INFO]: No existing world data, creating new world
+[18:26:00 ERROR]: No key layers in MapLike[{}]
+[18:26:01 INFO]: Loaded 1470 recipes
+[18:26:01 INFO]: Loaded 1584 advancements
+[18:26:01 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
+[18:26:01 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 257.9ms
+[18:26:01 WARN]: resource-pack-id missing, using default of 1b0ccb07-7466-3ac9-a1f1-7e721bf6c7a7
+[18:26:01 INFO]: Starting minecraft server version 1.21.11
+[18:26:01 INFO]: Loading properties
+[18:26:01 INFO]: This server is running Paper version 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) (Implementing API version 1.21.11-R0.1-SNAPSHOT)
+[18:26:01 INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[18:26:01 INFO]: Server Ping Player Sample Count: 12
+[18:26:01 INFO]: Using 4 threads for Netty based IO
+[18:26:02 INFO]: [MoonriseCommon] Paper is using 1 worker threads, 1 I/O threads
+[18:26:02 INFO]: Default game type: SURVIVAL
+[18:26:02 INFO]: Generating keypair
+[18:26:02 INFO]: Starting Minecraft server on 127.0.0.1:25582
+[18:26:02 INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
+[18:26:02 INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
+[18:26:02 INFO]: [CustomJukebox] Loading server plugin CustomJukebox v3.7.1
+[18:26:02 INFO]: [Z_Banya] Loading server plugin Z_Banya v1.0.2
+[18:26:02 INFO]: [Z_Nick] Loading server plugin Z_Nick v1.0.0
+[18:26:02 INFO]: [InventoryCache] Loading server plugin InventoryCache v1.0.1
+[18:26:02 INFO]: [Z_Check] Loading server plugin Z_Check v1.0.0
+[18:26:02 INFO]: [CJB_CompatibilityProbe] Loading server plugin CJB_CompatibilityProbe v1.0
+[18:26:02 INFO]: [Z_Book] Loading server plugin Z_Book v1.0.0
+[18:26:02 INFO]: [Z_AP] Loading server plugin Z_AP v1.1.1
+[18:26:02 WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[18:26:02 WARN]: The server will make no attempt to authenticate usernames. Beware.
+[18:26:02 WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[18:26:02 WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[18:26:02 INFO]: Preparing level "world"
+[18:26:02 ERROR]: No key layers in MapLike[{}]
+[18:26:03 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] NUMA enable flag is not set; however there is NUMA interaction support for this OS.
+[18:26:03 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] Detected 1 NUMA nodes.
+[18:26:03 INFO]: Selecting spawn point for world 'minecraft:overworld'...
+[18:26:03 ERROR]: No key layers in MapLike[{}]
+[18:26:03 INFO]: Selecting spawn point for world 'minecraft:the_nether'...
+[18:26:04 ERROR]: No key layers in MapLike[{}]
+[18:26:04 INFO]: Selecting spawn point for world 'minecraft:the_end'...
+[18:26:04 INFO]: Loading 0 persistent chunks for world 'minecraft:overworld'...
+[18:26:04 INFO]: Preparing spawn area: 100%
+[18:26:04 INFO]: Prepared spawn area in 1251 ms
+[18:26:04 INFO]: Loading 0 persistent chunks for world 'minecraft:the_nether'...
+[18:26:04 INFO]: Preparing spawn area: 100%
+[18:26:04 INFO]: Prepared spawn area in 733 ms
+[18:26:04 INFO]: Loading 0 persistent chunks for world 'minecraft:the_end'...
+[18:26:04 INFO]: Preparing spawn area: 100%
+[18:26:04 INFO]: Prepared spawn area in 154 ms
+[18:26:04 INFO]: Done preparing level "world" (1.437s)
+[18:26:04 INFO]: [CustomJukebox] Enabling CustomJukebox v3.7.1
+[18:26:04 INFO]: [CustomJukebox] Starting CustomJukebox initialization...
+[18:26:04 INFO]: [CustomJukebox] Created default config.json
+[18:26:04 INFO]: [CustomJukebox] Loaded configuration from config.json (version 1)
+[18:26:04 INFO]: [CustomJukebox] Loaded language: en
+[18:26:04 INFO]: [CustomJukebox] Loaded language: de
+[18:26:04 INFO]: [CustomJukebox] Loaded language: es
+[18:26:04 INFO]: [CustomJukebox] Loaded language: it
+[18:26:04 INFO]: [CustomJukebox] Using language: en
+[18:26:04 INFO]: [CustomJukebox] WorldGuard not found (soft-dependency)
+[18:26:04 INFO]: [CustomJukebox] GriefPrevention not found (soft-dependency)
+[18:26:04 INFO]: [CustomJukebox] Created default disc.json
+[18:26:04 INFO]: [CustomJukebox] Loaded disc.json (version 1)
+[18:26:04 INFO]: [CustomJukebox] Loaded 3 disc categories
+[18:26:04 INFO]: [CustomJukebox] Loaded 2 playlists
+[18:26:04 INFO]: [CustomJukebox] Loaded 3 custom discs!
+[18:26:04 INFO]: [CustomJukebox] Loaded 3 disc fragments!
+[18:26:04 INFO]: [CustomJukebox] All discs validated successfully! No configuration issues found.
+[18:26:04 INFO]: [CustomJukebox] Created default zones.json
+[18:26:04 INFO]: [CustomJukebox] bStats metrics initialized successfully
+[18:26:04 INFO]: [CustomJukebox] PlaceholderAPI not found (soft-dependency)
+[18:26:04 INFO]: [CustomJukebox] CustomJukebox has been enabled!
+[18:26:04 INFO]: [CustomJukebox] Version: 3.7.1
+[18:26:04 INFO]: [CustomJukebox] Loaded 3 custom discs
+[18:26:04 INFO]: [CustomJukebox] Using JSON configuration (JEXT-compatible)
+[18:26:04 INFO]: [Z_Banya] Enabling Z_Banya v1.0.2
+[18:26:04 INFO]: [Z_Banya] Z_Banya 1.0.2: загружено бань 0. Общий ресурс-пак задаётся в server.properties.
+[18:26:04 INFO]: [Z_Nick] Enabling Z_Nick v1.0.0
+[18:26:04 INFO]: [Z_Nick] Z_Nick 1.0.0: загружено ников 0
+[18:26:04 INFO]: [InventoryCache] Enabling InventoryCache v1.0.1
+[18:26:04 INFO]: [Z_Check] Enabling Z_Check v1.0.0
+[18:26:04 INFO]: [Z_Check] Загружено активных проверок: 0
+[18:26:04 INFO]: [CJB_CompatibilityProbe] Enabling CJB_CompatibilityProbe v1.0
+[18:26:04 INFO]: [Z_Book] Enabling Z_Book v1.0.0
+[18:26:04 INFO]: [Z_AP] Enabling Z_AP v1.1.1
+[18:26:04 INFO]: [spark] Starting background profiler...
+[18:26:05 INFO]: Running delayed init tasks
+[18:26:05 INFO]: Done (14.023s)! For help, type "help"
+[18:26:05 INFO]: *************************************************************************************
+[18:26:05 INFO]: This is the first time you're starting this server.
+[18:26:05 INFO]: It's recommended you read our 'Getting Started' documentation for guidance.
+[18:26:05 INFO]: View this and more helpful information here: https://docs.papermc.io/paper/next-steps
+[18:26:05 INFO]: *************************************************************************************
+[18:26:05 INFO]: Made CjbTester a server operator
+[18:26:05 WARN]: *************************************************************************************
+[18:26:05 WARN]: You are running the latest build for your Minecraft version (1.21.11)
+[18:26:05 WARN]: However, you are 6 release(s) behind the latest stable release (26.3)!
+[18:26:05 WARN]: It is recommended that you update as soon as possible
+[18:26:05 WARN]: https://papermc.io/downloads/paper
+[18:26:05 WARN]: *************************************************************************************
+[18:26:15 INFO]: UUID of player CjbTester is e68c568e-8bad-3b37-8b0f-3a8722741ab2
+[18:26:19 INFO]: CjbTester joined the game
+[18:26:19 INFO]: CjbTester[/127.0.0.1:58406] logged in with entity id 1 at ([world]-8.5, -60.0, 1.5)
+[18:26:21 INFO]: Given disc Epic Journey to CjbTester
+[18:26:31 INFO]: CjbTester lost connection: Disconnected
+[18:26:31 INFO]: CjbTester left the game
+[18:26:31 INFO]: Stopping the server
+[18:26:31 INFO]: Stopping server
+[18:26:31 INFO]: [Z_AP] Disabling Z_AP v1.1.1
+[18:26:31 INFO]: [Z_Book] Disabling Z_Book v1.0.0
+[18:26:31 INFO]: [CJB_CompatibilityProbe] Disabling CJB_CompatibilityProbe v1.0
+[18:26:31 INFO]: [Z_Check] Disabling Z_Check v1.0.0
+[18:26:31 INFO]: [InventoryCache] Disabling InventoryCache v1.0.1
+[18:26:31 INFO]: [Z_Nick] Disabling Z_Nick v1.0.0
+[18:26:31 INFO]: [Z_Banya] Disabling Z_Banya v1.0.2
+[18:26:31 INFO]: [CustomJukebox] Disabling CustomJukebox v3.7.1
+[18:26:31 INFO]: [CustomJukebox] Stopped all active playbacks
+[18:26:31 INFO]: [CustomJukebox] CustomJukebox has been disabled!
+[18:26:31 INFO]: Saving players
+[18:26:31 INFO]: Saving worlds
+[18:26:31 INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[18:26:31 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[18:26:31 INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[18:26:31 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[18:26:32 INFO]: [ChunkHolderManager] Saved 1225 block chunks, 170 entity chunks, 1 poi chunks in world 'world' in 0.36s
+[18:26:32 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world'
+[18:26:32 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world'
+[18:26:32 INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
+[18:26:32 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
+[18:26:32 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
+[18:26:32 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
+[18:26:32 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_nether' in 0.01s
+[18:26:32 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_nether'
+[18:26:32 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_nether'
+[18:26:32 INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[18:26:32 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[18:26:32 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[18:26:32 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[18:26:32 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_the_end' in 0.01s
+[18:26:32 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_the_end'
+[18:26:32 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_the_end'
+[18:26:32 INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[18:26:32 INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[18:26:32 INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[18:26:32 INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[18:26:32 INFO]: Waiting for all RegionFile I/O tasks to complete...
+[18:26:32 INFO]: All RegionFile I/O tasks to complete
+[18:26:32 INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
+[18:26:32 INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...

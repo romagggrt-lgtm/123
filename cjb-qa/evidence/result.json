@@ -1,0 +1,118 @@
+{
+  "status": "PASS",
+  "checks": {
+    "exact_uploaded_jar_sha256": true,
+    "existing_pack_assets_preserved": true,
+    "plugin_enabled": true,
+    "resource_pack_loaded": true,
+    "custom_disc_given": true,
+    "gui_works_for_non_op": true,
+    "selected_plugins_enabled": true,
+    "disc_inserted_and_playback_started": true,
+    "custom_sound_sent_to_player": true,
+    "stop_sent_after_ejection": true,
+    "test_tone_heard_by_vanilla_client": true,
+    "tone_stops_after_ejection": true,
+    "no_missing_test_sound_in_client_log": true
+  },
+  "details": {
+    "official_artifact": {
+      "jar_sha256": "7bff0566996bdc809752a41379b4cd8caff1bf26047bfb355ea9691d2fe59838",
+      "jar_sha1": "c8d3268124dc9e45af58998e7e3c0c7f938801b6",
+      "filename": "CustomJukebox-3.7.1.jar",
+      "version_number": "3.7.1",
+      "game_versions": [
+        "1.21.11",
+        "1.21.10",
+        "1.21.9",
+        "1.21.8",
+        "1.21.7",
+        "1.21.6",
+        "1.21.5",
+        "1.21.4",
+        "26.1",
+        "26.1.1",
+        "26.1.2",
+        "26.2",
+        "26.3"
+      ],
+      "loaders": [
+        "folia",
+        "paper",
+        "purpur",
+        "spigot"
+      ],
+      "source": "Official Modrinth artifact, SHA-256 matches the user upload"
+    },
+    "test_pack_sha1": "449a3f396e7823c7db0c230baf9efd61d0ffcffa",
+    "paper_build": 132,
+    "coexisting_plugins": [
+      "CustomJukebox=true",
+      "Z_Book=true",
+      "Z_AP=true",
+      "Z_Banya=true",
+      "Z_Nick=true",
+      "Z_Check=true",
+      "InventoryCache=true"
+    ],
+    "sound_event": "sound=music_disc.epic_journey;source=JUKEBOX;volume=4.0",
+    "audio_amplitude_by_half_second": [
+      {
+        "tone": 0.0,
+        "reference": 0.0
+      },
+      {
+        "tone": 0.0,
+        "reference": 0.0
+      },
+      {
+        "tone": 0.00403,
+        "reference": 0.000126
+      },
+      {
+        "tone": 0.071117,
+        "reference": 0.000387
+      },
+      {
+        "tone": 0.071087,
+        "reference": 0.00038
+      },
+      {
+        "tone": 0.071104,
+        "reference": 0.000408
+      },
+      {
+        "tone": 0.071069,
+        "reference": 0.000396
+      },
+      {
+        "tone": 0.071098,
+        "reference": 0.000393
+      },
+      {
+        "tone": 0.071136,
+        "reference": 0.000406
+      },
+      {
+        "tone": 0.071083,
+        "reference": 0.000379
+      },
+      {
+        "tone": 0.002366,
+        "reference": 0.000212
+      },
+      {
+        "tone": 0.0,
+        "reference": 0.0
+      },
+      {
+        "tone": 0.0,
+        "reference": 0.0
+      },
+      {
+        "tone": 0.0,
+        "reference": 0.0
+      }
+    ]
+  }
+}

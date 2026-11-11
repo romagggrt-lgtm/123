@@ -1,0 +1,28 @@
+{
+  "jar_sha256": "7bff0566996bdc809752a41379b4cd8caff1bf26047bfb355ea9691d2fe59838",
+  "jar_sha1": "c8d3268124dc9e45af58998e7e3c0c7f938801b6",
+  "filename": "CustomJukebox-3.7.1.jar",
+  "version_number": "3.7.1",
+  "game_versions": [
+    "1.21.11",
+    "1.21.10",
+    "1.21.9",
+    "1.21.8",
+    "1.21.7",
+    "1.21.6",
+    "1.21.5",
+    "1.21.4",
+    "26.1",
+    "26.1.1",
+    "26.1.2",
+    "26.2",
+    "26.3"
+  ],
+  "loaders": [
+    "folia",
+    "paper",
+    "purpur",
+    "spigot"
+  ],
+  "source": "Official Modrinth artifact, SHA-256 matches the user upload"
+}
