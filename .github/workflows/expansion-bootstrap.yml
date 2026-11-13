@@ -18,6 +18,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Install ffmpeg for live smoke
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
       - name: Build expansion branch
         run: |
           git fetch origin feature/z-expansion-2026-11
