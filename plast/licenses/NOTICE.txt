@@ -1,0 +1,4 @@
+Bundled unmodified libraries:
+JLayer 1.0.1 (JavaZOOM), LGPL 2.1: https://github.com/umjammer/jlayer ; Maven javazoom:jlayer:1.0.1
+jvorbis 1.3.6 / jogg 1.3.3 (axet / Xiph.Org), BSD-like: https://gitlab.com/axet/jvorbis and https://gitlab.com/axet/jogg
+Corresponding source archives available from Maven Central under the same coordinates (-sources.jar).

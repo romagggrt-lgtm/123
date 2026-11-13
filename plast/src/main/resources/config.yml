@@ -11,8 +11,7 @@ upload:
 limits:
   max-tracks-per-player: 20
 converter:
-  ffmpeg-path: ffmpeg
-  ffprobe-path: ffprobe
+  # MP3 преобразуется встроенным Java-конвертером.
   max-parallel: 2
 name:
   max-length: 32
