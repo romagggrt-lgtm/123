@@ -1,4 +1,4 @@
-name: Verify expansion Paper build and combat
+name: Verify Z_Plast direct-link import
 on:
   push:
     branches: [research/z-expansion-bootstrap]
@@ -6,8 +6,9 @@ on:
 permissions:
   contents: write
 jobs:
-  paper-api:
+  plast:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -18,46 +19,21 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Install ffmpeg for live smoke
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
-      - name: Build expansion branch
+      - name: Build plugin and run tests
         run: |
-          git fetch origin feature/z-expansion-2026-11
-          git worktree add /tmp/expansion FETCH_HEAD
-          mkdir -p ci-bootstrap
-          curl -fsSL --retry 3 https://github.com/libraryaddict/LibsDisguises/releases/download/v26.10.24/LibsDisguises-26.10.24-Github.jar -o /tmp/libsdisguises.jar
-          mvn -B install:install-file -Dfile=/tmp/libsdisguises.jar -DgroupId=me.libraryaddict.disguises -DartifactId=libsdisguises -Dversion=26.10.24 -Dpackaging=jar -DgeneratePom=true
-          for project in book tools-plugin lor plast ap; do
-            mvn -B -f /tmp/expansion/$project/pom.xml -DskipTests package >ci-bootstrap/$project-build.log 2>&1 || true
-          done
-          printf '%s\n' "$(git -C /tmp/expansion rev-parse HEAD)" > ci-bootstrap/build-commit.txt
-          rm -rf ci-bootstrap/releases ci-bootstrap/smoke
-          mkdir -p ci-bootstrap/releases ci-bootstrap/smoke
-          for project in book lor ap; do mvn -B -f /tmp/expansion/$project/pom.xml test >ci-bootstrap/smoke/$project-unit.log 2>&1 || true; done
-          for file in /tmp/expansion/book/target/Z_Book-1.1.0.jar /tmp/expansion/tools-plugin/target/A_Tools-1.0.0.jar /tmp/expansion/lor/target/Z_Lor-1.0.3.jar /tmp/expansion/plast/target/Z_Plast-1.0.0.jar /tmp/expansion/ap/target/Z_AP-1.2.0.jar; do if test -f "$file"; then cp "$file" ci-bootstrap/releases/; fi; done
-          if [ "$(find ci-bootstrap/releases -name '*.jar' | wc -l)" -eq 5 ]; then
-            npm install --prefix /tmp/expansion/tests/expansion --no-audit --no-fund mineflayer@4.39.0 >ci-bootstrap/smoke/npm.log 2>&1
-            python3 /tmp/expansion/tests/expansion/smoke.py >ci-bootstrap/smoke/driver.log 2>&1 || true
-            cp /tmp/expansion/tests/expansion/output/* ci-bootstrap/smoke/ || true
-          fi
-      - name: Save public API dependencies
+          git fetch origin feature/z-plast-1.1.0
+          git worktree add /tmp/zplast FETCH_HEAD
+          mkdir -p ci-bootstrap/plast-next
+          printf '%s\n' "$(git -C /tmp/zplast rev-parse HEAD)" >ci-bootstrap/plast-next/commit.txt
+          mvn -B -f /tmp/zplast/plast/pom.xml verify >ci-bootstrap/plast-next/build.log 2>&1 || true
+          if test -f /tmp/zplast/plast/target/Z_Plast-1.1.0.jar; then cp /tmp/zplast/plast/target/Z_Plast-1.1.0.jar ci-bootstrap/plast-next/; fi
+      - name: Save test results
+        if: always()
         run: |
-          mkdir -p ci-bootstrap
-          python3 - <<'PY'
-          import tarfile
-          from pathlib import Path
-          base=Path.home()/'.m2/repository'
-          paths=['io/papermc/paper','com/mojang','net/md-5','org/spigotmc']
-          with tarfile.open('ci-bootstrap/paper-api-deps.tar.gz','w:gz') as t:
-              for n in paths:
-                  p=base/n
-                  if p.exists(): t.add(p,arcname=n)
-          print('archive bytes:',Path('ci-bootstrap/paper-api-deps.tar.gz').stat().st_size)
-          PY
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git fetch origin "$GITHUB_REF_NAME"
           test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA" || exit 0
-          git add ci-bootstrap/paper-api-deps.tar.gz ci-bootstrap/*-build.log ci-bootstrap/build-commit.txt ci-bootstrap/releases ci-bootstrap/smoke
-          git commit -m 'Cache official Paper API dependencies [skip ci]'
+          git add ci-bootstrap/plast-next
+          git commit -m 'Save Z_Plast build results [skip ci]' || exit 0
           git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
