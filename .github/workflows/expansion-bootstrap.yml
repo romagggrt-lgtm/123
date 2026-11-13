@@ -1,4 +1,4 @@
-name: Verify Z_Plast direct-link Paper integration
+name: Verify Z_Plast with CustomJukebox
 on:
   push:
     branches: [research/z-expansion-bootstrap]
@@ -30,6 +30,18 @@ jobs:
           if test -f /tmp/zplast/plast/target/Z_Plast-1.1.0.jar; then
             cp /tmp/zplast/plast/target/Z_Plast-1.1.0.jar ci-bootstrap/plast-next/
             npm install --prefix /tmp/zplast/tests/zplast --no-audit --no-fund mineflayer@4.39.0 >ci-bootstrap/plast-next/npm.log 2>&1
+            python3 - <<'PYCODE' >ci-bootstrap/plast-next/custom-jukebox-download.log 2>&1 || true
+          import urllib.request,json,hashlib,pathlib
+          digest='7bff0566996bdc809752a41379b4cd8caff1bf26047bfb355ea9691d2fe59838'
+          request=urllib.request.Request('https://api.modrinth.com/v2/version_file/'+digest+'?algorithm=sha256',headers={'User-Agent':'ZPlastCompatibilityTest/1.0'})
+          with urllib.request.urlopen(request,timeout=30) as r: version=json.load(r)
+          source=next(f['url'] for f in version['files'] if f.get('hashes',{}).get('sha256')==digest)
+          with urllib.request.urlopen(urllib.request.Request(source,headers={'User-Agent':'ZPlastCompatibilityTest/1.0'}),timeout=60) as r: data=r.read()
+          assert hashlib.sha256(data).hexdigest()==digest
+          pathlib.Path('/tmp/CustomJukebox-3.7.1.jar').write_bytes(data)
+          print('Exact CustomJukebox 3.7.1 user jar SHA-256 verified')
+          PYCODE
+            if test -s /tmp/CustomJukebox-3.7.1.jar; then export CUSTOM_JUKEBOX_JAR=/tmp/CustomJukebox-3.7.1.jar; fi
             python3 /tmp/zplast/tests/zplast/smoke.py >ci-bootstrap/plast-next/smoke.log 2>&1 || true
             cp /tmp/zplast/tests/zplast/output/* ci-bootstrap/plast-next/ || true
           fi
