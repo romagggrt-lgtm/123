@@ -13,10 +13,13 @@ final class Catalog {
  record Pack(Path path,String sha,byte[] digest){}
  private final Path root,tracks,pack;private final ZPlast plugin;
  private final Map<String,Track> all=new LinkedHashMap<>();
+ private final Map<String,Integer> notices=new LinkedHashMap<>();
  private static final Gson JSON=new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
  volatile Pack current;
  Catalog(ZPlast plugin) throws IOException{
   this.plugin=plugin;root=plugin.getDataFolder().toPath();tracks=root.resolve("tracks");pack=root.resolve("pack");Files.createDirectories(tracks);Files.createDirectories(pack);
+  Path noticeFile=root.resolve("notices.json");
+  if(Files.exists(noticeFile)){try{JsonObject data=JsonParser.parseString(Files.readString(noticeFile)).getAsJsonObject();for(var e:data.entrySet()){UUID.fromString(e.getKey());int count=e.getValue().getAsInt();if(count>0&&count<100000)notices.put(e.getKey(),count);}}catch(RuntimeException ex){throw new IOException("Повреждён notices.json; исходный файл сохранён",ex);}}
   Path data=root.resolve("tracks.json");if(!Files.exists(data))return;
   try{JsonArray array=JsonParser.parseString(Files.readString(data)).getAsJsonArray();for(JsonElement e:array){try{Track t=JSON.fromJson(e,Track.class);if(valid(t)&&Files.isRegularFile(trackFile(t.id)))all.putIfAbsent(t.id,t);else plugin.getLogger().warning("Пропущена повреждённая запись пластинки");}catch(RuntimeException ex){plugin.getLogger().warning("Пропущена повреждённая запись пластинки");}}}
   catch(RuntimeException e){throw new IOException("Повреждён tracks.json; исходный файл сохранён",e);}
@@ -40,6 +43,10 @@ final class Catalog {
  synchronized boolean rename(String id,String name) throws IOException{
   Track t=all.get(id);if(t==null)return false;String previous=t.name;t.name=name;try{save();}catch(IOException e){t.name=previous;throw e;}return true;
  }
+ synchronized int noticeCount(UUID id){return notices.getOrDefault(id.toString(),0);}
+ synchronized void addNotice(UUID id,int count)throws IOException{String key=id.toString();int old=notices.getOrDefault(key,0);notices.put(key,Math.min(99999,old+count));try{saveNotices();}catch(IOException e){if(old==0)notices.remove(key);else notices.put(key,old);throw e;}}
+ synchronized void acknowledgeNotice(UUID id,int count)throws IOException{String key=id.toString();int old=notices.getOrDefault(key,0);if(old<=count)notices.remove(key);else notices.put(key,old-count);try{saveNotices();}catch(IOException e){if(old>0)notices.put(key,old);throw e;}}
+ private void saveNotices()throws IOException{Path tmp=Files.createTempFile(root,"notice-",".tmp");try{Files.writeString(tmp,JSON.toJson(notices),StandardCharsets.UTF_8);move(tmp,root.resolve("notices.json"));}finally{Files.deleteIfExists(tmp);}}
  private void save() throws IOException{
   Path temp=Files.createTempFile(root,"tracks-",".tmp");try{Files.writeString(temp,JSON.toJson(all.values()),StandardCharsets.UTF_8);move(temp,root.resolve("tracks.json"));}finally{Files.deleteIfExists(temp);}
  }
