@@ -1,0 +1,33 @@
+{
+  "checks": {
+    "high_enchant": true,
+    "villager": false,
+    "book_unlock": true,
+    "fireball_cast": true,
+    "menu": true,
+    "web_page": true,
+    "upload": true,
+    "token_once": true,
+    "pack": true,
+    "given": true,
+    "catalog": true
+  },
+  "messages": [
+    "ExpansionTester joined the game",
+    "[Server: Successfully filled 169 block(s)]",
+    "[Server: Teleported ExpansionTester to 0.500000, 71.000000, 0.500000]",
+    "No items were found on player ExpansionTester",
+    "Gave 1 [Diamond Sword] to ExpansionTester",
+    "[A_Tools] Добавлено: minecraft:sharpness 100.",
+    "[A_Tools] Посмотрите на свободный твёрдый блок в пределах пяти блоков.",
+    "Removed 1 item(s) from player ExpansionTester",
+    "[Z_Book] Предмет выдан: =Книга Заклинаний= ×1 игроку ExpansionTester.",
+    "[Z_Book] Все доступные заклинания изучены.",
+    "[Z_Book] Заклинание применено.",
+    "[Z_Plast] Откройте ссылку для загрузки MP3:",
+    "http://127.0.0.1:8765/upload/uhaJ4SClHRQIhef5yI5UtrZ6tETqjH9CpR4FRqp5_LA",
+    "[Z_Plast] Запись загружена.",
+    "[Z_Plast] Пластинка выдана. Для звука необходимо принять ресурспак."
+  ],
+  "error": "Error: failed: {\"high_enchant\":true,\"villager\":false,\"book_unlock\":true,\"fireball_cast\":true,\"menu\":true,\"web_page\":true,\"upload\":true,\"token_once\":true,\"pack\":true,\"given\":true,\"catalog\":true}"
+}

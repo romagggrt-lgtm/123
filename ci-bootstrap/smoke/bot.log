@@ -1,0 +1,3 @@
+upload 200 Запись готова! Вернитесь в игру и примите ресурспак.
+Error: failed: {"high_enchant":true,"villager":false,"book_unlock":true,"fireball_cast":true,"menu":true,"web_page":true,"upload":true,"token_once":true,"pack":true,"given":true,"catalog":true}
+    at run (/tmp/expansion/tests/expansion/bot.js:26:138)
