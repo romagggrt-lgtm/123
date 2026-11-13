@@ -1,0 +1,35 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< dev.atools:A_Tools >-------------------------
+[INFO] Building A_Tools 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.0.2-1/annotations-26.0.2-1.jar
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.0.2-1/annotations-26.0.2-1.jar (31 kB at 55 kB/s)
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ A_Tools ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ A_Tools ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug release 21] to target/classes
+[INFO] /tmp/expansion/tools-plugin/src/main/java/dev/atools/ATools.java: /tmp/expansion/tools-plugin/src/main/java/dev/atools/ATools.java uses or overrides a deprecated API.
+[INFO] /tmp/expansion/tools-plugin/src/main/java/dev/atools/ATools.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ A_Tools ---
+[INFO] skip non existing resourceDirectory /tmp/expansion/tools-plugin/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ A_Tools ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ A_Tools ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.5.0:jar (default-jar) @ A_Tools ---
+[INFO] Building jar: /tmp/expansion/tools-plugin/target/A_Tools-1.0.0.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.101 s
+[INFO] Finished at: 2026-11-13T19:50:56Z
+[INFO] ------------------------------------------------------------------------
