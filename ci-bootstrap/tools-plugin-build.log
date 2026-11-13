@@ -5,7 +5,7 @@
 [INFO]   from pom.xml
 [INFO] --------------------------------[ jar ]---------------------------------
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.0.2-1/annotations-26.0.2-1.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.0.2-1/annotations-26.0.2-1.jar (31 kB at 55 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.0.2-1/annotations-26.0.2-1.jar (31 kB at 91 kB/s)
 [INFO] 
 [INFO] --- resources:3.4.0:resources (default-resources) @ A_Tools ---
 [INFO] Copying 2 resources from src/main/resources to target/classes
@@ -30,6 +30,6 @@
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  3.101 s
-[INFO] Finished at: 2026-11-13T19:50:56Z
+[INFO] Total time:  2.320 s
+[INFO] Finished at: 2026-11-13T19:58:03Z
 [INFO] ------------------------------------------------------------------------

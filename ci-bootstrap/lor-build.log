@@ -5,35 +5,35 @@
 [INFO]   from pom.xml
 [INFO] --------------------------------[ jar ]---------------------------------
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.6.1/maven-shade-plugin-3.6.1.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.6.1/maven-shade-plugin-3.6.1.pom (12 kB at 32 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.6.1/maven-shade-plugin-3.6.1.pom (12 kB at 36 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.6.1/maven-shade-plugin-3.6.1.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.6.1/maven-shade-plugin-3.6.1.jar (150 kB at 2.6 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.6.1/maven-shade-plugin-3.6.1.jar (150 kB at 2.2 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jvorbis/1.3.6/jvorbis-1.3.6.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jvorbis/1.3.6/jvorbis-1.3.6.pom (3.9 kB at 18 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jvorbis/1.3.6/jvorbis-1.3.6.pom (3.9 kB at 14 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jogg/1.3.3/jogg-1.3.3.pom
 [INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jogg/1.3.3/jogg-1.3.3.pom (3.8 kB at 17 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/javazoom/jlayer/1.0.1/jlayer-1.0.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/javazoom/jlayer/1.0.1/jlayer-1.0.1.pom (4.0 kB at 23 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/javazoom/jlayer/1.0.1/jlayer-1.0.1.pom (4.0 kB at 19 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/vorbisspi/1.0.3.3/vorbisspi-1.0.3.3.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/vorbisspi/1.0.3.3/vorbisspi-1.0.3.3.pom (2.3 kB at 13 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/vorbisspi/1.0.3.3/vorbisspi-1.0.3.3.pom (2.3 kB at 11 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/soundlibs/1.4/soundlibs-1.4.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/soundlibs/1.4/soundlibs-1.4.pom (4.7 kB at 29 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/soundlibs/1.4/soundlibs-1.4.pom (4.7 kB at 24 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/jorbis/0.0.17.4/jorbis-0.0.17.4.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/jorbis/0.0.17.4/jorbis-0.0.17.4.pom (1.8 kB at 9.9 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/jorbis/0.0.17.4/jorbis-0.0.17.4.pom (1.8 kB at 8.2 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/tritonus-share/0.3.7.4/tritonus-share-0.3.7.4.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/tritonus-share/0.3.7.4/tritonus-share-0.3.7.4.pom (1.9 kB at 11 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/tritonus-share/0.3.7.4/tritonus-share-0.3.7.4.pom (1.9 kB at 8.7 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jvorbis/1.3.6/jvorbis-1.3.6.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jvorbis/1.3.6/jvorbis-1.3.6.jar (1.1 MB at 5.0 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jvorbis/1.3.6/jvorbis-1.3.6.jar (1.1 MB at 4.1 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jogg/1.3.3/jogg-1.3.3.jar
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/javazoom/jlayer/1.0.1/jlayer-1.0.1.jar
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/vorbisspi/1.0.3.3/vorbisspi-1.0.3.3.jar
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/jorbis/0.0.17.4/jorbis-0.0.17.4.jar
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/tritonus-share/0.3.7.4/tritonus-share-0.3.7.4.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jogg/1.3.3/jogg-1.3.3.jar (19 kB at 103 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/vorbisspi/1.0.3.3/vorbisspi-1.0.3.3.jar (20 kB at 108 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/tritonus-share/0.3.7.4/tritonus-share-0.3.7.4.jar (133 kB at 684 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/javazoom/jlayer/1.0.1/jlayer-1.0.1.jar (144 kB at 665 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/jorbis/0.0.17.4/jorbis-0.0.17.4.jar (100 kB at 469 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jogg/1.3.3/jogg-1.3.3.jar (19 kB at 78 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/vorbisspi/1.0.3.3/vorbisspi-1.0.3.3.jar (20 kB at 79 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/tritonus-share/0.3.7.4/tritonus-share-0.3.7.4.jar (133 kB at 479 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/jorbis/0.0.17.4/jorbis-0.0.17.4.jar (100 kB at 345 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/javazoom/jlayer/1.0.1/jlayer-1.0.1.jar (144 kB at 477 kB/s)
 [INFO] 
 [INFO] --- resources:3.4.0:resources (default-resources) @ Z_Lor ---
 [INFO] Copying 7 resources from src/main/resources to target/classes
@@ -41,7 +41,7 @@
 [INFO] 
 [INFO] --- compiler:3.14.1:compile (default-compile) @ Z_Lor ---
 [INFO] Recompiling the module because of changed source code.
-[INFO] Compiling 51 source files with javac [debug release 21] to target/classes
+[INFO] Compiling 52 source files with javac [debug release 21] to target/classes
 [WARNING] /tmp/expansion/lor/src/main/java/dev/zlor/LootShields.java:[30,143] KEEP_INVENTORY in org.bukkit.GameRule has been deprecated and marked for removal
 [WARNING] /tmp/expansion/lor/src/main/java/dev/zlor/LootShields.java:[41,39] TOTEM_RESURRECT in org.bukkit.EntityEffect has been deprecated and marked for removal
 [WARNING] /tmp/expansion/lor/src/main/java/dev/zlor/Dragons.java:[180,101] HURT in org.bukkit.EntityEffect has been deprecated and marked for removal
@@ -77,13 +77,13 @@
 [INFO] 
 [INFO] --- shade:3.6.1:shade (default) @ Z_Lor ---
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.8/asm-commons-9.8.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.8/asm-commons-9.8.pom (2.8 kB at 139 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.8/asm-commons-9.8.pom (2.8 kB at 82 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.8/asm-tree-9.8.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.8/asm-tree-9.8.pom (2.6 kB at 108 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.8/asm-tree-9.8.pom (2.6 kB at 84 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.pom (4.6 kB at 219 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.pom (4.6 kB at 148 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.10/jdependency-2.10.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.10/jdependency-2.10.pom (14 kB at 540 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.10/jdependency-2.10.pom (14 kB at 438 kB/s)
 [INFO] Artifact org.codehaus.plexus:plexus-utils:jar:3.5.1 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
 [INFO] Artifact org.codehaus.plexus:plexus-utils:jar:3.5.1 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.jar
@@ -92,10 +92,10 @@
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.8/asm-tree-9.8.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.10/jdependency-2.10.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.8/asm-commons-9.8.jar (73 kB at 2.6 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.8/asm-tree-9.8.jar (52 kB at 1.2 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.10/jdependency-2.10.jar (416 kB at 6.4 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.jar (328 kB at 5.0 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.8/asm-tree-9.8.jar (52 kB at 1.5 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.8/asm-commons-9.8.jar (73 kB at 993 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.jar (328 kB at 3.6 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.10/jdependency-2.10.jar (416 kB at 4.1 MB/s)
 [WARNING] Z_Lor-1.0.3.jar, byte-buddy-1.18.8.jar, jlayer-1.0.1.jar, jogg-1.3.3.jar, jorbis-0.0.17.4.jar, jvorbis-1.3.6.jar, tritonus-share-0.3.7.4.jar, vorbisspi-1.0.3.3.jar define 1 overlapping resource: 
 [WARNING]   - META-INF/MANIFEST.MF
 [WARNING] maven-shade-plugin has detected that some files are
@@ -109,6 +109,6 @@
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  10.958 s
-[INFO] Finished at: 2026-11-13T19:51:08Z
+[INFO] Total time:  9.749 s
+[INFO] Finished at: 2026-11-13T19:58:14Z
 [INFO] ------------------------------------------------------------------------
