@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "paper_build": 132,
+  "checks": {
+    "high_enchant": true,
+    "villager": true,
+    "book_unlock": true,
+    "fireball_cast": true,
+    "menu": true,
+    "web_page": true,
+    "upload": true,
+    "token_once": true,
+    "pack": true,
+    "given": true,
+    "catalog": true,
+    "jukebox_insert": true,
+    "crystal_portal": true,
+    "creaking": true
+  }
+}
