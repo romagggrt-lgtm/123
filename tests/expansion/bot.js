@@ -32,6 +32,7 @@ async function run(){
  await command('/minecraft:give ExpansionTester minecraft:end_crystal 4');bot.setQuickBarSlot(0);await wait(400);
  for(let [x,z] of [[3,0],[1,0],[2,-1],[2,1]]){let pos=new Vec3(x,70,z);await bot.lookAt(pos.offset(.5,1,.5),true);await bot.activateBlock(bot.blockAt(pos),new Vec3(0,1,0));await wait(600)}
  await wait(3000);checks.crystal_portal=bot.blockAt(new Vec3(2,71,0))?.name==='end_portal';
- fs.writeFileSync(dir+'/bot-result.json',JSON.stringify({checks,messages},null,2));bot.quit();if(Object.values(checks).some(v=>!v))throw Error('failed: '+JSON.stringify(checks));
+ await command('/minecraft:clear ExpansionTester');await command('/minecraft:give ExpansionTester minecraft:amethyst_shard');await command('/minecraft:summon minecraft:creaking -1 71 -1');await wait(500);let target=Object.values(bot.entities).find(e=>e.name==='creaking');let shard=bot.inventory.items().find(i=>i.name==='amethyst_shard');if(target&&shard){await bot.equip(shard,'hand');bot.attack(target);await wait(1500);checks.creaking=!bot.entities[target.id]||!bot.entities[target.id].isValid;}else checks.creaking=false;
+ fs.writeFileSync(dir+'/bot-result.json',JSON.stringify({checks,messages},null,2));bot.quit();if(Object.values(checks).some(v=>!v))throw Error('failed: '+JSON.stringify(checks));process.exit(0);
 }
-run().catch(e=>{console.error(e);fs.writeFileSync(dir+'/bot-result.json',JSON.stringify({checks,messages,error:String(e)},null,2));if(bot)bot.quit();process.exitCode=1});setTimeout(()=>process.exit(2),110000).unref();
+run().catch(e=>{console.error(e);fs.writeFileSync(dir+'/bot-result.json',JSON.stringify({checks,messages,error:String(e)},null,2));if(bot)bot.quit();process.exit(1)});setTimeout(()=>process.exit(2),110000).unref();
