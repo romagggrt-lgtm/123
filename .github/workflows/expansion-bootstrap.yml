@@ -1,4 +1,4 @@
-name: Verify Z_Plast direct-link import
+name: Verify Z_Plast direct-link Paper integration
 on:
   push:
     branches: [research/z-expansion-bootstrap]
@@ -23,10 +23,16 @@ jobs:
         run: |
           git fetch origin feature/z-plast-1.1.0
           git worktree add /tmp/zplast FETCH_HEAD
+          rm -rf ci-bootstrap/plast-next
           mkdir -p ci-bootstrap/plast-next
           printf '%s\n' "$(git -C /tmp/zplast rev-parse HEAD)" >ci-bootstrap/plast-next/commit.txt
           mvn -B -f /tmp/zplast/plast/pom.xml verify >ci-bootstrap/plast-next/build.log 2>&1 || true
-          if test -f /tmp/zplast/plast/target/Z_Plast-1.1.0.jar; then cp /tmp/zplast/plast/target/Z_Plast-1.1.0.jar ci-bootstrap/plast-next/; fi
+          if test -f /tmp/zplast/plast/target/Z_Plast-1.1.0.jar; then
+            cp /tmp/zplast/plast/target/Z_Plast-1.1.0.jar ci-bootstrap/plast-next/
+            npm install --prefix /tmp/zplast/tests/zplast --no-audit --no-fund mineflayer@4.39.0 >ci-bootstrap/plast-next/npm.log 2>&1
+            python3 /tmp/zplast/tests/zplast/smoke.py >ci-bootstrap/plast-next/smoke.log 2>&1 || true
+            cp /tmp/zplast/tests/zplast/output/* ci-bootstrap/plast-next/ || true
+          fi
       - name: Save test results
         if: always()
         run: |
