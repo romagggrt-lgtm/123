@@ -20,7 +20,9 @@ jobs:
           git fetch origin feature/z-expansion-2026-11
           git worktree add /tmp/expansion FETCH_HEAD
           mkdir -p ci-bootstrap
-          for project in book tools-plugin lor; do
+          curl -fsSL --retry 3 https://github.com/libraryaddict/LibsDisguises/releases/download/v26.10.24/LibsDisguises-26.10.24-Github.jar -o /tmp/libsdisguises.jar
+          mvn -B install:install-file -Dfile=/tmp/libsdisguises.jar -DgroupId=me.libraryaddict.disguises -DartifactId=libsdisguises -Dversion=26.10.24 -Dpackaging=jar -DgeneratePom=true
+          for project in book tools-plugin lor plast ap; do
             mvn -B -f /tmp/expansion/$project/pom.xml -DskipTests package >ci-bootstrap/$project-build.log 2>&1 || true
           done
           printf '%s\n' "$(git -C /tmp/expansion rev-parse HEAD)" > ci-bootstrap/build-commit.txt
