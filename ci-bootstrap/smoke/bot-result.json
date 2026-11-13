@@ -12,7 +12,8 @@
     "given": true,
     "catalog": true,
     "jukebox_insert": true,
-    "crystal_portal": false
+    "crystal_portal": true,
+    "creaking": false
   },
   "messages": [
     "ExpansionTester joined the game",
@@ -27,16 +28,20 @@
     "[Z_Book] Все доступные заклинания изучены.",
     "[Z_Book] Заклинание применено.",
     "[Z_Plast] Откройте ссылку для загрузки MP3:",
-    "http://127.0.0.1:8765/upload/JkXfGs5nmrI2c340ocueTB9zg8VVlqYxkJTSgrJMiOw",
+    "http://127.0.0.1:8765/upload/K4KR-Idu-AsDTG5I9WHUz6kOc02b2Yatf-rV3yoNsYc",
     "[Z_Plast] Запись загружена.",
     "[Z_Plast] Пластинка выдана. Для звука необходимо принять ресурспак.",
     "Changed the block at 0, 71, 2",
     "Removed 1 item(s) from player ExpansionTester",
-    "Changed the block at 3, 70, 0",
-    "Changed the block at 1, 70, 0",
-    "Changed the block at 2, 70, -1",
-    "Changed the block at 2, 70, 1",
-    "Gave 4 [End Crystal] to ExpansionTester"
+    "Killed Librarian",
+    "Changed the block at 3, 70, -1",
+    "Changed the block at 1, 70, -1",
+    "Changed the block at 3, 70, 1",
+    "Changed the block at 1, 70, 1",
+    "Gave 4 [End Crystal] to ExpansionTester",
+    "No items were found on player ExpansionTester",
+    "Gave 1 [Amethyst Shard] to ExpansionTester",
+    "Monsters cannot be summoned in Peaceful difficulty"
   ],
-  "error": "Error: failed: {\"high_enchant\":true,\"villager\":true,\"book_unlock\":true,\"fireball_cast\":true,\"menu\":true,\"web_page\":true,\"upload\":true,\"token_once\":true,\"pack\":true,\"given\":true,\"catalog\":true,\"jukebox_insert\":true,\"crystal_portal\":false}"
+  "error": "Error: failed: {\"high_enchant\":true,\"villager\":true,\"book_unlock\":true,\"fireball_cast\":true,\"menu\":true,\"web_page\":true,\"upload\":true,\"token_once\":true,\"pack\":true,\"given\":true,\"catalog\":true,\"jukebox_insert\":true,\"crystal_portal\":true,\"creaking\":false}"
 }

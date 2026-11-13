@@ -5,7 +5,7 @@
 [INFO]   from pom.xml
 [INFO] --------------------------------[ jar ]---------------------------------
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/mindrot/jbcrypt/0.4/jbcrypt-0.4.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/mindrot/jbcrypt/0.4/jbcrypt-0.4.pom (4.1 kB at 7.6 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/mindrot/jbcrypt/0.4/jbcrypt-0.4.pom (4.1 kB at 9.1 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/mindrot/jbcrypt/0.4/jbcrypt-0.4.jar
 [INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/mindrot/jbcrypt/0.4/jbcrypt-0.4.jar (17 kB at 562 kB/s)
 [INFO] 
@@ -45,6 +45,6 @@
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  3.178 s
-[INFO] Finished at: 2026-11-13T20:09:41Z
+[INFO] Total time:  3.018 s
+[INFO] Finished at: 2026-11-13T20:13:40Z
 [INFO] ------------------------------------------------------------------------

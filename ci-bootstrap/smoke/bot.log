@@ -1,3 +1,5 @@
 upload 200 Запись готова! Вернитесь в игру и примите ресурспак.
-Error: failed: {"high_enchant":true,"villager":true,"book_unlock":true,"fireball_cast":true,"menu":true,"web_page":true,"upload":true,"token_once":true,"pack":true,"given":true,"catalog":true,"jukebox_insert":true,"crystal_portal":false}
-    at run (/tmp/expansion/tests/expansion/bot.js:35:138)
+end_crystals []
+remaining_crystals []
+Error: failed: {"high_enchant":true,"villager":true,"book_unlock":true,"fireball_cast":true,"menu":true,"web_page":true,"upload":true,"token_once":true,"pack":true,"given":true,"catalog":true,"jukebox_insert":true,"crystal_portal":true,"creaking":false}
+    at run (/tmp/expansion/tests/expansion/bot.js:36:138)
