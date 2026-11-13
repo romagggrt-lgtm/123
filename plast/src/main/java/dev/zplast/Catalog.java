@@ -44,12 +44,13 @@ final class Catalog {
   Path temp=Files.createTempFile(root,"tracks-",".tmp");try{Files.writeString(temp,JSON.toJson(all.values()),StandardCharsets.UTF_8);move(temp,root.resolve("tracks.json"));}finally{Files.deleteIfExists(temp);}
  }
  private static void move(Path from,Path to) throws IOException{try{Files.move(from,to,StandardCopyOption.ATOMIC_MOVE,StandardCopyOption.REPLACE_EXISTING);}catch(AtomicMoveNotSupportedException ex){Files.move(from,to,StandardCopyOption.REPLACE_EXISTING);}}
- synchronized Pack build() throws Exception{
+ Pack build() throws Exception{
+  final List<Track> snapshot; synchronized(this){snapshot=all.values().stream().sorted(Comparator.comparing(t->t.id)).toList();}
   Path tmp=Files.createTempFile(pack,"pack-",".zip");
   try{
    try(var out=new ZipOutputStream(Files.newOutputStream(tmp))){
     put(out,"pack.mcmeta","{\"pack\":{\"min_format\":[75,0],\"max_format\":[75,0],\"description\":\"Z_Plast • звуки пластинок\"}}".getBytes(StandardCharsets.UTF_8));
-    JsonObject events=new JsonObject();List<Track> ordered=all.values().stream().sorted(Comparator.comparing(t->t.id)).toList();
+    JsonObject events=new JsonObject();List<Track> ordered=snapshot;
     for(Track track:ordered){JsonObject sound=new JsonObject();sound.addProperty("name","zplast:track_"+track.id);sound.addProperty("stream",true);JsonArray sounds=new JsonArray();sounds.add(sound);JsonObject event=new JsonObject();event.add("sounds",sounds);events.add("track."+track.id,event);}
     put(out,"assets/zplast/sounds.json",JSON.toJson(events).getBytes(StandardCharsets.UTF_8));
     for(Track track:ordered){ZipEntry entry=new ZipEntry("assets/zplast/sounds/track_"+track.id+".ogg");entry.setTime(0);out.putNextEntry(entry);Files.copy(trackFile(track.id),out);out.closeEntry();}

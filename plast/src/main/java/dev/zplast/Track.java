@@ -2,7 +2,8 @@ package dev.zplast;
 
 /** Only server-generated IDs are ever used in filesystem or resource paths. */
 public final class Track {
- public String id,name,owner,ownerName,sha256;
+ public String id,owner,ownerName,sha256;
+ public volatile String name;
  public long created,size;
  public double seconds;
  public Track(){}

@@ -67,7 +67,7 @@ public final class Items {
         }catch(RuntimeException error){throw new IllegalArgumentException("Повреждены данные переносимого устройства",error);}
     }
     public void registerRecipes(){
-        for(String id:List.of("voidometer","magnetite_core","void_absorber","void_alarm","void_siren")){
+        for(String id:List.of("voidometer","magnetite_core","void_absorber","void_alarm","void_siren","stationary_voidometer")){
             try(var stream=plugin.getResource("recipes/"+id+".json")){
                 if(stream==null)throw new IOException("Нет рецепта "+id);
                 var json=JsonParser.parseReader(new InputStreamReader(stream,java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject();

@@ -42,7 +42,7 @@ public final class CrystalPortals implements Listener {
  private void create(Candidate c){
   String key=c.pos.key();if(!pending.add(key))return;
   State.CrystalPortal portal=new State.CrystalPortal();portal.center=c.pos;portal.crystals.addAll(c.ids);portal.expires=System.currentTimeMillis()+1_200_000L;
-  p.store.change(s->{if(s.crystalPortals.containsKey(key))throw new IllegalArgumentException("Портал уже существует");s.crystalPortals.put(key,portal);},s->{
+  p.store.change(s->{if(s.crystalPortals.containsKey(key)||s.crystalPortals.values().stream().anyMatch(v->v.crystals.stream().anyMatch(c.ids::contains)))throw new IllegalArgumentException("Кристаллы уже используются");s.crystalPortals.put(key,portal);},s->{
    pending.remove(key);World w=p.world(c.pos.world());Block b=w==null?null:w.getBlockAt(c.pos.x(),c.pos.y(),c.pos.z());
    if(b==null||!b.getType().isAir()||c.ids.stream().anyMatch(id->!(Bukkit.getEntity(id) instanceof EnderCrystal))){p.store.change(next->next.crystalPortals.remove(key));return;}
    b.setType(Material.END_PORTAL,false);w.playSound(b.getLocation().add(.5,.5,.5),Sound.BLOCK_END_PORTAL_SPAWN,1,1);
