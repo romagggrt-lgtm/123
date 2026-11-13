@@ -15,6 +15,9 @@ jobs:
           distribution: temurin
           java-version: '21'
           cache: maven
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
       - name: Build expansion branch
         run: |
           git fetch origin feature/z-expansion-2026-11
@@ -26,6 +29,13 @@ jobs:
             mvn -B -f /tmp/expansion/$project/pom.xml -DskipTests package >ci-bootstrap/$project-build.log 2>&1 || true
           done
           printf '%s\n' "$(git -C /tmp/expansion rev-parse HEAD)" > ci-bootstrap/build-commit.txt
+          mkdir -p ci-bootstrap/releases ci-bootstrap/smoke
+          for file in /tmp/expansion/book/target/Z_Book-1.1.0.jar /tmp/expansion/tools-plugin/target/A_Tools-1.0.0.jar /tmp/expansion/lor/target/Z_Lor-1.0.3.jar /tmp/expansion/plast/target/Z_Plast-1.0.0.jar /tmp/expansion/ap/target/Z_AP-1.2.0.jar; do if test -f "$file"; then cp "$file" ci-bootstrap/releases/; fi; done
+          if [ "$(find ci-bootstrap/releases -name '*.jar' | wc -l)" -eq 5 ]; then
+            npm install --prefix /tmp/expansion/tests/expansion --no-audit --no-fund mineflayer@4.39.0 >ci-bootstrap/smoke/npm.log 2>&1
+            python3 /tmp/expansion/tests/expansion/smoke.py >ci-bootstrap/smoke/driver.log 2>&1 || true
+            cp /tmp/expansion/tests/expansion/output/* ci-bootstrap/smoke/ || true
+          fi
       - name: Save public API dependencies
         run: |
           mkdir -p ci-bootstrap
@@ -44,6 +54,6 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git fetch origin "$GITHUB_REF_NAME"
           test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA" || exit 0
-          git add ci-bootstrap/paper-api-deps.tar.gz ci-bootstrap/*-build.log ci-bootstrap/build-commit.txt
+          git add ci-bootstrap/paper-api-deps.tar.gz ci-bootstrap/*-build.log ci-bootstrap/build-commit.txt ci-bootstrap/releases ci-bootstrap/smoke
           git commit -m 'Cache official Paper API dependencies [skip ci]'
           git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
