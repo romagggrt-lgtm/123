@@ -3,7 +3,7 @@
   "paper_build": 132,
   "ffmpeg_path": "/missing/ffmpeg",
   "ffprobe_path": "/missing/ffprobe",
-  "custom_jukebox_tested": false,
+  "custom_jukebox_tested": true,
   "checks": {
     "localhost_blocked": true,
     "html_rejected": true,
