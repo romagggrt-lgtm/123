@@ -58,7 +58,7 @@ public final class ZPlast extends JavaPlugin implements Listener,CommandExecutor
  private Component title(String raw){return Component.empty().decoration(TextDecoration.ITALIC,false).append(COLORS.deserialize(raw));}
  @Override public boolean onCommand(CommandSender sender,Command command,String label,String[] args){
   if(!(sender instanceof Player p)){sender.sendMessage("Команда доступна только игроку.");return true;}
-  if(args.length>0&&args[0].equalsIgnoreCase("reload")){if(!p.hasPermission("zplast.admin")){say(p,"no-permission");return true;}reloadConfig();messages=YamlConfiguration.loadConfiguration(new File(getDataFolder(),"messages.yml"));plain(p,"Настройки и сообщения перечитаны. Для изменения адреса, порта и конвертера перезапустите сервер.");return true;}
+  if(args.length>0&&args[0].equalsIgnoreCase("reload")){if(!p.hasPermission("zplast.admin")){say(p,"no-permission");return true;}reloadConfig();nameLimit=Math.clamp(getConfig().getInt("name.max-length",32),1,128);messages=YamlConfiguration.loadConfiguration(new File(getDataFolder(),"messages.yml"));plain(p,"Настройки и сообщения перечитаны. Для изменения адреса, порта и конвертера перезапустите сервер.");return true;}
   if(!p.hasPermission("zplast.use")){say(p,"no-permission");return true;}main(p);return true;
  }
  private ItemStack icon(Material mat,String name,String...lore){ItemStack item=new ItemStack(mat);item.editMeta(m->{m.displayName(Component.text(name,NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC,false));if(lore.length>0)m.lore(Arrays.stream(lore).map(x->Component.text(x,NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,false)).toList());});return item;}
