@@ -15,8 +15,15 @@ jobs:
           distribution: temurin
           java-version: '21'
           cache: maven
-      - name: Resolve official Paper API
-        run: mvn -B -f book/pom.xml -DskipTests package
+      - name: Build expansion branch
+        run: |
+          git fetch origin feature/z-expansion-2026-11
+          git worktree add /tmp/expansion FETCH_HEAD
+          mkdir -p ci-bootstrap
+          for project in book tools-plugin lor; do
+            mvn -B -f /tmp/expansion/$project/pom.xml -DskipTests package >ci-bootstrap/$project-build.log 2>&1 || true
+          done
+          printf '%s\n' "$(git -C /tmp/expansion rev-parse HEAD)" > ci-bootstrap/build-commit.txt
       - name: Save public API dependencies
         run: |
           mkdir -p ci-bootstrap
@@ -35,6 +42,6 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git fetch origin "$GITHUB_REF_NAME"
           test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA" || exit 0
-          git add ci-bootstrap/paper-api-deps.tar.gz
+          git add ci-bootstrap/paper-api-deps.tar.gz ci-bootstrap/*-build.log ci-bootstrap/build-commit.txt
           git commit -m 'Cache official Paper API dependencies [skip ci]'
           git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
