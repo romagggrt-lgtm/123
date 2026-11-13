@@ -1,4 +1,4 @@
-name: Prepare Paper API for local verification
+name: Verify expansion Paper build
 on:
   push:
     branches: [research/z-expansion-bootstrap]
