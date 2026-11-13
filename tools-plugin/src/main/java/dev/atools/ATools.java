@@ -37,13 +37,19 @@ public final class ATools extends JavaPlugin implements CommandExecutor,TabCompl
   if(level<1||level>32767){say(p,"§cУровень должен быть от 1 до 32767.");return true;}
   if(args[0].equalsIgnoreCase("set")){
    if(level<enchant.getStartLevel()||level>enchant.getMaxLevel()){say(p,"§cЖитель продаёт только обычные уровни: "+enchant.getStartLevel()+"–"+enchant.getMaxLevel()+".");return true;}
-   Block target=p.getTargetBlockExact(5);if(target==null||!target.getRelative(0,1,0).isPassable()||!target.getRelative(0,2,0).isPassable()||!target.getType().isSolid()){say(p,"§cПосмотрите на свободный твёрдый блок в пределах пяти блоков.");return true;}
+   Block target=findGround(p);if(target==null){say(p,"§cРядом нет свободного места для жителя.");return true;}
    ItemStack book=new ItemStack(Material.ENCHANTED_BOOK);EnchantmentStorageMeta meta=(EnchantmentStorageMeta)book.getItemMeta();meta.addStoredEnchant(enchant,level,true);book.setItemMeta(meta);
    MerchantRecipe trade=new MerchantRecipe(book,Math.clamp(getConfig().getInt("trade.max-uses",999999),1,1000000));trade.addIngredient(new ItemStack(Material.EMERALD,Math.clamp(getConfig().getInt("trade.emeralds",20),1,64)));trade.addIngredient(new ItemStack(Material.BOOK));trade.setExperienceReward(false);trade.setPriceMultiplier(0);
    Villager villager=p.getWorld().spawn(target.getLocation().add(.5,1,.5),Villager.class,v->{v.setProfession(Villager.Profession.LIBRARIAN);v.setVillagerLevel(5);v.setPersistent(true);v.setRemoveWhenFarAway(false);});villager.setRecipes(List.of(trade));say(p,"§aЖитель создан: "+enchant.getKey().asString()+" "+level+".");return true;
   }
   ItemStack item=p.getInventory().getItemInMainHand();if(item.getType().isAir()){say(p,"§cВозьмите предмет в основную руку.");return true;}
   try{if(item.getItemMeta() instanceof EnchantmentStorageMeta meta){meta.addStoredEnchant(enchant,level,true);item.setItemMeta(meta);}else item.addUnsafeEnchantment(enchant,level);say(p,"§aДобавлено: "+enchant.getKey().asString()+" "+level+".");}catch(IllegalArgumentException ex){say(p,"§cНе удалось зачаровать этот предмет.");}return true;
+ }
+ private boolean suitable(Block b){return b!=null&&b.getType().isSolid()&&b.getRelative(0,1,0).isPassable()&&b.getRelative(0,2,0).isPassable();}
+ private Block findGround(Player player){
+  Block selected=player.getTargetBlockExact(5);if(suitable(selected)&&selected.getLocation().add(.5,1,.5).distanceSquared(player.getLocation())>1)return selected;
+  Block feet=player.getLocation().getBlock();int[][] offsets={{1,0},{-1,0},{0,1},{0,-1},{1,1},{1,-1},{-1,1},{-1,-1}};
+  for(int[] offset:offsets){Block ground=feet.getRelative(offset[0],-1,offset[1]);if(suitable(ground))return ground;}return null;
  }
  @Override public List<String> onTabComplete(CommandSender sender,Command cmd,String alias,String[] args){
   if(!sender.hasPermission("a_tools.admin"))return List.of();String prefix=args[args.length-1].toLowerCase(Locale.ROOT);
