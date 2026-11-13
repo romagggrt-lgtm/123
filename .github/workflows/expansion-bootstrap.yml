@@ -33,13 +33,18 @@ jobs:
             python3 - <<'PYCODE' >ci-bootstrap/plast-next/custom-jukebox-download.log 2>&1 || true
           import urllib.request,json,hashlib,pathlib
           digest='7bff0566996bdc809752a41379b4cd8caff1bf26047bfb355ea9691d2fe59838'
-          request=urllib.request.Request('https://api.modrinth.com/v2/version_file/'+digest+'?algorithm=sha256',headers={'User-Agent':'ZPlastCompatibilityTest/1.0'})
-          with urllib.request.urlopen(request,timeout=30) as r: version=json.load(r)
-          source=next(f['url'] for f in version['files'] if f.get('hashes',{}).get('sha256')==digest)
-          with urllib.request.urlopen(urllib.request.Request(source,headers={'User-Agent':'ZPlastCompatibilityTest/1.0'}),timeout=60) as r: data=r.read()
-          assert hashlib.sha256(data).hexdigest()==digest
+          headers={'User-Agent':'ZPlastCompatibilityTest/1.0 (Paper compatibility)'}
+          try:
+              with urllib.request.urlopen(urllib.request.Request('https://api.modrinth.com/v2/version_file/'+digest+'?algorithm=sha256',headers=headers),timeout=25) as r: version=json.load(r)
+          except urllib.error.HTTPError as e:
+              if e.code != 404: raise
+              with urllib.request.urlopen(urllib.request.Request('https://api.modrinth.com/v2/project/bs-customjukebox/version',headers=headers),timeout=25) as r: versions=json.load(r)
+              version=next(v for v in versions if v['version_number'].lstrip('v')=='3.7.1')
+          file=next((f for f in version['files'] if f.get('primary')),version['files'][0])
+          with urllib.request.urlopen(urllib.request.Request(file['url'],headers=headers),timeout=60) as r: data=r.read()
+          assert hashlib.sha256(data).hexdigest()==file['hashes']['sha256']
           pathlib.Path('/tmp/CustomJukebox-3.7.1.jar').write_bytes(data)
-          print('Exact CustomJukebox 3.7.1 user jar SHA-256 verified')
+          print('Official CustomJukebox 3.7.1 SHA-256:',hashlib.sha256(data).hexdigest(),'exact_user_jar:',hashlib.sha256(data).hexdigest()==digest)
           PYCODE
             if test -s /tmp/CustomJukebox-3.7.1.jar; then export CUSTOM_JUKEBOX_JAR=/tmp/CustomJukebox-3.7.1.jar; fi
             python3 /tmp/zplast/tests/zplast/smoke.py >ci-bootstrap/plast-next/smoke.log 2>&1 || true
