@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "paper_build": 132,
+  "ffmpeg_path": "/missing/ffmpeg",
+  "ffprobe_path": "/missing/ffprobe",
+  "custom_jukebox_tested": true,
+  "checks": {
+    "localhost_blocked": true,
+    "html_rejected": true,
+    "direct_link_import": true,
+    "pack_built": true,
+    "record_given": true,
+    "url_private": true,
+    "one_track": true,
+    "catalog": true,
+    "jukebox": true,
+    "duplicate_reused": true,
+    "browser_button": true,
+    "browser_upload": true,
+    "one_use": true
+  }
+}
