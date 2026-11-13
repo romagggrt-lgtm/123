@@ -42,7 +42,7 @@ jobs:
               version=next(v for v in versions if v['version_number'].lstrip('v')=='3.7.1')
           file=next((f for f in version['files'] if f.get('primary')),version['files'][0])
           with urllib.request.urlopen(urllib.request.Request(file['url'],headers=headers),timeout=60) as r: data=r.read()
-          assert hashlib.sha256(data).hexdigest()==file['hashes']['sha256']
+          assert hashlib.sha1(data).hexdigest()==file['hashes']['sha1']
           pathlib.Path('/tmp/CustomJukebox-3.7.1.jar').write_bytes(data)
           print('Official CustomJukebox 3.7.1 SHA-256:',hashlib.sha256(data).hexdigest(),'exact_user_jar:',hashlib.sha256(data).hexdigest()==digest)
           PYCODE
