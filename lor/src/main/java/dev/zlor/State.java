@@ -23,6 +23,7 @@ public final class State {
     /** Optional schema-1 field: restored HP does not change the beam attack count. */
     public Map<UUID, Integer> beamRestored = new HashMap<>();
     public Map<String, Audio> audio = new LinkedHashMap<>();
+    public Map<String, CrystalPortal> crystalPortals = new LinkedHashMap<>();
     /** Optional in schema 1: pending entity-only tower repair, survives restart. */
     public Set<String> crystalRepairs = new HashSet<>();
 
@@ -80,9 +81,16 @@ public final class State {
         public List<BlockImage> before = new ArrayList<>(), after = new ArrayList<>();
     }
     public record Audio(String hash, String fileName, double seconds) {}
+    public static final class CrystalPortal {
+        public Pos center;
+        public List<UUID> crystals = new ArrayList<>();
+        public long expires;
+    }
 
     public void touch(String world) { dimensionRevisions.merge(world,1L,Long::sum); }
     public void validate() {
+        if(crystalPortals==null)crystalPortals=new LinkedHashMap<>();
+        crystalPortals.forEach((key,v)->{if(v==null||v.center==null||!key.equals(v.center.key())||v.crystals==null||v.crystals.size()!=4||v.expires<=0)throw new IllegalArgumentException("Повреждён портал кристаллов");});
         if (schema != 1 || revision < 0 || fuelClock < 0 || dimensions == null || devices == null ||
                 roles == null || immune == null || names == null || actions == null ||
                 dragons == null || arenas == null || structures == null || beamHits == null ||

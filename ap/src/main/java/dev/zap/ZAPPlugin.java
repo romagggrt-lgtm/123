@@ -144,7 +144,7 @@ public final class ZAPPlugin extends JavaPlugin implements Listener,CommandExecu
   integrationButton(h,25,Material.CAMPFIRE,"Баня","banya","Z_Banya",q->{if(allowed(q,"banya"))banya(q);});
   button(h,39,Material.PLAYER_HEAD,"Игроки","players",q->{if(allowed(q,"players"))players(q,0,"");});
   button(h,41,Material.ENDER_PEARL,"Телепортация","teleport",q->{if(allowed(q,"teleport")&&allowed(q,"players"))players(q,0,"");});
-  button(h,43,Material.WOODEN_AXE,"Инструменты и регионы","region",q->{if(allowed(q,"regions")||q.hasPermission("z_ap.actions.worldedit"))regions(q);});
+  button(h,43,Material.WOODEN_AXE,"Инструменты и регионы","region",this::regions);
   if(h.themed)for(int slot:new int[]{3,5,7,21,23,25,39,41,43}){int proxy=slot+9;if(proxy<54&&h.inventory.getItem(proxy)==null){ItemStack item=item(Material.PAPER,"Открыть", "invisible");h.inventory.setItem(proxy,item);h.actions.put(proxy,h.actions.get(slot));}}
   open(p,h);
  }
@@ -197,7 +197,38 @@ public final class ZAPPlugin extends JavaPlugin implements Listener,CommandExecu
  private void banya(Player p){Screen h=chest(p,"Баня","banya");button(h,20,Material.CAMPFIRE,"Построить по имени","banya",q->banyaInput(q,"set"));button(h,24,Material.BARRIER,"Удалить по имени","banya",q->banyaInput(q,"remove"));button(h,31,Material.BOOK,"Список бань","banya",q->external(q,"banya","Z_Banya","zbanya.admin","z_banya:zbanya list"));navigation(h);open(p,h);}
  private void banyaInput(Player p,String operation){input(p,"Название бани","banya-name",name->{if(!name.matches("[\\p{L}\\p{N}_-]{1,32}")){msg(p,"§cНекорректное название.");return;}confirm(p,(operation.equals("set")?"Построить":"Удалить")+" баню "+name+"?",q->external(q,"banya","Z_Banya","zbanya.admin","z_banya:zbanya "+operation+" "+name));});}
  private void world(Player p){Screen h=chest(p,"Мир и инструменты","world");button(h,19,Material.SUNFLOWER,"День","world",q->{if(!allowed(q,"world"))return;q.getWorld().setTime(1000);msg(q,"§aВремя изменено.");});button(h,20,Material.CLOCK,"Ночь","world",q->{if(!allowed(q,"world"))return;q.getWorld().setTime(13000);msg(q,"§aВремя изменено.");});button(h,22,Material.WATER_BUCKET,"Ясная погода","world",q->{if(!allowed(q,"world"))return;q.getWorld().setStorm(false);q.getWorld().setThundering(false);msg(q,"§aПогода изменена.");});button(h,24,Material.FEATHER,"Скорость 1×","speed",q->{if(!allowed(q,"speed"))return;q.setWalkSpeed(.2f);q.setFlySpeed(.1f);msg(q,"§aСтандартная скорость восстановлена.");});button(h,25,Material.RABBIT_FOOT,"Скорость 2×","speed",q->{if(!allowed(q,"speed"))return;q.setWalkSpeed(.4f);q.setFlySpeed(.2f);msg(q,"§aСкорость изменена.");});navigation(h);open(p,h);}
- private void regions(Player p){Screen h=chest(p,"Регионы и WorldEdit","regions");button(h,19,Material.MAP,"Информация о регионе","region",q->external(q,"regions","Z_RG",null,"z_rg:rg info"));button(h,21,Material.WOODEN_AXE,"Топор WorldEdit","region",q->external(q,"worldedit","WorldEdit","worldedit.wand","/wand"));button(h,23,Material.ARROW,"Отменить изменение","back",q->confirm(q,"Отменить последнее изменение WorldEdit?",r->external(r,"worldedit","WorldEdit","worldedit.history.undo","/undo")));button(h,25,Material.BRICKS,"Заполнить выделение","world",q->input(q,"Материал","we-set",name->{String value=name.toLowerCase(Locale.ROOT);Material m=Material.matchMaterial(value);if(m==null||!m.isBlock()||!value.matches("[a-z0-9_]{1,64}")){msg(q,"§cНеизвестный материал.");return;}confirm(q,"Заменить выделение на "+value+"?",r->external(r,"worldedit","WorldEdit","worldedit.region.set","/set "+value));}));navigation(h);open(p,h);}
+ private void book(Player p){Screen h=chest(p,"Книга заклинаний","book");
+  button(h,19,Material.BOOK,"Получить книгу",null,q->external(q,"book","Z_Book","zbook.admin","z_book:zbook give book"));
+  button(h,21,Material.PAPER,"Экспанор Фикшион",null,q->external(q,"book","Z_Book","zbook.admin","z_book:zbook give ekspanor_fanfiction"));
+  button(h,23,Material.BLAZE_POWDER,"Редус Флимано",null,q->external(q,"book","Z_Book","zbook.admin","z_book:zbook give redus_flimano"));
+  button(h,25,Material.ENCHANTED_BOOK,"Изучить все заклинания",null,q->external(q,"book","Z_Book","zbook.admin","z_book:zbook unlock"),"Возьмите книгу в руку");
+  navigation(h);open(p,h);
+ }
+ private void toolMenu(Player p){Screen h=chest(p,"Жители и зачарования","atools");
+  button(h,20,Material.VILLAGER_SPAWN_EGG,"Поставить жителя",null,q->enchantments(q,0,true),"Выберите зачарование и уровень");
+  button(h,24,Material.ENCHANTED_BOOK,"Зачаровать предмет",null,q->enchantments(q,0,false),"Возьмите предмет в руку");
+  navigation(h);open(p,h);
+ }
+ private void enchantments(Player p,int page,boolean villager){
+  if(!installed("A_Tools")){msg(p,"§cПлагин A_Tools не установлен или не включён.");return;}
+  List<org.bukkit.enchantments.Enchantment> list=new ArrayList<>();for(var e:Registry.ENCHANTMENT)list.add(e);list.sort(Comparator.comparing(e->e.getKey().getKey()));
+  Screen h=chest(p,villager?"Житель • зачарование":"Зачаровать предмет","enchants");int start=page*28;
+  for(int n=0;n<28&&start+n<list.size();n++){var enchant=list.get(start+n);String id=enchant.getKey().getKey();int slot=10+(n/7)*9+n%7;
+   String title=switch(id){case "sharpness"->"Острота";case "mending"->"Починка";case "unbreaking"->"Прочность";case "efficiency"->"Эффективность";case "protection"->"Защита";case "fortune"->"Удача";case "power"->"Сила";default->id;};
+   button(h,slot,Material.ENCHANTED_BOOK,title,null,q->enchantmentLevels(q,enchant,villager),"Максимальный обычный уровень: "+enchant.getMaxLevel());
+  }
+  navigation(h);if(page>0)button(h,46,Material.ARROW,"Предыдущая",null,q->enchantments(q,page-1,villager));if(start+28<list.size())button(h,52,Material.ARROW,"Следующая",null,q->enchantments(q,page+1,villager));open(p,h);
+ }
+ private void enchantmentLevels(Player p,org.bukkit.enchantments.Enchantment enchant,boolean villager){
+  Screen h=chest(p,"Уровень • "+enchant.getKey().getKey(),"enchant-levels");int max=enchant.getMaxLevel();
+  for(int level=enchant.getStartLevel();level<=max&&level<10;level++){int selected=level;button(h,9+level,Material.ENCHANTED_BOOK,"Уровень "+level,null,q->external(q,"tools","A_Tools","a_tools.admin","a_tools:z_tools "+(villager?"set":"enchanted")+" "+enchant.getKey().getKey()+" "+selected));}
+  if(!villager)button(h,29,Material.NETHER_STAR,"Уровень 100",null,q->external(q,"tools","A_Tools","a_tools.admin","a_tools:z_tools enchanted "+enchant.getKey().getKey()+" 100"));
+  navigation(h);open(p,h);
+ }
+ private void regions(Player p){Screen h=chest(p,"Инструменты и плагины","regions");
+  integrationButton(h,10,Material.WRITTEN_BOOK,"Книга заклинаний",null,"Z_Book",q->{if(allowed(q,"book"))book(q);});
+  integrationButton(h,12,Material.ENCHANTED_BOOK,"Жители и чары",null,"A_Tools",q->{if(allowed(q,"tools"))toolMenu(q);});
+  integrationButton(h,14,Material.MUSIC_DISC_CAT,"Пластинки",null,"Z_Plast",q->external(q,"plast","Z_Plast","zplast.use","z_plast:zbox"));button(h,19,Material.MAP,"Информация о регионе","region",q->external(q,"regions","Z_RG",null,"z_rg:rg info"));button(h,21,Material.WOODEN_AXE,"Топор WorldEdit","region",q->external(q,"worldedit","WorldEdit","worldedit.wand","/wand"));button(h,23,Material.ARROW,"Отменить изменение","back",q->confirm(q,"Отменить последнее изменение WorldEdit?",r->external(r,"worldedit","WorldEdit","worldedit.history.undo","/undo")));button(h,25,Material.BRICKS,"Заполнить выделение","world",q->input(q,"Материал","we-set",name->{String value=name.toLowerCase(Locale.ROOT);Material m=Material.matchMaterial(value);if(m==null||!m.isBlock()||!value.matches("[a-z0-9_]{1,64}")){msg(q,"§cНеизвестный материал.");return;}confirm(q,"Заменить выделение на "+value+"?",r->external(r,"worldedit","WorldEdit","worldedit.region.set","/set "+value));}));navigation(h);open(p,h);}
  private void settings(Player p){Screen h=chest(p,"Настройки","settings");button(h,22,Material.TRIPWIRE_HOOK,"Сменить пароль","settings",q->{if(!allowed(q,"settings"))return;input(q,"Новый пароль","new-password",first->{if(!Auth.validPassword(first)){msg(q,"§cПароль должен содержать 1–72 байта UTF-8.");return;}input(q,"Повторите пароль","confirm-password",second->{if(!first.equals(second)){msg(q,"§cПароли не совпали.");q.closeInventory();return;}changePassword(q,first);});});});navigation(h);open(p,h);}
  private void changePassword(Player p,String value){if(!live(p)||!allowed(p,"settings"))return;UUID id=p.getUniqueId();if(!pending.add(id))return;InputSession holder=inputs.get(id);long g=generation;int cost=auth.cost();Bukkit.getScheduler().runTaskAsynchronously(this,()->{String hash=BCrypt.hashpw(value,BCrypt.gensalt(cost));if(!isEnabled())return;Bukkit.getScheduler().runTask(this,()->{pending.remove(id);Player now=Bukkit.getPlayer(id);if(now==null||generation!=g||!live(now)||!now.hasPermission("z_ap.actions.settings")||inputs.get(id)!=holder)return;try{auth.change(hash);sessions.clear();inputs.remove(id);generation++;now.closeDialog();now.closeInventory();msg(now,"§aПароль изменён. Войдите снова.");}catch(IOException ex){getLogger().severe("Password update failed: "+ex.getMessage());msg(now,"§cПароль не изменён: ошибка сохранения.");}});});}
 }

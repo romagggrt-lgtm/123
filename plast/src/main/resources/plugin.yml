@@ -1,0 +1,17 @@
+name: Z_Plast
+version: 1.0.0
+main: dev.zplast.ZPlast
+api-version: '1.21.11'
+commands:
+  zbox:
+    description: Каталог музыкальных пластинок
+    usage: /zbox
+permissions:
+  zplast.use:
+    default: true
+  zplast.upload:
+    default: true
+  zplast.color:
+    default: true
+  zplast.admin:
+    default: op

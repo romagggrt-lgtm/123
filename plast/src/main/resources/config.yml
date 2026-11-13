@@ -1,0 +1,28 @@
+web:
+  bind-address: 0.0.0.0
+  port: 8765
+  # Внешний адрес именно этого веб-сервера, например http://example.org:8765
+  public-url: ''
+upload:
+  token-ttl-seconds: 600
+  max-file-size-mb: 15
+  max-duration-seconds: 600
+  cooldown-seconds: 30
+limits:
+  max-tracks-per-player: 20
+converter:
+  ffmpeg-path: ffmpeg
+  ffprobe-path: ffprobe
+  max-parallel: 2
+name:
+  max-length: 32
+disc:
+  base-material: MUSIC_DISC_13
+sound:
+  volume: 1.0
+  radius: 64
+catalog:
+  scope: all
+resource-pack:
+  required: false
+  prompt: 'Примите звуки пластинок Z_Plast'

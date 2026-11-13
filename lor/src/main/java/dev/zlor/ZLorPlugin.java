@@ -36,6 +36,7 @@ public class ZLorPlugin extends JavaPlugin implements Listener,CommandExecutor,T
     public LorCommands commands;
     public ChunkLeases tickets;
     public CrystalRestorer crystals;
+    public CrystalPortals crystalPortals;
     public long tick;
     protected LongSupplier wall=System::currentTimeMillis,nanos=System::nanoTime;
     private long fuelBase,fuelStarted,lastWall;
@@ -66,15 +67,15 @@ public class ZLorPlugin extends JavaPlugin implements Listener,CommandExecutor,T
             tickets=new ChunkLeases(this);crystals=new CrystalRestorer(this);
             devices=new Devices(this);redstone=new Redstone(this);loot=new LootShields(this);restrictions=new Restrictions(this);
             structures=new Structures(this);dragons=new Dragons(this);visuals=createVisuals();menus=new Menus(this);
-            audio=new Audio(this);nativeBoundary=createNativeBoundary();commands=new LorCommands(this);
+            crystalPortals=new CrystalPortals(this);audio=new Audio(this);nativeBoundary=createNativeBoundary();commands=new LorCommands(this);
             items.registerRecipes();brewing=createBrewing();brewing.register();
-            for(Listener listener:List.of(this,voids,devices,redstone,loot,restrictions,structures,dragons,visuals,menus,brewing))Bukkit.getPluginManager().registerEvents(listener,this);
+            for(Listener listener:List.of(this,voids,devices,redstone,loot,restrictions,structures,dragons,visuals,menus,brewing,crystalPortals))Bukkit.getPluginManager().registerEvents(listener,this);
             Objects.requireNonNull(getCommand("lore")).setExecutor(this);getCommand("lore").setTabCompleter(this);
             // Register a namespace through CommandMap; colons are invalid YAML aliases.
             getServer().getCommandMap().register("smplore",getCommand("lore"));
             Objects.requireNonNull(getCommand("scen")).setExecutor(this);getCommand("scen").setTabCompleter(this);
             for(World world:Bukkit.getWorlds()){nativeBoundary.attach(world);structures.recover(world);}
-            dragons.restore();for(var device:devices.loaded())devices.refresh(device);
+            dragons.restore();crystalPortals.restore();for(var device:devices.loaded())devices.refresh(device);
             for(Player player:Bukkit.getOnlinePlayers())joined(player);
             Bukkit.getScheduler().runTaskTimer(this,this::runTick,1,1);
             getLogger().info("Z_Lor "+getDescription().getVersion()+": Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.");
@@ -84,7 +85,7 @@ public class ZLorPlugin extends JavaPlugin implements Listener,CommandExecutor,T
         if(stopping)return;
         try{
             tick++;store.pulse();audio.beginTick();voids.tick();devices.tick();redstone.tick();restrictions.tick();
-            loot.tick();structures.tick();crystals.tick();dragons.tick();brewing.tick();visuals.tick();audio.tick();confirmations.expire();
+            loot.tick();structures.tick();crystals.tick();crystalPortals.tick();dragons.tick();brewing.tick();visuals.tick();audio.tick();confirmations.expire();
             if(tick%Math.max(20,getConfig().getInt("storage.checkpoint-ticks",200))==0&&store.idle())checkpoint();
         }catch(Exception error){getLogger().log(Level.SEVERE,"Z_Lor остановлен после ошибки игрового цикла; данные сохранены",error);Bukkit.getPluginManager().disablePlugin(this);}
     }
