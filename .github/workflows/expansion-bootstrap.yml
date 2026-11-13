@@ -1,4 +1,4 @@
-name: Verify expansion Paper build
+name: Verify expansion Paper build and portal
 on:
   push:
     branches: [research/z-expansion-bootstrap]
