@@ -1,5 +1,20 @@
 {
-  "status": "FAIL",
-  "error": "bot checks failed",
-  "trace": "Traceback (most recent call last):\n  File \"/tmp/expansion/tests/expansion/smoke.py\", line 34, in <module>\n    assert bot.wait(timeout=125)==0,'bot checks failed'\n           ^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: bot checks failed\n"
+  "status": "PASS",
+  "paper_build": 132,
+  "checks": {
+    "high_enchant": true,
+    "villager": true,
+    "book_unlock": true,
+    "fireball_cast": true,
+    "menu": true,
+    "web_page": true,
+    "upload": true,
+    "token_once": true,
+    "pack": true,
+    "given": true,
+    "catalog": true,
+    "jukebox_insert": true,
+    "crystal_portal": true,
+    "creaking": true
+  }
 }

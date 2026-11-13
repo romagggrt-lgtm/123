@@ -1,5 +1,22 @@
 upload 200 Запись готова! Вернитесь в игру и примите ресурспак.
 end_crystals []
 remaining_crystals []
-Error: failed: {"high_enchant":true,"villager":true,"book_unlock":true,"fireball_cast":true,"menu":true,"web_page":true,"upload":true,"token_once":true,"pack":true,"given":true,"catalog":true,"jukebox_insert":true,"crystal_portal":true,"creaking":false}
-    at run (/tmp/expansion/tests/expansion/bot.js:36:138)
+nearby entities [
+  { name: 'player', type: 'player', displayName: undefined, id: 1 },
+  { name: 'sheep', type: 'animal', displayName: 'Sheep', id: 15 },
+  { name: 'sheep', type: 'animal', displayName: 'Sheep', id: 16 },
+  { name: 'sheep', type: 'animal', displayName: 'Sheep', id: 17 },
+  { name: 'sheep', type: 'animal', displayName: 'Sheep', id: 18 },
+  { name: 'horse', type: 'animal', displayName: 'Horse', id: 19 },
+  { name: 'horse', type: 'animal', displayName: 'Horse', id: 20 },
+  { name: 'horse', type: 'animal', displayName: 'Horse', id: 22 },
+  { name: 'horse', type: 'animal', displayName: 'Horse', id: 23 },
+  { name: 'chicken', type: 'animal', displayName: 'Chicken', id: 24 },
+  { name: 'cow', type: 'animal', displayName: 'Cow', id: 25 },
+  {
+    name: 'creaking',
+    type: 'hostile',
+    displayName: 'Creaking',
+    id: 39
+  }
+]
