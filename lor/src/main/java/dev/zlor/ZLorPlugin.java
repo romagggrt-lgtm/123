@@ -135,11 +135,16 @@ public class ZLorPlugin extends JavaPlugin implements Listener,CommandExecutor,T
             if(!url.isBlank()&&hash.matches("[0-9a-fA-F]{40}"))player.setResourcePack(packId(),url,HexFormat.of().parseHex(hash),Component.text("Серверные текстуры и звуки"),getConfig().getBoolean("resource-pack.required",false));
         }
     }
+    /** Heart-bound creakings can reject damage before a normal damage event is fired. */
     @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true)
-    public void amethystCreaking(EntityDamageByEntityEvent event){
-        if(event.getEntity() instanceof Creaking creaking && event.getDamager() instanceof Player player &&
-                player.getInventory().getItemInMainHand().getType()==Material.AMETHYST_SHARD){
-            event.setDamage(Math.max(event.getDamage(),creaking.getHealth()+creaking.getAbsorptionAmount()+1));
+    public void amethystCreaking(io.papermc.paper.event.player.PrePlayerAttackEntityEvent event){
+        if(!(event.getAttacked() instanceof Creaking creaking)||event.getPlayer().getInventory().getItemInMainHand().getType()!=Material.AMETHYST_SHARD)return;
+        Player player=event.getPlayer();
+        var source=org.bukkit.damage.DamageSource.builder(org.bukkit.damage.DamageType.PLAYER_ATTACK).withCausingEntity(player).withDirectEntity(player).build();
+        @SuppressWarnings("removal") var damage=new EntityDamageByEntityEvent(player,creaking,EntityDamageEvent.DamageCause.ENTITY_ATTACK,source,creaking.getHealth()+creaking.getAbsorptionAmount()+1);
+        Bukkit.getPluginManager().callEvent(damage);event.setCancelled(true);
+        if(!damage.isCancelled()&&damage.getFinalDamage()>0&&creaking.isValid()&&!creaking.isDead()){
+            creaking.setLastDamageCause(damage);creaking.setHealth(0);
         }
     }
     @EventHandler public void join(PlayerJoinEvent event){joined(event.getPlayer());}
