@@ -123,14 +123,26 @@ public final class Devices implements Listener {
         if(event.getClickedBlock()==null||!event.getAction().isRightClick()||event.getHand()!=EquipmentSlot.HAND)return;
         var device=at(event.getClickedBlock());if(device==null)return;
         Player player=event.getPlayer();if(player.getGameMode()==GameMode.SPECTATOR)return;
+        if(player.isSneaking()&&event.getItem()!=null&&(event.getItem().getType()==Material.LEVER||event.getItem().getType().name().endsWith("_BUTTON")))return;
         if(player.isSneaking()&&event.getItem()!=null&&Items.BLOCKS.contains(p.items.id(event.getItem())==null?"":p.items.id(event.getItem())))return;
         event.setCancelled(true);
+        if(device.kind.equals("stationary_voidometer")){p.voids.stationary(player);return;}
         if(device.kind.equals("magnetite_core")){
             if(player.isSneaking()&&event.getItem()!=null&&event.getItem().getType()==Material.AMETHYST_SHARD)link(player,device,event.getHand());
             return;
         }
         if(device.kind.equals("void_absorber")){var menu=menus.computeIfAbsent(device.id,FuelMenu::new);menu.render(device);player.openInventory(menu.inventory);}
         else p.menus.device(player,device);
+    }
+    @EventHandler(priority=EventPriority.MONITOR,ignoreCancelled=true)
+    public void stationarySwitch(PlayerInteractEvent event){
+        if(event.getHand()!=EquipmentSlot.HAND||!event.getAction().isRightClick()||event.getClickedBlock()==null)return;
+        Block control=event.getClickedBlock();Material material=control.getType();
+        if(material!=Material.LEVER&&!material.name().endsWith("_BUTTON"))return;
+        for(BlockFace face:List.of(BlockFace.UP,BlockFace.DOWN,BlockFace.NORTH,BlockFace.SOUTH,BlockFace.EAST,BlockFace.WEST)){
+            var device=at(control.getRelative(face));
+            if(device!=null&&device.kind.equals("stationary_voidometer")){p.voids.stationary(event.getPlayer());return;}
+        }
     }
     private void link(Player player,State.Device device,EquipmentSlot hand){
         UUID first=selections.get(player.getUniqueId());

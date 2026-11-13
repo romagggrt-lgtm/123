@@ -1,5 +1,5 @@
 name: Z_Book
-version: 1.0.0
+version: 1.1.0
 main: dev.zbook.ZBookPlugin
 api-version: '1.21'
 authors: [Z_Server]

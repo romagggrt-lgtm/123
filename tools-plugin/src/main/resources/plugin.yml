@@ -1,0 +1,14 @@
+name: A_Tools
+version: 1.0.0
+main: dev.atools.ATools
+api-version: '1.21.11'
+commands:
+  z_tools:
+    description: Жители и зачарования
+    usage: /z_tools <set|enchanted|reset>
+    aliases: [zt]
+    permission: a_tools.admin
+permissions:
+  a_tools.admin:
+    description: Управление A_Tools
+    default: op

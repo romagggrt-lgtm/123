@@ -134,6 +134,13 @@ public class ZLorPlugin extends JavaPlugin implements Listener,CommandExecutor,T
             if(!url.isBlank()&&hash.matches("[0-9a-fA-F]{40}"))player.setResourcePack(packId(),url,HexFormat.of().parseHex(hash),Component.text("Серверные текстуры и звуки"),getConfig().getBoolean("resource-pack.required",false));
         }
     }
+    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true)
+    public void amethystCreaking(EntityDamageByEntityEvent event){
+        if(event.getEntity() instanceof Creaking creaking && event.getDamager() instanceof Player player &&
+                player.getInventory().getItemInMainHand().getType()==Material.AMETHYST_SHARD){
+            event.setDamage(Math.max(event.getDamage(),creaking.getHealth()+creaking.getAbsorptionAmount()+1));
+        }
+    }
     @EventHandler public void join(PlayerJoinEvent event){joined(event.getPlayer());}
     @EventHandler public void quit(PlayerQuitEvent event){clearPersonal(event.getPlayer());packStatuses.remove(event.getPlayer().getUniqueId());}
     @EventHandler public void death(PlayerDeathEvent event){clearPersonal(event.getEntity());}

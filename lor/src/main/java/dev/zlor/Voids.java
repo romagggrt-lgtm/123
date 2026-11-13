@@ -132,5 +132,16 @@ public final class Voids implements Listener {
             p.nativeBoundary.update(world);
         }
     }
+    public void stationary(Player player){
+        long last=lastMeasure.getOrDefault(player.getUniqueId(),-1000L);if(p.tick-last<60)return;
+        lastMeasure.put(player.getUniqueId(),p.tick);player.sendActionBar(Component.text("Стационарный войдометр ⟳"));
+        player.playSound(player.getLocation(),"smplore:meter_click",SoundCategory.PLAYERS,.7f,1);
+        UUID id=player.getUniqueId();
+        Bukkit.getScheduler().runTaskLater(p,()->{
+            Player viewer=Bukkit.getPlayer(id);if(viewer==null)return;
+            World end=Bukkit.getWorlds().stream().filter(w->w.getEnvironment()==World.Environment.THE_END).findFirst().orElse(null);
+            viewer.sendActionBar(Component.text(end==null?"Энд сейчас недоступен":"Высота Войда в Энде: "+VoidForecast.number(height(end))));
+        },20L);
+    }
     public void leave(UUID player){measures.remove(player);lastBottle.remove(player);lastMeasure.remove(player);}
 }

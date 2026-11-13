@@ -42,6 +42,17 @@ spells:
     lightning:
       real: true
       affect-caster: false
+  redus_flimano:
+    name: "&#FF8A00Редус &#FF3D00Флимано"
+    page-name: "&#FF8A00Страница: &#FF3D00Редус Флимано"
+    description:
+      - "&7Запускает огненный шар."
+    page-lore:
+      - "&7Запускает огненный шар."
+      - "&7Соедини с Книгой заклинаний на верстаке."
+    cooldown-seconds: 40
+    range: 60
+    incendiary: false
 messages:
   prefix: '&8[&dZ_Book&8] &r'
   no-permission: '&cНедостаточно прав.'

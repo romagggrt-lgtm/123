@@ -11,11 +11,11 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 
 public final class Items {
-    public static final Set<String> BLOCKS=Set.of("magnetite_core","void_absorber","void_alarm","void_siren");
-    public static final List<String> ALL=List.of("voidometer","magnetite_core","void_absorber","void_alarm","void_siren","liquid_void","void_breath");
+    public static final Set<String> BLOCKS=Set.of("magnetite_core","void_absorber","void_alarm","void_siren","stationary_voidometer");
+    public static final List<String> ALL=List.of("voidometer","magnetite_core","void_absorber","void_alarm","void_siren","stationary_voidometer","liquid_void","void_breath");
     public static final Map<String,String> NAMES=Map.of("voidometer","Войдометр","magnetite_core","Магнетитовое ядро",
             "void_absorber","Поглотитель Войда","void_alarm","Войдовый сигнализатор","void_siren","Сирена",
-            "liquid_void","Жидкий Войд","void_breath","Дыхание Войда");
+            "liquid_void","Жидкий Войд","void_breath","Дыхание Войда","stationary_voidometer","Стационарный войдометр");
     public final NamespacedKey identity=new NamespacedKey("z_lor","item"), portable=new NamespacedKey("z_lor","portable");
     private final ZLorPlugin plugin;
     private final Map<String,NamespacedKey> recipes=new HashMap<>();
