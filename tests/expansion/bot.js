@@ -27,11 +27,11 @@ async function run(){
  bot.closeWindow(bot.currentWindow);await wait(300);
  await command('/minecraft:setblock 0 71 2 minecraft:jukebox');let disc=bot.inventory.items().find(i=>i.name==='music_disc_13');await bot.equip(disc,'hand');let jpos=new Vec3(0,71,2),jukebox=bot.blockAt(jpos);await bot.lookAt(jpos.offset(.5,.5,.5),true);await bot.activateBlock(jukebox);await wait(1000);
  checks.jukebox_insert=bot.blockAt(jpos)?.getProperties().has_record===true;
- await command('/minecraft:clear ExpansionTester');
- for(let [x,z] of [[3,0],[1,0],[2,-1],[2,1]])await command(`/minecraft:setblock ${x} 70 ${z} minecraft:obsidian`);
+ await command('/minecraft:clear ExpansionTester');await command('/minecraft:kill @e[type=minecraft:villager,distance=..10]');
+ for(let [x,z] of [[3,-1],[1,-1],[3,1],[1,1]])await command(`/minecraft:setblock ${x} 70 ${z} minecraft:obsidian`);
  await command('/minecraft:give ExpansionTester minecraft:end_crystal 4');bot.setQuickBarSlot(0);await wait(400);
- for(let [x,z] of [[3,0],[1,0],[2,-1],[2,1]]){let pos=new Vec3(x,70,z);await bot.lookAt(pos.offset(.5,1,.5),true);await bot.activateBlock(bot.blockAt(pos),new Vec3(0,1,0));await wait(600)}
- await wait(3000);checks.crystal_portal=bot.blockAt(new Vec3(2,71,0))?.name==='end_portal';
+ for(let [x,z] of [[3,-1],[1,-1],[3,1],[1,1]]){let pos=new Vec3(x,70,z);await bot.lookAt(pos.offset(.5,1,.5),true);await bot.activateBlock(bot.blockAt(pos),new Vec3(0,1,0));await wait(600)}
+ await wait(3000);console.log('end_crystals',Object.values(bot.entities).filter(e=>e.name?.includes('crystal')).map(e=>({name:e.name,pos:e.position})));console.log('remaining_crystals',bot.inventory.items().filter(i=>i.name==='end_crystal').map(i=>i.count));checks.crystal_portal=bot.blockAt(new Vec3(2,71,0))?.name==='end_portal';
  await command('/minecraft:clear ExpansionTester');await command('/minecraft:give ExpansionTester minecraft:amethyst_shard');await command('/minecraft:summon minecraft:creaking -1 71 -1');await wait(500);let target=Object.values(bot.entities).find(e=>e.name==='creaking');let shard=bot.inventory.items().find(i=>i.name==='amethyst_shard');if(target&&shard){await bot.equip(shard,'hand');bot.attack(target);await wait(1500);checks.creaking=!bot.entities[target.id]||!bot.entities[target.id].isValid;}else checks.creaking=false;
  fs.writeFileSync(dir+'/bot-result.json',JSON.stringify({checks,messages},null,2));bot.quit();if(Object.values(checks).some(v=>!v))throw Error('failed: '+JSON.stringify(checks));process.exit(0);
 }

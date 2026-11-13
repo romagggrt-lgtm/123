@@ -33,7 +33,7 @@ public final class CrystalPortals implements Listener {
    List<UUID> found=new ArrayList<>();boolean valid=true;
    for(int[] offset:offsets){int bx=x+offset[0],bz=z+offset[1];Block base=w.getBlockAt(bx,y-1,bz);
     if(base.getType()!=Material.OBSIDIAN&&base.getType()!=Material.BEDROCK){valid=false;break;}
-    EnderCrystal crystal=w.getNearbyEntities(new Location(w,bx+.5,y+.5,bz+.5),.48,1,.48,e->e instanceof EnderCrystal).stream().map(e->(EnderCrystal)e).filter(e->e.getLocation().getBlockY()==y).findFirst().orElse(null);
+    EnderCrystal crystal=w.getNearbyEntities(new Location(w,bx+.5,y+.5,bz+.5),.48,1,.48,e->e instanceof EnderCrystal).stream().map(e->(EnderCrystal)e).filter(e->e.getLocation().getBlockX()==bx&&e.getLocation().getBlockY()==y&&e.getLocation().getBlockZ()==bz).findFirst().orElse(null);
     if(crystal==null){valid=false;break;}found.add(crystal.getUniqueId());
    }
    if(valid&&new HashSet<>(found).size()==4&&p.state().crystalPortals.values().stream().noneMatch(v->v.crystals.stream().anyMatch(found::contains)))return new Candidate(pos,List.copyOf(found));
