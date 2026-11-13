@@ -19,7 +19,7 @@ public final class CrystalPortals implements Listener {
  private record Candidate(State.Pos pos,List<UUID> ids){}
  @EventHandler(priority=EventPriority.MONITOR,ignoreCancelled=true)
  public void placed(PlayerInteractEvent e){
-  if(e.getHand()!=EquipmentSlot.HAND||e.getClickedBlock()==null||!e.getAction().isRightClick()||e.getItem()==null||e.getItem().getType()!=Material.END_CRYSTAL)return;
+  if(e.getHand()==null||e.useItemInHand()==Event.Result.DENY||e.getClickedBlock()==null||!e.getAction().isRightClick()||e.getItem()==null||e.getItem().getType()!=Material.END_CRYSTAL)return;
   Block base=e.getClickedBlock();if(base.getType()!=Material.OBSIDIAN&&base.getType()!=Material.BEDROCK)return;
   World world=base.getWorld();int x=base.getX(),y=base.getY()+1,z=base.getZ();
   Bukkit.getScheduler().runTaskLater(p,()->{if(!world.isChunkLoaded(x>>4,z>>4))return;
