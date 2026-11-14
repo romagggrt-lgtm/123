@@ -1,0 +1,10 @@
+{
+  "status": "CAPTURED",
+  "paper_build": 132,
+  "minecraft": "1.21.11 vanilla",
+  "gamma": 0.5,
+  "baseline": "left",
+  "changed": "right",
+  "resource_pack_sha1": "492743d50661ca92451b85848acd9162d3a2204c",
+  "review": "Compare screenshot brightness; capture alone is not a pass."
+}
