@@ -5,7 +5,7 @@ from zipfile import ZipFile,ZIP_DEFLATED
 from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
 from functools import partial
 import hashlib,json,os,shutil,subprocess,sys,threading,time,traceback,urllib.request
-from PIL import Image
+from PIL import Image, ImageStat
 from Xlib import X,display
 from Xlib.ext import xtest
 ROOT=Path(__file__).resolve().parents[1];WORK=ROOT/'qa-voidometer/server';REPORT=ROOT/'qa-voidometer/evidence';WORK.mkdir(parents=True,exist_ok=True);REPORT.mkdir(parents=True,exist_ok=True)
@@ -58,7 +58,10 @@ try:
  client_log=vanilla.GAME/'logs/latest.log'
  if client_log.exists():shutil.copyfile(client_log,REPORT/'client.log')
  logs=logpath.read_text(errors='replace');assert logs.count('Summoned new Item Display')>=2, 'item displays were not summoned';assert 'That position is not loaded' not in logs, 'test blocks were not loaded';assert 'Serialization errors' not in logs, 'item display NBT was not accepted'
- (REPORT/'result.json').write_text(json.dumps({'status':'CAPTURED','paper_build':meta['id'],'minecraft':'1.21.11 vanilla','gamma':0.5,'baseline':'left','changed':'right','resource_pack_sha1':hashlib.sha1(new.read_bytes()).hexdigest(),'review':'Compare screenshot brightness; capture alone is not a pass.'},indent=2))
+ image=Image.open(REPORT/'before-and-after.png').convert('L')
+ fixed=ImageStat.Stat(image.crop((480,335,580,435))).mean[0];original=ImageStat.Stat(image.crop((800,335,900,435))).mean[0]
+ assert fixed>40 and fixed>original*3, f'fixed model not clearly brighter: {fixed:.2f} vs {original:.2f}'
+ (REPORT/'result.json').write_text(json.dumps({'status':'PASS','paper_build':meta['id'],'minecraft':'1.21.11 vanilla','gamma':0.5,'baseline':'right','changed':'left','original_luma':round(original,2),'fixed_luma':round(fixed,2),'resource_pack_sha1':hashlib.sha1(new.read_bytes()).hexdigest()},indent=2))
 except Exception as ex:
  (REPORT/'result.json').write_text(json.dumps({'status':'FAIL','error':str(ex),'trace':traceback.format_exc()},indent=2));raise
 finally:

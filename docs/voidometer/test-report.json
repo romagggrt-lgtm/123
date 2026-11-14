@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "client": "unmodified Minecraft 1.21.11",
+  "server": "Paper 1.21.11 build 132",
+  "render_environment": "Xvfb, software OpenGL, gamma 0.5, sealed unlit room, no fullbright",
+  "source_commit": "2b6aa64664cd2e81534e3372a252bccc5e13117d",
+  "pack_sha1": "492743d50661ca92451b85848acd9162d3a2204c",
+  "image": "lighting-comparison.png",
+  "original": "right",
+  "fixed": "left",
+  "original_mean_luminance": 7.48,
+  "fixed_mean_luminance": 77.45,
+  "method": "Real unmodified client; release model compared with a QA-only copy of the old model at identical conditions. Mean of matching 100x100 pixel center crops."
+}
