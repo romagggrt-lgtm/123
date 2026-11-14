@@ -1,4 +1,4 @@
-name: Verify Z_Plast with CustomJukebox
+name: Verify stationary voidometer lighting on vanilla client
 on:
   push:
     branches: [research/z-expansion-bootstrap]
@@ -6,57 +6,37 @@ on:
 permissions:
   contents: write
 jobs:
-  plast:
+  verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '21'
-          cache: maven
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Build plugin and run tests
+      - name: Prepare
         run: |
-          git fetch origin feature/z-plast-1.1.0
-          git worktree add /tmp/zplast FETCH_HEAD
-          rm -rf ci-bootstrap/plast-next
-          mkdir -p ci-bootstrap/plast-next
-          printf '%s\n' "$(git -C /tmp/zplast rev-parse HEAD)" >ci-bootstrap/plast-next/commit.txt
-          mvn -B -f /tmp/zplast/plast/pom.xml verify >ci-bootstrap/plast-next/build.log 2>&1 || true
-          if test -f /tmp/zplast/plast/target/Z_Plast-1.1.0.jar; then
-            cp /tmp/zplast/plast/target/Z_Plast-1.1.0.jar ci-bootstrap/plast-next/
-            npm install --prefix /tmp/zplast/tests/zplast --no-audit --no-fund mineflayer@4.39.0 >ci-bootstrap/plast-next/npm.log 2>&1
-            python3 - <<'PYCODE' >ci-bootstrap/plast-next/custom-jukebox-download.log 2>&1 || true
-          import urllib.request,json,hashlib,pathlib
-          digest='7bff0566996bdc809752a41379b4cd8caff1bf26047bfb355ea9691d2fe59838'
-          headers={'User-Agent':'ZPlastCompatibilityTest/1.0 (Paper compatibility)'}
-          try:
-              with urllib.request.urlopen(urllib.request.Request('https://api.modrinth.com/v2/version_file/'+digest+'?algorithm=sha256',headers=headers),timeout=25) as r: version=json.load(r)
-          except urllib.error.HTTPError as e:
-              if e.code != 404: raise
-              with urllib.request.urlopen(urllib.request.Request('https://api.modrinth.com/v2/project/bs-customjukebox/version',headers=headers),timeout=25) as r: versions=json.load(r)
-              version=next(v for v in versions if v['version_number'].lstrip('v')=='3.7.1')
-          file=next((f for f in version['files'] if f.get('primary')),version['files'][0])
-          with urllib.request.urlopen(urllib.request.Request(file['url'],headers=headers),timeout=60) as r: data=r.read()
-          assert hashlib.sha1(data).hexdigest()==file['hashes']['sha1']
-          pathlib.Path('/tmp/CustomJukebox-3.7.1.jar').write_bytes(data)
-          print('Official CustomJukebox 3.7.1 SHA-256:',hashlib.sha256(data).hexdigest(),'exact_user_jar:',hashlib.sha256(data).hexdigest()==digest)
-          PYCODE
-            if test -s /tmp/CustomJukebox-3.7.1.jar; then export CUSTOM_JUKEBOX_JAR=/tmp/CustomJukebox-3.7.1.jar; fi
-            python3 /tmp/zplast/tests/zplast/smoke.py >ci-bootstrap/plast-next/smoke.log 2>&1 || true
-            cp /tmp/zplast/tests/zplast/output/* ci-bootstrap/plast-next/ || true
-          fi
-      - name: Save test results
+          git fetch origin feature/z-server-pack-1.14
+          git worktree add /tmp/voidometer FETCH_HEAD
+          mkdir -p ci-bootstrap/voidometer
+          git -C /tmp/voidometer rev-parse HEAD > ci-bootstrap/voidometer/commit.txt
+          python3 -m pip install --break-system-packages Pillow python-xlib nbtlib > ci-bootstrap/voidometer/dependencies.log 2>&1
+      - name: Test actual vanilla client
+        env:
+          LIBGL_ALWAYS_SOFTWARE: '1'
+          ALSOFT_DRIVERS: 'null'
+        run: |
+          cd /tmp/voidometer
+          xvfb-run -a -s '-screen 0 1280x720x24' python3 tools/verify_voidometer_lighting.py > "$GITHUB_WORKSPACE/ci-bootstrap/voidometer/run.log" 2>&1 || true
+          cp qa-voidometer/evidence/* "$GITHUB_WORKSPACE/ci-bootstrap/voidometer/" || true
+      - name: Publish test evidence
         if: always()
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git fetch origin "$GITHUB_REF_NAME"
           test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA" || exit 0
-          git add ci-bootstrap/plast-next
-          git commit -m 'Save Z_Plast build results [skip ci]' || exit 0
+          git add ci-bootstrap/voidometer
+          git commit -m 'Record vanilla voidometer lighting evidence [skip ci]' || exit 0
           git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
