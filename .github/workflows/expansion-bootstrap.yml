@@ -1,4 +1,4 @@
-name: Verify stationary voidometer lighting on vanilla client
+name: Verify corrected voidometer test scene
 on:
   push:
     branches: [research/z-expansion-bootstrap]
