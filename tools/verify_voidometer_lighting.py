@@ -39,15 +39,16 @@ try:
  http=ThreadingHTTPServer(('127.0.0.1',25583),partial(SimpleHTTPRequestHandler,directory=str(WORK)));threading.Thread(target=http.serve_forever,daemon=True).start()
  logpath=REPORT/'server.log';log=logpath.open('w');server=subprocess.Popen(['java','-Xms512M','-Xmx2G','-jar','paper.jar','nogui'],cwd=WORK,stdin=subprocess.PIPE,stdout=log,stderr=subprocess.STDOUT)
  wait_for(lambda:'Done (' in logpath.read_text(errors='replace'),300,'server startup')
- for cmd in ['gamerule doDaylightCycle false','time set midnight','fill -8 64 -8 8 74 8 minecraft:air','fill -8 64 -8 8 64 8 minecraft:stone','fill -8 65 -8 -8 74 8 minecraft:stone','fill 8 65 -8 8 74 8 minecraft:stone','fill -8 65 -8 8 74 -8 minecraft:stone','fill -8 65 8 8 74 8 minecraft:stone','fill -8 74 -8 8 74 8 minecraft:stone','setblock -2 65 0 minecraft:target','setblock 1 65 0 minecraft:target']:
-  send(cmd)
- def spawn(x,key,tag):
-  send('summon minecraft:item_display '+str(x)+' 65.5 0.5 {Tags:["'+tag+'"],item:{id:"minecraft:target",count:1,components:{"minecraft:item_model":"'+key+'"}},item_display:"fixed",transformation:{scale:[1.002f,1.002f,1.002f]}}')
- spawn(-1.5,'z_lor:qa_old_stationary','qa_old');spawn(1.5,'z_lor:world_stationary_voidometer','qa_new');send('say QA_BUILD_COMPLETE')
- wait_for(lambda:'QA_BUILD_COMPLETE' in logpath.read_text(errors='replace'),30,'world built')
  command=vanilla.prepare();(vanilla.GAME/'options.txt').write_text('onboardAccessibility:false\nstartedCleanly:true\nlang:en_us\nguiScale:2\ngamma:0.5\nrenderDistance:4\nsimulationDistance:4\nmaxFps:30\nfullscreen:false\nenableVsync:false\nparticles:0\ntutorialStep:none\n')
  clientlog=(REPORT/'client-console.log').open('w');client=subprocess.Popen(command,cwd=vanilla.GAME,stdout=clientlog,stderr=subprocess.STDOUT)
  wait_for(lambda:'LorObserver joined the game' in logpath.read_text(errors='replace'),240,'vanilla client joined')
+ send('forceload add -8 -8 8 8');time.sleep(3)
+ for cmd in ['time set midnight','fill -8 64 -8 8 74 8 minecraft:air','fill -8 64 -8 8 64 8 minecraft:stone','fill -8 65 -8 -8 74 8 minecraft:stone','fill 8 65 -8 8 74 8 minecraft:stone','fill -8 65 -8 8 74 -8 minecraft:stone','fill -8 65 8 8 74 8 minecraft:stone','fill -8 74 -8 8 74 8 minecraft:stone','setblock -2 65 0 minecraft:target','setblock 1 65 0 minecraft:target']:
+  send(cmd)
+ def spawn(x,key,tag):
+  send('summon minecraft:item_display '+str(x)+' 65.5 0.5 {Tags:["'+tag+'"],item:{id:"minecraft:target",count:1,components:{"minecraft:item_model":"'+key+'"}},item_display:"fixed",transformation:{translation:[0f,0f,0f],left_rotation:[0f,0f,0f,1f],scale:[1.002f,1.002f,1.002f],right_rotation:[0f,0f,0f,1f]}}')
+ spawn(-1.5,'z_lor:qa_old_stationary','qa_old');spawn(1.5,'z_lor:world_stationary_voidometer','qa_new');send('say QA_BUILD_COMPLETE')
+ wait_for(lambda:'QA_BUILD_COMPLETE' in logpath.read_text(errors='replace'),30,'world built')
  send('gamemode creative LorObserver');send('tp LorObserver 0 65 -5 0 11');send('effect clear LorObserver');send('say QA_CLIENT_POSITIONED')
  wait_for(lambda:'QA_CLIENT_POSITIONED' in logpath.read_text(errors='replace'),30,'client positioned')
  time.sleep(20)
@@ -56,7 +57,7 @@ try:
  pix=root.get_image(0,0,screen.width_in_pixels,screen.height_in_pixels,X.ZPixmap,0xffffffff);Image.frombytes('RGB',(screen.width_in_pixels,screen.height_in_pixels),pix.data,'raw','BGRX').save(REPORT/'before-and-after.png')
  client_log=vanilla.GAME/'logs/latest.log'
  if client_log.exists():shutil.copyfile(client_log,REPORT/'client.log')
- logs=logpath.read_text(errors='replace');assert 'Summoned new Item Display' in logs or logs.count('Summoned new')>=2, 'item displays were not summoned'
+ logs=logpath.read_text(errors='replace');assert logs.count('Summoned new Item Display')>=2, 'item displays were not summoned';assert 'That position is not loaded' not in logs, 'test blocks were not loaded';assert 'Serialization errors' not in logs, 'item display NBT was not accepted'
  (REPORT/'result.json').write_text(json.dumps({'status':'CAPTURED','paper_build':meta['id'],'minecraft':'1.21.11 vanilla','gamma':0.5,'baseline':'left','changed':'right','resource_pack_sha1':hashlib.sha1(new.read_bytes()).hexdigest(),'review':'Compare screenshot brightness; capture alone is not a pass.'},indent=2))
 except Exception as ex:
  (REPORT/'result.json').write_text(json.dumps({'status':'FAIL','error':str(ex),'trace':traceback.format_exc()},indent=2));raise
