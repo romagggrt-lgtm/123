@@ -1,0 +1,13 @@
+{
+  "base": "Z_Server_Pack_1.13.zip",
+  "output": "Z_Server_Pack_1.14.zip",
+  "base_sha1": "aaa84ff81c779ea8a2074aceb61f138be1675a24",
+  "sha1": "492743d50661ca92451b85848acd9162d3a2204c",
+  "sha256": "cf97f0e6a77a6c566537047d118a603cecab3594d8c8586ad048efbbb377b923",
+  "assets_preserved": 1951,
+  "changed_entries": [
+    "assets/smplore/models/block/stationary_voidometer.json",
+    "pack.mcmeta"
+  ],
+  "light_emission": 15
+}
