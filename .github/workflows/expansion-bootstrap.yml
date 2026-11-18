@@ -63,3 +63,5 @@ jobs:
 # Diagnose staff interaction and retest global playback.
 
 # Confirm corrected sneak interaction and shutdown restoration.
+
+# Verify chest transfers while controlling the target.
