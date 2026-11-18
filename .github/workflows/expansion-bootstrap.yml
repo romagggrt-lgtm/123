@@ -65,3 +65,5 @@ jobs:
 # Confirm corrected sneak interaction and shutdown restoration.
 
 # Verify chest transfers while controlling the target.
+
+# Verify chest transfer and observer window synchronization.
