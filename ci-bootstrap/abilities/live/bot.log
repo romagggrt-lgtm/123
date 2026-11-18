@@ -1,2 +1,1 @@
-Error: failed: {"hallucination_seen_by_victim":true,"hallucination_hidden_from_observer":true,"staff_projectile":true,"heal_full":true,"heal_message":true,"capture_started":true,"operator_moves_target":true,"target_blocked":true,"place":true,"break":true,"capture_stopped":true,"operator_inventory_restored":false,"victim_inventory_preserved":true}
-    at run (/tmp/abilities/tests/abilities/bot.js:18:156)
+operator inventory after stop [ [ 'diamond', 2 ] ]
