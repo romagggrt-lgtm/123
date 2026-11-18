@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "ok": true,
+  "position": {
+    "x": 0.5,
+    "y": 71,
+    "z": 0.5
+  },
+  "inventory": [
+    "diamond"
+  ]
+}
