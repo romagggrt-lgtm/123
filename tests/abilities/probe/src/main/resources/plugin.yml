@@ -2,3 +2,6 @@ name: AbilitiesProbe
 version: '1'
 main: dev.abilitiesprobe.Probe
 api-version: '1.21.11'
+commands:
+  disableuluz:
+    description: Test plugin disable recovery
