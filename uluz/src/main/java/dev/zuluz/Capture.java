@@ -11,6 +11,7 @@ import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.*;
 import org.bukkit.event.entity.*;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -31,7 +32,7 @@ final class Capture extends PacketListenerAbstract implements Listener,AutoClose
   else if(!route.operator()&&(ACTIONS.contains(type)||MOVEMENT.contains(type))){e.setCancelled(true);}
  }
  @Override public void onPacketSend(PacketSendEvent e){Route route=channels.get(e.getChannel());if(route==null||!(e.getPacketType() instanceof PacketType.Play.Server type)||!INVENTORY.contains(type))return;
-  if(route.operator())e.setCancelled(true);else route.session().operatorUser().sendPacketSilently(e.getFullBufferClone());
+  if(route.operator())e.setCancelled(true);else{route.session().operatorUser().sendPacketSilently(e.getFullBufferClone());if(type==PacketType.Play.Server.OPEN_WINDOW||type==PacketType.Play.Server.OPEN_HORSE_WINDOW)e.setCancelled(true);}
  }
  String start(Player operator,Player target,int seconds){
   if(operator.equals(target))return "Нельзя захватить самого себя.";if(people.containsKey(operator.getUniqueId())||people.containsKey(target.getUniqueId()))return "Один из игроков уже участвует в захвате.";
@@ -56,6 +57,7 @@ final class Capture extends PacketListenerAbstract implements Listener,AutoClose
  boolean stop(Player person){Session s=people.get(person.getUniqueId());if(s==null)return false;stop(s,"Сеанс завершён.");return true;}
  private void stop(Session s,String message){people.remove(s.operator());people.remove(s.target());channels.remove(s.operatorUser().getChannel());channels.remove(s.targetUser().getChannel());Player a=Bukkit.getPlayer(s.operator()),b=Bukkit.getPlayer(s.target());if(a!=null){for(Player viewer:Bukkit.getOnlinePlayers())viewer.showPlayer(p,a);if(b!=null)a.showPlayer(p,b);recover(a);a.sendHealthUpdate();a.sendExperienceChange(a.getExp(),a.getLevel());a.closeInventory();a.updateInventory();if(p.isEnabled())Bukkit.getScheduler().runTaskLater(p,()->{if(a.isOnline()&&!people.containsKey(a.getUniqueId()))a.updateInventory();},2);a.sendMessage("§d[Z_Uluz] "+message);}if(b!=null){b.closeInventory();b.updateInventory();b.sendMessage("§d[Z_Uluz] "+message);}}
  void recover(Player a){String key="recovery."+a.getUniqueId();if(!p.getConfig().isConfigurationSection(key))return;Location old=p.getConfig().getLocation(key+".location");try{a.setGameMode(GameMode.valueOf(p.getConfig().getString(key+".mode","SURVIVAL")));a.setInvulnerable(p.getConfig().getBoolean(key+".invulnerable"));a.setCollidable(p.getConfig().getBoolean(key+".collidable",true));a.setSilent(p.getConfig().getBoolean(key+".silent"));a.setAllowFlight(p.getConfig().getBoolean(key+".allow-flight"));if(a.getAllowFlight())a.setFlying(p.getConfig().getBoolean(key+".flying"));if(old!=null){moving=true;try{if(!a.teleport(old,PlayerTeleportEvent.TeleportCause.PLUGIN)){a.sendMessage("§c[Z_Uluz] Не удалось вернуться на исходное место.");return;}}finally{moving=false;}}p.getConfig().set(key,null);p.saveConfig();}catch(RuntimeException e){p.getLogger().warning("Не удалось восстановить "+a.getName()+": "+e.getMessage());}}
+ @EventHandler(priority=EventPriority.MONITOR) public void closeInventory(InventoryCloseEvent e){if(e.getPlayer() instanceof Player player){Session s=people.get(player.getUniqueId());if(s!=null&&s.target().equals(player.getUniqueId())&&p.isEnabled())Bukkit.getScheduler().runTaskLater(p,()->{if(player.isOnline()&&people.get(player.getUniqueId())==s)player.updateInventory();},1);}}
  @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void pickup(EntityPickupItemEvent e){if(e.getEntity() instanceof Player player){Session s=people.get(player.getUniqueId());if(s!=null&&s.operator().equals(player.getUniqueId()))e.setCancelled(true);}}
  @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void experience(com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent e){Session s=people.get(e.getPlayer().getUniqueId());if(s!=null&&s.operator().equals(e.getPlayer().getUniqueId()))e.setCancelled(true);}
  @EventHandler public void quit(PlayerQuitEvent e){stop(e.getPlayer());}
