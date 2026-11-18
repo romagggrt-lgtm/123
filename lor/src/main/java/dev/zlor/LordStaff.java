@@ -30,7 +30,7 @@ public final class LordStaff implements Listener,AutoCloseable {
  @EventHandler(priority=EventPriority.HIGH)
  public void interact(PlayerInteractEvent event){
   if(event.getHand()!=EquipmentSlot.HAND||event.getPlayer().getGameMode()==GameMode.SPECTATOR||!event.getAction().isRightClick()||!p.items.is(event.getItem(),"lord_staff"))return;
-  if(event.getAction()==Action.RIGHT_CLICK_BLOCK && (event.isCancelled() || event.useItemInHand()==Event.Result.DENY))return;event.setCancelled(true);Player player=event.getPlayer();
+  if(event.getAction()==Action.RIGHT_CLICK_BLOCK && event.useItemInHand()==Event.Result.DENY)return;event.setCancelled(true);Player player=event.getPlayer();
   if(player.isSneaking())teleport(player);else shoot(player);
  }
  @EventHandler(priority=EventPriority.HIGH,ignoreCancelled=true)
