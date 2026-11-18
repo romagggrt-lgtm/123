@@ -1,12 +1,12 @@
-name: Verify latest plugin abilities
+name: Verify Z_Uluz crash recovery
 on:
   push:
-    branches: [research/z-expansion-bootstrap]
+    branches: [research/z-recovery-bootstrap]
     paths: ['.github/workflows/expansion-bootstrap.yml']
 permissions:
   contents: write
 jobs:
-  compile:
+  recovery:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -16,33 +16,21 @@ jobs:
           distribution: temurin
           java-version: '21'
           cache: maven
-      - name: Build and test plugins
-        run: |
-          git fetch origin feature/z-abilities-uluz-2026-11
-          git worktree add /tmp/abilities FETCH_HEAD
-          rm -rf ci-bootstrap/abilities
-          mkdir -p ci-bootstrap/abilities/jars
-          git -C /tmp/abilities rev-parse HEAD >ci-bootstrap/abilities/commit.txt
-          curl -fsSL --retry 3 https://github.com/retrooper/packetevents/releases/download/v2.14.0/packetevents-spigot-2.14.0.jar -o /tmp/packetevents.jar
-          mvn -B install:install-file -Dfile=/tmp/packetevents.jar -DgroupId=io.github.retrooper -DartifactId=packetevents-spigot -Dversion=2.14.0 -Dpackaging=jar -DgeneratePom=true
-          for project in book plast lor uluz; do
-            if test -f /tmp/abilities/$project/pom.xml; then
-              mvn -B -f /tmp/abilities/$project/pom.xml verify >ci-bootstrap/abilities/$project.log 2>&1 || true
-              find /tmp/abilities/$project/target -maxdepth 1 -name 'Z_*.jar' ! -name 'original-*' -exec cp {} ci-bootstrap/abilities/jars/ \;
-            fi
-          done
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Real Paper with three players
+      - name: Build and test recovery
         run: |
-          cd /tmp/abilities
-          mvn -B -f tests/abilities/probe/pom.xml package > /tmp/probe-build.log 2>&1 || true
-          npm install --prefix tests/abilities --no-audit --no-fund mineflayer@4.39.0 > /tmp/npm-abilities.log 2>&1 || true
-          python3 tests/abilities/smoke.py > /tmp/abilities-smoke.log 2>&1 || true
-          cd "$GITHUB_WORKSPACE"
-          cp /tmp/probe-build.log /tmp/npm-abilities.log /tmp/abilities-smoke.log ci-bootstrap/abilities/
-          if test -d /tmp/abilities/tests/abilities/output; then cp -r /tmp/abilities/tests/abilities/output ci-bootstrap/abilities/live; fi
+          git fetch origin feature/z-abilities-uluz-2026-11
+          git worktree add /tmp/recovery FETCH_HEAD
+          mkdir -p ci-bootstrap/recovery
+          git -C /tmp/recovery rev-parse HEAD >ci-bootstrap/recovery/commit.txt
+          curl -fsSL --retry 3 https://github.com/retrooper/packetevents/releases/download/v2.14.0/packetevents-spigot-2.14.0.jar -o /tmp/packetevents.jar
+          mvn -B install:install-file -Dfile=/tmp/packetevents.jar -DgroupId=io.github.retrooper -DartifactId=packetevents-spigot -Dversion=2.14.0 -Dpackaging=jar -DgeneratePom=true >/tmp/install.log 2>&1
+          mvn -B -f /tmp/recovery/uluz/pom.xml package >ci-bootstrap/recovery/build.log 2>&1
+          npm install --prefix /tmp/recovery/tests/abilities --no-audit --no-fund mineflayer@4.39.0 >ci-bootstrap/recovery/npm.log 2>&1
+          python3 /tmp/recovery/tests/abilities/recovery.py >ci-bootstrap/recovery/run.log 2>&1 || true
+          cp -r /tmp/recovery/tests/abilities/output ci-bootstrap/recovery/live || true
       - name: Save results
         if: always()
         run: |
@@ -50,10 +38,6 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git fetch origin "$GITHUB_REF_NAME"
           test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA" || exit 0
-          git add ci-bootstrap/abilities
-          git commit -m 'Save plugin abilities build results [skip ci]' || exit 0
+          git add ci-bootstrap/recovery
+          git commit -m 'Save crash recovery results [skip ci]' || exit 0
           git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
-
-# Re-run after Z_Uluz was added.
-
-# Retest inventory recovery.
