@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "/tmp/abilities/tests/abilities/smoke.py", line 32, in <module>
-    assert bot.wait(timeout=160)==0,'bot checks failed'
-           ^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: bot checks failed
