@@ -59,3 +59,5 @@ jobs:
 # Retest inventory recovery.
 
 # Verify staff and global record playback.
+
+# Diagnose staff interaction and retest global playback.
