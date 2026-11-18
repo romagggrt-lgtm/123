@@ -41,3 +41,5 @@ jobs:
           git add ci-bootstrap/abilities
           git commit -m 'Save plugin abilities build results [skip ci]' || exit 0
           git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
+
+# Re-run after Z_Uluz was added.
