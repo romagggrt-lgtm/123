@@ -10,7 +10,7 @@ import java.util.zip.*;
 
 /** Disk operations run in worker threads; the monitor serializes commits and pack snapshots. */
 final class Catalog {
- record Pack(Path path,String sha,byte[] digest){}
+ record Pack(Path path,String sha,byte[] digest,Set<String> trackIds){}
  private final Path root,tracks,pack;private final ZPlast plugin;
  private final Map<String,Track> all=new LinkedHashMap<>();
  private final Map<String,Integer> notices=new LinkedHashMap<>();
@@ -58,14 +58,14 @@ final class Catalog {
    try(var out=new ZipOutputStream(Files.newOutputStream(tmp))){
     put(out,"pack.mcmeta","{\"pack\":{\"min_format\":[75,0],\"max_format\":[75,0],\"description\":\"Z_Plast • звуки пластинок\"}}".getBytes(StandardCharsets.UTF_8));
     JsonObject events=new JsonObject();List<Track> ordered=snapshot;
-    for(Track track:ordered){JsonObject sound=new JsonObject();sound.addProperty("name","zplast:track_"+track.id);sound.addProperty("stream",true);JsonArray sounds=new JsonArray();sounds.add(sound);JsonObject event=new JsonObject();event.add("sounds",sounds);events.add("track."+track.id,event);}
+    for(Track track:ordered){JsonObject sound=new JsonObject();sound.addProperty("name","zplast:track_"+track.id);sound.addProperty("stream",true);JsonArray sounds=new JsonArray();sounds.add(sound);JsonObject event=new JsonObject();event.add("sounds",sounds);events.add("track."+track.id,event);events.add("global."+track.id,event.deepCopy());}
     put(out,"assets/zplast/sounds.json",JSON.toJson(events).getBytes(StandardCharsets.UTF_8));
     for(Track track:ordered){ZipEntry entry=new ZipEntry("assets/zplast/sounds/track_"+track.id+".ogg");entry.setTime(0);out.putNextEntry(entry);Files.copy(trackFile(track.id),out);out.closeEntry();}
    }
    MessageDigest md=MessageDigest.getInstance("SHA-1");try(InputStream in=Files.newInputStream(tmp)){byte[] b=new byte[8192];for(int n;(n=in.read(b))!=-1;)md.update(b,0,n);}byte[] digest=md.digest();String sha=HexFormat.of().formatHex(digest);
    Path destination=pack.resolve("sounds-"+sha+".zip");if(Files.exists(destination))Files.delete(tmp);else move(tmp,destination);
    Path latest=pack.resolve("Z_Plast_Sounds.zip"),copy=Files.createTempFile(pack,"latest-",".zip");try{Files.copy(destination,copy,StandardCopyOption.REPLACE_EXISTING);move(copy,latest);}finally{Files.deleteIfExists(copy);}
-   return current=new Pack(destination,sha,digest);
+   return current=new Pack(destination,sha,digest,snapshot.stream().map(t->t.id).collect(java.util.stream.Collectors.toUnmodifiableSet()));
   }finally{Files.deleteIfExists(tmp);}
  }
  private static void put(ZipOutputStream out,String name,byte[] bytes)throws IOException{ZipEntry e=new ZipEntry(name);e.setTime(0);out.putNextEntry(e);out.write(bytes);out.closeEntry();}

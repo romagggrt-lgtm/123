@@ -53,6 +53,16 @@ spells:
     cooldown-seconds: 40
     range: 60
     incendiary: false
+  ave_revivous:
+    name: '&#FF80E5Аве &#F7CCFFРевивус'
+    page-name: '&#FF80E5Страница: &#F7CCFFАве Ревивус'
+    description:
+      - '&7Полностью восстанавливает'
+      - '&7ваше здоровье.'
+    page-lore:
+      - '&7Полностью восстанавливает здоровье.'
+      - '&7Соедини с Книгой заклинаний на верстаке.'
+    cooldown-seconds: 30
 messages:
   prefix: '&8[&dZ_Book&8] &r'
   no-permission: '&cНедостаточно прав.'
@@ -74,4 +84,6 @@ messages:
   too-far: '&cЦель слишком далеко.'
   blocked: '&cЗаклинание не сработало: молния была отменена.'
   stale: '&cЭтого заклинания нет в книге в вашей руке.'
+  health-full: '&eЗдоровье уже восстановлено полностью.'
+  heal-blocked: '&cИсцеление было отменено.'
   cast: '&aЗаклинание применено.'

@@ -34,6 +34,8 @@ public final class ZPlast extends JavaPlugin implements Listener,CommandExecutor
  private NamespacedKey trackKey;private final Map<UUID,Long> uploadTimes=new HashMap<>();private final Map<UUID,List<Pending>> waiting=new HashMap<>();private final Map<UUID,String> loaded=new HashMap<>();
  private final Map<UUID,Rename> renaming=new ConcurrentHashMap<>();private final Map<UUID,Long> linkInputs=new ConcurrentHashMap<>();private final Set<UUID> activeLinks=new HashSet<>();private final Map<Location,Playing> playing=new HashMap<>();private long packSerial;private int rebuildTask=-1;private boolean stopping;
  private record Pending(String id,long serial){} private record Rename(String id,long expires){} private record Playing(String id,long until,List<UUID> listeners){}
+ private record Broadcast(String id,long until,Set<UUID> listeners){} private record BroadcastRequest(String id,UUID requester,long token){}
+ private Broadcast broadcast;private BroadcastRequest broadcastRequest;private long broadcastSequence;
  private final class Screen implements InventoryHolder{final UUID owner;final String type;final String track;final int page;Inventory inventory;Screen(Player p,String type,String track,int page){owner=p.getUniqueId();this.type=type;this.track=track;this.page=page;}public Inventory getInventory(){return inventory;}}
  @Override public void onEnable(){
   saveDefaultConfig();if(!new File(getDataFolder(),"messages.yml").exists())saveResource("messages.yml",false);messages=YamlConfiguration.loadConfiguration(new File(getDataFolder(),"messages.yml"));
@@ -73,12 +75,12 @@ public final class ZPlast extends JavaPlugin implements Listener,CommandExecutor
   if(page>0)s.inventory.setItem(45,icon(Material.ARROW,"Предыдущая"));s.inventory.setItem(49,icon(Material.NETHER_STAR,"Главное меню"));if(page<last)s.inventory.setItem(53,icon(Material.ARROW,"Следующая"));p.openInventory(s.inventory);
  }
  private boolean canManage(Player p,Track t){return p.hasPermission("zplast.admin")||t.owner.equals(p.getUniqueId().toString());}
- private void manage(Player p,String id,int page){Track t=catalog.get(id);if(t==null){catalog(p,page);return;}Screen s=screen(p,"manage",27,"Управление записью",id,page);s.inventory.setItem(11,icon(Material.NAME_TAG,"Переименовать",canManage(p,t)?"Введите имя в чат":"Только владелец или администратор"));s.inventory.setItem(13,icon(Material.BARRIER,"Удалить",canManage(p,t)?"Потребуется подтверждение":"Только владелец или администратор"));s.inventory.setItem(15,icon(Material.ARROW,"Назад"));p.openInventory(s.inventory);}
+ private void manage(Player p,String id,int page){Track t=catalog.get(id);if(t==null){catalog(p,page);return;}Screen s=screen(p,"manage",27,"Управление записью",id,page);s.inventory.setItem(10,icon(Material.NOTE_BLOCK,"Проиграть для всех","Услышат все игроки с принятым ресурс-паком"));s.inventory.setItem(11,icon(Material.NAME_TAG,"Переименовать",canManage(p,t)?"Введите имя в чат":"Только владелец или администратор"));s.inventory.setItem(13,icon(Material.BARRIER,"Удалить",canManage(p,t)?"Потребуется подтверждение":"Только владелец или администратор"));s.inventory.setItem(15,icon(Material.ARROW,"Назад"));s.inventory.setItem(16,icon(Material.REDSTONE,"Остановить общую музыку"));p.openInventory(s.inventory);}
  private void confirm(Player p,String id,int page){Screen s=screen(p,"confirm",27,"Удалить запись?",id,page);s.inventory.setItem(11,icon(Material.RED_WOOL,"Да, удалить"));s.inventory.setItem(15,icon(Material.LIME_WOOL,"Нет, вернуться"));p.openInventory(s.inventory);}
  @EventHandler public void click(InventoryClickEvent e){if(!(e.getWhoClicked() instanceof Player p)||!(e.getView().getTopInventory().getHolder() instanceof Screen s))return;e.setCancelled(true);if(!p.hasPermission("zplast.use")||!s.owner.equals(p.getUniqueId())||e.getRawSlot()<0||e.getRawSlot()>=s.inventory.getSize())return;int slot=e.getRawSlot();
   if(s.type.equals("main")){if(slot==11)beginLink(p);else if(slot==13)catalog(p,0);else if(slot==15)p.closeInventory();else if(slot==22)beginUpload(p);return;}
   if(s.type.equals("catalog")){if(slot==45&&s.page>0)catalog(p,s.page-1);else if(slot==49)main(p);else if(slot==53)catalog(p,s.page+1);else if(slot<45){String id=id(s.inventory.getItem(slot));Track t=id==null?null:catalog.get(id);if(t==null)return;if(e.isRightClick())manage(p,id,s.page);else if(e.isLeftClick())deliverWithPack(p,t);}return;}
-  Track t=catalog.get(s.track);if(t==null){catalog(p,s.page);return;}if(s.type.equals("manage")){if(slot==15){catalog(p,s.page);return;}if(!canManage(p,t)){say(p,"no-permission");return;}if(slot==11){p.closeInventory();linkInputs.remove(p.getUniqueId());renaming.put(p.getUniqueId(),new Rename(t.id,System.currentTimeMillis()+60_000));plain(p,"Введите новое название в чат: поддерживаются &#RRGGBB и &-коды. Напишите cancel для отмены.");}else if(slot==13)confirm(p,t.id,s.page);}
+  Track t=catalog.get(s.track);if(t==null){catalog(p,s.page);return;}if(s.type.equals("manage")){if(slot==15){catalog(p,s.page);return;}if(slot==10){p.closeInventory();requestBroadcast(p,t);return;}if(slot==16){p.closeInventory();stopBroadcast();plain(p,"Общая музыка остановлена.");return;}if(!canManage(p,t)){say(p,"no-permission");return;}if(slot==11){p.closeInventory();linkInputs.remove(p.getUniqueId());renaming.put(p.getUniqueId(),new Rename(t.id,System.currentTimeMillis()+60_000));plain(p,"Введите новое название в чат: поддерживаются &#RRGGBB и &-коды. Напишите cancel для отмены.");}else if(slot==13)confirm(p,t.id,s.page);}
   else if(s.type.equals("confirm")){if(slot==15)manage(p,t.id,s.page);else if(slot==11&&canManage(p,t)){p.closeInventory();String track=t.id;io.execute(()->{try{catalog.remove(track);onMain(()->{stopTrack(track);plain(p,"Запись удалена.");scheduleBuild();});}catch(Exception ex){getLogger().warning("Ошибка удаления: "+ex);onMain(()->plain(p,"Не удалось удалить запись."));}});}}
  }
  @EventHandler public void drag(InventoryDragEvent e){if(e.getView().getTopInventory().getHolder() instanceof Screen)e.setCancelled(true);}
@@ -119,7 +121,7 @@ public final class ZPlast extends JavaPlugin implements Listener,CommandExecutor
  private void giveAllPending(Player p,boolean timeout){for(Pending pending:List.copyOf(waiting.getOrDefault(p.getUniqueId(),List.of())))givePending(p,pending,timeout);}
  private void give(Player p,Track t){ItemStack item=record(t);for(ItemStack leftover:p.getInventory().addItem(item).values())p.getWorld().dropItemNaturally(p.getLocation(),leftover);}
  @EventHandler public void pack(PlayerResourcePackStatusEvent e){if(!e.getID().equals(PACK_ID))return;Player p=e.getPlayer();switch(e.getStatus()){
-  case SUCCESSFULLY_LOADED->{Catalog.Pack pack=catalog.current;if(pack!=null)loaded.put(p.getUniqueId(),pack.sha());giveAllPending(p,false);}
+  case SUCCESSFULLY_LOADED->{Catalog.Pack pack=catalog.current;if(pack!=null)loaded.put(p.getUniqueId(),pack.sha());giveAllPending(p,false);maybeStartBroadcast(false);}
   case DECLINED,FAILED_DOWNLOAD,INVALID_URL,FAILED_RELOAD->{loaded.remove(p.getUniqueId());say(p,"pack-declined");giveAllPending(p,false);}
   default->{} }}
  private void recordNotice(UUID id,int count){io.execute(()->{try{catalog.addNotice(id,count);}catch(IOException ex){getLogger().warning("Не удалось сохранить уведомление: "+ex.getMessage());}});}
@@ -138,15 +140,34 @@ public final class ZPlast extends JavaPlugin implements Listener,CommandExecutor
   playing.put(block,new Playing(track.id,System.currentTimeMillis()+(long)(track.seconds*1000),listeners));
  }
  private void stop(Location block){Playing sound=playing.remove(block);if(sound==null)return;for(UUID id:sound.listeners){Player player=Bukkit.getPlayer(id);if(player!=null)player.stopSound("zplast:track."+sound.id,SoundCategory.RECORDS);}}
- private void stopTrack(String id){for(var entry:List.copyOf(playing.entrySet()))if(entry.getValue().id.equals(id))stop(entry.getKey());}
+ private void stopTrack(String id){for(var entry:List.copyOf(playing.entrySet()))if(entry.getValue().id.equals(id))stop(entry.getKey());if(broadcast!=null&&broadcast.id.equals(id))stopBroadcast();if(broadcastRequest!=null&&broadcastRequest.id.equals(id))broadcastRequest=null;}
+ private void requestBroadcast(Player initiator,Track track){
+  Catalog.Pack pack=catalog.current;if(pack==null||!pack.trackIds().contains(track.id)){plain(initiator,"Музыкальный ресурс-пак ещё готовится. Попробуйте через несколько секунд.");scheduleBuild();return;}
+  stopBroadcast();BroadcastRequest request=new BroadcastRequest(track.id,initiator.getUniqueId(),++broadcastSequence);broadcastRequest=request;
+  boolean missing=false;for(Player player:Bukkit.getOnlinePlayers())if(!pack.sha().equals(loaded.get(player.getUniqueId()))){missing=true;offer(player,pack);}
+  if(!missing){maybeStartBroadcast(false);return;}
+  plain(initiator,"Ожидаю подключения звукового ресурс-пака у игроков (до 20 секунд).");
+  Bukkit.getScheduler().runTaskLater(this,()->{if(broadcastRequest==request)maybeStartBroadcast(true);},400L);
+ }
+ private void maybeStartBroadcast(boolean timeout){
+  BroadcastRequest request=broadcastRequest;if(request==null)return;Track track=catalog.get(request.id);Catalog.Pack pack=catalog.current;
+  if(track==null||pack==null||!pack.trackIds().contains(request.id)){broadcastRequest=null;Player p=Bukkit.getPlayer(request.requester);if(p!=null)plain(p,"Запись больше недоступна.");return;}
+  if(!timeout&&Bukkit.getOnlinePlayers().stream().anyMatch(p->!pack.sha().equals(loaded.get(p.getUniqueId()))))return;
+  broadcastRequest=null;String sound="zplast:global."+track.id;float volume=(float)Math.clamp(getConfig().getDouble("global-playback.volume",1),0,4);Set<UUID> listeners=new HashSet<>();
+  for(Player player:Bukkit.getOnlinePlayers()){player.playSound(player,sound,SoundCategory.RECORDS,volume,1);player.sendActionBar(Component.text("Играет для всех: ").append(title(track.name)));listeners.add(player.getUniqueId());}
+  broadcast=new Broadcast(track.id,System.currentTimeMillis()+(long)(track.seconds*1000),listeners);
+  Player requester=Bukkit.getPlayer(request.requester);if(requester!=null){plain(requester,"Запись запущена для всех игроков.");if(timeout)plain(requester,"Игрокам без принятого звукового ресурс-пака музыка не будет слышна.");}
+ }
+ private void stopBroadcast(){broadcastRequest=null;Broadcast current=broadcast;broadcast=null;if(current==null)return;for(UUID id:current.listeners){Player player=Bukkit.getPlayer(id);if(player!=null)player.stopSound("zplast:global."+current.id,SoundCategory.RECORDS);}}
+
  @EventHandler(priority=EventPriority.MONITOR,ignoreCancelled=true) public void breakJukebox(BlockBreakEvent e){if(e.getBlock().getType()==Material.JUKEBOX)stop(e.getBlock().getLocation());}
  private void tick(){
-  long now=System.currentTimeMillis();renaming.entrySet().removeIf(e->e.getValue().expires<now);linkInputs.entrySet().removeIf(e->e.getValue()<now);
+  long now=System.currentTimeMillis();if(broadcast!=null&&now>=broadcast.until)broadcast=null;renaming.entrySet().removeIf(e->e.getValue().expires<now);linkInputs.entrySet().removeIf(e->e.getValue()<now);
   for(var entry:List.copyOf(playing.entrySet())){Location pos=entry.getKey();Playing sound=entry.getValue();World world=pos.getWorld();
    if(now>=sound.until||world==null||!world.isChunkLoaded(pos.getBlockX()>>4,pos.getBlockZ()>>4)){stop(pos);continue;}
    Block block=pos.getBlock();if(!(block.getState() instanceof Jukebox jukebox)||!sound.id.equals(id(jukebox.getRecord()))||catalog.get(sound.id)==null){stop(pos);continue;}
    world.spawnParticle(Particle.NOTE,pos.clone().add(.5,1.2,.5),1,0,0,0,1);
   }
  }
- @Override public void onDisable(){stopping=true;if(web!=null)web.close();for(Location pos:List.copyOf(playing.keySet()))stop(pos);for(Player p:Bukkit.getOnlinePlayers())if(p.getOpenInventory().getTopInventory().getHolder() instanceof Screen)p.closeInventory();if(io!=null){io.shutdown();try{if(!io.awaitTermination(3,TimeUnit.SECONDS))io.shutdownNow();}catch(InterruptedException e){Thread.currentThread().interrupt();io.shutdownNow();}}}
+ @Override public void onDisable(){stopping=true;stopBroadcast();if(web!=null)web.close();for(Location pos:List.copyOf(playing.keySet()))stop(pos);for(Player p:Bukkit.getOnlinePlayers())if(p.getOpenInventory().getTopInventory().getHolder() instanceof Screen)p.closeInventory();if(io!=null){io.shutdown();try{if(!io.awaitTermination(3,TimeUnit.SECONDS))io.shutdownNow();}catch(InterruptedException e){Thread.currentThread().interrupt();io.shutdownNow();}}}
 }

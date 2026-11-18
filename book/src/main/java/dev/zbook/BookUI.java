@@ -23,7 +23,9 @@ final class BookUI {
   for(Spell spell:spells){
    Component page=line("book.page-header").append(plugin.text().component(spell.name(plugin.text()))).append(Component.newline()).append(line("book.page-header"));
    for(String text:spell.description(plugin.text()))page=page.append(plugin.text().component(text)).append(Component.newline());
-   page=page.append(Component.newline()).append(plugin.text().format("book.cooldown","seconds",spell.cooldownMillis(plugin)/1000)).append(Component.newline()).append(plugin.text().format("book.range","range",Math.round(spell.range(plugin)))).append(Component.newline()).append(Component.newline());
+   page=page.append(Component.newline()).append(plugin.text().format("book.cooldown","seconds",spell.cooldownMillis(plugin)/1000)).append(Component.newline());
+   if(spell.range(plugin)>0)page=page.append(plugin.text().format("book.range","range",Math.round(spell.range(plugin)))).append(Component.newline());
+   page=page.append(Component.newline());
    Component use=plugin.text().get("book.use").hoverEvent(HoverEvent.showText(plugin.text().get("book.use-hover"))).clickEvent(ClickEvent.callback(audience->{if(plugin.isEnabled()&&audience instanceof Player target&&target.isOnline()&&target.getUniqueId().equals(owner))plugin.casts().select(target,spell,bookId);},ClickCallback.Options.builder().uses(10).lifetime(Duration.ofMinutes(10)).build()));
    page=page.append(use).append(Component.newline()).append(Component.newline()).append(plugin.text().get("book.back").clickEvent(ClickEvent.changePage(1)).hoverEvent(HoverEvent.showText(plugin.text().get("book.back-hover"))));pages.add(page);
   }

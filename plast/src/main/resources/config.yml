@@ -20,6 +20,8 @@ disc:
 sound:
   volume: 1.0
   radius: 64
+global-playback:
+  volume: 1.0
 catalog:
   scope: all
 resource-pack:
