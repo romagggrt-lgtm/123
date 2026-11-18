@@ -1,1 +1,3 @@
 operator inventory after stop [ [ 'diamond', 2 ] ]
+Error: failed: {"hallucination_seen_by_victim":true,"hallucination_hidden_from_observer":true,"staff_extra_health":true,"staff_projectile":true,"staff_defenders":true,"staff_teleport":false,"heal_full":true,"heal_message":true,"capture_started":true,"operator_moves_target":true,"target_blocked":true,"place":true,"break":true,"capture_stopped":true,"operator_inventory_restored":true,"victim_inventory_preserved":true,"music_uploaded":true,"music_button":true,"music_packet_all":true}
+    at run (/tmp/abilities/tests/abilities/bot.js:24:156)
