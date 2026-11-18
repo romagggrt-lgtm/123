@@ -1,0 +1,5 @@
+{
+  "status": "FAIL",
+  "error": "bot checks failed",
+  "trace": "Traceback (most recent call last):\n  File \"/tmp/abilities/tests/abilities/smoke.py\", line 30, in <module>\n    assert bot.wait(timeout=160)==0,'bot checks failed'\n           ^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: bot checks failed\n"
+}

@@ -1,0 +1,68 @@
+{
+  "checks": {
+    "hallucination_seen_by_victim": true,
+    "hallucination_hidden_from_observer": true,
+    "staff_projectile": true,
+    "heal_full": true,
+    "heal_message": true,
+    "capture_started": true,
+    "operator_moves_target": true,
+    "target_blocked": true,
+    "place": true,
+    "break": true,
+    "capture_stopped": true,
+    "operator_inventory_restored": false,
+    "victim_inventory_preserved": true
+  },
+  "messages": {
+    "Operator": [
+      "Operator joined the game",
+      "Victim joined the game",
+      "Observer joined the game",
+      "[Server: Successfully filled 1681 block(s)]",
+      "[Server: Teleported Operator to 0.500000, 71.000000, 0.500000]",
+      "[Server: Teleported Victim to 8.500000, 71.000000, 0.500000]",
+      "[Server: Teleported Observer to 4.500000, 71.000000, 5.500000]",
+      "Operator has made the advancement [Diamonds!]",
+      "[Server: Gave 2 [Diamond] to Operator]",
+      "[Server: Gave 12 [Dirt] to Victim]",
+      "[Z_Uluz] Галлюцинации для Victim включены.",
+      "[Z_Uluz] Галлюцинации для Victim выключены.",
+      "Выдано: Посох Лорда × 1 → Operator",
+      "[Посох] Снаряд · перезарядка 15 сек.",
+      "Removed 3 item(s) from player Operator",
+      "Gave 2 [Diamond] to Operator",
+      "[Z_Book] Предмет выдан: =Книга Заклинаний= ×1 игроку Operator.",
+      "[Z_Book] Все доступные заклинания изучены.",
+      "Applied 8 damage to Operator",
+      "[Z_Book] Заклинание применено.",
+      "Removed 3 item(s) from player Operator",
+      "Gave 2 [Diamond] to Operator",
+      "[Z_Uluz] Управление игроком Victim на 30 сек. /zahvat stop — завершить.",
+      "[Z_Uluz] Сеанс завершён."
+    ],
+    "Victim": [
+      "Victim joined the game",
+      "Observer joined the game",
+      "Operator has made the advancement [Diamonds!]",
+      "[Z_Uluz] Сейчас вами временно управляет администратор.",
+      "[Z_Uluz] Сеанс завершён."
+    ],
+    "Observer": [
+      "Observer joined the game",
+      "[Server: Successfully filled 1681 block(s)]",
+      "[Server: Teleported Operator to 0.500000, 71.000000, 0.500000]",
+      "[Server: Teleported Victim to 8.500000, 71.000000, 0.500000]",
+      "[Server: Teleported Observer to 4.500000, 71.000000, 5.500000]",
+      "Operator has made the advancement [Diamonds!]",
+      "[Server: Gave 2 [Diamond] to Operator]",
+      "[Server: Gave 12 [Dirt] to Victim]",
+      "[Operator: Removed 3 item(s) from player Operator]",
+      "[Operator: Gave 2 [Diamond] to Operator]",
+      "[Operator: Applied 8 damage to Operator]",
+      "[Operator: Removed 3 item(s) from player Operator]",
+      "[Operator: Gave 2 [Diamond] to Operator]"
+    ]
+  },
+  "error": "Error: failed: {\"hallucination_seen_by_victim\":true,\"hallucination_hidden_from_observer\":true,\"staff_projectile\":true,\"heal_full\":true,\"heal_message\":true,\"capture_started\":true,\"operator_moves_target\":true,\"target_blocked\":true,\"place\":true,\"break\":true,\"capture_stopped\":true,\"operator_inventory_restored\":false,\"victim_inventory_preserved\":true}"
+}
