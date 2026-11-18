@@ -85,7 +85,7 @@ public final class LorCommands {
         for(World world:Bukkit.getWorlds())sender.sendMessage(p.worldKey(world)+": "+p.nativeBoundary.status(world));
         sender.sendMessage("Устройства: "+p.state().devices.size()+", загружено "+p.devices.loaded().size()+", tickets "+p.redstone.leasedChunks()+", native redstone "+p.redstone.nativeReaderAvailable());
         sender.sendMessage("Топливо: uptime, "+p.fuelNow()+" мс. Базовая граница Paper, per-entity shield hook. RP автоматически не переотправляется.");
-        sender.sendMessage("Перенос Fabric: новые зелья, алтари, посох и рост мобов остаются не определёнными; Fabric shader/локальный file picker не входят в vanilla-клиент.");
+        sender.sendMessage("Посох Лорда доступен через /lore give; Fabric shader/локальный file picker не входят в vanilla-клиент.");
     }
     public void help(Player player){
         for(String line:List.of("/lore — меню; /scen [add|delete] ник — роли","/lore give ник предмет [количество]; /lore voidmeter","/lore void [Y|height set|vector число|speed set|vector [minute] число|stop|view]","/lore immune|unimmune ник|@s; /lore recipe lock|unlock ник|@s","/lore default; /lore end status|raise Y|rule voidY targetY|stop|recover","/lore dragons spawn default|enriched|void_king|stop; dragons view","/lore dragons star enable|disable|set UUID; dragons wave start 1..10|status|stop","/lore dragons attack beam|dive UUID; dragons attack stop","/lore audio [import файл|cancel|publish]; /lore status; /lore diagnostics"))player.sendMessage(line);
