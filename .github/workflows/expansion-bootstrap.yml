@@ -23,6 +23,8 @@ jobs:
           rm -rf ci-bootstrap/abilities
           mkdir -p ci-bootstrap/abilities/jars
           git -C /tmp/abilities rev-parse HEAD >ci-bootstrap/abilities/commit.txt
+          curl -fsSL --retry 3 https://github.com/retrooper/packetevents/releases/download/v2.14.0/packetevents-spigot-2.14.0.jar -o /tmp/packetevents.jar
+          mvn -B install:install-file -Dfile=/tmp/packetevents.jar -DgroupId=io.github.retrooper -DartifactId=packetevents-spigot -Dversion=2.14.0 -Dpackaging=jar -DgeneratePom=true
           for project in book plast lor uluz; do
             if test -f /tmp/abilities/$project/pom.xml; then
               mvn -B -f /tmp/abilities/$project/pom.xml verify >ci-bootstrap/abilities/$project.log 2>&1 || true
