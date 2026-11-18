@@ -20,7 +20,10 @@ d.polygon([(3,1),(11,1),(13,3),(13,14),(3,14)],fill='#e7d9b8',outline='#806d55')
 d.polygon([(11,1),(13,3),(11,3)],fill='#b5a483')
 d.rectangle((7,4,9,11),fill='#348e54');d.rectangle((5,6,11,8),fill='#348e54');d.rectangle((8,5,8,10),fill='#a6efab');d.rectangle((6,7,10,7),fill='#a6efab')
 buf=io.BytesIO();im.save(buf,format='PNG')
+meta=json.loads(zipfile.ZipFile(src).read('pack.mcmeta'))
+meta['pack']['description']='Z_Server Pack 1.15 • посох Лорда и заклинание исцеления'
 new={
+ 'pack.mcmeta':json.dumps(meta,ensure_ascii=False,separators=(',',':')).encode(),
  'assets/z_lor/items/lord_staff.json':json.dumps({'model':{'type':'minecraft:model','model':'z_lor:item/lord_staff'}}).encode(),
  'assets/z_lor/models/item/lord_staff.json':json.dumps(base,separators=(',',':')).encode(),
  'assets/z_lor/textures/item/lord_staff.png':(source/'zapper_staff.png').read_bytes(),
