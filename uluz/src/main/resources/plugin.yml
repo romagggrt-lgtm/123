@@ -1,0 +1,19 @@
+name: Z_Uluz
+version: '1.0.0'
+main: dev.zuluz.Uluz
+api-version: '1.21.11'
+depend: [packetevents]
+commands:
+  gal:
+    description: Управление галлюцинациями
+    usage: /gal <ник> <on|off>
+    permission: zuluz.hallucinate
+  zahvat:
+    description: Временное управление игроком
+    usage: /zahvat <ник> <1sec|1min> или /zahvat stop
+    permission: zuluz.capture
+permissions:
+  zuluz.hallucinate:
+    default: op
+  zuluz.capture:
+    default: op
