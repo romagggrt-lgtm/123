@@ -28,7 +28,7 @@ try:
   with (report/'crash-bot.log').open('w') as botlog:
    bot=subprocess.Popen(['node',str(root/'tests/abilities/crash.js'),str(work),'start'],stdout=botlog,stderr=subprocess.STDOUT,env=env)
    wait(lambda:(work/'crash-ready').exists() or bot.poll() is not None,60,'connect');assert bot.poll() is None
-   send('tp Operator 0.5 71 0.5');send('tp Victim 8.5 71 0.5');send('gamemode survival Operator');send('clear Operator');send('give Operator diamond 2');time.sleep(2);send('save-all flush');time.sleep(3);(work/'crash-begin').write_text('1')
+   send('fill -20 70 -20 20 70 20 minecraft:stone');send('tp Operator 0.5 71 0.5');send('tp Victim 8.5 71 0.5');send('gamemode survival Operator');send('clear Operator');send('give Operator diamond 2');time.sleep(2);send('save-all flush');time.sleep(3);(work/'crash-begin').write_text('1')
    wait(lambda:(work/'crash-captured').exists() or bot.poll() is not None,30,'capture');assert bot.poll() is None
    server.kill();server.wait();bot.terminate();bot.wait(timeout=10)
  logpath=report/'recovery-paper.log'
