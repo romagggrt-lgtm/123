@@ -31,6 +31,18 @@ jobs:
               find /tmp/abilities/$project/target -maxdepth 1 -name 'Z_*.jar' ! -name 'original-*' -exec cp {} ci-bootstrap/abilities/jars/ \;
             fi
           done
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Real Paper with three players
+        run: |
+          cd /tmp/abilities
+          mvn -B -f tests/abilities/probe/pom.xml package > /tmp/probe-build.log 2>&1 || true
+          npm install --prefix tests/abilities --no-audit --no-fund mineflayer@4.39.0 > /tmp/npm-abilities.log 2>&1 || true
+          python3 tests/abilities/smoke.py > /tmp/abilities-smoke.log 2>&1 || true
+          cd "$GITHUB_WORKSPACE"
+          cp /tmp/probe-build.log /tmp/npm-abilities.log /tmp/abilities-smoke.log ci-bootstrap/abilities/
+          if test -d /tmp/abilities/tests/abilities/output; then cp -r /tmp/abilities/tests/abilities/output ci-bootstrap/abilities/live; fi
       - name: Save results
         if: always()
         run: |
