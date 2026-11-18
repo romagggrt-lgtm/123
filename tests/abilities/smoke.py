@@ -17,6 +17,8 @@ try:
  for path in ['book/target/Z_Book-1.2.0.jar','lor/target/Z_Lor-1.1.0.jar','plast/target/Z_Plast-1.2.0.jar','uluz/target/Z_Uluz-1.0.0.jar','tests/abilities/probe/target/Probe-1.jar']:
   jar=root/path;shutil.copy(jar,plugins/jar.name)
  shutil.copy('/tmp/packetevents.jar',plugins/'packetevents.jar')
+ config=plugins/'Z_Plast/config.yml';config.parent.mkdir(exist_ok=True);config.write_text('web:\n  bind-address: 127.0.0.1\n  port: 18865\n  public-url: http://127.0.0.1:18865\n')
+ shutil.copy(root/'tests/zplast/sample.mp3',work/'sample.mp3')
  (work/'eula.txt').write_text('eula=true\n');(work/'server.properties').write_text('server-ip=127.0.0.1\nserver-port=25589\nonline-mode=false\nspawn-protection=0\nview-distance=4\nsimulation-distance=4\nlevel-type=minecraft:flat\ndifficulty=normal\n')
  logpath=report/'paper.log';log=logpath.open('w');server=subprocess.Popen(['java','-Xms512M','-Xmx2G','-jar','paper.jar','nogui'],cwd=work,stdin=subprocess.PIPE,stdout=log,stderr=subprocess.STDOUT)
  wait_for(lambda:logpath.exists() and 'Done (' in logpath.read_text(errors='replace'),300,'startup');logtext=logpath.read_text(errors='replace')
