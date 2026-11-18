@@ -37,6 +37,7 @@ public class ZLorPlugin extends JavaPlugin implements Listener,CommandExecutor,T
     public ChunkLeases tickets;
     public CrystalRestorer crystals;
     public CrystalPortals crystalPortals;
+    public LordStaff lordStaff;
     public long tick;
     protected LongSupplier wall=System::currentTimeMillis,nanos=System::nanoTime;
     private long fuelBase,fuelStarted,lastWall;
@@ -67,9 +68,9 @@ public class ZLorPlugin extends JavaPlugin implements Listener,CommandExecutor,T
             tickets=new ChunkLeases(this);crystals=new CrystalRestorer(this);
             devices=new Devices(this);redstone=new Redstone(this);loot=new LootShields(this);restrictions=new Restrictions(this);
             structures=new Structures(this);dragons=new Dragons(this);visuals=createVisuals();menus=new Menus(this);
-            crystalPortals=new CrystalPortals(this);audio=new Audio(this);nativeBoundary=createNativeBoundary();commands=new LorCommands(this);
+            crystalPortals=new CrystalPortals(this);lordStaff=new LordStaff(this);audio=new Audio(this);nativeBoundary=createNativeBoundary();commands=new LorCommands(this);
             items.registerRecipes();brewing=createBrewing();brewing.register();
-            for(Listener listener:List.of(this,voids,devices,redstone,loot,restrictions,structures,dragons,visuals,menus,brewing,crystalPortals))Bukkit.getPluginManager().registerEvents(listener,this);
+            for(Listener listener:List.of(this,voids,devices,redstone,loot,restrictions,structures,dragons,visuals,menus,brewing,crystalPortals,lordStaff))Bukkit.getPluginManager().registerEvents(listener,this);
             Objects.requireNonNull(getCommand("lore")).setExecutor(this);getCommand("lore").setTabCompleter(this);
             // Register a namespace through CommandMap; colons are invalid YAML aliases.
             getServer().getCommandMap().register("smplore",getCommand("lore"));
@@ -85,7 +86,7 @@ public class ZLorPlugin extends JavaPlugin implements Listener,CommandExecutor,T
         if(stopping)return;
         try{
             tick++;store.pulse();audio.beginTick();voids.tick();devices.tick();redstone.tick();restrictions.tick();
-            loot.tick();structures.tick();crystals.tick();crystalPortals.tick();dragons.tick();brewing.tick();visuals.tick();audio.tick();confirmations.expire();
+            loot.tick();structures.tick();crystals.tick();crystalPortals.tick();lordStaff.tick();dragons.tick();brewing.tick();visuals.tick();audio.tick();confirmations.expire();
             if(tick%Math.max(20,getConfig().getInt("storage.checkpoint-ticks",200))==0&&store.idle())checkpoint();
         }catch(Exception error){getLogger().log(Level.SEVERE,"Z_Lor остановлен после ошибки игрового цикла; данные сохранены",error);Bukkit.getPluginManager().disablePlugin(this);}
     }
@@ -176,7 +177,7 @@ public class ZLorPlugin extends JavaPlugin implements Listener,CommandExecutor,T
         }
         if(brewing!=null)brewing.close();
         if(nativeBoundary!=null)nativeBoundary.close();if(audio!=null)audio.close();if(visuals!=null)visuals.close();if(menus!=null)menus.close();
-        if(crystals!=null)crystals.close();if(redstone!=null)redstone.close();if(tickets!=null)tickets.close();if(devices!=null)devices.close();if(loot!=null)loot.close();if(dragons!=null)dragons.close();if(items!=null)items.unregisterRecipes();
+        if(lordStaff!=null)lordStaff.close();if(crystals!=null)crystals.close();if(redstone!=null)redstone.close();if(tickets!=null)tickets.close();if(devices!=null)devices.close();if(loot!=null)loot.close();if(dragons!=null)dragons.close();if(items!=null)items.unregisterRecipes();
         if(store!=null&&!store.finish(Duration.ofSeconds(3)))getLogger().severe("Хранилище не завершило запись за 3 секунды или сообщило об ошибке; сохраните state.json и .bak");
     }
 }

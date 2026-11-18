@@ -12,27 +12,34 @@ import org.bukkit.persistence.PersistentDataType;
 
 public final class Items {
     public static final Set<String> BLOCKS=Set.of("magnetite_core","void_absorber","void_alarm","void_siren","stationary_voidometer");
-    public static final List<String> ALL=List.of("voidometer","magnetite_core","void_absorber","void_alarm","void_siren","stationary_voidometer","liquid_void","void_breath");
+    public static final List<String> ALL=List.of("voidometer","magnetite_core","void_absorber","void_alarm","void_siren","stationary_voidometer","liquid_void","void_breath","lord_staff");
     public static final Map<String,String> NAMES=Map.of("voidometer","Войдометр","magnetite_core","Магнетитовое ядро",
             "void_absorber","Поглотитель Войда","void_alarm","Войдовый сигнализатор","void_siren","Сирена",
-            "liquid_void","Жидкий Войд","void_breath","Дыхание Войда","stationary_voidometer","Стационарный войдометр");
+            "liquid_void","Жидкий Войд","void_breath","Дыхание Войда","stationary_voidometer","Стационарный войдометр","lord_staff","Посох Лорда");
     public final NamespacedKey identity=new NamespacedKey("z_lor","item"), portable=new NamespacedKey("z_lor","portable");
     private final ZLorPlugin plugin;
     private final Map<String,NamespacedKey> recipes=new HashMap<>();
     public Items(ZLorPlugin plugin){this.plugin=plugin;}
     public ItemStack make(String id){
         if(!ALL.contains(id))throw new IllegalArgumentException("Неизвестный предмет");
-        var stack=new ItemStack(BLOCKS.contains(id)?Material.TARGET:Material.PAPER);var meta=stack.getItemMeta();
-        meta.displayName(Component.text(NAMES.get(id),NamedTextColor.LIGHT_PURPLE));
+        var stack=new ItemStack(material(id));var meta=stack.getItemMeta();
+        if(id.equals("lord_staff")){
+            var legacy=net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer.builder().character('&').hexColors().build();
+            meta.displayName(Component.empty().decoration(net.kyori.adventure.text.format.TextDecoration.ITALIC,false).append(legacy.deserialize("&#FF00E3&kф&#E600E6П&#CD00E9&oо&#B300EBс&#9A00EEо&#8100F1х &#4F00F7Л&#3500F9&oо&#1C00FCр&#0300FFда&#0300FF&kф")));
+            meta.lore(List.of(Component.text("+4 здоровья в основной руке",NamedTextColor.LIGHT_PURPLE),Component.text("ПКМ — снаряд шалкера",NamedTextColor.GRAY),Component.text("Shift + ПКМ — телепортация",NamedTextColor.GRAY),Component.text("F — призвать защитников",NamedTextColor.GRAY)));
+            meta.addAttributeModifier(org.bukkit.attribute.Attribute.MAX_HEALTH,new org.bukkit.attribute.AttributeModifier(new NamespacedKey("z_lor","lord_staff_health"),4,org.bukkit.attribute.AttributeModifier.Operation.ADD_NUMBER,EquipmentSlotGroup.MAINHAND));
+            meta.setItemModel(new NamespacedKey("z_lor","lord_staff"));
+        }else meta.displayName(Component.text(NAMES.get(id),NamedTextColor.LIGHT_PURPLE));
         meta.getPersistentDataContainer().set(identity,PersistentDataType.STRING,id);
-        meta.setItemModel(new NamespacedKey("smplore",id));
-        meta.setMaxStackSize(id.equals("voidometer")||id.equals("void_breath")?1:id.equals("liquid_void")?16:64);
+        if(!id.equals("lord_staff"))meta.setItemModel(new NamespacedKey("smplore",id));
+        meta.setMaxStackSize(id.equals("voidometer")||id.equals("void_breath")||id.equals("lord_staff")?1:id.equals("liquid_void")?16:64);
         stack.setItemMeta(meta);return stack;
     }
+    private Material material(String id){return BLOCKS.contains(id)?Material.TARGET:id.equals("lord_staff")?Material.STICK:Material.PAPER;}
     public String id(ItemStack stack){
         if(stack==null||!stack.hasItemMeta())return null;
         String value=stack.getItemMeta().getPersistentDataContainer().get(identity,PersistentDataType.STRING);
-        return ALL.contains(value==null?"":value)&&stack.getType()==(BLOCKS.contains(value)?Material.TARGET:Material.PAPER)?value:null;
+        return ALL.contains(value==null?"":value)&&stack.getType()==material(value)?value:null;
     }
     public boolean is(ItemStack item,String id){return id.equals(id(item));}
     public boolean capacity(Inventory inventory,ItemStack incoming){
