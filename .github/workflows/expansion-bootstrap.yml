@@ -57,3 +57,5 @@ jobs:
 # Re-run after Z_Uluz was added.
 
 # Retest inventory recovery.
+
+# Verify staff and global record playback.
