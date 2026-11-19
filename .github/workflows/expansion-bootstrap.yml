@@ -1,12 +1,12 @@
-name: Verify latest plugin abilities
+name: Verify possession title and device lighting
 on:
   push:
-    branches: [research/z-expansion-bootstrap]
+    branches: [research/z-uluz-title-lighting]
     paths: ['.github/workflows/expansion-bootstrap.yml']
 permissions:
   contents: write
 jobs:
-  compile:
+  title:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -16,54 +16,71 @@ jobs:
           distribution: temurin
           java-version: '21'
           cache: maven
-      - name: Build and test plugins
-        run: |
-          git fetch origin feature/z-abilities-uluz-2026-11
-          git worktree add /tmp/abilities FETCH_HEAD
-          rm -rf ci-bootstrap/abilities
-          mkdir -p ci-bootstrap/abilities/jars
-          git -C /tmp/abilities rev-parse HEAD >ci-bootstrap/abilities/commit.txt
-          curl -fsSL --retry 3 https://github.com/retrooper/packetevents/releases/download/v2.14.0/packetevents-spigot-2.14.0.jar -o /tmp/packetevents.jar
-          mvn -B install:install-file -Dfile=/tmp/packetevents.jar -DgroupId=io.github.retrooper -DartifactId=packetevents-spigot -Dversion=2.14.0 -Dpackaging=jar -DgeneratePom=true
-          for project in book plast lor uluz; do
-            if test -f /tmp/abilities/$project/pom.xml; then
-              mvn -B -f /tmp/abilities/$project/pom.xml verify >ci-bootstrap/abilities/$project.log 2>&1 || true
-              find /tmp/abilities/$project/target -maxdepth 1 -name 'Z_*.jar' ! -name 'original-*' -exec cp {} ci-bootstrap/abilities/jars/ \;
-            fi
-          done
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Real Paper with three players
+      - name: Build and test Paper
         run: |
-          cd /tmp/abilities
-          mvn -B -f tests/abilities/probe/pom.xml package > /tmp/probe-build.log 2>&1 || true
-          npm install --prefix tests/abilities --no-audit --no-fund mineflayer@4.39.0 > /tmp/npm-abilities.log 2>&1 || true
-          python3 tests/abilities/smoke.py > /tmp/abilities-smoke.log 2>&1 || true
-          cd "$GITHUB_WORKSPACE"
-          cp /tmp/probe-build.log /tmp/npm-abilities.log /tmp/abilities-smoke.log ci-bootstrap/abilities/
-          if test -d /tmp/abilities/tests/abilities/output; then cp -r /tmp/abilities/tests/abilities/output ci-bootstrap/abilities/live; fi
-      - name: Save results
+          git fetch origin feature/z-uluz-1.0.1-pack-1.16
+          git worktree add /tmp/title-source FETCH_HEAD
+          mkdir -p /tmp/title-result/jars
+          git -C /tmp/title-source rev-parse HEAD >/tmp/title-result/commit.txt
+          curl -fsSL --retry 3 https://github.com/retrooper/packetevents/releases/download/v2.14.0/packetevents-spigot-2.14.0.jar -o /tmp/packetevents.jar
+          mvn -B install:install-file -Dfile=/tmp/packetevents.jar -DgroupId=io.github.retrooper -DartifactId=packetevents-spigot -Dversion=2.14.0 -Dpackaging=jar -DgeneratePom=true >/tmp/title-result/install.log 2>&1
+          mvn -B -f /tmp/title-source/uluz/pom.xml verify >/tmp/title-result/build.log 2>&1
+          cp /tmp/title-source/uluz/target/Z_Uluz-1.0.1.jar /tmp/title-result/jars/
+          mvn -B -f /tmp/title-source/tests/abilities/probe/pom.xml package >/tmp/title-result/probe.log 2>&1
+          npm install --prefix /tmp/title-source/tests/abilities --no-audit --no-fund mineflayer@4.39.0 >/tmp/title-result/npm.log 2>&1
+          python3 /tmp/title-source/tests/abilities/smoke.py >/tmp/title-result/run.log 2>&1 || true
+          cp -r /tmp/title-source/tests/abilities/output /tmp/title-result/live || true
+      - uses: actions/upload-artifact@v4
         if: always()
+        with:
+          name: title-result
+          path: /tmp/title-result/
+  light:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Prepare and test unmodified client
+        env:
+          LIBGL_ALWAYS_SOFTWARE: '1'
+          ALSOFT_DRIVERS: 'null'
+        run: |
+          git fetch origin feature/z-uluz-1.0.1-pack-1.16
+          git worktree add /tmp/light-source FETCH_HEAD
+          mkdir -p /tmp/light-result
+          git -C /tmp/light-source rev-parse HEAD >/tmp/light-result/commit.txt
+          python3 -m pip install --break-system-packages --retries 2 --timeout 30 Pillow python-xlib nbtlib >/tmp/light-result/install.log 2>&1
+          cd /tmp/light-source
+          python3 tools/patch_device_lighting_1_16.py >/tmp/light-result/pack.log 2>&1
+          xvfb-run -a -s '-screen 0 1280x720x24' python3 tools/verify_device_lighting_1_16.py >/tmp/light-result/run.log 2>&1 || true
+          cp -r qa-device-lighting/evidence /tmp/light-result/live || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: light-result
+          path: /tmp/light-result/
+  collect:
+    if: always()
+    needs: [title, light]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: ci-bootstrap/title-lighting
+      - name: Save results
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git fetch origin "$GITHUB_REF_NAME"
           test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA" || exit 0
-          git add ci-bootstrap/abilities
-          git commit -m 'Save plugin abilities build results [skip ci]' || exit 0
+          git add ci-bootstrap/title-lighting
+          git commit -m 'Save possession title and lighting results [skip ci]' || exit 0
           git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
-
-# Re-run after Z_Uluz was added.
-
-# Retest inventory recovery.
-
-# Verify staff and global record playback.
-
-# Diagnose staff interaction and retest global playback.
-
-# Confirm corrected sneak interaction and shutdown restoration.
-
-# Verify chest transfers while controlling the target.
-
-# Verify chest transfer and observer window synchronization.
