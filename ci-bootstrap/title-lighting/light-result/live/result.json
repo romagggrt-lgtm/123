@@ -1,5 +1,17 @@
 {
-  "status": "FAIL",
-  "error": "void_absorber: 37.79 vs 11.22",
-  "trace": "Traceback (most recent call last):\n  File \"/tmp/light-source/tools/verify_device_lighting_1_16.py\", line 58, in <module>\n    result[kind]={'old':round(original,2),'fixed':round(fixed,2)};assert fixed>40 and fixed>original*2, f'{kind}: {fixed:.2f} vs {original:.2f}'\n                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: void_absorber: 37.79 vs 11.22\n"
+  "status": "PASS",
+  "paper_build": 132,
+  "minecraft": "1.21.11 vanilla",
+  "gamma": 0.5,
+  "comparisons": {
+    "void_siren": {
+      "old": 6.84,
+      "fixed": 68.94
+    },
+    "void_absorber": {
+      "old": 11.22,
+      "fixed": 37.79
+    }
+  },
+  "sha1": "e075a7af6b15af4f9a629250ee2568b86481d87b"
 }

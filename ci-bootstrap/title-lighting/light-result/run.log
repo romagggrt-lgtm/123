@@ -1,6 +1,1 @@
-127.0.0.1 - - [19/Nov/2026 16:25:01] "GET /qa-pack.zip HTTP/1.1" 200 -
-Traceback (most recent call last):
-  File "/tmp/light-source/tools/verify_device_lighting_1_16.py", line 58, in <module>
-    result[kind]={'old':round(original,2),'fixed':round(fixed,2)};assert fixed>40 and fixed>original*2, f'{kind}: {fixed:.2f} vs {original:.2f}'
-                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: void_absorber: 37.79 vs 11.22
+127.0.0.1 - - [19/Nov/2026 16:29:07] "GET /qa-pack.zip HTTP/1.1" 200 -
