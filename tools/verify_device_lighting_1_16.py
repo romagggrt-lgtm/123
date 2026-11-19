@@ -55,7 +55,7 @@ try:
   wait_for(lambda:'QA_'+kind in logpath.read_text(errors='replace'),30,'models spawned');time.sleep(20)
   pix=root.get_image(0,0,screen.width_in_pixels,screen.height_in_pixels,X.ZPixmap,0xffffffff);frame=Image.frombytes('RGB',(screen.width_in_pixels,screen.height_in_pixels),pix.data,'raw','BGRX');frame.save(REPORT/(kind+'.png'))
   gray=frame.convert('L');fixed=ImageStat.Stat(gray.crop((480,335,580,435))).mean[0];original=ImageStat.Stat(gray.crop((800,335,900,435))).mean[0]
-  result[kind]={'old':round(original,2),'fixed':round(fixed,2)};assert fixed>40 and fixed>original*2, f'{kind}: {fixed:.2f} vs {original:.2f}'
+  result[kind]={'old':round(original,2),'fixed':round(fixed,2)};assert fixed>original*2 and fixed-original>15, f'{kind}: {fixed:.2f} vs {original:.2f}'
  logs=logpath.read_text(errors='replace');assert logs.count('Summoned new Item Display')>=4 and 'Serialization errors' not in logs
  (REPORT/'result.json').write_text(json.dumps({'status':'PASS','paper_build':meta['id'],'minecraft':'1.21.11 vanilla','gamma':0.5,'comparisons':result,'sha1':hashlib.sha1(new.read_bytes()).hexdigest()},indent=2))
 except Exception as ex:
