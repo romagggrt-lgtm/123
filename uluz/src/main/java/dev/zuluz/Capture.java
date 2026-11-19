@@ -45,7 +45,7 @@ final class Capture extends PacketListenerAbstract implements Listener,AutoClose
   operator.setGameMode(target.getGameMode());operator.setInvulnerable(true);operator.setCollidable(false);operator.setSilent(true);
   Session s=new Session(operator.getUniqueId(),target.getUniqueId(),a,b,System.currentTimeMillis()+seconds*1000L);people.put(s.operator(),s);people.put(s.target(),s);channels.put(a.getChannel(),new Route(s,true));channels.put(b.getChannel(),new Route(s,false));
   for(Player viewer:Bukkit.getOnlinePlayers())viewer.hidePlayer(p,operator);operator.hidePlayer(p,target);target.updateInventory();
-  operator.sendMessage(Component.text("§d[Z_Uluz] Управление игроком "+target.getName()+" на "+seconds+" сек. /zahvat stop — завершить."));target.sendMessage(Component.text("§d[Z_Uluz] Сейчас вами временно управляет администратор."));return null;
+  operator.sendMessage(Component.text("§d[Z_Uluz] Управление игроком "+target.getName()+" на "+seconds+" сек. /zahvat stop — завершить."));PossessionTitle.show(target);return null;
  }
  void tick(){ticks++;for(Session s:new HashSet<>(people.values())){Player a=Bukkit.getPlayer(s.operator()),b=Bukkit.getPlayer(s.target());if(a==null||b==null||a.isDead()||b.isDead()||System.currentTimeMillis()>=s.end()){stop(s,"Сеанс завершён.");continue;}
   if(ticks%10==0){a.sendHealthUpdate(b.getHealth(),b.getFoodLevel(),b.getSaturation());a.sendExperienceChange(b.getExp(),b.getLevel());}

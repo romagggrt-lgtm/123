@@ -20,7 +20,7 @@ try:
   def get(url):
    with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'ZAbilitiesRecoveryQA/1.0'}),timeout=90) as r:return r.read()
   meta=json.loads(get('https://fill.papermc.io/v3/projects/paper/versions/1.21.11/builds/latest'));info=meta['downloads']['server:default'];data=get(info['url']);assert hashlib.sha256(data).hexdigest()==info['checksums']['sha256'];(work/'paper.jar').write_bytes(data)
-  plugins=work/'plugins';plugins.mkdir(exist_ok=True);shutil.copy(root/'uluz/target/Z_Uluz-1.0.0.jar',plugins);shutil.copy('/tmp/packetevents.jar',plugins/'packetevents.jar');(work/'eula.txt').write_text('eula=true\n');(work/'server.properties').write_text('server-ip=127.0.0.1\nserver-port=25589\nonline-mode=false\nspawn-protection=0\nview-distance=4\nsimulation-distance=4\nlevel-type=minecraft:flat\ndifficulty=peaceful\n')
+  plugins=work/'plugins';plugins.mkdir(exist_ok=True);shutil.copy(root/'uluz/target/Z_Uluz-1.0.1.jar',plugins);shutil.copy('/tmp/packetevents.jar',plugins/'packetevents.jar');(work/'eula.txt').write_text('eula=true\n');(work/'server.properties').write_text('server-ip=127.0.0.1\nserver-port=25589\nonline-mode=false\nspawn-protection=0\nview-distance=4\nsimulation-distance=4\nlevel-type=minecraft:flat\ndifficulty=peaceful\n')
  logpath=report/'crash-paper.log'
  with logpath.open('w') as log:
   launch(log);wait(lambda:logpath.exists() and 'Done (' in logpath.read_text(errors='replace'),300,'startup')

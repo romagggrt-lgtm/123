@@ -1,5 +1,5 @@
 name: Z_Uluz
-version: '1.0.0'
+version: '1.0.1'
 main: dev.zuluz.Uluz
 api-version: '1.21.11'
 depend: [packetevents]

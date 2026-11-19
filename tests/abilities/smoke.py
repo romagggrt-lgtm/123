@@ -14,7 +14,7 @@ def send(c):server.stdin.write((c+'\n').encode());server.stdin.flush()
 try:
  meta=json.loads(get('https://fill.papermc.io/v3/projects/paper/versions/1.21.11/builds/latest'));info=meta['downloads']['server:default'];data=get(info['url']);assert hashlib.sha256(data).hexdigest()==info['checksums']['sha256'];(work/'paper.jar').write_bytes(data)
  plugins=work/'plugins';plugins.mkdir(exist_ok=True)
- for path in ['book/target/Z_Book-1.2.0.jar','lor/target/Z_Lor-1.1.0.jar','plast/target/Z_Plast-1.2.0.jar','uluz/target/Z_Uluz-1.0.0.jar','tests/abilities/probe/target/Probe-1.jar']:
+ for path in ['dist/Z_Book-1.2.0.jar','dist/Z_Lor-1.1.0.jar','dist/Z_Plast-1.2.0.jar','uluz/target/Z_Uluz-1.0.1.jar','tests/abilities/probe/target/Probe-1.jar']:
   jar=root/path;shutil.copy(jar,plugins/jar.name)
  shutil.copy('/tmp/packetevents.jar',plugins/'packetevents.jar')
  config=plugins/'Z_Plast/config.yml';config.parent.mkdir(exist_ok=True);config.write_text('web:\n  bind-address: 127.0.0.1\n  port: 18865\n  public-url: http://127.0.0.1:18865\n')

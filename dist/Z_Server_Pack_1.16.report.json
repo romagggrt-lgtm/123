@@ -1,0 +1,17 @@
+{
+  "base": "Z_Server_Pack_1.15.zip",
+  "output": "Z_Server_Pack_1.16.zip",
+  "sha1": "e075a7af6b15af4f9a629250ee2568b86481d87b",
+  "changed_models": [
+    "assets/z_lor/models/block/world_magnetite_core.json",
+    "assets/z_lor/models/block/world_magnetite_core_lit.json",
+    "assets/z_lor/models/block/world_void_absorber.json",
+    "assets/z_lor/models/block/world_void_absorber_lit.json",
+    "assets/z_lor/models/block/world_void_alarm.json",
+    "assets/z_lor/models/block/world_void_alarm_lit.json",
+    "assets/z_lor/models/block/world_void_siren.json",
+    "assets/z_lor/models/block/world_void_siren_lit.json"
+  ],
+  "unchanged_files": 1951,
+  "light_emission": 15
+}
