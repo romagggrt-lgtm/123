@@ -1,0 +1,205 @@
+Downloading mojang_1.21.11.jar
+Applying patches
+Starting org.bukkit.craftbukkit.Main
+2026-11-19T16:25:14.932578283Z ServerMain WARN Advanced terminal features are not available in this environment
+[16:25:15 INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.13+9-LTS; Eclipse Adoptium Temurin-21.0.13+9) on Linux 7.0.0-1020-azure (amd64)
+[16:25:15 INFO]: [bootstrap] Loading Paper 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) for Minecraft 1.21.11
+[16:25:15 INFO]: [PluginInitializerManager] Initializing plugins...
+[16:25:16 INFO]: [ReobfServer] Remapping server...
+[16:25:20 INFO]: [ReobfServer] Done remapping server in 4109ms.
+[16:25:20 INFO]: [PluginRemapper] Remapping plugin 'plugins/Probe-1.jar'...
+[16:25:20 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Lor-1.1.0.jar'...
+[16:25:20 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Uluz-1.0.1.jar'...
+[16:25:20 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Book-1.2.0.jar'...
+[16:25:20 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Probe-1.jar' in 149ms.
+[16:25:20 INFO]: [PluginRemapper] Remapping plugin 'plugins/Z_Plast-1.2.0.jar'...
+[16:25:20 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Book-1.2.0.jar' in 157ms.
+[16:25:20 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Uluz-1.0.1.jar' in 157ms.
+[16:25:20 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Plast-1.2.0.jar' in 406ms.
+[16:25:21 INFO]: [PluginRemapper] Done remapping plugin 'plugins/Z_Lor-1.1.0.jar' in 1070ms.
+[16:25:21 INFO]: [PluginInitializerManager] Initialized 6 plugins
+[16:25:21 INFO]: [PluginInitializerManager] Bukkit plugins (6):
+ - AbilitiesProbe (1), Z_Book (1.2.0), Z_Lor (1.1.0), Z_Plast (1.2.0), Z_Uluz (1.0.1), packetevents (2.14.0)
+[16:25:24 INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[16:25:24 INFO]: Found new data pack file/bukkit, loading it automatically
+[16:25:24 INFO]: Found new data pack paper, loading it automatically
+[16:25:25 INFO]: No existing world data, creating new world
+[16:25:25 ERROR]: No key layers in MapLike[{}]
+[16:25:25 INFO]: Loaded 1470 recipes
+[16:25:25 INFO]: Loaded 1584 advancements
+[16:25:25 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
+[16:25:25 INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 233.8ms
+[16:25:26 INFO]: Starting minecraft server version 1.21.11
+[16:25:26 INFO]: Loading properties
+[16:25:26 INFO]: This server is running Paper version 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) (Implementing API version 1.21.11-R0.1-SNAPSHOT)
+[16:25:26 INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[16:25:26 INFO]: Server Ping Player Sample Count: 12
+[16:25:26 INFO]: Using 4 threads for Netty based IO
+[16:25:26 INFO]: [MoonriseCommon] Paper is using 1 worker threads, 1 I/O threads
+[16:25:27 INFO]: Default game type: SURVIVAL
+[16:25:27 INFO]: Generating keypair
+[16:25:27 INFO]: Starting Minecraft server on 127.0.0.1:25589
+[16:25:27 INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
+[16:25:27 INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
+[16:25:27 INFO]: [packetevents] Loading server plugin packetevents v2.14.0
+[16:25:27 INFO]: [packetevents] Loading packetevents...
+[16:25:28 INFO]: [packetevents] Loading block mappings for V_26_3/23...
+[16:25:29 INFO]: [packetevents] Finished loading block mappings for V_26_3/23 in 231.58008ms
+[16:25:29 INFO]: [packetevents] Loaded packetevents v2.14.0
+[16:25:29 INFO]: [AbilitiesProbe] Loading server plugin AbilitiesProbe v1
+[16:25:29 INFO]: [Z_Uluz] Loading server plugin Z_Uluz v1.0.1
+[16:25:29 INFO]: [Z_Plast] Loading server plugin Z_Plast v1.2.0
+[16:25:29 INFO]: [Z_Lor] Loading server plugin Z_Lor v1.1.0
+[16:25:29 INFO]: [Z_Book] Loading server plugin Z_Book v1.2.0
+[16:25:29 WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[16:25:29 WARN]: The server will make no attempt to authenticate usernames. Beware.
+[16:25:29 WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[16:25:29 WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[16:25:29 INFO]: Preparing level "world"
+[16:25:29 ERROR]: No key layers in MapLike[{}]
+[16:25:29 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] NUMA enable flag is not set; however there is NUMA interaction support for this OS.
+[16:25:29 INFO]: [ca.spottedleaf.moonrise.common.util.MoonriseConstants] Detected 1 NUMA nodes.
+[16:25:29 INFO]: Selecting spawn point for world 'minecraft:overworld'...
+[16:25:29 ERROR]: No key layers in MapLike[{}]
+[16:25:29 INFO]: Selecting spawn point for world 'minecraft:the_nether'...
+[16:25:30 ERROR]: No key layers in MapLike[{}]
+[16:25:30 INFO]: Selecting spawn point for world 'minecraft:the_end'...
+[16:25:30 INFO]: Loading 0 persistent chunks for world 'minecraft:overworld'...
+[16:25:30 INFO]: Preparing spawn area: 100%
+[16:25:30 INFO]: Prepared spawn area in 1194 ms
+[16:25:30 INFO]: Loading 0 persistent chunks for world 'minecraft:the_nether'...
+[16:25:30 INFO]: Preparing spawn area: 100%
+[16:25:30 INFO]: Prepared spawn area in 907 ms
+[16:25:30 INFO]: Loading 0 persistent chunks for world 'minecraft:the_end'...
+[16:25:30 INFO]: Preparing spawn area: 100%
+[16:25:30 INFO]: Prepared spawn area in 174 ms
+[16:25:30 INFO]: Done preparing level "world" (1.337s)
+[16:25:30 INFO]: [packetevents] Enabling packetevents v2.14.0
+[16:25:30 INFO]: [packetevents] Checking for updates, please wait...
+[16:25:30 INFO]: [AbilitiesProbe] Enabling AbilitiesProbe v1
+[16:25:30 INFO]: [Z_Uluz] Enabling Z_Uluz v1.0.1
+[16:25:30 INFO]: [Z_Plast] Enabling Z_Plast v1.2.0
+[16:25:31 INFO]: [Z_Lor] Enabling Z_Lor v1.1.0
+[16:25:31 INFO]: [packetevents] You are running the latest release: 2.14.0
+[16:25:31 INFO]: [Z_Lor] Z_Lor 1.1.0: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[16:25:31 INFO]: [Z_Book] Enabling Z_Book v1.2.0
+[16:25:32 INFO]: [spark] Starting background profiler...
+[16:25:32 INFO]: Running delayed init tasks
+[16:25:32 INFO]: Done (18.054s)! For help, type "help"
+[16:25:32 INFO]: *************************************************************************************
+[16:25:32 INFO]: This is the first time you're starting this server.
+[16:25:32 INFO]: It's recommended you read our 'Getting Started' documentation for guidance.
+[16:25:32 INFO]: View this and more helpful information here: https://docs.papermc.io/paper/next-steps
+[16:25:32 INFO]: *************************************************************************************
+[16:25:32 INFO]: Made Operator a server operator
+[16:25:32 INFO]: Made Observer a server operator
+[16:25:32 INFO]: Incorrect argument for command
+gamerule doMobSpawning false<--[HERE]
+[16:25:32 WARN]: *************************************************************************************
+[16:25:32 WARN]: You are running the latest build for your Minecraft version (1.21.11)
+[16:25:32 WARN]: However, you are 6 release(s) behind the latest stable release (26.3)!
+[16:25:32 WARN]: It is recommended that you update as soon as possible
+[16:25:32 WARN]: https://papermc.io/downloads/paper
+[16:25:32 WARN]: *************************************************************************************
+[16:25:33 INFO]: UUID of player Operator is c56edac6-1134-3a46-a76a-95dc980838f5
+[16:25:34 INFO]: Operator joined the game
+[16:25:34 INFO]: Operator[/127.0.0.1:51032] logged in with entity id 1 at ([world]5.5, -60.0, 6.5)
+[16:25:34 INFO]: UUID of player Victim is 1c414de7-aee4-3080-abde-4486a5bd55c3
+[16:25:34 INFO]: Victim joined the game
+[16:25:34 INFO]: Victim[/127.0.0.1:51036] logged in with entity id 2 at ([world]4.5, -60.0, -2.5)
+[16:25:34 INFO]: UUID of player Observer is 11f4f517-853c-3cf3-a01b-95809db70061
+[16:25:34 INFO]: Observer joined the game
+[16:25:34 INFO]: Observer[/127.0.0.1:51046] logged in with entity id 3 at ([world]0.5, -60.0, 0.5)
+[16:25:34 INFO]: Successfully filled 1681 block(s)
+[16:25:34 INFO]: Teleported Operator to 0.500000, 71.000000, 0.500000
+[16:25:34 INFO]: Teleported Victim to 8.500000, 71.000000, 0.500000
+[16:25:34 INFO]: Teleported Observer to 4.500000, 71.000000, 5.500000
+[16:25:34 INFO]: No items were found on player Operator
+[16:25:35 INFO]: Operator has made the advancement [Diamonds!]
+[16:25:35 INFO]: Gave 2 [Diamond] to Operator
+[16:25:35 INFO]: No items were found on player Victim
+[16:25:35 INFO]: Gave 12 [Dirt] to Victim
+[16:25:37 INFO]: Operator issued server command: /gal Victim on
+[16:25:45 INFO]: Operator issued server command: /gal Victim off
+[16:25:45 INFO]: Operator issued server command: /lore give Operator lord_staff
+[16:25:46 INFO]: Operator issued server command: /minecraft:attribute Operator minecraft:max_health get
+[16:25:47 INFO]: [AbilitiesProbe] INTERACT=RIGHT_CLICK_AIR hand=HAND sneak=false block=DENY item=DENY cancelled=true held=STICK
+[16:25:49 INFO]: Operator issued server command: /minecraft:kill @e[type=minecraft:enderman]
+[16:25:49 INFO]: [Operator: Killed 3 entities]
+[16:25:50 INFO]: [AbilitiesProbe] INTERACT=RIGHT_CLICK_BLOCK hand=HAND sneak=true block=DENY item=DENY cancelled=true held=STICK
+[16:25:51 INFO]: Operator issued server command: /minecraft:clear Operator
+[16:25:51 INFO]: [Operator: Removed 3 item(s) from player Operator]
+[16:25:52 INFO]: Operator issued server command: /minecraft:give Operator minecraft:diamond 2
+[16:25:52 INFO]: [Operator: Gave 2 [Diamond] to Operator]
+[16:25:52 INFO]: Operator issued server command: /zbook give book
+[16:25:53 INFO]: Operator issued server command: /zbook unlock
+[16:25:54 INFO]: Operator issued server command: /minecraft:damage Operator 8 minecraft:generic
+[16:25:54 INFO]: [Operator: Applied 8.0 damage to Operator]
+[16:25:55 INFO]: Operator issued server command: /zbook cast ave_revivous
+[16:25:56 INFO]: [AbilitiesProbe] INTERACT=RIGHT_CLICK_BLOCK hand=HAND sneak=false block=DENY item=DENY cancelled=true held=BOOK
+[16:25:57 INFO]: Operator issued server command: /minecraft:clear Operator
+[16:25:57 INFO]: [Operator: Removed 3 item(s) from player Operator]
+[16:25:57 INFO]: Operator issued server command: /minecraft:give Operator minecraft:diamond 2
+[16:25:57 INFO]: [Operator: Gave 2 [Diamond] to Operator]
+[16:25:58 INFO]: Operator issued server command: /minecraft:setblock 11 71 0 minecraft:chest
+[16:25:58 INFO]: [Operator: Changed the block at 11, 71, 0]
+[16:25:59 INFO]: Operator issued server command: /minecraft:data merge block 11 71 0 {Items:[{Slot:0b,id:"minecraft:emerald",count:1}]}
+[16:25:59 INFO]: [Operator: Modified block data of 11, 71, 0]
+[16:25:59 INFO]: Operator issued server command: /zahvat Victim 30sec
+[16:26:03 INFO]: Operator issued server command: /minecraft:clear Victim minecraft:emerald 0
+[16:26:03 INFO]: [Operator: Found 1 matching item(s) on player Victim]
+[16:26:07 INFO]: [AbilitiesProbe] PLACE_ACTOR=Victim
+[16:26:09 INFO]: [AbilitiesProbe] BREAK_ACTOR=Victim
+[16:26:10 INFO]: Operator issued server command: /zahvat stop
+[16:26:12 INFO]: Operator issued server command: /minecraft:clear Operator minecraft:diamond 0
+[16:26:12 INFO]: [Operator: Found 2 matching item(s) on player Operator]
+[16:26:12 INFO]: Operator issued server command: /zahvat Victim 2sec
+[16:26:16 INFO]: Operator issued server command: /zbox
+[16:26:23 INFO]: Operator issued server command: /zbox
+[16:26:45 INFO]: Operator issued server command: /zahvat Victim 30sec
+[16:26:46 INFO]: Operator issued server command: /disableuluz
+[16:26:46 INFO]: [Z_Uluz] Disabling Z_Uluz v1.0.1
+[16:26:48 INFO]: Operator lost connection: Disconnected
+[16:26:48 INFO]: Operator left the game
+[16:26:48 INFO]: Victim lost connection: Disconnected
+[16:26:48 INFO]: Victim left the game
+[16:26:48 INFO]: Observer lost connection: Disconnected
+[16:26:48 INFO]: Observer left the game
+[16:26:48 INFO]: Stopping the server
+[16:26:48 INFO]: Stopping server
+[16:26:48 INFO]: [Z_Book] Disabling Z_Book v1.2.0
+[16:26:48 INFO]: [Z_Lor] Disabling Z_Lor v1.1.0
+[16:26:48 INFO]: [Z_Plast] Disabling Z_Plast v1.2.0
+[16:26:48 INFO]: [AbilitiesProbe] Disabling AbilitiesProbe v1
+[16:26:48 INFO]: [packetevents] Disabling packetevents v2.14.0
+[16:26:48 INFO]: Saving players
+[16:26:48 INFO]: Saving worlds
+[16:26:48 INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[16:26:48 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[16:26:48 INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[16:26:48 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[16:26:48 INFO]: [ChunkHolderManager] Saved 1225 block chunks, 169 entity chunks, 0 poi chunks in world 'world' in 0.27s
+[16:26:48 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world'
+[16:26:48 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world'
+[16:26:48 INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
+[16:26:48 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
+[16:26:48 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
+[16:26:48 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
+[16:26:48 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_nether' in 0.00s
+[16:26:48 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_nether'
+[16:26:48 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_nether'
+[16:26:48 INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[16:26:48 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[16:26:48 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[16:26:48 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[16:26:48 INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_the_end' in 0.00s
+[16:26:48 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_the_end'
+[16:26:48 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_the_end'
+[16:26:48 INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[16:26:48 INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[16:26:48 INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[16:26:48 INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[16:26:48 INFO]: Waiting for all RegionFile I/O tasks to complete...
+[16:26:48 INFO]: All RegionFile I/O tasks to complete
+[16:26:48 INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
+[16:26:48 INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...
