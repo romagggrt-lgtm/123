@@ -5,8 +5,35 @@
       "title": "Zalupa SMP — сайт сервера",
       "heading": "Zalupa\nSMP.",
       "theme": "light",
-      "background": "url(\"https://raw.githubusercontent.com/romagggrt-lgtm/123/zalupa-smp-site/site/assets/zalupa-world.png\")",
-      "overflow": false
+      "background": "url(\"https://raw.githubusercontent.com/romagggrt-lgtm/123/aef3f3058f66524f0c7b71d0876d87069739ef8b/site/assets/zalupa-world.png\")",
+      "overflow": false,
+      "items": [
+        {
+          "src": "assets/voidometer.png",
+          "loaded": true,
+          "visible": true
+        },
+        {
+          "src": "assets/liquid-void.png",
+          "loaded": true,
+          "visible": true
+        },
+        {
+          "src": "assets/fire-spell.png",
+          "loaded": true,
+          "visible": true
+        },
+        {
+          "src": "assets/amethyst-shard.png",
+          "loaded": true,
+          "visible": true
+        },
+        {
+          "src": "assets/void-breath.png",
+          "loaded": true,
+          "visible": true
+        }
+      ]
     },
     "after": "dark",
     "nav": {
@@ -17,27 +44,27 @@
       "links": [
         {
           "hash": "#home",
-          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#home",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/aef3f3058f66524f0c7b71d0876d87069739ef8b/site/index.html#home",
           "current": null
         },
         {
           "hash": "#topic-1",
-          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#topic-1",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/aef3f3058f66524f0c7b71d0876d87069739ef8b/site/index.html#topic-1",
           "current": null
         },
         {
           "hash": "#topic-2",
-          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#topic-2",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/aef3f3058f66524f0c7b71d0876d87069739ef8b/site/index.html#topic-2",
           "current": null
         },
         {
           "hash": "#topic-3",
-          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#topic-3",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/aef3f3058f66524f0c7b71d0876d87069739ef8b/site/index.html#topic-3",
           "current": "location"
         },
         {
           "hash": "#topic-4",
-          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#topic-4",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/aef3f3058f66524f0c7b71d0876d87069739ef8b/site/index.html#topic-4",
           "current": null
         }
       ],
@@ -52,8 +79,35 @@
       "title": "Zalupa SMP — сайт сервера",
       "heading": "Zalupa\nSMP.",
       "theme": "light",
-      "background": "url(\"https://raw.githubusercontent.com/romagggrt-lgtm/123/zalupa-smp-site/site/assets/zalupa-world.png\")",
-      "overflow": false
+      "background": "url(\"https://raw.githubusercontent.com/romagggrt-lgtm/123/aef3f3058f66524f0c7b71d0876d87069739ef8b/site/assets/zalupa-world.png\")",
+      "overflow": false,
+      "items": [
+        {
+          "src": "assets/voidometer.png",
+          "loaded": true,
+          "visible": true
+        },
+        {
+          "src": "assets/liquid-void.png",
+          "loaded": true,
+          "visible": false
+        },
+        {
+          "src": "assets/fire-spell.png",
+          "loaded": true,
+          "visible": true
+        },
+        {
+          "src": "assets/amethyst-shard.png",
+          "loaded": true,
+          "visible": true
+        },
+        {
+          "src": "assets/void-breath.png",
+          "loaded": true,
+          "visible": true
+        }
+      ]
     },
     "after": "dark",
     "nav": {
@@ -64,27 +118,27 @@
       "links": [
         {
           "hash": "#home",
-          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#home",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/aef3f3058f66524f0c7b71d0876d87069739ef8b/site/index.html#home",
           "current": null
         },
         {
           "hash": "#topic-1",
-          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#topic-1",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/aef3f3058f66524f0c7b71d0876d87069739ef8b/site/index.html#topic-1",
           "current": null
         },
         {
           "hash": "#topic-2",
-          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#topic-2",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/aef3f3058f66524f0c7b71d0876d87069739ef8b/site/index.html#topic-2",
           "current": null
         },
         {
           "hash": "#topic-3",
-          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#topic-3",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/aef3f3058f66524f0c7b71d0876d87069739ef8b/site/index.html#topic-3",
           "current": "location"
         },
         {
           "hash": "#topic-4",
-          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#topic-4",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/aef3f3058f66524f0c7b71d0876d87069739ef8b/site/index.html#topic-4",
           "current": null
         }
       ],
