@@ -12,7 +12,36 @@
     "nav": {
       "hash": "#topic-3",
       "sectionTop": 208.375,
-      "scroll": 2084
+      "active": "Тема 3",
+      "scroll": 2084,
+      "links": [
+        {
+          "hash": "#home",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#home",
+          "current": null
+        },
+        {
+          "hash": "#topic-1",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#topic-1",
+          "current": null
+        },
+        {
+          "hash": "#topic-2",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#topic-2",
+          "current": null
+        },
+        {
+          "hash": "#topic-3",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#topic-3",
+          "current": "location"
+        },
+        {
+          "hash": "#topic-4",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#topic-4",
+          "current": null
+        }
+      ],
+      "script": true
     },
     "persisted": "dark",
     "errors": []
@@ -31,7 +60,35 @@
       "hash": "#topic-3",
       "sectionTop": 289.53125,
       "active": "Тема 3",
-      "scroll": 1929
+      "scroll": 1929,
+      "links": [
+        {
+          "hash": "#home",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#home",
+          "current": null
+        },
+        {
+          "hash": "#topic-1",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#topic-1",
+          "current": null
+        },
+        {
+          "hash": "#topic-2",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#topic-2",
+          "current": null
+        },
+        {
+          "hash": "#topic-3",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#topic-3",
+          "current": "location"
+        },
+        {
+          "hash": "#topic-4",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#topic-4",
+          "current": null
+        }
+      ],
+      "script": true
     },
     "persisted": "dark",
     "errors": []
