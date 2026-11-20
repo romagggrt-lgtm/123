@@ -25,7 +25,7 @@
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
         for (const link of links) {
-          if (link.getAttribute('href') === '#' + entry.target.id) link.setAttribute('aria-current', 'location');
+          if (link.hash === '#' + entry.target.id) link.setAttribute('aria-current', 'location');
           else link.removeAttribute('aria-current');
         }
       }
