@@ -20,18 +20,29 @@
     syncTheme();
   });
 
-  if ('IntersectionObserver' in window) {
-    const active = new IntersectionObserver(entries => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        for (const link of links) {
-          if (link.hash === '#' + entry.target.id) link.setAttribute('aria-current', 'location');
-          else link.removeAttribute('aria-current');
-        }
-      }
-    }, { rootMargin: '-30% 0px -55% 0px', threshold: 0 });
-    sections.forEach(section => active.observe(section));
+  let scrollFrame = 0;
+  function updateActiveLink() {
+    scrollFrame = 0;
+    const marker = Math.min(window.innerHeight * .4, 300);
+    let current = null;
+    for (const section of sections) {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= marker && rect.bottom > marker) current = section.id;
+    }
+    for (const link of links) {
+      if (current && link.hash === '#' + current) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    }
+  }
+  function scheduleActiveLink() {
+    if (!scrollFrame) scrollFrame = requestAnimationFrame(updateActiveLink);
+  }
+  window.addEventListener('scroll', scheduleActiveLink, { passive: true });
+  window.addEventListener('resize', scheduleActiveLink);
+  window.addEventListener('hashchange', scheduleActiveLink);
+  updateActiveLink();
 
+  if ('IntersectionObserver' in window) {
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const reveal = new IntersectionObserver(entries => {
         for (const entry of entries) if (entry.isIntersecting) { entry.target.classList.add('is-visible'); reveal.unobserve(entry.target); }
