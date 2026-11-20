@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f6fe" id="browser-theme">
+  <meta name="description" content="Zalupa SMP — сайт Minecraft-сервера. Разделы и материалы появятся позже.">
+  <title>Zalupa SMP — сайт сервера</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/zalupa-world.png" as="image">
+  <link rel="stylesheet" href="styles.css">
+  <script>try{const t=localStorage.getItem('zalupa-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+  <header class="topbar" id="topbar">
+    <nav class="island" aria-label="Навигация по сайту">
+      <a class="brand" href="#home" aria-label="Zalupa SMP — на главную">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M16 2.7 27.2 9v13L16 29.1 4.8 22V9L16 2.7Z" fill="currentColor" opacity=".17"/><path d="m16 3 11 6.3v13L16 29 5 22.3v-13L16 3Zm0 0v13m0 13V16m-11-6.7L16 16l11-6.7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+        <span class="brand-name">Zalupa <span>SMP</span></span>
+      </a>
+      <div class="nav-links" aria-label="Разделы">
+        <a href="#home">Главная</a>
+        <a href="#topic-1">Тема 1</a>
+        <a href="#topic-2">Тема 2</a>
+        <a href="#topic-3">Тема 3</a>
+        <a href="#topic-4">Тема 4</a>
+      </div>
+      <button class="theme-toggle" type="button" aria-label="Включить тёмную тему" title="Включить тёмную тему">
+        <svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M19.8 14.4A8.5 8.5 0 0 1 9.6 4.2a8.5 8.5 0 1 0 10.2 10.2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="icon-sun" aria-hidden="true" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3.7" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v1.7m0 16.6V22M2 12h1.7m16.6 0H22M4.9 4.9l1.2 1.2m11.8 11.8 1.2 1.2m0-14.2-1.2 1.2M6.1 17.9l-1.2 1.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-image" role="img" aria-label="Фантазийный замок в стиле Minecraft среди облаков"></div>
+      <div class="hero-wash" aria-hidden="true"></div>
+      <div class="floating-items" aria-hidden="true">
+        <span class="floating-item item-one"><img src="assets/voidometer.png" alt=""></span>
+        <span class="floating-item item-two"><img src="assets/liquid-void.png" alt=""></span>
+        <span class="floating-item item-three"><img src="assets/fire-spell.png" alt=""></span>
+        <span class="floating-item item-four"><img src="assets/banya.png" alt=""></span>
+        <span class="floating-item item-five"><img src="assets/golda.png" alt=""></span>
+        <span class="floating-item item-six"><img src="assets/void-breath.png" alt=""></span>
+      </div>
+      <div class="hero-content wrap">
+        <div class="hero-copy">
+          <h1 id="hero-title">Zalupa <span>SMP<span class="hero-period">.</span></span></h1>
+          <p>Добро пожаловать на сайт нашего сервера. Здесь скоро появится всё, что нужно знать о мире Zalupa SMP.</p>
+          <a href="#topic-1" class="primary-link">К разделам <svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4 10h11M10.5 5.5 15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#topic-1" aria-label="Прокрутить к разделам"><span>Листай ниже</span><span class="scroll-icon"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M10 4v11m-4.5-4.5L10 15l4.5-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+    </section>
+
+    <div class="content-shell">
+      <div class="section-intro wrap reveal"><h2>Всё важное —<br><span>на одной странице.</span></h2><div class="intro-rule" aria-hidden="true"></div></div>
+
+      <section class="topic wrap reveal" id="topic-1" aria-labelledby="topic-1-title">
+        <div class="topic-copy"><h2 id="topic-1-title">Тема 1<span class="heading-dot">.</span></h2><p>Здесь появится описание первой темы. Наполнение добавим немного позже.</p><span class="topic-note"><span></span> Место для будущего раздела</span></div>
+        <div class="illustration illustration-one" aria-hidden="true"><div class="illus-top"><span></span><span></span><span></span></div><div class="illus-panel"><div class="illus-sq"><svg viewBox="0 0 50 50" fill="none"><path d="M25 5 43 15v20L25 45 7 35V15L25 5Zm0 0v20m0 20V25M7 15l18 10 18-10" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round"/></svg></div><div class="illus-lines"><i></i><i></i><i></i></div></div><div class="illus-foot"><i></i><i></i><i></i></div></div>
+      </section>
+      <div class="section-divider wrap" aria-hidden="true"></div>
+      <section class="topic topic-reverse wrap reveal" id="topic-2" aria-labelledby="topic-2-title">
+        <div class="topic-copy"><h2 id="topic-2-title">Тема 2<span class="heading-dot">.</span></h2><p>Второй раздел пока ждёт своего содержания. Его название и описание можно будет изменить.</p><span class="topic-note"><span></span> Место для будущего раздела</span></div>
+        <div class="illustration illustration-two" aria-hidden="true"><div class="world-card"><div class="world-card-image"></div><div class="world-card-bottom"><span></span><i></i><i></i></div></div><div class="floating-spark spark-one"></div><div class="floating-spark spark-two"></div></div>
+      </section>
+      <div class="section-divider wrap" aria-hidden="true"></div>
+      <section class="topic wrap reveal" id="topic-3" aria-labelledby="topic-3-title">
+        <div class="topic-copy"><h2 id="topic-3-title">Тема 3<span class="heading-dot">.</span></h2><p>Здесь будет ещё одна часть истории сервера. Пока оставим для неё немного пространства.</p><span class="topic-note"><span></span> Место для будущего раздела</span></div>
+        <div class="illustration illustration-three" aria-hidden="true"><div class="stack-card stack-back"></div><div class="stack-card stack-mid"></div><div class="stack-card stack-front"><div class="stack-symbol"><svg viewBox="0 0 32 32" fill="none"><path d="M16 4v24M4 16h24M7.5 7.5l17 17m0-17-17 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><i></i><i></i></div></div>
+      </section>
+      <div class="section-divider wrap" aria-hidden="true"></div>
+      <section class="topic topic-last wrap reveal" id="topic-4" aria-labelledby="topic-4-title">
+        <div class="topic-copy"><h2 id="topic-4-title">Тема 4<span class="heading-dot">.</span></h2><p>Последний временный раздел. Позже здесь может появиться что-то важное для игроков.</p><span class="topic-note"><span></span> Место для будущего раздела</span></div>
+        <div class="illustration illustration-four" aria-hidden="true"><div class="last-orbit"><span></span><span></span><span></span><div class="orbit-cube"><svg viewBox="0 0 48 48" fill="none"><path d="M24 4 42 14.5v19L24 44 6 33.5v-19L24 4Zm0 0v20m0 20V24M6 14.5 24 24l18-9.5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div></div></div>
+      </section>
+    </div>
+  </main>
+  <footer class="footer"><div class="wrap footer-inner"><a class="footer-brand" href="#home">Zalupa <span>SMP</span><span class="heading-dot">.</span></a><p>Мир, которому есть что рассказать.</p><a class="to-top" href="#home">Наверх <svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M10 16V5m-4.5 4.5L10 5l4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></footer>
+</body>
+</html>
