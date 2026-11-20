@@ -33,3 +33,5 @@ jobs:
           git add ci-bootstrap/zalupa-reference
           git commit -m 'Save public reference captures [skip ci]' || exit 0
           git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
+
+# Verify final scroll indicator.
