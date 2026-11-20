@@ -2,7 +2,7 @@ name: Inspect public site references
 on:
   push:
     branches: [research/zalupa-site-reference]
-    paths: ['.github/workflows/zalupa-reference.yml', 'tools/zalupa-reference.cjs']
+    paths: ['.github/workflows/zalupa-reference.yml', 'tools/zalupa-reference.cjs', 'tools/zalupa-preview.cjs']
 permissions:
   contents: write
   pages: read
@@ -21,7 +21,7 @@ jobs:
         run: |
           mkdir -p ci-bootstrap/zalupa-reference
           npm install --prefix /tmp/zalupa-browser --no-audit --no-fund playwright@1.56.1 >ci-bootstrap/zalupa-reference/npm.log 2>&1
-          NODE_PATH=/tmp/zalupa-browser/node_modules node tools/zalupa-reference.cjs >ci-bootstrap/zalupa-reference/browser.log 2>&1 || true
+          NODE_PATH=/tmp/zalupa-browser/node_modules node tools/zalupa-preview.cjs >ci-bootstrap/zalupa-reference/preview.log 2>&1 || true
           gh api "repos/$GITHUB_REPOSITORY/pages" >ci-bootstrap/zalupa-reference/pages.json 2>ci-bootstrap/zalupa-reference/pages-error.log || true
       - name: Save results
         if: always()
