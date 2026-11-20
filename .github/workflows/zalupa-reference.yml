@@ -1,0 +1,35 @@
+name: Inspect public site references
+on:
+  push:
+    branches: [research/zalupa-site-reference]
+    paths: ['.github/workflows/zalupa-reference.yml', 'tools/zalupa-reference.cjs']
+permissions:
+  contents: write
+  pages: read
+jobs:
+  reference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Capture provided references
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p ci-bootstrap/zalupa-reference
+          npm install --prefix /tmp/zalupa-browser --no-audit --no-fund playwright@1.56.1 >ci-bootstrap/zalupa-reference/npm.log 2>&1
+          NODE_PATH=/tmp/zalupa-browser/node_modules node tools/zalupa-reference.cjs >ci-bootstrap/zalupa-reference/browser.log 2>&1 || true
+          gh api "repos/$GITHUB_REPOSITORY/pages" >ci-bootstrap/zalupa-reference/pages.json 2>ci-bootstrap/zalupa-reference/pages-error.log || true
+      - name: Save results
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin "$GITHUB_REF_NAME"
+          test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA" || exit 0
+          git add ci-bootstrap/zalupa-reference
+          git commit -m 'Save public reference captures [skip ci]' || exit 0
+          git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
