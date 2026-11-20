@@ -1,0 +1,39 @@
+{
+  "desktop": {
+    "status": 200,
+    "before": {
+      "title": "Zalupa SMP — сайт сервера",
+      "heading": "Zalupa\nSMP.",
+      "theme": "light",
+      "background": "url(\"https://raw.githubusercontent.com/romagggrt-lgtm/123/zalupa-smp-site/site/assets/zalupa-world.png\")",
+      "overflow": false
+    },
+    "after": "dark",
+    "nav": {
+      "hash": "#topic-3",
+      "sectionTop": 208.375,
+      "scroll": 2084
+    },
+    "persisted": "dark",
+    "errors": []
+  },
+  "mobile": {
+    "status": 200,
+    "before": {
+      "title": "Zalupa SMP — сайт сервера",
+      "heading": "Zalupa\nSMP.",
+      "theme": "light",
+      "background": "url(\"https://raw.githubusercontent.com/romagggrt-lgtm/123/zalupa-smp-site/site/assets/zalupa-world.png\")",
+      "overflow": false
+    },
+    "after": "dark",
+    "nav": {
+      "hash": "#topic-3",
+      "sectionTop": 289.53125,
+      "active": "Тема 3",
+      "scroll": 1929
+    },
+    "persisted": "dark",
+    "errors": []
+  }
+}
