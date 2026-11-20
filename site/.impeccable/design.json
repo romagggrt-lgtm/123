@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-20T00:00:00Z",
+  "title": "Design System: Zalupa SMP",
+  "extensions": {
+    "shadows": [{"name":"navigation","value":"0 12px 38px rgba(45,31,78,.11)","purpose":"Светлая закреплённая панель навигации."}],
+    "motion": [{"name":"entrance","value":".85s cubic-bezier(.19,1,.22,1)","purpose":"Плавное появление первого экрана."}],
+    "breakpoints": [{"name":"mobile","value":"650px"}]
+  },
+  "components": [{"name":"Кнопка перехода","kind":"button","refersTo":"button-primary","description":"Основной переход к разделам.","html":"<button class=\"ds-btn-primary\">К разделам →</button>","css":".ds-btn-primary{background:#6c38ca;color:#fff;border:0;border-radius:13px;padding:14px 17px 14px 21px;font:700 13px Manrope,sans-serif;cursor:pointer}.ds-btn-primary:hover{background:#542aa7}.ds-btn-primary:focus-visible{outline:3px solid #9b72ef;outline-offset:4px}"}],
+  "narrative": {"overview":"Светлый и тёмный фиолетовый мир Minecraft с закреплённой навигацией и плавными переходами."}
+}
