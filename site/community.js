@@ -4,7 +4,7 @@
   const config = window.ZALUPA_COMMUNITY || {};
   const apiUrl = String(config.url || '').replace(/\/+$/, '');
   const apiKey = String(config.key || '');
-  // The browser may receive only a public anon key, never an administrator key.
+  // The browser may receive only a public publishable or legacy anon key, never an administrator key.
   let keyIsSecret = apiKey.startsWith('sb_secret_');
   try { if (apiKey.split('.').length === 3 && JSON.parse(atob(apiKey.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'))).role === 'service_role') keyIsSecret = true; } catch (_) {}
   const configured = /^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(apiUrl) && !!apiKey && !keyIsSecret;
@@ -34,8 +34,11 @@
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 12000);
     try {
+      const headers = {'Content-Type':'application/json', apikey:apiKey};
+      // Publishable keys are API keys, not JWTs: sending them as Bearer tokens can be rejected.
+      if (!apiKey.startsWith('sb_publishable_')) headers.Authorization = `Bearer ${apiKey}`;
       const response = await fetch(`${apiUrl}/rest/v1/rpc/zs_${name}`, {
-        method:'POST', headers:{'Content-Type':'application/json', apikey:apiKey, Authorization:`Bearer ${apiKey}`},
+        method:'POST', headers,
         body:JSON.stringify(payload), signal:controller.signal, cache:'no-store'
       });
       if (!response.ok) throw new Error('network');
