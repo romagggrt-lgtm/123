@@ -3,7 +3,7 @@ const fs = require('fs');
 (async()=>{
   const url='https://nacmraajxilyvyjaptwb.supabase.co';
   const key='sb_publishable_EL011m7qSbLxG0pDQCd0aQ_fhNZd7wS';
-  const result={target:'permanent-auth-transition-064'};
+  const result={target:'permanent-gallery-070'};
   try {
     const r=await fetch(url+'/rest/v1/rpc/zs_me',{method:'POST',headers:{apikey:key,'Content-Type':'application/json'},body:JSON.stringify({p_token:'invalid'})});
     const data=await r.json();result.api={status:r.status,invalidSession:data.error==='session',errorCode:data.code||null};
@@ -31,6 +31,16 @@ const fs = require('fs');
       const final=frames.at(-1), mid=frames.some(f=>f.height>1&&f.height<final.height-1&&f.transform!==final.transform);
       return {mode:tabs.dataset.mode,expanded:final.height>100,intermediateFrame:mid,pressed:document.querySelector('#register-tab').getAttribute('aria-pressed')};
     });
+    await page.keyboard.press('Escape'); await page.waitForTimeout(400);
+    await page.locator('.gallery-all-button').click({timeout:15000});
+    const galleryCount=await page.locator('.gallery-grid .gallery-photo').count();
+    await page.locator('.gallery-grid .gallery-photo').first().click();
+    await page.locator('.viewer-image').evaluate(img=>img.decode());
+    const first=await page.locator('.viewer-counter').innerText();
+    await page.keyboard.press('ArrowRight');
+    await page.locator('.viewer-image').evaluate(img=>img.decode());
+    result.browser.gallery={count:galleryCount,featured:await page.locator('.gallery-preview .gallery-photo').count(),first,next:await page.locator('.viewer-counter').innerText(),imageLoaded:await page.locator('.viewer-image').evaluate(img=>img.naturalWidth>0)};
+
   }catch(e){result.browser={error:String(e),requests:responses,errors}}
   await browser.close();fs.writeFileSync('ci-bootstrap/zalupa-reference/community-check.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));
 })().catch(e=>{console.error(e);process.exitCode=1});
