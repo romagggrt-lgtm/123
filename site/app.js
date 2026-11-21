@@ -44,23 +44,31 @@
 
   // Ease wheel movement on the page while leaving nested controls and overlays native.
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  let wheelFrame = 0, wheelTarget = 0, wheelPosition = 0, lastWheelFrame = 0;
+  let wheelFrame = 0, wheelTarget = 0, wheelPosition = 0, wheelVelocity = 0, lastWheelFrame = 0;
   function stopWheelMotion() {
     if (wheelFrame) cancelAnimationFrame(wheelFrame);
-    wheelFrame = 0; lastWheelFrame = 0;
+    wheelFrame = 0; lastWheelFrame = 0; wheelVelocity = 0;
   }
   function wheelStep(time) {
-    const elapsed = lastWheelFrame ? Math.min(time - lastWheelFrame, 64) : 16.7;
+    const elapsed = lastWheelFrame ? Math.min((time - lastWheelFrame) / 1000, .25) : 1 / 60;
     lastWheelFrame = time;
     const maxScroll = Math.max(0, root.scrollHeight - window.innerHeight);
     wheelTarget = Math.max(0, Math.min(maxScroll, wheelTarget));
-    const distance = wheelTarget - wheelPosition;
-    if (Math.abs(distance) < .5) {
+    // A critically damped spring preserves velocity when wheel impulses arrive or stop.
+    const strength = 4.5, offset = wheelPosition - wheelTarget;
+    const momentum = wheelVelocity + strength * offset;
+    const decay = Math.exp(-strength * elapsed);
+    wheelPosition = wheelTarget + (offset + momentum * elapsed) * decay;
+    wheelVelocity = (wheelVelocity - strength * momentum * elapsed) * decay;
+    if (wheelPosition < 0 || wheelPosition > maxScroll) {
+      wheelPosition = Math.max(0, Math.min(maxScroll, wheelPosition));
+      wheelVelocity = 0;
+    }
+    if (Math.abs(wheelTarget - wheelPosition) < .2 && Math.abs(wheelVelocity) < 2) {
       window.scrollTo({top:wheelTarget, behavior:'instant'});
       stopWheelMotion();
       return;
     }
-    wheelPosition += distance * (1 - Math.exp(-elapsed / 350));
     window.scrollTo({top:wheelPosition, behavior:'instant'});
     wheelFrame = requestAnimationFrame(wheelStep);
   }
@@ -77,6 +85,8 @@
     return false;
   }
   window.addEventListener('wheel', event => {
+    // Some devices emit an empty event at the end of a gesture; it is not an instruction to stop.
+    if (!event.deltaX && !event.deltaY && !event.ctrlKey && !event.metaKey && !event.altKey && !event.shiftKey) return;
     if (needsNativeWheel(event)) { stopWheelMotion(); return; }
     const delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? window.innerHeight : 1);
     const maxScroll = Math.max(0, root.scrollHeight - window.innerHeight);
