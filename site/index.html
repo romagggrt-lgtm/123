@@ -9,12 +9,16 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/zalupa-world.png" as="image">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="community.css">
   <script>try{const t=localStorage.getItem('zalupa-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
   <script src="app.js" defer></script>
+  <script src="community-config.js" defer></script>
+  <script src="community.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержимому</a>
   <header class="topbar" id="topbar">
+    <div class="topbar-layout">
     <nav class="island" aria-label="Навигация по сайту">
       <a class="brand" href="#home" aria-label="Zalupa SMP — на главную">
         <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M16 2.7 27.2 9v13L16 29.1 4.8 22V9L16 2.7Z" fill="currentColor" opacity=".17"/><path d="m16 3 11 6.3v13L16 29 5 22.3v-13L16 3Zm0 0v13m0 13V16m-11-6.7L16 16l11-6.7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
@@ -32,8 +36,24 @@
         <svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M19.8 14.4A8.5 8.5 0 0 1 9.6 4.2a8.5 8.5 0 1 0 10.2 10.2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <svg class="icon-sun" aria-hidden="true" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3.7" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v1.7m0 16.6V22M2 12h1.7m16.6 0H22M4.9 4.9l1.2 1.2m11.8 11.8 1.2 1.2m0-14.2-1.2 1.2M6.1 17.9l-1.2 1.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
       </button>
+      <button class="profile-button" type="button" aria-haspopup="dialog" aria-label="Открыть профиль"><span class="profile-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.7"/><path d="M5 20a7 7 0 0 1 14 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><span class="profile-text"><span id="profile-name">Войти</span><span id="profile-role" class="profile-role" hidden></span></span></button>
     </nav>
+    <div class="chat-wrap"><button class="chat-toggle" type="button" aria-expanded="false" aria-controls="chat-panel"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5c-1.1 0-2.2-.25-3.15-.7L5 19l.8-3.55A7.5 7.5 0 1 1 20 11.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8.5 11.5h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>Чат</span></button>
+      <section class="chat-panel" id="chat-panel" aria-label="Чат сервера" hidden>
+        <div class="chat-heading"><div><span class="community-kicker">ZALUPA SMP</span><h2>Чат сервера<span class="heading-dot">.</span></h2><p>Очищается ежедневно в 00:00 по Москве</p></div><button class="close-button chat-close" type="button" aria-label="Закрыть чат">×</button></div>
+        <div class="chat-messages" role="log" aria-label="Сообщения чата" aria-live="polite"><p class="chat-empty">Загружаем сообщения…</p></div>
+        <form class="chat-form"><label for="chat-input" class="visually-hidden">Сообщение</label><input id="chat-input" name="message" maxlength="500" placeholder="Напиши сообщение…" autocomplete="off"><button class="send-button" aria-label="Отправить сообщение" type="submit"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 12 15-8-4 16-3.5-6L4 12Zm7.5 2L19 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button></form><p class="chat-feedback" role="status" aria-live="polite"></p>
+      </section>
+    </div>
+    </div>
   </header>
+
+  <dialog class="community-dialog" id="account-dialog" aria-labelledby="account-title"><div class="dialog-inner"><button type="button" class="close-button dialog-close" aria-label="Закрыть">×</button><span class="community-kicker">ZALUPA SMP</span><h2 id="account-title">Твой профиль<span class="heading-dot">.</span></h2><p class="dialog-intro">Твоё место в нашем сообществе.</p>
+    <div id="auth-forms"><div class="auth-tabs" role="group" aria-label="Вход и регистрация"><button type="button" aria-pressed="true" id="login-tab">Войти</button><button type="button" aria-pressed="false" id="register-tab">Регистрация</button></div>
+      <form id="auth-form"><label>Ник<input name="nickname" required minlength="3" maxlength="16" pattern="[A-Za-z0-9_]{3,16}" autocomplete="username" placeholder="Твой ник в Minecraft"></label><label>Пароль<input name="password" type="password" required minlength="8" maxlength="72" autocomplete="current-password" placeholder="Не менее 8 символов"></label><label id="confirm-label" hidden>Повтори пароль<input name="confirmation" type="password" maxlength="72" autocomplete="new-password" placeholder="Ещё раз пароль"></label><p class="auth-hint" id="register-hint" hidden>Укажи ник, с которого будешь играть на сервере. Сайт не проверяет владение игровым ником и не выдаёт доступ автоматически. Без почты самостоятельного восстановления пароля нет.</p><p class="form-error" role="alert"></p><button type="submit" class="community-primary" id="auth-submit">Войти</button></form>
+    </div><div id="account-details" hidden><div class="account-card"><span class="profile-avatar large" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.7"/><path d="M5 20a7 7 0 0 1 14 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><div><span class="account-caption">Ты вошёл как</span><strong id="account-nickname"></strong><span id="account-role" class="account-role" hidden></span></div></div><button type="button" class="community-secondary" id="logout-button">Выйти из аккаунта</button></div>
+  </div></dialog>
+  <dialog class="community-dialog" id="role-dialog" aria-labelledby="role-title"><form id="role-form" class="dialog-inner"><button type="button" class="close-button dialog-close" aria-label="Закрыть">×</button><span class="community-kicker">УПРАВЛЕНИЕ РОЛЯМИ</span><h2 id="role-title">Роль игрока<span class="heading-dot">.</span></h2><p class="dialog-intro">Префикс для <strong id="role-target"></strong></p><label>Название роли<input name="role" maxlength="24" placeholder="Например, Строитель"></label><p class="role-hint">Оставь поле пустым, чтобы убрать роль.</p><label for="role-color">Цвет роли</label><div class="color-picker"><div class="color-wheel" aria-hidden="true"><span class="color-marker"></span></div><div class="color-controls"><label for="role-hue">Оттенок</label><input id="role-hue" type="range" min="0" max="359" value="270"><label for="role-saturation">Насыщенность</label><input id="role-saturation" type="range" min="0" max="100" value="60"><label for="role-brightness">Яркость</label><input id="role-brightness" type="range" min="20" max="100" value="95"><input id="role-color" type="color" value="#a875ed" aria-label="Другой способ выбрать цвет роли"></div></div><p class="form-error" role="alert"></p><button type="submit" class="community-primary">Сохранить роль</button></form></dialog>
 
   <main id="main">
     <section class="hero" id="home" aria-labelledby="hero-title">
