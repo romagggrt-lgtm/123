@@ -1,5 +1,5 @@
 {
-  "target": "permanent-gentler-wheel-074",
+  "target": "permanent-single-step-075",
   "api": {
     "status": 200,
     "invalidSession": true,
@@ -45,8 +45,8 @@
     },
     "wheel": {
       "prevented": true,
-      "positions": 50,
-      "final": 493,
+      "positions": 54,
+      "final": 100,
       "gentlerScript": true
     }
   }
