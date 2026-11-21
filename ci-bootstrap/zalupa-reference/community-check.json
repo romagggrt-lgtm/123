@@ -1,4 +1,5 @@
 {
+  "target": "permanent",
   "api": {
     "status": 200,
     "invalidSession": true,
