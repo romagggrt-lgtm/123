@@ -60,7 +60,7 @@
       stopWheelMotion();
       return;
     }
-    wheelPosition += distance * (1 - Math.exp(-elapsed / 110));
+    wheelPosition += distance * (1 - Math.exp(-elapsed / 200));
     window.scrollTo({top:wheelPosition, behavior:'instant'});
     wheelFrame = requestAnimationFrame(wheelStep);
   }
