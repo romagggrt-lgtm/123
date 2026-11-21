@@ -33,3 +33,13 @@
 .chat-panel.is-closing,.community-dialog[open].is-closing{animation:community-out .2s ease-in both}
 .community-dialog[open].is-closing::backdrop{animation:community-backdrop-out .2s ease-in both}
 @media(prefers-reduced-motion:reduce){.chat-panel.is-closing,.community-dialog[open].is-closing,.community-dialog[open].is-closing::backdrop{animation:none}}
+
+/* The selected tab glides while registration fields expand in place. */
+.auth-tabs{position:relative;isolation:isolate}
+.auth-tabs::before{content:'';position:absolute;z-index:0;top:4px;bottom:4px;left:4px;width:calc((100% - 12px)/2);border-radius:9px;background:var(--nav);box-shadow:0 2px 8px rgba(25,15,45,.08);transition:transform .32s cubic-bezier(.22,1,.36,1),background-color .3s}
+.auth-tabs[data-mode='register']::before{transform:translateX(calc(100% + 4px))}
+.auth-tabs button,.auth-tabs button[aria-pressed=true]{position:relative;z-index:1;background:transparent;box-shadow:none;transition:color .25s ease}
+.auth-register-fields{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .34s cubic-bezier(.22,1,.36,1),opacity .22s ease}
+.auth-register-fields.is-active{grid-template-rows:1fr;opacity:1}
+.auth-register-inner{min-height:0;overflow:hidden}
+@media(prefers-reduced-motion:reduce){.auth-tabs::before,.auth-register-fields{transition:none}}

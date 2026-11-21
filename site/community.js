@@ -59,13 +59,24 @@
     accountRole.style.color = role.style.color;
   }
   function setMode(next) {
+    if (mode === next) return;
     mode = next; const registering = mode === 'register';
+    const extraFields = $('.auth-register-fields');
+    $('.auth-tabs').dataset.mode = mode;
     $('#login-tab').setAttribute('aria-pressed', String(!registering));
     $('#register-tab').setAttribute('aria-pressed', String(registering));
-    $('#confirm-label').hidden = !registering; authForm.elements.confirmation.required = registering;
+    extraFields.classList.toggle('is-active', registering);
+    extraFields.setAttribute('aria-hidden', String(!registering));
+    extraFields.inert = !registering;
+    authForm.elements.confirmation.disabled = !registering;
+    authForm.elements.confirmation.required = registering;
     authForm.elements.password.autocomplete = registering ? 'new-password' : 'current-password';
-    $('#register-hint').hidden = !registering;
-    $('#auth-submit').textContent = registering ? 'Зарегистрироваться' : 'Войти';
+    const submit = $('#auth-submit');
+    submit.textContent = registering ? 'Зарегистрироваться' : 'Войти';
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && submit.animate) {
+      submit.getAnimations().forEach(animation => animation.cancel());
+      submit.animate([{opacity:.7,transform:'translateY(3px)'},{opacity:1,transform:'translateY(0)'}], {duration:260,easing:'ease-out'});
+    }
     authForm.querySelector('.form-error').textContent = '';
   }
   // Keep the surface present until its exit finishes; cancellation lets a quick reopen win.
