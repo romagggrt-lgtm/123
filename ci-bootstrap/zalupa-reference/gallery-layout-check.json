@@ -1,0 +1,37 @@
+{
+  "target": "permanent-gallery-stable-073",
+  "browser": {
+    "status": 200,
+    "before": {
+      "x": 127.5,
+      "nav": 32.5,
+      "body": 1425,
+      "y": 1983,
+      "scrollbar": 15
+    },
+    "open": {
+      "x": 127.5,
+      "nav": 32.5,
+      "body": 1425,
+      "y": 1983,
+      "scrollbar": 0
+    },
+    "viewer": {
+      "x": 127.5,
+      "nav": 32.5,
+      "body": 1425,
+      "y": 1983,
+      "scrollbar": 0
+    },
+    "after": {
+      "x": 127.5,
+      "nav": 32.5,
+      "body": 1425,
+      "y": 1983,
+      "scrollbar": 15
+    },
+    "viewerWidth": 1440,
+    "viewport": 1440,
+    "errors": []
+  }
+}
