@@ -1,5 +1,5 @@
 {
-  "target": "permanent",
+  "target": "permanent-close-063",
   "api": {
     "status": 200,
     "invalidSession": true,
@@ -21,6 +21,12 @@
         "route": "zs_messages"
       }
     ],
-    "errors": []
+    "errors": [],
+    "closeAnimation": {
+      "closing": true,
+      "animation": "community-out",
+      "hidden": false
+    },
+    "closedAfterAnimation": true
   }
 }
