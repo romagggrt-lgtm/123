@@ -3,7 +3,7 @@ const fs = require('fs');
 (async()=>{
   const url='https://nacmraajxilyvyjaptwb.supabase.co';
   const key='sb_publishable_EL011m7qSbLxG0pDQCd0aQ_fhNZd7wS';
-  const result={target:'permanent-gallery-070'};
+  const result={target:'permanent-gallery-no-labels-071'};
   try {
     const r=await fetch(url+'/rest/v1/rpc/zs_me',{method:'POST',headers:{apikey:key,'Content-Type':'application/json'},body:JSON.stringify({p_token:'invalid'})});
     const data=await r.json();result.api={status:r.status,invalidSession:data.error==='session',errorCode:data.code||null};
@@ -39,7 +39,7 @@ const fs = require('fs');
     const first=await page.locator('.viewer-counter').innerText();
     await page.keyboard.press('ArrowRight');
     await page.locator('.viewer-image').evaluate(img=>img.decode());
-    result.browser.gallery={count:galleryCount,featured:await page.locator('.gallery-preview .gallery-photo').count(),first,next:await page.locator('.viewer-counter').innerText(),imageLoaded:await page.locator('.viewer-image').evaluate(img=>img.naturalWidth>0)};
+    result.browser.gallery={count:galleryCount,featured:await page.locator('.gallery-preview .gallery-photo').count(),first,next:await page.locator('.viewer-counter').innerText(),imageLoaded:await page.locator('.viewer-image').evaluate(img=>img.naturalWidth>0),captionCount:await page.locator('.gallery-photo-label, .viewer-caption').count(),tileText:(await page.locator('.gallery-grid .gallery-photo').allTextContents()).some(text=>text.trim().length>0)};
 
   }catch(e){result.browser={error:String(e),requests:responses,errors}}
   await browser.close();fs.writeFileSync('ci-bootstrap/zalupa-reference/community-check.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));
