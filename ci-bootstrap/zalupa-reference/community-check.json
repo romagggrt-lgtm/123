@@ -1,5 +1,5 @@
 {
-  "target": "permanent-auth-transition-064",
+  "target": "permanent-gallery-070",
   "api": {
     "status": 200,
     "invalidSession": true,
@@ -33,6 +33,13 @@
       "expanded": true,
       "intermediateFrame": true,
       "pressed": "true"
+    },
+    "gallery": {
+      "count": 18,
+      "featured": 4,
+      "first": "01 / 18",
+      "next": "02 / 18",
+      "imageLoaded": true
     }
   }
 }
