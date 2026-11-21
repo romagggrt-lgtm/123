@@ -5,7 +5,7 @@
   const $ = selector => document.querySelector(selector);
   const preview = $('.gallery-preview'), grid = $('.gallery-grid'), allButton = $('.gallery-all-button');
   const gallery = $('#gallery-dialog'), viewer = $('#viewer-dialog'), image = $('.viewer-image');
-  const counter = $('.viewer-counter'), caption = $('.viewer-caption');
+  const counter = $('.viewer-counter');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   let current = 0, touchStart = null, imageAnimation = null;
   const exits = new WeakMap();
@@ -18,7 +18,6 @@
     const img = document.createElement('img'); img.src = photo.thumb || photo.src; img.alt = '';
     img.loading = lazy ? 'lazy' : 'eager'; img.decoding = 'async';
     button.append(img);
-    if (photo.title) { const text = document.createElement('span'); text.className = 'gallery-photo-label'; text.textContent = photo.title; button.append(text); }
     button.addEventListener('click', () => openViewer(index));
     return button;
   }
@@ -59,7 +58,6 @@
     if (imageAnimation) imageAnimation.cancel();
     image.src = photo.src; image.alt = label(photo,current);
     counter.textContent = `${String(current + 1).padStart(2,'0')} / ${String(photos.length).padStart(2,'0')}`;
-    caption.textContent = photo.title || '';
     if (!reduced.matches && image.animate) {
       const distance = direction ? 14 * direction : 0;
       imageAnimation = image.animate([{opacity:.5,transform:`translateX(${distance}px) scale(.99)`},{opacity:1,transform:'translateX(0) scale(1)'}],{duration:250,easing:'cubic-bezier(.2,.75,.25,1)'});
