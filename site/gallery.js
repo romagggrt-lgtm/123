@@ -29,7 +29,14 @@
   photos.forEach((photo,index) => grid.append(makePhoto(photo,index,true)));
   preview.hidden = false; allButton.hidden = false; $('.gallery-awaiting').hidden = true;
 
-  function lockPage() { document.documentElement.classList.toggle('gallery-open', gallery.open || viewer.open); }
+  function lockPage() {
+    const root = document.documentElement, isOpen = gallery.open || viewer.open;
+    if (isOpen && !root.classList.contains('gallery-open')) {
+      root.style.setProperty('--gallery-scrollbar-width', `${Math.max(0, window.innerWidth - root.clientWidth)}px`);
+    }
+    root.classList.toggle('gallery-open', isOpen);
+    if (!isOpen) root.style.removeProperty('--gallery-scrollbar-width');
+  }
   function cancelExit(dialog) {
     const pending = exits.get(dialog); if (!pending) return;
     clearTimeout(pending.timeout); dialog.removeEventListener('animationend', pending.onEnd);
