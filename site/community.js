@@ -68,12 +68,41 @@
     $('#auth-submit').textContent = registering ? 'Зарегистрироваться' : 'Войти';
     authForm.querySelector('.form-error').textContent = '';
   }
-  function showDialog(dialog) { if (!dialog.open) dialog.showModal(); }
+  // Keep the surface present until its exit finishes; cancellation lets a quick reopen win.
+  const exits = new WeakMap();
+  function cancelExit(element) {
+    const pending = exits.get(element);
+    if (!pending) return;
+    clearTimeout(pending.timeout);
+    element.removeEventListener('animationend', pending.onEnd);
+    exits.delete(element);
+    element.classList.remove('is-closing');
+  }
+  function animateExit(element, finish) {
+    if (exits.has(element)) return;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { finish(); return; }
+    const done = () => { cancelExit(element); finish(); };
+    const onEnd = event => { if (event.target === element && event.animationName === 'community-out') done(); };
+    const timeout = setTimeout(done, 400);
+    exits.set(element, { timeout, onEnd });
+    element.addEventListener('animationend', onEnd);
+    element.classList.add('is-closing');
+  }
+  function closeDialog(dialog) {
+    if (dialog.open) animateExit(dialog, () => dialog.close());
+  }
+  function showDialog(dialog) {
+    cancelExit(dialog);
+    if (!dialog.open) dialog.showModal();
+  }
   profileButton.addEventListener('click', () => { paintUser(); showDialog(accountDialog); });
   $('#login-tab').addEventListener('click', () => setMode('login'));
   $('#register-tab').addEventListener('click', () => setMode('register'));
-  document.querySelectorAll('.dialog-close').forEach(button => button.addEventListener('click', () => button.closest('dialog').close()));
-  [accountDialog, roleDialog].forEach(dialog => dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); }));
+  document.querySelectorAll('.dialog-close').forEach(button => button.addEventListener('click', () => closeDialog(button.closest('dialog'))));
+  [accountDialog, roleDialog].forEach(dialog => {
+    dialog.addEventListener('click', e => { if (e.target === dialog) closeDialog(dialog); });
+    dialog.addEventListener('cancel', e => { e.preventDefault(); closeDialog(dialog); });
+  });
   authForm.addEventListener('submit', async e => {
     e.preventDefault(); const formError = authForm.querySelector('.form-error'); formError.textContent = '';
     const nickname = authForm.elements.nickname.value.trim(), password = authForm.elements.password.value;
@@ -82,13 +111,13 @@
     const submit = $('#auth-submit'); submit.disabled = true;
     try {
       const result = await rpc(mode, {p_nickname:nickname, p_password:password});
-      saveToken(result.token); user = result.user; paintUser(); authForm.reset(); accountDialog.close();
+      saveToken(result.token); user = result.user; paintUser(); authForm.reset(); closeDialog(accountDialog);
       $('.chat-feedback').textContent = ''; if (!chatPanel.hidden) await refreshMessages();
     } catch (error) { formError.textContent = errorText(error.message); }
     finally { submit.disabled = false; }
   });
   $('#logout-button').addEventListener('click', async () => {
-    const oldToken = token; saveToken(null); user = null; paintUser(); accountDialog.close(); renderedMessages = '';
+    const oldToken = token; saveToken(null); user = null; paintUser(); closeDialog(accountDialog); renderedMessages = '';
     if (oldToken) rpc('logout', {p_token:oldToken}).catch(() => {});
     if (!chatPanel.hidden) refreshMessages();
   });
@@ -98,9 +127,16 @@
     catch (e) { if (e.message === 'session') { saveToken(null); user = null; } }
     paintUser();
   }
-  function closeChat() { chatPanel.hidden = true; chatToggle.setAttribute('aria-expanded','false'); clearInterval(timer); timer = null; }
+  function closeChat() {
+    chatToggle.setAttribute('aria-expanded','false');
+    clearInterval(timer); timer = null;
+    chatPanel.inert = true;
+    animateExit(chatPanel, () => { chatPanel.hidden = true; chatPanel.inert = false; });
+  }
   chatToggle.addEventListener('click', () => {
-    if (!chatPanel.hidden) { closeChat(); return; }
+    if (!chatPanel.hidden && !exits.has(chatPanel)) { closeChat(); return; }
+    cancelExit(chatPanel);
+    chatPanel.inert = false;
     chatPanel.hidden = false; chatToggle.setAttribute('aria-expanded','true'); refreshMessages();
     timer = setInterval(() => { if (!document.hidden) { refreshMessages(); if (token) loadUser(); } }, 5000);
   });
@@ -171,7 +207,7 @@
   }
   roleForm.addEventListener('submit',async e => {
     e.preventDefault(); const button=roleForm.querySelector('[type=submit]'), err=roleForm.querySelector('.form-error'); err.textContent=''; button.disabled=true;
-    try { await rpc('set_role',{p_token:token,p_nickname:roleTarget,p_role:roleForm.elements.role.value,p_color:color.value}); roleDialog.close(); renderedMessages=''; await refreshMessages(); }
+    try { await rpc('set_role',{p_token:token,p_nickname:roleTarget,p_role:roleForm.elements.role.value,p_color:color.value}); closeDialog(roleDialog); renderedMessages=''; await refreshMessages(); }
     catch(error){ err.textContent=errorText(error.message); } finally { button.disabled=false; }
   });
   syncColor(); paintUser(); loadUser();

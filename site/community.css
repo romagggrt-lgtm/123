@@ -26,3 +26,10 @@
 @media(max-width:390px){.chat-toggle{padding-inline:10px}.chat-toggle svg{display:none}.profile-text{max-width:55px}.brand-name{font-size:12px}.nav-links a{padding-inline:6px}}
 @media(prefers-reduced-motion:reduce){.chat-panel,.community-dialog[open]{animation:none}}
 @media(max-width:360px){.brand{gap:6px}.brand-mark{width:30px;height:30px}.brand-name{font-size:11px}.profile-button>.profile-avatar{display:none}.profile-button{padding-inline:4px}.profile-text{max-width:75px}.theme-toggle{width:34px;height:34px}}
+
+/* Closing gently reverses the existing opening motion. */
+@keyframes community-out{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(-6px) scale(.985)}}
+@keyframes community-backdrop-out{from{opacity:1}to{opacity:0}}
+.chat-panel.is-closing,.community-dialog[open].is-closing{animation:community-out .2s ease-in both}
+.community-dialog[open].is-closing::backdrop{animation:community-backdrop-out .2s ease-in both}
+@media(prefers-reduced-motion:reduce){.chat-panel.is-closing,.community-dialog[open].is-closing,.community-dialog[open].is-closing::backdrop{animation:none}}
