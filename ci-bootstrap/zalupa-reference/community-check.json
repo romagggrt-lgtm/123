@@ -1,5 +1,5 @@
 {
-  "target": "permanent-wheel-073",
+  "target": "permanent-gentler-wheel-074",
   "api": {
     "status": 200,
     "invalidSession": true,
@@ -45,8 +45,9 @@
     },
     "wheel": {
       "prevented": true,
-      "positions": 35,
-      "final": 500
+      "positions": 50,
+      "final": 493,
+      "gentlerScript": true
     }
   }
 }
