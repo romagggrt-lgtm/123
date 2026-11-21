@@ -3,7 +3,7 @@ const fs = require('fs');
 (async()=>{
   const url='https://nacmraajxilyvyjaptwb.supabase.co';
   const key='sb_publishable_EL011m7qSbLxG0pDQCd0aQ_fhNZd7wS';
-  const result={target:'permanent-single-step-075'};
+  const result={target:'permanent-wheel-stop-076'};
   try {
     const r=await fetch(url+'/rest/v1/rpc/zs_me',{method:'POST',headers:{apikey:key,'Content-Type':'application/json'},body:JSON.stringify({p_token:'invalid'})});
     const data=await r.json();result.api={status:r.status,invalidSession:data.error==='session',errorCode:data.code||null};
@@ -46,9 +46,11 @@ const fs = require('fs');
       window.scrollTo({top:0,behavior:'instant'});
       const event=new WheelEvent('wheel',{deltaY:100,bubbles:true,cancelable:true});
       document.querySelector('.hero').dispatchEvent(event);
+      const empty=new WheelEvent('wheel',{deltaY:0,bubbles:true,cancelable:true});
+      setTimeout(()=>document.querySelector('.hero').dispatchEvent(empty),90);
       const frames=[], start=performance.now();
       await new Promise(resolve=>{function frame(){frames.push(scrollY);if(performance.now()-start<2200)requestAnimationFrame(frame);else resolve()}requestAnimationFrame(frame)});
-      return {prevented:event.defaultPrevented,positions:new Set(frames).size,final:frames.at(-1),gentlerScript:[...document.scripts].some(script=>script.textContent.includes('Math.exp(-elapsed / 350)'))};
+      return {prevented:event.defaultPrevented,positions:new Set(frames).size,final:frames.at(-1),springScript:[...document.scripts].some(script=>script.textContent.includes('const strength = 4.5')),emptyPrevented:empty.defaultPrevented};
     });
 
 
