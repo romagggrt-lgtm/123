@@ -3,7 +3,7 @@ const fs = require('fs');
 (async()=>{
   const url='https://nacmraajxilyvyjaptwb.supabase.co';
   const key='sb_publishable_EL011m7qSbLxG0pDQCd0aQ_fhNZd7wS';
-  const result={target:'permanent-close-063'};
+  const result={target:'permanent-auth-transition-064'};
   try {
     const r=await fetch(url+'/rest/v1/rpc/zs_me',{method:'POST',headers:{apikey:key,'Content-Type':'application/json'},body:JSON.stringify({p_token:'invalid'})});
     const data=await r.json();result.api={status:r.status,invalidSession:data.error==='session',errorCode:data.code||null};
@@ -20,6 +20,17 @@ const fs = require('fs');
     result.browser.closeAnimation=await page.evaluate(()=>{document.querySelector('.chat-close').click();const el=document.querySelector('.chat-panel');return {closing:el.classList.contains('is-closing'),animation:getComputedStyle(el).animationName,hidden:el.hidden};});
     await page.waitForTimeout(500);
     result.browser.closedAfterAnimation=await page.locator('.chat-panel').evaluate(el=>el.hidden);
+    await page.locator('.profile-button').click();
+    await page.waitForTimeout(350);
+    result.browser.authTransition=await page.evaluate(async()=>{
+      const frames=[], tabs=document.querySelector('.auth-tabs'), fields=document.querySelector('.auth-register-fields');
+      if (!fields) return {error:'updated form not loaded'};
+      document.querySelector('#register-tab').click();
+      const start=performance.now();
+      await new Promise(resolve=>{function frame(){frames.push({height:fields.getBoundingClientRect().height,transform:getComputedStyle(tabs,'::before').transform});if(performance.now()-start<500)requestAnimationFrame(frame);else resolve()}requestAnimationFrame(frame)});
+      const final=frames.at(-1), mid=frames.some(f=>f.height>1&&f.height<final.height-1&&f.transform!==final.transform);
+      return {mode:tabs.dataset.mode,expanded:final.height>100,intermediateFrame:mid,pressed:document.querySelector('#register-tab').getAttribute('aria-pressed')};
+    });
   }catch(e){result.browser={error:String(e),requests:responses,errors}}
   await browser.close();fs.writeFileSync('ci-bootstrap/zalupa-reference/community-check.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));
 })().catch(e=>{console.error(e);process.exitCode=1});
