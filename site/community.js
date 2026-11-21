@@ -152,7 +152,7 @@
     timer = setInterval(() => { if (!document.hidden) { refreshMessages(); if (token) loadUser(); } }, 5000);
   });
   $('.chat-close').addEventListener('click', () => { closeChat(); chatToggle.focus(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !chatPanel.hidden && !accountDialog.open && !roleDialog.open) { closeChat(); chatToggle.focus(); } });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !chatPanel.hidden && !document.querySelector('dialog[open]')) { closeChat(); chatToggle.focus(); } });
   document.addEventListener('click', e => { if (!chatPanel.hidden && !e.target.closest('.chat-wrap') && !e.target.closest('dialog')) closeChat(); });
   function createMessage(item) {
     const article = document.createElement('article'); article.className = 'chat-message';

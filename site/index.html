@@ -10,10 +10,13 @@
   <link rel="preload" href="assets/zalupa-world.png" as="image">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="community.css?v=0.6.4">
+  <link rel="stylesheet" href="gallery.css?v=0.7.0">
   <script>try{const t=localStorage.getItem('zalupa-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
   <script src="app.js" defer></script>
   <script src="community-config.js" defer></script>
-  <script src="community.js?v=0.6.4" defer></script>
+  <script src="community.js?v=0.7.0" defer></script>
+  <script src="gallery-data.js?v=0.7.0" defer></script>
+  <script src="gallery.js?v=0.7.0" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержимому</a>
@@ -55,6 +58,19 @@
   </div></dialog>
   <dialog class="community-dialog" id="role-dialog" aria-labelledby="role-title"><form id="role-form" class="dialog-inner"><button type="button" class="close-button dialog-close" aria-label="Закрыть">×</button><span class="community-kicker">УПРАВЛЕНИЕ РОЛЯМИ</span><h2 id="role-title">Роль игрока<span class="heading-dot">.</span></h2><p class="dialog-intro">Префикс для <strong id="role-target"></strong></p><label>Название роли<input name="role" maxlength="24" placeholder="Например, Строитель"></label><p class="role-hint">Оставь поле пустым, чтобы убрать роль.</p><label for="role-color">Цвет роли</label><div class="color-picker"><div class="color-wheel" aria-hidden="true"><span class="color-marker"></span></div><div class="color-controls"><label for="role-hue">Оттенок</label><input id="role-hue" type="range" min="0" max="359" value="270"><label for="role-saturation">Насыщенность</label><input id="role-saturation" type="range" min="0" max="100" value="60"><label for="role-brightness">Яркость</label><input id="role-brightness" type="range" min="20" max="100" value="95"><input id="role-color" type="color" value="#a875ed" aria-label="Другой способ выбрать цвет роли"></div></div><p class="form-error" role="alert"></p><button type="submit" class="community-primary">Сохранить роль</button></form></dialog>
 
+
+  <dialog class="gallery-dialog" id="gallery-dialog" aria-labelledby="gallery-dialog-title">
+    <div class="gallery-dialog-inner">
+      <header class="gallery-dialog-head"><div><p class="gallery-eyebrow">ZALUPA SMP</p><h2 id="gallery-dialog-title">Галерея<span class="heading-dot">.</span></h2><p>Моменты, которые хочется сохранить.</p></div><button class="gallery-close" type="button" aria-label="Закрыть галерею"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button></header>
+      <div class="gallery-grid" aria-label="Все фотографии"></div>
+    </div>
+  </dialog>
+  <dialog class="viewer-dialog" id="viewer-dialog" aria-label="Просмотр фотографии">
+    <div class="viewer-head"><span class="viewer-counter" aria-live="polite"></span><button class="viewer-close" type="button" aria-label="Закрыть фотографию"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div>
+    <div class="viewer-stage"><button class="viewer-arrow viewer-prev" type="button" aria-label="Предыдущая фотография"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m14.5 5-7 7 7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="viewer-media"><img class="viewer-image" src="" alt=""></div><button class="viewer-arrow viewer-next" type="button" aria-label="Следующая фотография"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9.5 5 7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+    <p class="viewer-caption"></p>
+  </dialog>
+
   <main id="main">
     <section class="hero" id="home" aria-labelledby="hero-title">
       <div class="hero-image" role="img" aria-label="Фантазийный замок в стиле Minecraft среди облаков"></div>
@@ -93,9 +109,10 @@
         <div class="illustration illustration-three" aria-hidden="true"><div class="stack-card stack-back"></div><div class="stack-card stack-mid"></div><div class="stack-card stack-front"><div class="stack-symbol"><svg viewBox="0 0 32 32" fill="none"><path d="M16 4v24M4 16h24M7.5 7.5l17 17m0-17-17 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><i></i><i></i></div></div>
       </section>
       <div class="section-divider wrap" aria-hidden="true"></div>
-      <section class="topic wrap reveal" id="topic-3" aria-labelledby="topic-3-title">
-        <div class="topic-copy"><h2 id="topic-3-title">Галерея<span class="heading-dot">.</span></h2><p>Фотографии построек и моменты из жизни сервера будут появляться здесь по мере его развития.</p></div>
-        <div class="illustration gallery-placeholder" aria-hidden="true"><div class="gallery-frame"><svg viewBox="0 0 64 64" fill="none"><rect x="7" y="10" width="50" height="44" rx="7" stroke="currentColor" stroke-width="2.4"/><circle cx="41" cy="23" r="4" stroke="currentColor" stroke-width="2.4"/><path d="m12 46 13-14 9 9 5-5 13 10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <section class="topic gallery-section wrap reveal" id="topic-3" aria-labelledby="topic-3-title">
+        <div class="gallery-section-head"><div class="topic-copy"><h2 id="topic-3-title">Галерея<span class="heading-dot">.</span></h2><p>Постройки, приключения и моменты из жизни нашего сервера.</p></div><button class="gallery-all-button" type="button" hidden>Вся галерея <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M10.5 5.5 15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+        <div class="gallery-preview" aria-label="Фотографии сервера" hidden></div>
+        <p class="gallery-awaiting">Фотографии построек и моменты из жизни сервера будут появляться здесь по мере его развития.</p>
       </section>
       <div class="section-divider wrap" aria-hidden="true"></div>
       <section class="topic topic-reverse wrap reveal" id="topic-4" aria-labelledby="topic-4-title">
