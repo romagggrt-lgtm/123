@@ -13,7 +13,7 @@ const fs = require('fs');
   page.on('pageerror',e=>errors.push(String(e)));
   page.on('response',r=>{if(r.url().includes('.supabase.co/rest/v1/'))responses.push({status:r.status(),route:r.url().split('/').pop()})});
   try{
-    const r=await page.goto('https://htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-community/site/index.html',{waitUntil:'domcontentloaded',timeout:40000});
+    const r=await page.goto('https://htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html',{waitUntil:'domcontentloaded',timeout:40000});
     await page.waitForSelector('.chat-toggle',{timeout:30000});await page.waitForTimeout(2000);
     await page.locator('.chat-toggle').click();await page.waitForTimeout(7000);
     result.browser={status:r.status(),profileVisible:await page.locator('.profile-button').isVisible(),chatVisible:await page.locator('.chat-panel').isVisible(),chatServiceUnavailable:await page.locator('.chat-empty').count() ? (await page.locator('.chat-empty').innerText()).includes('не подключён') : false,chatNetworkError:await page.locator('.chat-empty').count() ? (await page.locator('.chat-empty').innerText()).includes('Не удалось связаться') : false,requests:responses,errors};
