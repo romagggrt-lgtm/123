@@ -4,6 +4,14 @@
     "before": {
       "title": "Zalupa SMP — сайт сервера",
       "heading": "Zalupa\nSMP.",
+      "sections": [
+        "Информация.",
+        "Лор.",
+        "Галерея.",
+        "Правила.",
+        "Доступ к серверу."
+      ],
+      "telegram": "https://t.me/keeennyx",
       "theme": "light",
       "background": "url(\"https://raw.githubusercontent.com/romagggrt-lgtm/123/zalupa-smp-site/site/assets/zalupa-world.png\")",
       "overflow": false,
@@ -48,7 +56,7 @@
     "nav": {
       "hash": "#topic-3",
       "sectionTop": 208.375,
-      "active": "Тема 3",
+      "active": "Галерея",
       "scroll": 2084,
       "links": [
         {
@@ -75,6 +83,11 @@
           "hash": "#topic-4",
           "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#topic-4",
           "current": null
+        },
+        {
+          "hash": "#topic-5",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#topic-5",
+          "current": null
         }
       ],
       "script": true
@@ -87,6 +100,14 @@
     "before": {
       "title": "Zalupa SMP — сайт сервера",
       "heading": "Zalupa\nSMP.",
+      "sections": [
+        "Информация.",
+        "Лор.",
+        "Галерея.",
+        "Правила.",
+        "Доступ к серверу."
+      ],
+      "telegram": "https://t.me/keeennyx",
       "theme": "light",
       "background": "url(\"https://raw.githubusercontent.com/romagggrt-lgtm/123/zalupa-smp-site/site/assets/zalupa-world.png\")",
       "overflow": false,
@@ -124,9 +145,9 @@
     "after": "dark",
     "nav": {
       "hash": "#topic-3",
-      "sectionTop": 289.53125,
-      "active": "Тема 3",
-      "scroll": 1929,
+      "sectionTop": 289.828125,
+      "active": "Галерея",
+      "scroll": 1940,
       "links": [
         {
           "hash": "#home",
@@ -151,6 +172,11 @@
         {
           "hash": "#topic-4",
           "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#topic-4",
+          "current": null
+        },
+        {
+          "hash": "#topic-5",
+          "href": "//htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#topic-5",
           "current": null
         }
       ],
