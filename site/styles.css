@@ -70,3 +70,23 @@ html[data-theme='dark'] .floating-item{background:rgba(38,28,53,.68);border-colo
 
 .brand-name span,.footer-brand>span:first-child{margin-left:.18em}
 @media(max-width:650px){.floating-item.item-two{display:none}.nav-links a{padding-inline:9px}}
+/* Content added to the existing layout. */
+.topic-copy>p+p{margin-top:16px}
+.telegram-link{display:inline-flex;align-items:center;gap:11px;margin-top:29px;padding:14px 17px;border-radius:13px;background:#6c38ca;color:#fff;font-size:13px;font-weight:700;box-shadow:0 9px 24px rgba(80,37,158,.2);transition:background .2s,transform .2s}
+.telegram-link:hover{background:#542aa7;transform:translateY(-2px)}
+.telegram-link svg{width:19px;height:19px;flex:none}.telegram-link .telegram-arrow{width:16px;height:16px;margin-left:10px}
+.gallery-placeholder{display:grid;place-items:center;background:var(--panel)}
+.gallery-frame{width:132px;height:132px;display:grid;place-items:center;border-radius:24px;color:var(--accent);background:var(--pill);box-shadow:0 12px 30px rgba(47,25,83,.09);transform:rotate(-5deg)}
+.gallery-frame svg{width:66px;height:66px}
+.contact-illustration{display:grid;place-items:center;background:var(--panel)}
+.contact-orbit{width:190px;height:190px;display:grid;place-items:center;position:relative;border:1px solid #b49adf;border-radius:50%}
+.contact-orbit:before{content:'';position:absolute;inset:24px;border:1px solid #b49adf;border-radius:50%;opacity:.5}
+.contact-orbit>span{position:absolute;top:24px;right:26px;width:9px;height:9px;border-radius:50%;background:#9670d6}
+.contact-orbit>span:nth-child(2){top:auto;right:auto;bottom:23px;left:27px;width:6px;height:6px}
+.contact-symbol{width:82px;height:82px;display:grid;place-items:center;border-radius:22px;color:#fff;background:#8054d3;box-shadow:0 12px 24px rgba(100,65,170,.2);transform:rotate(-8deg)}
+.contact-symbol svg{width:36px;height:36px}
+@media(max-width:650px){.nav-links a[href$='#home']{display:none}.nav-links a{font-size:11px;padding-inline:7px}.nav-links{scrollbar-width:thin;scrollbar-color:var(--panel-deep) transparent;mask-image:none;-webkit-overflow-scrolling:touch}.nav-links::-webkit-scrollbar{display:block;height:3px}.nav-links::-webkit-scrollbar-thumb{background:var(--panel-deep);border-radius:5px}.telegram-link{margin-top:24px}}
+
+@media(max-width:380px){.topic h2{font-size:clamp(30px,9vw,36px)}}
+@media(min-width:651px) and (max-width:900px){.nav-links{gap:2px}.nav-links a{font-size:12px;padding-inline:8px}}
+@media(min-width:651px) and (max-width:800px){:root{--nav-height:145px}.island{display:grid;grid-template-columns:1fr auto;gap:3px 8px}.nav-links{grid-column:1/-1;grid-row:2}}
