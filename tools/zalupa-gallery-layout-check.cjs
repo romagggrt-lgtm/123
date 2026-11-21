@@ -1,7 +1,7 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
 (async()=>{
-  const result={target:'lore-090'},errors=[];
+  const result={target:'section-art-100'},errors=[];
   const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',ignoreDefaultArgs:['--hide-scrollbars'],args:['--no-sandbox']});
   const page=await browser.newPage({viewport:{width:1440,height:900}});
   page.on('pageerror',e=>errors.push(String(e)));
@@ -9,6 +9,13 @@ const fs = require('fs');
     const response=await page.goto('https://htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html',{waitUntil:'domcontentloaded',timeout:40000});
     await page.waitForSelector('.gallery-all-button:not([hidden])',{timeout:30000});
     await page.evaluate(()=>document.documentElement.style.zoom='.9');
+    result.art=[];
+    for (const section of ['topic-1','topic-2','topic-4','topic-5']) {
+      const img=page.locator('#'+section+' .section-art img');
+      await img.scrollIntoViewIfNeeded({timeout:20000});
+      await img.evaluate(e=>e.decode());
+      result.art.push(await img.evaluate(e=>({src:e.currentSrc,width:e.naturalWidth,height:e.naturalHeight,frame:e.parentElement.getBoundingClientRect().width})));
+    }
     await page.locator('.lore-open').click({timeout:20000});await page.waitForTimeout(500);
     const loreOpen=await page.locator('#lore-dialog').evaluate(e=>e.open);
     const loreHeadings=await page.locator('.lore-story h3, .lore-story h4').allTextContents();
