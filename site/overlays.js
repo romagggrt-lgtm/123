@@ -3,9 +3,11 @@
   const gallery = document.querySelector('#gallery-dialog');
   const viewer = document.querySelector('#viewer-dialog');
   const rules = document.querySelector('#rules-dialog');
+  const lore = document.querySelector('#lore-dialog');
   let touchX = null, touchY = null, lockedY = null;
   function current() {
     if (viewer?.open) return {dialog:viewer, scroller:null};
+    if (lore?.open) return {dialog:lore, scroller:lore.querySelector('.lore-content')};
     if (rules?.open) return {dialog:rules, scroller:rules.querySelector('.rules-content')};
     if (gallery?.open) return {dialog:gallery, scroller:gallery.querySelector('.gallery-dialog-inner')};
     return null;
@@ -65,7 +67,7 @@
     const scrollKeys=['PageDown','PageUp','Home','End','ArrowDown','ArrowUp'];
     if (!scrollKeys.includes(event.key)) return;
     if (!active.scroller) { event.preventDefault(); return; }
-    if (active.dialog === rules && !active.scroller.contains(document.activeElement)) {
+    if ((active.dialog === rules || active.dialog === lore) && !active.scroller.contains(document.activeElement)) {
       const scroller=active.scroller, step=Math.round(scroller.clientHeight*.8);
       if (event.key === 'Home') scroller.scrollTo({top:0,behavior:'instant'});
       else if (event.key === 'End') scroller.scrollTo({top:scroller.scrollHeight,behavior:'instant'});

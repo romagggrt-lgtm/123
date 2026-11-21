@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="community.css?v=0.6.4">
   <link rel="stylesheet" href="gallery.css?v=0.8.0">
   <link rel="stylesheet" href="rules.css?v=0.8.0">
+  <link rel="stylesheet" href="lore.css?v=0.9.0">
   <script>try{const t=localStorage.getItem('zalupa-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
   <script src="app.js?v=0.7.7" defer></script>
   <script src="community-config.js" defer></script>
@@ -19,7 +20,8 @@
   <script src="gallery-data.js?v=0.7.2" defer></script>
   <script src="gallery.js?v=0.8.0" defer></script>
   <script src="rules.js?v=0.8.0" defer></script>
-  <script src="overlays.js?v=0.8.0" defer></script>
+  <script src="lore.js?v=0.9.0" defer></script>
+  <script src="overlays.js?v=0.9.0" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержимому</a>
@@ -73,6 +75,24 @@
     <div class="viewer-stage"><button class="viewer-arrow viewer-prev" type="button" aria-label="Предыдущая фотография"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m14.5 5-7 7 7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="viewer-media"><img class="viewer-image" src="" alt=""></div><button class="viewer-arrow viewer-next" type="button" aria-label="Следующая фотография"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9.5 5 7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
   </dialog>
 
+
+  <dialog class="lore-dialog" id="lore-dialog" aria-labelledby="lore-dialog-title">
+    <div class="lore-window">
+      <header class="lore-header"><div><h2 id="lore-dialog-title">Лор сервера<span class="heading-dot">.</span></h2><p>История мира Zalupa SMP от taskfout</p></div><button class="lore-close" type="button" aria-label="Закрыть лор"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button></header>
+      <div class="lore-content" tabindex="0" aria-label="История сервера"><article class="lore-story">
+        <section aria-labelledby="lore-characters-title"><h3 id="lore-characters-title">Персонажи</h3>
+          <div class="lore-chapter"><h4>Невидимка</h4><p>В начале люди стали замечать странности: вокруг них происходили неестественные вещи. Оказалось, что за этим стоял так называемый «Невидимка».</p><p>Невидимка — лор-персонаж, которого я придумал сам. Позже оказалось, что похожая идея уже есть на Minecraft-сервере Mineshild. Невидимка умеет принимать форму любого существа. Его сила — молнии, а цвет текста на табличках — синий.</p></div>
+          <div class="lore-chapter"><h4>Энейт</h4><p>Энейт обитает в Эндер-мире. Как он выглядит, неизвестно. Он общается через своих приспешников — эндерменов. Цвет текста на его табличках — фиолетовый, а сила неизвестна.</p></div>
+          <div class="lore-chapter"><h4>Красный</h4><p>«Красный» — так его прозвали игроки; настоящее имя неизвестно. Он появлялся только два раза, поэтому о нём известно мало: цвет текста на его табличках — красный.</p></div>
+        </section>
+        <section aria-labelledby="lore-stories-title"><h3 id="lore-stories-title">Ветки сюжета</h3><p class="lore-note">Это условное разделение — для удобства.</p>
+          <div class="lore-chapter"><h4>Войд</h4><p>В Эндер-мире стремительно меняется уровень войда: то он достигает острова и начинает наносить урон игрокам и эндерменам, то возвращается в норму.</p><p>Для измерения координат, на которых есть войд, существует специальный предмет — Войдометр. Также есть Жидкий войд в бутылочке и Дыхание войда. Их применение неизвестно.</p></div>
+          <div class="lore-chapter"><h4>Верхний мир</h4><p>Эта ветка охватывает все аномалии, происходящие в Верхнем мире, в том числе и самого Невидимку.</p><p>Однажды на спавн сервера приземлились два метеорита, и на каждом была книга. В книгах рассказывалось о трёх учёных — Альторе, Морене и Алане. Они давно жили в этом мире, изучали войд и разработали Войдометр. Позже прилетали и другие метеориты. Из них игроки узнали, что Морен умер в одной из экспедиций учёных; причина смерти не разглашается.</p><p>Однажды прилетел метеорит, из которого выросло так называемое дерево «бледности». Это бледное дерево, на котором находятся восемь скрипцивин. В записке на метеорите говорилось, что изначально летел росток, но герметичная оболочка нарушилась, и дерево проросло.</p><p>Дерево начало образовывать «Мёртвую рощу» — скопление бледных деревьев, растущих от самого первого. Позже прилетел метеорит с кассетой, в которой рассказывалось, как противостоять росту этих деревьев. Сейчас самое первое дерево находится в лаборатории игрока s1lenzio, надёжно закрытое стеклом, а сам s1lenzio занимается его изучением.</p></div>
+        </section>
+        <p class="lore-ending">Это очень краткое описание того, что происходило на протяжении сезона. Если у тебя есть вопросы по лору, можешь задать их в чате сайта или в чате сервера в Telegram.</p>
+      </article></div>
+    </div>
+  </dialog>
 
   <dialog class="rules-dialog" id="rules-dialog" aria-labelledby="rules-dialog-title">
     <div class="rules-window">
@@ -255,7 +275,10 @@
       </section>
       <div class="section-divider wrap" aria-hidden="true"></div>
       <section class="topic topic-reverse wrap reveal" id="topic-2" aria-labelledby="topic-2-title">
-        <div class="topic-copy"><h2 id="topic-2-title">Лор<span class="heading-dot">.</span></h2></div>
+        <div class="topic-copy lore-summary"><h2 id="topic-2-title">Лор<span class="heading-dot">.</span></h2>
+          <p>Итак, сервер наш не простой, ведь в нём присутствует лор. Я, taskfout, лородел, поведаю о том, что уже произошло на сервере. Приятного чтения.</p>
+          <button class="lore-open" type="button" aria-haspopup="dialog">Читать лор <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M10.5 5.5 15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
         <div class="illustration illustration-three" aria-hidden="true"><div class="stack-card stack-back"></div><div class="stack-card stack-mid"></div><div class="stack-card stack-front"><div class="stack-symbol"><svg viewBox="0 0 32 32" fill="none"><path d="M16 4v24M4 16h24M7.5 7.5l17 17m0-17-17 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><i></i><i></i></div></div>
       </section>
       <div class="section-divider wrap" aria-hidden="true"></div>
