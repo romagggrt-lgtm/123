@@ -3,7 +3,7 @@ const fs = require('fs');
 (async()=>{
   const url='https://nacmraajxilyvyjaptwb.supabase.co';
   const key='sb_publishable_EL011m7qSbLxG0pDQCd0aQ_fhNZd7wS';
-  const result={target:'permanent'};
+  const result={target:'permanent-close-063'};
   try {
     const r=await fetch(url+'/rest/v1/rpc/zs_me',{method:'POST',headers:{apikey:key,'Content-Type':'application/json'},body:JSON.stringify({p_token:'invalid'})});
     const data=await r.json();result.api={status:r.status,invalidSession:data.error==='session',errorCode:data.code||null};
@@ -17,6 +17,9 @@ const fs = require('fs');
     await page.waitForSelector('.chat-toggle',{timeout:30000});await page.waitForTimeout(2000);
     await page.locator('.chat-toggle').click();await page.waitForTimeout(7000);
     result.browser={status:r.status(),profileVisible:await page.locator('.profile-button').isVisible(),chatVisible:await page.locator('.chat-panel').isVisible(),chatServiceUnavailable:await page.locator('.chat-empty').count() ? (await page.locator('.chat-empty').innerText()).includes('не подключён') : false,chatNetworkError:await page.locator('.chat-empty').count() ? (await page.locator('.chat-empty').innerText()).includes('Не удалось связаться') : false,requests:responses,errors};
+    result.browser.closeAnimation=await page.evaluate(()=>{document.querySelector('.chat-close').click();const el=document.querySelector('.chat-panel');return {closing:el.classList.contains('is-closing'),animation:getComputedStyle(el).animationName,hidden:el.hidden};});
+    await page.waitForTimeout(500);
+    result.browser.closedAfterAnimation=await page.locator('.chat-panel').evaluate(el=>el.hidden);
   }catch(e){result.browser={error:String(e),requests:responses,errors}}
   await browser.close();fs.writeFileSync('ci-bootstrap/zalupa-reference/community-check.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));
 })().catch(e=>{console.error(e);process.exitCode=1});
