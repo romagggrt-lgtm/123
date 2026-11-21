@@ -1,5 +1,5 @@
 {
-  "target": "permanent-single-step-075",
+  "target": "permanent-wheel-stop-076",
   "api": {
     "status": 200,
     "invalidSession": true,
@@ -45,9 +45,10 @@
     },
     "wheel": {
       "prevented": true,
-      "positions": 54,
+      "positions": 60,
       "final": 100,
-      "gentlerScript": true
+      "springScript": true,
+      "emptyPrevented": false
     }
   }
 }
