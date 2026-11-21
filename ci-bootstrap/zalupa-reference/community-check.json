@@ -1,5 +1,5 @@
 {
-  "target": "permanent-gallery-070",
+  "target": "permanent-gallery-no-labels-071",
   "api": {
     "status": 200,
     "invalidSession": true,
@@ -39,7 +39,9 @@
       "featured": 4,
       "first": "01 / 18",
       "next": "02 / 18",
-      "imageLoaded": true
+      "imageLoaded": true,
+      "captionCount": 0,
+      "tileText": false
     }
   }
 }
