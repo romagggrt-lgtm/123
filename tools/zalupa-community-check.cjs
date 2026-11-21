@@ -3,7 +3,7 @@ const fs = require('fs');
 (async()=>{
   const url='https://nacmraajxilyvyjaptwb.supabase.co';
   const key='sb_publishable_EL011m7qSbLxG0pDQCd0aQ_fhNZd7wS';
-  const result={target:'permanent-gallery-complete-072'};
+  const result={target:'permanent-wheel-073'};
   try {
     const r=await fetch(url+'/rest/v1/rpc/zs_me',{method:'POST',headers:{apikey:key,'Content-Type':'application/json'},body:JSON.stringify({p_token:'invalid'})});
     const data=await r.json();result.api={status:r.status,invalidSession:data.error==='session',errorCode:data.code||null};
@@ -40,6 +40,17 @@ const fs = require('fs');
     await page.keyboard.press('ArrowRight');
     await page.locator('.viewer-image').evaluate(img=>img.decode());
     result.browser.gallery={count:galleryCount,featured:await page.locator('.gallery-preview .gallery-photo').count(),first,next:await page.locator('.viewer-counter').innerText(),imageLoaded:await page.locator('.viewer-image').evaluate(img=>img.naturalWidth>0),captionCount:await page.locator('.gallery-photo-label, .viewer-caption').count(),tileText:(await page.locator('.gallery-grid .gallery-photo').allTextContents()).some(text=>text.trim().length>0)};
+    await page.keyboard.press('Escape'); await page.waitForTimeout(400);
+    await page.keyboard.press('Escape'); await page.waitForTimeout(400);
+    result.browser.wheel=await page.evaluate(async()=>{
+      window.scrollTo({top:0,behavior:'instant'});
+      const event=new WheelEvent('wheel',{deltaY:500,bubbles:true,cancelable:true});
+      document.querySelector('.hero').dispatchEvent(event);
+      const frames=[], start=performance.now();
+      await new Promise(resolve=>{function frame(){frames.push(scrollY);if(performance.now()-start<850)requestAnimationFrame(frame);else resolve()}requestAnimationFrame(frame)});
+      return {prevented:event.defaultPrevented,positions:new Set(frames).size,final:frames.at(-1)};
+    });
+
 
   }catch(e){result.browser={error:String(e),requests:responses,errors}}
   await browser.close();fs.writeFileSync('ci-bootstrap/zalupa-reference/community-check.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));
