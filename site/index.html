@@ -10,13 +10,16 @@
   <link rel="preload" href="assets/zalupa-world.png" as="image">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="community.css?v=0.6.4">
-  <link rel="stylesheet" href="gallery.css?v=0.7.3">
+  <link rel="stylesheet" href="gallery.css?v=0.8.0">
+  <link rel="stylesheet" href="rules.css?v=0.8.0">
   <script>try{const t=localStorage.getItem('zalupa-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
   <script src="app.js?v=0.7.7" defer></script>
   <script src="community-config.js" defer></script>
   <script src="community.js?v=0.7.0" defer></script>
   <script src="gallery-data.js?v=0.7.2" defer></script>
-  <script src="gallery.js?v=0.7.3" defer></script>
+  <script src="gallery.js?v=0.8.0" defer></script>
+  <script src="rules.js?v=0.8.0" defer></script>
+  <script src="overlays.js?v=0.8.0" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержимому</a>
@@ -70,6 +73,154 @@
     <div class="viewer-stage"><button class="viewer-arrow viewer-prev" type="button" aria-label="Предыдущая фотография"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m14.5 5-7 7 7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="viewer-media"><img class="viewer-image" src="" alt=""></div><button class="viewer-arrow viewer-next" type="button" aria-label="Следующая фотография"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9.5 5 7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
   </dialog>
 
+
+  <dialog class="rules-dialog" id="rules-dialog" aria-labelledby="rules-dialog-title">
+    <div class="rules-window">
+      <header class="rules-header"><div><h2 id="rules-dialog-title">Правила сервера<span class="heading-dot">.</span></h2><p>Всё, что нужно знать для игры на Zalupa SMP.</p></div><button class="rules-close" type="button" aria-label="Закрыть правила"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button></header>
+      <div class="rules-shell"><nav class="rules-nav" aria-label="Разделы правил">
+        <button type="button" data-rules-target="rules-nonrp" aria-current="location"><span>01</span> Не-РП правила</button>
+        <button type="button" data-rules-target="rules-rp"><span>02</span> РП правила</button>
+        <button type="button" data-rules-target="rules-mods"><span>03</span> Моды и ресурспаки</button>
+        <button type="button" data-rules-target="rules-general"><span>04</span> Общие положения</button>
+      </nav><div class="rules-content" id="rules-content" tabindex="0" aria-label="Полный текст правил"><section class="rules-section" id="rules-nonrp" aria-labelledby="rules-nonrp-title"><div class="rules-section-heading"><h3 id="rules-nonrp-title">Раздел 1. Не-РП правила</h3><p>Основные правила сервера; нарушения рассматривает администрация.</p></div><article class="rules-item"><h4><span>1.1.</span> Использование багов и уязвимостей</h4>
+<p>Запрещено намеренно использовать ошибки игры, сервера или плагинов для получения преимуществ, дублирования предметов (дюпа), обхода ограничений и других подобных действий.</p>
+</article>
+<article class="rules-item"><h4><span>1.2.</span> Использование запрещённых модификаций</h4>
+<p>Запрещено использовать читы, модификации и ресурспаки, предоставляющие нечестное преимущество перед другими игроками. Полный перечень указан в разделе 3.</p>
+</article>
+<article class="rules-item"><h4><span>1.3.</span> Атаки на сервер</h4>
+<p>Категорически запрещены DDoS-атаки, попытки взлома сервера, вмешательство в работу серверных систем и любые действия, направленные на нарушение его работоспособности.</p>
+</article>
+<article class="rules-item"><h4><span>1.4.</span> Уничтожение общественных и лорных построек</h4>
+<p>Запрещено массовое разрушение спавна, общественных сооружений, исторических памятников и построек, имеющих важное значение для лора сервера.</p>
+</article>
+<article class="rules-item"><h4><span>1.5.</span> Намеренное создание лагов</h4>
+<p>Запрещено создавать механизмы, фермы и конструкции, целью которых является намеренное снижение производительности сервера или создание критической нагрузки.</p>
+</article>
+<article class="rules-item"><h4><span>1.6.</span> Обход наказаний</h4>
+<p>Запрещено обходить блокировки, ограничения и другие наказания администрации с помощью дополнительных аккаунтов или иных способов.</p>
+</article>
+<article class="rules-item"><h4><span>1.7.</span> Злоупотребление техническими возможностями</h4>
+<p>Запрещено использование технических уязвимостей, позволяющих получать доступ к чужим аккаунтам, административным функциям или закрытым данным сервера.</p>
+</article>
+<article class="rules-item"><h4><span>1.8.</span> Нарушение работы администрации</h4>
+<p>Запрещено выдавать себя за представителей администрации, подделывать доказательства нарушений и намеренно препятствовать проведению проверок.</p>
+</article>
+<p>Все нарушения данного раздела рассматриваются администрацией сервера.</p>
+<p>Наказание назначается на усмотрение администрации в ходе судебного разбирательства, с учётом тяжести нарушения, нанесённого ущерба, обстоятельств произошедшего и предыдущих нарушений игрока.</p>
+<p class="rules-list-lead">Возможные наказания:</p>
+<ul>
+<li>Официальное предупреждение</li>
+<li>Исправительные работы</li>
+<li>Временные ограничения</li>
+<li>Конфискация незаконно полученных ресурсов</li>
+<li>Временная блокировка</li>
+<li>Постоянная блокировка</li>
+</ul>
+<p>При особо серьёзных нарушениях администрация имеет право временно ограничить доступ игрока к серверу до проведения суда.</p></section>
+<section class="rules-section" id="rules-rp" aria-labelledby="rules-rp-title"><div class="rules-section-heading"><h3 id="rules-rp-title">Раздел 2. РП правила</h3><p>Правила игрового взаимодействия и порядок разрешения конфликтов.</p></div><p>На нашем сервере разрешены конфликты между игроками, войны, ограбления и другие действия, являющиеся частью игрового процесса.</p>
+<p>Однако каждый игрок несёт ответственность за свои действия внутри игрового мира.</p>
+<article class="rules-item"><h4><span>2.1.</span> Гриферство</h4>
+<p>Разрушение или повреждение чужих построек, территорий, ферм и других объектов без разрешения владельца является основанием для подачи иска в суд.</p>
+</article>
+<article class="rules-item"><h4><span>2.2.</span> Взрывы и уничтожение баз</h4>
+<p>Использование TNT, кристаллов Энда, кроватей и других средств для уничтожения чужих баз допускается в рамках РП, однако пострадавший имеет право потребовать возмещения ущерба.</p>
+</article>
+<article class="rules-item"><h4><span>2.3.</span> Убийство игроков</h4>
+<p>Убийство другого игрока без его согласия допускается как часть РП-взаимодействия. При этом пострадавший имеет право обратиться в суд и потребовать компенсацию за потерянные ресурсы.</p>
+</article>
+<article class="rules-item"><h4><span>2.4.</span> Кража имущества</h4>
+<p>Присвоение чужих ресурсов, предметов, содержимого сундуков и другого имущества без разрешения владельца считается кражей. Потерпевший имеет право потребовать возврата имущества или компенсацию.</p>
+</article>
+<article class="rules-item"><h4><span>2.5.</span> Мошенничество и нарушение договорённостей</h4>
+<p>Обман при торговле, невыполнение заключённых соглашений, присвоение чужих ресурсов под ложным предлогом и другие подобные действия могут стать причиной судебного разбирательства.</p>
+</article>
+<article class="rules-item"><h4><span>2.6.</span> Нарушение границ частных территорий</h4>
+<p>Самовольное занятие чужой территории, строительство на ней или вмешательство в деятельность её владельца может рассматриваться как нарушение прав собственности.</p>
+</article>
+<p>Если игрок пострадал в результате нарушения одного из правил раздела 2, он имеет право подать иск против нарушителя.</p>
+<p class="rules-list-lead">Потерпевший может потребовать:</p>
+<ul>
+<li>Возврат украденных ресурсов или имущества</li>
+<li>Компенсацию материального ущерба в виде ресурсов</li>
+<li>Восстановление разрушенных построек</li>
+<li>Выполнение исправительных работ</li>
+<li>Другие формы компенсации по соглашению сторон</li>
+</ul>
+<p>Если нарушитель отказывается выполнять требования потерпевшего, пострадавший имеет право самостоятельно принять ответные меры на своё усмотрение.</p>
+<p>Это могут быть ответные РП-действия, направленные на возмещение ущерба или урегулирование конфликта.</p>
+<p class="rules-important">ВАЖНО: любые ответные действия не должны нарушать правила раздела 1. Судебные решения о наказании и компенсации имеют приоритет перед самостоятельным урегулированием конфликта.</p>
+<p>Администрация не обязана вмешиваться в каждый РП-конфликт. Игроки вправе самостоятельно договариваться, заключать соглашения и разрешать споры.</p></section>
+<section class="rules-section" id="rules-mods" aria-labelledby="rules-mods-title"><div class="rules-section-heading"><h3 id="rules-mods-title">Раздел 3. Запрещённые моды и ресурспаки</h3><p>Запрещённые модификации и порядок проверок.</p></div><p>На сервере запрещены любые модификации, которые предоставляют игроку нечестное преимущество или позволяют получать информацию, недоступную обычному игроку.</p>
+<article class="rules-item"><h4><span>3.1.</span> Миникарты и карты мира</h4>
+<p>Запрещены модификации, добавляющие миникарты, полноценные карты мира, отображение местоположения игроков, мобов, построек и других объектов.</p>
+<p class="rules-list-lead">Примеры:</p>
+<ul>
+<li>Xaero&#x27;s Minimap</li>
+<li>Xaero&#x27;s World Map</li>
+<li>JourneyMap</li>
+<li>VoxelMap</li>
+<li>Аналогичные модификации</li>
+</ul>
+</article>
+<article class="rules-item"><h4><span>3.2.</span> X-Ray и поиск ресурсов</h4>
+<p>Запрещены моды и ресурспаки, позволяющие видеть руды, пещеры, сундуки и другие объекты сквозь блоки.</p>
+</article>
+<article class="rules-item"><h4><span>3.3.</span> Чит-клиенты</h4>
+<p class="rules-list-lead">Запрещены любые чит-клиенты и их отдельные функции, включая:</p>
+<ul>
+<li>KillAura, AimBot, TriggerBot</li>
+<li>Fly, Speed, Jesus</li>
+<li>Reach, Velocity</li>
+<li>AutoTotem, AutoCrystal</li>
+<li>Baritone и автоматизированный поиск пути</li>
+<li>Другие подобные функции</li>
+</ul>
+</article>
+<article class="rules-item"><h4><span>3.4.</span> Модификации для получения скрытой информации</h4>
+<p>Запрещены FreeCam, ESP, Tracers, ChestESP, PlayerESP и любые другие модификации, позволяющие обнаруживать игроков, постройки, сундуки и иные объекты нечестными способами.</p>
+</article>
+<article class="rules-item"><h4><span>3.5.</span> Запрещённые ресурспаки</h4>
+<p class="rules-list-lead">Запрещены ресурспаки, которые:</p>
+<ul>
+<li>Делают непрозрачные блоки прозрачными для поиска ресурсов</li>
+<li>Позволяют видеть руды и объекты через препятствия</li>
+<li>Предоставляют визуальные преимущества, недоступные в обычной игре</li>
+<li>Обходят игровые механики скрытия объектов</li>
+</ul>
+</article>
+<article class="rules-item"><h4><span>3.6.</span> Другие модификации</h4>
+<p>Отсутствие конкретного мода в данном списке не означает, что он разрешён.</p>
+<p>Любые модификации, выполняющие аналогичные запрещённым функции, также считаются нарушением правил.</p>
+<p>Разрешены обычные оптимизационные и косметические модификации, например Sodium, Iris, Lithium и аналогичные, если они не предоставляют нечестного преимущества.</p>
+</article>
+<article class="rules-item"><h4><span>3.7.</span> Проверка на запрещённые модификации</h4>
+<p>Администрация сервера имеет право в любой момент вызвать любого игрока на проверку на читы БЕЗ объяснения причин и наличия каких-либо подозрений.</p>
+<p>Игрок обязан пройти проверку по первому требованию администрации.</p>
+<p>Отказ от проверки, намеренный выход с сервера во время её проведения, попытка скрыть или удалить запрещённые модификации, а также препятствование проверке считаются отдельными нарушениями.</p>
+<p class="rules-list-lead">При проведении проверки:</p>
+<ul>
+<li>Игрок обязан выполнять требования проверяющего, связанные с проверкой на читы</li>
+<li>Игроку запрещено самостоятельно завершать проверку</li>
+<li>Запрещено удалять, изменять или скрывать файлы модификаций во время проверки</li>
+<li>Выход с сервера без разрешения проверяющего может расцениваться как отказ от проверки</li>
+<li>Проверку может проводить только уполномоченный представитель администрации</li>
+</ul>
+<p class="rules-important">Проверка не предполагает передачу паролей, личных данных или доступа к аккаунтам игрока.</p>
+<p>Использование запрещённых модификаций считается нарушением пункта 1.2.</p>
+<p>Наказание определяется администрацией в зависимости от характера нарушения и его тяжести.</p>
+<p>Отказ от проверки, уклонение от неё или намеренное препятствование её проведению могут повлечь наказание вплоть до постоянной блокировки сервера.</p>
+</article></section>
+<section class="rules-section" id="rules-general" aria-labelledby="rules-general-title"><div class="rules-section-heading"><h3 id="rules-general-title">Общие положения</h3></div><ol class="rules-general"><li>Незнание правил не освобождает от ответственности за их нарушение.</li>
+<li>Администрация имеет право изменять и дополнять правила сервера с уведомлением игроков.</li>
+<li>Спорные ситуации, не предусмотренные настоящими правилами, рассматриваются администрацией индивидуально.</li>
+<li>Подделка доказательств и намеренно ложные обвинения запрещены.</li>
+<li>Правила раздела 1 и раздела 3 имеют приоритет над правилами РП.</li>
+<li>Решения администрации, принятые по результатам судебных разбирательств, обязательны к исполнению.</li>
+<li>Основная концепция сервера Vanilla+ — свобода действий, развитие собственного мира, взаимодействие игроков и формирование уникальной истории сервера.</li></ol></section></div></div>
+    </div>
+  </dialog>
+
   <main id="main">
     <section class="hero" id="home" aria-labelledby="hero-title">
       <div class="hero-image" role="img" aria-label="Фантазийный замок в стиле Minecraft среди облаков"></div>
@@ -115,7 +266,11 @@
       </section>
       <div class="section-divider wrap" aria-hidden="true"></div>
       <section class="topic topic-reverse wrap reveal" id="topic-4" aria-labelledby="topic-4-title">
-        <div class="topic-copy"><h2 id="topic-4-title">Правила<span class="heading-dot">.</span></h2></div>
+        <div class="topic-copy rules-summary"><h2 id="topic-4-title">Правила<span class="heading-dot">.</span></h2>
+          <p>На нашем сервере существует <strong>3 раздела правил:</strong></p>
+          <ul><li><strong>Раздел 1. Не-РП правила</strong> — основные правила сервера, нарушение которых влечёт наказание со стороны администрации.</li><li><strong>Раздел 2. РП правила</strong> — правила игрового взаимодействия, за нарушение которых игроки могут привлекать друг друга к ответственности через суд или решать конфликты самостоятельно.</li><li><strong>Раздел 3. Запрещённые моды и ресурспаки</strong> — список модификаций, использование которых запрещено на сервере, а также порядок проведения проверок на читы.</li></ul>
+          <button class="rules-open" type="button">Читать правила <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M10.5 5.5 15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
         <div class="illustration illustration-four" aria-hidden="true"><div class="last-orbit"><span></span><span></span><span></span><div class="orbit-cube"><svg viewBox="0 0 48 48" fill="none"><path d="M24 4 42 14.5v19L24 44 6 33.5v-19L24 4Zm0 0v20m0 20V24M6 14.5 24 24l18-9.5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div></div></div>
       </section>
       <div class="section-divider wrap" aria-hidden="true"></div>

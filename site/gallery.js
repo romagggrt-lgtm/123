@@ -29,14 +29,7 @@
   photos.forEach((photo,index) => grid.append(makePhoto(photo,index,true)));
   preview.hidden = false; allButton.hidden = false; $('.gallery-awaiting').hidden = true;
 
-  function lockPage() {
-    const root = document.documentElement, isOpen = gallery.open || viewer.open;
-    if (isOpen && !root.classList.contains('gallery-open')) {
-      root.style.setProperty('--gallery-scrollbar-width', `${Math.max(0, window.innerWidth - root.clientWidth)}px`);
-    }
-    root.classList.toggle('gallery-open', isOpen);
-    if (!isOpen) root.style.removeProperty('--gallery-scrollbar-width');
-  }
+  function lockPage() { document.documentElement.classList.toggle('gallery-open', gallery.open || viewer.open); }
   function cancelExit(dialog) {
     const pending = exits.get(dialog); if (!pending) return;
     clearTimeout(pending.timeout); dialog.removeEventListener('animationend', pending.onEnd);
@@ -50,7 +43,7 @@
     const timeout = setTimeout(finish,400);
     exits.set(dialog,{onEnd,timeout}); dialog.addEventListener('animationend',onEnd); dialog.classList.add('is-closing');
   }
-  function showDialog(dialog) { cancelExit(dialog); if (!dialog.open) dialog.showModal(); lockPage(); }
+  function showDialog(dialog) { cancelExit(dialog); if (!dialog.open) { window.dispatchEvent(new Event('overlay-opening')); dialog.showModal(); } lockPage(); }
   allButton.addEventListener('click', () => showDialog(gallery));
   $('.gallery-close').addEventListener('click', () => closeDialog(gallery));
   $('.viewer-close').addEventListener('click', () => closeDialog(viewer));
