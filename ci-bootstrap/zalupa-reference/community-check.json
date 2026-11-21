@@ -1,5 +1,5 @@
 {
-  "target": "permanent-gallery-complete-072",
+  "target": "permanent-wheel-073",
   "api": {
     "status": 200,
     "invalidSession": true,
@@ -42,6 +42,11 @@
       "imageLoaded": true,
       "captionCount": 0,
       "tileText": false
+    },
+    "wheel": {
+      "prevented": true,
+      "positions": 35,
+      "final": 500
     }
   }
 }
