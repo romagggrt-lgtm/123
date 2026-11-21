@@ -1,5 +1,5 @@
 {
-  "target": "permanent-close-063",
+  "target": "permanent-auth-transition-064",
   "api": {
     "status": 200,
     "invalidSession": true,
@@ -27,6 +27,12 @@
       "animation": "community-out",
       "hidden": false
     },
-    "closedAfterAnimation": true
+    "closedAfterAnimation": true,
+    "authTransition": {
+      "mode": "register",
+      "expanded": true,
+      "intermediateFrame": true,
+      "pressed": "true"
+    }
   }
 }
