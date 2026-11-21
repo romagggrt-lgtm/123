@@ -1,37 +1,42 @@
 {
-  "target": "permanent-gallery-stable-073",
+  "target": "rules-gallery-080",
   "browser": {
     "status": 200,
     "before": {
-      "x": 127.5,
-      "nav": 32.5,
-      "body": 1425,
-      "y": 1983,
+      "x": 186,
+      "nav": 100.5,
+      "root": 1425,
+      "y": 1740,
       "scrollbar": 15
     },
     "open": {
-      "x": 127.5,
-      "nav": 32.5,
-      "body": 1425,
-      "y": 1983,
-      "scrollbar": 0
-    },
-    "viewer": {
-      "x": 127.5,
-      "nav": 32.5,
-      "body": 1425,
-      "y": 1983,
-      "scrollbar": 0
-    },
-    "after": {
-      "x": 127.5,
-      "nav": 32.5,
-      "body": 1425,
-      "y": 1983,
+      "x": 186,
+      "nav": 100.5,
+      "root": 1425,
+      "y": 1740,
       "scrollbar": 15
     },
-    "viewerWidth": 1440,
-    "viewport": 1440,
+    "viewer": {
+      "x": 186,
+      "nav": 100.5,
+      "root": 1425,
+      "y": 1740,
+      "scrollbar": 15
+    },
+    "after": {
+      "x": 186,
+      "nav": 100.5,
+      "root": 1425,
+      "y": 1740,
+      "scrollbar": 15
+    },
+    "stable": true,
+    "rulesItems": 21,
+    "rulesSections": 4,
+    "active": "location",
+    "rulesBefore": 2668,
+    "rulesDuring": 2668,
+    "rulesAfter": 2668,
     "errors": []
   }
 }
