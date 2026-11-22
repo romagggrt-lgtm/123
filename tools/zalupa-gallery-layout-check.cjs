@@ -1,7 +1,7 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
 (async()=>{
-  const result={target:'evrionmc-logo-transparent-1'},errors=[];
+  const result={target:'evrionmc-wordmark-123'},errors=[];
   const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',ignoreDefaultArgs:['--hide-scrollbars'],args:['--no-sandbox']});
   const page=await browser.newPage({viewport:{width:1440,height:900}});
   page.on('pageerror',e=>errors.push(String(e)));
@@ -11,7 +11,7 @@ const fs = require('fs');
     await page.waitForURL(url=>url.href.includes('/blob/evrionmc/site/index.html')&&url.hash==='#topic-4',{timeout:30000});
     await page.waitForSelector('.gallery-all-button:not([hidden])',{timeout:30000});
     const logo=page.locator('.brand-mark img');await logo.evaluate(e=>e.decode(),{timeout:20000});
-    result.logo=await logo.evaluate(e=>({src:e.currentSrc,width:e.naturalWidth,height:e.naturalHeight,background:getComputedStyle(e.parentElement).backgroundColor}));
+    result.logo=await logo.evaluate(e=>({src:e.currentSrc,width:e.naturalWidth,height:e.naturalHeight,background:getComputedStyle(e.parentElement).backgroundColor,gap:getComputedStyle(e.parentElement.parentElement).gap,name:document.querySelector('.brand-name').textContent,aria:e.parentElement.parentElement.getAttribute('aria-label')}));
     result.browser={finalUrl:page.url(),title:await page.title(),heading:await page.locator('#hero-title').innerText(),galleryCount:await page.locator('.gallery-grid .gallery-photo').count(),oldNameVisible:await page.evaluate(()=>/zalupa/i.test(document.body.innerText)),errors};
   } catch(e) {result.browser={error:String(e),finalUrl:page.url(),title:await page.title().catch(()=>''),errors}}
   await browser.close();fs.writeFileSync('ci-bootstrap/zalupa-reference/gallery-layout-check.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));
