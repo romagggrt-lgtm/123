@@ -1,93 +1,11 @@
 {
-  "target": "evrionmc-rebrand-120",
-  "brand": {
-    "title": "EvrionMC — сайт сервера",
-    "hero": "EvrionMC.",
-    "brand": "EvrionMC",
-    "footer": "EvrionMC.",
-    "background": "url(\"https://raw.githubusercontent.com/romagggrt-lgtm/123/evrionmc/site/assets/evrion-world.png\")",
-    "oldNameVisible": false,
-    "photos": 31,
-    "backgroundLoaded": true
-  },
-  "art": [
-    {
-      "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/evrionmc/site/assets/gallery/sunset-house-thumb.webp",
-      "width": 794,
-      "height": 800,
-      "frame": 481.5
-    },
-    {
-      "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/evrionmc/site/assets/gallery/portal-thumb.webp",
-      "width": 763,
-      "height": 800,
-      "frame": 481.5
-    },
-    {
-      "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/evrionmc/site/assets/gallery/great-hall.jpg",
-      "width": 1280,
-      "height": 720,
-      "frame": 481.5
-    },
-    {
-      "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/evrionmc/site/assets/gallery/campfire.jpg",
-      "width": 1280,
-      "height": 720,
-      "frame": 481.5
-    }
-  ],
-  "lore": {
-    "loreOpen": true,
-    "loreHeadings": [
-      "Персонажи",
-      "Невидимка",
-      "Энейт",
-      "Красный",
-      "Ветки сюжета",
-      "Войд",
-      "Верхний мир"
-    ],
-    "loreBefore": 1433,
-    "loreAfter": 1433,
-    "loreScroll": 560
-  },
+  "target": "evrionmc-legacy-redirect-1",
   "browser": {
-    "status": 200,
-    "before": {
-      "x": 186,
-      "nav": 100.5,
-      "root": 1425,
-      "y": 1433,
-      "scrollbar": 15
-    },
-    "open": {
-      "x": 186,
-      "nav": 100.5,
-      "root": 1425,
-      "y": 1433,
-      "scrollbar": 15
-    },
-    "viewer": {
-      "x": 186,
-      "nav": 100.5,
-      "root": 1425,
-      "y": 1433,
-      "scrollbar": 15
-    },
-    "after": {
-      "x": 186,
-      "nav": 100.5,
-      "root": 1425,
-      "y": 1433,
-      "scrollbar": 15
-    },
-    "stable": true,
-    "rulesItems": 21,
-    "rulesSections": 4,
-    "active": "location",
-    "rulesBefore": 2668,
-    "rulesDuring": 2668,
-    "rulesAfter": 2668,
+    "finalUrl": "https://htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/evrionmc/site/index.html#topic-4",
+    "title": "EvrionMC — сайт сервера",
+    "heading": "EvrionMC.",
+    "galleryCount": 31,
+    "oldNameVisible": false,
     "errors": []
   }
 }
