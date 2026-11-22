@@ -1,14 +1,16 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
 (async()=>{
-  const result={target:'real-server-art-110'},errors=[];
+  const result={target:'evrionmc-rebrand-120'},errors=[];
   const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',ignoreDefaultArgs:['--hide-scrollbars'],args:['--no-sandbox']});
   const page=await browser.newPage({viewport:{width:1440,height:900}});
   page.on('pageerror',e=>errors.push(String(e)));
   try{
-    const response=await page.goto('https://htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html',{waitUntil:'domcontentloaded',timeout:40000});
+    const response=await page.goto('https://htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/evrionmc/site/index.html',{waitUntil:'domcontentloaded',timeout:40000});
     await page.waitForSelector('.gallery-all-button:not([hidden])',{timeout:30000});
     await page.evaluate(()=>document.documentElement.style.zoom='.9');
+    result.brand=await page.evaluate(()=>({title:document.title,hero:document.querySelector('#hero-title').innerText,brand:document.querySelector('.brand-name').innerText,footer:document.querySelector('.footer-brand').innerText,background:getComputedStyle(document.querySelector('.hero-image')).backgroundImage,oldNameVisible:/zalupa/i.test(document.body.innerText),photos:document.querySelectorAll('.gallery-grid .gallery-photo').length}));
+    result.brand.backgroundLoaded=await page.evaluate(async()=>{const url=getComputedStyle(document.querySelector('.hero-image')).backgroundImage.slice(5,-2);return await new Promise(resolve=>{const image=new Image();image.onload=()=>resolve(image.naturalWidth>0);image.onerror=()=>resolve(false);image.src=url})});
     result.art=[];
     for (const section of ['topic-1','topic-2','topic-4','topic-5']) {
       const img=page.locator('#'+section+' .section-art img');
