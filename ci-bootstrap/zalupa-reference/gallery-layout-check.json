@@ -1,18 +1,33 @@
 {
-  "target": "find-renamed-repository",
+  "target": "evrion-renamed-owner-redirect-check",
   "repository": "sqrxxxxxx/123",
-  "errors": [],
-  "github": {
-    "status": 200,
-    "url": "https://github.com/sqrxxxxxx/123"
-  },
-  "newUrl": "https://htmlpreview.github.io/?https://github.com/sqrxxxxxx/123/blob/evrionmc/site/index.html",
-  "site": {
-    "status": 200,
-    "url": "https://htmlpreview.github.io/?https://github.com/sqrxxxxxx/123/blob/evrionmc/site/index.html",
-    "title": "EvrionMC — сайт сервера",
-    "heading": "EvrionMC.",
-    "logo": 1254,
-    "gallery": 31
-  }
+  "checks": [
+    {
+      "owner": "sqrxxxxxx",
+      "branch": "evrionmc",
+      "finalUrl": "https://htmlpreview.github.io/?https://github.com/sqrxxxxxx/123/blob/evrionmc/site/index.html#topic-4",
+      "title": "EvrionMC — сайт сервера",
+      "heading": "EvrionMC.",
+      "photos": 31,
+      "errors": []
+    },
+    {
+      "owner": "sqrxxxxxx",
+      "branch": "zalupa-smp-site",
+      "finalUrl": "https://htmlpreview.github.io/?https://github.com/sqrxxxxxx/123/blob/evrionmc/site/index.html#topic-4",
+      "title": "EvrionMC — сайт сервера",
+      "heading": "EvrionMC.",
+      "photos": 31,
+      "errors": []
+    },
+    {
+      "owner": "romagggrt-lgtm",
+      "branch": "evrionmc",
+      "finalUrl": "https://htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/evrionmc/site/index.html#topic-4",
+      "title": "EvrionMC — сайт сервера",
+      "heading": "EvrionMC.",
+      "photos": 31,
+      "errors": []
+    }
+  ]
 }
