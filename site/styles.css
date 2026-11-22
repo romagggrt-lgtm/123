@@ -98,5 +98,6 @@ html[data-theme='dark'] .floating-item{background:rgba(38,28,53,.68);border-colo
 @media(max-width:650px){.hero h1{font-size:clamp(32px,10vw,54px)}}
 
 /* The supplied mark is centered and its transparent canvas is fitted to the badge. */
-.brand-mark{overflow:hidden;background:#322144}
+.brand-mark{overflow:hidden;background:transparent}
 .brand-mark img{display:block;width:100%;height:100%;object-fit:contain;transform:scale(1.44);clip-path:polygon(19.2% 35.5%,24.5% 30.7%,24.5% 24.3%,36.2% 24.3%,36.2% 32.5%,43.2% 32.5%,43.2% 19.5%,56.4% 19.5%,56.4% 32.5%,63.3% 32.5%,63.3% 24.3%,75.5% 24.3%,75.5% 38.3%,73.5% 41.5%,42% 41.5%,42% 48.3%,69.8% 48.3%,69.8% 58%,42% 58%,42% 64.8%,76.3% 64.8%,76.3% 74%,70.5% 80.6%,23.4% 80.6%,23.4% 51.8%,19.2% 48.2%)}
+html:not([data-theme='dark']) .brand-mark img{filter:drop-shadow(0 0 2px rgba(42,20,58,.85))}
