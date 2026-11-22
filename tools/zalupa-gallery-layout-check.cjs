@@ -1,7 +1,7 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
 (async()=>{
-  const result={target:'evrion-renamed-owner-redirect-check',repository:process.env.GITHUB_REPOSITORY,checks:[]};
+  const result={target:'evrion-renamed-owner-redirect-final',repository:process.env.GITHUB_REPOSITORY,checks:[]};
   const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']});
   for(const [owner,branch] of [['sqrxxxxxx','evrionmc'],['sqrxxxxxx','zalupa-smp-site'],['romagggrt-lgtm','evrionmc']]){
     const page=await browser.newPage({viewport:{width:1440,height:900}});const errors=[];page.on('pageerror',e=>errors.push(String(e)));
