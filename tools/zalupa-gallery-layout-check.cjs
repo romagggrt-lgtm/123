@@ -1,18 +1,20 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
 (async()=>{
-  const result={target:'evrionmc-wordmark-123'},errors=[];
-  const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',ignoreDefaultArgs:['--hide-scrollbars'],args:['--no-sandbox']});
+  const result={target:'find-renamed-repository',repository:process.env.GITHUB_REPOSITORY,errors:[]};
+  const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']});
   const page=await browser.newPage({viewport:{width:1440,height:900}});
-  page.on('pageerror',e=>errors.push(String(e)));
-  const oldUrl='https://htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/site/index.html#topic-4';
+  page.on('pageerror',e=>result.errors.push(String(e)));
   try {
-    try {await page.goto(oldUrl,{waitUntil:'domcontentloaded',timeout:40000})} catch(e) {if(!String(e).includes('interrupted by another navigation'))throw e;}
-    await page.waitForURL(url=>url.href.includes('/blob/evrionmc/site/index.html')&&url.hash==='#topic-4',{timeout:30000});
+    const old=await page.goto('https://github.com/romagggrt-lgtm/123',{waitUntil:'domcontentloaded',timeout:30000});
+    result.github={status:old.status(),url:page.url()};
+  } catch(e) {result.github={error:String(e)}}
+  try {
+    result.newUrl='https://htmlpreview.github.io/?https://github.com/'+process.env.GITHUB_REPOSITORY+'/blob/evrionmc/site/index.html';
+    const response=await page.goto(result.newUrl,{waitUntil:'domcontentloaded',timeout:40000});
     await page.waitForSelector('.gallery-all-button:not([hidden])',{timeout:30000});
-    const logo=page.locator('.brand-mark img');await logo.evaluate(e=>e.decode(),{timeout:20000});
-    result.logo=await logo.evaluate(e=>({src:e.currentSrc,width:e.naturalWidth,height:e.naturalHeight,background:getComputedStyle(e.parentElement).backgroundColor,gap:getComputedStyle(e.parentElement.parentElement).gap,name:document.querySelector('.brand-name').textContent,aria:e.parentElement.parentElement.getAttribute('aria-label')}));
-    result.browser={finalUrl:page.url(),title:await page.title(),heading:await page.locator('#hero-title').innerText(),galleryCount:await page.locator('.gallery-grid .gallery-photo').count(),oldNameVisible:await page.evaluate(()=>/zalupa/i.test(document.body.innerText)),errors};
-  } catch(e) {result.browser={error:String(e),finalUrl:page.url(),title:await page.title().catch(()=>''),errors}}
+    const logo=page.locator('.brand-mark img');await logo.evaluate(e=>e.decode());
+    result.site={status:response.status(),url:page.url(),title:await page.title(),heading:await page.locator('#hero-title').innerText(),logo:await logo.evaluate(e=>e.naturalWidth),gallery:await page.locator('.gallery-grid .gallery-photo').count()};
+  } catch(e) {result.site={error:String(e),url:page.url(),title:await page.title().catch(()=>'')}}
   await browser.close();fs.writeFileSync('ci-bootstrap/zalupa-reference/gallery-layout-check.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));
 })().catch(e=>{console.error(e);process.exitCode=1});
