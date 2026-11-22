@@ -6,11 +6,15 @@
     // Keep old bookmarks working while moving visitors to the current address.
     try {
       const page = new URL(window.location.href);
-      const previous = 'https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/';
-      const current = 'https://github.com/romagggrt-lgtm/123/blob/evrionmc/';
+      const previous = [
+        'https://github.com/romagggrt-lgtm/123/blob/zalupa-smp-site/',
+        'https://github.com/sqrxxxxxx/123/blob/zalupa-smp-site/'
+      ];
+      const current = 'https://github.com/sqrxxxxxx/123/blob/evrionmc/';
       const source = decodeURIComponent(page.search.slice(1));
-      if (page.hostname === 'htmlpreview.github.io' && source.startsWith(previous)) {
-        page.search = '?' + current + source.slice(previous.length);
+      const matched = previous.find(prefix => source.startsWith(prefix));
+      if (page.hostname === 'htmlpreview.github.io' && matched) {
+        page.search = '?' + current + source.slice(matched.length);
         window.location.replace(page.href);
       }
     } catch (_) {}
