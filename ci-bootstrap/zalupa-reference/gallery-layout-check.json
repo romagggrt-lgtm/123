@@ -1,10 +1,10 @@
 {
-  "target": "evrionmc-header-logo-1",
+  "target": "evrionmc-logo-transparent-1",
   "logo": {
     "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/evrionmc/site/assets/evrion-logo.png?v=1.0.0",
     "width": 1254,
     "height": 1254,
-    "clip": "polygon(19.2% 35.5%, 24.5% 30.7%, 24.5% 24.3%, 36.2% 24.3%, 36.2% 32.5%, 43.2% 32.5%, 43.2% 19.5%, 56.4% 19.5%, 56.4% 32.5%, 63.3% 32.5%, 63.3% 24.3%, 75.5% 24.3%, 75.5% 38.3%, 73.5% 41.5%, 42% 41.5%, 42% 48.3%, 69.8% 48.3%, 69.8% 58%, 42% 58%, 42% 64.8%, 76.3% 64.8%, 76.3% 74%, 70.5% 80.6%, 23.4% 80.6%, 23.4% 51.8%, 19.2% 48.2%)"
+    "background": "rgba(0, 0, 0, 0)"
   },
   "browser": {
     "finalUrl": "https://htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/evrionmc/site/index.html#topic-4",
