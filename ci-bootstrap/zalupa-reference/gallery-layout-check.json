@@ -1,26 +1,36 @@
 {
-  "target": "real-server-art-110",
+  "target": "evrionmc-rebrand-120",
+  "brand": {
+    "title": "EvrionMC — сайт сервера",
+    "hero": "EvrionMC.",
+    "brand": "EvrionMC",
+    "footer": "EvrionMC.",
+    "background": "url(\"https://raw.githubusercontent.com/romagggrt-lgtm/123/evrionmc/site/assets/evrion-world.png\")",
+    "oldNameVisible": false,
+    "photos": 31,
+    "backgroundLoaded": true
+  },
   "art": [
     {
-      "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/zalupa-smp-site/site/assets/gallery/sunset-house-thumb.webp",
+      "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/evrionmc/site/assets/gallery/sunset-house-thumb.webp",
       "width": 794,
       "height": 800,
       "frame": 481.5
     },
     {
-      "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/zalupa-smp-site/site/assets/gallery/portal-thumb.webp",
+      "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/evrionmc/site/assets/gallery/portal-thumb.webp",
       "width": 763,
       "height": 800,
       "frame": 481.5
     },
     {
-      "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/zalupa-smp-site/site/assets/gallery/great-hall.jpg",
+      "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/evrionmc/site/assets/gallery/great-hall.jpg",
       "width": 1280,
       "height": 720,
       "frame": 481.5
     },
     {
-      "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/zalupa-smp-site/site/assets/gallery/campfire.jpg",
+      "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/evrionmc/site/assets/gallery/campfire.jpg",
       "width": 1280,
       "height": 720,
       "frame": 481.5
