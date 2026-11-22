@@ -1,28 +1,28 @@
 {
-  "target": "section-art-100",
+  "target": "real-server-art-110",
   "art": [
     {
-      "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/zalupa-smp-site/site/assets/sections/information.jpg",
-      "width": 1200,
+      "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/zalupa-smp-site/site/assets/gallery/sunset-house-thumb.webp",
+      "width": 794,
       "height": 800,
       "frame": 481.5
     },
     {
-      "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/zalupa-smp-site/site/assets/sections/lore.jpg",
-      "width": 1200,
+      "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/zalupa-smp-site/site/assets/gallery/portal-thumb.webp",
+      "width": 763,
       "height": 800,
       "frame": 481.5
     },
     {
-      "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/zalupa-smp-site/site/assets/sections/rules.jpg",
-      "width": 1200,
-      "height": 800,
+      "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/zalupa-smp-site/site/assets/gallery/great-hall.jpg",
+      "width": 1280,
+      "height": 720,
       "frame": 481.5
     },
     {
-      "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/zalupa-smp-site/site/assets/sections/access.jpg",
-      "width": 1200,
-      "height": 800,
+      "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/zalupa-smp-site/site/assets/gallery/campfire.jpg",
+      "width": 1280,
+      "height": 720,
       "frame": 481.5
     }
   ],
@@ -37,8 +37,8 @@
       "Войд",
       "Верхний мир"
     ],
-    "loreBefore": 1050,
-    "loreAfter": 1050,
+    "loreBefore": 1433,
+    "loreAfter": 1433,
     "loreScroll": 560
   },
   "browser": {
@@ -47,28 +47,28 @@
       "x": 186,
       "nav": 100.5,
       "root": 1425,
-      "y": 1740,
+      "y": 1433,
       "scrollbar": 15
     },
     "open": {
       "x": 186,
       "nav": 100.5,
       "root": 1425,
-      "y": 1740,
+      "y": 1433,
       "scrollbar": 15
     },
     "viewer": {
       "x": 186,
       "nav": 100.5,
       "root": 1425,
-      "y": 1740,
+      "y": 1433,
       "scrollbar": 15
     },
     "after": {
       "x": 186,
       "nav": 100.5,
       "root": 1425,
-      "y": 1740,
+      "y": 1433,
       "scrollbar": 15
     },
     "stable": true,
