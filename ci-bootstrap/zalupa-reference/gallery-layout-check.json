@@ -1,10 +1,13 @@
 {
-  "target": "evrionmc-logo-transparent-1",
+  "target": "evrionmc-wordmark-123",
   "logo": {
     "src": "https://raw.githubusercontent.com/romagggrt-lgtm/123/evrionmc/site/assets/evrion-logo.png?v=1.0.0",
     "width": 1254,
     "height": 1254,
-    "background": "rgba(0, 0, 0, 0)"
+    "background": "rgba(0, 0, 0, 0)",
+    "gap": "0px",
+    "name": "EvrionMC",
+    "aria": "EvrionMC — на главную"
   },
   "browser": {
     "finalUrl": "https://htmlpreview.github.io/?https://github.com/romagggrt-lgtm/123/blob/evrionmc/site/index.html#topic-4",
