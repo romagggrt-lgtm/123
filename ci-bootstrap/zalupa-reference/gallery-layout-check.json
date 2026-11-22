@@ -1,5 +1,5 @@
 {
-  "target": "minecraft-font-12111",
+  "target": "minecraft-font-12111-accented",
   "files": [
     {
       "path": "font/default.json",
@@ -356,6 +356,11 @@
       "path": "textures/font/nonlatin_european.png",
       "status": 200,
       "bytes": 4867
+    },
+    {
+      "path": "textures/font/accented.png",
+      "status": 200,
+      "bytes": 7694
     }
   ]
 }
