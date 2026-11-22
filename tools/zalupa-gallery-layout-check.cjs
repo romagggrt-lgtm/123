@@ -1,7 +1,7 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
 (async()=>{
-  const result={target:'section-art-100'},errors=[];
+  const result={target:'real-server-art-110'},errors=[];
   const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',ignoreDefaultArgs:['--hide-scrollbars'],args:['--no-sandbox']});
   const page=await browser.newPage({viewport:{width:1440,height:900}});
   page.on('pageerror',e=>errors.push(String(e)));
