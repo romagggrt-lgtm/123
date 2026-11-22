@@ -1,5 +1,5 @@
 ---
-name: Zalupa SMP
+name: EvrionMC
 description: Оболочка сайта Minecraft-сервера
 colors:
   light-background: "#fbfaff"
@@ -38,7 +38,7 @@ components:
     padding: "14px 17px 14px 21px"
 ---
 
-# Design System: Zalupa SMP
+# Design System: EvrionMC
 
 ## Overview
 

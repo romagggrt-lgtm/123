@@ -1,6 +1,6 @@
 (() => {
   'use strict';
-  const photos = Array.isArray(window.ZALUPA_GALLERY) ? window.ZALUPA_GALLERY.filter(photo => photo && typeof photo.src === 'string' && photo.src) : [];
+  const photos = Array.isArray(window.EVRION_GALLERY) ? window.EVRION_GALLERY.filter(photo => photo && typeof photo.src === 'string' && photo.src) : [];
   if (!photos.length) return;
   const $ = selector => document.querySelector(selector);
   const preview = $('.gallery-preview'), grid = $('.gallery-grid'), allButton = $('.gallery-all-button');

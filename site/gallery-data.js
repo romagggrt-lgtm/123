@@ -1,5 +1,5 @@
 // Снимки сервера: похожие ракурсы расположены рядом.
-window.ZALUPA_GALLERY = [
+window.EVRION_GALLERY = [
   {
     "src": "assets/gallery/cathedral-front.webp",
     "thumb": "assets/gallery/cathedral-front-thumb.webp",

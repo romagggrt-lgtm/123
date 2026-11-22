@@ -1,7 +1,7 @@
 (() => {
   'use strict';
   const $ = selector => document.querySelector(selector);
-  const config = window.ZALUPA_COMMUNITY || {};
+  const config = window.EVRION_COMMUNITY || {};
   const apiUrl = String(config.url || '').replace(/\/+$/, '');
   const apiKey = String(config.key || '');
   // The browser may receive only a public publishable or legacy anon key, never an administrator key.
@@ -12,7 +12,10 @@
   const chatToggle = $('.chat-toggle'), chatPanel = $('#chat-panel'), messages = $('.chat-messages');
   const authForm = $('#auth-form'), roleForm = $('#role-form'), chatForm = $('.chat-form');
   let user = null, token = null, mode = 'login', roleTarget = '', timer = null, loadingMessages = false, renderedMessages = '';
-  try { token = localStorage.getItem('zalupa-community-session'); } catch (_) {}
+  try {
+    token = localStorage.getItem('evrion-community-session') || localStorage.getItem('zalupa-community-session');
+    if (token) { localStorage.setItem('evrion-community-session', token); localStorage.removeItem('zalupa-community-session'); }
+  } catch (_) {}
 
   const errors = {
     nickname:'Ник должен содержать от 3 до 16 латинских букв, цифр или символов подчёркивания.',
@@ -27,7 +30,7 @@
   const errorText = code => errors[code] || errors.network;
   function saveToken(value) {
     token = value;
-    try { if (value) localStorage.setItem('zalupa-community-session', value); else localStorage.removeItem('zalupa-community-session'); } catch (_) {}
+    try { if (value) localStorage.setItem('evrion-community-session', value); else localStorage.removeItem('evrion-community-session'); } catch (_) {}
   }
   async function rpc(name, payload = {}) {
     if (!configured) throw new Error('offline');

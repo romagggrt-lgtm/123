@@ -16,7 +16,7 @@
   syncTheme();
   toggle.addEventListener('click', () => {
     root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-    try { localStorage.setItem('zalupa-theme', root.dataset.theme); } catch (_) {}
+    try { localStorage.setItem('evrion-theme', root.dataset.theme); } catch (_) {}
     syncTheme();
   });
 
