@@ -2,6 +2,19 @@
 <html lang="ru" data-theme="light">
 <head>
   <meta charset="utf-8">
+  <script>
+    // Update bookmarks that still contain the previous GitHub username.
+    try {
+      const page = new URL(window.location.href);
+      const previous = 'https://github.com/romagggrt-lgtm/123/blob/evrionmc/';
+      const current = 'https://github.com/sqrxxxxxx/123/blob/evrionmc/';
+      const source = decodeURIComponent(page.search.slice(1));
+      if (page.hostname === 'htmlpreview.github.io' && source.startsWith(previous)) {
+        page.search = '?' + current + source.slice(previous.length);
+        window.location.replace(page.href);
+      }
+    } catch (_) {}
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f8f6fe" id="browser-theme">
   <meta name="description" content="EvrionMC — Vanilla+ сервер с дружелюбными игроками, собственным лором и ивентами.">
