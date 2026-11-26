@@ -1,0 +1,14 @@
+# Другое имя мира задаётся только до первого запуска; не переименовывайте существующий мир.
+world-name: z_test_purgatory
+# Разломы остаются до удаления командой и восстанавливаются после перезапуска.
+max-rifts: 32
+portal-cooldown-seconds: 5
+souls:
+  # Как часто плагин пробует создать группу возле игрока в Чистилище.
+  interval-seconds: 30
+  chance: 0.45
+  max-per-world: 30
+  spawn-distance-min: 12
+  spawn-distance-max: 24
+  drops-min: 1
+  drops-max: 2

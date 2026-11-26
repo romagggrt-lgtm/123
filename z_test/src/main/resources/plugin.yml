@@ -1,0 +1,13 @@
+name: Z_Test
+version: '1.0.0'
+main: dev.ztest.ZTestPlugin
+api-version: '1.21.11'
+description: Чистилище, разломы, души и аномальный детектор
+commands:
+  ztest:
+    description: Управление Чистилищем и разломами
+    usage: /ztest help
+permissions:
+  ztest.admin:
+    description: Создание и удаление разломов, выдача тестовых предметов
+    default: op
