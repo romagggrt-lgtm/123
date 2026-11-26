@@ -14,6 +14,7 @@ public final class ZTestPlugin extends JavaPlugin {
     RiftManager rifts;
     Detector detector;
     Souls souls;
+    DetectorVisuals visuals;
     World purgatory;
     String worldName;
 
@@ -23,11 +24,11 @@ public final class ZTestPlugin extends JavaPlugin {
             if(worldName==null||!worldName.matches("[A-Za-z0-9_-]{1,48}"))throw new IllegalArgumentException("Недопустимое имя мира в config.yml");
             state=new StateStore(getDataFolder());
             purgatory=loadOwnedWorld();
-            rifts=new RiftManager(this);detector=new Detector(this);souls=new Souls(this);
-            var pm=getServer().getPluginManager();pm.registerEvents(rifts,this);pm.registerEvents(detector,this);pm.registerEvents(souls,this);
+            rifts=new RiftManager(this);detector=new Detector(this);souls=new Souls(this);visuals=new DetectorVisuals(this);
+            var pm=getServer().getPluginManager();pm.registerEvents(rifts,this);pm.registerEvents(detector,this);pm.registerEvents(souls,this);pm.registerEvents(visuals,this);
             Commands commands=new Commands(this);var command=Objects.requireNonNull(getCommand("ztest"));command.setExecutor(commands);command.setTabCompleter(commands);
             detector.registerRecipe();
-            rifts.start();souls.start();
+            rifts.start();souls.start();Bukkit.getScheduler().runTask(this,visuals::restoreLoaded);
             getLogger().info("Чистилище готово; разломов: "+state.rifts().size()+", детекторов: "+state.detectorCount());
         }catch(Exception e){getLogger().severe("Z_Test не запущен: "+e.getMessage());e.printStackTrace();getServer().getPluginManager().disablePlugin(this);}
     }
@@ -47,7 +48,7 @@ public final class ZTestPlugin extends JavaPlugin {
         return w;
     }
     @Override public ChunkGenerator getDefaultWorldGenerator(String name,String id){return name.equals(getConfig().getString("world-name","z_test_purgatory"))?new PurgatoryGenerator():null;}
-    @Override public void onDisable(){if(detector!=null)detector.unregisterRecipe();}
+    @Override public void onDisable(){if(visuals!=null)visuals.clearLoaded();if(detector!=null)detector.unregisterRecipe();}
     void failed(Exception e){getLogger().severe("Не удалось сохранить данные Z_Test: "+e.getMessage());}
     static String msg(String message){return "§8[§dZ_Test§8] §r"+message;}
     public World getPurgatory(){return purgatory;}

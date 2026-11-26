@@ -11,6 +11,7 @@ import org.bukkit.event.block.*;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.*;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.persistence.PersistentDataType;
 
 /** Run only on a disposable Paper server. Never included in the distributed plugin. */
 public final class NativeSmoke extends JavaPlugin {
@@ -18,6 +19,7 @@ public final class NativeSmoke extends JavaPlugin {
     void check(String name,boolean value){if(!value)throw new IllegalStateException(name);checks.put(name,"PASS");}
     void next(){stage++;entered=ticks;}
     int age(){return ticks-entered;}
+    long crystalCount(){World w=Bukkit.getWorld(blockPoint.world());Location loc=blockPoint.center().add(0,1.25,0);return w.getNearbyEntitiesByType(ItemDisplay.class,loc,1,d->Arrays.equals(d.getPersistentDataContainer().get(new NamespacedKey(p,"detector_display"),PersistentDataType.INTEGER_ARRAY),new int[]{blockPoint.x(),blockPoint.y(),blockPoint.z()})).size();}
     @Override public void onEnable(){second=Files.exists(Path.of("ztest-phase1.ok"));Bukkit.getScheduler().runTaskTimer(this,(Runnable)this::tick,1,1);}
     void report(String status,String failure){try{Files.writeString(Path.of("ztest-native-report.json"),new Gson().toJson(Map.of("status",status,"phase",second?2:1,"checks",checks,"failure",failure)));}catch(Exception ex){getLogger().severe(ex.toString());}finished=true;}
     void tick(){if(finished)return;ticks++;try{
@@ -46,12 +48,12 @@ public final class NativeSmoke extends JavaPlugin {
             next();return;
         }
         if(!second){
-            if(stage==1&&age()>100){Location from=rift.source().center().clone().add(2,0,0),to=rift.source().center();Bukkit.getPluginManager().callEvent(new PlayerMoveEvent(player,from,to));check("portal_enters_dimension",player.getWorld().equals(p.getPurgatory()));next();return;}
+            if(stage==1&&age()>100){check("detector_crystal_created",crystalCount()==1);Location from=rift.source().center().clone().add(2,0,0),to=rift.source().center();Bukkit.getPluginManager().callEvent(new PlayerMoveEvent(player,from,to));check("portal_enters_dimension",player.getWorld().equals(p.getPurgatory()));next();return;}
             if(stage==2){var souls=p.getPurgatory().getEntitiesByClass(Vex.class).stream().filter(p.getSouls()::isSoul).toList();if(souls.size()<6)return;check("soul_group_of_six",souls.size()==6);Location at=souls.get(0).getLocation();souls.get(0).setHealth(0);Bukkit.getScheduler().runTaskLater(this,()->{try{check("soul_drops_shard",p.getPurgatory().getNearbyEntitiesByType(Item.class,at,4).stream().anyMatch(i->p.getDetector().is(i.getItemStack(),"soul_shard")));next();}catch(Exception e){report("FAIL",e.toString());}},2);stage=20;return;}
             if(stage==21&&age()>120){Location from=rift.destination().center().clone().add(2,0,0),to=rift.destination().center();Bukkit.getPluginManager().callEvent(new PlayerMoveEvent(player,from,to));check("portal_returns_to_origin_world",player.getWorld().equals(normal));Files.writeString(Path.of("ztest-phase1.ok"),"phase1\n");report("PASS","");return;}
         }else{
-            if(stage==1){Location loc=rift.source().center().clone().add(3,0,0);player.teleport(loc);check("rift_close_command",player.performCommand("ztest rift close")&&p.getState().rifts().isEmpty());Block block=Bukkit.getWorld(blockPoint.world()).getBlockAt(blockPoint.x(),blockPoint.y(),blockPoint.z());var e=new BlockBreakEvent(block,player);Bukkit.getPluginManager().callEvent(e);check("detector_break_intercepted",!e.isCancelled()&&!e.isDropItems()&&!p.getState().hasDetector(blockPoint));block.setType(Material.AIR);next();return;}
-            if(stage==2&&age()>5){World w=Bukkit.getWorld(blockPoint.world());Location at=blockPoint.center();check("detector_drops_itself",w.getNearbyEntitiesByType(Item.class,at,4).stream().anyMatch(i->p.getDetector().is(i.getItemStack(),"detector")));report("PASS","");return;}
+            if(stage==1&&age()>10){check("detector_crystal_restored_after_restart",crystalCount()==1);Location loc=rift.source().center().clone().add(3,0,0);player.teleport(loc);check("rift_close_command",player.performCommand("ztest rift close")&&p.getState().rifts().isEmpty());Block block=Bukkit.getWorld(blockPoint.world()).getBlockAt(blockPoint.x(),blockPoint.y(),blockPoint.z());var e=new BlockBreakEvent(block,player);Bukkit.getPluginManager().callEvent(e);check("detector_break_intercepted",!e.isCancelled()&&!e.isDropItems()&&!p.getState().hasDetector(blockPoint));block.setType(Material.AIR);next();return;}
+            if(stage==2&&age()>5){World w=Bukkit.getWorld(blockPoint.world());Location at=blockPoint.center();check("detector_drops_itself",w.getNearbyEntitiesByType(Item.class,at,4).stream().anyMatch(i->p.getDetector().is(i.getItemStack(),"detector")));check("detector_crystal_removed",crystalCount()==0);report("PASS","");return;}
         }
     }catch(Throwable ex){getLogger().severe("Z_Test QA: "+ex);report("FAIL",ex.toString());}}
 }

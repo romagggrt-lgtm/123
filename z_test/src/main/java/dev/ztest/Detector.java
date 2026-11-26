@@ -35,7 +35,7 @@ public final class Detector implements Listener {
         Point at=Point.of(e.getBlockPlaced());
         if(is(e.getItemInHand(),"detector")){
             try{p.state.addDetector(at);}catch(IOException ex){e.setCancelled(true);p.failed(ex);e.getPlayer().sendMessage(ZTestPlugin.msg("§cНе удалось сохранить блок; установка отменена."));return;}
-            Bukkit.getScheduler().runTask(p,()->{if(e.isCancelled()||e.getBlockPlaced().getType()!=Material.LODESTONE){try{p.state.removeDetector(at);}catch(IOException ex){p.failed(ex);}}});
+            Bukkit.getScheduler().runTask(p,()->{if(e.isCancelled()||e.getBlockPlaced().getType()!=Material.LODESTONE){try{p.state.removeDetector(at);}catch(IOException ex){p.failed(ex);}}else p.visuals.show(at);});
         }else if(p.state.hasDetector(at)){
             try{p.state.removeDetector(at);}catch(IOException ex){e.setCancelled(true);p.failed(ex);}
         }
@@ -46,6 +46,7 @@ public final class Detector implements Listener {
         e.setDropItems(false);boolean drop=e.getPlayer().getGameMode()!=GameMode.CREATIVE;
         Bukkit.getScheduler().runTask(p,()->{
             if(e.isCancelled()||e.getBlock().getType()==Material.LODESTONE){try{p.state.addDetector(at);}catch(IOException ex){p.failed(ex);}return;}
+            p.visuals.remove(at);
             if(drop)e.getBlock().getWorld().dropItemNaturally(e.getBlock().getLocation().add(.5,.5,.5),detector());
         });
     }
