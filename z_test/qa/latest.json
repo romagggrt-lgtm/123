@@ -1,11 +1,10 @@
 {
   "status": "PASS",
-  "source_commit": "14f1fbd8518fe414c28702738efb5fdfe1482e5f",
+  "source_commit": "99ed71508767acfdf3b7af24244681771b76c41e",
   "server_build": 132,
   "server_sha256": "5ffef465eeeb5f2a3c23a24419d97c51afd7dbb4923ff42df9a3f58bba1ccfba",
   "phases": [
     {
-      "failure": "",
       "checks": {
         "plugin_enabled": "PASS",
         "world_created_with_generator": "PASS",
@@ -22,16 +21,19 @@
         "detector_placement": "PASS",
         "detector_finds_rift": "PASS",
         "detector_click_handled": "PASS",
+        "detector_crystal_created": "PASS",
         "portal_enters_dimension": "PASS",
         "soul_group_of_six": "PASS",
         "soul_drops_shard": "PASS",
         "portal_returns_to_origin_world": "PASS"
       },
-      "phase": 1,
-      "status": "PASS"
+      "failure": "",
+      "status": "PASS",
+      "phase": 1
     },
     {
-      "failure": "",
+      "status": "PASS",
+      "phase": 2,
       "checks": {
         "plugin_enabled": "PASS",
         "world_created_with_generator": "PASS",
@@ -44,12 +46,13 @@
         "rift_persisted_after_restart": "PASS",
         "detector_persisted_after_restart": "PASS",
         "detector_block_persisted": "PASS",
+        "detector_crystal_restored_after_restart": "PASS",
         "rift_close_command": "PASS",
         "detector_break_intercepted": "PASS",
-        "detector_drops_itself": "PASS"
+        "detector_drops_itself": "PASS",
+        "detector_crystal_removed": "PASS"
       },
-      "phase": 2,
-      "status": "PASS"
+      "failure": ""
     }
   ],
   "visual_client": false
