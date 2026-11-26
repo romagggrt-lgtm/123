@@ -28,6 +28,13 @@ jobs:
           set -o pipefail
           mkdir -p z_test/qa
           mvn -B -f z_test/pom.xml verify 2>&1 | tee z_test/qa/build.log
+      - name: Exercise gameplay and persistence on a disposable Paper server
+        run: |
+          set -o pipefail
+          python3 tools/ztest_native_smoke.py 2>&1 | tee z_test/qa/native-run.log
+      - name: Prepare verified plugin
+        if: success()
+        run: cp z_test/target/Z_Test-1.0.0.jar dist/Z_Test-1.0.0.jar
       - name: Preserve build evidence
         if: always()
         env:
@@ -39,6 +46,7 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add z_test/qa/
+          if [ -f dist/Z_Test-1.0.0.jar ]; then git add dist/Z_Test-1.0.0.jar; fi
           git diff --cached --quiet && exit 0
           git commit -m 'Record Z_Test build evidence [skip ci]'
           git push origin "HEAD:refs/heads/$TESTED_REF"

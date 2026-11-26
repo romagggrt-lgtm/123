@@ -57,7 +57,7 @@ public final class Detector implements Listener {
         else e.getPlayer().sendActionBar("§dРазлом: §fX "+nearest.x()+" §7| §fY "+nearest.y()+" §7| §fZ "+nearest.z());
         block.getWorld().spawnParticle(Particle.REVERSE_PORTAL,block.getLocation().add(.5,1,.5),12,.3,.15,.3,.02);
     }
-    private boolean tracked(Block b){return p.state.hasDetector(Point.of(b));}
+    private boolean tracked(Block b){return b.getType()==Material.LODESTONE&&p.state.hasDetector(Point.of(b));}
     @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void piston(BlockPistonExtendEvent e){if(e.getBlocks().stream().anyMatch(this::tracked))e.setCancelled(true);}
     @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void piston(BlockPistonRetractEvent e){if(e.getBlocks().stream().anyMatch(this::tracked))e.setCancelled(true);}
     @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void explosion(EntityExplodeEvent e){e.blockList().removeIf(this::tracked);}

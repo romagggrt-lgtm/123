@@ -22,7 +22,7 @@ public final class RiftManager implements Listener {
     private static final Particle.DustOptions PURPLE=new Particle.DustOptions(Color.fromRGB(168,50,255),1.15f);
     private static final Particle.DustOptions LIGHT=new Particle.DustOptions(Color.fromRGB(235,188,255),.85f);
     RiftManager(ZTestPlugin p){this.p=p;this.enteredRift=new NamespacedKey(p,"entry_rift");}
-    void start(){Bukkit.getScheduler().runTaskTimer(p,this::draw,20L,6L);}
+    void start(){Bukkit.getScheduler().runTaskTimer(p,(Runnable)this::draw,20L,6L);}
     public Rift create(Player player)throws IOException {
         if(player.getWorld().equals(p.purgatory))throw new IllegalArgumentException("Создавайте разлом в обычном мире или Незере");
         if(p.state.rifts().size()>=Math.max(1,Math.min(256,p.getConfig().getInt("max-rifts",32))))throw new IllegalArgumentException("Достигнут предел разломов");

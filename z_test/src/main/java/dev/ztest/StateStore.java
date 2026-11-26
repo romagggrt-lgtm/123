@@ -17,13 +17,16 @@ public final class StateStore {
         if(Files.exists(file)){
             var y=new YamlConfiguration();y.load(file.toFile());
             if(y.getInt("schema",0)!=1)throw new IOException("Неизвестная версия state.yml; данные не изменены");
-            for(Object item:y.getList("rifts",List.of())){Rift r=Rift.read(item);if(rifts.putIfAbsent(r.id(),r)!=null)throw new IOException("Повторяющийся ID разлома");}
-            for(Object item:y.getList("detectors",List.of()))if(!detectors.add(Point.read(item)))throw new IOException("Повторяющийся детектор");
+            Object rawRifts=y.get("rifts"),rawDetectors=y.get("detectors");
+            if(!(rawRifts instanceof List<?> savedRifts)||!(rawDetectors instanceof List<?> savedDetectors))throw new IOException("Некорректные списки в state.yml; данные не изменены");
+            for(Object item:savedRifts){Rift r=Rift.read(item);if(rifts.putIfAbsent(r.id(),r)!=null)throw new IOException("Повторяющийся ID разлома");}
+            for(Object item:savedDetectors)if(!detectors.add(Point.read(item)))throw new IOException("Повторяющийся детектор");
         }
     }
     public Collection<Rift> rifts(){return List.copyOf(rifts.values());}
     public boolean hasDetector(Point p){return detectors.contains(p);}
     public int detectorCount(){return detectors.size();}
+    public Collection<Point> detectors(){return List.copyOf(detectors);}
     public void addRift(Rift r)throws IOException{var n=new LinkedHashMap<>(rifts);if(n.putIfAbsent(r.id(),r)!=null)throw new IOException("ID разлома уже занят");write(n,detectors);rifts=n;}
     public void removeRift(UUID id)throws IOException{var n=new LinkedHashMap<>(rifts);n.remove(id);write(n,detectors);rifts=n;}
     public void addDetector(Point p)throws IOException{var n=new LinkedHashSet<>(detectors);n.add(p);write(rifts,n);detectors=n;}
