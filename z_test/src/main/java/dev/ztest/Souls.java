@@ -18,7 +18,7 @@ public final class Souls implements Listener {
     void start(){
         long interval=Math.max(5,Math.min(600,p.getConfig().getInt("souls.interval-seconds",30)))*20L;
         Bukkit.getScheduler().runTaskTimer(p,this::spawnTick,interval,interval);
-        Bukkit.getScheduler().runTaskTimer(p,this::moveTick,1L,3L);
+        Bukkit.getScheduler().runTaskTimer(p,this::moveTick,1L,1L);
     }
     private void spawnTick(){
         World w=p.purgatory;if(w==null||w.getPlayers().isEmpty())return;
@@ -79,7 +79,14 @@ public final class Souls implements Listener {
                 destinations.put(v.getUniqueId(),to);
             }
             Vector direction=to.toVector().subtract(at.toVector());
-            if(direction.lengthSquared()>.001){direction.normalize().multiply(.065);v.setVelocity(direction);v.setRotation((float)Math.toDegrees(Math.atan2(-direction.getX(),direction.getZ())),0);}
+            if(direction.lengthSquared()>.001){
+                direction.normalize().multiply(.035);
+                Location next=at.clone().add(direction);
+                next.setYaw((float)Math.toDegrees(Math.atan2(-direction.getX(),direction.getZ())));next.setPitch(0);
+                if(next.getBlock().isPassable()&&next.clone().add(0,.7,0).getBlock().isPassable()){
+                    if(!v.teleport(next,org.bukkit.event.player.PlayerTeleportEvent.TeleportCause.PLUGIN,io.papermc.paper.entity.TeleportFlag.EntityState.RETAIN_PASSENGERS))destinations.remove(v.getUniqueId());
+                }else destinations.remove(v.getUniqueId());
+            }
         }
         destinations.keySet().retainAll(alive);
     }
