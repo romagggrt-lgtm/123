@@ -1,9 +1,4 @@
 npm warn deprecated uuid@8.3.2: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
 npm warn deprecated uuid@10.0.0: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
 
-added 91 packages in 6s
-Traceback (most recent call last):
-  File "/home/runner/work/123/123/tools/ztest_native_smoke.py", line 54, in <module>
-    data=json.loads(report.read_text());results.append(data);assert data.get('status')=='PASS',f'Phase {phase}: {data}'
-                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: Phase 1: {'phase': 1, 'status': 'FAIL', 'failure': 'java.lang.IllegalStateException: soul_wanders', 'checks': {'plugin_enabled': 'PASS', 'world_created_with_generator': 'PASS', 'concrete_plain': 'PASS', 'concrete_sun_and_sky': 'PASS', 'invisible_lighting': 'PASS', 'tree_test_found': 'PASS', 'concrete_tree_cross_chunk': 'PASS', 'different_world_not_replaced': 'PASS', 'fresh_state': 'PASS', 'zlor_enabled': 'PASS', 'crown_give_command': 'PASS', 'craft_correct_detector': 'PASS', 'old_shard_still_crafts': 'PASS', 'ordinary_amethyst_rejected': 'PASS', 'rift_create_command': 'PASS', 'detector_placement': 'PASS', 'detector_finds_rift': 'PASS', 'detector_click_handled': 'PASS', 'crown_received': 'PASS', 'crown_no_pumpkin_overlay': 'PASS', 'crown_head_slot': 'PASS', 'crown_equips': 'PASS', 'detector_crystal_created': 'PASS', 'portal_enters_dimension': 'PASS', 'soul_group_of_six': 'PASS', 'souls_passive': 'PASS', 'souls_have_models': 'PASS', 'soul_still_alive': 'PASS'}}
+added 91 packages in 5s
