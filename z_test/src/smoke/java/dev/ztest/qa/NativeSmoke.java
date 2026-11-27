@@ -53,7 +53,7 @@ public final class NativeSmoke extends JavaPlugin {
         if(!second){
             if(stage==1&&age()>100){
                 ItemStack crown=Arrays.stream(player.getInventory().getContents()).filter(Objects::nonNull).filter(i->i.hasItemMeta()&&new NamespacedKey("z_lor","eneit_crown").equals(i.getItemMeta().getItemModel())).findFirst().orElse(null);
-                check("crown_received",crown!=null);check("crown_no_pumpkin_overlay",crown.getItemMeta().getEquippable().getCameraOverlay()==null);
+                check("crown_received",crown!=null);check("crown_no_pumpkin_overlay",crown.getItemMeta().getEquippable().getCameraOverlay()==null);check("crown_head_slot",crown.getItemMeta().getEquippable().getSlot()==EquipmentSlot.HEAD);
                 player.getInventory().setHelmet(crown);check("crown_equips",player.getInventory().getHelmet()!=null&&player.getInventory().getHelmet().isSimilar(crown));
                 check("detector_crystal_created",crystalCount()==1);Location from=rift.source().center().clone().add(2,0,0),to=rift.source().center();Bukkit.getPluginManager().callEvent(new PlayerMoveEvent(player,from,to));check("portal_enters_dimension",player.getWorld().equals(p.getPurgatory()));next();return;}
             if(stage==2){var souls=p.getPurgatory().getEntitiesByClass(Vex.class).stream().filter(p.getSouls()::isSoul).toList();if(souls.size()<6)return;check("soul_group_of_six",souls.size()==6);check("souls_passive",souls.stream().allMatch(v->!v.hasAI()&&v.getTarget()==null));check("souls_have_models",souls.stream().allMatch(v->v.isInvisible()&&v.getPassengers().stream().anyMatch(e->e instanceof ItemDisplay)));trackedSoul=souls.get(0).getUniqueId();soulStart=souls.get(0).getLocation();next();return;}

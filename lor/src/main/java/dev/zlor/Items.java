@@ -33,7 +33,7 @@ public final class Items {
         meta.getPersistentDataContainer().set(identity,PersistentDataType.STRING,id);
         if(id.equals("eneit_crown")){
             meta.setItemModel(new NamespacedKey("z_lor","eneit_crown"));
-            var equip=meta.getEquippable();equip.setCameraOverlay(null);meta.setEquippable(equip);
+            var equip=meta.getEquippable();equip.setSlot(EquipmentSlot.HEAD);equip.setCameraOverlay(null);meta.setEquippable(equip);
         }else if(!id.equals("lord_staff"))meta.setItemModel(new NamespacedKey("smplore",id));
         meta.setMaxStackSize(id.equals("voidometer")||id.equals("void_breath")||id.equals("lord_staff")||id.equals("eneit_crown")?1:id.equals("liquid_void")?16:64);
         stack.setItemMeta(meta);return stack;
