@@ -1,10 +1,12 @@
 {
-  "status": "PASS",
-  "source_commit": "99ed71508767acfdf3b7af24244681771b76c41e",
-  "server_build": 132,
-  "server_sha256": "5ffef465eeeb5f2a3c23a24419d97c51afd7dbb4923ff42df9a3f58bba1ccfba",
-  "phases": [
+  "status": "FAIL",
+  "source_commit": "33cf7be3b15a473f0ca566d01e78879c77665c36",
+  "error": "Phase 1: {'phase': 1, 'status': 'FAIL', 'failure': 'java.lang.IllegalStateException: soul_wanders', 'checks': {'plugin_enabled': 'PASS', 'world_created_with_generator': 'PASS', 'concrete_plain': 'PASS', 'concrete_sun_and_sky': 'PASS', 'invisible_lighting': 'PASS', 'tree_test_found': 'PASS', 'concrete_tree_cross_chunk': 'PASS', 'different_world_not_replaced': 'PASS', 'fresh_state': 'PASS', 'zlor_enabled': 'PASS', 'crown_give_command': 'PASS', 'craft_correct_detector': 'PASS', 'old_shard_still_crafts': 'PASS', 'ordinary_amethyst_rejected': 'PASS', 'rift_create_command': 'PASS', 'detector_placement': 'PASS', 'detector_finds_rift': 'PASS', 'detector_click_handled': 'PASS', 'crown_received': 'PASS', 'crown_no_pumpkin_overlay': 'PASS', 'crown_head_slot': 'PASS', 'crown_equips': 'PASS', 'detector_crystal_created': 'PASS', 'portal_enters_dimension': 'PASS', 'soul_group_of_six': 'PASS', 'souls_passive': 'PASS', 'souls_have_models': 'PASS', 'soul_still_alive': 'PASS'}}",
+  "completed_phases": [
     {
+      "phase": 1,
+      "status": "FAIL",
+      "failure": "java.lang.IllegalStateException: soul_wanders",
       "checks": {
         "plugin_enabled": "PASS",
         "world_created_with_generator": "PASS",
@@ -15,44 +17,26 @@
         "concrete_tree_cross_chunk": "PASS",
         "different_world_not_replaced": "PASS",
         "fresh_state": "PASS",
+        "zlor_enabled": "PASS",
+        "crown_give_command": "PASS",
         "craft_correct_detector": "PASS",
+        "old_shard_still_crafts": "PASS",
         "ordinary_amethyst_rejected": "PASS",
         "rift_create_command": "PASS",
         "detector_placement": "PASS",
         "detector_finds_rift": "PASS",
         "detector_click_handled": "PASS",
+        "crown_received": "PASS",
+        "crown_no_pumpkin_overlay": "PASS",
+        "crown_head_slot": "PASS",
+        "crown_equips": "PASS",
         "detector_crystal_created": "PASS",
         "portal_enters_dimension": "PASS",
         "soul_group_of_six": "PASS",
-        "soul_drops_shard": "PASS",
-        "portal_returns_to_origin_world": "PASS"
-      },
-      "failure": "",
-      "status": "PASS",
-      "phase": 1
-    },
-    {
-      "status": "PASS",
-      "phase": 2,
-      "checks": {
-        "plugin_enabled": "PASS",
-        "world_created_with_generator": "PASS",
-        "concrete_plain": "PASS",
-        "concrete_sun_and_sky": "PASS",
-        "invisible_lighting": "PASS",
-        "tree_test_found": "PASS",
-        "concrete_tree_cross_chunk": "PASS",
-        "different_world_not_replaced": "PASS",
-        "rift_persisted_after_restart": "PASS",
-        "detector_persisted_after_restart": "PASS",
-        "detector_block_persisted": "PASS",
-        "detector_crystal_restored_after_restart": "PASS",
-        "rift_close_command": "PASS",
-        "detector_break_intercepted": "PASS",
-        "detector_drops_itself": "PASS",
-        "detector_crystal_removed": "PASS"
-      },
-      "failure": ""
+        "souls_passive": "PASS",
+        "souls_have_models": "PASS",
+        "soul_still_alive": "PASS"
+      }
     }
   ],
   "visual_client": false
