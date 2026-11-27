@@ -10,6 +10,8 @@ import org.bukkit.event.block.*;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.inventory.InventoryOpenEvent;
+import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.inventory.*;
 import org.bukkit.persistence.PersistentDataType;
 
@@ -31,7 +33,20 @@ public final class Detector implements Listener {
         for(Player player:Bukkit.getOnlinePlayers())player.discoverRecipe(recipe);
     }
     void unregisterRecipe(){Bukkit.removeRecipe(recipe);}
-    @EventHandler public void join(PlayerJoinEvent event){event.getPlayer().discoverRecipe(recipe);}
+    private boolean upgradeShard(ItemStack stack){
+        if(!is(stack,"soul_shard"))return false;
+        var meta=stack.getItemMeta();var model=new NamespacedKey("z_test","soul_shard");
+        if(model.equals(meta.getItemModel()))return false;
+        meta.setItemModel(model);stack.setItemMeta(meta);return true;
+    }
+    private void upgradeInventory(Inventory inventory){
+        for(int i=0;i<inventory.getSize();i++){ItemStack stack=inventory.getItem(i);if(upgradeShard(stack))inventory.setItem(i,stack);}
+    }
+    void upgradePlayer(Player player){player.discoverRecipe(recipe);upgradeInventory(player.getInventory());}
+    @EventHandler public void join(PlayerJoinEvent event){upgradePlayer(event.getPlayer());}
+    @EventHandler(priority=EventPriority.MONITOR,ignoreCancelled=true) public void open(InventoryOpenEvent event){upgradeInventory(event.getInventory());upgradeInventory(event.getPlayer().getInventory());}
+    @EventHandler(priority=EventPriority.MONITOR,ignoreCancelled=true) public void itemSpawn(ItemSpawnEvent event){var stack=event.getEntity().getItemStack();if(upgradeShard(stack))event.getEntity().setItemStack(stack);}
+
     @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void place(BlockPlaceEvent e){
         Point at=Point.of(e.getBlockPlaced());
         if(is(e.getItemInHand(),"detector")){

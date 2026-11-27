@@ -28,6 +28,7 @@ public final class ZTestPlugin extends JavaPlugin {
             var pm=getServer().getPluginManager();pm.registerEvents(rifts,this);pm.registerEvents(detector,this);pm.registerEvents(souls,this);pm.registerEvents(visuals,this);
             Commands commands=new Commands(this);var command=Objects.requireNonNull(getCommand("ztest"));command.setExecutor(commands);command.setTabCompleter(commands);
             detector.registerRecipe();
+            for(var player:Bukkit.getOnlinePlayers())detector.upgradePlayer(player);
             rifts.start();souls.start();Bukkit.getScheduler().runTask(this,visuals::restoreLoaded);
             getLogger().info("Чистилище готово; разломов: "+state.rifts().size()+", детекторов: "+state.detectorCount());
         }catch(Exception e){getLogger().severe("Z_Test не запущен: "+e.getMessage());e.printStackTrace();getServer().getPluginManager().disablePlugin(this);}
