@@ -1,10 +1,11 @@
 {
   "status": "PASS",
-  "source_commit": "c5528e9a5508b5d17a9b3060781107bd9a78b68c",
+  "source_commit": "03cca797e6ef2c3901614bff40053fe731991d86",
   "server_build": 132,
   "server_sha256": "5ffef465eeeb5f2a3c23a24419d97c51afd7dbb4923ff42df9a3f58bba1ccfba",
   "phases": [
     {
+      "status": "PASS",
       "phase": 1,
       "checks": {
         "plugin_enabled": "PASS",
@@ -32,8 +33,10 @@
         "detector_crystal_created": "PASS",
         "portal_enters_dimension": "PASS",
         "soul_group_of_six": "PASS",
+        "souls_status_command": "PASS",
         "souls_passive": "PASS",
         "souls_have_models": "PASS",
+        "souls_bright_enough": "PASS",
         "soul_still_alive": "PASS",
         "soul_wanders": "PASS",
         "soul_model_remains_attached": "PASS",
@@ -41,10 +44,10 @@
         "soul_drops_shard": "PASS",
         "portal_returns_to_origin_world": "PASS"
       },
-      "failure": "",
-      "status": "PASS"
+      "failure": ""
     },
     {
+      "phase": 2,
       "checks": {
         "plugin_enabled": "PASS",
         "world_created_with_generator": "PASS",
@@ -63,9 +66,8 @@
         "detector_drops_itself": "PASS",
         "detector_crystal_removed": "PASS"
       },
-      "phase": 2,
-      "status": "PASS",
-      "failure": ""
+      "failure": "",
+      "status": "PASS"
     }
   ],
   "visual_client": false

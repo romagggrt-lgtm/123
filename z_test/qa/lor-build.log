@@ -5,125 +5,125 @@
 [INFO]   from pom.xml
 [INFO] --------------------------------[ jar ]---------------------------------
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.6.1/maven-shade-plugin-3.6.1.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.6.1/maven-shade-plugin-3.6.1.pom (12 kB at 43 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.6.1/maven-shade-plugin-3.6.1.pom (12 kB at 47 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.6.1/maven-shade-plugin-3.6.1.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.6.1/maven-shade-plugin-3.6.1.jar (150 kB at 3.0 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.6.1/maven-shade-plugin-3.6.1.jar (150 kB at 3.1 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/bytebuddy/byte-buddy/1.18.8/byte-buddy-1.18.8.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/bytebuddy/byte-buddy/1.18.8/byte-buddy-1.18.8.pom (21 kB at 96 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/bytebuddy/byte-buddy/1.18.8/byte-buddy-1.18.8.pom (21 kB at 63 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/bytebuddy/byte-buddy-parent/1.18.8/byte-buddy-parent-1.18.8.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/bytebuddy/byte-buddy-parent/1.18.8/byte-buddy-parent-1.18.8.pom (68 kB at 323 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/bytebuddy/byte-buddy-parent/1.18.8/byte-buddy-parent-1.18.8.pom (68 kB at 218 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jvorbis/1.3.6/jvorbis-1.3.6.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jvorbis/1.3.6/jvorbis-1.3.6.pom (3.9 kB at 20 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jvorbis/1.3.6/jvorbis-1.3.6.pom (3.9 kB at 16 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jogg/1.3.3/jogg-1.3.3.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jogg/1.3.3/jogg-1.3.3.pom (3.8 kB at 21 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jogg/1.3.3/jogg-1.3.3.pom (3.8 kB at 19 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/javazoom/jlayer/1.0.1/jlayer-1.0.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/javazoom/jlayer/1.0.1/jlayer-1.0.1.pom (4.0 kB at 22 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/javazoom/jlayer/1.0.1/jlayer-1.0.1.pom (4.0 kB at 12 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/vorbisspi/1.0.3.3/vorbisspi-1.0.3.3.pom
 [INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/vorbisspi/1.0.3.3/vorbisspi-1.0.3.3.pom (2.3 kB at 11 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/soundlibs/1.4/soundlibs-1.4.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/soundlibs/1.4/soundlibs-1.4.pom (4.7 kB at 25 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/soundlibs/1.4/soundlibs-1.4.pom (4.7 kB at 22 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/jorbis/0.0.17.4/jorbis-0.0.17.4.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/jorbis/0.0.17.4/jorbis-0.0.17.4.pom (1.8 kB at 8.5 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/jorbis/0.0.17.4/jorbis-0.0.17.4.pom (1.8 kB at 9.2 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/tritonus-share/0.3.7.4/tritonus-share-0.3.7.4.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/tritonus-share/0.3.7.4/tritonus-share-0.3.7.4.pom (1.9 kB at 10 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/tritonus-share/0.3.7.4/tritonus-share-0.3.7.4.pom (1.9 kB at 8.8 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/mockbukkit/mockbukkit/mockbukkit-v1.21/4.110.0/mockbukkit-v1.21-4.110.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/mockbukkit/mockbukkit/mockbukkit-v1.21/4.110.0/mockbukkit-v1.21-4.110.0.pom (4.1 kB at 22 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/mockbukkit/mockbukkit/mockbukkit-v1.21/4.110.0/mockbukkit-v1.21-4.110.0.pom (4.1 kB at 20 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.1.0/annotations-26.1.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.1.0/annotations-26.1.0.pom (1.7 kB at 112 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.1.0/annotations-26.1.0.pom (1.7 kB at 7.7 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/hamcrest/hamcrest/3.0/hamcrest-3.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/hamcrest/hamcrest/3.0/hamcrest-3.0.pom (1.6 kB at 7.8 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/hamcrest/hamcrest/3.0/hamcrest-3.0.pom (1.6 kB at 8.1 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-bungeecord/4.4.1/adventure-platform-bungeecord-4.4.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-bungeecord/4.4.1/adventure-platform-bungeecord-4.4.1.pom (3.3 kB at 17 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-bungeecord/4.4.1/adventure-platform-bungeecord-4.4.1.pom (3.3 kB at 11 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-legacy/4.21.0/adventure-text-serializer-legacy-4.21.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-legacy/4.21.0/adventure-text-serializer-legacy-4.21.0.pom (2.9 kB at 16 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-legacy/4.21.0/adventure-text-serializer-legacy-4.21.0.pom (2.9 kB at 6.7 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-bom/4.21.0/adventure-bom-4.21.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-bom/4.21.0/adventure-bom-4.21.0.pom (5.0 kB at 20 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-bom/4.21.0/adventure-bom-4.21.0.pom (5.0 kB at 22 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-gson/4.21.0/adventure-text-serializer-gson-4.21.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-gson/4.21.0/adventure-text-serializer-gson-4.21.0.pom (3.4 kB at 19 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-gson/4.21.0/adventure-text-serializer-gson-4.21.0.pom (3.4 kB at 17 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-json/4.21.0/adventure-text-serializer-json-4.21.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-json/4.21.0/adventure-text-serializer-json-4.21.0.pom (3.2 kB at 17 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-json/4.21.0/adventure-text-serializer-json-4.21.0.pom (3.2 kB at 15 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-commons/4.21.0/adventure-text-serializer-commons-4.21.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-commons/4.21.0/adventure-text-serializer-commons-4.21.0.pom (2.9 kB at 15 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-commons/4.21.0/adventure-text-serializer-commons-4.21.0.pom (2.9 kB at 14 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-bungeecord/4.4.1/adventure-text-serializer-bungeecord-4.4.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-bungeecord/4.4.1/adventure-text-serializer-bungeecord-4.4.1.pom (2.9 kB at 15 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-bungeecord/4.4.1/adventure-text-serializer-bungeecord-4.4.1.pom (2.9 kB at 14 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-facet/4.4.1/adventure-platform-facet-4.4.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-facet/4.4.1/adventure-platform-facet-4.4.1.pom (2.5 kB at 12 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-facet/4.4.1/adventure-platform-facet-4.4.1.pom (2.5 kB at 7.6 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-nbt/4.21.0/adventure-nbt-4.21.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-nbt/4.21.0/adventure-nbt-4.21.0.pom (3.2 kB at 17 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-nbt/4.21.0/adventure-nbt-4.21.0.pom (3.2 kB at 14 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-resolver-provider/3.8.5/maven-resolver-provider-3.8.5.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-resolver-provider/3.8.5/maven-resolver-provider-3.8.5.pom (4.2 kB at 25 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-resolver-provider/3.8.5/maven-resolver-provider-3.8.5.pom (4.2 kB at 21 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven/3.8.5/maven-3.8.5.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven/3.8.5/maven-3.8.5.pom (27 kB at 171 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven/3.8.5/maven-3.8.5.pom (27 kB at 135 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-parent/35/maven-parent-35.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-parent/35/maven-parent-35.pom (46 kB at 317 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-parent/35/maven-parent-35.pom (46 kB at 220 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/25/apache-25.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/25/apache-25.pom (20 kB at 138 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/25/apache-25.pom (20 kB at 72 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-model/3.8.5/maven-model-3.8.5.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-model/3.8.5/maven-model-3.8.5.pom (2.8 kB at 18 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-model/3.8.5/maven-model-3.8.5.pom (2.8 kB at 13 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus-utils/3.3.0/plexus-utils-3.3.0.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus-utils/3.3.0/plexus-utils-3.3.0.pom (5.2 kB at 33 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/codehaus/plexus/plexus-utils/3.3.0/plexus-utils-3.3.0.pom (5.2 kB at 13 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-model-builder/3.8.5/maven-model-builder-3.8.5.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-model-builder/3.8.5/maven-model-builder-3.8.5.pom (3.4 kB at 22 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-model-builder/3.8.5/maven-model-builder-3.8.5.pom (3.4 kB at 16 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-artifact/3.8.5/maven-artifact-3.8.5.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-artifact/3.8.5/maven-artifact-3.8.5.pom (2.4 kB at 16 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-artifact/3.8.5/maven-artifact-3.8.5.pom (2.4 kB at 11 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/commons/commons-lang3/3.8.1/commons-lang3-3.8.1.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/commons/commons-lang3/3.8.1/commons-lang3-3.8.1.pom (28 kB at 183 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/commons/commons-lang3/3.8.1/commons-lang3-3.8.1.pom (28 kB at 135 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/commons/commons-parent/47/commons-parent-47.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/commons/commons-parent/47/commons-parent-47.pom (78 kB at 510 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/commons/commons-parent/47/commons-parent-47.pom (78 kB at 390 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/19/apache-19.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/19/apache-19.pom (16 kB at 103 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/apache/19/apache-19.pom (16 kB at 76 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-builder-support/3.8.5/maven-builder-support-3.8.5.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-builder-support/3.8.5/maven-builder-support-3.8.5.pom (1.4 kB at 9.1 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-builder-support/3.8.5/maven-builder-support-3.8.5.pom (1.4 kB at 6.8 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/eclipse/sisu/org.eclipse.sisu.inject/0.3.5/org.eclipse.sisu.inject-0.3.5.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/eclipse/sisu/org.eclipse.sisu.inject/0.3.5/org.eclipse.sisu.inject-0.3.5.pom (2.6 kB at 18 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/eclipse/sisu/org.eclipse.sisu.inject/0.3.5/org.eclipse.sisu.inject-0.3.5.pom (2.6 kB at 14 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/eclipse/sisu/sisu-inject/0.3.5/sisu-inject-0.3.5.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/eclipse/sisu/sisu-inject/0.3.5/sisu-inject-0.3.5.pom (14 kB at 102 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/eclipse/sisu/sisu-inject/0.3.5/sisu-inject-0.3.5.pom (14 kB at 55 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-repository-metadata/3.8.5/maven-repository-metadata-3.8.5.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-repository-metadata/3.8.5/maven-repository-metadata-3.8.5.pom (2.1 kB at 15 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-repository-metadata/3.8.5/maven-repository-metadata-3.8.5.pom (2.1 kB at 10.0 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-api/1.6.3/maven-resolver-api-1.6.3.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-api/1.6.3/maven-resolver-api-1.6.3.pom (2.6 kB at 15 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-api/1.6.3/maven-resolver-api-1.6.3.pom (2.6 kB at 13 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver/1.6.3/maven-resolver-1.6.3.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver/1.6.3/maven-resolver-1.6.3.pom (19 kB at 120 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver/1.6.3/maven-resolver-1.6.3.pom (19 kB at 93 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-parent/34/maven-parent-34.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-parent/34/maven-parent-34.pom (44 kB at 296 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/maven-parent/34/maven-parent-34.pom (44 kB at 208 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-spi/1.6.3/maven-resolver-spi-1.6.3.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-spi/1.6.3/maven-resolver-spi-1.6.3.pom (2.7 kB at 18 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-spi/1.6.3/maven-resolver-spi-1.6.3.pom (2.7 kB at 13 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-util/1.6.3/maven-resolver-util-1.6.3.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-util/1.6.3/maven-resolver-util-1.6.3.pom (2.8 kB at 17 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-util/1.6.3/maven-resolver-util-1.6.3.pom (2.8 kB at 14 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-impl/1.6.3/maven-resolver-impl-1.6.3.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-impl/1.6.3/maven-resolver-impl-1.6.3.pom (4.2 kB at 27 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/apache/maven/resolver/maven-resolver-impl/1.6.3/maven-resolver-impl-1.6.3.pom (4.2 kB at 20 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.pom (3.8 kB at 26 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.pom (3.8 kB at 20 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-parent/1.7.30/slf4j-parent-1.7.30.pom
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-parent/1.7.30/slf4j-parent-1.7.30.pom (14 kB at 95 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/slf4j/slf4j-parent/1.7.30/slf4j-parent-1.7.30.pom (14 kB at 67 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/bytebuddy/byte-buddy/1.18.8/byte-buddy-1.18.8.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/bytebuddy/byte-buddy/1.18.8/byte-buddy-1.18.8.jar (4.7 MB at 43 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/bytebuddy/byte-buddy/1.18.8/byte-buddy-1.18.8.jar (4.7 MB at 16 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jvorbis/1.3.6/jvorbis-1.3.6.jar
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jogg/1.3.3/jogg-1.3.3.jar
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/javazoom/jlayer/1.0.1/jlayer-1.0.1.jar
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/vorbisspi/1.0.3.3/vorbisspi-1.0.3.3.jar
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/jorbis/0.0.17.4/jorbis-0.0.17.4.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jogg/1.3.3/jogg-1.3.3.jar (19 kB at 448 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jvorbis/1.3.6/jvorbis-1.3.6.jar (1.1 MB at 5.1 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/tritonus-share/0.3.7.4/tritonus-share-0.3.7.4.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/vorbisspi/1.0.3.3/vorbisspi-1.0.3.3.jar (20 kB at 413 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/vorbisspi/1.0.3.3/vorbisspi-1.0.3.3.jar (20 kB at 88 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/mockbukkit/mockbukkit/mockbukkit-v1.21/4.110.0/mockbukkit-v1.21-4.110.0.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jvorbis/1.3.6/jvorbis-1.3.6.jar (1.1 MB at 23 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/jorbis/0.0.17.4/jorbis-0.0.17.4.jar (100 kB at 425 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.1.0/annotations-26.1.0.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/jorbis/0.0.17.4/jorbis-0.0.17.4.jar (100 kB at 2.0 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.1.0/annotations-26.1.0.jar (31 kB at 121 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/org/hamcrest/hamcrest/3.0/hamcrest-3.0.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/javazoom/jlayer/1.0.1/jlayer-1.0.1.jar (144 kB at 2.6 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/github/axet/jogg/1.3.3/jogg-1.3.3.jar (19 kB at 63 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-bungeecord/4.4.1/adventure-platform-bungeecord-4.4.1.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/tritonus-share/0.3.7.4/tritonus-share-0.3.7.4.jar (133 kB at 2.0 MB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/javazoom/jlayer/1.0.1/jlayer-1.0.1.jar (144 kB at 424 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-bungeecord/4.4.1/adventure-text-serializer-bungeecord-4.4.1.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/jetbrains/annotations/26.1.0/annotations-26.1.0.jar (31 kB at 464 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-bungeecord/4.4.1/adventure-text-serializer-bungeecord-4.4.1.jar (9.6 kB at 27 kB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-facet/4.4.1/adventure-platform-facet-4.4.1.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-bungeecord/4.4.1/adventure-platform-bungeecord-4.4.1.jar (31 kB at 448 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/mockbukkit/mockbukkit/mockbukkit-v1.21/4.110.0/mockbukkit-v1.21-4.110.0.jar (2.0 MB at 4.1 MB/s)
 [INFO] Downloading from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-nbt/4.21.0/adventure-nbt-4.21.0.jar
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/hamcrest/hamcrest/3.0/hamcrest-3.0.jar (126 kB at 1.8 MB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-text-serializer-bungeecord/4.4.1/adventure-text-serializer-bungeecord-4.4.1.jar (9.6 kB at 119 kB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-nbt/4.21.0/adventure-nbt-4.21.0.jar (103 kB at 1.2 MB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/mockbukkit/mockbukkit/mockbukkit-v1.21/4.110.0/mockbukkit-v1.21-4.110.0.jar (2.0 MB at 20 MB/s)
-[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-facet/4.4.1/adventure-platform-facet-4.4.1.jar (43 kB at 172 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-nbt/4.21.0/adventure-nbt-4.21.0.jar (103 kB at 205 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-bungeecord/4.4.1/adventure-platform-bungeecord-4.4.1.jar (31 kB at 61 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/net/kyori/adventure-platform-facet/4.4.1/adventure-platform-facet-4.4.1.jar (43 kB at 78 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/org/hamcrest/hamcrest/3.0/hamcrest-3.0.jar (126 kB at 211 kB/s)
+[INFO] Downloaded from papermc: https://repo.papermc.io/repository/maven-public/com/googlecode/soundlibs/tritonus-share/0.3.7.4/tritonus-share-0.3.7.4.jar (133 kB at 213 kB/s)
 [INFO] 
 [INFO] --- resources:3.4.0:resources (default-resources) @ Z_Lor ---
 [INFO] Copying 8 resources from src/main/resources to target/classes
@@ -170,100 +170,100 @@
 SLF4J(W): No SLF4J providers were found.
 SLF4J(W): Defaulting to no-operation (NOP) logger implementation
 SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
-[09:41:38 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:38 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:38 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:38 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:38 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:39 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:39 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.756 s -- in dev.zlor.BrewingTest
+[14:15:28 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:28 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:28 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:28 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:28 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:28 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:29 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.879 s -- in dev.zlor.BrewingTest
 [INFO] Running dev.zlor.reference.DomeAnimationTest
-[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in dev.zlor.reference.DomeAnimationTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in dev.zlor.reference.DomeAnimationTest
 [INFO] Running dev.zlor.reference.EndStructureHeightsTest
 [INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in dev.zlor.reference.EndStructureHeightsTest
 [INFO] Running dev.zlor.reference.EncounterRulesTest
-[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.053 s -- in dev.zlor.reference.EncounterRulesTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.063 s -- in dev.zlor.reference.EncounterRulesTest
 [INFO] Running dev.zlor.RulesTest
-[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.042 s -- in dev.zlor.RulesTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 s -- in dev.zlor.RulesTest
 [INFO] Running dev.zlor.PluginTest
-[09:41:39 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:39 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:39 WARNING]: Нативное чтение редстоуна недоступно; включён ограниченный Bukkit fallback: NoSuchMethodException
-[09:41:39 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:39 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:39 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:39 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:40 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:40 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:40 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:40 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:40 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:40 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:40 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:40 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:40 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:40 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:40 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:40 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:40 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:40 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:40 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:40 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:41 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:41 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:41 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:41 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:41 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:41 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:41 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:41 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:41 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:41 WARNING]: Нативное чтение редстоуна недоступно; включён ограниченный Bukkit fallback: NoSuchMethodException
-[09:41:41 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:41 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:41 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[INFO] Tests run: 34, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.320 s -- in dev.zlor.PluginTest
+[14:15:29 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:29 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:29 WARNING]: Нативное чтение редстоуна недоступно; включён ограниченный Bukkit fallback: NoSuchMethodException
+[14:15:29 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:29 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:29 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:29 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:29 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:29 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:29 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:30 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:30 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:30 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:30 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:30 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:30 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:30 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:30 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:30 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:30 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:30 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:30 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:30 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:30 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:30 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:30 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:30 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:30 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:30 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:30 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:30 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:31 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:31 WARNING]: Нативное чтение редстоуна недоступно; включён ограниченный Bukkit fallback: NoSuchMethodException
+[14:15:31 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:31 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:31 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[INFO] Tests run: 34, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.066 s -- in dev.zlor.PluginTest
 [INFO] Running dev.zlor.StateStoreTest
-[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.066 s -- in dev.zlor.StateStoreTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.047 s -- in dev.zlor.StateStoreTest
 [INFO] Running dev.zlor.NativeBoundaryTest
-[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.193 s -- in dev.zlor.NativeBoundaryTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 s -- in dev.zlor.NativeBoundaryTest
 [INFO] Running dev.zlor.Fixes101Test
-[09:41:41 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:41 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:41 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:41 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:42 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:42 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:42 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:42 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:42 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:42 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:42 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.517 s -- in dev.zlor.Fixes101Test
+[14:15:31 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:31 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:31 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:31 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:31 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:31 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:31 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:31 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:31 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:31 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:31 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.550 s -- in dev.zlor.Fixes101Test
 [INFO] Running dev.zlor.CombatAndLootTest
-[09:41:42 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:42 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:42 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:42 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:42 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:42 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:42 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:42 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:42 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:42 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:42 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:42 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:42 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:42 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:43 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:43 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[09:41:43 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
-[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.797 s -- in dev.zlor.CombatAndLootTest
+[14:15:31 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:31 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:31 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:31 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:32 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:32 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:32 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:32 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:32 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:32 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:32 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:32 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:32 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:32 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:32 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:32 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[14:15:32 INFO]: Z_Lor 1.1.1: Paper 1.21.11 / Java 21. Общий RP задаётся в server.properties.
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.671 s -- in dev.zlor.CombatAndLootTest
 [INFO] Running dev.zlor.MenuInputTest
-[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in dev.zlor.MenuInputTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in dev.zlor.MenuInputTest
 [INFO] Running dev.zlor.AudioTest
-[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.687 s -- in dev.zlor.AudioTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.537 s -- in dev.zlor.AudioTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -275,13 +275,13 @@ SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
 [INFO] 
 [INFO] --- shade:3.6.1:shade (default) @ Z_Lor ---
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.8/asm-commons-9.8.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.8/asm-commons-9.8.pom (2.8 kB at 100 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.8/asm-commons-9.8.pom (2.8 kB at 82 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.8/asm-tree-9.8.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.8/asm-tree-9.8.pom (2.6 kB at 104 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.8/asm-tree-9.8.pom (2.6 kB at 100 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.pom (4.6 kB at 209 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.pom (4.6 kB at 177 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.10/jdependency-2.10.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.10/jdependency-2.10.pom (14 kB at 668 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.10/jdependency-2.10.pom (14 kB at 561 kB/s)
 [INFO] Artifact org.codehaus.plexus:plexus-utils:jar:3.5.1 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
 [INFO] Artifact org.codehaus.plexus:plexus-utils:jar:3.5.1 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.jar
@@ -290,10 +290,10 @@ SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.8/asm-tree-9.8.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.jar
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.10/jdependency-2.10.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.8/asm-commons-9.8.jar (73 kB at 3.7 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.8/asm-tree-9.8.jar (52 kB at 980 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.jar (328 kB at 5.9 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.10/jdependency-2.10.jar (416 kB at 6.3 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.8/asm-tree-9.8.jar (52 kB at 2.2 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.8/asm-commons-9.8.jar (73 kB at 1.1 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.jar (328 kB at 4.3 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.10/jdependency-2.10.jar (416 kB at 5.4 MB/s)
 [WARNING] Z_Lor-1.1.1.jar, byte-buddy-1.18.8.jar, jlayer-1.0.1.jar, jogg-1.3.3.jar, jorbis-0.0.17.4.jar, jvorbis-1.3.6.jar, tritonus-share-0.3.7.4.jar, vorbisspi-1.0.3.3.jar define 1 overlapping resource: 
 [WARNING]   - META-INF/MANIFEST.MF
 [WARNING] maven-shade-plugin has detected that some files are
@@ -307,6 +307,6 @@ SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  23.674 s
-[INFO] Finished at: 2026-11-27T09:41:46Z
+[INFO] Total time:  23.920 s
+[INFO] Finished at: 2026-11-27T14:15:35Z
 [INFO] ------------------------------------------------------------------------
