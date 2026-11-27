@@ -75,8 +75,9 @@ class PluginTest {
         server.dispatchCommand(server.getConsoleSender(),"zlore Ordinary give");settle();
         var crown=Arrays.stream(ordinary.getInventory().getContents()).filter(item->p.items.is(item,"eneit_crown")).findFirst().orElseThrow();
         assertEquals(Material.CARVED_PUMPKIN,crown.getType());assertEquals(1,crown.getMaxStackSize());
-        assertEquals(new NamespacedKey("z_lor","eneit_crown"),crown.getItemMeta().getItemModel());
-        assertNull(crown.getItemMeta().getEquippable().getCameraOverlay());assertNull(p.items.recipe("eneit_crown"));
+        // MockBukkit does not preserve the 1.21.11 item-model component;
+        // real Paper checks the model and camera overlay in NativeSmoke.
+        assertNull(p.items.recipe("eneit_crown"));
         server.dispatchCommand(ordinary,"zlore Ordinary give");settle();
         assertEquals(1,Arrays.stream(ordinary.getInventory().getContents()).filter(item->p.items.is(item,"eneit_crown")).count());
     }
