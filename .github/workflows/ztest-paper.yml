@@ -43,7 +43,7 @@ jobs:
       - name: Prepare verified plugins
         if: success()
         run: |
-          cp z_test/target/Z_Test-1.0.1.jar dist/Z_Test-1.0.1.jar
+          cp z_test/target/Z_Test-1.0.2.jar dist/Z_Test-1.0.2.jar
           cp lor/target/Z_Lor-1.1.1.jar dist/Z_Lor-1.1.1.jar
       - name: Preserve build evidence
         if: always()
@@ -56,7 +56,7 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add z_test/qa/
-          if [ -f dist/Z_Test-1.0.1.jar ]; then git add dist/Z_Test-1.0.1.jar; fi
+          if [ -f dist/Z_Test-1.0.2.jar ]; then git add dist/Z_Test-1.0.2.jar; fi
           if [ -f dist/Z_Lor-1.1.1.jar ]; then git add dist/Z_Lor-1.1.1.jar; fi
           git diff --cached --quiet && exit 0
           git commit -m 'Record Z_Test and Z_Lor build evidence [skip ci]'

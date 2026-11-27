@@ -14,21 +14,56 @@ public final class Souls implements Listener {
     private final NamespacedKey soul, visual;
     private final Random random=new Random();
     private final Map<UUID,Location> destinations=new HashMap<>();
+    private final Set<UUID> welcomed=new HashSet<>();
     Souls(ZTestPlugin plugin){p=plugin;soul=new NamespacedKey(p,"soul");visual=new NamespacedKey(p,"soul_visual");}
     void start(){
         long interval=Math.max(5,Math.min(600,p.getConfig().getInt("souls.interval-seconds",30)))*20L;
         Bukkit.getScheduler().runTaskTimer(p,this::spawnTick,interval,interval);
+        Bukkit.getScheduler().runTaskTimer(p,this::ensureFirstGroup,40L,100L);
         Bukkit.getScheduler().runTaskTimer(p,this::moveTick,1L,1L);
+    }
+    // Give each arriving player a first encounter without waiting for the
+    // random ambient-spawn timer. Do not immediately replace killed groups.
+    private void ensureFirstGroup(){
+        World w=p.purgatory;if(w==null)return;
+        Set<UUID> present=new HashSet<>();
+        for(Player player:w.getPlayers())if(player.getGameMode()!=GameMode.SPECTATOR){
+            UUID id=player.getUniqueId();present.add(id);if(welcomed.contains(id))continue;
+            if(!w.getNearbyEntitiesByType(Allay.class,player.getLocation(),24,this::isSoul).isEmpty()){welcomed.add(id);continue;}
+            if(spawnNear(player,false)==6)welcomed.add(id);
+        }
+        welcomed.retainAll(present);
+    }
+    int spawnNear(Player player,boolean manual){
+        if(!player.getWorld().equals(p.purgatory))throw new IllegalArgumentException("Душ можно призвать только внутри Чистилища");
+        World w=player.getWorld();int limit=Math.max(6,Math.min(300,p.getConfig().getInt("souls.max-per-world",30)));
+        if(w.getEntitiesByClass(Allay.class).stream().filter(this::isSoul).count()+6>limit)return 0;
+        var looking=player.getLocation().getDirection().setY(0);
+        double start=looking.lengthSquared()<.001?0:Math.atan2(looking.getZ(),looking.getX());
+        for(int i=0;i<12;i++){
+            double angle=start+((i+1)/2)*(i%2==0?-.55:.55),dist=7+(i%3);
+            int x=player.getLocation().getBlockX()+(int)Math.round(Math.cos(angle)*dist),z=player.getLocation().getBlockZ()+(int)Math.round(Math.sin(angle)*dist);
+            if(!w.isChunkLoaded(x>>4,z>>4))continue;int n=spawnGroup(player,x,z);if(n>0){if(!manual)welcomed.add(player.getUniqueId());return n;}
+        }
+        return 0;
+    }
+    String status(Player player){
+        if(!player.getWorld().equals(p.purgatory))return "§eТы не в Чистилище; пройди через разлом.";
+        var souls=p.purgatory.getEntitiesByClass(Allay.class).stream().filter(this::isSoul).toList();
+        var nearest=souls.stream().min(Comparator.comparingDouble(v->v.getLocation().distanceSquared(player.getLocation()))).orElse(null);
+        if(nearest==null)return "§eВ загруженных чанках душ нет. Проверь /ztest souls spawn и сложность мира.";
+        var loc=nearest.getLocation();long displayed=souls.stream().filter(v->v.getPassengers().stream().anyMatch(e->e instanceof ItemDisplay)).count();
+        return "§fДуш: "+souls.size()+", с моделью: "+displayed+". Ближайшая: X "+loc.getBlockX()+" Y "+loc.getBlockY()+" Z "+loc.getBlockZ()+" ("+Math.round(loc.distance(player.getLocation()))+" блоков).";
     }
     private void spawnTick(){
         World w=p.purgatory;if(w==null||w.getPlayers().isEmpty())return;
         int limit=Math.max(6,Math.min(300,p.getConfig().getInt("souls.max-per-world",30)));
-        int count=(int)w.getEntitiesByClass(Vex.class).stream().filter(this::isSoul).count();
+        int count=(int)w.getEntitiesByClass(Allay.class).stream().filter(this::isSoul).count();
         int min=Math.max(6,Math.min(80,p.getConfig().getInt("souls.spawn-distance-min",12))),max=Math.max(min,Math.min(96,p.getConfig().getInt("souls.spawn-distance-max",24)));
         double chance=Math.max(0,Math.min(1,p.getConfig().getDouble("souls.chance",.45)));
         for(Player player:w.getPlayers()){
             if(count+6>limit)break;if(player.getGameMode()==GameMode.SPECTATOR||random.nextDouble()>chance)continue;
-            if(w.getNearbyEntitiesByType(Vex.class,player.getLocation(),32,this::isSoul).size()>=6)continue;
+            if(w.getNearbyEntitiesByType(Allay.class,player.getLocation(),32,this::isSoul).size()>=6)continue;
             double angle=random.nextDouble()*Math.PI*2,dist=min+random.nextDouble()*(max-min);
             int x=player.getLocation().getBlockX()+(int)Math.round(Math.cos(angle)*dist),z=player.getLocation().getBlockZ()+(int)Math.round(Math.sin(angle)*dist);
             if(w.isChunkLoaded(x>>4,z>>4))count+=spawnGroup(player,x,z);
@@ -41,19 +76,23 @@ public final class Souls implements Listener {
             int y=Terrain.GROUND+2;
             if(w.getBlockAt(x+dx,y,z+dz).isPassable()&&w.getBlockAt(x+dx,y+1,z+dz).isPassable()&&w.getBlockAt(x+dx,Terrain.GROUND,z+dz).getType().isSolid())positions.add(new Location(w,x+dx+.5,y,z+dz+.5));
         }
-        if(positions.size()<6)return 0;Collections.shuffle(positions,random);int spawned=0;
+        if(positions.size()<6)return 0;Collections.shuffle(positions,random);List<Allay> created=new ArrayList<>();
         for(int i=0;i<6;i++)try{
-            Vex v=w.spawn(positions.get(i),Vex.class,CreatureSpawnEvent.SpawnReason.CUSTOM,e->{e.getPersistentDataContainer().set(soul,PersistentDataType.BYTE,(byte)1);configure(e);});
-            if(v.isValid()){attach(v);spawned++;}
+            Allay v=w.spawn(positions.get(i),Allay.class,CreatureSpawnEvent.SpawnReason.CUSTOM,e->{e.getPersistentDataContainer().set(soul,PersistentDataType.BYTE,(byte)1);configure(e);});
+            if(v.isValid()){attach(v);created.add(v);}
         }catch(IllegalArgumentException ex){p.getLogger().warning("Не удалось создать душу: "+ex.getMessage());}
-        return spawned;
+        if(created.size()!=6){
+            for(Allay v:created){for(Entity e:v.getPassengers())if(e.getPersistentDataContainer().has(visual,PersistentDataType.BYTE))e.remove();v.remove();}
+            return 0;
+        }
+        return 6;
     }
-    private void configure(Vex v){
-        v.setCustomName("§dДуша");v.setCustomNameVisible(false);v.setLimitedLifetime(false);v.setRemoveWhenFarAway(true);v.setPersistent(false);
+    private void configure(Allay v){
+        v.setCustomName("§dДуша");v.setCustomNameVisible(false);v.setRemoveWhenFarAway(true);v.setPersistent(false);
         v.setAI(false);v.setGravity(false);v.setInvisible(true);v.setSilent(true);v.setTarget(null);
         if(v.getEquipment()!=null)v.getEquipment().clear();
     }
-    private void attach(Vex v){
+    private void attach(Allay v){
         if(v.getPassengers().stream().anyMatch(e->e.getPersistentDataContainer().has(visual,PersistentDataType.BYTE)))return;
         ItemStack item=new ItemStack(Material.PAPER);item.editMeta(m->m.setItemModel(new NamespacedKey("z_test","soul")));
         ItemDisplay display=v.getWorld().spawn(v.getLocation(),ItemDisplay.class,d->{
@@ -66,7 +105,7 @@ public final class Souls implements Listener {
     private void moveTick(){
         World w=p.purgatory;if(w==null)return;
         Set<UUID> alive=new HashSet<>();
-        for(Vex v:w.getEntitiesByClass(Vex.class)){
+        for(Allay v:w.getEntitiesByClass(Allay.class)){
             if(!isSoul(v))continue;alive.add(v.getUniqueId());
             if(v.hasAI()||!v.isInvisible())configure(v);
             attach(v);
@@ -92,13 +131,13 @@ public final class Souls implements Listener {
     }
     void cleanup(){
         if(p.purgatory==null)return;
-        for(Vex v:p.purgatory.getEntitiesByClass(Vex.class))if(isSoul(v)){for(Entity e:v.getPassengers())if(e.getPersistentDataContainer().has(visual,PersistentDataType.BYTE))e.remove();v.remove();}
+        for(Allay v:p.purgatory.getEntitiesByClass(Allay.class))if(isSoul(v)){for(Entity e:v.getPassengers())if(e.getPersistentDataContainer().has(visual,PersistentDataType.BYTE))e.remove();v.remove();}
     }
-    public boolean isSoul(Vex v){return v.getPersistentDataContainer().has(soul,PersistentDataType.BYTE);}
-    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void target(EntityTargetEvent e){if(e.getEntity() instanceof Vex v&&isSoul(v))e.setCancelled(true);}
-    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void damage(EntityDamageByEntityEvent e){if(e.getDamager() instanceof Vex v&&isSoul(v))e.setCancelled(true);}
+    public boolean isSoul(Allay v){return v.getPersistentDataContainer().has(soul,PersistentDataType.BYTE);}
+    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void target(EntityTargetEvent e){if(e.getEntity() instanceof Allay v&&isSoul(v))e.setCancelled(true);}
+    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void damage(EntityDamageByEntityEvent e){if(e.getDamager() instanceof Allay v&&isSoul(v))e.setCancelled(true);}
     @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void death(EntityDeathEvent e){
-        if(!(e.getEntity() instanceof Vex v)||!isSoul(v))return;
+        if(!(e.getEntity() instanceof Allay v)||!isSoul(v))return;
         v.getPassengers().stream().filter(d->d.getPersistentDataContainer().has(visual,PersistentDataType.BYTE)).forEach(Entity::remove);
         destinations.remove(v.getUniqueId());e.getDrops().clear();
         int min=Math.max(1,Math.min(64,p.getConfig().getInt("souls.drops-min",1))),max=Math.max(min,Math.min(64,p.getConfig().getInt("souls.drops-max",2)));
