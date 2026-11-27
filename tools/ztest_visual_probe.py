@@ -3,6 +3,7 @@ from pathlib import Path
 from zipfile import ZipFile
 from PIL import Image
 from Xlib import X,display
+from Xlib.ext import xtest
 import hashlib,json,os,shutil,subprocess,time,urllib.request
 from lor_vanilla_client import prepare,launch,GAME
 ROOT=Path(__file__).resolve().parents[1];WORK=ROOT/'z_test/target/visual-server';REPORT=ROOT/'z_test/visual-qa'
@@ -33,7 +34,16 @@ try:
     if (WORK/'visual-error.txt').exists():raise RuntimeError((WORK/'visual-error.txt').read_text())
     if (WORK/'visual-ready.txt').exists():
      time.sleep(5);conn=display.Display(os.environ['DISPLAY']);screen=conn.screen();pixels=screen.root.get_image(0,0,screen.width_in_pixels,screen.height_in_pixels,X.ZPixmap,0xffffffff)
-     Image.frombytes('RGB',(screen.width_in_pixels,screen.height_in_pixels),pixels.data,'raw','BGRX').save(REPORT/'ghost.png');break
+     Image.frombytes('RGB',(screen.width_in_pixels,screen.height_in_pixels),pixels.data,'raw','BGRX').save(REPORT/'ghost.png')
+     windows=screen.root.query_tree().children
+     for win in windows:
+      name=win.get_wm_name()
+      if name and 'Minecraft' in name:
+       win.set_input_focus(X.RevertToParent,X.CurrentTime);conn.sync();break
+     time.sleep(1)
+     for _ in range(4):
+      xtest.fake_input(conn,X.ButtonPress,detail=1);xtest.fake_input(conn,X.ButtonRelease,detail=1);conn.sync();time.sleep(1)
+     break
     time.sleep(1)
    assert (REPORT/'ghost.png').exists(),'visual timeout'
   finally:
@@ -43,6 +53,6 @@ try:
     except subprocess.TimeoutExpired:server.kill();server.wait()
  logs=GAME/'logs/latest.log'
  if logs.exists():shutil.copyfile(logs,REPORT/'client.log')
- (REPORT/'result.json').write_text(json.dumps({'status':'CAPTURED','probe':(WORK/'visual-ready.txt').read_text(),'source_commit':os.environ.get('GITHUB_SHA'),'client':'Minecraft Java 1.21.11','pack':'Z_Server_Pack_1.17.zip'},indent=2))
+ (REPORT/'result.json').write_text(json.dumps({'status':'CAPTURED','probe':(WORK/'visual-ready.txt').read_text(),'source_commit':os.environ.get('GITHUB_SHA'),'client':'Minecraft Java 1.21.11','pack':'Z_Server_Pack_1.17.zip','attack_event':(WORK/'visual-damage.txt').read_text() if (WORK/'visual-damage.txt').exists() else 'NONE'},indent=2))
 except Exception as e:
  (REPORT/'result.json').write_text(json.dumps({'status':'FAIL','error':str(e),'source_commit':os.environ.get('GITHUB_SHA')},indent=2));raise
