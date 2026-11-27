@@ -58,6 +58,7 @@ public final class Souls implements Listener {
         ItemStack item=new ItemStack(Material.PAPER);item.editMeta(m->m.setItemModel(new NamespacedKey("z_test","soul")));
         ItemDisplay display=v.getWorld().spawn(v.getLocation(),ItemDisplay.class,d->{
             d.setItemStack(item);d.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.FIXED);d.setPersistent(false);
+            d.setBrightness(new Display.Brightness(15,15));var transformation=d.getTransformation();transformation.getScale().set(1.4f,1.4f,1.4f);d.setTransformation(transformation);
             d.getPersistentDataContainer().set(visual,PersistentDataType.BYTE,(byte)1);
             d.setInterpolationDuration(3);d.setTeleportDuration(3);
         });
