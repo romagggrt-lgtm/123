@@ -11,11 +11,13 @@ import org.bukkit.util.Vector;
 
 public final class Souls implements Listener {
     private final ZTestPlugin p;
-    private final NamespacedKey soul, visual;
+    private final NamespacedKey soul, visual, hitbox;
     private final Random random=new Random();
     private final Map<UUID,Location> destinations=new HashMap<>();
+    private final Map<UUID,UUID> hitboxes=new HashMap<>();
+    private final Map<UUID,String> lastAttacks=new HashMap<>();
     private final Set<UUID> welcomed=new HashSet<>();
-    Souls(ZTestPlugin plugin){p=plugin;soul=new NamespacedKey(p,"soul");visual=new NamespacedKey(p,"soul_visual");}
+    Souls(ZTestPlugin plugin){p=plugin;soul=new NamespacedKey(p,"soul");visual=new NamespacedKey(p,"soul_visual");hitbox=new NamespacedKey(p,"soul_hitbox");}
     void start(){
         long interval=Math.max(5,Math.min(600,p.getConfig().getInt("souls.interval-seconds",30)))*20L;
         Bukkit.getScheduler().runTaskTimer(p,this::spawnTick,interval,interval);
@@ -103,13 +105,41 @@ public final class Souls implements Listener {
         });
         if(!v.addPassenger(display))display.remove();
     }
+    private void updateHitbox(Allay v){
+        ItemDisplay model=v.getPassengers().stream().filter(e->e instanceof ItemDisplay&&e.getPersistentDataContainer().has(visual,PersistentDataType.BYTE)).map(e->(ItemDisplay)e).findFirst().orElse(null);
+        if(model==null)return;
+        var where=model.getLocation().add(0,-.55,0);
+        UUID id=hitboxes.get(v.getUniqueId());Entity existing=id==null?null:Bukkit.getEntity(id);
+        Interaction box;
+        if(existing instanceof Interaction i&&i.isValid())box=i;
+        else{
+            box=v.getWorld().spawn(where,Interaction.class,i->{
+                i.setInteractionWidth(1.35f);i.setInteractionHeight(1.10f);i.setResponsive(true);i.setPersistent(false);
+                i.getPersistentDataContainer().set(hitbox,PersistentDataType.STRING,v.getUniqueId().toString());
+            });
+            hitboxes.put(v.getUniqueId(),box.getUniqueId());lastAttacks.remove(v.getUniqueId());
+        }
+        if(!box.getWorld().equals(where.getWorld())||box.getLocation().distanceSquared(where)>.00001)box.teleport(where);
+        var previous=box.getLastAttack();
+        if(previous!=null){
+            String mark=previous.getPlayer().getUniqueId()+":"+previous.getTimestamp();
+            if(!mark.equals(lastAttacks.put(v.getUniqueId(),mark))){
+                Player attacker=previous.getPlayer().getPlayer();
+                if(attacker!=null&&attacker.isOnline()&&attacker.getGameMode()!=GameMode.SPECTATOR&&attacker.getWorld().equals(v.getWorld()))attacker.attack(v);
+            }
+        }
+    }
+    private void removeHitbox(UUID soulId){
+        UUID id=hitboxes.remove(soulId);lastAttacks.remove(soulId);
+        if(id!=null){Entity entity=Bukkit.getEntity(id);if(entity!=null)entity.remove();}
+    }
     private void moveTick(){
         World w=p.purgatory;if(w==null)return;
         Set<UUID> alive=new HashSet<>();
         for(Allay v:w.getEntitiesByClass(Allay.class)){
             if(!isSoul(v))continue;alive.add(v.getUniqueId());
             if(v.hasAI()||!v.isInvisible())configure(v);
-            attach(v);
+            attach(v);updateHitbox(v);
             Location at=v.getLocation(),to=destinations.get(v.getUniqueId());
             if(to==null||to.distanceSquared(at)<1.0||random.nextInt(100)==0){
                 double angle=random.nextDouble()*Math.PI*2, distance=3+random.nextDouble()*5;
@@ -129,8 +159,10 @@ public final class Souls implements Listener {
             }
         }
         destinations.keySet().retainAll(alive);
+        for(UUID id:new ArrayList<>(hitboxes.keySet()))if(!alive.contains(id))removeHitbox(id);
     }
     void cleanup(){
+        for(UUID id:new ArrayList<>(hitboxes.keySet()))removeHitbox(id);
         if(p.purgatory==null)return;
         for(Allay v:p.purgatory.getEntitiesByClass(Allay.class))if(isSoul(v)){for(Entity e:v.getPassengers())if(e.getPersistentDataContainer().has(visual,PersistentDataType.BYTE))e.remove();v.remove();}
     }
@@ -140,7 +172,7 @@ public final class Souls implements Listener {
     @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void death(EntityDeathEvent e){
         if(!(e.getEntity() instanceof Allay v)||!isSoul(v))return;
         v.getPassengers().stream().filter(d->d.getPersistentDataContainer().has(visual,PersistentDataType.BYTE)).forEach(Entity::remove);
-        destinations.remove(v.getUniqueId());e.getDrops().clear();
+        destinations.remove(v.getUniqueId());removeHitbox(v.getUniqueId());e.getDrops().clear();
         int min=Math.max(1,Math.min(64,p.getConfig().getInt("souls.drops-min",1))),max=Math.max(min,Math.min(64,p.getConfig().getInt("souls.drops-max",2)));
         var drop=p.detector.shard();drop.setAmount(min+random.nextInt(max-min+1));e.getDrops().add(drop);e.setDroppedExp(0);
     }
