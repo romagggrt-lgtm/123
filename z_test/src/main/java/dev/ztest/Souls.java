@@ -5,19 +5,18 @@ import org.bukkit.*;
 import org.bukkit.entity.*;
 import org.bukkit.event.*;
 import org.bukkit.event.entity.*;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Vector;
 
 public final class Souls implements Listener {
     private final ZTestPlugin p;
-    private final NamespacedKey soul, visual, hitbox;
+    private final NamespacedKey soul, visual;
     private final Random random=new Random();
     private final Map<UUID,Location> destinations=new HashMap<>();
-    private final Map<UUID,UUID> hitboxes=new HashMap<>();
-    private final Map<UUID,String> lastAttacks=new HashMap<>();
     private final Set<UUID> welcomed=new HashSet<>();
-    Souls(ZTestPlugin plugin){p=plugin;soul=new NamespacedKey(p,"soul");visual=new NamespacedKey(p,"soul_visual");hitbox=new NamespacedKey(p,"soul_hitbox");}
+    Souls(ZTestPlugin plugin){p=plugin;soul=new NamespacedKey(p,"soul");visual=new NamespacedKey(p,"soul_visual");}
     void start(){
         long interval=Math.max(5,Math.min(600,p.getConfig().getInt("souls.interval-seconds",30)))*20L;
         Bukkit.getScheduler().runTaskTimer(p,this::spawnTick,interval,interval);
@@ -31,7 +30,7 @@ public final class Souls implements Listener {
         Set<UUID> present=new HashSet<>();
         for(Player player:w.getPlayers())if(player.getGameMode()!=GameMode.SPECTATOR){
             UUID id=player.getUniqueId();present.add(id);if(welcomed.contains(id))continue;
-            if(!w.getNearbyEntitiesByType(Allay.class,player.getLocation(),24,this::isSoul).isEmpty()){welcomed.add(id);continue;}
+            if(!w.getNearbyEntitiesByType(Cow.class,player.getLocation(),24,this::isSoul).isEmpty()){welcomed.add(id);continue;}
             if(spawnNear(player,false)==6)welcomed.add(id);
         }
         welcomed.retainAll(present);
@@ -39,7 +38,7 @@ public final class Souls implements Listener {
     int spawnNear(Player player,boolean manual){
         if(!player.getWorld().equals(p.purgatory))throw new IllegalArgumentException("Душ можно призвать только внутри Чистилища");
         World w=player.getWorld();int limit=Math.max(6,Math.min(300,p.getConfig().getInt("souls.max-per-world",30)));
-        if(w.getEntitiesByClass(Allay.class).stream().filter(this::isSoul).count()+6>limit)return 0;
+        if(w.getEntitiesByClass(Cow.class).stream().filter(this::isSoul).count()+6>limit)return 0;
         var looking=player.getLocation().getDirection().setY(0);
         double start=looking.lengthSquared()<.001?0:Math.atan2(looking.getZ(),looking.getX());
         for(int i=0;i<12;i++){
@@ -51,7 +50,7 @@ public final class Souls implements Listener {
     }
     String status(Player player){
         if(!player.getWorld().equals(p.purgatory))return "§eТы не в Чистилище; пройди через разлом.";
-        var souls=p.purgatory.getEntitiesByClass(Allay.class).stream().filter(this::isSoul).toList();
+        var souls=p.purgatory.getEntitiesByClass(Cow.class).stream().filter(this::isSoul).toList();
         var nearest=souls.stream().min(Comparator.comparingDouble(v->v.getLocation().distanceSquared(player.getLocation()))).orElse(null);
         if(nearest==null)return "§eВ загруженных чанках душ нет. Проверь /ztest souls spawn и сложность мира.";
         var loc=nearest.getLocation();long displayed=souls.stream().filter(v->v.getPassengers().stream().anyMatch(e->e instanceof ItemDisplay)).count();
@@ -60,12 +59,12 @@ public final class Souls implements Listener {
     private void spawnTick(){
         World w=p.purgatory;if(w==null||w.getPlayers().isEmpty())return;
         int limit=Math.max(6,Math.min(300,p.getConfig().getInt("souls.max-per-world",30)));
-        int count=(int)w.getEntitiesByClass(Allay.class).stream().filter(this::isSoul).count();
+        int count=(int)w.getEntitiesByClass(Cow.class).stream().filter(this::isSoul).count();
         int min=Math.max(6,Math.min(80,p.getConfig().getInt("souls.spawn-distance-min",12))),max=Math.max(min,Math.min(96,p.getConfig().getInt("souls.spawn-distance-max",24)));
         double chance=Math.max(0,Math.min(1,p.getConfig().getDouble("souls.chance",.45)));
         for(Player player:w.getPlayers()){
             if(count+6>limit)break;if(player.getGameMode()==GameMode.SPECTATOR||random.nextDouble()>chance)continue;
-            if(w.getNearbyEntitiesByType(Allay.class,player.getLocation(),32,this::isSoul).size()>=6)continue;
+            if(w.getNearbyEntitiesByType(Cow.class,player.getLocation(),32,this::isSoul).size()>=6)continue;
             double angle=random.nextDouble()*Math.PI*2,dist=min+random.nextDouble()*(max-min);
             int x=player.getLocation().getBlockX()+(int)Math.round(Math.cos(angle)*dist),z=player.getLocation().getBlockZ()+(int)Math.round(Math.sin(angle)*dist);
             if(w.isChunkLoaded(x>>4,z>>4))count+=spawnGroup(player,x,z);
@@ -76,75 +75,47 @@ public final class Souls implements Listener {
         for(int dx=-2;dx<=2;dx++)for(int dz=-2;dz<=2;dz++){
             if(!w.isChunkLoaded((x+dx)>>4,(z+dz)>>4))continue;
             int y=Terrain.GROUND+2;
-            if(w.getBlockAt(x+dx,y,z+dz).isPassable()&&w.getBlockAt(x+dx,y+1,z+dz).isPassable()&&w.getBlockAt(x+dx,Terrain.GROUND,z+dz).getType().isSolid())positions.add(new Location(w,x+dx+.5,y,z+dz+.5));
+            if(w.getBlockAt(x+dx,y,z+dz).isPassable()&&w.getBlockAt(x+dx,y+1,z+dz).isPassable()&&w.getBlockAt(x+dx,Terrain.GROUND,z+dz).getType().isSolid())positions.add(new Location(w,x+dx+.5,y-.3,z+dz+.5));
         }
-        if(positions.size()<6)return 0;Collections.shuffle(positions,random);List<Allay> created=new ArrayList<>();
+        if(positions.size()<6)return 0;Collections.shuffle(positions,random);List<Cow> created=new ArrayList<>();
         for(int i=0;i<6;i++)try{
-            Allay v=w.spawn(positions.get(i),Allay.class,CreatureSpawnEvent.SpawnReason.CUSTOM,e->{e.getPersistentDataContainer().set(soul,PersistentDataType.BYTE,(byte)1);configure(e);});
+            Cow v=w.spawn(positions.get(i),Cow.class,CreatureSpawnEvent.SpawnReason.CUSTOM,e->{e.getPersistentDataContainer().set(soul,PersistentDataType.BYTE,(byte)1);configure(e);var max=e.getAttribute(org.bukkit.attribute.Attribute.MAX_HEALTH);if(max!=null){max.setBaseValue(20);e.setHealth(20);}});
             if(v.isValid()){attach(v);created.add(v);}
         }catch(IllegalArgumentException ex){p.getLogger().warning("Не удалось создать душу: "+ex.getMessage());}
         if(created.size()!=6){
-            for(Allay v:created){for(Entity e:v.getPassengers())if(e.getPersistentDataContainer().has(visual,PersistentDataType.BYTE))e.remove();v.remove();}
+            for(Cow v:created){for(Entity e:v.getPassengers())if(e.getPersistentDataContainer().has(visual,PersistentDataType.BYTE))e.remove();v.remove();}
             return 0;
         }
         return 6;
     }
-    private void configure(Allay v){
+    private void configure(Cow v){
         v.setCustomName("§dДуша");v.setCustomNameVisible(false);v.setRemoveWhenFarAway(true);v.setPersistent(false);
         v.setAI(false);v.setGravity(false);v.setInvisible(true);v.setSilent(true);v.setTarget(null);
         if(v.getEquipment()!=null)v.getEquipment().clear();
     }
-    private void attach(Allay v){
+    private void attach(Cow v){
         if(v.getPassengers().stream().anyMatch(e->e.getPersistentDataContainer().has(visual,PersistentDataType.BYTE)))return;
         ItemStack item=new ItemStack(Material.PAPER);item.editMeta(m->m.setItemModel(new NamespacedKey("z_test","soul")));
         ItemDisplay display=v.getWorld().spawn(v.getLocation(),ItemDisplay.class,d->{
             d.setItemStack(item);d.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.FIXED);d.setPersistent(false);
-            d.setBrightness(new Display.Brightness(15,15));var transformation=d.getTransformation();transformation.getScale().set(1.4f,1.4f,1.4f);d.setTransformation(transformation);
+            d.setBrightness(new Display.Brightness(15,15));var transformation=d.getTransformation();transformation.getScale().set(1.4f,1.4f,1.4f);transformation.getTranslation().set(0f,-.4f,0f);d.setTransformation(transformation);
             d.getPersistentDataContainer().set(visual,PersistentDataType.BYTE,(byte)1);
             d.setInterpolationDuration(3);d.setTeleportDuration(3);
         });
         if(!v.addPassenger(display))display.remove();
     }
-    private void updateHitbox(Allay v){
-        ItemDisplay model=v.getPassengers().stream().filter(e->e instanceof ItemDisplay&&e.getPersistentDataContainer().has(visual,PersistentDataType.BYTE)).map(e->(ItemDisplay)e).findFirst().orElse(null);
-        if(model==null)return;
-        var where=model.getLocation().add(0,-.55,0);
-        UUID id=hitboxes.get(v.getUniqueId());Entity existing=id==null?null:Bukkit.getEntity(id);
-        Interaction box;
-        if(existing instanceof Interaction i&&i.isValid())box=i;
-        else{
-            box=v.getWorld().spawn(where,Interaction.class,i->{
-                i.setInteractionWidth(1.35f);i.setInteractionHeight(1.10f);i.setResponsive(true);i.setPersistent(false);
-                i.getPersistentDataContainer().set(hitbox,PersistentDataType.STRING,v.getUniqueId().toString());
-            });
-            hitboxes.put(v.getUniqueId(),box.getUniqueId());lastAttacks.remove(v.getUniqueId());
-        }
-        if(!box.getWorld().equals(where.getWorld())||box.getLocation().distanceSquared(where)>.00001)box.teleport(where);
-        var previous=box.getLastAttack();
-        if(previous!=null){
-            String mark=previous.getPlayer().getUniqueId()+":"+previous.getTimestamp();
-            if(!mark.equals(lastAttacks.put(v.getUniqueId(),mark))){
-                Player attacker=previous.getPlayer().getPlayer();
-                if(attacker!=null&&attacker.isOnline()&&attacker.getGameMode()!=GameMode.SPECTATOR&&attacker.getWorld().equals(v.getWorld()))attacker.attack(v);
-            }
-        }
-    }
-    private void removeHitbox(UUID soulId){
-        UUID id=hitboxes.remove(soulId);lastAttacks.remove(soulId);
-        if(id!=null){Entity entity=Bukkit.getEntity(id);if(entity!=null)entity.remove();}
-    }
     private void moveTick(){
         World w=p.purgatory;if(w==null)return;
         Set<UUID> alive=new HashSet<>();
-        for(Allay v:w.getEntitiesByClass(Allay.class)){
+        for(Cow v:w.getEntitiesByClass(Cow.class)){
             if(!isSoul(v))continue;alive.add(v.getUniqueId());
             if(v.hasAI()||!v.isInvisible())configure(v);
-            attach(v);updateHitbox(v);
+            attach(v);
             Location at=v.getLocation(),to=destinations.get(v.getUniqueId());
             if(to==null||to.distanceSquared(at)<1.0||random.nextInt(100)==0){
                 double angle=random.nextDouble()*Math.PI*2, distance=3+random.nextDouble()*5;
                 to=at.clone().add(Math.cos(angle)*distance,0,Math.sin(angle)*distance);
-                to.setY(Terrain.GROUND+2.0+random.nextDouble()*.65);
+                to.setY(Terrain.GROUND+1.7+random.nextDouble()*.45);
                 if(!w.isChunkLoaded(to.getBlockX()>>4,to.getBlockZ()>>4)||!to.getBlock().isPassable()||!to.clone().add(0,1,0).getBlock().isPassable())to=at.clone().add(0,.1,0);
                 destinations.put(v.getUniqueId(),to);
             }
@@ -159,20 +130,19 @@ public final class Souls implements Listener {
             }
         }
         destinations.keySet().retainAll(alive);
-        for(UUID id:new ArrayList<>(hitboxes.keySet()))if(!alive.contains(id))removeHitbox(id);
     }
     void cleanup(){
-        for(UUID id:new ArrayList<>(hitboxes.keySet()))removeHitbox(id);
         if(p.purgatory==null)return;
-        for(Allay v:p.purgatory.getEntitiesByClass(Allay.class))if(isSoul(v)){for(Entity e:v.getPassengers())if(e.getPersistentDataContainer().has(visual,PersistentDataType.BYTE))e.remove();v.remove();}
+        for(Cow v:p.purgatory.getEntitiesByClass(Cow.class))if(isSoul(v)){for(Entity e:v.getPassengers())if(e.getPersistentDataContainer().has(visual,PersistentDataType.BYTE))e.remove();v.remove();}
     }
-    public boolean isSoul(Allay v){return v.getPersistentDataContainer().has(soul,PersistentDataType.BYTE);}
-    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void target(EntityTargetEvent e){if(e.getEntity() instanceof Allay v&&isSoul(v))e.setCancelled(true);}
-    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void damage(EntityDamageByEntityEvent e){if(e.getDamager() instanceof Allay v&&isSoul(v))e.setCancelled(true);}
+    public boolean isSoul(Cow v){return v.getPersistentDataContainer().has(soul,PersistentDataType.BYTE);}
+    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void interact(PlayerInteractEntityEvent e){if(e.getRightClicked() instanceof Cow v&&isSoul(v))e.setCancelled(true);}
+    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void target(EntityTargetEvent e){if(e.getEntity() instanceof Cow v&&isSoul(v))e.setCancelled(true);}
+    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void damage(EntityDamageByEntityEvent e){if(e.getDamager() instanceof Cow v&&isSoul(v))e.setCancelled(true);}
     @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true) public void death(EntityDeathEvent e){
-        if(!(e.getEntity() instanceof Allay v)||!isSoul(v))return;
+        if(!(e.getEntity() instanceof Cow v)||!isSoul(v))return;
         v.getPassengers().stream().filter(d->d.getPersistentDataContainer().has(visual,PersistentDataType.BYTE)).forEach(Entity::remove);
-        destinations.remove(v.getUniqueId());removeHitbox(v.getUniqueId());e.getDrops().clear();
+        destinations.remove(v.getUniqueId());e.getDrops().clear();
         int min=Math.max(1,Math.min(64,p.getConfig().getInt("souls.drops-min",1))),max=Math.max(min,Math.min(64,p.getConfig().getInt("souls.drops-max",2)));
         var drop=p.detector.shard();drop.setAmount(min+random.nextInt(max-min+1));e.getDrops().add(drop);e.setDroppedExp(0);
     }
