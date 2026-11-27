@@ -1,8 +1,10 @@
 {
   "status": "CAPTURED",
   "probe": "viewer=LorObserver soul=true passengers=1",
-  "source_commit": "95ebef66a062394415c3f8a9d6a438ba34be0fa4",
+  "source_commit": "6c3361fbd8b267bb823ed01b4221cf8dae279460",
   "client": "Minecraft Java 1.21.11",
   "pack": "Z_Server_Pack_1.17.zip",
-  "attack_event": "NONE"
+  "attack_event": "cancelled=false damage=1.408959984779358",
+  "swing_event": "ARM_SWING",
+  "death_event": "NONE"
 }

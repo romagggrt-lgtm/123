@@ -1,7 +1,7 @@
-/home/runner/work/123/123/z_test/src/visual/java/dev/ztest/visual/VisualProbe.java:27: warning: [removal] EntityState in TeleportFlag has been deprecated and marked for removal
+/home/runner/work/123/123/z_test/src/visual/java/dev/ztest/visual/VisualProbe.java:32: warning: [removal] EntityState in TeleportFlag has been deprecated and marked for removal
    if(soul!=null&&soul.isValid()){soul.teleport(fixed,TeleportCause.PLUGIN,TeleportFlag.EntityState.RETAIN_PASSENGERS);}
                                                                                        ^
-/home/runner/work/123/123/z_test/src/visual/java/dev/ztest/visual/VisualProbe.java:27: warning: [removal] RETAIN_PASSENGERS in EntityState has been deprecated and marked for removal
+/home/runner/work/123/123/z_test/src/visual/java/dev/ztest/visual/VisualProbe.java:32: warning: [removal] RETAIN_PASSENGERS in EntityState has been deprecated and marked for removal
    if(soul!=null&&soul.isValid()){soul.teleport(fixed,TeleportCause.PLUGIN,TeleportFlag.EntityState.RETAIN_PASSENGERS);}
                                                                                                    ^
 2 warnings
