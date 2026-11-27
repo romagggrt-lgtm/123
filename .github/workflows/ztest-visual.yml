@@ -1,0 +1,39 @@
+name: Z_Test vanilla visual reproduction
+on:
+  push:
+    branches: [research/ztest-soul-visual]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Build
+        run: mvn -B -f z_test/pom.xml package -DskipTests
+      - name: Prepare libraries
+        run: python3 -m pip install pillow python-xlib nbtlib
+      - name: Vanilla client screenshot
+        env:
+          LIBGL_ALWAYS_SOFTWARE: '1'
+          ALSOFT_DRIVERS: 'null'
+        run: xvfb-run -a -s '-screen 0 1280x720x24' python3 tools/ztest_visual_probe.py
+      - name: Save evidence
+        if: always()
+        run: |
+          mkdir -p z_test/visual-qa
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin "$GITHUB_REF_NAME"
+          test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA" || exit 0
+          git add -f z_test/visual-qa/
+          git diff --cached --quiet && exit 0
+          git commit -m 'Record vanilla ghost visual evidence [skip ci]'
+          git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
