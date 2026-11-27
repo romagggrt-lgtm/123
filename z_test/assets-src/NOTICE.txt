@@ -1,0 +1,3 @@
+Ghost texture extracted from the user-supplied Ghosts Fabric 1.21.1 1.4.0 mod.
+Authors recorded in fabric.mod.json: Joosh7889 and Xylonity.
+The supplied mod declares GNU GPL v3; the texture and its adapted model are distributed under GPL-3.0. See GPL-3.0.txt. Original source model and texture are included with this project.

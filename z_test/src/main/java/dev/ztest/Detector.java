@@ -21,11 +21,12 @@ public final class Detector implements Listener {
         ItemStack stack=new ItemStack(material);var meta=stack.getItemMeta();meta.setDisplayName(name);meta.setLore(lore);
         meta.setEnchantmentGlintOverride(true);meta.getPersistentDataContainer().set(type,PersistentDataType.STRING,id);stack.setItemMeta(meta);return stack;
     }
-    public ItemStack shard(){return item(Material.AMETHYST_SHARD,"soul_shard","§dОсколок души",List.of("§7Остаток души из Чистилища.","§7Используется для создания детектора."));}
+    public ItemStack legacyShard(){return item(Material.AMETHYST_SHARD,"soul_shard","§dОсколок души",List.of("§7Остаток души из Чистилища.","§7Используется для создания детектора."));}
+    public ItemStack shard(){var stack=legacyShard();stack.editMeta(meta->meta.setItemModel(new NamespacedKey("z_test","soul_shard")));return stack;}
     public ItemStack detector(){return item(Material.LODESTONE,"detector","§dАномальный детектор",List.of("§7Поставьте блок и нажмите ПКМ,","§7чтобы найти ближайший разлом."));}
     public boolean is(ItemStack item,String id){if(item==null||item.getType().isAir()||!item.hasItemMeta())return false;Material expected=id.equals("soul_shard")?Material.AMETHYST_SHARD:Material.LODESTONE;return item.getType()==expected&&id.equals(item.getItemMeta().getPersistentDataContainer().get(type,PersistentDataType.STRING));}
     void registerRecipe(){
-        Bukkit.removeRecipe(recipe);var r=new ShapedRecipe(recipe,detector());r.shape("RSR","SLS","RSR");r.setIngredient('R',Material.REDSTONE);r.setIngredient('S',new RecipeChoice.ExactChoice(shard()));r.setIngredient('L',Material.LODESTONE);
+        Bukkit.removeRecipe(recipe);var r=new ShapedRecipe(recipe,detector());r.shape("RSR","SLS","RSR");r.setIngredient('R',Material.REDSTONE);r.setIngredient('S',new RecipeChoice.ExactChoice(List.of(shard(),legacyShard())));r.setIngredient('L',Material.LODESTONE);
         if(!Bukkit.addRecipe(r))throw new IllegalStateException("Не удалось зарегистрировать рецепт детектора");
         for(Player player:Bukkit.getOnlinePlayers())player.discoverRecipe(recipe);
     }

@@ -12,10 +12,10 @@ import org.bukkit.persistence.PersistentDataType;
 
 public final class Items {
     public static final Set<String> BLOCKS=Set.of("magnetite_core","void_absorber","void_alarm","void_siren","stationary_voidometer");
-    public static final List<String> ALL=List.of("voidometer","magnetite_core","void_absorber","void_alarm","void_siren","stationary_voidometer","liquid_void","void_breath","lord_staff");
+    public static final List<String> ALL=List.of("voidometer","magnetite_core","void_absorber","void_alarm","void_siren","stationary_voidometer","liquid_void","void_breath","lord_staff","eneit_crown");
     public static final Map<String,String> NAMES=Map.of("voidometer","Войдометр","magnetite_core","Магнетитовое ядро",
             "void_absorber","Поглотитель Войда","void_alarm","Войдовый сигнализатор","void_siren","Сирена",
-            "liquid_void","Жидкий Войд","void_breath","Дыхание Войда","stationary_voidometer","Стационарный войдометр","lord_staff","Посох Лорда");
+            "liquid_void","Жидкий Войд","void_breath","Дыхание Войда","stationary_voidometer","Стационарный войдометр","lord_staff","Посох Лорда","eneit_crown","Корона Енейта");
     public final NamespacedKey identity=new NamespacedKey("z_lor","item"), portable=new NamespacedKey("z_lor","portable");
     private final ZLorPlugin plugin;
     private final Map<String,NamespacedKey> recipes=new HashMap<>();
@@ -31,11 +31,14 @@ public final class Items {
             meta.setItemModel(new NamespacedKey("z_lor","lord_staff"));
         }else meta.displayName(Component.text(NAMES.get(id),NamedTextColor.LIGHT_PURPLE));
         meta.getPersistentDataContainer().set(identity,PersistentDataType.STRING,id);
-        if(!id.equals("lord_staff"))meta.setItemModel(new NamespacedKey("smplore",id));
-        meta.setMaxStackSize(id.equals("voidometer")||id.equals("void_breath")||id.equals("lord_staff")?1:id.equals("liquid_void")?16:64);
+        if(id.equals("eneit_crown")){
+            meta.setItemModel(new NamespacedKey("z_lor","eneit_crown"));
+            var equip=meta.getEquippable();equip.setCameraOverlay(null);meta.setEquippable(equip);
+        }else if(!id.equals("lord_staff"))meta.setItemModel(new NamespacedKey("smplore",id));
+        meta.setMaxStackSize(id.equals("voidometer")||id.equals("void_breath")||id.equals("lord_staff")||id.equals("eneit_crown")?1:id.equals("liquid_void")?16:64);
         stack.setItemMeta(meta);return stack;
     }
-    private Material material(String id){return BLOCKS.contains(id)?Material.TARGET:id.equals("lord_staff")?Material.STICK:Material.PAPER;}
+    private Material material(String id){return BLOCKS.contains(id)?Material.TARGET:id.equals("lord_staff")?Material.STICK:id.equals("eneit_crown")?Material.CARVED_PUMPKIN:Material.PAPER;}
     public String id(ItemStack stack){
         if(stack==null||!stack.hasItemMeta())return null;
         String value=stack.getItemMeta().getPersistentDataContainer().get(identity,PersistentDataType.STRING);

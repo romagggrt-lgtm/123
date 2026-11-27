@@ -155,7 +155,7 @@ public class ZLorPlugin extends JavaPlugin implements Listener,CommandExecutor,T
     @EventHandler public void worldChange(PlayerChangedWorldEvent event){clearPersonal(event.getPlayer());}
     @EventHandler public void pack(PlayerResourcePackStatusEvent event){packStatuses.put(event.getPlayer().getUniqueId(),event.getStatus());}
     @EventHandler public void commands(PlayerCommandSendEvent event){
-        if(!roles.scen(event.getPlayer()))event.getCommands().removeIf(name->Set.of("lore","zlor","z_lor:lore","z_lor:zlor","smplore:lore").contains(name.toLowerCase(Locale.ROOT)));
+        if(!roles.scen(event.getPlayer()))event.getCommands().removeIf(name->Set.of("lore","zlor","zlore","z_lor:lore","z_lor:zlor","z_lor:zlore","smplore:lore").contains(name.toLowerCase(Locale.ROOT)));
         if(!roles.scen(event.getPlayer())&&!roles.admin(event.getPlayer()))event.getCommands().removeIf(name->Set.of("scen","z_lor:scen").contains(name.toLowerCase(Locale.ROOT)));
     }
     @EventHandler public void worldLoad(WorldLoadEvent event){if(nativeBoundary!=null)nativeBoundary.attach(event.getWorld());}

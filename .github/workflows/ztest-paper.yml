@@ -1,8 +1,8 @@
-name: Z_Test Paper verification
+name: Z_Test and Z_Lor Paper verification
 on:
   push:
     branches: ['feature/z-test-purgatory']
-    paths: ['z_test/src/**', 'z_test/pom.xml', 'tools/ztest_*', '.github/workflows/ztest-paper.yml']
+    paths: ['z_test/src/**', 'z_test/pom.xml', 'z_test/assets-src/**', 'lor/src/**', 'lor/pom.xml', 'tools/ztest_*', 'tools/build_ztest_lor_pack.py', '.github/workflows/ztest-paper.yml']
   workflow_dispatch:
 permissions:
   contents: write
@@ -12,7 +12,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -23,18 +23,28 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Compile and verify
+      - name: Build and test Z_Test
         run: |
           set -o pipefail
           mkdir -p z_test/qa
           mvn -B -f z_test/pom.xml verify 2>&1 | tee z_test/qa/build.log
+      - name: Build and test Z_Lor
+        run: |
+          set -o pipefail
+          mvn -B -f lor/pom.xml verify 2>&1 | tee z_test/qa/lor-build.log
+      - name: Validate resource pack
+        run: |
+          python3 -m pip install pillow
+          python3 tools/build_ztest_lor_pack.py | tee z_test/qa/pack-build.log
       - name: Exercise gameplay and persistence on a disposable Paper server
         run: |
           set -o pipefail
           python3 tools/ztest_native_smoke.py 2>&1 | tee z_test/qa/native-run.log
-      - name: Prepare verified plugin
+      - name: Prepare verified plugins
         if: success()
-        run: cp z_test/target/Z_Test-1.0.0.jar dist/Z_Test-1.0.0.jar
+        run: |
+          cp z_test/target/Z_Test-1.0.1.jar dist/Z_Test-1.0.1.jar
+          cp lor/target/Z_Lor-1.1.1.jar dist/Z_Lor-1.1.1.jar
       - name: Preserve build evidence
         if: always()
         env:
@@ -46,7 +56,8 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add z_test/qa/
-          if [ -f dist/Z_Test-1.0.0.jar ]; then git add dist/Z_Test-1.0.0.jar; fi
+          if [ -f dist/Z_Test-1.0.1.jar ]; then git add dist/Z_Test-1.0.1.jar; fi
+          if [ -f dist/Z_Lor-1.1.1.jar ]; then git add dist/Z_Lor-1.1.1.jar; fi
           git diff --cached --quiet && exit 0
-          git commit -m 'Record Z_Test build evidence [skip ci]'
+          git commit -m 'Record Z_Test and Z_Lor build evidence [skip ci]'
           git push origin "HEAD:refs/heads/$TESTED_REF"

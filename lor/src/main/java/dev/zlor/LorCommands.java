@@ -11,6 +11,7 @@ public final class LorCommands {
     private final ZLorPlugin p;
     public LorCommands(ZLorPlugin p){this.p=p;}
     public void execute(CommandSender sender,String[] args){
+        if(args.length==2&&args[1].equalsIgnoreCase("give")){give(sender,new String[]{args[0],"eneit_crown"});return;}
         if(args.length>0&&args[0].equals("give")){give(sender,Arrays.copyOfRange(args,1,args.length));return;}
         if(args.length>0&&args[0].equals("diagnostics")&&!(sender instanceof Player)){
             if(args.length!=1)throw new IllegalArgumentException("/lore diagnostics");diagnostics(sender);return;

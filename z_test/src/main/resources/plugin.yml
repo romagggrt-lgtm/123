@@ -1,5 +1,5 @@
 name: Z_Test
-version: '1.0.0'
+version: '1.0.1'
 main: dev.ztest.ZTestPlugin
 api-version: '1.21.11'
 description: Чистилище, разломы, души и аномальный детектор

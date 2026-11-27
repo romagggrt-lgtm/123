@@ -15,15 +15,15 @@ try:
     req=urllib.request.Request(record['url'],headers={'User-Agent':'Z_Test CI verification (server owner test)'})
     with urllib.request.urlopen(req,timeout=120) as response:(WORK/'paper.jar').write_bytes(response.read())
     actual=hashlib.sha256((WORK/'paper.jar').read_bytes()).hexdigest();assert actual==record['checksums']['sha256'],'Paper checksum mismatch'
-    deps=[ROOT/'z_test/target/Z_Test-1.0.0.jar']+list((Path.home()/'.m2/repository').rglob('*.jar'))
+    deps=[ROOT/'z_test/target/Z_Test-1.0.1.jar']+list((Path.home()/'.m2/repository').rglob('*.jar'))
     classes=WORK/'qa-classes';classes.mkdir(exist_ok=True)
     with (REPORT/'native-compile.log').open('w') as log:
         proc=subprocess.run(['javac','-proc:none','--release','21','-cp',os.pathsep.join(map(str,deps)),'-d',str(classes),str(ROOT/'z_test/src/smoke/java/dev/ztest/qa/NativeSmoke.java')],stdout=log,stderr=subprocess.STDOUT)
     assert proc.returncode==0,'QA harness did not compile: see native-compile.log'
-    plugins=WORK/'plugins';plugins.mkdir(exist_ok=True);shutil.copyfile(ROOT/'z_test/target/Z_Test-1.0.0.jar',plugins/'Z_Test.jar')
+    plugins=WORK/'plugins';plugins.mkdir(exist_ok=True);shutil.copyfile(ROOT/'z_test/target/Z_Test-1.0.1.jar',plugins/'Z_Test.jar')
     with ZipFile(plugins/'Z_Test_QA.jar','w') as archive:
         for path in classes.rglob('*.class'):archive.write(path,str(path.relative_to(classes)))
-        archive.writestr('plugin.yml',"name: Z_Test_QA\nversion: 1.0.0\nmain: dev.ztest.qa.NativeSmoke\napi-version: '1.21.11'\ndepend: [Z_Test]\n")
+        archive.writestr('plugin.yml',"name: Z_Test_QA\nversion: 1.0.1\nmain: dev.ztest.qa.NativeSmoke\napi-version: '1.21.11'\ndepend: [Z_Test]\n")
     config=plugins/'Z_Test';config.mkdir(exist_ok=True)
     (config/'config.yml').write_text('world-name: z_test_purgatory\nmax-rifts: 32\nportal-cooldown-seconds: 2\nsouls:\n  interval-seconds: 5\n  chance: 1.0\n  max-per-world: 6\n  spawn-distance-min: 6\n  spawn-distance-max: 8\n  drops-min: 1\n  drops-max: 1\n')
     (WORK/'eula.txt').write_text('eula=true\n')

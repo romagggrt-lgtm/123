@@ -71,6 +71,15 @@ class PluginTest {
         server.dispatchCommand(server.getConsoleSender(),"lore give Ordinary smplore:void_breath 1");settle();assertTrue(Arrays.stream(ordinary.getInventory().getContents()).anyMatch(i->p.items.is(i,"void_breath")));
         scen();assertTrue(server.dispatchCommand(admin,"smplore:lore help"));settle();assertTrue(p.roles.scen(admin));
     }
+    @Test void crownIsCommandOnlyAndUsesHeadSlot()throws Exception{
+        server.dispatchCommand(server.getConsoleSender(),"zlore Ordinary give");settle();
+        var crown=Arrays.stream(ordinary.getInventory().getContents()).filter(item->p.items.is(item,"eneit_crown")).findFirst().orElseThrow();
+        assertEquals(Material.CARVED_PUMPKIN,crown.getType());assertEquals(1,crown.getMaxStackSize());
+        assertEquals(new NamespacedKey("z_lor","eneit_crown"),crown.getItemMeta().getItemModel());
+        assertNull(crown.getItemMeta().getEquippable().getCameraOverlay());assertNull(p.items.recipe("eneit_crown"));
+        server.dispatchCommand(ordinary,"zlore Ordinary give");settle();
+        assertEquals(1,Arrays.stream(ordinary.getInventory().getContents()).filter(item->p.items.is(item,"eneit_crown")).count());
+    }
     @Test void ordinaryPlayerCannotUseLoreOrHiddenCommandCompletions()throws Exception{long before=p.state().revision;server.dispatchCommand(ordinary,"lore immune @s");settle();assertEquals(before,p.state().revision);assertTrue(p.state().immune.isEmpty());assertTrue(p.commands.complete(ordinary,"lore",new String[]{""}).isEmpty());}
     @Test void confirmationRejectsAnotherPlayerAndAnExpiredToken()throws Exception{
         scen();server.dispatchCommand(server.getConsoleSender(),"scen add Ordinary");settle();

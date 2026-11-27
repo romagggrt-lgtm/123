@@ -48,7 +48,7 @@ public final class ZTestPlugin extends JavaPlugin {
         return w;
     }
     @Override public ChunkGenerator getDefaultWorldGenerator(String name,String id){return name.equals(getConfig().getString("world-name","z_test_purgatory"))?new PurgatoryGenerator():null;}
-    @Override public void onDisable(){if(visuals!=null)visuals.clearLoaded();if(detector!=null)detector.unregisterRecipe();}
+    @Override public void onDisable(){if(souls!=null)souls.cleanup();if(visuals!=null)visuals.clearLoaded();if(detector!=null)detector.unregisterRecipe();}
     void failed(Exception e){getLogger().severe("Не удалось сохранить данные Z_Test: "+e.getMessage());}
     static String msg(String message){return "§8[§dZ_Test§8] §r"+message;}
     public World getPurgatory(){return purgatory;}
