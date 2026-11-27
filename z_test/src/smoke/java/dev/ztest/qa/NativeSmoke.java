@@ -36,6 +36,8 @@ public final class NativeSmoke extends JavaPlugin {
             player.setOp(true);player.setInvulnerable(true);normal=Bukkit.getWorlds().stream().filter(other->!other.equals(w)&&other.getEnvironment()==World.Environment.NORMAL).findFirst().orElseThrow();
             if(second){check("rift_persisted_after_restart",p.getState().rifts().size()==1);check("detector_persisted_after_restart",p.getState().detectorCount()==1);rift=p.getState().rifts().iterator().next();blockPoint=p.getState().detectors().iterator().next();check("detector_block_persisted",Bukkit.getWorld(blockPoint.world()).getBlockAt(blockPoint.x(),blockPoint.y(),blockPoint.z()).getType()==Material.LODESTONE);next();return;}
             check("fresh_state",p.getState().rifts().isEmpty()&&p.getState().detectorCount()==0);
+            check("zlor_enabled",Bukkit.getPluginManager().isPluginEnabled("Z_Lor"));
+            check("crown_give_command",player.performCommand("zlore "+player.getName()+" give"));
             ItemStack shard=p.getDetector().shard(),red=new ItemStack(Material.REDSTONE),lodestone=new ItemStack(Material.LODESTONE);
             ItemStack[] grid={red,shard,red,shard,lodestone,shard,red,shard,red};ItemStack crafted=Bukkit.craftItem(grid,w,player);
             check("craft_correct_detector",p.getDetector().is(crafted,"detector"));
@@ -49,7 +51,11 @@ public final class NativeSmoke extends JavaPlugin {
             next();return;
         }
         if(!second){
-            if(stage==1&&age()>100){check("detector_crystal_created",crystalCount()==1);Location from=rift.source().center().clone().add(2,0,0),to=rift.source().center();Bukkit.getPluginManager().callEvent(new PlayerMoveEvent(player,from,to));check("portal_enters_dimension",player.getWorld().equals(p.getPurgatory()));next();return;}
+            if(stage==1&&age()>100){
+                ItemStack crown=Arrays.stream(player.getInventory().getContents()).filter(Objects::nonNull).filter(i->i.hasItemMeta()&&new NamespacedKey("z_lor","eneit_crown").equals(i.getItemMeta().getItemModel())).findFirst().orElse(null);
+                check("crown_received",crown!=null);check("crown_no_pumpkin_overlay",crown.getItemMeta().getEquippable().getCameraOverlay()==null);
+                player.getInventory().setHelmet(crown);check("crown_equips",player.getInventory().getHelmet()!=null&&player.getInventory().getHelmet().isSimilar(crown));
+                check("detector_crystal_created",crystalCount()==1);Location from=rift.source().center().clone().add(2,0,0),to=rift.source().center();Bukkit.getPluginManager().callEvent(new PlayerMoveEvent(player,from,to));check("portal_enters_dimension",player.getWorld().equals(p.getPurgatory()));next();return;}
             if(stage==2){var souls=p.getPurgatory().getEntitiesByClass(Vex.class).stream().filter(p.getSouls()::isSoul).toList();if(souls.size()<6)return;check("soul_group_of_six",souls.size()==6);check("souls_passive",souls.stream().allMatch(v->!v.hasAI()&&v.getTarget()==null));check("souls_have_models",souls.stream().allMatch(v->v.isInvisible()&&v.getPassengers().stream().anyMatch(e->e instanceof ItemDisplay)));Location at=souls.get(0).getLocation();souls.get(0).setHealth(0);Bukkit.getScheduler().runTaskLater(this,()->{try{check("soul_drops_shard",p.getPurgatory().getNearbyEntitiesByType(Item.class,at,4).stream().anyMatch(i->p.getDetector().is(i.getItemStack(),"soul_shard")));next();}catch(Exception e){report("FAIL",e.toString());}},2);stage=20;return;}
             if(stage==21&&age()>120){Location from=rift.destination().center().clone().add(2,0,0),to=rift.destination().center();Bukkit.getPluginManager().callEvent(new PlayerMoveEvent(player,from,to));check("portal_returns_to_origin_world",player.getWorld().equals(normal));Files.writeString(Path.of("ztest-phase1.ok"),"phase1\n");report("PASS","");return;}
         }else{
